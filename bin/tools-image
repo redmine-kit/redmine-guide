@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Builds the image of the tools (pandoc and Ruby), tools/Dockerfile.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+docker build -q -t redmine-guide-tools -f tools/Dockerfile tools >/dev/null

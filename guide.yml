@@ -1,0 +1,104 @@
+# The sections of the guide, in redmine.org's order (Guide, Installation_Guide,
+# Administrator_Guide, User_Guide, Developer_Guide). Each topic is the wiki
+# page it comes from; the topic's path is <section>/<slug>. Pages the guide
+# links to but does not list get a slug from their title, under the section
+# of the page that links them. bin/convert writes index.yml from this file.
+sections:
+  - id: user
+    title: { en: User guide, ja: ユーザーガイド }
+    topics:
+      Getting_Started: getting-started
+      RedmineAccounts: accounts
+      RedmineLogin: login
+      RedmineRegister: register
+      RedmineSearch: search
+      RedmineMyPage: my-page
+      RedmineProjectOverview: project-overview
+      RedmineProjectActivity: project-activity
+      RedmineIssues: issues
+      RedmineIssueList: issue-list
+      RedmineIssueSummary: issue-summary
+      RedmineRoadmap: roadmap
+      RedmineVersion: version
+      RedmineTimeTracking: time-tracking
+      RedmineTimelogDetails: timelog-details
+      RedmineTimelogReport: timelog-report
+      RedmineGantt: gantt
+      RedmineCalendar: calendar
+      RedmineNews: news
+      RedmineDocuments: documents
+      RedmineFiles: files
+      RedmineForums: forums
+      RedmineWikis: wikis
+      RedmineRepository: repository
+      RedmineRepositoryStatistics: repository-statistics
+      RedmineProjectSettings: project-settings
+      RedmineAttachedFiles: attached-files
+      RedmineTextFormatting: text-formatting
+      RedmineTextFormattingTextile: text-formatting-textile
+      RedmineTextFormattingMarkdown: text-formatting-markdown
+      RedmineCodeHighlightingLanguages: code-highlighting-languages
+      RedmineKeyboardNavigation: keyboard-navigation
+  - id: admin
+    title: { en: Administrator guide, ja: 管理者ガイド }
+    topics:
+      RedmineProjects: projects
+      RedmineUsers: users
+      RedmineGroups: groups
+      RedmineRoles: roles
+      RedmineIssueTrackingSetup: issue-tracking-setup
+      RedmineCustomFields: custom-fields
+      RedmineEnumerations: enumerations
+      RedmineSettings: settings
+      RedmineAdminInformation: information
+      RedmineRepositories: repositories
+      RedmineReceivingEmails: receiving-emails
+      RedmineReminderEmails: reminder-emails
+      RedmineLDAP: ldap
+      RedmineRake: rake
+  - id: install
+    title: { en: Installation guide, ja: インストールガイド }
+    topics:
+      RedmineInstall: install
+      MySQL_configuration: mysql-configuration
+      EmailConfiguration: email-configuration
+      RedmineUpgrade: upgrade
+      RedmineMigrate: migrate
+      RedmineBackupRestore: backup-and-restore
+  - id: developer
+    title: { en: Developer guide, ja: 開発者ガイド }
+    topics:
+      Rest_api: rest-api
+      Contribute: contribute
+      Patch: patch
+      ReleaseManagement: release-management
+      List_of_vendored_third-party_core_components: vendored-components
+      Plugin_Tutorial: plugin-tutorial
+      Plugin_Internals: plugin-internals
+      Hooks: hooks
+      Hooks_List: hooks-list
+      Plugin_FAQ: plugin-faq
+      HowTo_create_a_custom_Redmine_theme: theme
+      Submissions: submissions
+
+# Redmine's old PNG icons (!/images/<icon>.png!) in the guide's text. Redmine
+# 7 draws other icons, so an icon is dropped when its label follows it, and
+# otherwise replaced as listed here: per page, then for any page. The labels
+# are Redmine's (config/locales/en.yml: button_apply, button_clear,
+# button_save); translations use the same keys' strings.
+icons:
+  RedmineIssueList:
+    true.png: "**Apply**"
+    reload.png: "**Clear**"
+    save.png: "**Save**"
+    bullet_toggle_plus.png: "**+**"
+  RedmineRepository:
+    bullet_toggle_plus.png: "**+**"
+  RedmineAdminInformation:
+    exclamation.png: "**!**"
+  RedmineRoadmap:
+    package.png: "version"
+  "*":
+    true.png: "✓"
+    locked.png: "🔒"
+    unlock.png: "🔓"

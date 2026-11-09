@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Fetches the Redmine guide from redmine.org into the upstream branch and
+# commits it, so that `git diff` shows what changed (docs/updating.md).
+#   bin/fetch            # fetch and commit on upstream
+# The pages are requested one by one with a delay (FETCH_DELAY, 1.5 s).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+bin/tools-image
+worktree=.upstream
+git worktree add -q "$worktree" upstream 2>/dev/null || git -C "$worktree" checkout -q upstream
+docker run --rm -e FETCH_DELAY="${FETCH_DELAY:-1.5}" -v "$PWD/tools:/tools:ro" -v "$PWD/$worktree:/out" \
+  redmine-guide-tools ruby /tools/fetch.rb /out
+cd "$worktree"
+git add -A
+if git diff --cached --quiet; then
+  echo "no changes on redmine.org"
+else
+  git commit -qm "Fetch the Redmine guide from redmine.org ($(date -u +%Y-%m-%d))"
+  git diff --stat HEAD~1 HEAD | tail -1
+  echo "next: bin/convert, review the diff, commit on main"
+fi

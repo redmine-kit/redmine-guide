@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Converts the upstream branch (the guide as fetched) to the Markdown on this
+# branch: en/, images/, index.yml and topics.yml (docs/updating.md). The
+# translations in ja/ are not touched; bin/check lists those whose English
+# page changed.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+bin/tools-image
+upstream=$(mktemp -d)
+trap 'rm -rf "$upstream"' EXIT
+git archive upstream | tar -x -C "$upstream"
+docker run --rm -v "$PWD:/work" -v "$upstream:/upstream:ro" redmine-guide-tools ruby /work/tools/convert.rb /upstream /work
