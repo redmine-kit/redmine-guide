@@ -1,0 +1,24 @@
+h1. Redmine guide
+
+{{>TOC}}
+
+{{include(Installation_Guide)}}
+
+{{include(Administrator_Guide)}}
+
+{{include(User_Guide)}}
+
+{{include(Developer_Guide)}}
+
+h2. Translations of the Redmine guide
+
+Note that the following translations may not be up to date. Please refer to the original English documentation if needed.
+
+* [[frGuide|French]]
+* "Japanese":http://guide.redmine.jp/
+* [[rusGuide|Russian]]
+* [[esGuide|Spanish]]
+* [[DeGuide|German]]
+* [[koGuide|Korean]]
+* [[ptBRGuide|Brazilian Portuguese]]
+* [[faGuide|Persian]]

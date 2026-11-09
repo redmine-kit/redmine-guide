@@ -1,0 +1,25 @@
+h1. Redmine Documents
+
+{{>toc}}
+
+h2. Introduction
+
+Documents is an available module to projects in Redmine.
+
+h2. Adding Documents
+
+From the *Documents* tab press the !/images/add.png! *New document* link.
+
+!NewDocument.png!
+
+By default there are two categories for documentation:
+# User documentation
+# Technical documentation
+
+These categories can be modified and other categories can be added by a Redmine administrator using [[RedmineEnumerations|document category enumerations]].
+
+h2. Viewing Documents
+
+Once documents have been uploaded, the title is used as the link to download the attached documents, and add more if necessary.
+
+!Documents.png!

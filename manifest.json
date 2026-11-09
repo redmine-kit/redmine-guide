@@ -1,0 +1,1097 @@
+{
+  "source": "https://www.redmine.org/guide",
+  "fetched_at": "2026-11-09T21:05:48Z",
+  "pages": {
+    "Administrator_Guide": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Administrator_Guide",
+      "version": 8,
+      "updated_on": "2021-02-07T09:59:16Z",
+      "parent": "Guide",
+      "linked_from": "Guide",
+      "images": [
+
+      ]
+    },
+    "Contribute": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Contribute",
+      "version": 53,
+      "updated_on": "2015-12-18T14:11:59Z",
+      "parent": null,
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Developer_Guide": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Developer_Guide",
+      "version": 25,
+      "updated_on": "2023-02-06T04:42:50Z",
+      "parent": "Guide",
+      "linked_from": "Guide",
+      "images": [
+
+      ]
+    },
+    "Download": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Download",
+      "version": 251,
+      "updated_on": "2026-11-01T22:46:07Z",
+      "parent": "RedmineInstall",
+      "linked_from": "RedmineInstall",
+      "images": [
+
+      ]
+    },
+    "EmailConfiguration": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/EmailConfiguration",
+      "version": 58,
+      "updated_on": "2024-10-21T11:54:17Z",
+      "parent": "Installation_Guide",
+      "linked_from": "Installation_Guide",
+      "images": [
+
+      ]
+    },
+    "Getting_Started": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Getting_Started",
+      "version": 9,
+      "updated_on": "2018-11-14T10:48:11Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "Guide": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Guide",
+      "version": 64,
+      "updated_on": "2018-09-18T00:30:37Z",
+      "parent": null,
+      "linked_from": null,
+      "images": [
+
+      ]
+    },
+    "Hooks": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Hooks",
+      "version": 14,
+      "updated_on": "2013-11-26T22:58:29Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Hooks_List": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Hooks_List",
+      "version": 25,
+      "updated_on": "2021-05-27T23:53:07Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "HowTo_create_a_custom_Redmine_theme": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/HowTo_create_a_custom_Redmine_theme",
+      "version": 14,
+      "updated_on": "2025-09-29T11:34:31Z",
+      "parent": "HowTos",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "How_to_create_patch_series_on_Mercurial_and_Git": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/How_to_create_patch_series_on_Mercurial_and_Git",
+      "version": 2,
+      "updated_on": "2012-03-16T11:00:05Z",
+      "parent": "Contribute",
+      "linked_from": "Contribute",
+      "images": [
+
+      ]
+    },
+    "Installation_Guide": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Installation_Guide",
+      "version": 16,
+      "updated_on": "2023-11-30T09:28:44Z",
+      "parent": "Guide",
+      "linked_from": "Guide",
+      "images": [
+
+      ]
+    },
+    "List_of_vendored_third-party_core_components": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/List_of_vendored_third-party_core_components",
+      "version": 8,
+      "updated_on": "2022-10-02T07:03:02Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "MySQL_configuration": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/MySQL_configuration",
+      "version": 10,
+      "updated_on": "2026-08-17T20:53:04Z",
+      "parent": "Installation_Guide",
+      "linked_from": "Installation_Guide",
+      "images": [
+
+      ]
+    },
+    "Patch": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Patch",
+      "version": 8,
+      "updated_on": "2024-10-19T15:01:44Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Plugin_FAQ": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Plugin_FAQ",
+      "version": 8,
+      "updated_on": "2021-08-22T10:21:22Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Plugin_Internals": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Plugin_Internals",
+      "version": 24,
+      "updated_on": "2022-09-16T07:36:06Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Plugin_Tutorial": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Plugin_Tutorial",
+      "version": 119,
+      "updated_on": "2023-12-01T05:27:04Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+        "plugins_list1.png",
+        "pools1.png",
+        "application_menu.png",
+        "project_menu.png",
+        "project_menu_pools.png",
+        "permissions1.png",
+        "modules.png",
+        "project_menu.png",
+        "project_menu_pools.png",
+        "plugins_list1.png",
+        "plugin_config_view.png",
+        "plugin_with_config.png",
+        "application_menu.png"
+      ]
+    },
+    "RedmineAccounts": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineAccounts",
+      "version": 16,
+      "updated_on": "2025-12-04T13:28:08Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "emails.png",
+        "myaccount-changepw.png",
+        "myaccount-emails.png",
+        "myaccount-notification.png",
+        "myaccount-info.png",
+        "myaccount-preferences.png"
+      ]
+    },
+    "RedmineAdminInformation": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineAdminInformation",
+      "version": 3,
+      "updated_on": "2020-05-06T11:36:43Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineAttachedFiles": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineAttachedFiles",
+      "version": 7,
+      "updated_on": "2013-11-17T06:33:25Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "UploadFile.png"
+      ]
+    },
+    "RedmineBackupRestore": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore",
+      "version": 14,
+      "updated_on": "2025-02-01T09:47:37Z",
+      "parent": "Installation_Guide",
+      "linked_from": "Installation_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineCalendar": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineCalendar",
+      "version": 9,
+      "updated_on": "2024-03-17T18:38:02Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "calendar.png"
+      ]
+    },
+    "RedmineCodeHighlightingLanguages": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineCodeHighlightingLanguages",
+      "version": 11,
+      "updated_on": "2024-11-14T10:41:16Z",
+      "parent": "RedmineTextFormatting",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineCustomFields": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineCustomFields",
+      "version": 29,
+      "updated_on": "2021-09-30T14:54:07Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineDocuments": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineDocuments",
+      "version": 5,
+      "updated_on": "2010-10-17T03:29:58Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "NewDocument.png",
+        "Documents.png"
+      ]
+    },
+    "RedmineEnumerations": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineEnumerations",
+      "version": 5,
+      "updated_on": "2017-09-12T02:23:53Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineFiles": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineFiles",
+      "version": 10,
+      "updated_on": "2021-02-04T00:38:12Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "UploadFile.png"
+      ]
+    },
+    "RedmineForums": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineForums",
+      "version": 4,
+      "updated_on": "2025-01-18T16:36:06Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "forums.png"
+      ]
+    },
+    "RedmineGantt": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineGantt",
+      "version": 3,
+      "updated_on": "2018-09-09T04:58:24Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineGroups": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineGroups",
+      "version": 6,
+      "updated_on": "2012-12-08T10:16:32Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+        "RedmineGroupToProjectNew.png",
+        "RedmineGroupToProjects.png",
+        "RedmineMembersToGroup.png",
+        "RedmineMemberToGroupNew.png"
+      ]
+    },
+    "RedmineInstall": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineInstall",
+      "version": 356,
+      "updated_on": "2026-07-07T21:44:14Z",
+      "parent": "Installation_Guide",
+      "linked_from": "Installation_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineIssueChangelog": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineIssueChangelog",
+      "version": 7,
+      "updated_on": "2013-02-02T06:17:55Z",
+      "parent": "RedmineIssueList",
+      "linked_from": "RedmineIssueList",
+      "images": [
+        "sidebar-changelog.jpg",
+        "changelog-overview.jpg"
+      ]
+    },
+    "RedmineIssueList": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineIssueList",
+      "version": 27,
+      "updated_on": "2017-12-24T13:57:08Z",
+      "parent": "RedmineIssues",
+      "linked_from": "User_Guide",
+      "images": [
+        "sidebar.jpg"
+      ]
+    },
+    "RedmineIssueSummary": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineIssueSummary",
+      "version": 5,
+      "updated_on": "2018-09-19T14:07:13Z",
+      "parent": "RedmineIssueList",
+      "linked_from": "User_Guide",
+      "images": [
+        "issue_summary_version-details.jpg"
+      ]
+    },
+    "RedmineIssueTrackingSetup": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineIssueTrackingSetup",
+      "version": 41,
+      "updated_on": "2020-06-13T07:35:04Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+        "workflow_fields_permissions_closeup.png"
+      ]
+    },
+    "RedmineIssues": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineIssues",
+      "version": 47,
+      "updated_on": "2018-12-26T23:44:51Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "redmine-associated-revision.png",
+        "redmine-related-issues.png",
+        "redmine-watchers.png",
+        "RedmineEditIssue_Update_Link.png",
+        "RedmineChangingIssueDescriptionNew.png",
+        "redmine_manual_revision_issue_association.png",
+        "subtasks-list.png",
+        "subtasks-gantt.png"
+      ]
+    },
+    "RedmineKeyboardNavigation": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineKeyboardNavigation",
+      "version": 14,
+      "updated_on": "2026-10-13T05:22:18Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineLDAP": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineLDAP",
+      "version": 29,
+      "updated_on": "2024-10-03T10:38:11Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineLogin": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineLogin",
+      "version": 7,
+      "updated_on": "2017-09-11T21:57:39Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineMacros": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineMacros",
+      "version": 3,
+      "updated_on": "2012-10-17T20:35:48Z",
+      "parent": "RedmineTextFormatting",
+      "linked_from": "RedmineTextFormattingTextile",
+      "images": [
+
+      ]
+    },
+    "RedmineMigrate": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineMigrate",
+      "version": 34,
+      "updated_on": "2020-07-30T13:12:27Z",
+      "parent": "Installation_Guide",
+      "linked_from": "Installation_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineMyPage": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineMyPage",
+      "version": 5,
+      "updated_on": "2018-01-07T16:12:32Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineNews": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineNews",
+      "version": 15,
+      "updated_on": "2010-01-11T16:03:09Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "news_list.png"
+      ]
+    },
+    "RedmineProjectActivity": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineProjectActivity",
+      "version": 10,
+      "updated_on": "2013-05-12T23:02:31Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "projects_redmine_activity.png"
+      ]
+    },
+    "RedmineProjectOverview": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineProjectOverview",
+      "version": 10,
+      "updated_on": "2010-01-11T15:17:24Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "redmine-project-overview.png",
+        "redmine-project-overview.png",
+        "redmine-project-overview.png"
+      ]
+    },
+    "RedmineProjectSettings": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineProjectSettings",
+      "version": 43,
+      "updated_on": "2023-10-29T23:19:21Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "project-settings_information-tab.jpg"
+      ]
+    },
+    "RedmineProjects": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineProjects",
+      "version": 29,
+      "updated_on": "2024-10-03T10:15:57Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+        "project_copy.png",
+        "project_list.png"
+      ]
+    },
+    "RedmineRake": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRake",
+      "version": 13,
+      "updated_on": "2017-09-12T07:25:12Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineReceivingEmails": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineReceivingEmails",
+      "version": 93,
+      "updated_on": "2023-07-10T12:31:19Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineRegister": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRegister",
+      "version": 9,
+      "updated_on": "2018-01-08T13:58:12Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "redmine-register.png"
+      ]
+    },
+    "RedmineReminderEmails": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineReminderEmails",
+      "version": 15,
+      "updated_on": "2017-11-25T06:42:28Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineRepositories": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRepositories",
+      "version": 64,
+      "updated_on": "2025-10-25T07:40:43Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineRepository": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRepository",
+      "version": 4,
+      "updated_on": "2010-01-09T14:47:10Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "repository.png"
+      ]
+    },
+    "RedmineRepositoryStatistics": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRepositoryStatistics",
+      "version": 7,
+      "updated_on": "2019-01-07T00:47:29Z",
+      "parent": "RedmineRepository",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineRoadmap": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRoadmap",
+      "version": 19,
+      "updated_on": "2017-10-09T12:15:18Z",
+      "parent": "RedmineIssues",
+      "linked_from": "User_Guide",
+      "images": [
+        "roadmap-default.jpg"
+      ]
+    },
+    "RedmineRoles": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineRoles",
+      "version": 34,
+      "updated_on": "2023-01-25T13:56:27Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineSearch": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineSearch",
+      "version": 7,
+      "updated_on": "2017-11-24T02:52:16Z",
+      "parent": null,
+      "linked_from": "User_Guide",
+      "images": [
+        "SimpleSearch.png",
+        "SearchProjects.png",
+        "AdvancedSearch.png",
+        "Searchable.png",
+        "Results.png"
+      ]
+    },
+    "RedmineSettings": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineSettings",
+      "version": 76,
+      "updated_on": "2022-09-12T04:41:20Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+        "alternate_theme.png"
+      ]
+    },
+    "RedmineTextFormatting": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTextFormatting",
+      "version": 127,
+      "updated_on": "2018-09-30T08:40:54Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineTextFormattingMarkdown": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingMarkdown",
+      "version": 32,
+      "updated_on": "2023-09-29T10:49:32Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineTextFormattingRedmineLinks": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingRedmineLinks",
+      "version": 9,
+      "updated_on": "2025-06-25T14:11:19Z",
+      "parent": "User_Guide",
+      "linked_from": "RedmineTextFormattingTextile",
+      "images": [
+
+      ]
+    },
+    "RedmineTextFormattingTextile": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingTextile",
+      "version": 19,
+      "updated_on": "2025-10-30T19:33:18Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineTimeTracking": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTimeTracking",
+      "version": 19,
+      "updated_on": "2018-09-18T07:33:25Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "log_time.png",
+        "Update_LogTime.png"
+      ]
+    },
+    "RedmineTimelogDetails": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTimelogDetails",
+      "version": 8,
+      "updated_on": "2015-02-23T02:44:08Z",
+      "parent": "RedmineTimeTracking",
+      "linked_from": "User_Guide",
+      "images": [
+        "SearchTimelog.png",
+        "TimeLogDetails.png"
+      ]
+    },
+    "RedmineTimelogReport": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTimelogReport",
+      "version": 7,
+      "updated_on": "2015-02-23T02:45:00Z",
+      "parent": "RedmineTimeTracking",
+      "linked_from": "User_Guide",
+      "images": [
+        "SearchTimelog.png",
+        "TimeLogReport.png"
+      ]
+    },
+    "RedmineUpgrade": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineUpgrade",
+      "version": 84,
+      "updated_on": "2022-12-24T07:36:25Z",
+      "parent": "Installation_Guide",
+      "linked_from": "Installation_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineUsers": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineUsers",
+      "version": 21,
+      "updated_on": "2023-12-19T14:22:04Z",
+      "parent": "Administrator_Guide",
+      "linked_from": "Administrator_Guide",
+      "images": [
+
+      ]
+    },
+    "RedmineVersion": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineVersion",
+      "version": 6,
+      "updated_on": "2017-11-23T08:51:17Z",
+      "parent": "RedmineRoadmap",
+      "linked_from": "User_Guide",
+      "images": [
+        "version.jpg"
+      ]
+    },
+    "RedmineWikis": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/RedmineWikis",
+      "version": 1,
+      "updated_on": "2024-09-19T10:33:13Z",
+      "parent": "User_Guide",
+      "linked_from": "User_Guide",
+      "images": [
+        "wiki-toolbar.png",
+        "history.png",
+        "page_version.png"
+      ]
+    },
+    "ReleaseManagement": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/ReleaseManagement",
+      "version": 203,
+      "updated_on": "2012-12-19T12:35:47Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Rest_Attachments": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Attachments",
+      "version": 7,
+      "updated_on": "2026-04-27T15:13:34Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_CustomFields": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_CustomFields",
+      "version": 3,
+      "updated_on": "2021-09-02T13:28:26Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Documents": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Documents",
+      "version": 1,
+      "updated_on": "2026-09-16T09:09:33Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Enumerations": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Enumerations",
+      "version": 3,
+      "updated_on": "2017-03-07T06:10:13Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Files": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Files",
+      "version": 4,
+      "updated_on": "2017-01-12T07:45:52Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Groups": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Groups",
+      "version": 10,
+      "updated_on": "2021-09-09T13:29:39Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_IssueCategories": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_IssueCategories",
+      "version": 4,
+      "updated_on": "2021-09-08T23:36:47Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_IssueRelations": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_IssueRelations",
+      "version": 10,
+      "updated_on": "2021-09-09T13:22:22Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_IssueStatuses": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_IssueStatuses",
+      "version": 3,
+      "updated_on": "2021-07-23T02:44:48Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Issues": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Issues",
+      "version": 72,
+      "updated_on": "2026-08-17T01:25:07Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Journals": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Journals",
+      "version": 1,
+      "updated_on": "2026-06-06T09:22:55Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Memberships": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Memberships",
+      "version": 8,
+      "updated_on": "2021-09-09T13:18:15Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_MyAccount": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_MyAccount",
+      "version": 2,
+      "updated_on": "2020-06-14T13:08:41Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_News": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_News",
+      "version": 7,
+      "updated_on": "2026-08-17T01:25:24Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Projects": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Projects",
+      "version": 42,
+      "updated_on": "2026-06-09T03:12:39Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Queries": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Queries",
+      "version": 3,
+      "updated_on": "2014-11-16T11:03:16Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Roles": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Roles",
+      "version": 4,
+      "updated_on": "2018-12-12T06:17:18Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Search": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Search",
+      "version": 2,
+      "updated_on": "2021-07-14T07:34:27Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_TimeEntries": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_TimeEntries",
+      "version": 15,
+      "updated_on": "2021-09-09T13:19:49Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Trackers": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Trackers",
+      "version": 3,
+      "updated_on": "2021-07-06T12:31:38Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Users": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Users",
+      "version": 30,
+      "updated_on": "2023-12-08T19:32:04Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_Versions": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_Versions",
+      "version": 11,
+      "updated_on": "2021-09-09T13:24:10Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_WikiPages": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_WikiPages",
+      "version": 9,
+      "updated_on": "2026-06-10T04:25:45Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api",
+      "version": 106,
+      "updated_on": "2026-09-16T08:48:49Z",
+      "parent": "Developer_Guide",
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_csharp": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_csharp",
+      "version": 7,
+      "updated_on": "2026-04-20T16:44:23Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_curl": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_curl",
+      "version": 10,
+      "updated_on": "2019-10-18T11:18:04Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_delphi": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_delphi",
+      "version": 1,
+      "updated_on": "2011-10-26T20:24:04Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_java": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_java",
+      "version": 19,
+      "updated_on": "2021-04-05T17:16:24Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_perl": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_perl",
+      "version": 2,
+      "updated_on": "2016-03-12T08:05:55Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_php": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_php",
+      "version": 14,
+      "updated_on": "2013-06-20T09:28:43Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_with_ruby": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_with_ruby",
+      "version": 15,
+      "updated_on": "2017-06-19T01:12:36Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Rest_api_ẅith_python": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Rest_api_ẅith_python",
+      "version": 18,
+      "updated_on": "2017-04-10T21:33:00Z",
+      "parent": "Rest_api",
+      "linked_from": "Rest_api",
+      "images": [
+
+      ]
+    },
+    "Submissions": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/Submissions",
+      "version": 30,
+      "updated_on": "2024-04-02T16:50:30Z",
+      "parent": null,
+      "linked_from": "Developer_Guide",
+      "images": [
+
+      ]
+    },
+    "User_Guide": {
+      "url": "https://www.redmine.org/projects/redmine/wiki/User_Guide",
+      "version": 22,
+      "updated_on": "2022-08-26T03:29:24Z",
+      "parent": "Guide",
+      "linked_from": "Guide",
+      "images": [
+
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+h1. Repository Statistics
+
+Redmine generates two images representing the number of _Changes_ and the number of _Revisions_ in the configured repository. One image shows a month to month break down of _Changes_ vs _Revisions_. The other image shows the number of _Changes_ and _Revisions_ made by each commiter.  
+
+h2. Definitions
+
+* _Revisions_ is a count of repository commits and is displayed in reddish/orange.
+* _Changes_ is a count of the number of files that have changed overall and is displayed in blue.
+
+!{border: 1px solid #ccc;}.graphs.png!

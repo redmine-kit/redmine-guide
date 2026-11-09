@@ -1,0 +1,25 @@
+h1. Project Activity
+
+The *_Activity_* page will give an historical log of at least all activities which had happen in the given project. 
+
+This will include:
+* !/images/ticket.png! A new issue (feature, defect...) has been created.
+* !/images/ticket_edit.png! The status of the issue has been changed.
+* !/images/ticket_checked.png! The given issue has been closed.
+* !/images/ticket_note.png! A note to the issue has been added.
+* !/images/changeset.png! This means a changeset has been commited to the repository.
+* !/images/news.png! A news has been added to the news area.
+* !/images/message.png! A message in the forum area has been added.
+* !/images/comments.png! A reply to a message in the forum has been added.
+* !/images/wiki_edit.png! A wiki page has been edited or newly created.
+* !/images/attachment.png! A new file has been added in the files area or to a document.
+* !/images/document.png! A new document has been added.
+* !/images/time.png! Some hours has been logged.
+
+Using the checkboxes in the sidebar of the right, you can choose which items are displayed.
+
+The activity is also available as an Atom feed.
+
+!projects_redmine_activity.png!
+
+A cross-project activity view is available from the Projects page, it will lists the activity of all visible projects.

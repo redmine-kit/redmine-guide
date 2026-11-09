@@ -1,0 +1,27 @@
+h2. Developer guide
+
+h3. General development
+
+* [[Rest_api|Redmine REST API]]
+* [[Contribute#Code Related|Code related topics]]
+* Creating and applying [[Patch|patches]]
+* An [[ReleaseManagement|explanation]] of what changes may be in future Redmine releases
+* [[List of vendored third-party core components]]
+* "Classes and methods of Redmine source code":https://www.rubydoc.info/github/redmine/redmine/index
+
+h3. Plugin development
+
+* A step-by-step [[Plugin_Tutorial|tutorial]] on writing a Redmine plugin
+* A description of the [[Plugin_Internals|internal handling of Redmine plugins]]
+* A description of the [[Hooks|Redmine plugin hooks API]]
+* An incomplete [[Hooks_List|list of available Redmine plugin hooks]]
+* A list of [[Plugin_FAQ|frequently asked questions about Redmine plugins]]
+
+h3. Theme development
+
+* A howto ([[HowTo create a custom Redmine theme]]) which explains how to create a custom Redmine theme
+
+h3. Contributing to Redmine
+
+* [[Contribute]]
+* [[Submissions|Submissions on redmine.org]]

@@ -1,0 +1,9 @@
+h2. Installation guide
+
+* [[RedmineInstall|Installing Redmine]]
+** [[MySQL_configuration|MySQL configuration]] 
+** [[EmailConfiguration| Email configuration]]
+* [[RedmineUpgrade|Upgrading an existing installation]]
+* [[RedmineMigrate|Migrating from other systems]]
+
+* [[RedmineBackupAndRestore|Backing up and restoring Redmine]]

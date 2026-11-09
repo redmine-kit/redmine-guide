@@ -1,0 +1,93 @@
+h1. Enumerations
+
+{{>toc}}
+
+h2. /enumerations/issue_priorities.:format
+
+h3. GET
+
+Returns the list of [[Rest_Issues|issue]] priorities.
+
++Examples+:
+
+<pre>
+GET /enumerations/issue_priorities.xml
+</pre>
+
++Response+:
+
+<pre><code class="xml">
+<?xml version="1.0" encoding="UTF-8"?>
+<issue_priorities type="array">
+  <issue_priority>
+    <id>3</id>
+    <name>Low</name>
+    <is_default>false</is_default>
+  </issue_priority>
+  <issue_priority>
+    <id>4</id>
+    <name>Normal</name>
+    <is_default>true</is_default>
+  </issue_priority>
+  ...
+</issue_priorities>
+</code></pre>
+
+h2. /enumerations/time_entry_activities.:format
+
+h3. GET
+
+Returns the list of [[Rest_TimeEntries|time entry]] activities.
+
++Examples+:
+
+<pre>
+GET /enumerations/time_entry_activities.xml
+</pre>
+
++Response+:
+
+<pre><code class="xml">
+<time_entry_activities type="array">
+  <time_entry_activity>
+    <id>8</id>
+    <name>Design</name>
+    <is_default>false</is_default>
+  </time_entry_activity>
+  ...
+</time_entry_activities>
+</code></pre>
+
+h2. /enumerations/document_categories.:format
+
+h3. GET
+
+Returns the list of document categories.
+
++Examples+:
+
+<pre>
+GET /enumerations/document_categories.xml
+</pre>
+
++Response+:
+
+<pre><code class="xml">
+<document_categories type="array">
+  <document_category>
+    <id>1</id>
+    <name>Uncategorized</name>
+    <is_default>false</is_default>
+  </document_category>
+  <document_category>
+    <id>2</id>
+    <name>User documentation</name>
+    <is_default>false</is_default>
+  </document_category>
+  <document_category>
+    <id>3</id>
+    <name>Technical documentation</name>
+    <is_default>false</is_default>
+  </document_category>
+</document_categories>
+</code></pre>

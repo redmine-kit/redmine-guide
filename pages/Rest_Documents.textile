@@ -1,0 +1,83 @@
+h1. Rest Documents
+
+h2. Listing documents
+
+<pre>
+GET /projects/[project_id]/documents.[format]
+</pre>
+
+Returns a paginated list of documents for the project with the given id or identifier.
+
+Parameters:
+
+* @offset@: skip this number of documents in the response (optional)
+* @limit@: number of documents per page (optional)
+
+Examples:
+
+<pre>
+GET /projects/foo/documents.xml
+GET /projects/foo/documents.json
+GET /projects/foo/documents.xml?offset=0&limit=100
+</pre>
+
+h2. Showing a document
+
+<pre>
+GET /documents/[id].[format]
+</pre>
+
+Parameters:
+
+* @include@: fetch associated data (optional). Possible value:
+** @attachments@
+
+Examples:
+
+<pre>
+GET /documents/1.xml
+GET /documents/1.json
+GET /documents/1.json?include=attachments
+</pre>
+
+h2. Creating a document
+
+<pre>
+POST /projects/[project_id]/documents.[format]
+</pre>
+
+Parameters:
+
+* @document@: a hash of the document attributes:
+** @title@
+** @description@
+** @category_id@
+** @custom_fields@
+
+Attachments can be added when creating a document, see [[Rest_api#Attaching-files|Attaching files]].
+
+Returns @201 Created@ on success.
+
+h2. Updating a document
+
+<pre>
+PUT /documents/[id].[format]
+</pre>
+
+Parameters:
+
+Same as document creation.
+
+Attachments can be added when updating a document, see [[Rest_api#Attaching-files|Attaching files]].
+
+Returns @204 No Content@ on success.
+
+h2. Deleting a document
+
+<pre>
+DELETE /documents/[id].[format]
+</pre>
+
+Returns @204 No Content@ on success.
+
+The existing @view_documents@, @add_documents@, @edit_documents@ and @delete_documents@ permissions are applied.

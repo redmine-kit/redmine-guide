@@ -1,0 +1,29 @@
+h1. Register
+
+{{>toc}}
+
+The Register page is used for self-registration of a new user. You can go to the page by clicking "Register" link at the upper-right corner on pages. Note that admin can disable self-registration. See the description of [[RedmineSettings#Self-registration|Self-registration setting]].
+
+A new user has to give the information about his *_Login_*, *_Password_*, *_First name_*, *_Last name_* and *_Email_* address and which language the user would like to use to for the user interface. 
+
+!redmine-register.png!
+
+h2. Registration Process
+
+Based on the [[RedmineSettings#Self-registration|Redmine settings]], the user will have to either *activate his account by email*, *wait for an administrator to validate his account* or *see his account automatically activated*.
+
+h3. Account Activation by Email
+
+After providing the information required on the Registration page, the user will receive an email to the email provided on the Registration page. By clicking on the activation link provided in the email, the user enables himself his account.
+
+Such method is often used to prevent email spamming.
+
+h3. Manual Account Activation
+
+After providing the information required on the Registration page, the user must wait for the approval of an administrator. The administrator will enable the user account on "Administration" > [[RedmineUsers|"Users" page]]. When the user account is enabled, the user is allowed to login.
+
+!{width: 950px; border: 1px solid #ccc}.activate-account@2x.png!
+
+h3. Automatic Account Activation
+
+After providing the information required on the Registration page, the user is allowed to login at any moment, no further steps are required.

@@ -1,0 +1,528 @@
+h1. Application Settings
+
+{{>TOC}}
+
+On "Administration" > "Settings" page, administrators can access various global level application settings.
+
+h2. General settings
+
+h3. Application title
+
+Title which appears in heading of the application. This is the link just under the little bar with « Home/My page/Projects/Help» when you're logged in.
+
+h3. Welcome text
+
+Text displayed on the home page of Redmine.
+
+h3. Objects per page options
+
+Here you can configure the fixed values which users can select for the amount of objects (issues, commits etc.) which are displayed per page.
+
+_Default: 25, 50, 100_
+
+h3. Search results per page
+
+The number of [[RedmineSearch|search]] results which are displayed per page.
+
+_Default: 20_
+
+h3. Days displayed on project activity
+
+The initial (and recurring while browsing) amount of days of which the project(s)-activity is shown in the [[RedmineProjectActivity|activity]]-tab.
+
+h3. Host name and path
+
+Host name and path of your Redmine server. This name is used to write URL in emails sent to users. i.e.: the hostname of this precise Redmine is redmine.org.
+
+Redmine guesses the value of this setting and displays it as an example below the text box. The guessed value is appropriate for your Redmine server in most cases.
+
+h3. Protocol
+
+Protocol used to generate links in email notifications. _Default: http_
+
+Links in email are "guessed", but can't determine whether you're using an unsecured web server (http) or a secure one (https -> http over SSL).
+
+h3. Text formatting
+
+Formatting method applied to the "description" fields of the issues, news, documents...
+
+You can select *Textile* _(default)_ or *Markdown*.
+
+h3. Cache formatted text (1.0)
+
+Text formatting transforms raw text to HTML and runs each time a formatted text is sent to a user's browser (eg. issue description, wiki page...), and this process can be slow with large pages or texts.
+
+This setting lets you enable caching of formatted text.
+
+The storage to be used to store cached data depends on the configuration of a cache store. The default cache store is "FileStore":http://api.rubyonrails.org/classes/ActiveSupport/Cache/FileStore.html. It stores cached data as files in @tmp/cache@ directory.
+
+You can configure to change the cache store to other one such as "MemoryStore":http://api.rubyonrails.org/classes/ActiveSupport/Cache/MemoryStore.html and "MemCacheStore":http://api.rubyonrails.org/classes/ActiveSupport/Cache/MemCacheStore.html by adding a setting like @config.cache_store = :memory_store@ to your  @config/environments/production.rb@, for example:
+
+
+<pre><code class="ruby">
+Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb
+
+  config.cache_store = :memory_store
+
+  ...
+</code></pre>
+
+You can read more about cache stores in the Rails guides:
+http://guides.rubyonrails.org/caching_with_rails.html#cache-stores
+
+h3. Wiki history compression
+
+Lets you activate compression for wiki history storage (reduces database size). _Default: disabled_
+
+h3. Maximum number of items in Atom feeds
+
+Maximum number of records contained in Atom feeds. _Default: 15_
+
+h2. Display
+
+h3. Theme
+
+This option lets you choose a custom theme.
+Redmine is shipped with two additional themes besides the [[ThemeDefault|default]] theme:
+* [[ThemeAlternate|alternate]], which mainly provides issue list colorization based on issues priority.
+* [[ThemeClassic|classic]], which is derived from the Redmine 0.5.1 design and brings a _classic_ look.
+
+Screenshot of the [[ThemeAlternate|alternate]] theme:
+
+!alternate_theme.png!
+
+Themes are located in @public/themes/@. You can read more about [[Themes]].
+
+h3. Default language
+
+The default language is selected when the application could not determine the user's browser language. The default language is also used when sending email to multiple users. _Default: English_
+
+h3. Force default language for anonymous users
+
+Disables automatic language detection based on browser setting and force [[RedmineSettings#Default-language|default language]] for anonymous users.
+
+h3. Force default language for logged-in users
+
+Disables "Language" setting on [[RedmineAccounts#My-account|My account]] page and force [[RedmineSettings#Default-language|default language]]  for logged-in users.
+
+h3. Start calendars on
+
+Lets you choose the first day of the week. 
+
+The default value is "Based on user's language". With this setting, the first day of the week varies by user. For example, if the user's language is set to English, the calendar starts on Sunday.
+
+h3. Date format
+
+Lets you choose how dates are displayed:
+
+  * *Based on user's language*: dates will be displayed specifically for each user, according to the format defined for its language
+  * *Other formats*: dates will always be displayed using the specified format
+
+_Default: Based on user's language_
+
+h3. Time format
+
+Lets you choose how times are displayed:
+
+  * *Based on user's language*: times will be displayed specifically for each user, according to the format defined for its language
+  * *Other formats*: times will always be displayed using the specified format
+
+_Default: Based on user's language_
+
+h3. Time span format
+
+Let you choose the display format of timespans (estimated time, spent time, etc).
+
+* *0.75* _(default)_ : Displays in decimal.
+* *0:45 h* : Displays in "HH:MM" format.
+
+h3. Users display format
+
+Lets you choose how usernames are displayed. The following combinations are provided:
+
+  * _Firstname_
+  * _Firstname Surname_
+  * _Surname Firstname_
+  * _Surname, Firstname_
+  * _Username_
+
+h3. Use Gravatar user icons
+
+If enabled, users "Gravatars":http://en.gravatar.com/ (globally recognized avatar) will be displayed in several places.
+
+h3. Default Gravatar image
+
+The image to use for users who don't have a Gravatar.
+
+h3. Display attachment thumbnails
+
+If enabled, thumbnails of attached images are displayed below the list of attached files.
+
+h3. Thumbnails size
+
+The size of thumbnail images in pixels when "[[RedmineSettings#Display-attachment-thumbnails|Display attachment thumbnails]]" is enabled.
+
+_Default: 100_
+
+h3. Project menu tab for creating new objects
+
+Let you choose the type of the tab for creating new objects.
+
+* *none*: does not display either "New issue" tab or "+" drop-down.
+* *Display the "New issue" tab*: displays "New issue" tab that was displayed in Redmine 3.2 and earlier.
+* *Display the "+" drop-down* (_default_): displays "+" drop-down that can be used to create various objects such as issue, wiki page and so on.
+
+
+h2. Authentication
+
+h3. Authentication required
+
+If this option is checked, no page of the application is accessible to anonymous users. Users must sign in to access the application. _Default: No_
+
+h3. Autologin
+
+This option let users use the auto-login feature. _Default: Disabled_
+
+h3. Self-registration
+
+This option lets you enable/disable new users self-registration:
+
+* *disabled*: users are not allowed to register
+* *account activation by email*: new users receive an email containing a link used to activate their accounts (users must provide a valid email address).
+* *manual account activation* _(default)_: new users' accounts are created but need administrator approval. Administrators receive an email informing them that an account is pending their approval.
+* *automatic account activation*: new users can log in as soon as they have registered.
+
+See [[RedmineRegister|Register]] for further details about self-registration.
+
+h3. Show custom fields on registration
+
+(WIP)
+
+h3. Allow users to delete their own account
+
+If enabled, users can delete their account by clicking "Delete my account" link placed in the sidebar on "My account" page.
+
+_Default: Enabled_
+
+h3. Minimum password length
+
+Let's the admin decide on the minimum length of the chosen passwords.
+
+_Default: 8_
+
+h3. Require password change after
+
+If enabled, users are forced to change their password periodically. You can set the maximum password age from 6 options between 7 days and 365 days.
+
+h3. Lost password
+
+If this option is checked, [[RedmineAccounts#Password-lost|lost password functionality]] is available. _Default: Yes_
+
+h3. Maximum number of additional email addresses
+
+(WIP)
+
+h3. Allow OpenID login and registration
+
+Provides the admin a way to disable OpenID logins and registrations.
+Note that the setting is immutable as long as the dependency for the feature (an installed copy of the @ruby-openid@ gem) is not met.
+
+h3. Session expiration
+
+Session maximum lifetime: Lets the administrator set the maximum lifetime of the session
+Session inactivity timeout: Lets the administrator specify after how many hours of inactivity the session times out.
+%{color:red}Warning 1%: Changing these settings may expire the current sessions (including your own).
+%{color:red}Warning 2%: Redmine uses the rails cookiestore for session management. We strongly advise you to set a maximum session lifetime. If you don't, it is theoretically possible that an attacker steals the session cookie and re-uses it.
+
+h2. API
+
+h3. Enable REST web service
+
+(WIP)
+
+h3. Enable JSONP support
+
+(WIP)
+
+h2. Projects
+
+h3. New projects are public by default
+
+The default state of newly created projects. The project can still be made non-public while creating new project or after the creation of the project.
+
+h3. Default enabled modules for new projects
+
+(WIP)
+
+h3. Default trackers for new projects
+
+(WIP)
+
+h3. Generate sequential project identifiers
+
+This setting will let Redmine propose sequential project identifiers for you. This can still be manually changed only while creating the project, not afterward.
+
+h3. Role given to a non-admin user who creates a project
+
+Defines which role is given by default to a non-admin user who creates a project (this only applies when you have configured Redmine permissions in such a way that non-admin users are actually privileged to create projects).
+
+h2. Issue tracking
+
+h3. Allow cross-project issue relations
+
+If set to Yes, relations between issues from different projects can be created. _Default: No_
+
+h3. Link issues on copy
+
+(WIP)
+
+h3. Allow cross-project subtasks
+
+Define some limits for subtasking. Definitions used are the same as version sharing, documented in [[RedmineProjectSettings#Versions]]. _Default: With project tree_
+
+Options are:
+* @disabled@ : a parent task can only have subtasks in the same project.
+* @With all projects@ : a parent task can have subtasks in any other project.
+* @With project tree@ : a parent task can have subtasks in the same project, ancestor projects and all their descendants (e.g. also "sibling projects", "cousin projects", etc.).
+* @With project hierarchy@ : a parent task can have subtasks in the same project, subprojects, or ancestor projects.
+* @With subprojects@ : a parent task can only have subtasks in the same project or subprojects (not in parent projects or unrelated projects).
+
+h3. Close duplicate issues automatically
+
+(WIP)
+
+h3. Allow issue assignment to groups
+
+(WIP)
+
+h3. Use current date as start date for new issues
+
+(WIP)
+
+h3. Display subprojects issues on main projects by default
+
+If set to true, subprojects issues will be displayed by default on the issue list, calendar and gantt of the main projects (Since r1198). _Default: Yes_
+
+h3. Calculate the issue done ratio
+
+Defines how the Issue Done Percentage is set.
+
+* *Use the issue field* _(default)_: Users can manually set % done.
+* *Use the issue status*: Each issue status can be assigned a percentage. This enables the [[RedmineIssueTrackingSetup#-Done|"% Done" option for issues]] and the [[RedmineIssueTrackingSetup#Update-issue-done-ratios|"Update issue done ratios" command in the issue statuses overview]].
+
+h3. Non-working days
+
+(WIP)
+
+h3. Issues export limit
+
+Maximum number of issues contained in CSV and PDF exports. _Default: 500_
+
+h3. Maximum number of items displayed on the gantt chart
+
+(WIP)
+
+h3. Parent tasks attributes
+
+(WIP)
+
+h3. Default columns displayed on the issue list
+
+This setting lets you define which columns are displayed on the issue lists by default.
+Only custom fields that are marked as 'For all projects' can be selected here.
+
+h2. Time tracking
+
+h3. Required fields for time logs
+
+(WIP)
+
+h2. Files
+
+h3. Attachment max. size
+
+Maximum size of uploaded files (in "kibi-bytes":http://en.wikipedia.org/wiki/Binary_prefix). _Default: 5120 (i.e. 5 "mebi-bytes":http://en.wikipedia.org/wiki/Binary_prefix )_
+
+h3. Allowed extensions
+
+(WIP)
+
+h3. Disallowed extensions
+
+(WIP)
+
+
+h3. Max size of text files displayed inline KB
+
+It provides a way to limit the maximum size of text files which are display inline.
+
+h3. Max number of diff lines displayed
+
+It provides a way to limit the maximum number of diff lines which are displayed by Redmine.
+
+
+h3. Repositories encodings
+
+This option lets you specify preferred encodings for repository files (multiple values allowed, comma separated). These encodings are used to convert files content and diff to UTF-8 so that they're properly displayed in the browser.
+When entering multiple encodings, the first valid encoding regarding the file content is used.
+
+For French users, this option can be for example set to:
+
+  UTF-8, ISO 8859-15, CP1252
+
+For Japanese users:
+
+  UTF-8, CP932, EUC-JP
+
+h2. Email notifications
+
+h3. Emission mail address
+
+Email address used in the "From" field of messages sent to users.
+
+h3. Blind carbon copy recipients (bcc)
+
+If set to true, email notification will be sent as Blind carbon copy. _Default: Yes_
+
+h3. Plain text mail
+
+If set to true, emails are sent in plain text only (no HTML).
+
+h3. Default notification option
+
+(WIP)
+
+h3. Emails header
+
+(WIP)
+
+h3. Emails footer
+
+Here you can enter some text that will be appended to the emails sent by the application.
+
+h2. Incoming emails
+
+See for detailed instructions about these settings [[RedmineReceivingEmails]].
+
+h3. Truncate emails after one of these lines
+
+These setting can be used to remove signatures from incoming emails.
+
+h3. Exclude attachments by name
+
+(WIP)
+
+h3. Enable WS for incoming emails
+
+Redmine can be configured to allow issue creation or comments via email. In order to use that feature, you have to enable the API that receives emails. That is where this setting is for. _Default: Off_
+
+h3. API key
+
+Within this setting you can enter a secret key used for the issue creation or comments via email feature.
+
+h2. Repositories
+
+h3. Enabled SCM
+
+Here you can (de)select the SCM-systems Redmine should "provide" to the individual projects. This setting is useful if you only support several SCM-systems (e.g. only Git or only SVN).
+
+h3. Fetch commits automatically
+
+If this option is activated, the application automatically retrieves the new revisions when a user consults the repository.
+
+_Default: Yes_
+
+You can disable this option and automate the call to Repository#fetch_changesets using cron to regularly retrieve the revisions for all of the repositories in the background.
+Example:
+<pre>ruby script/runner "Repository.fetch_changesets" -e production</pre>
+
+For Redmine 2.x:
+
+<pre>ruby script/rails runner "Repository.fetch_changesets" -e production</pre>
+
+For Redmine 3.x:
+
+<pre>bin/rails runner "Repository.fetch_changesets" -e production</pre>
+
+You can also call this task from your repository in a post-commit or post-receive hook, so that changesets are fetched after each commit.
+Here is a tutorial for doing so with git: http://web.archive.org/web/20160523024839/http://www.barricane.com/remine-git-post-receive.html
+
+h3. Enable WS for repository management
+
+This option should be activated only if you installed the script for automatic SVN repository creation. _Default: No_
+
+h3. Repository management WS API key
+
+A secret key for repository management WS.
+
+h3. Maximum number of revisions displayed on file log
+
+It provides a way to limit the amount of revisions which are retrieved from the SCM for a certain, browsed path.
+
+h3. Apply text formatting to commit messages
+
+(WIP)
+
+h3. Referencing issues in commit messages
+
+When fetched from the repositories, commit messages are scanned for referenced or fixed issue IDs.
+These options lets you define keywords that can be used in commit message to reference or fix issues automatically, and the status to apply to fixed issues.
+
+Default keywords are:
+
+* for referencing issues: refs, references, IssueID
+* for fixing issues: fixes, closes
+
+There's no default status defined for fixed issue. You'll have to specify it if you want to enable auto closure of issues.
+If you want to reference issues without using keywords, enter a single star: * in the *Referencing keywords* (Administration/Repository) setting. In this case, any issue ID found in the message will be linked to the changeset.
+
+Example of a working commit message using default keywords:
+
+  This commit refs #1, #2 and fixes #3
+
+This message would reference issues 1 and 2 and automatically fix issue 3.
+After a keyword issue IDs can be separated with a space, a comma or &.
+
+The keywords are caseinsensitive and at least one blankspace or colon is needed between the keyword and the first hash to produce 
+a match. More examples that will produce the same result as the example above:<pre>
+This commit refs:#1, #2 and fixes #3
+This commit Refs  #1, #2 and fixes #3
+This commit REFS: #1, #2 and fixes #3
+</pre>
+
+h3. Enable time logging
+
+Allows time logging directly from commit messages. This only makes sense if you activated the "Time tracking" module in said project. In this case, you can add special words in your commit message to indicate the time you spent on an issue.
+
+The basic syntax for doing that is : @@<time>@, where time consists in a number of hours or minutes.
+
+Here's a list of many valid commit messages that would work if you want to say you spent N hours on issue 1234: <pre>
+Implement feature #1234 @2
+
+Implement feature #1234 @2h
+
+Implement feature #1234 @2hours
+
+Implement feature #1234 @15m
+
+Implement feature #1234 @15min
+
+Implement feature #1234 @3h15
+
+Implement feature #1234 @3h15m
+
+Implement feature #1234 @3:15
+
+Implement feature #1234 @3.25
+
+Implement feature #1234 @3.25h
+
+Implement feature #1234 @3,25
+
+Implement feature #1234 @3,25h
+</pre>
+
+h3. Activity for logged time
+
+This is the type of activity that should be used when detecting there's a log time in a commit message (see above).

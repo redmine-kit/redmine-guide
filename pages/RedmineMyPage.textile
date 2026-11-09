@@ -1,0 +1,43 @@
+h1. My page
+
+My page lets you display various blocks of information about your projects. Users can personalize their own "My page" by adding, removing and reordering blocks. 
+
+!{width: 768px; border: 1px solid #ccc;}.my-page@2x.png!
+
+h2. blocks
+
+The following blocks are available. Only "Issues assigned to me" and "Reported issue" block are enabled by default.
+
+The layout (as in positioning of the blocks) of the "My page" can also be re-ordered and modified using drag-and-drop.
+
+h3. Issues assigned to me
+
+"Issues assigned to me" block provides a cross-project list of issues, which are assigned to the current user, showing the issue id's, projects, trackers and subjects with the current issue status appended between braces.
+
+h3. Reported issues
+
+"Reported issues" block provides a cross-project list of issues, which are reported by the current user, showing the issue id's, projects, trackers and subjects with the current issue status appended between braces.
+
+h3. Calendar
+
+"Calendar" block provides a cross-project weekly calendar overview.
+
+h3. Documents
+
+"Documents" block provides a cross-project overview of the latest documents.
+
+h3. Issues
+
+"Issues" block provides a list of issues returned by a selected custom query.
+
+h3. Latest news
+
+"Latest news" block provides a cross-project overview of the latest news.
+
+h3. Spent time
+
+"Spent time" block provides a cross-project overview of the spent time entries of the current user of the last seven days.
+
+h3. Watched issues
+
+"Watched issues" block provides a cross-project list of issues, which are watched by the current user, showing the issue id's, projects, trackers and subjects with the current issue status appended between braces.

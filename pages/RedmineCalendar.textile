@@ -1,0 +1,24 @@
+{{toc}}
+
+h1. Calendar
+
+h2. Overview
+
+The calendar provides an overview of the current project as a monthly view. This view displays all the issues that have at least a start date and indicates their start date and (if available) their due date. The calendar also displays all versions which have a due date set.
+
+h2. Access control
+
+h3. Module activation
+
+The calendar module can be enabled or disabled per project via the project's configuration tab. Within the configuration page go to the Modules tab and check or uncheck the Calendar checkbox to activate or disable the module.
+
+h3. Roles and permissions
+
+Access to the module can be granted or denied at a role level.
+To do this go to the administration page, follow the roles and permissions link, choose a role and check or uncheck the Calendar permissions checkbox.
+
+h2. Filters
+
+Like on the [[RedmineIssueList|issue-lists]] and the [[RedmineGantt|Gantt chart]], it is possible to define filters to define a subset of issues to be shown on the calendar. Such filters are similar to those specified on any [[RedmineIssueList|issue-list]].
+
+!calendar.png!

@@ -1,0 +1,26 @@
+h2. Administrator guide
+
+All following configuration settings can only be accessed and controlled by administrators, i.e. by users that have got the administrator flag checked.
+
+h3. Common configuration
+
+* [[RedmineProjects|Managing projects]]
+* [[RedmineUsers|Managing users]]
+* [[RedmineGroups|Managing groups]]
+* [[RedmineRoles|Roles and permissions]]
+* [[RedmineIssueTrackingSetup|Issue tracking system]]
+* [[RedmineCustomFields|Custom fields]]
+* [[RedmineEnumerations|Enumerations]]
+* [[RedmineSettings|Application settings]]
+* [[RedmineAdminInformation|Administration information]]
+
+h3. Advanced configuration
+
+* [[RedmineRepositories|Configuring repositories]]
+* [[RedmineReceivingEmails|Receiving emails]]
+* [[RedmineReminderEmails|Sending reminder emails]]
+* [[RedmineLDAP|LDAP Authentication]]
+
+h3. Maintenance operations
+
+* [[RedmineRake|Rake tasks]]

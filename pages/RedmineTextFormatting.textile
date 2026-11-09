@@ -1,0 +1,8 @@
+h1. Text formatting
+
+Redmine supports two syntaxes of formatting based on configuration (Administration → Settings → Text Formatting)
+
+* [[RedmineTextFormattingTextile|Textile]] (default)
+* [[RedmineTextFormattingMarkdown|Markdown]]
+
+* [[RedmineCodeHighlightingLanguages|Code highlighting supported languages]]

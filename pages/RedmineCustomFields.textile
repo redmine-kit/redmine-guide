@@ -1,0 +1,133 @@
+h1. Custom fields
+
+{{>toc}}
+
+Custom fields allow you to add additional information to several types of data used in Redmine. See '[[RedmineCustomFields#Custom-field-types|custom field types]]' for all types of data which come with support for custom fields.
+Each custom field can be defined to be of a [[RedmineCustomFields#Custom-field-supporting-data-types|certain type]].
+
+h2. Custom field types
+
+h3. Format
+
+A custom field can be of one the following type:
+* *Boolean*: checkbox
+* *Date*: date
+* *Float*: floating point number
+* *Integer*: positive or negative number
+* *Link*: URL
+* *List*: drop down list
+* *Long Text*: resizeable multiple lines of text (supports rich text formatting as of 2.50)
+* *Text*: multiple lines text (supports rich text formatting as of 2.50)
+* *User* custom field format that can be used to reference a project member
+* *Version* custom field format that can be used to reference version
+
+h3. Validation
+
+Some validations can be defined for each custom field:
+* *Min - max length*: minimum and maximum length for the field (0 means that there is no restriction)
+* *Regular Expression*: a regular expression can be used to validate the field content. Examples:
+## _4 capital letters followed by one or several digits_
+<pre>^\[A-Z]{4}\d+$</pre>
+## _characters only, no digits_
+<pre>^[^0-9]*$</pre>
+* A full list of regular expressions can be found in the Ruby Users Guide.
+
+h3. Values
+
+Some field support multiple values and default values.
+* *Multiple values*: while enabled, more than one item may be selected.
+* *Possible values*: possible values for the "List" fields. One line for each value.
+* *Default value*: default value to apply if none selected.
+
+h3. Text formatting
+
+Some fields support text formatting.
+* *Text formatting*: whether to wikify the text.  If enabled, then _locks_ the *Link values to URL* field.
+
+h3. Lists and Key/Values list
+
+You can create your own list of values which you want your users to add. A posteriori change in values of "List" type will not affect any existing records created in the past, while a change in values of "Key/value list" will also affect existing records created in the past.
+
+
+h3. Link values to URL
+
+"Link values to URL" can be defined for boolean, date, list, integer and text format fields.
+
+* *Link values to URL*: creates a URL using the following variables.
+**   @%value%@ => the custom field value
+**   @%id%@ => id of the customized object
+**   @%project_id%@ => id of the project of the customized object if defined
+**   @%project_identifier%@ => identifier of the project of the customized object if defined
+**   @%m1%, %m2%...@ => capture groups matches of the custom field regexp if defined
+
+Example:
+<pre>
+https://www.redmine.org/issues/%value%
+</pre>
+
+h3. Input field styling
+
+(2.5.2+) Some fields may be displayed as radio buttons or checkboxes, with slightly different behaviour based on the selected "Format":
+* *Boolean*: checkbox (enabled/disabled) or radio buttons (null/yes/no)
+* *List*, *User* and *Version*:
+** checkboxes (if *Multiple values* is enabled)
+** radio buttons (if *Multiple values* is disabled)
+
+h2. Custom field supporting data types
+
+h3. Fields for Issues
+
+Data in issue custom fields can be used and/or will be displayed in [[RedmineIssues|issues]], [[RedmineIssueList|issue lists]], [[RedmineIssueList#Custom-queries|custom queries]] and the [[RedmineTimelogReport|Timelog report]].
+
+* *Trackers*: TODO
+* *Required*: field which is required in order to create/save an issue
+* *For all projects*: if checked, this field is used for the issues of all the projects. If unchecked, each project can choose whether or not to use the field for its issues (see [[RedmineProjectSettings|Project settings]]).
+* *Used as a filter*: TODO
+* *Searchable*: field which is searchable using the Redmine [[RedmineSearch|search function]]
+
+h3. Fields for Spent time entries
+
+Data in spent time entry custom fields can be used and/or will be displayed in the [[RedmineTimelogReport|Timelog report]].
+
+* *Required*: field which is required in order to create/save a spent time entry
+
+h3. Fields for Projects
+
+Data in project custom fields can be used and/or will be displayed in the [[RedmineProjectOverview|Project overview]].
+
+* *Required*: field which is required in order to create/save a project
+* *Searchable*: field which is searchable using the Redmine [[RedmineSearch|search function]]
+
+h3. Fields for Versions
+
+Data in version custom fields can be used and/or will be displayed in the [[RedmineRoadmap|Roadmap]] and the [[RedmineVersion|Version overview]].
+
+* *Required*: field which is required in order to create/save a version
+
+h3. Fields for Users
+
+Data in user custom fields can be used and/or will be displayed in the [[RedmineUserProfiles|user profiles]].
+
+* *Required*: field which is required in order to create/save a user
+* *Visible*: field which is displayed in the [[RedmineUserProfiles|user profile]]
+* *Editable*: field which is editable by the [[RedmineAccounts|Redmine user]] owning the user account
+
+h3. Fields for Groups
+
+*Note*: group custom fields are not (yet) used in the Redmine core, though other plugins or themes _can/may_ use them. No setting here has any effect on any other parts of Redmine for the time being.
+
+h3. Fields for Activities (time tracking)
+
+Data in time tracking activity custom fields can be used and/or will be displayed[1] in the [[RedmineTimelogReport|Timelog report]] and the [[RedmineProjectSettings#Activities-time-tracking|Project settings]]. See also #4077 for some details about this nifty feature.
+
+* *Required*: field which is required in order to create/save an activity
+
+h3. Fields for Issue priorities
+
+*Note*: issue priority custom fields are not (yet) used in the Redmine core, though other plugins or themes _can/may_ use them. No setting here has any effect on any other parts of Redmine for the time being.
+
+h3. Fields for Document categories
+
+*Note*: document category custom fields are not (yet) used in the Redmine core, though other plugins or themes _can/may_ use them. No setting here has any effect on any other parts of Redmine for the time being.
+
+fn1. there are some exceptions, see #19121#note-1.

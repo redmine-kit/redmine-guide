@@ -1,0 +1,52 @@
+h1. Redmine Attached Files
+
+{{>toc}}
+
+h2. Introduction
+
+Attached files can be added to different resources within the Redmine system:
+* issues - using the [[RedmineAttachedFiles#Attach-files-form|"New File" form]] while adding/editing an issue
+* documents - using the [[RedmineAttachedFiles#Attach-files-form|"New File" form]] while adding/editing a document
+* forum messages - using the [[RedmineAttachedFiles#Attach-files-form|"New File" form]] while adding/editing a forum message
+* news items - using the [[RedmineAttachedFiles#Attach-files-form|"New File" form]] while adding/editing a news item
+* wiki pages - using the [[RedmineAttachedFiles#Files-added-via-New-File|"New File" link]] at the bottom of the page
+
+h2. Usage
+
+h3. Inline Images
+
+Attached files can be shown within the parent page by targeting it's name via image url (i.e. @!attached_image!@).
+
+h3. Non plain text files
+
+Keep in mind there is a dedicated [[RedmineDocuments|documents]] module for storing technical and user documentation that can be linked via the [[RedmineWikis|wiki]] and a dedicated [[RedmineFiles|files]] module for publishing versions of the tracked project, as a bundle (release).
+
+However, if that doesn't fit the bill, file upload support provides a way to distribute any file for user download.
+
+h2. File storage
+
+Uploaded attached files are stored in @<Redmine install dir>/files@ directory subdirectories named after the year the file has been uploaded.
+
+The uploaded file name is prefixed with a unique id based on it's parent for directory storage. Multiple files can be uploaded with the same name, however a link within the wiki will only show the most recently uploaded one.
+
+h4. Unattached uploaded files
+
+Uploaded files can be left unattached if the user don't submit the form; a [[RedmineRake#rake-redmineattachementsprune|Rake task]] is made available and can be scheduled for regular deletion of these files.
+
+h2. Attach files form
+
+The input form is as shown below.
+
+Starting from version version:2.3.0 and depending on the browser supporting it (IE10+), it is possible to:
+* select and attach multiple files at once
+* drag and drop files over the form
+
+The optional description field, which appears once the file upload is finished, is also used as the alternate text of the image file inserted using @!image_url!@ syntax within the parent content (i.e. issue description or note, forum message, wiki page, document, &hellip;).
+
+!UploadFile.png!
+
+h2. Files added via "New File"
+
+At the bottom of many of the pages in Redmine is a "New File" link. Attaching a file makes that page the parent of the file and it is limited in scope to that page.
+
+See the [[RedmineFiles#Usage|Usage]] section for more information.

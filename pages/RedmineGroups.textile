@@ -1,0 +1,46 @@
+h1. Managing Groups
+
+As of 0.9, Administrators can define groups of users in Redmine.
+Groups can be added as members of projects just like regular users, using the same [[RedmineRoles|Roles]] too.
+
+When adding a user to an existing group, this user inherits of all of the group privileges.
+
+
+h2. Creating groups
+
+To create a group, do the following:
+
+# Click Administration
+# Click Groups
+# Click New Group
+# Type the name of your group in Name
+# Click Create
+
+h2. Adding members and associating projects
+
+To add members to a group, do the following:
+
+# In Administration >> Groups
+# Click the name of the Group you wish to change.
+# You'll see 3 tabs: General, Users, Projects
+** General 
+*** Change the name by editing the Name field
+** Users
+*** Add users by checking the username box for each user
+*** Click Add
+** Projects
+*** Select a project from the pop-up menu
+*** Set the Role
+*** Click Add
+
+!{width: 800px}RedmineMemberToGroupNew.png!
+Figure 1: Example Group Users tab
+
+!{width: 800px}RedmineMembersToGroup.png!
+Figure 2: Adding Members to a Group
+
+!{width: 800px}RedmineGroupToProjectNew.png!
+Figure 3: Example Group Project tab
+
+!{width: 800px}RedmineGroupToProjects.png!
+Figure 4: Associating a group to a project (from the Group context)

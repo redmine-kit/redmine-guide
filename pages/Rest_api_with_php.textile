@@ -1,0 +1,74 @@
+h1. Using the REST API with PHP
+
+h2. php-redmine-api Project
+
+* A simple Object Oriented PHP Redmine API client :
+** https://github.com/kbsali/php-redmine-api
+
+h2. The PHP ActiveResource way
+
+Here is an example that uses "PHP ActiveResource":http://wiki.github.com/lux/phpactiveresource/, a lightweight PHP library that can be used to access Rails' REST APIs:
+
+<pre>
+<code class="php">
+<?php
+require_once ('ActiveResource.php');
+
+class Issue extends ActiveResource {
+    var $site = 'http://username:password@192.168.199.129:3000/';
+    var $request_format = 'xml'; // REQUIRED!
+}
+
+// create a new issue
+$issue = new Issue (array ('subject' => 'XML REST API', 'project_id' => '1'));
+$issue->save ();
+echo $issue->id;
+
+// find issues
+$issues = $issue->find ('all');
+for ($i=0; $i < count($issues); $i++) {
+	echo $issues[$i]->subject;
+}
+
+// find and update an issue
+$issue->find (1);
+echo $issue->subject;
+$issue->set ('subject', 'This is the new subject')->save ();
+// update status
+$issue->set ('status_id', 2)->save();
+
+// delete an issue
+$issue->find (1);
+$issue->destroy ();
+?>
+</code>
+</pre>
+
+*Known issues*
+
+* If you are working with large descriptions, the webserver can return a 417 error (Bad Expectation).
+You should replace line 381 in _ActiveResource.php_ with the following code:
+<pre><code class="php">curl_setopt ($ch, CURLOPT_HTTPHEADER, array ('Expect:',"Content-Type: text/xml", "Length: " . strlen ($params)));</code></pre>
+* If you are trying to use the class to write @time_entries@, you will get a 404 response (#9375). The reason for that is that the class is unable to create the correct singular form from the pluralized version of the entity name. (edit 2011-10-06: according to the website the bug was fixed in the latest release: https://github.com/lux/phpactiveresource/issues/7#issuecomment-2300502)
+This can be patched in _ActiveResource.php_ by:
+# adding the class variable @$sOriginalElementName@:
+<pre><code class="php">protected $sOriginalElementName = '';</code></pre>
+# changing the constructor to set the class variable using the original entity name before the pluralization is called:
+<pre><code class="php">
+function __construct ($data = array ()) {
+  $this->_data = $data;
+
+  // add this line here - to store the original name of the entity
+  $this->sOriginalElementName = ($this->element_name ? $this->element_name : strtolower (get_class ($this)));
+  // Allow class-defined element name or use class name if not defined
+  $this->element_name = ($this->element_name ? $this->pleuralize ($this->element_name) : $this->pleuralize (strtolower (get_class ($this))));
+...
+</code></pre>
+# and then changing the method @_send_and_receive@ to use @$sOriginalElementName@ instead of @substr ($this->element_name, 0, -1)@:
+<pre><code class="php">
+function _send_and_receive ($url, $method, $data = array ()) {
+  $params = '';
+  $el = $this->sOriginalElementName;//substr ($this->element_name, 0, -1);
+  if ($this->request_format == 'url') {
+...
+</code></pre>

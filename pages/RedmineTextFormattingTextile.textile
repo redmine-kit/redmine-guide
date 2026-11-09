@@ -1,0 +1,446 @@
+h1. Textile formatting
+
+Below is *Textile* formatting. For *Markdown* formatting see [[RedmineTextFormattingMarkdown]].
+For limitations of current Textile support see #6269, #10078 (Definition Lists).
+
+{{>TOC}}
+
+h2. Links
+
+h3. Redmine links
+
+{{include(RedmineTextFormattingRedmineLinks)}}
+
+h3. External links
+
+URLs (http, https, ftp and ftps) are automatically turned into clickable links: 
+* *http&#58;//www.redmine.org* -- External link to the redmine website: http://www.redmine.org
+
+URLs can also use different text than the link itself:
+* *"Redmine web site"&#58;http&#58;//www.redmine.org* -- External link with different text: "Redmine web site":http://www.redmine.org
+* *!http://www.redmine.org/attachments/7069/Redmine_logo.png(Redmine web site)!:http://www.redmine.org* -- External image with a title that links to an URL: 
+
+p=. !http://www.redmine.org/attachments/7069/Redmine_logo.png(Redmine web site)!:http://www.redmine.org
+
+File URI can be used to link UNC path:
+* *"\\server\share$"&#58;file&#58;/////server/share%24* -- File URI showing UNC path: "\\server\share$":file://///server/share%24
+You should "URL Encodings":http://www.w3schools.com/tags/ref_urlencode.asp for special characters like empty space, $, á, é, í, ó, ú, etc.
+
+h3. Email addresses
+
+Email addresses are automatically turned into clickable links:
+
+* *someone&#64;foo.bar* -- Link to an email address: someone@foo.bar
+* *"Email someone"&#58;mailto&#58;someone&#64;foo.bar* -- Email link with different text: "Email someone":mailto:someone@foo.bar
+
+More complex email instructions can be added to an email link.  A default subject, default body and CC information can be defined.  Note that spaces in any of these fields need to be replaced with the code %20.
+* *"Email webmaster and admin"&#58;mailto&#58;webmaster&#64;foo.bar?cc=admin&#64;foo.bar* -- Email to webmaster, CC admin:  "Email webmaster and admin":mailto:webmaster@foo.bar?cc=admin@foo.bar
+* *"Email someone for help"&#58;mailto&#58;someone&#64;foo.bar?subject=Website%20Help* -- Email link with the subject "Website Help": "Email someone for help":mailto:someone@foo.bar?subject=Website%20Help
+* *"Email someone for help"&#58;mailto&#58;someone&#64;foo.bar?subject=Website%20Help&body=My%20problem%20is%20* -- Email link with the subject "Website Help" and a default body: "My problem is ":mailto:someone@foo.bar?subject=Website%20Help&body=My%20problem%20is%20
+
+h2. Text formatting
+
+For things such as headlines, bold, tables, lists, Redmine supports "Textile syntax":http://en.wikipedia.org/wiki/Textile_%28markup_language%29.  See http://redcloth.org/hobix.com/textile/ for information on using any of these features.  A few samples are included below, but the engine is capable of much more of that.
+
+h3. Acronym
+
+<pre>
+JPL(Jean-Philippe Lang)
+</pre>
+
+displays:
+
+JPL(Jean-Philippe Lang)
+
+h3. Font style
+
+<pre><code>* *bold*
+* _italic_
+* *_bold italic_*
+* +underline+
+* -strike-through-
+* Plain ^superscript^
+* Plain ~subscript~
+* @inline monospace@
+* <notextile>normal *bold* _italic_ normal;E=mc ^2^</notextile>
+* <notextile>normal<notextile></notextile>*bold*<notextile></notextile>_italic_<notextile></notextile>normal;E=mc<notextile></notextile>^2^</notextile>
+* <notextile>Escaping: <notextile>*bold* _italic_ @inlinemono@</notextile> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alternative using HTML-codes: &#42;bold&#42; &#95;italic&#95; &#64;inlinemono&#64;</notextile>
+* <notextile><pre>*some lines*      some "link":http://www.redmine.org</pre></notextile>
+* <notextile><pre><notextile></notextile>*some lines*      some "link":http://www.redmine.org</pre></notextile>
+</code></pre>
+
+displays:
+
+ * *bold*
+ * _italic_
+ * *_bold italic_*
+ * +underline+
+ * -strike-through-
+ * Plain ^superscript^
+ * Plain ~subscript~
+ * @inline monospace@
+ * normal *bold* _italic_ normal;E=mc ^2^
+ * normal<notextile></notextile>*bold*<notextile></notextile>_italic_<notextile></notextile>normal;E=mc<notextile></notextile>^2^
+ * Escaping: <notextile>*bold* _italic_ @inlinemono@</notextile> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alternative using HTML-codes: &#42;bold&#42; &#95;italic&#95; &#64;inlinemono&#64;
+ * <pre>*some lines*      some "link":http://www.redmine.org</pre>
+ * <pre><notextile></notextile>*some lines*      some "link":http://www.redmine.org</pre>
+
+h3. Color
+
+<pre><code><notextile>* %{color:red}red% %{color:green}green% %{color:yellow}yellow% %{color:#82B6E1}blue'ish%
+* %{color:red}red%<notextile></notextile>%{color:green}green%<notextile></notextile>%{color:yellow}yellow%<notextile></notextile>%{color:#82B6E1}blue'ish%
+* %{background:lightgreen}Lightgreen Background% %{background:yellow}Yellow Background%
+* %{background:lightgreen}Lightgreen Background%<notextile></notextile>%{background:yellow}Yellow Background%
+</notextile></code></pre>
+
+displays:
+
+ * %{color:red}red% %{color:green}green% %{color:yellow}yellow% %{color:#82B6E1}blue'ish%
+ * %{color:red}red%<notextile></notextile>%{color:green}green%<notextile></notextile>%{color:yellow}yellow%<notextile></notextile>%{color:#82B6E1}blue'ish%
+ * %{background:lightgreen}Lightgreen Background% %{background:yellow}Yellow Background%
+ * %{background:lightgreen}Lightgreen Background%<notextile></notextile>%{background:yellow}Yellow Background%
+
+h3. Inline images
+
+* *&#33;image_url&#33;* displays an image located at image_url (textile syntax)
+* *&#33;>image_url&#33;* right floating image
+* *&#33;image_url(Image title)&#33;* displays an image with an alt/title attribute
+* *&#33;image_url&#33;:URL* displays an image located at image_url with link URL added
+
+If you have an image attached to your wiki page, it can be displayed inline using its filename: *&#33;attached_image.png&#33;*
+
+You can also apply a CSS style to the image in the same ways as styling SPANs. The code *&#33;{width: 100%}attached_image.png&#33;* will make the image adjusts to the parent's width.
+
+h3. Headings
+
+<pre><code>h1. Heading
+
+h2. Subheading
+
+h3. Subheading
+</code></pre>
+
+Redmine assigns an anchor to each of those headings thus you can link to them with "#Heading", "#Subheading" and so forth.
+
+h3. Paragraphs
+
+<pre><code>p. left aligned
+
+p(. left ident 1em
+
+p((. left ident 2em
+as well as for following lines
+
+p>. right aligned
+
+p)))>. right ident 3em
+
+p=. This is centered paragraph.
+</code></pre>
+
+displays;
+
+p. left aligned
+
+p(. left ident 1em
+
+p((. left ident 2em
+as well as for following lines
+
+p>. right aligned
+
+p)))>. right ident 3em
+
+p=. This is centered paragraph.
+
+h3. Horizontal rule 
+
+@----@
+
+displays:
+
+----
+
+h3. Preformatted Text
+
+<pre> <pre>*Your text won't become bold*</pre> </pre>
+
+displays:
+
+<pre> *Your text won't become bold* </pre>
+
+h3. Blockquotes
+
+Start the paragraph with *bq.*:
+
+<pre><code>bq. Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+To go live, all you need to add is a database and a web server.
+</code></pre>
+
+displays:
+
+bq. Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+To go live, all you need to add is a database and a web server.
+
+You can also use > at the beginning of each line and stack them for nested quotes:
+
+<pre>
+>> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+>> To go live, all you need to add is a database and a web server.
+> Great!
+</pre>
+
+displays:
+
+>>  Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+>>  To go live, all you need to add is a database and a web server.
+> Great!
+
+h3. Unordered lists
+
+<pre>
+* Item 1
+* Item 2
+** Item 21
+** Item 22
+* Item 3
+</pre>
+
+displays:
+
+* Item 1
+* Item 2
+** Item 21
+** Item 22
+* Item 3
+
+h3. Ordered lists
+
+<pre>
+# Item 1
+# Item 2
+# Item 3
+## Item 3.1
+## Item 3.2
+</pre>
+
+displays:
+
+# Item 1
+# Item 2
+# Item 3
+## Item 3.1
+## Item 3.2
+
+h3. Tables
+
+<pre>
+|_.UserID      |_.Name          |_.Group     |_. attribute list   |
+|Starting with | a              |   simple   |row                 |
+|\3=.IT                                      |<. align left       |
+|1             |Artur Pirozhkov |/2.Users    |>. align right      |
+|2             |Vasya Rogov     |=. center   |
+|3             |John Smith      |Admin
+                                 (root)      |^. valign top       |
+|4             |-               |Nobody
+                                 (anonymous) |~. valign bottom    |
+</pre>
+
+displays (all multiple spaces are replaced by 1 space):
+
+|_.UserID      |_.Name          |_.Group     |_. attribute list   |
+|Starting with | a              |   simple   |row                 |
+|\3=.IT                                      |<. align left       |
+|1             |Artur Pirozhkov |/2.Users    |>. align right      |
+|2             |Vasya Rogov     |=. center   |
+|3             |John Smith      |Admin
+                                 (root)      |^. valign top       |
+|4             |-               |Nobody
+                                 (anonymous) |~. valign bottom    |
+
+If you want to include pipe characters inside your table (e.g. for Wiki links), you need to prevent textile from interpreting them:
+
+|_.Input |_. Output|
+|*<notextile><notextile>|</notextile></notextile>*|<notextile>|</notextile>|
+
+If you want to specify the width of the table, you need to put *table{width:100%}.* just before your table definition:
+
+<pre>
+table{width:100%}.
+| This table will use
+all horizontal space |
+</pre>
+
+This way the table will extend to the whole page width ...
+
+table{width:100%}.
+| This table will use
+all horizontal space |
+
+... compared with the standard width:
+
+| This table will use
+only the required space |
+
+There must be a blank line before the *table* keyword, but after it (up to the table) there must be no blank lines or anything else.
+
+h4. Special table control sequences
+
+Nothing can be placed between the cell delimiter pipeline character and the control sequences.
+The order of the table control sequences is fixed. If two order are equal then the precedence of the sequences is equal.
+If the table control sequences are used in the wrong order, they will not be interpreted.
+
+|_.Sequence|_.Ord|_.Function|
+|_|1|Highlight the contents of the cell|
+|\n|2|Merge _n_ cells horizontally|
+|/n|2|Merge _n_ cells vertically|
+|<|3|Allign text to left|
+|=|3|Allign text to center|
+|>|3|Allign text to right|
+|^|3|Allign text to top|
+|~|3|Allign text to bottom|
+|<notextile>.</notextile>|4|Control sequence terminator|
+
+h3. Table of content
+
+<pre><code>{{toc}} => left aligned toc
+{{>toc}} => right aligned toc
+</code></pre>
+
+Please keep in mind, that the toc-tag needs an empty line above and underneath it and no other text before and after it.
+
+Example:
+
+<pre><code>
+h1. headLineOne
+
+h2. something
+
+{{toc}}
+
+h2. something more
+</code></pre>
+
+h3. Footnotes
+
+Marker:
+
+<pre>
+This is a first word[1] with a footnote.
+
+This is a second word[2] with a footnote.
+</pre>
+
+*Note:* Marker directly attached to word (no space, no dot or any thing else in between). 
+
+
+Definition:
+
+<pre>
+fn1. Footnote for the first word
+
+fn2. Footnote for the second word
+</pre>
+
+*Note:* Each definition on its own line anywhere within the document. Empty lines between definitions.
+
+displays:
+
+This is a first word[1] with a footnote.
+
+This is a second word[2] with a footnote.
+
+fn1. Footnote for the first word
+
+fn2. Footnote for the second word
+
+h2. Macros
+
+Redmine includes a macros system that lets you add custom functions to insert dynamic content in formatted text. You can learn about writing your own macros in [[RedmineMacros]]. Redmine also includes a few builtin macros:
+
+{{macro_list}}
+
+h2. Code highlighting
+
+Default code highlightment relies on "Rouge":http://rouge.jneen.net/, a syntax highlighting library written in pure Ruby. It supports many commonly used languages such as *c*, *cpp* (c++), *csharp* (c#, cs), *css*, *diff* (patch, udiff), *go* (golang), *groovy*, *html*, *java*, *javascript* (js), *kotlin*, *objective_c* (objc), *perl* (pl), *php*, *python* (py), *r*, *ruby* (rb), *sass*, *scala*, *shell* (bash, zsh, ksh, sh), *sql*, *swift*, *xml* and *yaml* (yml) languages, where the names inside parentheses are aliases. Please refer to [[RedmineCodeHighlightingLanguages]] for the full list of supported languages.
+
+You can highlight code in your wiki page using this syntax:
+
+<pre><code><pre><code class="ruby">
+  Place your code here.
+</code></pre>
+</code></pre>
+
+Example:
+
+<pre><code class="ruby">
+# The Greeter class
+class Greeter
+  def initialize(name)
+    @name = name.capitalize
+  end
+ 
+  def salute
+    puts "Hello #{@name}!"
+  end
+end
+</code></pre>
+
+h2. Styling text using CSS
+
+Textile can style text using CSS. Examples as follows:
+
+<pre>
+Three primary colors of light are %{color: #f00}red%, %{color: #0f0}green% and %{color: #00f}blue%.
+
+p{border: solid 1px #000; padding: 0.5em;}. The quick brown fox jumps over the lazy dog.
+
+table{width: 100%}.
+|={width: 30%; background-color: #aaf;}. column 1 |={width: 70%}. column 2 |
+</pre>
+
+displays:
+
+Three primary colors of light are %{color: #f00}red%, %{color: #0f0}green% and %{color: #00f}blue%.
+
+p{border: solid 1px #000; padding: 0.5em;}. The quick brown fox jumps over the lazy dog.
+
+table{width: 100%}.
+|={width: 30%; background-color: #aaf;}. column 1 |={width: 70%}. column 2 |
+
+h3. Allowed CSS properties
+
+Redmine allows the following properties. Other properties are not allowed for security reasons (see r2192).
+
+* background
+* background-*
+* border
+* border-*
+* color
+* float
+* font
+* font-*
+* height
+* margin
+* margin-*
+* max-height
+* max-width
+* min-height
+* min-width
+* padding
+* padding-*
+* text
+* text-*
+* width
+
+h2. Translation
+
+Note that the following translations may not be up to date. Please refer to the original english documentation if needed.
+
+* [[BrRedmineWikiFormatting|Português Brasileiro]]
+* [[RusRedmineTextFormatting|Русский]]
+* [[FrRedmineWikiFormatting|French]]
+* [[KoreanWikiFormatting|한글(Korean)]]
+* [[TurkishWikiFormatting|Türkçe]]
+* [[TraditionalChineseWikiFormatting|繁體中文]]
+* [[SimplifiedChineseWikiFormatting|简体中文]]

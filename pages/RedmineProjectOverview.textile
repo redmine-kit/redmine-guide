@@ -1,0 +1,15 @@
+h1. Project Overview
+
+The Project overview will give you an overview of the whole project. On left upper side in the *_Issue tracking_* area you will get an overview of how many task are open and closed for each [[RedmineIssueTrackingSetup|tracker]] specified for the project. In the *_Members_* area you can see who are the members of the given project and in particular who is the administrator of the project. In the *_Latest news_* area you can see which are the latest news for the particular project.
+
+TODO: Write about Issue trackers and configuration....
+
+
+!redmine-project-overview.png!
+
+On the upper right side you see [[RedmineLogin|Sign in]] and [[RedmineRegister|Register]]. The [[RedmineLogin|Sign in]] link allows those who have an account for this project to login. The [[RedmineRegister|Register]] link allow unregistered users to register themselves, allowing them to be part of any projects contained within this installation of Redmine.
+
+
+Note that the [[RedmineRegister|Register]] link can be disabled by the administrator.
+
+TODO: Make links to other areas...
