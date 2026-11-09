@@ -229,32 +229,46 @@ sections:
   - id: developer/rest-api
     title:
       en: Redmine REST API
+      ja: Redmine API
   - id: developer/contribute
     title:
       en: Code related topics
+      ja: Redmine への貢献
   - id: developer/patch
     title:
       en: patches
+      ja: パッチ
   - id: developer/release-management
     title:
       en: explanation
-  - developer/vendored-components
+      ja: リリース管理
+  - id: developer/vendored-components
+    title:
+      ja: 同梱しているサードパーティのコンポーネント一覧
   - id: developer/plugin-tutorial
     title:
       en: tutorial
+      ja: プラグインのチュートリアル
   - id: developer/plugin-internals
     title:
       en: internal handling of Redmine plugins
+      ja: プラグインの内部の仕組み
   - id: developer/hooks
     title:
       en: Redmine plugin hooks API
+      ja: プラグインのフック
   - id: developer/hooks-list
     title:
       en: list of available Redmine plugin hooks
+      ja: プラグインのフック一覧
   - id: developer/plugin-faq
     title:
       en: frequently asked questions about Redmine plugins
-  - developer/theme
+      ja: プラグインのよくある質問
+  - id: developer/theme
+    title:
+      ja: カスタムテーマの作成
   - id: developer/submissions
     title:
       en: Submissions on redmine.org
+      ja: redmine.org への投稿

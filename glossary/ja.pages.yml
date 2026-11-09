@@ -64,6 +64,51 @@ pages:
   install/migrate: { ja: ほかのシステムからの移行, note: The guide's label "Migrating from other systems" }
   install/email-configuration: { ja: メールの設定, note: config/configuration.yml's email_delivery }
   install/mysql-configuration: { ja: MySQL の設定, note: Database configuration }
+  # Developer guide
+  developer/rest-api: { ja: Redmine API, note: The API's name, as the English title }
+  developer/contribute: { ja: Redmine への貢献, note: Established term (contribute → 貢献) }
+  developer/patch: { ja: パッチ, note: Established term }
+  developer/how-to-create-patch-series-on-mercurial-and-git: { ja: Mercurial と Git でのパッチシリーズの作成, note: The English title }
+  developer/release-management: { ja: リリース管理, note: Established term }
+  developer/vendored-components: { ja: 同梱しているサードパーティのコンポーネント一覧, note: "The English title; vendored → 同梱" }
+  developer/plugin-tutorial: { ja: プラグインのチュートリアル, source: "label_plugins (プラグイン)" }
+  developer/plugin-internals: { ja: プラグインの内部の仕組み, note: The English title }
+  developer/hooks: { ja: プラグインのフック, note: "Established term (hook → フック)" }
+  developer/hooks-list: { ja: プラグインのフック一覧, note: "As developer/hooks; button_list (一覧)" }
+  developer/plugin-faq: { ja: プラグインのよくある質問, note: "Established term (FAQ → よくある質問)" }
+  developer/theme: { ja: カスタムテーマの作成, source: "label_theme (テーマ)" }
+  developer/submissions: { ja: redmine.org への投稿, note: The English title }
+  developer/rest-api-with-ruby: { ja: Ruby で REST API を使う, note: "The English title; the same form for every language" }
+  developer/rest-api-with-php: { ja: PHP で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-ith-python: { ja: Python で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-with-java: { ja: Java で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-with-csharp: { ja: .NET で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-with-delphi: { ja: Delphi で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-with-perl: { ja: Perl で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-with-curl: { ja: cURL で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-issues: { ja: チケット, source: "resources: Issues" }
+  developer/rest-projects: { ja: プロジェクト, source: "resources: Projects" }
+  developer/rest-memberships: { ja: メンバー, source: "resources: Project Memberships" }
+  developer/rest-users: { ja: ユーザー, source: "resources: Users" }
+  developer/rest-groups: { ja: グループ, source: "resources: Groups" }
+  developer/rest-roles: { ja: ロール, source: "resources: Roles" }
+  developer/rest-time-entries: { ja: 作業時間, source: "resources: Time entries" }
+  developer/rest-versions: { ja: バージョン, source: "resources: Versions" }
+  developer/rest-wiki-pages: { ja: Wikiページ, source: "resources: Wiki Pages" }
+  developer/rest-issue-categories: { ja: チケットのカテゴリ, source: "resources: Issue Categories" }
+  developer/rest-issue-statuses: { ja: チケットのステータス, source: "resources: Issue Statuses" }
+  developer/rest-issue-relations: { ja: 関連するチケット, source: "resources: Issue Relations" }
+  developer/rest-trackers: { ja: トラッカー, source: "resources: Trackers" }
+  developer/rest-queries: { ja: カスタムクエリ, source: "resources: Queries" }
+  developer/rest-custom-fields: { ja: カスタムフィールド, source: "resources: Custom Fields" }
+  developer/rest-enumerations: { ja: 選択肢の値, source: "resources: Enumerations" }
+  developer/rest-news: { ja: ニュース, source: "resources: News" }
+  developer/rest-files: { ja: ファイル, source: "resources: Files" }
+  developer/rest-attachments: { ja: 添付ファイル, source: "resources: Attachments" }
+  developer/rest-documents: { ja: 文書, source: "resources: Documents" }
+  developer/rest-journals: { ja: 履歴, source: "resources: Journals" }
+  developer/rest-search: { ja: 検索, source: "resources: Search" }
+  developer/rest-my-account: { ja: 個人設定, source: "resources: My account" }
 
 # REST API resources: the developer guide names each resource as Redmine
 # names the object (the page titles' format is the developer guide's own).
