@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "docs/**"
+      - "README*.md"
+  pull_request:
+    paths-ignore:
+      - "docs/**"
+      - "README*.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      # bin/convert reads the upstream branch.
+      - run: git fetch --no-tags origin upstream:upstream
+      # The Markdown on main is what bin/convert makes from upstream.
+      - run: bin/convert
+      - name: The conversion is up to date
+        run: git diff --exit-code -- en images index.yml topics.yml
+      # Links, stale translations, interface terms, index.yml and map.yml.
+      - run: bin/check
