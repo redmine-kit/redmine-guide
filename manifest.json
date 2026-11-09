@@ -1,6 +1,6 @@
 {
   "source": "https://www.redmine.org/guide",
-  "fetched_at": "2026-11-09T21:05:48Z",
+  "fetched_at": "2026-11-09T21:34:08Z",
   "pages": {
     "Administrator_Guide": {
       "url": "https://www.redmine.org/projects/redmine/wiki/Administrator_Guide",
@@ -201,6 +201,8 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
+        "lost-password@2x.png",
+        "register@2x.png",
         "emails.png",
         "myaccount-changepw.png",
         "myaccount-emails.png",
@@ -216,7 +218,7 @@
       "parent": "Administrator_Guide",
       "linked_from": "Administrator_Guide",
       "images": [
-
+        "admin-infomation@2x.png"
       ]
     },
     "RedmineAttachedFiles": {
@@ -287,7 +289,7 @@
       "parent": "Administrator_Guide",
       "linked_from": "Administrator_Guide",
       "images": [
-
+        "enumerations.png"
       ]
     },
     "RedmineFiles": {
@@ -297,7 +299,8 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-        "UploadFile.png"
+        "UploadFile.png",
+        "files@2x.png"
       ]
     },
     "RedmineForums": {
@@ -317,7 +320,7 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-
+        "gantt@2x.png"
       ]
     },
     "RedmineGroups": {
@@ -361,7 +364,14 @@
       "parent": "RedmineIssues",
       "linked_from": "User_Guide",
       "images": [
-        "sidebar.jpg"
+        "sidebar.jpg",
+        "issuelist_overview.png",
+        "redmine-multiple-selection@2x.png",
+        "applied_issuelist_filters@2x.png",
+        "ext_newquery@2x.png",
+        "custom_queries_sidebar@2x.png",
+        "shortcut_menu@2x.png",
+        "bulk-edit@2x.png"
       ]
     },
     "RedmineIssueSummary": {
@@ -371,7 +381,8 @@
       "parent": "RedmineIssueList",
       "linked_from": "User_Guide",
       "images": [
-        "issue_summary_version-details.jpg"
+        "issue_summary_version-details.jpg",
+        "issue_summary@2x.png"
       ]
     },
     "RedmineIssueTrackingSetup": {
@@ -381,6 +392,8 @@
       "parent": "Administrator_Guide",
       "linked_from": "Administrator_Guide",
       "images": [
+        "workflow_example@2x.png",
+        "tracker_config@2x.png",
         "workflow_fields_permissions_closeup.png"
       ]
     },
@@ -428,7 +441,7 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-
+        "redmine-login.png"
       ]
     },
     "RedmineMacros": {
@@ -458,7 +471,7 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-
+        "my-page@2x.png"
       ]
     },
     "RedmineNews": {
@@ -541,7 +554,8 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-        "redmine-register.png"
+        "redmine-register.png",
+        "activate-account@2x.png"
       ]
     },
     "RedmineReminderEmails": {
@@ -581,7 +595,7 @@
       "parent": "RedmineRepository",
       "linked_from": "User_Guide",
       "images": [
-
+        "graphs.png"
       ]
     },
     "RedmineRoadmap": {
@@ -601,7 +615,7 @@
       "parent": "Administrator_Guide",
       "linked_from": "Administrator_Guide",
       "images": [
-
+        "roles@2x.png"
       ]
     },
     "RedmineSearch": {
@@ -718,7 +732,7 @@
       "parent": "Administrator_Guide",
       "linked_from": "Administrator_Guide",
       "images": [
-
+        "users-list@2x.png"
       ]
     },
     "RedmineVersion": {
