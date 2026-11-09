@@ -1,0 +1,93 @@
+# The Japanese title of each page: its H1 and its name in the sidebar and in
+# links from other pages. A page about a screen is named as Redmine 7.0.3
+# names that screen (source: the locale key); other pages use established
+# Japanese terms. bin/convert puts these titles into index.yml, so the
+# sidebar is in Japanese before the page is translated; bin/check requires
+# a translation's H1 to be its title here.
+pages:
+  # User guide
+  user/getting-started: { ja: はじめに, note: Established title for "Getting started" }
+  user/accounts: { ja: アカウント, source: field_account }
+  user/login: { ja: ログイン, source: label_login }
+  user/register: { ja: アカウント登録, source: "mail_subject_register, setting_self_registration (アカウント登録)" }
+  user/search: { ja: 検索, source: label_search }
+  user/my-page: { ja: マイページ, source: label_my_page }
+  user/project-overview: { ja: 概要, source: label_overview }
+  user/project-activity: { ja: 活動, source: label_activity }
+  user/issues: { ja: チケットトラッキング, source: label_issue_tracking }
+  user/issue-list: { ja: チケット一覧, note: "The established name of the screen; the screen's heading is label_issue_plural (チケット)" }
+  user/issue-summary: { ja: チケットのレポート, source: "label_report_plural (the screen's heading レポート), label_issue_plural" }
+  user/issue-changelog: { ja: 変更履歴, source: ja.extra.yml }
+  user/roadmap: { ja: ロードマップ, source: label_roadmap }
+  user/version: { ja: バージョン, source: label_version }
+  user/time-tracking: { ja: 時間管理, source: label_time_tracking }
+  user/timelog-details: { ja: 作業時間の詳細, source: "label_spent_time, label_details (the tab 詳細)" }
+  user/timelog-report: { ja: 作業時間のレポート, source: "label_spent_time, label_report (the tab レポート)" }
+  user/gantt: { ja: ガントチャート, source: label_gantt }
+  user/calendar: { ja: カレンダー, source: label_calendar }
+  user/news: { ja: ニュース, source: label_news_plural }
+  user/documents: { ja: 文書, source: label_document_plural }
+  user/files: { ja: ファイル, source: label_file_plural }
+  user/forums: { ja: フォーラム, source: label_board_plural }
+  user/wikis: { ja: Wiki, source: label_wiki }
+  user/repository: { ja: リポジトリ, source: label_repository }
+  user/repository-statistics: { ja: リポジトリの統計, source: "label_repository, label_statistics" }
+  user/project-settings: { ja: プロジェクト設定, source: "error_no_tracker_in_project (プロジェクト設定); the screen's heading is label_settings" }
+  user/attached-files: { ja: 添付ファイル, source: "permission_delete_wiki_pages_attachments, label_edit_attachments (添付ファイル)" }
+  user/text-formatting: { ja: テキスト書式, source: setting_text_formatting }
+  user/text-formatting-textile: { ja: Textile, note: The format's name }
+  user/text-formatting-markdown: { ja: Markdown, note: The format's name }
+  user/text-formatting-redmine-links: { ja: Redmine のリンク, note: The guide's label "Redmine links" }
+  user/code-highlighting-languages: { ja: コードハイライトの対応言語, note: The guide's label "Code highlighting supported languages" }
+  user/macros: { ja: マクロ, note: Established term }
+  user/keyboard-navigation: { ja: キーボード操作, note: Established term for keyboard navigation }
+  # Administrator guide
+  admin/settings: { ja: 設定, source: "label_settings (Administration → Settings)" }
+  admin/projects: { ja: プロジェクト, source: "label_project_plural (Administration → Projects)" }
+  admin/users: { ja: ユーザー, source: label_user_plural }
+  admin/groups: { ja: グループ, source: label_group_plural }
+  admin/roles: { ja: ロールと権限, source: label_role_and_permissions }
+  admin/issue-tracking-setup: { ja: チケットトラッキングの設定, note: "Trackers, statuses and workflow; label_issue_tracking" }
+  admin/custom-fields: { ja: カスタムフィールド, source: label_custom_field_plural }
+  admin/enumerations: { ja: 選択肢の値, source: label_enumerations }
+  admin/information: { ja: 情報, source: label_information_plural }
+  admin/ldap: { ja: LDAP認証, source: label_ldap_authentication }
+  admin/repositories: { ja: リポジトリ, source: label_repository_plural }
+  admin/receiving-emails: { ja: 受信メール, source: label_incoming_emails }
+  admin/reminder-emails: { ja: リマインダーメールの送信, note: No Redmine string; the rake task redmine:send_reminders }
+  admin/rake: { ja: Rake タスク, note: Established term }
+  # Installation guide
+  install/install: { ja: インストール, note: Wording rule }
+  install/upgrade: { ja: バージョンアップ, note: Wording rule }
+  install/download: { ja: ダウンロード, note: Established term }
+  install/backup-and-restore: { ja: バックアップと復元, note: Established terms (Microsoft "restore" → 復元) }
+  install/migrate: { ja: ほかのシステムからの移行, note: The guide's label "Migrating from other systems" }
+  install/email-configuration: { ja: メールの設定, note: config/configuration.yml's email_delivery }
+  install/mysql-configuration: { ja: MySQL の設定, note: Database configuration }
+
+# REST API resources: the developer guide names each resource as Redmine
+# names the object (the page titles' format is the developer guide's own).
+resources:
+  Issues: { ja: チケット, source: label_issue_plural }
+  Projects: { ja: プロジェクト, source: label_project_plural }
+  Project Memberships: { ja: メンバー, source: label_member_plural }
+  Users: { ja: ユーザー, source: label_user_plural }
+  Groups: { ja: グループ, source: label_group_plural }
+  Roles: { ja: ロール, source: label_role_plural }
+  Time entries: { ja: 作業時間, source: label_time_entry_plural }
+  Versions: { ja: バージョン, source: label_version_plural }
+  Wiki Pages: { ja: Wikiページ, source: label_wiki_page_plural }
+  Issue Categories: { ja: チケットのカテゴリ, source: label_issue_category_plural }
+  Issue Statuses: { ja: チケットのステータス, source: label_issue_status_plural }
+  Issue Relations: { ja: 関連するチケット, source: label_related_issues }
+  Trackers: { ja: トラッカー, source: label_tracker_plural }
+  Queries: { ja: カスタムクエリ, source: label_query_plural }
+  Custom Fields: { ja: カスタムフィールド, source: label_custom_field_plural }
+  Enumerations: { ja: 選択肢の値, source: label_enumerations }
+  News: { ja: ニュース, source: label_news_plural }
+  Files: { ja: ファイル, source: label_file_plural }
+  Attachments: { ja: 添付ファイル, source: label_edit_attachments }
+  Documents: { ja: 文書, source: label_document_plural }
+  Journals: { ja: 履歴, source: label_history }
+  Search: { ja: 検索, source: label_search }
+  My account: { ja: 個人設定, source: label_my_account }

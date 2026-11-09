@@ -8,7 +8,11 @@
 #   that the glossary knows must appear in the translation as Redmine's own
 #   string in that language, marked as a name (「適用」 or **適用**);
 # - index.yml lists only existing topics, and map.yml's topics and
-#   anchors exist.
+#   anchors exist;
+# - a translation's H1 is the page's title in glossary/<lang>.pages.yml, and
+#   its headings match the English page's one for one (same count and
+#   levels): redmine_help finds an English anchor in a translation by the
+#   heading's position, so translations need no anchors of their own.
 #
 #   ruby check.rb <guide directory>
 require 'yaml'
@@ -20,6 +24,10 @@ problems = []
 
 def front_matter(text)
   text[/\A---\n(.*?)\n---\n/m, 1].then { |yaml| yaml ? YAML.safe_load(yaml) : {} }
+end
+
+def headings(text)
+  text.gsub(/^```.*?^```/m, '').scan(/^(#+)[ \t]+(.+)$/)
 end
 
 def links(text)
@@ -51,6 +59,9 @@ end
   [glossary_file, extra_file].select { |f| File.exist?(f) }.each do |f|
     Array(YAML.safe_load_file(f)['terms']).each { |term| terms[term['en']] << term[lang] }
   end
+  pages_file = File.join(ROOT, 'glossary', "#{lang}.pages.yml")
+  titles = File.exist?(pages_file) ? YAML.safe_load_file(pages_file)['pages'] || {} : {}
+  titles.each_key { |topic| problems << "glossary/#{lang}.pages.yml: no topic #{topic}" unless File.exist?(File.join(ROOT, 'en', "#{topic}.md")) }
   Dir.glob('**/*.md', base: File.join(ROOT, lang)).sort.each do |file|
     source = File.join(ROOT, 'en', file)
     unless File.exist?(source)
@@ -66,6 +77,14 @@ end
     elsif current && from.to_i < current.to_i
       problems << "#{lang}/#{file}: stale, translated from version #{from}, English page is version #{current}"
     end
+    title = titles.dig(file.delete_suffix('.md'), lang)
+    h1 = translation[/^#[ \t]+(.+)$/, 1]&.strip
+    problems << "#{lang}/#{file}: title \"#{h1}\" should be \"#{title}\" (glossary/#{lang}.pages.yml)" if title && h1 != title
+    levels = ->(text) { headings(text).map { |marks, _| marks.size } }
+    unless levels.call(english) == levels.call(translation)
+      problems << "#{lang}/#{file}: headings differ from the English page (#{levels.call(english).size} in English, #{levels.call(translation).size} here)"
+    end
+    problems << "#{lang}/#{file}: anchor tag; keep the headings one for one instead" if translation.match?(/<a\s+(id|name)=/)
     english.scan(/\*\*([^*\n]+)\*\*/).flatten.uniq.each do |term|
       expected = terms[term.strip]
       # Marked as an interface name: 「適用」 or **適用**.

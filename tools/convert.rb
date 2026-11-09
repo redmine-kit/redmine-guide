@@ -197,14 +197,22 @@ topics.each do |page, topic|
   images.each { |file| FileUtils.cp(File.join(UPSTREAM, 'images', page, file), File.join(OUT, 'images', page, file)) }
 end
 
+# The page titles of each language (glossary/<lang>.pages.yml), shown in the
+# sidebar while a page is not translated yet.
+page_titles = Dir.glob(File.join(OUT, 'glossary', '*.pages.yml')).sort.to_h do |file|
+  [File.basename(file, '.pages.yml'), YAML.safe_load_file(file)['pages'] || {}]
+end
+
 index = {
   'sections' => config['sections'].map do |section|
-    # Each topic with the guide's label for it, shown in the sidebar while
-    # the topic is not translated.
     listed = section['topics'].keys.filter_map do |page|
-      next unless topics[page]
+      topic = topics[page]
+      next unless topic
 
-      labels[page] ? { 'id' => topics[page], 'title' => { 'en' => labels[page] } } : topics[page]
+      title = {}
+      title['en'] = labels[page] if labels[page]
+      page_titles.each { |lang, titles| title[lang] = titles.dig(topic, lang) if titles.dig(topic, lang) }
+      title.empty? ? topic : { 'id' => topic, 'title' => title }
     end
     { 'id' => section['id'], 'title' => section['title'], 'topics' => listed }
   end,

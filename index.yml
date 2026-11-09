@@ -5,100 +5,133 @@ sections:
     en: User guide
     ja: ユーザーガイド
   topics:
-  - user/getting-started
+  - id: user/getting-started
+    title:
+      ja: はじめに
   - id: user/accounts
     title:
       en: User accounts
+      ja: アカウント
   - id: user/login
     title:
       en: Login
+      ja: ログイン
   - id: user/register
     title:
       en: Register
+      ja: アカウント登録
   - id: user/search
     title:
       en: Search
+      ja: 検索
   - id: user/my-page
     title:
       en: My page
+      ja: マイページ
   - id: user/project-overview
     title:
       en: Project overview
+      ja: 概要
   - id: user/project-activity
     title:
       en: Project activity
+      ja: 活動
   - id: user/issues
     title:
       en: Issue tracking
+      ja: チケットトラッキング
   - id: user/issue-list
     title:
       en: Issue list
+      ja: チケット一覧
   - id: user/issue-summary
     title:
       en: Issue summary
+      ja: チケットのレポート
   - id: user/roadmap
     title:
       en: Roadmap
+      ja: ロードマップ
   - id: user/version
     title:
       en: Version overview
+      ja: バージョン
   - id: user/time-tracking
     title:
       en: Time tracking
+      ja: 時間管理
   - id: user/timelog-details
     title:
       en: Spent-time details
+      ja: 作業時間の詳細
   - id: user/timelog-report
     title:
       en: Spent-time report
+      ja: 作業時間のレポート
   - id: user/gantt
     title:
       en: Gantt
+      ja: ガントチャート
   - id: user/calendar
     title:
       en: Calendar
+      ja: カレンダー
   - id: user/news
     title:
       en: News
+      ja: ニュース
   - id: user/documents
     title:
       en: Documents
+      ja: 文書
   - id: user/files
     title:
       en: Files
+      ja: ファイル
   - id: user/forums
     title:
       en: Forums
+      ja: フォーラム
   - id: user/wikis
     title:
       en: Wikis
+      ja: Wiki
   - id: user/repository
     title:
       en: Repository
+      ja: リポジトリ
   - id: user/repository-statistics
     title:
       en: Statistics
+      ja: リポジトリの統計
   - id: user/project-settings
     title:
       en: Project settings
+      ja: プロジェクト設定
   - id: user/attached-files
     title:
       en: Files attached to Redmine resources
+      ja: 添付ファイル
   - id: user/text-formatting
     title:
       en: Text formatting in Redmine
+      ja: テキスト書式
   - id: user/text-formatting-textile
     title:
       en: Textile
+      ja: Textile
   - id: user/text-formatting-markdown
     title:
       en: Markdown
+      ja: Markdown
   - id: user/code-highlighting-languages
     title:
       en: Code highlighting supported languages
+      ja: コードハイライトの対応言語
   - id: user/keyboard-navigation
     title:
       en: Keyboard Navigation
+      ja: キーボード操作
 - id: admin
   title:
     en: Administrator guide
@@ -107,45 +140,59 @@ sections:
   - id: admin/projects
     title:
       en: Managing projects
+      ja: プロジェクト
   - id: admin/users
     title:
       en: Managing users
+      ja: ユーザー
   - id: admin/groups
     title:
       en: Managing groups
+      ja: グループ
   - id: admin/roles
     title:
       en: Roles and permissions
+      ja: ロールと権限
   - id: admin/issue-tracking-setup
     title:
       en: Issue tracking system
+      ja: チケットトラッキングの設定
   - id: admin/custom-fields
     title:
       en: Custom fields
+      ja: カスタムフィールド
   - id: admin/enumerations
     title:
       en: Enumerations
+      ja: 選択肢の値
   - id: admin/settings
     title:
       en: Application settings
+      ja: 設定
   - id: admin/information
     title:
       en: Administration information
+      ja: 情報
   - id: admin/repositories
     title:
       en: Configuring repositories
+      ja: リポジトリ
   - id: admin/receiving-emails
     title:
       en: Receiving emails
+      ja: 受信メール
   - id: admin/reminder-emails
     title:
       en: Sending reminder emails
+      ja: リマインダーメールの送信
   - id: admin/ldap
     title:
       en: LDAP Authentication
+      ja: LDAP認証
   - id: admin/rake
     title:
       en: Rake tasks
+      ja: Rake タスク
 - id: install
   title:
     en: Installation guide
@@ -154,19 +201,26 @@ sections:
   - id: install/install
     title:
       en: Installing Redmine
+      ja: インストール
   - id: install/mysql-configuration
     title:
       en: MySQL configuration
+      ja: MySQL の設定
   - id: install/email-configuration
     title:
       en: Email configuration
+      ja: メールの設定
   - id: install/upgrade
     title:
       en: Upgrading an existing installation
+      ja: バージョンアップ
   - id: install/migrate
     title:
       en: Migrating from other systems
-  - install/backup-and-restore
+      ja: ほかのシステムからの移行
+  - id: install/backup-and-restore
+    title:
+      ja: バックアップと復元
 - id: developer
   title:
     en: Developer guide
