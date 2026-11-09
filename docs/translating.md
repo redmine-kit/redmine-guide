@@ -5,8 +5,12 @@ Take particular care with wording. A translation is read next to the screen it d
 ## Rules
 
 - **Interface terms exactly as Redmine shows them.** A menu, tab, field, button, setting, permission or status is named with the string from Redmine 7.0.3's `config/locales/<lang>.yml`, so that the reader finds the same words on the screen. Look it up in `glossary/<lang>.yml`; do not translate it again. Mark it as a name: 「適用」 in Japanese (or **適用**).
-- **Consistent terms.** The same thing has the same name on every page. Terms the locale has no string for go in `glossary/<lang>.extra.yml`, with a note on where they come from.
-- **Natural and precise.** Write as a native technical writer would, not word for word. Keep the meaning exactly; add and drop nothing. Keep the page's structure, headings, links and images, so that the anchors and the map work in every language.
+- **Established terms.** A term the locale has no string for takes the established term in the language's software (for Japanese, Microsoft's terminology and Japanese Style Guide) rather than a new wording. It goes in `glossary/<lang>.extra.yml` with its source.
+- **Consistent terms.** The same thing has the same name on every page.
+- **Page titles.** A page's H1 is its title in `glossary/<lang>.pages.yml`: a page about a screen is named as Redmine names the screen. Where another page names it, use the same title.
+- **Natural and precise.** Write as a native technical writer would, not word for word. Keep the meaning exactly; add and drop nothing. Keep the page's structure, links and images.
+- **Headings one for one.** The translation has the English page's headings, with the same count and levels, in the same order. Redmine Help finds an English anchor (`settings.md#Authentication`, `map.yml`) in a translation by the heading's position, so links keep the English anchor and translations add no anchor tags.
+- **Images.** Keep the English page's image references; `bin/screenshots` takes each language's screenshots and the references are switched to them.
 - **Japanese.** Plain, precise Japanese, following the organization's wording rules: 「通知」 not 「知らせ」, 「確認」 not 「確かめ」, 「インストール」, 「コピー」, 「バージョンアップ」, 「例外を発生させる」, and no 「版」 for a version.
 - **Review.** Before committing, read the translation against the English page and the screen in Redmine 7.0.3.
 
@@ -46,4 +50,5 @@ It is made again when the guide follows a new Redmine version (`REDMINE_VERSION`
 - a broken link to a page or an image;
 - a translation without `translated_from_version`, or made from an older version of the English page;
 - an interface term the English page marks in bold (**Apply**) that the glossary knows, when the translation does not use Redmine's string for it marked as a name (「適用」);
-- a topic or a heading in `map.yml` or `index.yml` that does not exist.
+- a topic or a heading in `map.yml` or `index.yml` that does not exist;
+- a translation whose H1 is not its title in `glossary/<lang>.pages.yml`, whose headings differ from the English page's in count or levels, or that has anchor tags.

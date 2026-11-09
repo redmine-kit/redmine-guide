@@ -16,7 +16,9 @@ Redmine Guide is the Redmine guide from redmine.org as Markdown, with translatio
 Take particular care with wording ([docs/translating.md](docs/translating.md)):
 
 - **Interface terms exactly as Redmine shows them.** Every menu, tab, field, button, setting, permission and status name is the string from Redmine 7.0.3's `config/locales/<lang>.yml` (and the plugin's locale for plugin screens), looked up in `glossary/<lang>.yml`, not translated again. In Japanese, mark it as a name: 「適用」.
-- **Consistent terms**, following the glossary; terms the locale lacks go in `glossary/<lang>.extra.yml` with a note.
+- **Established terms** where the locale has no string (Japanese: Microsoft's terminology and Japanese Style Guide), in `glossary/<lang>.extra.yml` with the source; **consistent terms** on every page.
+- **Page titles** from `glossary/<lang>.pages.yml` (a screen's page is named as Redmine names the screen).
+- **Headings one for one** with the English page (count, levels, order); links keep English anchors; no anchor tags. **Images:** keep the English references; `bin/screenshots` switches them.
 - **Natural and precise**, as a native technical writer would write it; nothing added or dropped; structure, headings, links and images kept.
 - **Japanese wording:** 「通知」 not 「知らせ」, 「確認」 not 「確かめ」, 「インストール」, 「コピー」, 「バージョンアップ」, 「例外を発生させる」, no 「版」 for a version.
 - **Quality over speed:** translate fewer pages well rather than many quickly. Record `translated_from_version`.
