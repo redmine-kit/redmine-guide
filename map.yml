@@ -1,0 +1,106 @@
+# Redmine 7.0.3's screens -> topics (and heading anchors) of this guide, read
+# by redmine_help (https://github.com/redmine-kit/redmine_help, docs/mapping.md).
+# Keys: "controller#action?tab=value", "controller#action", "controller".
+# Anchors are Redmine's heading anchors (spaces become "-").
+
+# Start, account and search
+welcome#index: user/getting-started
+account#login: user/login
+account#register: user/register
+account#lost_password: user/accounts#Password-lost
+my#page: user/my-page
+my#account: user/accounts#My-account
+my#password: user/accounts#Password
+my: user/accounts
+email_addresses: user/accounts#Email-address
+twofa: user/accounts
+twofa_backup_codes: user/accounts
+search: user/search
+
+# Projects
+projects#index: user/getting-started
+projects#show: user/project-overview
+projects#new: admin/projects
+projects#copy: admin/projects
+projects#settings?tab=info: user/project-settings#Information
+projects#settings?tab=modules: user/project-settings#Modules
+projects#settings?tab=members: user/project-settings#Members
+projects#settings?tab=issues: user/project-settings#Trackers
+projects#settings?tab=versions: user/project-settings#Versions
+projects#settings?tab=categories: user/project-settings#Issue-categories
+projects#settings?tab=wiki: user/project-settings#Wiki
+projects#settings?tab=repositories: user/project-settings#Repository
+projects#settings?tab=boards: user/project-settings#Forums
+projects#settings?tab=activities: user/project-settings#Activities-time-tracking
+projects#settings: user/project-settings
+projects: user/project-overview
+members: user/project-settings#Members
+issue_categories: user/project-settings#Issue-categories
+project_enumerations: user/project-settings#Activities-time-tracking
+activities: user/project-activity
+
+# Issues
+issues#index: user/issue-list
+issues: user/issues
+journals: user/issues
+issue_relations: user/issues
+watchers: user/issues
+queries: user/issue-list#Custom-queries
+context_menus: user/issue-list#Shortcut-menu
+reports#issue_report: user/issue-summary
+reports#issue_report_details: user/issue-summary
+versions#index: user/roadmap
+versions: user/version
+imports: user/issues
+
+# Planning and time
+gantts: user/gantt
+calendars: user/calendar
+timelog#index: user/timelog-details
+timelog#report: user/timelog-report
+timelog: user/time-tracking
+
+# Content
+news: user/news
+comments: user/news
+documents: user/documents
+files: user/files
+boards: user/forums
+messages: user/forums
+wiki: user/wikis
+wikis: user/project-settings#Wiki
+repositories#stats: user/repository-statistics
+repositories: user/repository
+attachments: user/attached-files
+help#show_wiki_syntax: user/text-formatting
+help#show_code_highlighting: user/code-highlighting-languages
+
+# Administration
+admin#index: admin/projects
+admin#projects: admin/projects
+admin#info: admin/information
+admin#plugins: admin/information
+users: admin/users
+principal_memberships: admin/users
+groups: admin/groups
+roles#permissions: admin/roles#Permissions
+roles: admin/roles
+trackers: admin/issue-tracking-setup#Trackers
+issue_statuses: admin/issue-tracking-setup#Issue-statuses
+workflows: admin/issue-tracking-setup#Workflow
+custom_fields: admin/custom-fields
+custom_field_enumerations: admin/custom-fields
+enumerations: admin/enumerations
+settings#index?tab=general: admin/settings#General-settings
+settings#index?tab=display: admin/settings#Display
+settings#index?tab=authentication: admin/settings#Authentication
+settings#index?tab=api: admin/settings#API
+settings#index?tab=projects: admin/settings#Projects
+settings#index?tab=issues: admin/settings#Issue-tracking
+settings#index?tab=timelog: admin/settings#Time-tracking
+settings#index?tab=attachments: admin/settings#Files
+settings#index?tab=notifications: admin/settings#Email-notifications
+settings#index?tab=mail_handler: admin/settings#Incoming-emails
+settings#index?tab=repositories: admin/settings#Repositories
+settings: admin/settings
+auth_sources: admin/ldap
