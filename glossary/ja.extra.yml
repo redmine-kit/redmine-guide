@@ -10,3 +10,6 @@ terms:
   - en: context menu
     ja: コンテキストメニュー
     note: The menu on right-clicking an issue in the issue list.
+  - en: system roles
+    ja: 組み込みロール
+    note: Non member and Anonymous (Role#builtin in Redmine's code); the term used in Japanese Redmine documentation.
