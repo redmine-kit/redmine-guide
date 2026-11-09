@@ -1,0 +1,29 @@
+---
+source: RedmineDocuments
+translated_from_version: 5
+---
+
+# 文書
+
+## はじめに
+
+文書は、Redmine のプロジェクトで使えるモジュールの 1 つです。
+
+## 文書を追加する
+
+「文書」のタブで「新しい文書」のリンクを押します。
+
+![](../../images/RedmineDocuments/NewDocument.png)
+
+最初は、文書のカテゴリが 2 つあります。
+
+1.  ユーザー文書
+2.  技術文書
+
+これらのカテゴリは、Redmine の管理者が「[選択肢の値](../admin/enumerations.md)」の「文書カテゴリ」で変更したり追加したりできます。
+
+## 文書を見る
+
+文書をアップロードすると、タイトルが、添付した文書をダウンロードするリンクになります。必要なら、文書をさらに追加できます。
+
+![](../../images/RedmineDocuments/Documents.png)
