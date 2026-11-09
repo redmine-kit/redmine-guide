@@ -6,81 +6,201 @@ sections:
     ja: ユーザーガイド
   topics:
   - user/getting-started
-  - user/accounts
-  - user/login
-  - user/register
-  - user/search
-  - user/my-page
-  - user/project-overview
-  - user/project-activity
-  - user/issues
-  - user/issue-list
-  - user/issue-summary
-  - user/roadmap
-  - user/version
-  - user/time-tracking
-  - user/timelog-details
-  - user/timelog-report
-  - user/gantt
-  - user/calendar
-  - user/news
-  - user/documents
-  - user/files
-  - user/forums
-  - user/wikis
-  - user/repository
-  - user/repository-statistics
-  - user/project-settings
-  - user/attached-files
-  - user/text-formatting
-  - user/text-formatting-textile
-  - user/text-formatting-markdown
-  - user/code-highlighting-languages
-  - user/keyboard-navigation
+  - id: user/accounts
+    title:
+      en: User accounts
+  - id: user/login
+    title:
+      en: Login
+  - id: user/register
+    title:
+      en: Register
+  - id: user/search
+    title:
+      en: Search
+  - id: user/my-page
+    title:
+      en: My page
+  - id: user/project-overview
+    title:
+      en: Project overview
+  - id: user/project-activity
+    title:
+      en: Project activity
+  - id: user/issues
+    title:
+      en: Issue tracking
+  - id: user/issue-list
+    title:
+      en: Issue list
+  - id: user/issue-summary
+    title:
+      en: Issue summary
+  - id: user/roadmap
+    title:
+      en: Roadmap
+  - id: user/version
+    title:
+      en: Version overview
+  - id: user/time-tracking
+    title:
+      en: Time tracking
+  - id: user/timelog-details
+    title:
+      en: Spent-time details
+  - id: user/timelog-report
+    title:
+      en: Spent-time report
+  - id: user/gantt
+    title:
+      en: Gantt
+  - id: user/calendar
+    title:
+      en: Calendar
+  - id: user/news
+    title:
+      en: News
+  - id: user/documents
+    title:
+      en: Documents
+  - id: user/files
+    title:
+      en: Files
+  - id: user/forums
+    title:
+      en: Forums
+  - id: user/wikis
+    title:
+      en: Wikis
+  - id: user/repository
+    title:
+      en: Repository
+  - id: user/repository-statistics
+    title:
+      en: Statistics
+  - id: user/project-settings
+    title:
+      en: Project settings
+  - id: user/attached-files
+    title:
+      en: Files attached to Redmine resources
+  - id: user/text-formatting
+    title:
+      en: Text formatting in Redmine
+  - id: user/text-formatting-textile
+    title:
+      en: Textile
+  - id: user/text-formatting-markdown
+    title:
+      en: Markdown
+  - id: user/code-highlighting-languages
+    title:
+      en: Code highlighting supported languages
+  - id: user/keyboard-navigation
+    title:
+      en: Keyboard Navigation
 - id: admin
   title:
     en: Administrator guide
     ja: 管理者ガイド
   topics:
-  - admin/projects
-  - admin/users
-  - admin/groups
-  - admin/roles
-  - admin/issue-tracking-setup
-  - admin/custom-fields
-  - admin/enumerations
-  - admin/settings
-  - admin/information
-  - admin/repositories
-  - admin/receiving-emails
-  - admin/reminder-emails
-  - admin/ldap
-  - admin/rake
+  - id: admin/projects
+    title:
+      en: Managing projects
+  - id: admin/users
+    title:
+      en: Managing users
+  - id: admin/groups
+    title:
+      en: Managing groups
+  - id: admin/roles
+    title:
+      en: Roles and permissions
+  - id: admin/issue-tracking-setup
+    title:
+      en: Issue tracking system
+  - id: admin/custom-fields
+    title:
+      en: Custom fields
+  - id: admin/enumerations
+    title:
+      en: Enumerations
+  - id: admin/settings
+    title:
+      en: Application settings
+  - id: admin/information
+    title:
+      en: Administration information
+  - id: admin/repositories
+    title:
+      en: Configuring repositories
+  - id: admin/receiving-emails
+    title:
+      en: Receiving emails
+  - id: admin/reminder-emails
+    title:
+      en: Sending reminder emails
+  - id: admin/ldap
+    title:
+      en: LDAP Authentication
+  - id: admin/rake
+    title:
+      en: Rake tasks
 - id: install
   title:
     en: Installation guide
     ja: インストールガイド
   topics:
-  - install/install
-  - install/mysql-configuration
-  - install/email-configuration
-  - install/upgrade
-  - install/migrate
+  - id: install/install
+    title:
+      en: Installing Redmine
+  - id: install/mysql-configuration
+    title:
+      en: MySQL configuration
+  - id: install/email-configuration
+    title:
+      en: Email configuration
+  - id: install/upgrade
+    title:
+      en: Upgrading an existing installation
+  - id: install/migrate
+    title:
+      en: Migrating from other systems
   - install/backup-and-restore
 - id: developer
   title:
     en: Developer guide
     ja: 開発者ガイド
   topics:
-  - developer/rest-api
-  - developer/contribute
-  - developer/patch
-  - developer/release-management
+  - id: developer/rest-api
+    title:
+      en: Redmine REST API
+  - id: developer/contribute
+    title:
+      en: Code related topics
+  - id: developer/patch
+    title:
+      en: patches
+  - id: developer/release-management
+    title:
+      en: explanation
   - developer/vendored-components
-  - developer/plugin-tutorial
-  - developer/plugin-internals
-  - developer/hooks
-  - developer/hooks-list
-  - developer/plugin-faq
+  - id: developer/plugin-tutorial
+    title:
+      en: tutorial
+  - id: developer/plugin-internals
+    title:
+      en: internal handling of Redmine plugins
+  - id: developer/hooks
+    title:
+      en: Redmine plugin hooks API
+  - id: developer/hooks-list
+    title:
+      en: list of available Redmine plugin hooks
+  - id: developer/plugin-faq
+    title:
+      en: frequently asked questions about Redmine plugins
   - developer/theme
-  - developer/submissions
+  - id: developer/submissions
+    title:
+      en: Submissions on redmine.org

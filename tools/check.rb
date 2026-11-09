@@ -92,7 +92,8 @@ end
 
 index = YAML.safe_load_file(File.join(ROOT, 'index.yml'))
 index['sections'].each do |section|
-  section['topics'].each do |topic|
+  section['topics'].each do |entry|
+    topic = entry.is_a?(Hash) ? entry['id'] : entry
     problems << "index.yml: missing topic #{topic}" unless File.exist?(File.join(ROOT, 'en', "#{topic}.md"))
   end
 end

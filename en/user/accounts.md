@@ -5,7 +5,7 @@ source_version: 16
 source_updated_on: '2025-12-04T13:28:08Z'
 ---
 
-# RedmineAccounts
+# User accounts
 
 Backward translation from German [revision 10](http://www.redmine.org/projects/redmine/wiki/DeRedmineAccounts/10)
 

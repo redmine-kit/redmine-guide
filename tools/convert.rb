@@ -72,6 +72,18 @@ topics.each do |page, topic|
 end
 by_lower = topics.keys.to_h { |page| [page.downcase, page] }
 
+# The guide's own names for its pages, from the links of its index pages
+# ([[RedmineAccounts|User accounts]]): the title of a page without a heading.
+labels = {}
+INDEX_PAGES.each do |index_page|
+  file = File.join(UPSTREAM, 'pages', "#{index_page}.textile")
+  next unless File.exist?(file)
+
+  File.read(file, encoding: 'UTF-8').scan(/\[\[([^\]|#]+)(?:#[^\]|]*)?\|([^\]]+)\]\]/) do |page, label|
+    labels[page.strip.tr(' ', '_')] ||= label.strip
+  end
+end
+
 def relative(from_topic, to_topic)
   Pathname(to_topic).relative_path_from(Pathname(File.dirname(from_topic))).to_s
 end
@@ -167,7 +179,7 @@ topics.each do |page, topic|
   markdown = link_issues(markdown).gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, '')
   unless markdown.lstrip.start_with?('# ')
     markdown = markdown.sub(/\A\s*##\s+/, '# ') if markdown.lstrip.start_with?('## ')
-    markdown = "# #{page.tr('_', ' ')}\n\n#{markdown}" unless markdown.lstrip.start_with?('# ')
+    markdown = "# #{labels[page] || page.tr('_', ' ')}\n\n#{markdown}" unless markdown.lstrip.start_with?('# ')
   end
   info = pages[page]
   front = {
@@ -187,7 +199,13 @@ end
 
 index = {
   'sections' => config['sections'].map do |section|
-    listed = section['topics'].keys.filter_map { |page| topics[page] }
+    # Each topic with the guide's label for it, shown in the sidebar while
+    # the topic is not translated.
+    listed = section['topics'].keys.filter_map do |page|
+      next unless topics[page]
+
+      labels[page] ? { 'id' => topics[page], 'title' => { 'en' => labels[page] } } : topics[page]
+    end
     { 'id' => section['id'], 'title' => section['title'], 'topics' => listed }
   end,
 }
