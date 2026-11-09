@@ -3,7 +3,7 @@ source: RedmineProjectActivity
 translated_from_version: 10
 ---
 
-# プロジェクトの活動
+# 活動
 
 「活動」のページには、そのプロジェクトで起きたことの履歴が表示されます。
 
