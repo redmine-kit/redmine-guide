@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Writes glossary/<lang>.yml from Redmine's locale files (docs/translating.md).
+#   bin/glossary ja
+set -euo pipefail
+cd "$(dirname "$0")/.."
+bin/tools-image
+docker run --rm -v "$PWD:/work" redmine-guide-tools ruby /work/tools/glossary.rb "${1:?usage: bin/glossary <lang>}" /work/glossary

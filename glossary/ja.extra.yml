@@ -1,0 +1,12 @@
+# Terms the guide uses that Redmine 7.0.3's locale has no string for. Each
+# has a note on where the term comes from; translations follow these too.
+terms:
+  - en: Add another file
+    ja: 別のファイルを追加
+    note: The link of the old upload form; Redmine 7.0.3 selects several files in one file chooser.
+  - en: change log
+    ja: 変更履歴
+    note: The guide's page on closed and targeted issues per version (RedmineIssueChangelog).
+  - en: context menu
+    ja: コンテキストメニュー
+    note: The menu on right-clicking an issue in the issue list.
