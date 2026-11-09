@@ -1,0 +1,208 @@
+---
+source: RedmineRepositories
+source_url: https://www.redmine.org/projects/redmine/wiki/RedmineRepositories
+source_version: 64
+source_updated_on: '2025-10-25T07:40:43Z'
+---
+
+# Repositories
+
+## General information
+
+Redmine natively supports integration with different SCM-tools:
+
+|  |  |  |
+|----|----|----|
+| **SCM** | **Supported versions** | **Comments** |
+| [Bazaar](http://bazaar.canonical.com/en/) | 1.0.0.candidate.1 to 2.7.0 |  |
+| [CVS](http://www.nongnu.org/cvs/) | 1.12.12, 1.12.13 | 1.12 required, won’t work with CVSNT |
+| [Git](https://git-scm.com/) | 1.5.4.2 to 2.11.0 |  |
+| [Mercurial](http://www.selenic.com/mercurial/) | 5.1 or higher | Support for Mercurial \< 5.1 has been dropped in Redmine 6.1.0 (#33784) |
+| [Subversion](http://subversion.apache.org/) | 1.3 to 1.9.7 | 1.3 or higher required. Doesn’t support Ruby Bindings for Subversion. Subversion 1.7.0 and 1.7.1 contains bugs (#9541) |
+
+<u>Note 1</u> : the appropriate binaries **must** be installed on the **same host as Redmine**.
+
+For example, if you want to access Subversion repositories in Redmine, you’ll have to install the svn binaries on the Redmine host.
+
+<u>Note 2</u> : the appropriate binaries must be reachable by Redmine :
+
+2 options :
+
+- they are directly available in the `PATH` environment variable:
+  - if the command name is not the default one, you can redefine it in Redmine [configuration file](../install/install.md#SCM-settings)
+- you can define the full path to the binaries in Redmine [configuration file](../install/install.md#SCM-settings)
+
+Finally, be sure to enable any SCM you wish to use globally in `Administration->Settings->Repositories->Enabled SCM`
+
+## Attaching an existing repository to a project
+
+In the project settings, make sure that the ‘Repository’ module is enabled and go to the ‘Repository’ tab.\
+Select the SCM that corresponds to your repository and enter the path or URL of your repository.
+
+**Important**: When you first browse the repository, Redmine retrieves the description of all of the existing commits and stores them in the database.\
+This is done only once per repository but can take a very long time (or even time out) if your repository has hundreds of commits.
+
+To avoid this, you can do it offline.\
+After having your repository declared in Redmine, run the following command:
+
+    $ ./bin/rails runner "Repository.fetch_changesets" -e production
+
+All commits will be retrieved in to the Redmine database.
+
+Since version 0.9.x, you can also call an URL via WS to execute `fetch_changesets` :
+
+    http://redmine.example.com/sys/fetch_changesets?key=<WS key> (=> fetches changesets for all active projects)
+    http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches changesets for project foo only)
+
+Don’t forget to enable [WS for repository management](settings.md#Enable-WS-for-repository-management) and append `WS key` authentication information configured in the [Repository management WS API key](settings.md#Repository-management-WS-API-key) setting.
+
+See [HowTo_setup_automatic_refresh_of_repositories_in_Redmine_on_commit](https://www.redmine.org/projects/redmine/wiki/HowTo_setup_automatic_refresh_of_repositories_in_Redmine_on_commit) for an example.
+
+### Subversion repository
+
+The usual protocols are supported (eg. `http:`, `svn:`, `file:`), just enter the URL of the repository.
+
+For example:
+
+    http://host/path/to/the/repository
+
+You can specify a username and password if the repository requires authentication.
+
+Note: if you want to access the repository using `svn+ssh://`, you’ll have to configure svn+ssh to be non-interactive.\
+This requires you to setup a public/private key pair for ssh authentication.
+
+### CVS repository
+
+Enter:
+
+- the URL of the repository (it can be either a path or a connection string, eg. `:pserver`).
+- the module name
+
+For example:
+
+    :pserver:login:password@host:/path/to/the/repository
+
+### Git repository
+
+(See also [HowTo_Easily_integrate_a_(SSH_secured)_GIT_repository_into_redmine](https://www.redmine.org/projects/redmine/wiki/HowTo_Easily_integrate_a_(SSH_secured)_GIT_repository_into_redmine).)
+
+#### Local environment setup
+
+Redmine requires a repository which is **bare** and **local** to enable browsing through Redmine.
+
+Imagine you want to browse the to-do list manager project “Donebox”: its clone URL is `git://github.com/ook/donebox.git`.\
+On the server where you’re running Redmine, create a directory accessible by the user running your Redmine server:
+
+    $ sudo mkdir -p /var/redmine/git_repositories
+    $ sudo chown rails:rails /var/redmine/git_repositories
+    $ cd /var/redmine/git_repositories
+
+Note the second line: it changes the ownership of the newly created directory to the user `rails` and the group `rails`. Of course, you have to replace it according to your server settings (it can be `www-data`, `apache` or when you are having a very bad sysadmin: `root`). Keep in mind that this user needs to have the (local-)permissions to run the `git` command.
+
+#### Create the bare repository
+
+After the preceding steps have been taken it is time to create our bare repository:
+
+    $ pwd
+    /var/redmine/git_repositories
+    $ git clone --bare git://github.com/ook/donebox.git donebox.git
+    Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
+    remote: Counting objects: 401, done.
+    remote: Compressing objects: 100% (246/246), done.
+    remote: Total 401 (delta 134), reused 401 (delta 134)
+    Receiving objects: 100% (401/401), 179.55 KiB | 185 KiB/s, done.
+    Resolving deltas: 100% (134/134), done.
+    $ cd donebox.git
+
+Our bare repository is now created successfully! Now go to your Redmine project settings, go to the repositories tab and choose `git` as the SCM, then put in the *Path to repository* (in our example this is `/var/redmine/git_repositories/donebox.git/`) and save the settings. Have a look at your repository tab: you should now be able to browse your repository successfully.
+
+Note: Per Defect \[#8548](https://www.redmine.org/issues/8548), if you set the *Report last commit for files and directories*, four columns are added on repository file an ddirectory lists:
+
+- Revision
+- Age
+- Author
+- Comment
+
+Note: of course, this git repository won’t update by itself. You’ll have to `git fetch` it regulary by hand, set up a cron job which will execute the `git fetch`-command automatically for you.
+
+To have your repository (and all your branches) refresh every 10 minutes you can add a cronjob like:
+
+    */10 * * * * cd /srv/repos/git/myrepo.git && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft
+
+Or you can use a post-receive hook, like this one :
+
+    echo "Post receive-hook => updating Redmine repository"
+    sudo -u my_redmine_user -p secret perl -we '`cd /redmine/repositories/my_repo.git && git fetch && git reset --soft refs/remotes/origin/master`'
+
+Note the git reset, you’ll **need it** to update the git tree and see your changes in the Repository view. The ‘soft’ option is required since it is a bare repository and the default option (mixed) will fail since there is no working tree.
+
+If you are using github, you can use the [Github Hook Plugin](https://www.redmine.org/projects/redmine/wiki/Plugin_List#Github-Hook-plugin)
+
+#### Bare repository on Windows
+
+If your bare repository is install on **Windows**, adding :
+
+    ;%GIT_PATH%\cmd;%GIT_PATH%\bin;
+
+to your %%PATH%% environment variable.\
+Where %%GIT_PATH%% is the install directory of Git (eg: *C:/Git*)
+
+#### Setting up a mirror repository (shortcut, tracking branches)
+
+The method above works fine under most circumstances but it can take a lot of tweaking to get certain things working if you have more than just a master branch. More information on the problem and the solution can be found on this [Stack Overflow question](http://stackoverflow.com/questions/4698649/how-do-i-get-a-remote-tracking-branch-to-stay-up-to-date-with-remote-origin-in-a).
+
+This method will help to keep branches from the repository’s origin updated and visible in Redmine’s repository browser. This is really only relevant if the local copy of the repository is only being used as a read-only copy specifically for Redmine’s use. For example, the project is hosted on GitHub but Redmine is being used for issue tracking.
+
+    $ pwd
+    /var/redmine/git_repositories
+    $ git clone --mirror git://github.com/ook/donebox.git donebox.git
+    Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
+    remote: Counting objects: 717, done.
+    remote: Compressing objects: 100% (561/561), done.
+    remote: Total 717 (delta 320), reused 371 (delta 134)
+    Receiving objects: 100% (717/717), 211.35 KiB | 86 KiB/s, done.
+    Resolving deltas: 100% (320/320), done.
+    $ cd donebox.git
+    $ git branch
+      WW
+      asap
+      bugcat
+      comeback
+    * master
+
+This method relies on the `--mirror` option available for the git clone command. This option may not be available to older versions of git. In that case, please reference the [Stack Overflow question](http://stackoverflow.com/questions/4698649/how-do-i-get-a-remote-tracking-branch-to-stay-up-to-date-with-remote-origin-in-a) for some ideas on how to setup this type of mirror functionality without using the `--mirror` option.
+
+### Mercurial repository
+
+To synchronize with a Mercurial repository, you will have to have a local clone of the repository on the same server you have Redmine installed on. Let’s say you put Redmine in /var/www/redmine.example.com/www and have put your mercurial repository in /var/www/sources.example.com/repo/example, you would have to select **Mercurial** as a SCM, then enter **/var/www/sources.example.com/repo/example** in the repository text box.
+
+This will start checking out the Mercurial repository, and you won’t see the results straight away. Wait for a few seconds (or possibly minutes), and click the **Repository** tab of your project (not of your configuration settings). You should now see the results appear.
+
+Redmine does not synchronize (push/pull) external repositories, but you can set up a script to do this before fetching updates.\
+hgsync.sh:
+
+    #!/bin/bash
+    for file in /var/www/sources.example.com/*; do
+       if [ -d $file ]; then
+          cd $file; hg pull -u
+       fi
+    done
+
+### Bazaar repository
+
+Put in the full path to your repository in “Root directory”\
+i.e. /home/username/bzr/repo/trunk
+
+You’ll need to make sure that bzr and bzrlib can be found in ENV\[’PATH’\] and ENV\[’PYTHONPATH’\] respectively.\
+ie. edit config/environment.rb and add:
+
+    ENV['PYTHONPATH'] = '/path/to/pythonlib'
+    ENV['PATH'] = "#{ENV['PATH']}:/path/to/bzr/bin"
+
+## Repository user-mapping
+
+In the project -\> settings -\> repository there is a link called users (on the lower right).
+
+That allows you to map users that have commits to the users in redmine. If the login name / email matches the mapping is automatic, otherwise you need to establish the map of repository users to redmine users.
+
+This is required for time tracking to work.

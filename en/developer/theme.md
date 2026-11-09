@@ -1,0 +1,106 @@
+---
+source: HowTo_create_a_custom_Redmine_theme
+source_url: https://www.redmine.org/projects/redmine/wiki/HowTo_create_a_custom_Redmine_theme
+source_version: 14
+source_updated_on: '2025-09-29T11:34:31Z'
+---
+
+# HowTo create a custom Redmine theme
+
+Redmine offers basic support for themes. Themes can override stylesheets (application.css) and add some custom javascript.
+
+**NOTE**: From Redmine 6.0, the location for themes changed from `public/themes` to `themes`. If you are creating a theme for a version prior to 6.0, please read `themes` as `public/themes` in the following instructions.
+
+## Creating a new theme
+
+Create a directory in `/themes`. The directory name will be used as the theme name.
+
+Example:
+
+themes/my_theme
+
+Create your custom `application.css` and save it in a subdirectory named `stylesheets`:
+
+themes/my_theme/stylesheets/application.css
+
+Here is an example of a custom stylesheet that only override a few settings:
+
+    <code class="css">
+    /* load the default Redmine stylesheet */
+    @import url(../../../stylesheets/application.css);
+
+    /* add a logo in the header */
+    #header {
+        background: #507AAA url(../images/logo.png) no-repeat 2px;
+        padding-left: 86px;
+    }
+
+    /* move the project menu to the right */
+    #main-menu { 
+        left: auto;
+        right: 0px;
+    }
+    </code>
+
+This example assume you have an image located at `my_theme/images/logo.png`.
+
+You can download this sample theme as a starting point for your own theme. Extract it in the `/themes` directory.
+
+**NOTE**: From Redmine 6.0, The code @`import url(../../../stylesheets/application.css)` shown in the example above is automatically converted to @`import url(“/assets/application-29b28b2c.css”);` when Redmine starts. The combination of numbers and letters at the end of the filename is a hash value calculated from the file’s contents. Since the filename changes whenever the content is modified, issues like display corruption caused by browsers using outdated cached versions are avoided.
+
+## Adding custom JavaScript
+
+Simply put your JavaScript in `javascripts/theme.js` and it will automatically be loaded on each page.
+
+**NOTE**: From Redmine 6.0, When specifying image paths in JavaScript, use the `RAILS_ASSET_URL` pseudo-method as shown in the example below. For more detailed conversion specifications, refer to [README of propshaft](https://github.com/rails/propshaft?tab=readme-ov-file#referencing-digested-assets-in-css-and-javascript)
+
+Source:
+
+    <code class="javascript">
+    export default class extends Controller {
+      init() {
+        this.img = RAILS_ASSET_URL("/icons/trash.svg")
+      }
+    }
+    </code>
+
+Transformed:
+
+    <code class="javascript">
+    export default class extends Controller {
+      init() {
+        this.img = "/assets/icons/trash-54g9cbef.svg"
+      }
+    }
+    </code>
+
+## Setting a Favicon
+
+Put your favicon in `favicon` directory and it will automatically be loaded instead of default one on each page. The name of the favicon file can be anything.
+
+## Applying the theme
+
+Go to “Administration -\> Settings” and select your newly created theme in the “Theme” drop-down list. Save your settings.\
+Redmine should now be displayed using your custom theme.
+
+## Directory structure of themes
+
+A theme consists of the following files:
+
+- `favicon/<favicon file>` (optional): favicon for the theme
+- `javascripts/theme.js` (optional): custom JavaScript for the theme
+- `stylesheets/application.css` (required): CSS for the theme
+
+<!-- -->
+
+    themes/
+      +- <theme name>/
+           |
+           +- favicon/
+           |    +- <favicon file> (e.g. favicon.ico, favicon.png)
+           |
+           +- javascripts/
+           |    +- theme.js
+           |
+           +- stylesheets/
+                +- application.css

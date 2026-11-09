@@ -1,0 +1,32 @@
+---
+source: RedmineReminderEmails
+source_url: https://www.redmine.org/projects/redmine/wiki/RedmineReminderEmails
+source_version: 15
+source_updated_on: '2017-11-25T06:42:28Z'
+---
+
+# Sending reminder emails
+
+Redmine offers a rake task that sends reminder emails about assigned and active issues that are past due or due in the next specified number of days.
+
+Available options:
+
+- days: number of days to remind about (defaults to 7)
+- tracker: id of tracker (defaults to all trackers)
+- project: id or identifier of project (defaults to all projects)
+- users: comma separated list of user ids who should be reminded
+- version: name of target version for filtering issues (defaults to none)
+
+The following example will send an email to each user who has assigned issues that are past due or due in the next 7 days:
+
+    bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+
+The following example will send an email to users **1**, **23**, and **56** who have assigned issues that are past due or due in the next **7 days**:
+
+    bundle exec rake redmine:send_reminders days=7 users="1,23,56" RAILS_ENV="production"
+
+When adding this to your crontab, add the rake command to a small script; eg:
+
+    #!/bin/bash
+    cd /usr/local/share/redmine
+    bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
