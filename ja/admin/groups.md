@@ -3,14 +3,12 @@ source: RedmineGroups
 translated_from_version: 6
 ---
 
-# グループの管理
+# グループ
 
 バージョン 0.9 から、管理者は Redmine でユーザーのグループを作成できます。\
 グループは、通常のユーザーと同じように、同じ[ロール](roles.md)を使ってプロジェクトのメンバーにできます。
 
 既存のグループにユーザーを追加すると、そのユーザーはグループの権限をすべて引き継ぎます。
-
-<a id="Creating-groups"></a>
 
 ## グループの作成
 
@@ -21,8 +19,6 @@ translated_from_version: 6
 3.  「新しいグループ」をクリックします
 4.  「名称」にグループの名前を入力します
 5.  「作成」をクリックします
-
-<a id="Adding-members-and-associating-projects"></a>
 
 ## メンバーの追加とプロジェクトの関連付け
 
