@@ -102,6 +102,8 @@ module Textile
       end
       open_end = text.index('>', start) + 1
       close_start ||= close_end = text.size
+      # <pre><code>...</pre></code>: Redmine drops the stray </code>.
+      close_end += 7 if text[close_end, 7].casecmp?('</code>')
       inner = text[open_end...close_start]
       line_start = text.rindex("\n", start - 1) || -1
       line_end = text.index("\n", close_end) || text.size
