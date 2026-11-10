@@ -1,0 +1,215 @@
+# The demo data of the Japanese screenshots (screenshots/screens.rb): what a
+# Japanese team's Redmine shows. Trackers, issue statuses, priorities,
+# activities, document categories and roles are named as Redmine 7.0.3's
+# default data for Japanese (config/locales/ja.yml, default_*); the rest is
+# translated. Identifiers (logins, project identifiers, file names, version
+# numbers, email addresses) stay as they are.
+
+# Records of Redmine's test fixtures, by model and id.
+records:
+  Tracker:
+    1: { name: バグ, description: 不具合の報告 }
+    2: { name: 機能, description: 新しい機能の要望 }
+    3: { name: サポート }
+  IssueStatus:
+    1: { name: 新規 }
+    2: { name: 進行中 }
+    3: { name: 解決 }
+    4: { name: フィードバック }
+    5: { name: 終了 }
+    6: { name: 却下 }
+  Enumeration:
+    1: { name: 未分類 }
+    2: { name: ユーザー文書 }
+    3: { name: 技術文書 }
+    4: { name: 低め }
+    5: { name: 通常 }
+    6: { name: 高め }
+    7: { name: 急いで }
+    8: { name: 今すぐ }
+    9: { name: 設計作業 }
+    10: { name: 開発作業 }
+    11: { name: テスト作業 }
+    14: { name: 使用しない作業分類 }
+    15: { name: 使用しない優先度 }
+    16: { name: 使用しない文書カテゴリ }
+  Role:
+    1: { name: 管理者 }
+    2: { name: 開発者 }
+    3: { name: 報告者 }
+  User:
+    1: { firstname: 管理者, lastname: Redmine }
+    2: { firstname: 一郎, lastname: 鈴木 }
+    3: { firstname: 健, lastname: 佐藤 }
+    4: { firstname: 誠, lastname: 高橋 }
+    5: { firstname: 大輔, lastname: 山本 }
+    7: { firstname: 美咲, lastname: 田中 }
+    8: { firstname: 翔, lastname: 伊藤 }
+    9: { firstname: 陽子, lastname: 渡辺 }
+  Group:
+    10: { lastname: 開発チーム }
+    11: { lastname: 運用チーム }
+  Project:
+    1: { name: レシピサイト, description: レシピを管理するアプリケーション }
+    2: { name: オンラインストア, description: EC サイト }
+    3: { name: スマホアプリ, description: レシピサイトのスマホアプリ }
+    4: { name: 管理画面, description: レシピサイトの管理画面 }
+    5: { name: 社内向けツール, description: 社内だけで使うツール }
+    6: { name: 在庫連携, description: 社内向けツールと在庫システムの連携 }
+  Version:
+    1: { description: ベータ }
+    2: { description: 正式リリース, wiki_page_title: リリースノート1.0 }
+    3: { description: 次期リリース }
+    4: { description: スマホアプリの次期リリース }
+    5: { name: アルファ, description: 社内向けアルファ }
+    6: { name: 社内リリース, description: 近日中に完了予定 }
+    7: { name: 全社共通リリース }
+  IssueCategory:
+    1: { name: 印刷 }
+    2: { name: レシピ }
+    3: { name: 在庫管理 }
+    4: { name: 印刷 }
+  CustomField:
+    1: { name: データベース }
+    2: { name: 検索キーワード, default_value: "" }
+    3: { name: 開発状況, possible_values: [安定, ベータ, アルファ, 計画中] }
+    4: { name: 電話番号 }
+    5: { name: 予算 }
+    6: { name: 係数 }
+    7: { name: 請求対象 }
+    8: { name: 検収日 }
+    9: { name: 公開予定日 }
+    10: { name: 残業 }
+  CustomValue:
+    7: { value: 安定 }
+    9: { value: 並び順 }
+  Query:
+    1: { name: 複数のカスタムフィールドで絞り込み }
+    2: { name: 自分用のクエリ }
+    3: { name: 全プロジェクトの自分用クエリ }
+    4: { name: 全プロジェクト共通のクエリ }
+    5: { name: 優先度・トラッカー別の未完了チケット }
+    6: { name: トラッカー別の未完了チケット }
+    7: { name: オンラインストアの共通クエリ }
+    8: { name: オンラインストアの自分用クエリ }
+    9: { name: データベース別の未完了チケット }
+    10: { name: 自分の作業時間 }
+    11: { name: プロジェクト一覧 }
+    12: { name: ブックマーク }
+  Issue:
+    1: { subject: レシピを印刷できない, description: レシピを印刷しようとするとエラーになる。 }
+    2: { subject: 材料のカテゴリを追加, description: レシピの材料をカテゴリで分類できるようにしたい。 }
+    3: { subject: レシピの保存時にエラー 281 が発生, description: レシピを保存するとエラー 281 が発生する。 }
+    4: { subject: 決済画面の金額表示の不具合, description: 決済画面で金額が正しく表示されない。 }
+    5: { subject: ログイン画面のレイアウトが崩れる, description: スマホアプリのログイン画面のレイアウトが崩れる。 }
+    6: { subject: 権限設定の見直し, description: 社内向けツールの権限設定を見直す。 }
+    7: { subject: 検索結果の並び順を修正, description: 検索結果が更新日の順に並ばない。期日は今日。 }
+    8: { subject: トップページの表示崩れ, description: 完了したチケット。 }
+    9: { subject: アカウント連携の実装, description: "#10 の完了を待っている。" }
+    10: { subject: 認証 API の更新, description: "これが終わるまで #9 に着手できない。" }
+    11: { subject: 0.1 の不具合修正, description: "" }
+    12: { subject: 1.0 の不具合修正, description: "" }
+    13: { subject: プッシュ通知が届かない, description: スマホアプリにプッシュ通知が届かないことがある。 }
+    14: { subject: セキュリティ診断の指摘への対応, description: 非公開のチケット。 }
+  Journal:
+    1: { notes: 調査を始めました。 }
+    2: { notes: "#2 と r2 も参照してください。" }
+    3: { notes: "画面のキャプチャです: !picture.jpg! #1 と r2 も参照してください。" }
+    4: { notes: 社内リリースで対応します。 }
+    5: { notes: 非公開のチケットへのコメント。 }
+  TimeEntry:
+    1: { comments: 印刷の不具合の調査 }
+    4: { comments: スマホアプリの作業 }
+    5: { comments: スマホアプリの作業 }
+  News:
+    1: { title: レシピサイトを公開しました, summary: 最初のバージョンを公開しました。, description: "レシピサイト 1.0 を公開しました。\n\nhttp://ecookbook.somenet.foo/ をご覧ください。" }
+    2: { title: ダウンロード数が 10 万回を突破, summary: レシピサイト 1.0 が 10 万回ダウンロードされました, description: レシピサイト 1.0 が 10 万回ダウンロードされました。 }
+    3: { title: 社内向けのお知らせ, summary: "", description: 社内だけに公開するお知らせ。 }
+  Comment:
+    1: { content: おめでとうございます。 }
+    2: { content: 次のリリースも楽しみにしています。 }
+  Document:
+    1: { title: 利用者マニュアル, description: レシピサイトの使い方をまとめた文書。 }
+    2: { title: 設計書 }
+    3: { title: API 仕様書 }
+  Board:
+    1: { name: 質問, description: 使い方の質問 }
+    2: { name: 雑談, description: 自由な話題 }
+    3: { name: 雑談, description: 自由な話題 }
+  Message:
+    1: { subject: 最初の投稿, content: フォーラムの最初の投稿です。 }
+    2: { subject: "RE: 最初の投稿", content: 最初の投稿への返信です。 }
+    3: { subject: "RE: 最初の投稿", content: もうひとつの返信です。 }
+    4: { subject: レシピの検索について, content: "材料からレシピを検索できますか?" }
+    5: { subject: "RE: レシピの検索について", content: 詳細検索でできます。 }
+    6: { subject: "RE: レシピの検索について", content: ありがとうございます。 }
+    7: { subject: 社内向けの投稿, content: 社内だけに公開する投稿です。 }
+  Attachment:
+    1: { description: エラーのログ }
+    3: { description: ロゴ }
+    4: { description: Ruby のソースファイル }
+    15: { description: 非公開のチケットの添付ファイル }
+    22: { description: 種類が不明なファイル }
+    23: { description: 5 月 11 日時点のガントチャート }
+    24: { description: WebP の画像 }
+  Wiki:
+    1: { start_page: レシピサイトのドキュメント }
+  WikiPage:
+    1: { title: レシピサイトのドキュメント }
+    2: { title: 別のページ }
+    4: { title: 画像を含むページ }
+    5: { title: 子ページ1 }
+    6: { title: 子ページ2 }
+    11: { title: 見出しのあるページ }
+    12: { title: 孫ページ }
+  WikiContent:
+    1: { text: "h1. レシピサイトのドキュメント\n\n{{child_pages}}\n\n[[ドキュメント]]を更新しました。", comments: 履歴を圧縮 }
+    2: { text: "h1. 別のページ\n\nチケットへのリンク: #2" }
+    4: { text: "h1. 画像を含むページ\n\n画像:\n\n!logo.gif!" }
+    5: { text: "h1. 子ページ1\n\n子ページです。" }
+    6: { text: "h1. 子ページ2\n\n子ページです。" }
+    12: { text: 孫ページです。 }
+  WikiContentVersion:
+    1: { data: "h1. レシピサイトのドキュメント v1\n\n\n最初のバージョンの行\n[[ドキュメント]]はこちら...", compression: "", comments: ページを作成 }
+    2: { data: "h1. レシピサイトのドキュメント v2\n\n\n最初のバージョンの行\n更新した[[ドキュメント]]はこちら...", compression: "", comments: 軽微な更新 }
+    3: { data: "h1. レシピサイトのドキュメント v3\n\n更新した[[ドキュメント]]はこちら...", compression: "" }
+    4: { data: "h1. 別のページ\n\nチケットへのリンク: #2", compression: "" }
+  Changeset:
+    100: { comments: "最初のコミット #<>& はエスケープしない" }
+    101: { comments: "#1 と #2 を修正、#1 と #3 を参照" }
+    102: { comments: "誤ったチケット番号のコミット\nIssueID #666 #3" }
+    103: { comments: "ほかのプロジェクトのチケット番号のコミット\nIssueID 4 2" }
+    104: { comments: フォルダー内のファイルを変更 }
+    105: { comments: helloworld.rb を / から /folder に移動 }
+    106: { comments: ファイルを削除 }
+    107: { comments: "チケットを参照\nRefs #2" }
+    108: { comments: ファイルを追加 }
+    109: { comments: 同じファイルを変更 }
+    110: { comments: "チケットと [[wiki]] ページを参照\nRefs #2" }
+
+# Commits that bin/screenshots fetches from the test repository, by revision.
+changesets:
+  "12": テストデータを追加
+  "13": テストデータを追加
+  "14": テストデータを追加
+  "15": JavaScript のファイルを追加
+  "16": テストデータを追加
+
+# The records screens.rb adds (prepare_data), by their English text.
+issues:
+  Recipe import: レシピのインポート
+  Parse the recipe files: レシピファイルの解析
+  Map the ingredients: 材料の対応付け
+  Import the photos: 写真の取り込み
+queries:
+  My open issues: 担当している未完了チケット
+registered_user: { login: snakamura, firstname: さくら, lastname: 中村, mail: snakamura@somenet.foo, language: ja }
+
+# Settings a Japanese site uses: family name first.
+settings:
+  user_format: lastname_firstname
+
+# What the shots type.
+input:
+  search: レシピ
+  query_name: 未完了の機能

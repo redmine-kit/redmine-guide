@@ -77,6 +77,8 @@ bin/screenshots
 
 The test data gets the few records that the screens need and the fixtures lack (`prepare_data` in `screenshots/screens.rb`), such as a user waiting for activation and subtasks in a version. The browser runs in the language of the screenshots, so that its own controls (file and date fields) are in that language too.
 
+In the other languages the screens show data in that language as well: `screenshots/data/<lang>.yml` renames the fixtures' records (trackers, statuses, priorities and the other enumerations as Redmine's default data in that language; projects, issues, users and the rest as a team using that language would name them) before the shots of that language. Identifiers such as logins, project identifiers, file names and version numbers stay as they are. When a translated page names a value that its image shows (a tracker, a status), it uses the value of the image.
+
 Each shot in `screenshots/screens.rb` is named after the image it replaces (`RedmineIssueList/sidebar.jpg` becomes `images/<lang>/RedmineIssueList/sidebar@2x.png`), opens the screen and says what to capture. To take some of them again, give a pattern:
 
 ```sh

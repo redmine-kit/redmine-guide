@@ -40,6 +40,7 @@ class GuideScreenshots < ApplicationSystemTestCase
       Setting.default_language = language
       Setting.force_default_language_for_anonymous = '1'
       User.find(1).update!(language: language)
+      localize_data(language)
       shots.each do |shot|
         take(shot)
       rescue StandardError, Minitest::Assertion => e
@@ -136,10 +137,46 @@ class GuideScreenshots < ApplicationSystemTestCase
     File.binread(path, 4, 20).unpack1('N')
   end
 
+  # The demo data in the language of the screenshots
+  # (screenshots/data/<lang>.yml): the fixtures' records renamed as a team
+  # using that language would name them. English keeps the fixtures.
+  def localize_data(language)
+    file = File.join(ROOT, 'screenshots', 'data', "#{language}.yml")
+    @data = File.exist?(file) ? YAML.safe_load_file(file) : {}
+    (@data['records'] || {}).each do |model, records|
+      records.each { |id, attributes| model.constantize.find(id).update_columns(attributes) }
+    end
+    (@data['changesets'] || {}).each do |revision, comments|
+      Repository.find(10).changesets.find_by!(revision: revision).update_columns(comments: comments)
+    end
+    (@data['issues'] || {}).each { |from, to| Issue.where(subject: from).update_all(subject: to) }
+    (@data['queries'] || {}).each { |from, to| Query.where(name: from).update_all(name: to) }
+    if @data['registered_user']
+      attributes = @data['registered_user'].dup
+      registered_user.email_address.update_columns(address: attributes.delete('mail'))
+      registered_user.update_columns(attributes)
+    end
+    (@data['settings'] || {}).each { |name, value| Setting.send(:"#{name}=", value) }
+  end
+
+  # What a shot types, in the language of the screenshots.
+  def input(key, english)
+    @data.dig('input', key) || english
+  end
+
+  def registered_user
+    User.find_by!(status: User::STATUS_REGISTERED)
+  end
+
+  # The path of the wiki's start page (renamed in some languages).
+  def wiki_page_path
+    "/projects/ecookbook/wiki/#{ERB::Util.url_encode(WikiPage.find(1).title)}"
+  end
+
   # Data the test fixtures lack: a user waiting for activation, additional
   # email addresses, the administrator as a member with issues and a query
   # of their own, subtasks in a version, a revision associated with an
-  # issue. The fixtures' texts are in Textile. The test repository's
+  # issue, the workflow the guide describes. The fixtures' texts are in Textile. The test repository's
   # committers are mapped to the fixtures' users, so that the screens show
   # their names.
   def prepare_data
@@ -172,6 +209,12 @@ class GuideScreenshots < ApplicationSystemTestCase
                       assigned_to_id: 1,
                       start_date: Date.current + from, due_date: Date.current + to)
     end
+    # The workflow of the guide's example: a developer moves a new bug to
+    # Assigned or Resolved, and an assigned one to Resolved.
+    WorkflowTransition.where(role_id: 2, tracker_id: 1).delete_all
+    [[0, 1], [1, 2], [1, 3], [2, 3]].each do |from, to|
+      WorkflowTransition.create!(role_id: 2, tracker_id: 1, old_status_id: from, new_status_id: to)
+    end
     Changeset.find(100).issues << Issue.find(1) unless Changeset.find(100).issues.include?(Issue.find(1))
   end
 
@@ -192,7 +235,7 @@ class GuideScreenshots < ApplicationSystemTestCase
   # Redmine 7.0.3 has the Activate link of a registered user on the user's
   # page, not in the users list.
   shot('RedmineRegister/activate-account') do
-    visit "/users/#{User.find_by(login: 'eclark').id}/edit"
+    visit "/users/#{registered_user.id}/edit"
     find('#content > .contextual a.icon-unlock')
     '#content'
   end
@@ -226,7 +269,7 @@ class GuideScreenshots < ApplicationSystemTestCase
   end
   shot('RedmineIssueList/ext_newquery') do
     visit '/projects/ecookbook/queries/new'
-    fill_in 'query_name', with: 'Open feature requests'
+    fill_in 'query_name', with: input('query_name', 'Open feature requests')
     uncheck 'query_default_columns'
     '#content'
   end
@@ -332,8 +375,8 @@ class GuideScreenshots < ApplicationSystemTestCase
     visit '/projects/ecookbook/wiki'
     '#content > .contextual'
   end
-  shot('RedmineWikis/history') { visit '/projects/ecookbook/wiki/CookBook_documentation/history'; '#content' }
-  shot('RedmineWikis/page_version') { visit '/projects/ecookbook/wiki/CookBook_documentation/2'; '#content' }
+  shot('RedmineWikis/history') { visit "#{wiki_page_path}/history"; '#content' }
+  shot('RedmineWikis/page_version') { visit "#{wiki_page_path}/2"; '#content' }
 
   shot('RedmineRepository/repository') { visit '/projects/ecookbook/repository'; '#content' }
   shot('RedmineRepositoryStatistics/graphs') { visit '/projects/ecookbook/repository/10/statistics'; '#content' }
@@ -346,8 +389,14 @@ class GuideScreenshots < ApplicationSystemTestCase
     find('#project-jump .drdn-content', visible: true)
     :window
   end
-  shot('RedmineSearch/AdvancedSearch') { visit '/projects/ecookbook/search?q=recipe'; '#search-form' }
-  shot('RedmineSearch/Results') { visit '/projects/ecookbook/search?q=recipe'; '#content' }
+  shot('RedmineSearch/AdvancedSearch') do
+    visit "/projects/ecookbook/search?q=#{ERB::Util.url_encode(input('search', 'recipe'))}"
+    '#search-form'
+  end
+  shot('RedmineSearch/Results') do
+    visit "/projects/ecookbook/search?q=#{ERB::Util.url_encode(input('search', 'recipe'))}"
+    '#content'
+  end
   shot('RedmineSearch/Searchable') { visit '/custom_fields/2/edit'; parent('#custom_field_searchable') }
 
   # Administrator guide
@@ -373,7 +422,7 @@ class GuideScreenshots < ApplicationSystemTestCase
   end
   shot('RedmineRoles/roles') { visit '/roles'; '#content' }
   shot('RedmineIssueTrackingSetup/tracker_config') { visit '/trackers/1/edit'; '#content' }
-  shot('RedmineIssueTrackingSetup/workflow_example') { visit '/workflows/edit?role_id=1&tracker_id=1'; '#content' }
+  shot('RedmineIssueTrackingSetup/workflow_example') { visit '/workflows/edit?role_id=2&tracker_id=1'; '#content' }
   shot('RedmineIssueTrackingSetup/workflow_fields_permissions_closeup') do
     visit '/workflows/permissions?role_id=1&tracker_id=1'
     { 'assigned_to_id' => 'required', 'category_id' => 'readonly', 'due_date' => 'required' }.each do |field, value|
