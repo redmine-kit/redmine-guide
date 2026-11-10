@@ -145,6 +145,25 @@ def fence_problems(text)
   problems.uniq
 end
 
+# Parentheses in Japanese text (AGENTS.md of the organization): half-width,
+# with a space before and after, but none next to Japanese punctuation or a
+# bracket. Code, link targets, HTML tags, URLs and Redmine's own strings
+# (`strings`, quoted as Redmine writes them) are left out.
+JAPANESE = /[\p{Hiragana}\p{Katakana}\p{Han}ー]/
+JAPANESE_PUNCTUATION = '、。・：；！？「」『』【】'
+
+def parenthesis_problems(text, strings)
+  # As prose, but code spans stand for a word (`x`), not for nothing.
+  body = text.sub(/\A---\n.*?\n---\n/m, '').gsub(/^[ \t]*(`{3,}|~{3,}).*?^[ \t]*\1\s*$/m, '').gsub(/(`+).+?\1/, 'x')
+             .gsub(/\]\([^)\s]*\)|<[^<>\n]+>|https?:\/\/[^\s)<>]+/, ' ')
+  strings.each { |string| body = body.gsub(string, ' ') }
+  found = []
+  found << 'full-width parentheses' if body.match?(/[（）]/)
+  found << 'a parenthesis next to Japanese text without a space' if body.match?(/#{JAPANESE}\(|\)#{JAPANESE}/)
+  found << 'a space between Japanese punctuation and a parenthesis' if body.match?(/[#{JAPANESE_PUNCTUATION}] +\(|\) +[#{JAPANESE_PUNCTUATION}]/)
+  found.map { |problem| "#{problem} (half-width, with a space before and after)" }
+end
+
 # The text formatting pages show inline styles as examples.
 STYLE_EXAMPLES = %r{\Auser/text-formatting}
 
@@ -188,6 +207,8 @@ end
   [glossary_file, extra_file].select { |f| File.exist?(f) }.each do |f|
     Array(YAML.safe_load_file(f)['terms']).each { |term| terms[term['en']] << term[lang] }
   end
+  # Redmine's strings with parentheses, which translations quote as they are.
+  ui_strings = terms.values.flatten.compact.select { |string| string.match?(/[()（）]/) }.uniq.sort_by { |string| -string.size }
   pages_file = File.join(ROOT, 'glossary', "#{lang}.pages.yml")
   titles = File.exist?(pages_file) ? YAML.safe_load_file(pages_file)['pages'] || {} : {}
   titles.each_key { |topic| problems << "glossary/#{lang}.pages.yml: no topic #{topic}" unless File.exist?(File.join(ROOT, 'en', "#{topic}.md")) }
@@ -214,6 +235,9 @@ end
       problems << "#{lang}/#{file}: headings differ from the English page (#{levels.call(english).size} in English, #{levels.call(translation).size} here)"
     end
     problems << "#{lang}/#{file}: anchor tag; keep the headings one for one instead" if translation.match?(/<a\s+(id|name)=/)
+    if lang == 'ja'
+      parenthesis_problems(translation, ui_strings).each { |problem| problems << "#{lang}/#{file}: #{problem}" }
+    end
     english.scan(/\*\*([^*\n]+)\*\*/).flatten.uniq.each do |term|
       expected = terms[term.strip]
       # Marked as an interface name: 「適用」 or **適用**.
