@@ -54,7 +54,7 @@ pages:
   admin/ldap: { ja: LDAP認証, source: label_ldap_authentication }
   admin/repositories: { ja: リポジトリ, source: label_repository_plural }
   admin/receiving-emails: { ja: 受信メール, source: label_incoming_emails }
-  admin/reminder-emails: { ja: リマインダーメールの送信, note: No Redmine string; the rake task redmine:send_reminders }
+  admin/reminder-emails: { ja: リマインダーメールの送信, note: "No Redmine string; the rake task redmine:send_reminders" }
   admin/rake: { ja: Rake タスク, note: Established term }
   # Installation guide
   install/install: { ja: インストール, note: Wording rule }

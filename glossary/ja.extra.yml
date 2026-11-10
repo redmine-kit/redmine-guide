@@ -131,8 +131,8 @@ terms:
     ja: セルを結合する
     note: Microsoft terminology (Office Merge Cells → セルの結合).
   - en: changeset
-    ja: チェンジセット
-    note: "A repository commit (Redmine's Changeset model), as the guide's other pages name it; the locale's label_changeset_plural (更新履歴) is the name of a screen, not of the object."
+    ja: リビジョン
+    note: "One commit, as Redmine 7.0.3's screens name it (label_revision_id 「リビジョン %{value}」, label_associated_revisions). The kind or the list of them is label_changeset_plural 「更新履歴」 (search, activity, permission_view_changesets); fetching them is button_fetch_changesets 「コミットを取得」."
   - en: diff
     ja: diff
     note: "The Rouge language name for code highlighting (``` diff), kept as written; the screen's label for a diff is label_diff (差分)."
