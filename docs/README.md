@@ -27,7 +27,7 @@ Redmine Help reads this guide from the gem `redmine-guide` or from a checkout ([
 
 ## Website
 
-The website (https://redmine-kit.github.io/redmine-guide/) shows the guide in English and in Japanese. The Docs workflow builds it with [docs-skeleton](https://github.com/redmine-kit/docs-skeleton): before the build, `tools/site.rb` adds to `docs/` the guide's pages, the images they show, the sidebar (the order of `index.yml`, the Japanese titles of `glossary/ja.pages.yml`) and the top pages, and this page becomes "Overview" under "About this project". Each page ends with its source, the copyright, what this project changed and the license of the changes ([License](#license)). A page that is not translated yet is shown in English on the Japanese site, with the note 「言語: English」, as Redmine Help shows it.
+The website (https://redmine-kit.github.io/redmine-guide/) shows the guide in English and in Japanese. The Docs workflow builds it with [docs-skeleton](https://github.com/redmine-kit/docs-skeleton): before the build, `tools/site.rb` adds to `docs/` the guide's pages, the images they show, the sidebar (the order of `index.yml`, the Japanese titles of `glossary/ja.pages.yml`) and the top pages, and this page becomes "Overview" under "About this project". Each page ends with its original on redmine.org and the copyright, and what this project added with its license ([License](#license)). A page that is not translated yet is shown in English on the Japanese site, with the note 「言語: English」, as Redmine Help shows it.
 
 To build the site locally, copy `docs/` into docs-skeleton as its README describes, then add the guide:
 

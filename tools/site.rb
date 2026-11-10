@@ -13,8 +13,9 @@
 # - Headings get Redmine's anchors (links between pages use them), in lower
 #   case as the site's links are (VitePress slugifies a link's anchor); a
 #   translation's headings get the English page's anchors, one for one.
-# - Each page ends with its source on redmine.org, the copyright, what this
-#   project changed and the license of the changes (README.md, "License").
+# - Each page ends with its original on redmine.org and the copyright, and
+#   what this project added (translation, updates, screenshots) with its
+#   license (README.md, "License").
 # - The images the pages show, in public/images/.
 # - The top pages list the guide's sections (index.yml); docs/README.md
 #   becomes about.md.
@@ -119,37 +120,20 @@ def h1(body)
   body[/^# +(.+)$/, 1].to_s.strip
 end
 
-# The source, the copyright, the license and the changes, at the end of a page.
+# The original page and its copyright, and what this project added with its
+# license (README.md, "License"), at the end of a page.
 def attribution(lang, page, translated, screenshots)
-  source = "[#{page[:source]}](#{page[:source_url]})"
-  kit = "[Redmine Kit](#{ORG_URL[lang]})"
-  license = "[CC BY-SA 4.0](#{LICENSE_URL[lang]})"
-  updated = page[:updated_for]
+  original = "[redmine.org](#{page[:source_url]}) #{COPYRIGHT}"
+  ours = "[Redmine Kit](#{ORG_URL[lang]})、[CC BY-SA 4.0](#{LICENSE_URL[lang]})"
   lines =
     if lang == 'en'
-      changes = ['converted it to Markdown']
-      changes << "updated it for Redmine #{updated}" if updated
-      changes << (updated ? 'retook its screenshots' : "retook its screenshots in Redmine #{REDMINE}") if screenshots
-      ours = [('updates' if updated), ('screenshots' if screenshots)].compact
-      ["Source: #{source} on redmine.org, #{COPYRIGHT}, no license stated ([License](../about.md#license)). " \
-       "#{kit}, an unofficial project for Redmine, #{sentence(changes)}." +
-       (ours.empty? ? '' : " #{sentence(ours).capitalize}: #{license}.")]
+      added = [('Updates' if page[:updated_for]), ('screenshots' if screenshots)].compact
+      ["Original: #{original}", *("#{added.join(' and ')}: #{ours.sub('、', ', ')}" if added.any?)]
     else
-      changes = ['Markdown に変換し']
-      changes << "Redmine #{updated} に合わせて更新し" if updated
-      changes << (updated ? 'スクリーンショットを撮り直し' : "Redmine #{REDMINE} でスクリーンショットを撮り直し") if screenshots
-      changes << '日本語に翻訳し' if translated
-      ours = [('翻訳' if translated), ('更新' if updated), ('スクリーンショット' if screenshots)].compact
-      note = translated ? [] : ['言語: English']
-      note + ["原文: redmine.org の #{source}、#{COPYRIGHT}、ライセンスの表示なし ([ライセンス](../about.md#license))。" \
-              "Redmine の非公式のプロジェクト #{kit} が、#{changes.join('、')}ました。" +
-              (ours.empty? ? '' : "#{ours.join('、')}: #{license}")]
+      added = [('翻訳' if translated), ('更新' if page[:updated_for]), ('スクリーンショット' if screenshots)].compact
+      [*('言語: English' unless translated), "原文: #{original}", *("#{added.join('、')}: #{ours}" if added.any?)]
     end
-  ['<div data-pagefind-ignore>', '', '---', '', *lines.flat_map { |line| ["<small>#{line}</small>", ''] }, '</div>'].join("\n")
-end
-
-def sentence(items)
-  items.size > 1 ? "#{items[0...-1].join(', ')} and #{items.last}" : items.first
+  ['<div data-pagefind-ignore>', '', '---', '', "<small>#{lines.join('<br>')}</small>", '', '</div>'].join("\n")
 end
 
 index = read_yaml('index.yml')

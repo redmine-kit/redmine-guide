@@ -33,7 +33,7 @@ Redmine Help は、このガイドを gem の `redmine-guide` か、チェック
 
 ## Web サイト
 
-Web サイト (https://redmine-kit.github.io/redmine-guide/ja/) は、ガイドを英語と日本語で表示します。Docs のワークフローが [docs-skeleton](https://github.com/redmine-kit/docs-skeleton) でビルドします。ビルドの前に `tools/site.rb` が、ガイドのページ、ページが表示する画像、サイドバー (`index.yml` の順、`glossary/ja.pages.yml` の日本語のタイトル)、トップページを `docs/` に追加し、このページは「このプロジェクトについて」の「概要」になります。各ページの末尾には、出典、著作権、このプロジェクトによる変更、変更のライセンスを表示します ([ライセンス](#license))。まだ翻訳していないページは、日本語のサイトでは英語で表示し、Redmine Help と同じく「言語: English」と添えます。
+Web サイト (https://redmine-kit.github.io/redmine-guide/ja/) は、ガイドを英語と日本語で表示します。Docs のワークフローが [docs-skeleton](https://github.com/redmine-kit/docs-skeleton) でビルドします。ビルドの前に `tools/site.rb` が、ガイドのページ、ページが表示する画像、サイドバー (`index.yml` の順、`glossary/ja.pages.yml` の日本語のタイトル)、トップページを `docs/` に追加し、このページは「このプロジェクトについて」の「概要」になります。各ページの末尾には、redmine.org の原文と著作権、このプロジェクトが加えたものとそのライセンスを表示します ([ライセンス](#license))。まだ翻訳していないページは、日本語のサイトでは英語で表示し、Redmine Help と同じく「言語: English」と添えます。
 
 サイトをローカルでビルドするには、docs-skeleton の README のとおりに `docs/` をコピーしてから、ガイドを追加します。
 
