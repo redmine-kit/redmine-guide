@@ -3,6 +3,7 @@ source: RedmineUpgrade
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineUpgrade
 source_version: 84
 source_updated_on: '2022-12-24T07:36:25Z'
+updated_for: 7.0.3
 ---
 
 # Upgrading
@@ -28,7 +29,7 @@ Now it’s time to perform the actual upgrade. This process is different dependi
 1\. [Download](download.md) the release in either tar.gz or zip format and uncompress the new program archive in a new directory.
 
 Make sure the newly extracted and copied files and directories have the correct owner and group set, so that the user/group running your application server can actually access the files.\
-Also, remember to add write permissions to the `files`, `log` and `tmp` directory.
+Also, remember to add write permissions to the `files`, `log`, `tmp` and `public/assets` directories.
 
 2\. Copy your database settings-file `config/database.yml` into the new `config` directory. If you’re running Redmine \>= 1.4 with mysql and ruby1.9, change the database adapter to \`mysql2\`.
 
@@ -62,7 +63,7 @@ bundle exec rake generate_secret_token
 Alternatively, you can store this secret in config/secrets.yml:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
-8\. Check for any themes that you may have installed in the `public/themes` directory. You can copy them over but checking for updated version is ideal.
+8\. Check for any themes that you may have installed in the `themes` directory. You can copy them over but checking for updated version is ideal.
 
 VERY IMPORTANT: do NOT overwrite `config/settings.yml` with the old one.
 

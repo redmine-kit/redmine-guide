@@ -1,0 +1,15 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 compiles the assets into public/assets when it starts in production, so public/assets must be writable too.
+    source: config/environments/production.rb (config.assets.redmine_detect_update), config/initializers/30-redmine.rb, doc/INSTALL (step 8)
+    replace: |-
+      Also, remember to add write permissions to the `files`, `log` and `tmp` directory.
+    with: |-
+      Also, remember to add write permissions to the `files`, `log`, `tmp` and `public/assets` directories.
+  - why: Redmine 7.0.3 looks for themes in the themes directory, not in public/themes.
+    source: lib/redmine/themes.rb (scan_themes), themes/README, doc/UPGRADING (step 4)
+    replace: |-
+      8\. Check for any themes that you may have installed in the `public/themes` directory. You can copy them over but checking for updated version is ideal.
+    with: |-
+      8\. Check for any themes that you may have installed in the `themes` directory. You can copy them over but checking for updated version is ideal.

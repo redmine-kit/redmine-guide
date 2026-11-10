@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 stops at startup with the async_smtp delivery method (removed in Redmine 4.0).
+    source: lib/redmine/configuration.rb (load)
+    replace: |-
+      In case you are using `:smtp` or `:async_smtp` methods, try `smtp_settings` instead.
+    with: |-
+      In case you are using `:smtp` method, try `smtp_settings` instead.

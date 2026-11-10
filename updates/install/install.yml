@@ -1,0 +1,83 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The note markers in the table point to the wrong notes; the note on Ruby 4.0 is 2 and the note on MySQL is 3.
+    source: the notes under the table on this page
+    replace: |-
+      <td>trunk</td>
+      <td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+      <td>Rails 8.1</td>
+      <td>14</td>
+      <td>8.0 - 8.4<sup>2</sup></td>
+    with: |-
+      <td>trunk</td>
+      <td>Ruby 3.2, 3.3, 3.4, 4.0<sup>2</sup></td>
+      <td>Rails 8.1</td>
+      <td>14</td>
+      <td>8.0 - 8.4<sup>3</sup></td>
+  - why: The note markers in the table point to the wrong notes; the note on Ruby 4.0 is 2 and the note on MySQL is 3.
+    source: the notes under the table on this page
+    replace: |-
+      <td>7.0</td>
+      <td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+      <td>Rails 8.1</td>
+      <td>14</td>
+      <td>8.0 - 8.4<sup>2</sup></td>
+    with: |-
+      <td>7.0</td>
+      <td>Ruby 3.2, 3.3, 3.4, 4.0<sup>2</sup></td>
+      <td>Rails 8.1</td>
+      <td>14</td>
+      <td>8.0 - 8.4<sup>3</sup></td>
+  - why: The note marker in the table points to the wrong note; the note on MySQL is 3.
+    source: the notes under the table on this page
+    replace: |-
+      <td>Ruby 3.2, 3.3, 3.4</td>
+      <td>Rails 7.2</td>
+      <td>14</td>
+      <td>8.0 - 8.4<sup>2</sup></td>
+    with: |-
+      <td>Ruby 3.2, 3.3, 3.4</td>
+      <td>Rails 7.2</td>
+      <td>14</td>
+      <td>8.0 - 8.4<sup>3</sup></td>
+  - why: The note marker in the table points to the wrong note; the note on MySQL is 3.
+    source: the notes under the table on this page
+    replace: |-
+      <td>8.0 - 8.1<sup>2</sup></td>
+    with: |-
+      <td>8.0 - 8.1<sup>3</sup></td>
+  - why: The database schema is created in Step 7, not Step 6 (Step 6 compiles the assets).
+    source: the steps on this page
+    replace: |-
+      A database file will be created during [Step 6](install.md#Step-6-Database-schema-objects-creation).
+    with: |-
+      A database file will be created during [Step 7](install.md#Step-7-Database-schema-objects-creation).
+  - why: Step 4 saves the groups to exclude with bundle config, so re-running bundle install is enough.
+    source: doc/INSTALL (step 4)
+    replace: |-
+      Don’t forget to re-run `bundle install --without development test ...` after adding or removing adapters in the `config/database.yml` file!
+    with: |-
+      Don’t forget to re-run `bundle install` after adding or removing adapters in the `config/database.yml` file!
+  - why: The permissions table created by the first migration is dropped by a later one; only the administrator account remains.
+    source: db/migrate/001_setup.rb, db/migrate/064_drop_permissions.rb, doc/INSTALL (step 7)
+    replace: |-
+      It will create tables by running all migrations one by one then create the set of the permissions and the application administrator account, named `admin`.
+    with: |-
+      It will create tables by running all migrations one by one then create the application administrator account, named `admin`.
+  - why: Puma is only in the test group of Redmine 7.0.3's Gemfile, so it is not installed when the development and test groups are excluded.
+    source: Gemfile (group :test, gem 'puma')
+    replace: |-
+      Test the installation by running Puma web server:
+    with: |-
+      Test the installation by running Puma web server. Puma is not installed when the `development` and `test` groups are excluded, so add it to `Gemfile.local` first, as in the example in Step 4:
+  - why: Redmine 7.0.3 uses the mysql2 gem (or trilogy), not the mysql gem.
+    source: Gemfile (gem 'mysql2', '~> 0.5.0')
+    replace: |-
+      You may need to manually install the mysql gem using the following command:
+
+          gem install mysql
+    with: |-
+      You may need to manually install the mysql2 gem using the following command:
+
+          gem install mysql2

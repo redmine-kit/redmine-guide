@@ -3,6 +3,7 @@ source: EmailConfiguration
 source_url: https://www.redmine.org/projects/redmine/wiki/EmailConfiguration
 source_version: 58
 source_updated_on: '2024-10-21T11:54:17Z'
+updated_for: 7.0.3
 ---
 
 # Email Configuration
@@ -207,7 +208,7 @@ default:
     arguments: "-i"
 ```
 
-The example above employs `:sendmail` method, which employs `sendmail_settings`. In case you are using `:smtp` or `:async_smtp` methods, try `smtp_settings` instead.
+The example above employs `:sendmail` method, which employs `sendmail_settings`. In case you are using `:smtp` method, try `smtp_settings` instead.
 
 ### Error: “Timeout:Error” due to SSL SMTP server connection
 

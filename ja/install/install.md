@@ -35,19 +35,19 @@ Redmine の各バージョンに必要な Ruby のバージョンと、対応す
 </tr>
 <tr>
 <td>trunk</td>
-<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>2</sup></td>
 <td>Rails 8.1</td>
 <td>14</td>
-<td>8.0 - 8.4<sup>2</sup></td>
+<td>8.0 - 8.4<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
 <tr>
 <td>7.0</td>
-<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>2</sup></td>
 <td>Rails 8.1</td>
 <td>14</td>
-<td>8.0 - 8.4<sup>2</sup></td>
+<td>8.0 - 8.4<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
@@ -56,7 +56,7 @@ Redmine の各バージョンに必要な Ruby のバージョンと、対応す
 <td>Ruby 3.2, 3.3, 3.4</td>
 <td>Rails 7.2</td>
 <td>14</td>
-<td>8.0 - 8.4<sup>2</sup></td>
+<td>8.0 - 8.4<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
@@ -65,7 +65,7 @@ Redmine の各バージョンに必要な Ruby のバージョンと、対応す
 <td>Ruby 3.1, 3.2, 3.3</td>
 <td>Rails 7.2</td>
 <td>14</td>
-<td>8.0 - 8.1<sup>2</sup></td>
+<td>8.0 - 8.1<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
@@ -126,7 +126,7 @@ CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine;
 
 #### SQLite
 
-この手順は不要です。データベースのファイルは[手順 6](install.md#Step-6-Database-schema-objects-creation) で作成されます。
+この手順は不要です。データベースのファイルは[手順 7](install.md#Step-7-Database-schema-objects-creation) で作成されます。
 
 #### SQL Server
 
@@ -238,7 +238,7 @@ Redmine は gem の依存関係を [Bundler](http://gembundler.com/) で管理�
 
 Redmine は `config/database.yml` を読み、データベースの設定に必要なアダプターの gem を自動でインストールします(たとえば `mysql2` アダプターの接続だけを設定した場合は、`mysql2` の gem だけがインストールされます)。
 
-`config/database.yml` でアダプターを追加・削除したら、`bundle install --without development test ...` をもう一度実行してください。
+`config/database.yml` でアダプターを追加・削除したら、`bundle install` をもう一度実行してください。
 
 ##### キューのアダプター
 
@@ -288,7 +288,7 @@ http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
     set RAILS_ENV=production
     bundle exec rake db:migrate
 
-すべてのマイグレーションを順に実行してテーブルを作成し、権限の一式と、`admin` という名前のアプリケーションの管理者アカウントを作成します。
+すべてのマイグレーションを順に実行してテーブルを作成し、`admin` という名前のアプリケーションの管理者アカウントを作成します。
 
 ### 手順 8 - データベースのデフォルトデータ
 
@@ -333,7 +333,7 @@ Windows:
 
 ### 手順 10 - インストールの確認
 
-Web サーバーの Puma を起動して、インストールを確認します。
+Web サーバーの Puma を起動して、インストールを確認します。`development` と `test` のグループを除外すると Puma はインストールされないため、先に手順 4 の例のように `Gemfile.local` に追加してください。
 
     bundle exec rails server -e production
 
@@ -434,9 +434,9 @@ Ruby MRI のビルド済みのインストーラーが http://rubyinstaller.org 
 
 <u>MySQL の gem のインストールの問題:</u>
 
-次のコマンドで mysql の gem を手動でインストールする必要がある場合があります。
+次のコマンドで mysql2 の gem を手動でインストールする必要がある場合があります。
 
-    gem install mysql
+    gem install mysql2
 
 また、*libmysql.dll* を ruby/bin ディレクトリにコピーする必要がある場合もあります。\
 どの libmysql.dll でもよいわけではありません。次のものは動くようです: http://instantrails.rubyforge.org/svn/trunk/InstantRails-win/InstantRails/mysql/bin/libmySQL.dll

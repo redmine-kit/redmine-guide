@@ -3,6 +3,7 @@ source: RedmineInstall
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineInstall
 source_version: 356
 source_updated_on: '2026-07-07T21:44:14Z'
+updated_for: 7.0.3
 ---
 
 # Installing Redmine
@@ -37,19 +38,19 @@ The required Ruby versions and supported database back-ends for a given Redmine 
 </tr>
 <tr>
 <td>trunk</td>
-<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>2</sup></td>
 <td>Rails 8.1</td>
 <td>14</td>
-<td>8.0 - 8.4<sup>2</sup></td>
+<td>8.0 - 8.4<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
 <tr>
 <td>7.0</td>
-<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>2</sup></td>
 <td>Rails 8.1</td>
 <td>14</td>
-<td>8.0 - 8.4<sup>2</sup></td>
+<td>8.0 - 8.4<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
@@ -58,7 +59,7 @@ The required Ruby versions and supported database back-ends for a given Redmine 
 <td>Ruby 3.2, 3.3, 3.4</td>
 <td>Rails 7.2</td>
 <td>14</td>
-<td>8.0 - 8.4<sup>2</sup></td>
+<td>8.0 - 8.4<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
@@ -67,7 +68,7 @@ The required Ruby versions and supported database back-ends for a given Redmine 
 <td>Ruby 3.1, 3.2, 3.3</td>
 <td>Rails 7.2</td>
 <td>14</td>
-<td>8.0 - 8.1<sup>2</sup></td>
+<td>8.0 - 8.1<sup>3</sup></td>
 <td>&gt;2012</td>
 <td>3</td>
 </tr>
@@ -128,7 +129,7 @@ CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine;
 
 #### SQLite
 
-Skip this step. A database file will be created during [Step 6](install.md#Step-6-Database-schema-objects-creation).
+Skip this step. A database file will be created during [Step 7](install.md#Step-7-Database-schema-objects-creation).
 
 #### SQL Server
 
@@ -240,7 +241,7 @@ Redmine uses [Bundler](http://gembundler.com/) to manage gems dependencies. You 
 
 Redmine automatically installs the adapter gems required by your database configuration by reading it from the `config/database.yml` file (eg. if you configured only a connection using the `mysql2` adapter, then only the `mysql2` gem will be installed).
 
-Don’t forget to re-run `bundle install --without development test ...` after adding or removing adapters in the `config/database.yml` file!
+Don’t forget to re-run `bundle install` after adding or removing adapters in the `config/database.yml` file!
 
 ##### Queues adapter
 
@@ -290,7 +291,7 @@ Create the database structure, by running the following command under the applic
     set RAILS_ENV=production
     bundle exec rake db:migrate
 
-It will create tables by running all migrations one by one then create the set of the permissions and the application administrator account, named `admin`.
+It will create tables by running all migrations one by one then create the application administrator account, named `admin`.
 
 ### Step 8 - Database default data set
 
@@ -335,7 +336,7 @@ Note: If you have files in these directories (e.g. restore files from backup), m
 
 ### Step 10 - Test the installation
 
-Test the installation by running Puma web server:
+Test the installation by running Puma web server. Puma is not installed when the `development` and `test` groups are excluded, so add it to `Gemfile.local` first, as in the example in Step 4:
 
     bundle exec rails server -e production
 
@@ -436,9 +437,9 @@ have to be turned into 2 subsequent commands:
 
 <u>MySQL gem installation issue:</u>
 
-You may need to manually install the mysql gem using the following command:
+You may need to manually install the mysql2 gem using the following command:
 
-    gem install mysql
+    gem install mysql2
 
 And in some case it is required to copy the *libmysql.dll* file in your ruby/bin directory.\
 Not all libmysql.dll are ok this seem to works http://instantrails.rubyforge.org/svn/trunk/InstantRails-win/InstantRails/mysql/bin/libmySQL.dll.

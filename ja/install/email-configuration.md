@@ -205,7 +205,7 @@ default:
     arguments: "-i"
 ```
 
-上の例は `:sendmail` を使っているため、`sendmail_settings` に書いています。`:smtp` や `:async_smtp` を使っている場合は、`smtp_settings` を試してください。
+上の例は `:sendmail` を使っているため、`sendmail_settings` に書いています。`:smtp` を使っている場合は、`smtp_settings` を試してください。
 
 ### SSL の SMTP サーバーへの接続による「Timeout:Error」
 

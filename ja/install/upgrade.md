@@ -26,7 +26,7 @@ Redmine のバックアップの方法は、[Redmine のバックアップと復
 1\. リリースを tar.gz か zip の形式で[ダウンロード](download.md)し、新しいプログラムのアーカイブを新しいディレクトリに展開します。
 
 展開・コピーしたファイルとディレクトリの所有者とグループを正しく設定し、アプリケーションサーバーを実行するユーザー/グループがファイルにアクセスできるようにしてください。\
-また、`files`、`log`、`tmp` ディレクトリに書き込み権限を付けるのを忘れないでください。
+また、`files`、`log`、`tmp`、`public/assets` ディレクトリに書き込み権限を付けるのを忘れないでください。
 
 2\. データベースの設定ファイル `config/database.yml` を新しい `config` ディレクトリにコピーします。Redmine 1.4 以降を mysql と ruby1.9 で動かしている場合は、データベースのアダプターを `mysql2` に変えます。
 
@@ -60,7 +60,7 @@ bundle exec rake generate_secret_token
 代わりに、この秘密鍵を config/secrets.yml に保存することもできます:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
-8\. `public/themes` ディレクトリにインストールしたテーマがあるか確認します。そのままコピーしてもかまいませんが、新しいバージョンがないか確認するのが理想です。
+8\. `themes` ディレクトリにインストールしたテーマがあるか確認します。そのままコピーしてもかまいませんが、新しいバージョンがないか確認するのが理想です。
 
 とても重要: `config/settings.yml` を古いファイルで上書きしないでください。
 
