@@ -14,7 +14,7 @@ You can see the following three kinds of information on the “Administration”
 - The table shows if some important configurations are done correctly
 - Environment information of the Redmine server
 
-![](../../images/RedmineAdminInformation/admin-infomation@2x.png)
+![](../../images/en/RedmineAdminInformation/admin-infomation@2x.png)
 
 ## Redmine version
 

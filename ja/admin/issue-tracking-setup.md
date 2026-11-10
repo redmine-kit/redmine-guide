@@ -17,7 +17,7 @@ translated_from_version: 41
 - 別のワークフロー
 - このトラッカーで使う標準フィールドとカスタムフィールド
 
-![](../../images/RedmineIssueTrackingSetup/tracker_config@2x.png)
+![](../../images/ja/RedmineIssueTrackingSetup/tracker_config@2x.png)
 
 新しいトラッカーを作成したら、正しく使えるように、そのワークフロー(下記を参照)を設定する必要があります。(手間を省くために、新しいトラッカーを作成するときに、既存のトラッカーのワークフローをコピーできます。「新しいトラッカー」の画面で、「ワークフローをここからコピー」のドロップダウンリストからトラッカーを選択します。)
 
@@ -47,7 +47,7 @@ translated_from_version: 41
 
 注: ユーザーがチケットのステータスを変更するには、「チケットの編集」か「自分が追加したチケットの編集」の権限が必要です (後者は自分が作成したチケットだけ) ([ロールと権限](roles.md)を参照)。
 
-![](../../images/RedmineIssueTrackingSetup/workflow_example@2x.png)
+![](../../images/ja/RedmineIssueTrackingSetup/workflow_example@2x.png)
 
 上の例では、「開発者」のロールは、ステータスが「新規」のバグを「Assigned」か「解決」に変更できます。「Assigned」のバグは「解決」に変更できます。そのほかのバグのステータスは、「開発者」は変更できません。
 
@@ -55,4 +55,4 @@ translated_from_version: 41
 
 このタブでは、ステータスごとに、フィールドに特別な権限を設定できます。「読み取り専用」か「必須」を選択するか、空のままにしてデフォルトの動作にします。「読み取り専用」にしたフィールドは、選択したロールの編集の画面に表示されず、変更できません。「必須」にしたフィールドは、選択したロールがチケットを編集するときに空にできません。
 
-![](../../images/RedmineIssueTrackingSetup/workflow_fields_permissions_closeup.png)
+![](../../images/ja/RedmineIssueTrackingSetup/workflow_fields_permissions_closeup@2x.png)

@@ -42,7 +42,7 @@ These relations can be set by assigning a parent page to a to-be child-page.
 
 Each wiki page has a toolbar located in the upper right corner with buttons for actions to perform on the page: **Edit** and **Watch** are shown as buttons, and the other actions (**History**, **Lock** or **Unlock**, **Rename**, **Delete** and **New wiki page**) are in the **Actions** menu. Depending on the [Roles and permissions](../admin/roles.md) of the site your user might not have permission to perform some of the actions, in this case the respective button will not be displayed at all.
 
-![](../../images/RedmineWikis/wiki-toolbar.png)
+![](../../images/en/RedmineWikis/wiki-toolbar@2x.png)
 
 The actions are explained below.
 
@@ -78,11 +78,11 @@ Click **Delete** to delete the wiki page. A confirmation is needed to perform th
 
 Redmine keeps a record of every change made to a wiki page. You can view the list of these changes by clicking on **History**.
 
-![](../../images/RedmineWikis/history.png)
+![](../../images/en/RedmineWikis/history@2x.png)
 
 To view a specific version of the page click on its number.
 
-![](../../images/RedmineWikis/page_version.png)
+![](../../images/en/RedmineWikis/page_version@2x.png)
 
 What is displayed can be misleading: `Revision 31/41 (diff)` means that you are viewing version 31 out of 41, it does not mean that the diff link will show you the differences between 31 and 41. It does show you the differences between version 30 and 31. If you’re looking at version 30, you’ll see Revision 30/41, and the diff will show you the changes in version 30.
 

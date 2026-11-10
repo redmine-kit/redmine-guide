@@ -22,6 +22,6 @@ The version overview provides a detailed view of the current, overall state of a
 
 Both the “grouped by criteria” and the statistics itself (the number of issues) provides drill-down links to the issue-list which preloads the specific filters thus providing quick links to issues of a specific author, category, etc.
 
-![](../../images/RedmineVersion/version.jpg)
+![](../../images/en/RedmineVersion/version@2x.png)
 
 The version-view can be reached from the [roadmap](roadmap.md) by clicking on a specific version.

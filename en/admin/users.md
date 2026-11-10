@@ -20,7 +20,7 @@ The users list shows only the activated users by default. To view all users (act
 - **Created:** Indicates the date when this user account has been created.
 - **Last sign in:** Indicates the date when this user logged into the application the last time.
 
-![](../../images/RedmineUsers/users-list@2x.png)
+![](../../images/en/RedmineUsers/users-list@2x.png)
 
 ### User status
 

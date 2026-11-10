@@ -18,7 +18,7 @@ translated_from_version: 16
 名、姓、メールアドレス、表示する言語など、自分のユーザーの情報を編集できます。\
 バージョン 4.2.0 から、システムの設定で有効になっていれば(選択肢: 「無効」/「任意」/「システム管理者のみ必須」/「必須」)、二要素認証を有効にして、アクセスのセキュリティを高められます。
 
-![](../../images/RedmineAccounts/myaccount-info.png)
+![](../../images/ja/RedmineAccounts/myaccount-info@2x.png)
 
 ### メール通知
 
@@ -63,15 +63,15 @@ translated_from_version: 16
 バージョン 4.2.0 から、上で選んだ選択肢にかかわらず、自分のプロジェクトで優先度が高い (またはそれより高い) すべてのチケットについても通知を受け取るかどうかを選べます。\
 自分自身による変更の通知を受け取らないように、チェックを入れることもできます。
 
-![](../../images/RedmineAccounts/myaccount-notification.png)
+![](../../images/ja/RedmineAccounts/myaccount-notification@2x.png)
 
 ### メールアドレス
 
-通知の送信先として、ほかのメールアドレスを登録できます。登録するには、リンク ![](../../images/RedmineAccounts/emails.png) をクリックします。
+通知の送信先として、ほかのメールアドレスを登録できます。登録するには、リンク ![](../../images/ja/RedmineAccounts/emails@2x.png) をクリックします。
 
 表示されるウィンドウで、ほかのメールアドレスを入力したり削除したり、通知を無効または有効にしたりできます。
 
-![](../../images/RedmineAccounts/myaccount-emails.png)
+![](../../images/ja/RedmineAccounts/myaccount-emails@2x.png)
 
 ### 設定
 
@@ -86,11 +86,11 @@ Redmine の表示についての個人の設定です。
 - **チケットの履歴のデフォルトタブ:** チケットの詳しい内容はタブに分かれています。チケットを開いたときにどのタブを表示するかを指定できます。デフォルトは「コメント」です。
 - **ツールバーのコードハイライトボタンで使用する言語**: どのプログラミング言語を認識して、その言語として解析するかを指定します。デフォルト: ` c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml `
 
-![](../../images/RedmineAccounts/myaccount-preferences.png)
+![](../../images/ja/RedmineAccounts/myaccount-preferences@2x.png)
 
 ### パスワード
 
-パスワードを変更するには、「個人設定」のページで ![](../../images/RedmineAccounts/myaccount-changepw.png) をクリックし、現在のパスワードと、新しいパスワードを 2 回入力します。パスワードは 8 文字以上にする必要があります(最低の文字数は管理者が変更できます。[「設定」の「パスワードの最低必要文字数」](../admin/settings.md#Minimum-password-length)を参照してください)。
+パスワードを変更するには、「個人設定」のページで ![](../../images/ja/RedmineAccounts/myaccount-changepw@2x.png) をクリックし、現在のパスワードと、新しいパスワードを 2 回入力します。パスワードは 8 文字以上にする必要があります(最低の文字数は管理者が変更できます。[「設定」の「パスワードの最低必要文字数」](../admin/settings.md#Minimum-password-length)を参照してください)。
 
 アカウントが外部の認証方式(LDAP)を使っている場合は、Redmine でパスワードを変更できません。
 
@@ -102,7 +102,7 @@ Redmine の表示についての個人の設定です。
 
 この機能は、管理者が無効にできます([「設定」の「パスワード再設定機能の使用を許可」](../admin/settings.md#Lost-password)を参照)。また、アカウントが外部の認証方式(LDAP)を使っている場合は、この手順は使えません。
 
-![](../../images/RedmineAccounts/lost-password@2x.png)
+![](../../images/ja/RedmineAccounts/lost-password@2x.png)
 
 ## アカウント登録
 
@@ -112,4 +112,4 @@ Redmine の表示についての個人の設定です。
 
 この機能は、管理者が無効にできます。
 
-![](../../images/RedmineAccounts/register@2x.png)
+![](../../images/ja/RedmineAccounts/register@2x.png)

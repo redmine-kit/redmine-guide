@@ -11,7 +11,7 @@ The Project overview will give you an overview of the whole project. On left upp
 
 TODO: Write about Issue trackers and configuration….
 
-![](../../images/RedmineProjectOverview/redmine-project-overview.png)
+![](../../images/en/RedmineProjectOverview/redmine-project-overview@2x.png)
 
 On the upper right side you see [Sign in](login.md) and [Register](register.md). The [Sign in](login.md) link allows those who have an account for this project to login. The [Register](register.md) link allow unregistered users to register themselves, allowing them to be part of any projects contained within this installation of Redmine.
 

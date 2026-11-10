@@ -20,7 +20,7 @@ By default the list shows the Name, Identifier and Description columns. Other co
 - **Public:** If the icon ✓ is present the project is public and everyone can see this project and may do things that are allowed by the roles [Non member and Anonymous](roles.md#System-roles). Non-public projects can be viewed only by a user who was given access by an administrator of the project.
 - **Created:** Indicated the date when this project has been created.
 
-![](../../images/RedmineProjects/project_list.png)
+![](../../images/en/RedmineProjects/project_list@2x.png)
 
 ## Adding or editing a project
 
@@ -48,7 +48,7 @@ From the projects list, right-click the project you want to copy (or click the *
 
 You will get the new project form prefilled with the settings of the copied project (trackers, custom fields…). At the bottom of the form, you can choose what should be also copied to your new project:
 
-![](../../images/RedmineProjects/project_copy.png)
+![](../../images/en/RedmineProjects/project_copy@2x.png)
 
 ## Deleting a project
 

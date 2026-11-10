@@ -15,4 +15,4 @@ translated_from_version: 5
 
 「デフォルト値」にチェックを入れると、その値が該当する入力欄のデフォルト値になります。同じ種類(作業分類、文書カテゴリ、チケットの優先度)の値のどれもデフォルト値にしていないときは、入力欄で何も選択されていない状態になります。
 
-![](../../images/RedmineEnumerations/enumerations.png)
+![](../../images/ja/RedmineEnumerations/enumerations@2x.png)

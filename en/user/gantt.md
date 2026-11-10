@@ -9,4 +9,4 @@ source_updated_on: '2018-09-09T04:58:24Z'
 
 The gantt chart displays issues that have a start date and a due date or are assigned to a version with a date.
 
-![](../../images/RedmineGantt/gantt@2x.png)
+![](../../images/en/RedmineGantt/gantt@2x.png)

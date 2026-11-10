@@ -40,14 +40,14 @@ To add members to a group, do the following:
       - Check the roles
       - Click Add
 
-![](../../images/RedmineGroups/RedmineMemberToGroupNew.png)\
+![](../../images/en/RedmineGroups/RedmineMemberToGroupNew@2x.png)\
 Figure 1: Example Group Users tab
 
-![](../../images/RedmineGroups/RedmineMembersToGroup.png)\
+![](../../images/en/RedmineGroups/RedmineMembersToGroup@2x.png)\
 Figure 2: Adding Members to a Group
 
-![](../../images/RedmineGroups/RedmineGroupToProjectNew.png)\
+![](../../images/en/RedmineGroups/RedmineGroupToProjectNew@2x.png)\
 Figure 3: Example Group Project tab
 
-![](../../images/RedmineGroups/RedmineGroupToProjects.png)\
+![](../../images/en/RedmineGroups/RedmineGroupToProjects@2x.png)\
 Figure 4: Associating a group to a project (from the Group context)

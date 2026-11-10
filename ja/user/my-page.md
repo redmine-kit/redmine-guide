@@ -7,7 +7,7 @@ translated_from_version: 5
 
 「マイページ」には、プロジェクトについてのさまざまな情報をブロックとして表示できます。ブロックを追加、削除、並べ替えて、自分の「マイページ」を作れます。
 
-![](../../images/RedmineMyPage/my-page@2x.png)
+![](../../images/ja/RedmineMyPage/my-page@2x.png)
 
 ## ブロック
 

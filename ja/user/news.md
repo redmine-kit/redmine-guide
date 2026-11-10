@@ -13,4 +13,4 @@ translated_from_version: 15
 
 新しいニュースを作成する[権限](../admin/roles.md#Permissions)があれば、画面の右上に「ニュースを追加」のリンクが表示されます。これをクリックすると、ニュースの一覧の上に、ニュースを追加するフォームが開きます。このフォームで、ニュースの「タイトル」と「説明」を入力します。「サマリー」は省略できます。
 
-![](../../images/RedmineNews/news_list.png)
+![](../../images/ja/RedmineNews/news_list@2x.png)

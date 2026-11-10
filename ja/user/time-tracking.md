@@ -19,11 +19,11 @@ translated_from_version: 19
 
 チケットの詳細の画面で「時間を記録」をクリックすると、チケットに時間を記録できます。
 
-![](../../images/RedmineTimeTracking/log_time.png)
+![](../../images/ja/RedmineTimeTracking/log_time@2x.png)
 
 チケットを更新するときにも、時間を記録できます。
 
-![](../../images/RedmineTimeTracking/Update_LogTime.png)
+![](../../images/ja/RedmineTimeTracking/Update_LogTime@2x.png)
 
 ## プロジェクトに時間を記録する
 

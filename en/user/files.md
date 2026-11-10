@@ -14,7 +14,7 @@ Each project can have a **Files** module enabled/disabled via the settings menu.
 
 A sortable table shows the details of all the uploaded files. If a version if selected while uploading a file, that file will be shown below the version. Of note are the Checksum hash and D/L(Download Count).
 
-![](../../images/RedmineFiles/files@2x.png)
+![](../../images/en/RedmineFiles/files@2x.png)
 
 New files are added via the **New file** link in the upper right hand corner.
 
@@ -30,4 +30,4 @@ If a new file is added, the input form is as shown below. Select a version from 
 
 The optional description is shown as a tooltip on the file name in the files list.
 
-![](../../images/RedmineFiles/UploadFile.png)
+![](../../images/en/RedmineFiles/UploadFile@2x.png)

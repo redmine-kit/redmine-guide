@@ -15,4 +15,4 @@ Redmine displays two bar charts representing the number of *Changes* and the num
 - *Revisions* is a count of repository commits and is displayed in reddish/orange.
 - *Changes* is a count of the number of files that have changed overall and is displayed in blue.
 
-![](../../images/RedmineRepositoryStatistics/graphs.png)
+![](../../images/en/RedmineRepositoryStatistics/graphs@2x.png)

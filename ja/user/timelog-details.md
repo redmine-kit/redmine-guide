@@ -16,7 +16,7 @@ Redmine で作業時間を記録していくと、**作業時間の詳細**の�
 
 [作業時間のレポート](timelog-report.md)と同じ検索の画面を使います。
 
-![](../../images/RedmineTimelogDetails/SearchTimelog.png)
+![](../../images/ja/RedmineTimelogDetails/SearchTimelog@2x.png)
 
 ## 結果
 
@@ -35,7 +35,7 @@ Redmine で作業時間を記録していくと、**作業時間の詳細**の�
 
 ### HTML の出力
 
-![](../../images/RedmineTimelogDetails/TimeLogDetails.png)
+![](../../images/ja/RedmineTimelogDetails/TimeLogDetails@2x.png)
 
 ### CSV の出力
 

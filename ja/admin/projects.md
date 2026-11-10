@@ -17,7 +17,7 @@ translated_from_version: 29
 - **公開:** ✓ のアイコンがあるプロジェクトは公開プロジェクトです。だれでもこのプロジェクトを閲覧でき、[非メンバーと匿名ユーザー](roles.md#System-roles)のロールで許可されている操作ができます。公開していないプロジェクトは、プロジェクトの管理者がアクセスを許可したユーザーだけが閲覧できます。
 - **作成日:** このプロジェクトを作成した日付です。
 
-![](../../images/RedmineProjects/project_list.png)
+![](../../images/ja/RedmineProjects/project_list@2x.png)
 
 ## プロジェクトの追加と編集
 
@@ -45,7 +45,7 @@ translated_from_version: 29
 
 コピー元のプロジェクトの設定(トラッカー、カスタムフィールドなど)が入力された状態で、新しいプロジェクトのフォームが開きます。フォームの下で、新しいプロジェクトにほかに何をコピーするかを選択できます。
 
-![](../../images/RedmineProjects/project_copy.png)
+![](../../images/ja/RedmineProjects/project_copy@2x.png)
 
 ## プロジェクトの削除
 

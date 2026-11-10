@@ -21,7 +21,7 @@ Note that the timelog feature is available only when the project’s “Time tra
 
 Shares the same search interface with [RedmineTimelogDetails](timelog-details.md).
 
-![](../../images/RedmineTimelogReport/SearchTimelog.png)
+![](../../images/en/RedmineTimelogReport/SearchTimelog@2x.png)
 
 ## Results
 
@@ -33,7 +33,7 @@ For this example **Days** is set for the **Details** parameter.
 
 **Add** groupings to show the report; until anything is added this area will be blank. For this example first **Issue** was selected, then **Activity**. The list will always go back to blank after a selection. The drop down will disable once the maximum number of combinations are added, use the clear button to start over.
 
-![](../../images/RedmineTimelogReport/TimeLogReport.png)
+![](../../images/en/RedmineTimelogReport/TimeLogReport@2x.png)
 
 ### CSV output
 

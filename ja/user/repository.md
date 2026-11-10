@@ -14,4 +14,4 @@ translated_from_version: 4
 
 特定のリビジョンのリポジトリを閲覧するには、右上の欄にリビジョンの番号を入力して Enter キーを押します。
 
-![](../../images/RedmineRepository/repository.png)
+![](../../images/ja/RedmineRepository/repository@2x.png)

@@ -11,7 +11,7 @@ translated_from_version: 43
 
 この画面 (「プロジェクト」のタブ) では、選んだプロジェクトの基本の(ただし重要な)設定をします。
 
-![](../../images/RedmineProjectSettings/project-settings_information-tab.jpg)
+![](../../images/ja/RedmineProjectSettings/project-settings_information-tab@2x.png)
 
 ### 全般の設定
 

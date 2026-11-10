@@ -16,7 +16,7 @@ The roadmap provides a highly-configurable, version-based view on the issue trac
 
 If you select the Roadmap you will get an overview of the current state of your project, like the following:
 
-![](../../images/RedmineRoadmap/roadmap-default.jpg)
+![](../../images/en/RedmineRoadmap/roadmap-default@2x.png)
 
 The above mentioned view contains the following “blocks” of information for all (incomplete) versions:
 

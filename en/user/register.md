@@ -11,7 +11,7 @@ The Register page is used for self-registration of a new user. You can go to the
 
 A new user has to give the information about his ***Login***, ***Password***, ***First name***, ***Last name*** and ***Email*** address and which language the user would like to use to for the user interface.
 
-![](../../images/RedmineRegister/redmine-register.png)
+![](../../images/en/RedmineRegister/redmine-register@2x.png)
 
 ## Registration Process
 
@@ -27,7 +27,7 @@ Such method is often used to prevent email spamming.
 
 After providing the information required on the Registration page, the user must wait for the approval of an administrator. The administrator will enable the user account on “Administration” \> ["Users" page](../admin/users.md). When the user account is enabled, the user is allowed to login.
 
-![](../../images/RedmineRegister/activate-account@2x.png)
+![](../../images/en/RedmineRegister/activate-account@2x.png)
 
 ### Automatic Account Activation
 

@@ -44,7 +44,7 @@ It is possible to link issues based on various relations. Current relations are:
 - **copied from** - Links issues to identify whether it was copied, and from which issue it was copied from.
 - **copied to** - Reciprocal of *copied from*.
 
-![](../../images/RedmineIssues/redmine-related-issues.png)
+![](../../images/en/RedmineIssues/redmine-related-issues@2x.png)
 
 Administrators can define the [permissions](../admin/roles.md#Permissions) of users to add and edit such relations.
 
@@ -54,7 +54,7 @@ Display a list of all the users who are watching this issue. If the issue is upd
 
 If your role has the **Add watchers** permission, it is possible for you to add users to the watch list on this page. By clicking on the Add link, a dialog with a **Search for user:** field and a list of users appears; check the users to add to the watch list and click the **Add** button.
 
-![](../../images/RedmineIssues/redmine-watchers.png)
+![](../../images/en/RedmineIssues/redmine-watchers@2x.png)
 
 Administrators can define the [permissions](../admin/roles.md#Permissions) of users to add/delete watchers as well as to see the list of watchers.
 
@@ -62,11 +62,11 @@ Administrators can define the [permissions](../admin/roles.md#Permissions) of us
 
 If the administrator has defined [Referencing Issues Keywords](../admin/settings.md#Referencing-issues-in-commit-messages), a developer that uses such keyword(s) will see its commit message displayed on the issue page, in the **Associated revisions** tab of the issue history.
 
-![](../../images/RedmineIssues/redmine-associated-revision.png)
+![](../../images/en/RedmineIssues/redmine-associated-revision@2x.png)
 
 Revisions can also be associated to issues manually, from a changeset (revision) view in the Repository browser. The manual associations are reversible. They can be revoked by using the broken chain icon to the right of an added association, again in the changeset view.
 
-![](../../images/RedmineIssues/redmine_manual_revision_issue_association.png)
+![](../../images/en/RedmineIssues/redmine_manual_revision_issue_association@2x.png)
 
 ## Adding a new issue
 
@@ -79,7 +79,7 @@ When creating a new issue, one of the most important items is the [tracker field
 
 To edit the issue, Click *Edit* link (having a pencil icon) at the top or the bottom of the issue page:
 
-![](../../images/RedmineIssues/RedmineEditIssue_Update_Link.png)
+![](../../images/en/RedmineIssues/RedmineEditIssue_Update_Link@2x.png)
 
 Depending you your role permissions (see [roles and permissions](../admin/roles.md)), you will see a complete or a limited set of editable issue properties.
 
@@ -92,7 +92,7 @@ In order to edit an existing issue, your role has to have the [Issue Tracking > 
 
 The description of the issue has pencil icon right next to it that you can click to change the description.
 
-![](../../images/RedmineIssues/RedmineChangingIssueDescriptionNew.png)
+![](../../images/en/RedmineIssues/RedmineChangingIssueDescriptionNew@2x.png)
 
 ## Subtasks
 
@@ -105,10 +105,10 @@ If a project gets copied the whole tree beneath the parent task is copied, too. 
 
 One can show the parents task id as sortable column in the issues list and there is also a filter option for it.\
 When the list is sorted by the parent task id the subtasks hierarchy is displayed in an indented tree structure.\
-![](../../images/RedmineIssues/subtasks-list.png)
+![](../../images/en/RedmineIssues/subtasks-list@2x.png)
 
 As long as the tasks share the same target version the tree structure is also visible in the gantt view.\
-![](../../images/RedmineIssues/subtasks-gantt.png)
+![](../../images/en/RedmineIssues/subtasks-gantt@2x.png)
 
 ### Relations between the parent task and its subtasks
 

@@ -20,7 +20,7 @@ The issue summary provides a report of the amount of all the issues at a project
 - Subproject (only when the project has subprojects)
 - Category
 
-![](../../images/RedmineIssueSummary/issue_summary@2x.png)
+![](../../images/en/RedmineIssueSummary/issue_summary@2x.png)
 
 ## Drill-through links
 
@@ -31,4 +31,4 @@ Also the numbers of issues in the reports provides drill-through links to their 
 
 Each report-block can be selected to get a detailed report from it. This not only shows the amount of open/closed/total issues but also provides details for all the other configured [issue statuses](../admin/issue-tracking-setup.md#Issue-statuses). The screenshot below shows the detailed report for the versions.
 
-![](../../images/RedmineIssueSummary/issue_summary_version-details.jpg)
+![](../../images/en/RedmineIssueSummary/issue_summary_version-details@2x.png)

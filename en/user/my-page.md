@@ -10,7 +10,7 @@ updated_for: 7.0.3
 
 My page lets you display various blocks of information about your projects. Users can personalize their own “My page” by adding, removing and reordering blocks.
 
-![](../../images/RedmineMyPage/my-page@2x.png)
+![](../../images/en/RedmineMyPage/my-page@2x.png)
 
 ## blocks
 

@@ -13,15 +13,15 @@ Redmine の右上に、シンプルな検索ボックスがあります。何か
 
 \#{IssueID} または {IssueID} で検索すると、そのチケットに直接移動します。検索の語句は二重引用符で囲めます。
 
-![](../../images/RedmineSearch/SimpleSearch.png)
+![](../../images/ja/RedmineSearch/SimpleSearch@2x.png)
 
 権限の設定やプロジェクトのメンバーかどうかによって、ドロップダウンメニューの選択肢に現在のプロジェクトが表示されることがあります。シンプルな検索では、その選択肢で現在表示しているプロジェクトをフルテキスト検索します。
 
-![](../../images/RedmineSearch/SearchProjects.png)
+![](../../images/ja/RedmineSearch/SearchProjects@2x.png)
 
 「検索」という文字をクリックすると、すぐに詳細検索と検索結果のページに移動します。プロジェクトの選択が引き継がれていることと、検索を特定の種類の項目に絞るチェックボックスがあることに注目してください。チェックボックスは、そのプロジェクトでモジュールが有効なときだけ表示されます。
 
-![](../../images/RedmineSearch/AdvancedSearch.png)
+![](../../images/ja/RedmineSearch/AdvancedSearch@2x.png)
 
 ## 検索の設定
 
@@ -33,7 +33,7 @@ Redmine の右上に、シンプルな検索ボックスがあります。何か
 
 カスタムフィールドは、デフォルトでは検索されません。カスタムフィールドも検索するには、カスタムフィールドの「検索対象」のチェックボックスをオンにするのを忘れないでください。
 
-![](../../images/RedmineSearch/Searchable.png)
+![](../../images/ja/RedmineSearch/Searchable@2x.png)
 
 ## 検索結果
 
@@ -44,7 +44,7 @@ Redmine の右上に、シンプルな検索ボックスがあります。何か
 - 結果のグループ(ニュースなど)への移動
 - 結果の種類(更新履歴、チケット、コメントなど)を示す先頭のアイコン
 
-![](../../images/RedmineSearch/Results.png)
+![](../../images/ja/RedmineSearch/Results@2x.png)
 
 ## 検索のコントローラー
 

@@ -41,7 +41,7 @@ translated_from_version: 47
 - **コピー元** - チケットがコピーされたものかどうかと、どのチケットからコピーされたかがわかるように関連付けます。
 - **コピー先** - 「コピー元」の逆です。
 
-![](../../images/RedmineIssues/redmine-related-issues.png)
+![](../../images/ja/RedmineIssues/redmine-related-issues@2x.png)
 
 管理者は、こうした関連を追加、編集するユーザーの[権限](../admin/roles.md#Permissions)を設定できます。
 
@@ -51,7 +51,7 @@ translated_from_version: 47
 
 ロールに「ウォッチャーの追加」の権限があれば、このページでウォッチャーの一覧にユーザーを追加できます。「追加」のリンクをクリックすると、「ユーザーの検索:」の欄とユーザーの一覧のあるダイアログが表示されます。ウォッチャーの一覧に追加するユーザーにチェックを入れ、「追加」のボタンをクリックします。
 
-![](../../images/RedmineIssues/redmine-watchers.png)
+![](../../images/ja/RedmineIssues/redmine-watchers@2x.png)
 
 管理者は、ウォッチャーの追加と削除、ウォッチャーの一覧の閲覧についてのユーザーの[権限](../admin/roles.md#Permissions)を設定できます。
 
@@ -59,11 +59,11 @@ translated_from_version: 47
 
 管理者が[「参照用キーワード」](../admin/settings.md#Referencing-issues-in-commit-messages)を設定していれば、開発者がそのキーワードを使ったコミットメッセージが、チケットの履歴の「関係しているリビジョン」のタブに表示されます。
 
-![](../../images/RedmineIssues/redmine-associated-revision.png)
+![](../../images/ja/RedmineIssues/redmine-associated-revision@2x.png)
 
 リビジョンは、リポジトリブラウザーの更新履歴(リビジョン)の画面から、手動でチケットに関連付けることもできます。手動の関連付けは元に戻せます。同じくその画面で、追加した関連付けの右にある、切れた鎖のアイコンを使って解除できます。
 
-![](../../images/RedmineIssues/redmine_manual_revision_issue_association.png)
+![](../../images/ja/RedmineIssues/redmine_manual_revision_issue_association@2x.png)
 
 ## 新しいチケットの追加
 
@@ -76,7 +76,7 @@ Redmine の管理者が設定した[ロールと権限](../admin/roles.md)の条
 
 チケットを編集するには、チケットのページの上か下にある「編集」のリンク(鉛筆のアイコン)をクリックします。
 
-![](../../images/RedmineIssues/RedmineEditIssue_Update_Link.png)
+![](../../images/ja/RedmineIssues/RedmineEditIssue_Update_Link@2x.png)
 
 ロールの権限([ロールと権限](../admin/roles.md)を参照)によって、編集できるチケットの属性がすべて表示されるか、一部だけが表示されます。
 
@@ -89,7 +89,7 @@ Redmine の管理者が設定した[ロールと権限](../admin/roles.md)の条
 
 チケットの説明のすぐ横に鉛筆のアイコンがあり、クリックすると説明を変更できます。
 
-![](../../images/RedmineIssues/RedmineChangingIssueDescriptionNew.png)
+![](../../images/ja/RedmineIssues/RedmineChangingIssueDescriptionNew@2x.png)
 
 ## 子チケット
 
@@ -102,10 +102,10 @@ Redmine の管理者が設定した[ロールと権限](../admin/roles.md)の条
 
 チケット一覧に、親チケットの ID を並べ替えのできる列として表示できます。フィルタの条件にも使えます。\
 一覧を親チケットの ID で並べ替えると、子チケットの階層がインデントしたツリーで表示されます。\
-![](../../images/RedmineIssues/subtasks-list.png)
+![](../../images/ja/RedmineIssues/subtasks-list@2x.png)
 
 チケットの対象バージョンが同じであれば、ガントチャートでもツリー構造が表示されます。\
-![](../../images/RedmineIssues/subtasks-gantt.png)
+![](../../images/ja/RedmineIssues/subtasks-gantt@2x.png)
 
 ### 親チケットと子チケットの関係
 

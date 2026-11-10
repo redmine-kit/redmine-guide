@@ -24,4 +24,4 @@ translated_from_version: 9
 
 [チケット一覧](issue-list.md)や[ガントチャート](gantt.md)と同じように、フィルタを設定して、カレンダーに表示するチケットを絞り込めます。このフィルタは、[チケット一覧](issue-list.md)で設定するフィルタと同じようなものです。
 
-![](../../images/RedmineCalendar/calendar.png)
+![](../../images/ja/RedmineCalendar/calendar@2x.png)

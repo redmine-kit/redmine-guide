@@ -17,7 +17,7 @@ translated_from_version: 21
 - **作成日:** このユーザーアカウントを作成した日付です。
 - **最終ログイン:** このユーザーが最後にアプリケーションにログインした日付です。
 
-![](../../images/RedmineUsers/users-list@2x.png)
+![](../../images/ja/RedmineUsers/users-list@2x.png)
 
 ### ユーザーのステータス
 

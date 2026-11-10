@@ -51,7 +51,7 @@ Starting from version version:2.3.0, it is possible to:
 
 The optional description field, which appears once the file upload is finished, is also used as the alternate text of the image file inserted using `!image_url!` syntax within the parent content (i.e. issue description or note, forum message, wiki page, document, …).
 
-![](../../images/RedmineAttachedFiles/UploadFile.png)
+![](../../images/en/RedmineAttachedFiles/UploadFile@2x.png)
 
 ## Files added via “New File”
 

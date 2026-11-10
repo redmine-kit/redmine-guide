@@ -26,6 +26,6 @@ translated_from_version: 10
 
 活動は Atom のフィードでも取得できます。
 
-![](../../images/RedmineProjectActivity/projects_redmine_activity.png)
+![](../../images/ja/RedmineProjectActivity/projects_redmine_activity@2x.png)
 
 「プロジェクト」のページからは、すべてのプロジェクトをまたいだ活動を見られます。表示できるすべてのプロジェクトの活動が一覧になります。

@@ -19,7 +19,7 @@ Note that the timelog feature is available only when the project’s “Time tra
 
 Shares the same search interface as [RedmineTimelogReport](timelog-report.md)
 
-![](../../images/RedmineTimelogDetails/SearchTimelog.png)
+![](../../images/en/RedmineTimelogDetails/SearchTimelog@2x.png)
 
 ## Results
 
@@ -38,7 +38,7 @@ Links work the same as the rest of the wiki; closed issues have strike through a
 
 ### HTML output
 
-![](../../images/RedmineTimelogDetails/TimeLogDetails.png)
+![](../../images/en/RedmineTimelogDetails/TimeLogDetails@2x.png)
 
 ### CSV output
 

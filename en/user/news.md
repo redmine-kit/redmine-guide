@@ -16,4 +16,4 @@ If you have the [permissions](../admin/roles.md#Permissions) to create news item
 
 If you have the [permission](../admin/roles.md#Permissions) to create new news items, you have an **Add news** link in the upper right of you screen. If you click on that, the form for adding a news item opens above the list of news. In this form, you have to insert the **Title** and **Description** of the news item; the **Summary** is optional.
 
-![](../../images/RedmineNews/news_list.png)
+![](../../images/en/RedmineNews/news_list@2x.png)

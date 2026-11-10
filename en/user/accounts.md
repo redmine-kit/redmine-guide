@@ -21,7 +21,7 @@ This area enables you to adapt your existing account to your needs.
 Here you can edit your user data: first name, last name, email address, display language.\
 From version 4.2.0 you can, if activated in the system configuration (options: disabled/optional/required for administrators/required), increase security by activating two-factor authentication for your access.
 
-![](../../images/RedmineAccounts/myaccount-info.png)
+![](../../images/en/RedmineAccounts/myaccount-info@2x.png)
 
 ### Mail notifications
 
@@ -66,15 +66,15 @@ It’s possible to pick one of these options:
 From version 4.2.0 you can choose to also be notified about all issues with a high priority (or higher) in your projects, regardless of the option selected above.\
 You can also tick that you do not want to be notified of your own changes.
 
-![](../../images/RedmineAccounts/myaccount-notification.png)
+![](../../images/en/RedmineAccounts/myaccount-notification@2x.png)
 
 ### Email address
 
-You can store additional addresses to which notifications will be sent. To do this, click on the link ![](../../images/RedmineAccounts/emails.png)
+You can store additional addresses to which notifications will be sent. To do this, click on the link ![](../../images/en/RedmineAccounts/emails@2x.png)
 
 In a window you can enter the other addresses, delete them and deactivate / activate the notifications.
 
-![](../../images/RedmineAccounts/myaccount-emails.png)
+![](../../images/en/RedmineAccounts/myaccount-emails@2x.png)
 
 ### Preferences
 
@@ -89,11 +89,11 @@ Personal settings for display in Redmine.
 - **Issue's history default tab:** The detailed contents of the tickets are divided into tabs, here you can specify which tab should be opened when a ticket is called up. The default is notes.
 - **Code highlighting toolbar languages**: Specifies which programming languages are to be recognized and parsed accordingly. Default: ` c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml `
 
-![](../../images/RedmineAccounts/myaccount-preferences.png)
+![](../../images/en/RedmineAccounts/myaccount-preferences@2x.png)
 
 ### Password
 
-To change your password, click ![](../../images/RedmineAccounts/myaccount-changepw.png) on “My account” page and then type your old password and your new password twice. Password length must be 8 characters or more (the admin can change the minimum length. See [RedmineSettings#Minimum-password-length](../admin/settings.md#Minimum-password-length)).
+To change your password, click ![](../../images/en/RedmineAccounts/myaccount-changepw@2x.png) on “My account” page and then type your old password and your new password twice. Password length must be 8 characters or more (the admin can change the minimum length. See [RedmineSettings#Minimum-password-length](../admin/settings.md#Minimum-password-length)).
 
 If your account uses an external authentication mean (LDAP), you can’t change your password in Redmine.
 
@@ -105,7 +105,7 @@ On the [login screen](login.md), click on **Lost password**. Enter your email ad
 
 Note that this functionality can be disabled by the administrator (see [RedmineSettings#Lost-password](../admin/settings.md#Lost-password)). Also, if your account uses an external authentication mean (LDAP), this procedure isn’t available.
 
-![](../../images/RedmineAccounts/lost-password@2x.png)
+![](../../images/en/RedmineAccounts/lost-password@2x.png)
 
 ## Register
 
@@ -115,4 +115,4 @@ In the upper right corner of the [login screen](login.md), click on **Register**
 
 Note that this functionality can be disabled by the administrator.
 
-![](../../images/RedmineAccounts/register@2x.png)
+![](../../images/en/RedmineAccounts/register@2x.png)

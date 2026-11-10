@@ -11,7 +11,7 @@ translated_from_version: 10
 
 アップロードしたすべてのファイルの詳細が、並べ替えのできる表に表示されます。アップロードのときにバージョンを選んだファイルは、そのバージョンの下に表示されます。チェックサムと DL(ダウンロードの回数)にも注目してください。
 
-![](../../images/RedmineFiles/files@2x.png)
+![](../../images/ja/RedmineFiles/files@2x.png)
 
 新しいファイルは、右上の「新しいファイル」のリンクから追加します。
 
@@ -27,4 +27,4 @@ translated_from_version: 10
 
 説明は省略できます。説明は、ファイルの一覧でファイル名のツールチップとして表示されます。
 
-![](../../images/RedmineFiles/UploadFile.png)
+![](../../images/ja/RedmineFiles/UploadFile@2x.png)

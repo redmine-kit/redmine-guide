@@ -27,4 +27,4 @@ To do this go to the administration page, follow the roles and permissions link,
 
 Like on the [issue-lists](issue-list.md) and the [Gantt chart](gantt.md), it is possible to define filters to define a subset of issues to be shown on the calendar. Such filters are similar to those specified on any [issue-list](issue-list.md).
 
-![](../../images/RedmineCalendar/calendar.png)
+![](../../images/en/RedmineCalendar/calendar@2x.png)

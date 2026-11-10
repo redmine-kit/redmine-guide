@@ -48,7 +48,7 @@ translated_from_version: 7
 
 ファイルのアップロードが終わると表示される説明のフィールドは省略できます。説明は、親の内容(チケットの説明やコメント、フォーラムのメッセージ、Wiki ページ、文書など)に `!image_url!` の構文で挿入した画像ファイルの代替テキストにも使われます。
 
-![](../../images/RedmineAttachedFiles/UploadFile.png)
+![](../../images/ja/RedmineAttachedFiles/UploadFile@2x.png)
 
 ## 「新しいファイル」で追加したファイル
 

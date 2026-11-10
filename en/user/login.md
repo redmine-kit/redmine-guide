@@ -9,4 +9,4 @@ source_updated_on: '2017-09-11T21:57:39Z'
 
 The ***Sign in*** page is used to login into the project where you have been activated for. The ***Lost password*** link is only displayed if the administrator has activated it.
 
-![](../../images/RedmineLogin/redmine-login.png)
+![](../../images/en/RedmineLogin/redmine-login@2x.png)

@@ -14,7 +14,7 @@ Each member of a project has one or multiples Role(s) for the project. If a memb
 
 You can create new roles or edit existing ones. You can delete a role only if nobody has this role on a project.
 
-![](../../images/RedmineRoles/roles@2x.png)
+![](../../images/en/RedmineRoles/roles@2x.png)
 
 ## Roles properties
 

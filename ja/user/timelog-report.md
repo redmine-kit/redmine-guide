@@ -18,7 +18,7 @@ translated_from_version: 7
 
 [作業時間の詳細](timelog-details.md)と同じ検索の画面を使います。
 
-![](../../images/RedmineTimelogReport/SearchTimelog.png)
+![](../../images/ja/RedmineTimelogReport/SearchTimelog@2x.png)
 
 ## 結果
 
@@ -30,7 +30,7 @@ translated_from_version: 7
 
 レポートを表示するには、まとめる項目を「追加」します。何か追加するまで、この部分には何も表示されません。この例では、最初に「チケット」、次に「作業分類」を選んでいます。選ぶたびに、一覧は空の状態に戻ります。追加できる組み合わせの最大数に達すると、ドロップダウンは無効になります。最初からやり直すには「クリア」のボタンを使います。
 
-![](../../images/RedmineTimelogReport/TimeLogReport.png)
+![](../../images/ja/RedmineTimelogReport/TimeLogReport@2x.png)
 
 ### CSV の出力
 

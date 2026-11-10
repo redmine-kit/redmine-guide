@@ -28,6 +28,6 @@ Using the checkboxes in the sidebar of the right, you can choose which items are
 
 The activity is also available as an Atom feed.
 
-![](../../images/RedmineProjectActivity/projects_redmine_activity.png)
+![](../../images/en/RedmineProjectActivity/projects_redmine_activity@2x.png)
 
 A cross-project activity view is available from the Projects page, it will lists the activity of all visible projects.

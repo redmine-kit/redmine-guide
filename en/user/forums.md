@@ -16,7 +16,7 @@ The forum list displays the project forums overview:
 - total number of messages
 - a link to the latest message
 
-![](../../images/RedmineForums/forums.png)
+![](../../images/en/RedmineForums/forums@2x.png)
 
 ## Adding a topic
 

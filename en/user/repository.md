@@ -17,4 +17,4 @@ Clicking a revision number will display the details of the commit.
 
 To browse the repository at a given revision, enter the revision number in the upper-right field and hit Enter.
 
-![](../../images/RedmineRepository/repository.png)
+![](../../images/en/RedmineRepository/repository@2x.png)

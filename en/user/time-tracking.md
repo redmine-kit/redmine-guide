@@ -22,11 +22,11 @@ Time tracking is a standard module of Redmine and can be enabled/disabled for ea
 
 You can log time on an issue by clicking **Log time** from the issue details view.
 
-![](../../images/RedmineTimeTracking/log_time.png)
+![](../../images/en/RedmineTimeTracking/log_time@2x.png)
 
 You can also log time when updating an issue.
 
-![](../../images/RedmineTimeTracking/Update_LogTime.png)
+![](../../images/en/RedmineTimeTracking/Update_LogTime@2x.png)
 
 ## Logging time at project level
 

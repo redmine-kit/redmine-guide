@@ -13,7 +13,7 @@ translated_from_version: 19
 
 ロードマップを選ぶと、次のように、プロジェクトの現在の状態の概要が表示されます。
 
-![](../../images/RedmineRoadmap/roadmap-default.jpg)
+![](../../images/ja/RedmineRoadmap/roadmap-default@2x.png)
 
 この表示には、すべての(未完了の)バージョンについて、次の情報の「欄」があります。
 

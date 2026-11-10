@@ -11,7 +11,7 @@ translated_from_version: 34
 
 新しいロールの作成や、既存のロールの編集ができます。ロールを削除できるのは、どのプロジェクトでもそのロールを持つユーザーがいないときだけです。
 
-![](../../images/RedmineRoles/roles@2x.png)
+![](../../images/ja/RedmineRoles/roles@2x.png)
 
 ## ロールの設定項目
 

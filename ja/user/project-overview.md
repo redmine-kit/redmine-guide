@@ -9,7 +9,7 @@ translated_from_version: 10
 
 TODO: チケットのトラッカーと設定について書く…
 
-![](../../images/RedmineProjectOverview/redmine-project-overview.png)
+![](../../images/ja/RedmineProjectOverview/redmine-project-overview@2x.png)
 
 右上には「[ログイン](login.md)」と「[登録する](register.md)」があります。「[ログイン](login.md)」のリンクから、このプロジェクトのアカウントを持っている人がログインします。「[登録する](register.md)」のリンクから、登録していないユーザーが自分で登録し、この Redmine にあるプロジェクトに参加できるようになります。
 

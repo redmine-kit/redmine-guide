@@ -14,7 +14,7 @@ Members who have necessary permissions in the project can configure the project 
 
 In this screen (the **Project** tab) you can configure the basic (though important) settings for the selected project.
 
-![](../../images/RedmineProjectSettings/project-settings_information-tab.jpg)
+![](../../images/en/RedmineProjectSettings/project-settings_information-tab@2x.png)
 
 ### General settings
 

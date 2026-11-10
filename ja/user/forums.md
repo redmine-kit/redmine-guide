@@ -13,7 +13,7 @@ translated_from_version: 4
 - メッセージの合計の数
 - 最新のメッセージへのリンク
 
-![](../../images/RedmineForums/forums.png)
+![](../../images/ja/RedmineForums/forums@2x.png)
 
 ## トピックの追加
 

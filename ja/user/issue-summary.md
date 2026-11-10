@@ -17,7 +17,7 @@ translated_from_version: 5
 - サブプロジェクト (プロジェクトにサブプロジェクトがあるときだけ)
 - カテゴリ
 
-![](../../images/RedmineIssueSummary/issue_summary@2x.png)
+![](../../images/ja/RedmineIssueSummary/issue_summary@2x.png)
 
 ## ドリルスルーのリンク
 
@@ -28,4 +28,4 @@ translated_from_version: 5
 
 レポートの欄を選ぶと、その欄の詳細なレポートが表示されます。詳細なレポートには、未完了、完了、合計のチケットの数だけでなく、設定したほかのすべての[チケットのステータス](../admin/issue-tracking-setup.md#Issue-statuses)ごとの数も表示されます。下のスクリーンショットは、バージョンの詳細なレポートです。
 
-![](../../images/RedmineIssueSummary/issue_summary_version-details.jpg)
+![](../../images/ja/RedmineIssueSummary/issue_summary_version-details@2x.png)

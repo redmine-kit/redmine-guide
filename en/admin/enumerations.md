@@ -18,4 +18,4 @@ These items can be added, modified and deleted freely. They all have two configu
 
 If the default-value checkbox is ticked, the selected enumeration will be the default value for the specific field(s). If no enumeration has been set to the default-value for the specific enumeration-category (activities, document categories or issue priorities) no enumeration will be pre-selected for the specific field(s).
 
-![](../../images/RedmineEnumerations/enumerations.png)
+![](../../images/en/RedmineEnumerations/enumerations@2x.png)

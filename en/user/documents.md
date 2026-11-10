@@ -16,7 +16,7 @@ Documents is an available module to projects in Redmine.
 
 From the **Documents** tab press the **New document** link.
 
-![](../../images/RedmineDocuments/NewDocument.png)
+![](../../images/en/RedmineDocuments/NewDocument@2x.png)
 
 By default there are two categories for documentation:
 
@@ -29,4 +29,4 @@ These categories can be modified and other categories can be added by a Redmine 
 
 Once documents have been created, the title is used as the link to the document page, where the attached files can be downloaded and more files can be added using the **New file** link.
 
-![](../../images/RedmineDocuments/Documents.png)
+![](../../images/en/RedmineDocuments/Documents@2x.png)

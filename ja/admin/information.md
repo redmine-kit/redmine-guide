@@ -11,7 +11,7 @@ translated_from_version: 3
 - 重要な設定が正しく行われているかどうかを示す表
 - Redmine のサーバーの環境の情報
 
-![](../../images/RedmineAdminInformation/admin-infomation@2x.png)
+![](../../images/ja/RedmineAdminInformation/admin-infomation@2x.png)
 
 ## Redmine のバージョン
 

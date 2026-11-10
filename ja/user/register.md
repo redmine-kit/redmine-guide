@@ -9,7 +9,7 @@ translated_from_version: 9
 
 新しいユーザーは、「ログインID」、「パスワード」、「名」、「姓」、「メールアドレス」と、画面に使う言語を入力します。
 
-![](../../images/RedmineRegister/redmine-register.png)
+![](../../images/ja/RedmineRegister/redmine-register@2x.png)
 
 ## 登録の手順
 
@@ -25,7 +25,7 @@ translated_from_version: 9
 
 アカウント登録のページで必要な情報を入力したあと、ユーザーは管理者の承認を待つ必要があります。管理者は、「管理」 > [「ユーザー」のページ](../admin/users.md)でユーザーのアカウントを有効にします。アカウントが有効になると、ユーザーはログインできます。
 
-![](../../images/RedmineRegister/activate-account@2x.png)
+![](../../images/ja/RedmineRegister/activate-account@2x.png)
 
 ### 自動でアカウントを有効化
 

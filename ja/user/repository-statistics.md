@@ -12,4 +12,4 @@ Redmine は、設定したリポジトリの「変更」の数と「リビジョ
 - 「リビジョン」は、リポジトリへのコミットの数で、赤みがかったオレンジ色で表示されます。
 - 「変更」は、全体で変更されたファイルの数で、青で表示されます。
 
-![](../../images/RedmineRepositoryStatistics/graphs.png)
+![](../../images/ja/RedmineRepositoryStatistics/graphs@2x.png)

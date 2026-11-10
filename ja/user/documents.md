@@ -13,7 +13,7 @@ translated_from_version: 5
 
 「文書」のタブで「新しい文書」のリンクを押します。
 
-![](../../images/RedmineDocuments/NewDocument.png)
+![](../../images/ja/RedmineDocuments/NewDocument@2x.png)
 
 最初は、文書のカテゴリが 2 つあります。
 
@@ -26,4 +26,4 @@ translated_from_version: 5
 
 文書を作成すると、タイトルが文書のページへのリンクになります。そのページで、添付したファイルをダウンロードでき、「新しいファイル」のリンクでファイルをさらに追加できます。
 
-![](../../images/RedmineDocuments/Documents.png)
+![](../../images/ja/RedmineDocuments/Documents@2x.png)

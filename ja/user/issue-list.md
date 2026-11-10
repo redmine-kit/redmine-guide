@@ -9,17 +9,17 @@ translated_from_version: 27
 
 チケット一覧で、プロジェクトのチケットを見られます。
 
-![](../../images/RedmineIssueList/issuelist_overview.png)
+![](../../images/ja/RedmineIssueList/issuelist_overview@2x.png)
 
 ## フィルタを適用して保存する
 
 チケット一覧には、最初は未完了のチケットが表示されます。フィルタを設定すると、一覧にするチケットの条件を変えられます。標準のフィールドと[カスタムフィールド](../admin/custom-fields.md)をフィルタに使えます。フィルタを設定したら「適用」をクリックして、チケット一覧を更新します。フィルタを解除するには「クリア」をクリックします。
 
-![](../../images/RedmineIssueList/applied_issuelist_filters@2x.png)
+![](../../images/ja/RedmineIssueList/applied_issuelist_filters@2x.png)
 
 フィールドの「**+**」のボタンを押すと、1 つのフィールドに複数の値を一度に選べます。ドロップダウンのメニューが選択の一覧に変わります。選択の一覧に値を追加するには、キーボードの Ctrl キー(Windows)または ⌘ キー(macOS)を使います。
 
-![](../../images/RedmineIssueList/redmine-multiple-selection@2x.png)
+![](../../images/ja/RedmineIssueList/redmine-multiple-selection@2x.png)
 
 ### カスタムクエリ
 
@@ -28,18 +28,18 @@ translated_from_version: 27
 カスタムクエリは「カスタムクエリを保存」をクリックして保存します。\
 フォームで、クエリの名前を付け、このクエリでチケット一覧に表示する列を選べます(標準のフィールドと[カスタムフィールド](../admin/custom-fields.md)のどちらも表示できます)。「表示」の選択肢で、クエリを「自分のみ」、「すべてのユーザー」、「次のロールのみ」のどれに表示するかを選べます。この選択肢には「公開クエリの管理」の権限が必要です。権限がなければ、クエリは自分にだけ表示されます。
 
-![](../../images/RedmineIssueList/ext_newquery@2x.png)
+![](../../images/ja/RedmineIssueList/ext_newquery@2x.png)
 
 保存したクエリは、[サイドバー](issue-list.md#Sidebar)に表示されます。
 
-![](../../images/RedmineIssueList/custom_queries_sidebar@2x.png)
+![](../../images/ja/RedmineIssueList/custom_queries_sidebar@2x.png)
 
 ## コンテキストメニュー
 
 チケット一覧でチケットを右クリックするか、行の右端にある「操作」 (…) のボタンをクリックすると、コンテキストメニューが表示されます。\
 このメニューから、チケットの編集、優先度や担当者の変更、コピー、削除をすばやく行えます。
 
-![](../../images/RedmineIssueList/shortcut_menu@2x.png)
+![](../../images/ja/RedmineIssueList/shortcut_menu@2x.png)
 
 **チケットのリンクの外側を右クリック**してください。リンクの上で右クリックすると、ブラウザーの標準のコンテキストメニューが表示されます。
 
@@ -49,11 +49,11 @@ translated_from_version: 27
 チケットは、チェックボックスで選ぶか、Control キーまたは Shift キーを押しながら行をクリックして選びます。\
 一覧の左上の小さなチェックで、すべてのチケットを選んだり、選択を外したりできます。
 
-![](../../images/RedmineIssueList/bulk-edit@2x.png)
+![](../../images/ja/RedmineIssueList/bulk-edit@2x.png)
 
 ## サイドバー
 
-![](../../images/RedmineIssueList/sidebar.jpg) チケット一覧の右にあるサイドバーには、使えるカスタムクエリへのリンクがあります。
+![](../../images/ja/RedmineIssueList/sidebar@2x.png) チケット一覧の右にあるサイドバーには、使えるカスタムクエリへのリンクがあります。
 
 - **マイカスタムクエリ**: 自分にだけ表示されるクエリ
 - **カスタムクエリ**: ほかのユーザーにも (すべてのユーザーに、または一部のロールに) 表示されるクエリ。このプロジェクトのクエリと全プロジェクト向けのクエリがあります

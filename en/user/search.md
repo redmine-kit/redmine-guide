@@ -16,15 +16,15 @@ At the top right-hand side of Redmine is a simple search box. Type anything and 
 
 Searching for \#{IssueID} or {IssueID} will go straight to the issue. Search parameters can be enclosed in double quotation marks.
 
-![](../../images/RedmineSearch/SimpleSearch.png)
+![](../../images/en/RedmineSearch/SimpleSearch@2x.png)
 
 Depending on permission settings and project membership a drop down menu option may show the current project. Simple search searches full text on the project currently displayed in that chooser.
 
-![](../../images/RedmineSearch/SearchProjects.png)
+![](../../images/en/RedmineSearch/SearchProjects@2x.png)
 
 Clicking on the word **Search** will immediately take you to the advanced search and results page. Notice the project chooser has followed, and there are checkboxes to limit search to specific types of entries. The checkboxes displayed only if the module is enabled at that project level.
 
-![](../../images/RedmineSearch/AdvancedSearch.png)
+![](../../images/en/RedmineSearch/AdvancedSearch@2x.png)
 
 ## Search configuration
 
@@ -36,7 +36,7 @@ From the advanced search box, **Search titles only** can be enabled to limit res
 
 Custom fields are not searched by default. Don’t forget to set custom fields checkbox **Searchable** to true to also search these fields.
 
-![](../../images/RedmineSearch/Searchable.png)
+![](../../images/en/RedmineSearch/Searchable@2x.png)
 
 ## Results
 
@@ -47,7 +47,7 @@ Here is a sample results page from this site on “test issue”.
 - Capability to jump to groupings of results (ie News items).
 - Leading icons to categorize type of result (ie changeset, issue, comment)
 
-![](../../images/RedmineSearch/Results.png)
+![](../../images/en/RedmineSearch/Results@2x.png)
 
 ## Search controller
 

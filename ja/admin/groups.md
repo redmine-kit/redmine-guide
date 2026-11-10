@@ -37,14 +37,14 @@ translated_from_version: 6
       - ロールのチェックボックスにチェックを入れます
       - 「追加」をクリックします
 
-![](../../images/RedmineGroups/RedmineMemberToGroupNew.png)\
+![](../../images/ja/RedmineGroups/RedmineMemberToGroupNew@2x.png)\
 図 1: グループの「ユーザー」タブの例
 
-![](../../images/RedmineGroups/RedmineMembersToGroup.png)\
+![](../../images/ja/RedmineGroups/RedmineMembersToGroup@2x.png)\
 図 2: グループへのメンバーの追加
 
-![](../../images/RedmineGroups/RedmineGroupToProjectNew.png)\
+![](../../images/ja/RedmineGroups/RedmineGroupToProjectNew@2x.png)\
 図 3: グループの「プロジェクト」タブの例
 
-![](../../images/RedmineGroups/RedmineGroupToProjects.png)\
+![](../../images/ja/RedmineGroups/RedmineGroupToProjects@2x.png)\
 図 4: グループの画面からのプロジェクトの関連付け

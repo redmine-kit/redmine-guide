@@ -20,6 +20,6 @@ translated_from_version: 6
 
 グループ化の基準になる項目と、統計そのもの(チケットの数)のどちらにも、特定のフィルタをあらかじめ設定したチケット一覧へのドリルダウンのリンクがあります。これで、特定の作成者やカテゴリなどのチケットにすばやく移動できます。
 
-![](../../images/RedmineVersion/version.jpg)
+![](../../images/ja/RedmineVersion/version@2x.png)
 
 バージョンの表示には、[ロードマップ](roadmap.md)で特定のバージョンをクリックして移動します。
