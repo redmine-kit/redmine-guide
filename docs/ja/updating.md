@@ -91,4 +91,6 @@ bin/screenshots
 ONLY=RedmineIssueList bin/screenshots
 ```
 
+ワークフロー Screenshots (`.github/workflows/screenshots.yml`) は、`main` の `screenshots/` か `bin/screenshots` が変わったとき、または手動で開始したときに、GitHub で `bin/screenshots` を実行します。画像が変わると、ブランチ `screenshots/update` からプルリクエストを作成し (開いているものがあれば更新し)、画像とそれを参照するページを入れ、変わったファイルを一覧にします。リポジトリの Actions の設定で「Allow GitHub Actions to create and approve pull requests」を有効にしておく必要があります。画面には撮った日を基準にした日付が出るため、実行するたびに一部の画像は変わります。
+
 ショットのない画像は、古い画像のままです。Redmine 7.0.3 にない画面(変更履歴)、Redmine にないコードが要る画面(プラグインのチュートリアル)、Redmine に同梱されなくなったテーマの画面がこれに当たります。

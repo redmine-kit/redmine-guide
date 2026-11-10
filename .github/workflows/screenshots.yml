@@ -1,0 +1,80 @@
+# Retakes the guide's screenshots (bin/screenshots) and proposes the changed
+# images, with the pages that bin/convert points at them, as one pull request
+# from the branch screenshots/update. Runs when the capture definitions or the
+# Redmine they use change (screenshots/ holds both), or by hand.
+# Creating the pull request needs "Allow GitHub Actions to create and approve
+# pull requests" in the repository's Actions settings.
+name: Screenshots
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "screenshots/**"
+      - "bin/screenshots"
+      - ".github/workflows/screenshots.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: screenshots
+  cancel-in-progress: true
+
+jobs:
+  screenshots:
+    if: github.repository_owner == 'redmine-kit'
+    # Arm, like the machines the screenshots have been taken on so far, so
+    # that unchanged screens come out the same.
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 60
+    # contents: push the branch; pull-requests: open or update the pull
+    # request; actions: start CI on the branch (pushes made with GITHUB_TOKEN
+    # start no workflows).
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: screenshots/update
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      # bin/convert, run by bin/screenshots, reads the upstream branch.
+      - run: git fetch --no-tags origin upstream:upstream
+      - run: bin/screenshots
+      # Images that differ are not a failure: they become the pull request.
+      - name: Open or update the pull request
+        run: |
+          git add -A images en ja
+          if git diff --cached --quiet; then
+            echo "The screenshots are up to date."
+            exit 0
+          fi
+          {
+            echo "Screenshots retaken with \`bin/screenshots\` from ${GITHUB_SHA}."
+            echo
+            echo "Changed files:"
+            echo
+            git diff --cached --no-renames --name-status | while IFS=$'\t' read -r status path; do
+              echo "- $status \`$path\`"
+            done
+          } > "$RUNNER_TEMP/body.md"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -C "$BRANCH"
+          git commit -q -m "Retake the guide's screenshots"
+          gh auth setup-git
+          # The branch is made again from main on every run.
+          git push --force origin "$BRANCH"
+          if [ "$(gh pr view "$BRANCH" --json state --jq .state 2>/dev/null)" = OPEN ]; then
+            gh pr edit "$BRANCH" --body-file "$RUNNER_TEMP/body.md"
+          else
+            gh pr create --base main --head "$BRANCH" --title "Retake the guide's screenshots" \
+              --body-file "$RUNNER_TEMP/body.md"
+          fi
+          gh workflow run ci.yml --ref "$BRANCH"

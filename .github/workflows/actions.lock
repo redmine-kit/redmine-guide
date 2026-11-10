@@ -8,6 +8,8 @@ workflows:
     '.github/workflows/docs.yml': []
     '.github/workflows/gem.yml':
         - 'actions/checkout@v7.0.1'
+    '.github/workflows/screenshots.yml':
+        - 'actions/checkout@v7.0.1'
     '.github/workflows/verify-lockfile.yml':
         - 'actions/checkout@v7.0.1'
 dependencies:
