@@ -83,6 +83,4 @@ Each shot in `screenshots/screens.rb` is named after the image it replaces (`Red
 ONLY=RedmineIssueList bin/screenshots
 ```
 
-The workflow Screenshots (`.github/workflows/screenshots.yml`) runs `bin/screenshots` on GitHub when `screenshots/` or `bin/screenshots` changes on `main`, or when it is started by hand. When images change, it opens a pull request from the branch `screenshots/update` (or updates the open one) with the images and the pages that point at them, and lists the changed files. It needs "Allow GitHub Actions to create and approve pull requests" in the repository's Actions settings. The screens show dates relative to the day they are taken, so a new run usually changes some images.
-
 An image with no shot keeps the old one: the screen no longer exists in Redmine 7.0.3 (the change log), it needs code that is not in Redmine (the plugin tutorial), or it shows a theme Redmine no longer ships.
