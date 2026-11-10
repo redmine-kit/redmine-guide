@@ -1,0 +1,27 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 redmine:plugins only migrates the plugins.
+    source: lib/tasks/redmine.rake (redmine:plugins)
+    replace: |-
+      Migrates and copies plugins assets.
+    with: |-
+      Migrates plugins.
+  - why: Redmine 7.0.3 has no redmine:plugins:assets task.
+    source: lib/tasks/redmine.rake
+    replace: |-
+      Copies plugins assets into the public directory.
+    with: |-
+      Redmine 7.0.3 no longer has this task.
+  - why: Redmine 7.0.0 deprecated the Mantis migration task; in Redmine 7.0.3 it stops without migrating.
+    source: lib/tasks/migrate_from_mantis.rake, doc/CHANGELOG (Feature #43918)
+    replace: |-
+      Mantis migration script
+    with: |-
+      Mantis migration script. This task is no longer maintained and cannot be used in Redmine 7.0.3 (deprecated in Redmine 7.0.0).
+  - why: Redmine 7.0.0 deprecated the Trac migration task; in Redmine 7.0.3 it stops without migrating.
+    source: lib/tasks/migrate_from_trac.rake, doc/CHANGELOG (Feature #43918)
+    replace: |-
+      Trac migration script
+    with: |-
+      Trac migration script. This task is no longer maintained and cannot be used in Redmine 7.0.3 (deprecated in Redmine 7.0.0).

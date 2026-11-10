@@ -1,0 +1,40 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 the users list is a query whose status filter is "active" by default and has no "all" value.
+    source: app/models/user_query.rb (initialize, initialize_available_filters, user_statuses_values), config/locales/en.yml (label_any)
+    replace: |-
+      To view all users (activated, registered and locked users), change the status filter to ‘all’.
+    with: |-
+      To view all users (activated, registered and locked users), change the operator of the status filter to ‘any’ or remove the filter.
+  - why: The column is labeled "Last sign in" in Redmine 7.0.3.
+    source: config/locales/en.yml (field_last_login_on), app/models/user_query.rb (default_columns_names)
+    replace: |-
+      - **Last connection:** Indicates
+    with: |-
+      - **Last sign in:** Indicates
+  - why: Redmine 5.0.0 dropped OpenID support.
+    source: doc/CHANGELOG (Feature #35755), app/views/settings/_authentication.html.erb
+    replace: |-
+      by an external LDAP or OpenId server, or by Redmine plugins
+    with: |-
+      by an external LDAP server, or by Redmine plugins
+  - why: Redmine 5.0.0 dropped OpenID support.
+    source: doc/CHANGELOG (Feature #35755)
+    replace: |-
+      - [LDAP Authentication](ldap.md)
+      - [Allow OpenID login and registration](settings.md#Allow-OpenID-login-and-registration)
+    with: |-
+      - [LDAP Authentication](ldap.md)
+  - why: In Redmine 7.0.3 the account information is sent whenever the box is checked, for an active user other than yourself.
+    source: app/controllers/users_controller.rb (update), app/views/users/_general.html.erb
+    replace: |-
+      * Send account information to the user - If checked AND password is changed (Defect #7577), send Account information to the user's email address when changed user's information by administrator.
+    with: |-
+      * Send account information to the user - If checked, send Account information to the user's email address when changed user's information by administrator (active users only).
+  - why: In Redmine 7.0.3 the issues assigned to a deleted user become unassigned; they are not reassigned to the Anonymous user.
+    source: app/models/user.rb (remove_references_before_destroy)
+    replace: |-
+      attachments…, issues assigned to the user, or any other any changes done by the user) is reassigned to the `Anonymous` user.
+    with: |-
+      attachments…, or any other any changes done by the user) is reassigned to the `Anonymous` user. Issues assigned to the user become unassigned.

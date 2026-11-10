@@ -1,0 +1,239 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The default number of search results per page is 10 in Redmine 7.0.3.
+    source: config/settings.yml (search_results_per_page)
+    replace: |-
+      The number of [search](../user/search.md) results which are displayed per page.
+
+      *Default: 20*
+    with: |-
+      The number of [search](../user/search.md) results which are displayed per page.
+
+      *Default: 10*
+  - why: Redmine 6.0.0 dropped the Redcarpet based Markdown formatter; the choices are none, Textile and CommonMark Markdown, and CommonMark is the default.
+    source: lib/redmine/preparation.rb (WikiFormatting.map), config/settings.yml (text_formatting), app/views/settings/_general.html.erb, doc/CHANGELOG (Feature #40149)
+    replace: |-
+      You can select **Textile** *<span class="default"></span>* or **Markdown**.
+    with: |-
+      You can select **none**, **Textile** or **CommonMark Markdown (GitHub Flavored)** *<span class="default"></span>*.
+  - why: The bundled themes are in app/assets/themes and other themes are installed in themes in Redmine 7.0.3.
+    source: lib/redmine/themes.rb (scan_themes), themes/README
+    replace: |-
+      Themes are located in `public/themes/`.
+    with: |-
+      The bundled themes are located in `app/assets/themes/`, and additional themes are installed in `themes/`.
+  - why: The default time span format is "0:45 h" (minutes) in Redmine 7.0.3.
+    source: config/settings.yml (timespan_format), app/views/settings/_display.html.erb
+    replace: |-
+      - **0.75** *<span class="default"></span>* : Displays in decimal.
+      - **0:45 h** : Displays in “HH:MM” format.
+    with: |-
+      - **0.75** : Displays in decimal.
+      - **0:45 h** *<span class="default"></span>* : Displays in “HH:MM” format.
+  - why: Redmine 7.0.3 offers nine user display formats.
+    source: app/models/user.rb (USER_FORMATS), app/controllers/settings_controller.rb (edit)
+    replace: |-
+      - *Firstname*
+      - *Firstname Surname*
+      - *Surname Firstname*
+      - *Surname, Firstname*
+      - *Username*
+    with: |-
+      - *Firstname Surname*
+      - *Firstname S.*
+      - *F. Surname*
+      - *Firstname*
+      - *Surname Firstname*
+      - *SurnameFirstname*
+      - *Surname, Firstname*
+      - *Surname*
+      - *Username*
+  - why: The self-registration options are labeled differently in Redmine 7.0.3.
+    source: config/locales/en.yml (label_registration_activation_by_email, label_registration_manual_activation, label_registration_automatic_activation)
+    replace: |-
+      - **account activation by email**: new users
+    with: |-
+      - **Self account activation by email verification**: new users
+  - why: The self-registration options are labeled differently in Redmine 7.0.3.
+    source: config/locales/en.yml (label_registration_manual_activation)
+    replace: |-
+      - **manual account activation** *<span class="default"></span>*: new users’ accounts
+    with: |-
+      - **Account activation by administrator approval** *<span class="default"></span>*: new users’ accounts
+  - why: The self-registration options are labeled differently in Redmine 7.0.3.
+    source: config/locales/en.yml (label_registration_automatic_activation)
+    replace: |-
+      - **automatic account activation**: new users can log in
+    with: |-
+      - **Automatic account activation**: new users can log in
+  - why: In Redmine 7.0.3 "Allow users to delete their own account" is on the Users tab (moved to the Users section below).
+    source: app/views/settings/_users.html.erb, app/helpers/settings_helper.rb (administration_settings_tabs)
+    replace: |-
+      ### Allow users to delete their own account
+
+      If enabled, users can delete their account by clicking “Delete my account” link placed in the sidebar on “My account” page.
+
+      *Default: Enabled*
+
+      ### Minimum password length
+    with: |-
+      ### Minimum password length
+  - why: The setting is labeled "Allow password reset via email" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_lost_password)
+    replace: |-
+      If this option is checked, [lost password functionality](../user/accounts.md#Password-lost) is available. *Default: Yes*
+    with: |-
+      If **Allow password reset via email** is checked, [lost password functionality](../user/accounts.md#Password-lost) is available. *Default: Yes*
+  - why: In Redmine 7.0.3 "Maximum number of additional email addresses" is on the Users tab (moved to the Users section below).
+    source: app/views/settings/_users.html.erb
+    replace: |-
+      ### Maximum number of additional email addresses
+
+      (WIP)
+
+      ### Allow OpenID login and registration
+    with: |-
+      ### Allow OpenID login and registration
+  - why: Redmine 5.0.0 dropped OpenID support; Redmine 7.0.3 has no such setting.
+    source: app/views/settings/_authentication.html.erb, config/settings.yml, doc/CHANGELOG (Feature #35755)
+    replace: |-
+      Provides the admin a way to disable OpenID logins and registrations.\
+      Note that the setting is immutable as long as the dependency for the feature (an installed copy of the `ruby-openid` gem) is not met.
+    with: |-
+      Redmine 7.0.3 no longer has this setting: OpenID support was removed in Redmine 5.0.0.
+  - why: The tab is named "Integrations" in Redmine 7.0.3 and also has the "Enable webhooks" setting (Redmine 7.0.0).
+    source: app/helpers/settings_helper.rb (administration_settings_tabs), app/views/settings/_api.html.erb, config/locales/en.yml (label_integrations, setting_webhooks_enabled), doc/CHANGELOG (Feature #29664)
+    replace: |-
+      ## API
+
+      ### Enable REST web service
+    with: |-
+      ## API
+
+      This tab is named **Integrations** in Redmine 7.0.3. It also has the **Enable webhooks** setting, added in Redmine 7.0.0.
+
+      ### Enable REST web service
+  - why: Redmine 7.0.3 has a Users tab with the settings for users and the default values for new users.
+    source: app/helpers/settings_helper.rb (administration_settings_tabs), app/views/settings/_users.html.erb, app/views/my/_sidebar.html.erb
+    replace: |-
+      ## Issue tracking
+
+      ### Allow cross-project issue relations
+    with: |-
+      ## Users
+
+      ### Maximum number of additional email addresses
+
+      (WIP)
+
+      ### Allow users to delete their own account
+
+      If enabled, users can delete their account by clicking “Delete my account” link placed in the sidebar on “My account” page.
+
+      *Default: Enabled*
+
+      ### Default notification option
+
+      This setting is in the **Default values for new users** box.
+
+      (WIP)
+
+      ## Issue tracking
+
+      ### Allow cross-project issue relations
+  - why: The setting is titled "Issues list defaults", and every visible issue custom field can be selected in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_issue_list_default_columns), app/models/query.rb (issue_custom_fields), app/models/issue_query.rb (available_columns)
+    replace: |-
+      ### Default columns displayed on the issue list
+
+      This setting lets you define which columns are displayed on the issue lists by default.\
+      Only custom fields that are marked as ‘For all projects’ can be selected here.
+    with: |-
+      ### Issues list defaults
+
+      This setting lets you define which columns are displayed on the issue lists by default.
+  - why: The setting is labeled "Maximum attachment size" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_attachment_max_size)
+    replace: |-
+      Maximum size of uploaded files (in
+    with: |-
+      **Maximum attachment size**: maximum size of uploaded files (in
+  - why: The setting is labeled "Maximum size of text files displayed inline" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_file_max_size_displayed)
+    replace: |-
+      ### Max size of text files displayed inline KB
+    with: |-
+      ### Maximum size of text files displayed inline
+  - why: The setting is labeled "Maximum number of diff lines displayed" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_diff_max_lines_displayed)
+    replace: |-
+      ### Max number of diff lines displayed
+    with: |-
+      ### Maximum number of diff lines displayed
+  - why: The setting is labeled "Attachments and repositories encodings" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_repositories_encodings)
+    replace: |-
+      ### Repositories encodings
+    with: |-
+      ### Attachments and repositories encodings
+  - why: The setting is labeled "Emission email address" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_mail_from)
+    replace: |-
+      ### Emission mail address
+    with: |-
+      ### Emission email address
+  - why: Redmine 5.0.0 dropped the "Blind carbon copy recipients (bcc)" setting.
+    source: app/views/settings/_notifications.html.erb, config/settings.yml, doc/CHANGELOG (Feature #30820)
+    replace: |-
+      If set to true, email notification will be sent as Blind carbon copy. *Default: Yes*
+    with: |-
+      Redmine 7.0.3 no longer has this setting: it was removed in Redmine 5.0.0.
+  - why: The setting is labeled "Plain text mail (no HTML)" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_plain_text_mail)
+    replace: |-
+      ### Plain text mail
+    with: |-
+      ### Plain text mail (no HTML)
+  - why: In Redmine 7.0.3 "Default notification option" is on the Users tab (moved to the Users section), and the setting is labeled "Email header".
+    source: app/views/settings/_users.html.erb, config/locales/en.yml (setting_emails_header)
+    replace: |-
+      ### Default notification option
+
+      (WIP)
+
+      ### Emails header
+    with: |-
+      ### Email header
+  - why: The setting is labeled "Email footer" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_emails_footer)
+    replace: |-
+      ### Emails footer
+    with: |-
+      ### Email footer
+  - why: The setting is labeled "Incoming email WS API key" in Redmine 7.0.3.
+    source: config/locales/en.yml (setting_mail_handler_api_key)
+    replace: |-
+      ### API key
+
+      Within this setting
+    with: |-
+      ### Incoming email WS API key
+
+      Within this setting
+  - why: Redmine 7.0.3 has no default fixing keywords; fixing keywords, the applied status and % Done are set per tracker.
+    source: config/settings.yml (commit_update_keywords), app/views/settings/_repositories.html.erb (commit-keywords table)
+    replace: |-
+      - for fixing issues: fixes, closes
+
+      There’s no default status defined for fixed issue. You’ll have to specify it if you want to enable auto closure of issues.\
+    with: |-
+      - for fixing issues: none
+
+      Fixing keywords are defined in the table below the referencing keywords, for all trackers or for one tracker, with the **Applied status** and the **% Done** to apply to fixed issues. There’s no default status defined for fixed issue. You’ll have to specify it if you want to enable auto closure of issues.\
+  - why: Redmine 7.0.3 has no default fixing keywords, so the example needs "fixes" defined as a fixing keyword.
+    source: config/settings.yml (commit_update_keywords)
+    replace: |-
+      Example of a working commit message using default keywords:
+    with: |-
+      Example of a working commit message using the default referencing keywords and “fixes” defined as a fixing keyword:

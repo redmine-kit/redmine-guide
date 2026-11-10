@@ -3,6 +3,7 @@ source: RedmineAdminInformation
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineAdminInformation
 source_version: 3
 source_updated_on: '2020-05-06T11:36:43Z'
+updated_for: 7.0.3
 ---
 
 # Administration information
@@ -33,31 +34,41 @@ It indicates whether the password of the admin account has changed from the defa
 
 It indicates whether the directory for storing attachments is writable. The default path of the directory is `files` under the installation directory, which can be changed by `attachments_storage_path` in `config/configuration.yml`.
 
-If an exclamation mark is displayed, users cannot upload files. Set write permission to the directory so that Redmine can store files. See [RedmineInstall#Step-8-File-system-permissions](../install/install.md#Step-8-File-system-permissions) for further information.
+If an exclamation mark is displayed, users cannot upload files. Set write permission to the directory so that Redmine can store files. See [RedmineInstall#Step-9-File-system-permissions](../install/install.md#Step-9-File-system-permissions) for further information.
 
-### Plugin assets directory writable
+### All database migrations have been run
 
-It indicates whether the directory for storing plugin assets, `public/plugin_assets` under the installation directory, is writable.
+It indicates whether all the database migrations have been run.
 
-If an exclamation mark is displayed, Redmine may raise an exception at startup after you install or update plugins. This is because Redmine will fail to copy images and CSS used by plugins to the directory. Set write permission to the directory so that Redmine can store files.
+If an exclamation mark is displayed, run the database migrations. See [RedmineInstall#Step-7-Database-schema-objects-creation](../install/install.md#Step-7-Database-schema-objects-creation) for further information.
 
-### MiniMagick available
+### MiniMagick available (optional)
 
 It indicates whether MiniMagick gem used for image processing is available.
 
 An exclamation mark is displayed only if you set `--without minimagick` option when you run bundler during the installation of Redmine. You can fix it by running bundler again with setting `--without ''` option. See also [RedmineInstall#Step-4-Dependencies-installation](../install/install.md#Step-4-Dependencies-installation) for more about bundler.
 
-### ImageMagick convert available
+### ImageMagick convert available (optional)
 
 It indicates whether the `convert` command, a part of ImageMagick, is available.
 
 If `convert` command is not available, some features such as displaying thumbnails of images and exporting gantt in PNG image are disabled. You can fix this by installing ImageMagick. if the check fails even though ImageMagick is installed, you may have to configure `imagemagick_convert_command` in `config/configuration.yml`.
 
-### ImageMagick PDF support available
+### ImageMagick PDF support available (optional)
 
 It indicates whether ImageMagick `convert` command on the server supports PDF files.
 
 When it is not available, the feature to display thumbnails for PDF files is disabled. You can fix this by installing both ImageMagick and GhostScript.
+
+### Pandoc available (optional)
+
+It indicates whether the Pandoc command is available. Redmine uses Pandoc to convert supported Microsoft Office and LibreOffice attachments to Markdown for preview.
+
+When it is not available, the preview of these files is disabled. You can fix this by installing Pandoc. If the check fails even though Pandoc is installed, you may have to configure `pandoc_command` in `config/configuration.yml`.
+
+### Default queue adapter which is well suited only for dev/test changed
+
+It is displayed only in the production environment, and indicates whether the queue adapter of Active Job has been changed from the default one, which is well suited only for development and test. See [RedmineInstall#Queues-adapter](../install/install.md#Queues-adapter) for further information.
 
 ## Environment information
 

@@ -3,6 +3,7 @@ source: RedmineCustomFields
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineCustomFields
 source_version: 29
 source_updated_on: '2021-09-30T14:54:07Z'
+updated_for: 7.0.3
 ---
 
 # Custom fields
@@ -18,12 +19,15 @@ A custom field can be of one the following type:
 
 - **Boolean**: checkbox
 - **Date**: date
+- **File**: file attached to the object
 - **Float**: floating point number
 - **Integer**: positive or negative number
+- **Key/value list**: drop down list whose values can be renamed (see [Lists and Key/Values list](custom-fields.md#Lists-and-KeyValues-list))
 - **Link**: URL
 - **List**: drop down list
 - **Long Text**: resizeable multiple lines of text (supports rich text formatting as of 2.50)
-- **Text**: multiple lines text (supports rich text formatting as of 2.50)
+- **Progress bar**: percentage between 0 and 100, displayed as a progress bar (since 6.1.0)
+- **Text**: single line of text (supports rich text formatting as of 2.50)
 - **User** custom field format that can be used to reference a project member
 - **Version** custom field format that can be used to reference version
 
@@ -67,7 +71,7 @@ You can create your own list of values which you want your users to add. A poste
 
 ### Link values to URL
 
-“Link values to URL” can be defined for boolean, date, list, integer and text format fields.
+“Link values to URL” can be defined for boolean, date, float, integer, key/value list, list and text format fields.
 
 - **Link values to URL**: creates a URL using the following variables.
   - `%value%` =\> the custom field value
@@ -130,7 +134,7 @@ Data in user custom fields can be used and/or will be displayed in the [user pro
 
 ### Fields for Groups
 
-**Note**: group custom fields are not (yet) used in the Redmine core, though other plugins or themes *can/may* use them. No setting here has any effect on any other parts of Redmine for the time being.
+Data in group custom fields can be edited in the group form and is displayed on the group page.
 
 ### Fields for Activities (time tracking)
 

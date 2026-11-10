@@ -3,6 +3,7 @@ source: RedmineSettings
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineSettings
 source_version: 76
 source_updated_on: '2022-09-12T04:41:20Z'
+updated_for: 7.0.3
 ---
 
 # Application Settings
@@ -29,7 +30,7 @@ Here you can configure the fixed values which users can select for the amount of
 
 The number of [search](../user/search.md) results which are displayed per page.
 
-*Default: 20*
+*Default: 10*
 
 ### Days displayed on project activity
 
@@ -51,7 +52,7 @@ Links in email are “guessed”, but can’t determine whether you’re using a
 
 Formatting method applied to the “description” fields of the issues, news, documents…
 
-You can select **Textile** *<span class="default"></span>* or **Markdown**.
+You can select **none**, **Textile** or **CommonMark Markdown (GitHub Flavored)** *<span class="default"></span>*.
 
 ### Cache formatted text (1.0)
 
@@ -97,7 +98,7 @@ Screenshot of the [alternate](https://www.redmine.org/projects/redmine/wiki/Them
 
 ![](../../images/RedmineSettings/alternate_theme.png)
 
-Themes are located in `public/themes/`. You can read more about [Themes](https://www.redmine.org/projects/redmine/wiki/Themes).
+The bundled themes are located in `app/assets/themes/`, and additional themes are installed in `themes/`. You can read more about [Themes](https://www.redmine.org/projects/redmine/wiki/Themes).
 
 ### Default language
 
@@ -139,17 +140,21 @@ Lets you choose how times are displayed:
 
 Let you choose the display format of timespans (estimated time, spent time, etc).
 
-- **0.75** *<span class="default"></span>* : Displays in decimal.
-- **0:45 h** : Displays in “HH:MM” format.
+- **0.75** : Displays in decimal.
+- **0:45 h** *<span class="default"></span>* : Displays in “HH:MM” format.
 
 ### Users display format
 
 Lets you choose how usernames are displayed. The following combinations are provided:
 
-- *Firstname*
 - *Firstname Surname*
+- *Firstname S.*
+- *F. Surname*
+- *Firstname*
 - *Surname Firstname*
+- *SurnameFirstname*
 - *Surname, Firstname*
+- *Surname*
 - *Username*
 
 ### Use Gravatar user icons
@@ -193,21 +198,15 @@ This option let users use the auto-login feature. *Default: Disabled*
 This option lets you enable/disable new users self-registration:
 
 - **disabled**: users are not allowed to register
-- **account activation by email**: new users receive an email containing a link used to activate their accounts (users must provide a valid email address).
-- **manual account activation** *<span class="default"></span>*: new users’ accounts are created but need administrator approval. Administrators receive an email informing them that an account is pending their approval.
-- **automatic account activation**: new users can log in as soon as they have registered.
+- **Self account activation by email verification**: new users receive an email containing a link used to activate their accounts (users must provide a valid email address).
+- **Account activation by administrator approval** *<span class="default"></span>*: new users’ accounts are created but need administrator approval. Administrators receive an email informing them that an account is pending their approval.
+- **Automatic account activation**: new users can log in as soon as they have registered.
 
 See [Register](../user/register.md) for further details about self-registration.
 
 ### Show custom fields on registration
 
 (WIP)
-
-### Allow users to delete their own account
-
-If enabled, users can delete their account by clicking “Delete my account” link placed in the sidebar on “My account” page.
-
-*Default: Enabled*
 
 ### Minimum password length
 
@@ -221,16 +220,11 @@ If enabled, users are forced to change their password periodically. You can set 
 
 ### Lost password
 
-If this option is checked, [lost password functionality](../user/accounts.md#Password-lost) is available. *Default: Yes*
-
-### Maximum number of additional email addresses
-
-(WIP)
+If **Allow password reset via email** is checked, [lost password functionality](../user/accounts.md#Password-lost) is available. *Default: Yes*
 
 ### Allow OpenID login and registration
 
-Provides the admin a way to disable OpenID logins and registrations.\
-Note that the setting is immutable as long as the dependency for the feature (an installed copy of the `ruby-openid` gem) is not met.
+Redmine 7.0.3 no longer has this setting: OpenID support was removed in Redmine 5.0.0.
 
 ### Session expiration
 
@@ -240,6 +234,8 @@ Session inactivity timeout: Lets the administrator specify after how many hours 
 <span style="color:red">Warning 2</span>: Redmine uses the rails cookiestore for session management. We strongly advise you to set a maximum session lifetime. If you don’t, it is theoretically possible that an attacker steals the session cookie and re-uses it.
 
 ## API
+
+This tab is named **Integrations** in Redmine 7.0.3. It also has the **Enable webhooks** setting, added in Redmine 7.0.0.
 
 ### Enable REST web service
 
@@ -270,6 +266,24 @@ This setting will let Redmine propose sequential project identifiers for you. Th
 ### Role given to a non-admin user who creates a project
 
 Defines which role is given by default to a non-admin user who creates a project (this only applies when you have configured Redmine permissions in such a way that non-admin users are actually privileged to create projects).
+
+## Users
+
+### Maximum number of additional email addresses
+
+(WIP)
+
+### Allow users to delete their own account
+
+If enabled, users can delete their account by clicking “Delete my account” link placed in the sidebar on “My account” page.
+
+*Default: Enabled*
+
+### Default notification option
+
+This setting is in the **Default values for new users** box.
+
+(WIP)
 
 ## Issue tracking
 
@@ -332,10 +346,9 @@ Maximum number of issues contained in CSV and PDF exports. *Default: 500*
 
 (WIP)
 
-### Default columns displayed on the issue list
+### Issues list defaults
 
-This setting lets you define which columns are displayed on the issue lists by default.\
-Only custom fields that are marked as ‘For all projects’ can be selected here.
+This setting lets you define which columns are displayed on the issue lists by default.
 
 ## Time tracking
 
@@ -347,7 +360,7 @@ Only custom fields that are marked as ‘For all projects’ can be selected her
 
 ### Attachment max. size
 
-Maximum size of uploaded files (in [kibi-bytes](http://en.wikipedia.org/wiki/Binary_prefix)). *Default: 5120 (i.e. 5 [mebi-bytes](http://en.wikipedia.org/wiki/Binary_prefix) )*
+**Maximum attachment size**: maximum size of uploaded files (in [kibi-bytes](http://en.wikipedia.org/wiki/Binary_prefix)). *Default: 5120 (i.e. 5 [mebi-bytes](http://en.wikipedia.org/wiki/Binary_prefix) )*
 
 ### Allowed extensions
 
@@ -357,15 +370,15 @@ Maximum size of uploaded files (in [kibi-bytes](http://en.wikipedia.org/wiki/Bin
 
 (WIP)
 
-### Max size of text files displayed inline KB
+### Maximum size of text files displayed inline
 
 It provides a way to limit the maximum size of text files which are display inline.
 
-### Max number of diff lines displayed
+### Maximum number of diff lines displayed
 
 It provides a way to limit the maximum number of diff lines which are displayed by Redmine.
 
-### Repositories encodings
+### Attachments and repositories encodings
 
 This option lets you specify preferred encodings for repository files (multiple values allowed, comma separated). These encodings are used to convert files content and diff to UTF-8 so that they’re properly displayed in the browser.\
 When entering multiple encodings, the first valid encoding regarding the file content is used.
@@ -380,27 +393,23 @@ UTF-8, CP932, EUC-JP
 
 ## Email notifications
 
-### Emission mail address
+### Emission email address
 
 Email address used in the “From” field of messages sent to users.
 
 ### Blind carbon copy recipients (bcc)
 
-If set to true, email notification will be sent as Blind carbon copy. *Default: Yes*
+Redmine 7.0.3 no longer has this setting: it was removed in Redmine 5.0.0.
 
-### Plain text mail
+### Plain text mail (no HTML)
 
 If set to true, emails are sent in plain text only (no HTML).
 
-### Default notification option
+### Email header
 
 (WIP)
 
-### Emails header
-
-(WIP)
-
-### Emails footer
+### Email footer
 
 Here you can enter some text that will be appended to the emails sent by the application.
 
@@ -420,7 +429,7 @@ These setting can be used to remove signatures from incoming emails.
 
 Redmine can be configured to allow issue creation or comments via email. In order to use that feature, you have to enable the API that receives emails. That is where this setting is for. *Default: Off*
 
-### API key
+### Incoming email WS API key
 
 Within this setting you can enter a secret key used for the issue creation or comments via email feature.
 
@@ -476,12 +485,12 @@ These options lets you define keywords that can be used in commit message to ref
 Default keywords are:
 
 - for referencing issues: refs, references, IssueID
-- for fixing issues: fixes, closes
+- for fixing issues: none
 
-There’s no default status defined for fixed issue. You’ll have to specify it if you want to enable auto closure of issues.\
+Fixing keywords are defined in the table below the referencing keywords, for all trackers or for one tracker, with the **Applied status** and the **% Done** to apply to fixed issues. There’s no default status defined for fixed issue. You’ll have to specify it if you want to enable auto closure of issues.\
 If you want to reference issues without using keywords, enter a single star: \* in the **Referencing keywords** (Administration/Repository) setting. In this case, any issue ID found in the message will be linked to the changeset.
 
-Example of a working commit message using default keywords:
+Example of a working commit message using the default referencing keywords and “fixes” defined as a fixing keyword:
 
 This commit refs \#1, \#2 and fixes \#3
 

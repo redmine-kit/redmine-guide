@@ -104,11 +104,11 @@ Postfix のローカルのエイリアスの設定例です。
 
 この行は、aliases のファイル(通常は `/etc/aliases`)に書きます。場所がわからないときは、`postconf alias_maps` コマンドで確認します。aliases のファイルを更新したら、`newaliases` を実行して、新しい設定を Postfix に通知してください。
 
-ドメインを仮想メールボックスのマップとして設定している(/etc/postfix/virtual_mailbox_maps で @ user@example.com /path/example.com/user@ の形式の対応付けをしている)ときは、次のようにします。
+ドメインを仮想メールボックスのマップとして設定している(/etc/postfix/virtual_mailbox_maps で ` user@example.com /path/example.com/user` の形式の対応付けをしている)ときは、次のようにします。
 
-- `/etc/virtual` に、@ foo@example.org foo@ のような対応付けを作成します
+- `/etc/virtual` に、` foo@example.org foo` のような対応付けを作成します
 - `/etc/postfix/main.cf` を変更して、トランスポートのファイルを指定します: `transport_maps = hash:/etc/postfix/transport`
-- トランスポートのファイルに、@ foo@example.org local:@ のような行を追加します
+- トランスポートのファイルに、` foo@example.org local:` のような行を追加します
 
 **説明:** - ドメインに virtual_mailbox_maps を設定すると、デフォルトのトランスポートは virtual になります。そのため、`/etc/postfix/virtual` にローカルのエイリアスを指定しても失敗します(「unknown user」になります)。これを直すには、該当するメールアドレスにローカルのトランスポートを指定して、デフォルトのトランスポートを上書きします。こうすると、ローカルのエイリアスが正しく解決され、スクリプトが実行されます。
 
@@ -132,7 +132,9 @@ Windows のサーバーでは、[pycron](http://www.kalab.com/freeware/pycron/py
 
       host=HOST                IMAP server host (default: 127.0.0.1)
       port=PORT                IMAP server port (default: 143)
-      ssl=SSL                  Use SSL? (default: false)
+      ssl=SSL                  Use SSL/TLS? (default: false)
+                               Setting `ssl=force` disables server certificate
+                               verification
       starttls=STARTTLS        Use STARTTLS? (default: false)
       username=USERNAME        IMAP account
       password=PASSWORD        IMAP password
@@ -151,6 +153,7 @@ Windows のサーバーでは、[pycron](http://www.kalab.com/freeware/pycron/py
       no_permission_check=1    disable permission checking when receiving
                                the email
       no_account_notice=1      disable new user account notification
+      no_notification=1        disable email notification to new user
       default_group=foo,bar    adds created user to foo and bar groups
 
 チケットの属性を制御するオプション:
@@ -211,6 +214,9 @@ rake タスク(`redmine:email:receive_pop3`)で、POP3 サーバーから受信�
       username=USERNAME        POP3 account
       password=PASSWORD        POP3 password (use '' if it fails, ex: 'my-password')
       apop=1                   use APOP authentication (default: false)
+      ssl=SSL                  Use SSL? (default: false)
+                               Setting `ssl=force` disables server certificate
+                               verification
       delete_unprocessed=1     delete messages that could not be processed
                                successfully from the server (default
                                behaviour is to leave them on the server)
@@ -343,17 +349,17 @@ Redmine はメールを受信すると、メールの From のアドレスで該
 
 この機能は、バージョン 3.2.0(SVN のリビジョン r14687)で追加されました。プロジェクトごとにメールボックスを用意するより、Redmine のインスタンスへの受信メールすべてに 1 つのメールボックスを使うほうが望ましい場合があります。redmine@somenet.foo でメールを受信しているとき、redmine+foo@somenet.foo に送られたメールは、識別子が foo のプロジェクトにチケットとして追加されます。
 
-この機能を有効にするには、コマンドに `project_from_subaddress=redmine`somenet.foo@ を追加します。例:
+この機能を有効にするには、コマンドに `project_from_subaddress=redmine@somenet.foo` を追加します。例:
 
         rake redmine:email:receive_imap [...] project_from_subaddress=redmine@somenet.foo
 
-コマンドラインでプロジェクトも指定すると、`redmine`somenet.foo@ に送られたメールに使うデフォルトのプロジェクトになります。つまり、次のコマンドでは
+コマンドラインでプロジェクトも指定すると、`redmine@somenet.foo` に送られたメールに使うデフォルトのプロジェクトになります。つまり、次のコマンドでは
 
         rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmine@somenet.foo
 
-`redmine`somenet.foo@ か `redmine+bar`somenet.foo@ へのメールはプロジェクト bar のチケットになり、`redmine+foo`somenet.foo@ へのメールはプロジェクト foo に入ります。
+`redmine@somenet.foo` か `redmine+bar@somenet.foo` へのメールはプロジェクト bar のチケットになり、`redmine+foo@somenet.foo` へのメールはプロジェクト foo に入ります。
 
-RFC 3598、5233 のとおりにサブアドレスに対応しているメールのプロバイダーもあります。対応していないときは、メールアドレスを「中央」のアドレスに転送すると動くことがあります(筆者の場合は動きました)。つまり、`redmine+foo`somenet.foo`、`redmine+bar@somenet.foo@ などから `redmine`somenet.foo@ にすべてのメールを転送するメールアドレスを設定します。管理が簡単で、それぞれに資格情報がある複数のアカウントからメールを取得する必要もありません。
+RFC 3598、5233 のとおりにサブアドレスに対応しているメールのプロバイダーもあります。対応していないときは、メールアドレスを「中央」のアドレスに転送すると動くことがあります(筆者の場合は動きました)。つまり、`redmine+foo@somenet.foo`、`redmine+bar@somenet.foo` などから `redmine@somenet.foo` にすべてのメールを転送するメールアドレスを設定します。管理が簡単で、それぞれに資格情報がある複数のアカウントからメールを取得する必要もありません。
 
 ### チケットの属性
 
@@ -420,8 +426,8 @@ RFC 3598、5233 のとおりにサブアドレスに対応しているメール�
 
 ### メールの形式と添付ファイル
 
-Redmine は、メールのプレーンテキストの部分を使ってチケットの説明を入力しようとします。\
-HTML だけのメールを受信したときは、本文から HTML のタグを取り除きます。
+Redmine は、「マルチパート (HTML) メールの優先パート」の設定で選択した部分 (デフォルトは「テキスト」) を使ってチケットの説明を入力し、メールにその部分がないときはもう一方の部分を使います。\
+HTML の部分はテキストに変換します。
 
 メールの添付ファイルは、アプリケーションの設定の[「添付ファイルサイズの上限」](settings.md#Attachment-max-size)を超えない限り、自動でチケットに添付されます。
 

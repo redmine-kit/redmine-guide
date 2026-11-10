@@ -1,0 +1,59 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: File system permissions are step 9 of the installation page for Redmine 7.0.3.
+    source: en/install/install.md (Step 9 - File system permissions)
+    replace: |-
+      See [RedmineInstall#Step-8-File-system-permissions](../install/install.md#Step-8-File-system-permissions) for further information.
+    with: |-
+      See [RedmineInstall#Step-9-File-system-permissions](../install/install.md#Step-9-File-system-permissions) for further information.
+  - why: Redmine 7.0.3 no longer checks the plugin assets directory; it checks that all database migrations have been run, in the same place of the table.
+    source: app/controllers/admin_controller.rb (info), config/locales/en.yml (text_all_migrations_have_been_run)
+    replace: |-
+      ### Plugin assets directory writable
+
+      It indicates whether the directory for storing plugin assets, `public/plugin_assets` under the installation directory, is writable.
+
+      If an exclamation mark is displayed, Redmine may raise an exception at startup after you install or update plugins. This is because Redmine will fail to copy images and CSS used by plugins to the directory. Set write permission to the directory so that Redmine can store files.
+    with: |-
+      ### All database migrations have been run
+
+      It indicates whether all the database migrations have been run.
+
+      If an exclamation mark is displayed, run the database migrations. See [RedmineInstall#Step-7-Database-schema-objects-creation](../install/install.md#Step-7-Database-schema-objects-creation) for further information.
+  - why: The optional checks are labeled with "(optional)" in Redmine 7.0.3.
+    source: config/locales/en.yml (text_minimagick_available)
+    replace: |-
+      ### MiniMagick available
+    with: |-
+      ### MiniMagick available (optional)
+  - why: The optional checks are labeled with "(optional)" in Redmine 7.0.3.
+    source: config/locales/en.yml (text_convert_available)
+    replace: |-
+      ### ImageMagick convert available
+    with: |-
+      ### ImageMagick convert available (optional)
+  - why: Redmine 7.0.3 also checks Pandoc, used for the preview of Office documents (Redmine 7.0.0), and, in production, the queue adapter.
+    source: app/controllers/admin_controller.rb (info), config/locales/en.yml (text_gs_available, text_pandoc_available, text_default_active_job_queue_changed), config/configuration.yml.example (pandoc_command), doc/CHANGELOG (Feature #8959, Feature #36695)
+    replace: |-
+      ### ImageMagick PDF support available
+
+      It indicates whether ImageMagick `convert` command on the server supports PDF files.
+
+      When it is not available, the feature to display thumbnails for PDF files is disabled. You can fix this by installing both ImageMagick and GhostScript.
+    with: |-
+      ### ImageMagick PDF support available (optional)
+
+      It indicates whether ImageMagick `convert` command on the server supports PDF files.
+
+      When it is not available, the feature to display thumbnails for PDF files is disabled. You can fix this by installing both ImageMagick and GhostScript.
+
+      ### Pandoc available (optional)
+
+      It indicates whether the Pandoc command is available. Redmine uses Pandoc to convert supported Microsoft Office and LibreOffice attachments to Markdown for preview.
+
+      When it is not available, the preview of these files is disabled. You can fix this by installing Pandoc. If the check fails even though Pandoc is installed, you may have to configure `pandoc_command` in `config/configuration.yml`.
+
+      ### Default queue adapter which is well suited only for dev/test changed
+
+      It is displayed only in the production environment, and indicates whether the queue adapter of Active Job has been changed from the default one, which is well suited only for development and test. See [RedmineInstall#Queues-adapter](../install/install.md#Queues-adapter) for further information.

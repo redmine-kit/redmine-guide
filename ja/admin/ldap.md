@@ -16,7 +16,7 @@ Redmine は、1 つまたは複数の LDAP ディレクトリを使った LDAP �
 - 「名称」: ディレクトリの任意の名前
 - 「ホスト」: LDAP のホスト名
 - 「ポート」: LDAP のポート(デフォルトは 389)
-- 「LDAPS」: ディレクトリへのアクセスに LDAPS を使うとき、または使う必要があるときにチェックを入れます
+- 「LDAP」、「LDAPS (証明書の検証なし)」、「LDAPS」: ポートの横のドロップダウンリストで、ディレクトリへのアクセスに LDAPS を使うかどうかと、サーバーの証明書を検証するかどうかを選択します (証明書を検証する LDAPS をおすすめします)
 - 「アカウント」: LDAP の読み取りのアクセス権があるユーザー名を入力します。LDAP を匿名で読み取れるときは空のままにします(Active Directory のサーバーは、通常は匿名のアクセスを許可しません)
 - 「パスワード」: アカウントのパスワード
 - 「ベースDN」: LDAP のディレクトリツリーの最上位の DN
@@ -205,7 +205,7 @@ ldapsearch -x -b “dc=example,dc=com” -H ldap://hostname/ -D “DOMAIN\USER�
 
 ### アカウントの値の形式
 
-source:trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb の次のコメントのとおり、バインドの資格情報のユーザー名は、UPN(user@domain.com)や domain\user ではなく、DN(CN=user,OU=optional,DC=domain,DC=com など)で指定する必要がある場合があります。
+net-ldap の gem の lib/net/ldap.rb にある次のコメントのとおり、バインドの資格情報のユーザー名は、UPN(user@domain.com)や domain\user ではなく、DN(CN=user,OU=optional,DC=domain,DC=com など)で指定する必要がある場合があります。
 
       # As described under #bind, most LDAP servers require that you supply a complete DN
       # as a binding-credential, along with an authenticator such as a password.

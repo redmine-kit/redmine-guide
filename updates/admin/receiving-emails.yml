@@ -1,0 +1,39 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The IMAP ssl option of Redmine 7.0.3 accepts `ssl=force` to disable the certificate verification.
+    source: lib/tasks/email.rake (receive_imap), lib/redmine/imap.rb
+    replace: |-
+      IMAP server port (default: 143)
+            ssl=SSL                  Use SSL? (default: false)
+    with: |-
+      IMAP server port (default: 143)
+            ssl=SSL                  Use SSL/TLS? (default: false)
+                                     Setting `ssl=force` disables server certificate
+                                     verification
+  - why: Redmine 7.0.3 has the no_notification option for the rake tasks.
+    source: lib/tasks/email.rake (receive_imap), app/models/mail_handler.rb (extract_options_from_env)
+    replace: |-
+      disable new user account notification
+            default_group=foo,bar    adds created user to foo and bar groups
+    with: |-
+      disable new user account notification
+            no_notification=1        disable email notification to new user
+            default_group=foo,bar    adds created user to foo and bar groups
+  - why: The POP3 rake task of Redmine 7.0.3 has the ssl option.
+    source: lib/tasks/email.rake (receive_pop3), lib/redmine/pop3.rb
+    replace: |-
+      use APOP authentication (default: false)
+    with: |-
+      use APOP authentication (default: false)
+            ssl=SSL                  Use SSL? (default: false)
+                                     Setting `ssl=force` disables server certificate
+                                     verification
+  - why: In Redmine 7.0.3 the part of the email used depends on the "Preferred part of multipart (HTML) emails" setting, and HTML parts are converted to text.
+    source: app/models/mail_handler.rb (plain_text_body, email_parts_to_text, html_body_to_text), app/views/settings/_mail_handler.html.erb, config/settings.yml (mail_handler_preferred_body_part), config/locales/en.yml (setting_mail_handler_preferred_body_part, label_preferred_body_part_text)
+    replace: |-
+      Redmine tries to use the plain text part of the email to fill the description of the issue.\
+      If a HTML-only email is received, HTML tags are removed from its body.
+    with: |-
+      Redmine uses the part of the email chosen in the “Preferred part of multipart (HTML) emails” setting (“Text” by default) to fill the description of the issue, and the other part if the email has no such part.\
+      HTML parts are converted to text.

@@ -3,13 +3,14 @@ source: RedmineUsers
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineUsers
 source_version: 21
 source_updated_on: '2023-12-19T14:22:04Z'
+updated_for: 7.0.3
 ---
 
 # Managing users
 
 ## Users list
 
-The users list shows only the activated users by default. To view all users (activated, registered and locked users), change the status filter to ‘all’.
+The users list shows only the activated users by default. To view all users (activated, registered and locked users), change the operator of the status filter to ‘any’ or remove the filter.
 
 - **Login:** The login of the user.
 - **First name:** The first name of the user.
@@ -17,7 +18,7 @@ The users list shows only the activated users by default. To view all users (act
 - **Email:** The email address of the user.
 - **Administrator:** If the icon ✓ is present, the user is designated as an administrator who has unrestricted access to the application and to all projects.
 - **Created:** Indicates the date when this user account has been created.
-- **Last connection:** Indicates the date when this user logged into the application the last time.
+- **Last sign in:** Indicates the date when this user logged into the application the last time.
 
 ![](../../images/RedmineUsers/users-list@2x.png)
 
@@ -42,12 +43,11 @@ The Lock/Unlock buttons let you **lock/unlock** the activated users and the Acti
 
 ## User authentication
 
-Users are authenticated by *login* and *password*. These tokens can be managed by Redmine directly, by an external LDAP or OpenId server, or by Redmine plugins which allow for instance to reuse an already available Apache authentication.
+Users are authenticated by *login* and *password*. These tokens can be managed by Redmine directly, by an external LDAP server, or by Redmine plugins which allow for instance to reuse an already available Apache authentication.
 
 See also:
 
 - [LDAP Authentication](ldap.md)
-- [Allow OpenID login and registration](settings.md#Allow-OpenID-login-and-registration)
 
 ## Adding or editing a User
 
@@ -68,9 +68,9 @@ TODO
      * Authentication
      ** Password  - New password
      ** Confirmation - Confirm a new password
-     * Send account information to the user - If checked AND password is changed (Defect #7577), send Account information to the user's email address when changed user's information by administrator.
+     * Send account information to the user - If checked, send Account information to the user's email address when changed user's information by administrator (active users only).
 
 ## Deleting a User
 
 Prior to Redmine version#27, user accounts couldn’t be deleted from Redmine. Starting from Redmine version#27, administrators have the ability to delete users (#7296) and from Redmine version#46 onwards, all users have the ability to delete their own account depending on the “[Allow users to delete their own account](settings.md#Allow-users-to-delete-their-own-account)” setting (#10664).\
-When a user is deleted, their personal data (e.g. the user record itself, their saved preferences, any saved tokens or keys for the user, their project memberships, their private queries…) is deleted and their public data (e.g. any authorship references of issues, journals, wiki edits/pages, attachments…, issues assigned to the user, or any other any changes done by the user) is reassigned to the `Anonymous` user.
+When a user is deleted, their personal data (e.g. the user record itself, their saved preferences, any saved tokens or keys for the user, their project memberships, their private queries…) is deleted and their public data (e.g. any authorship references of issues, journals, wiki edits/pages, attachments…, or any other any changes done by the user) is reassigned to the `Anonymous` user. Issues assigned to the user become unassigned.

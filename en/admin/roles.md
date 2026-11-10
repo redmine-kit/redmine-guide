@@ -3,6 +3,7 @@ source: RedmineRoles
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineRoles
 source_version: 34
 source_updated_on: '2023-01-25T13:56:27Z'
+updated_for: 7.0.3
 ---
 
 # Roles & permissions
@@ -18,7 +19,7 @@ You can create new roles or edit existing ones. You can delete a role only if no
 ## Roles properties
 
 - **Name**: display name of the role
-- **Issues can be assigned to this role**: if unchecked, issues can not be assigned to members with this role on a project.
+- **Issues can be assigned to users with this role**: if unchecked, issues can not be assigned to members with this role on a project.
 - **Issues visibility**: controls issue visibility. Assuming that this role includes the View Issues permission, the following rules apply to the issues of the projects the user is tied to through it:
   - *All issues* : the user can see all issues.
   - *All non private issues*: the user can see all issues which are not marked as private and private issues that were created by or assigned to her/him. This is the default.
@@ -27,8 +28,8 @@ You can create new roles or edit existing ones. You can delete a role only if no
   - *All time entries* : the user can see all time logs. This is the default.
   - *Time entries created by the user* : the user can only see time logs created by or assigned to her/him.
 - **Users visibility**: controls user visibility (this applies to user profiles, issue filters and user search when adding watchers). The following rules apply to the users of the projects the user is tied to through it and beyond:
-  - *All active users* : the user can see all active users (i.e. all active user accounts that are registered in Redmine). This is the default.
-  - *Members of visible projects* : the user can only see users who are members of visible projects.
+  - *All active users* : the user can see all active users (i.e. all active user accounts that are registered in Redmine).
+  - *Members of visible projects* : the user can only see users who are members of visible projects. This is the default.
 
 ## Permissions
 
@@ -162,6 +163,10 @@ When editing a role, you can define its permissions by checking/unchecking the d
 <td>Allow user to fully edit existing issues</td>
 </tr>
 <tr>
+<td>Edit own issues</td>
+<td>Allow user to fully edit the issues they created</td>
+</tr>
+<tr>
 <td>Copy issues</td>
 <td>Allow user to copy existing issues</td>
 </tr>
@@ -188,22 +193,6 @@ When editing a role, you can define its permissions by checking/unchecking the d
 <tr>
 <td>Delete issues</td>
 <td>Allow user to delete issues</td>
-</tr>
-<tr>
-<td>Manage public queries</td>
-<td>Allow user to add/edit/delete issue queries that are visible by all users</td>
-</tr>
-<tr>
-<td>Save queries</td>
-<td>Allow user to save its own issue queries</td>
-</tr>
-<tr>
-<td>View gantt chart</td>
-<td>Allow user to view the gantt chart</td>
-</tr>
-<tr>
-<td>View calendar</td>
-<td>Allow user to view the calendar</td>
 </tr>
 <tr>
 <td>View watchers list</td>
@@ -312,6 +301,20 @@ When editing a role, you can define its permissions by checking/unchecking the d
 <tr>
 <td>Protect wiki pages</td>
 <td>Allow user to lock/unlock wiki pages, and edit locked pages</td>
+</tr>
+<tr>
+<td colspan="2"><strong><em>Calendar permissions</em></strong></td>
+</tr>
+<tr>
+<td>View calendar</td>
+<td>Allow user to view the calendar</td>
+</tr>
+<tr>
+<td colspan="2"><strong><em>Gantt permissions</em></strong></td>
+</tr>
+<tr>
+<td>View gantt chart</td>
+<td>Allow user to view the gantt chart</td>
 </tr>
 </tbody>
 </table>

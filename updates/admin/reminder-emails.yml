@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 the users option also accepts group ids.
+    source: lib/tasks/reminder.rake
+    replace: |-
+      - users: comma separated list of user ids who should be reminded
+    with: |-
+      - users: comma separated list of user/group ids who should be reminded

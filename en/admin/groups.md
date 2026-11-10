@@ -3,6 +3,7 @@ source: RedmineGroups
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineGroups
 source_version: 6
 source_updated_on: '2012-12-08T10:16:32Z'
+updated_for: 7.0.3
 ---
 
 # Managing Groups
@@ -32,11 +33,11 @@ To add members to a group, do the following:
     - General
       - Change the name by editing the Name field
     - Users
-      - Add users by checking the username box for each user
+      - Click New user and check the box for each user to add
       - Click Add
     - Projects
-      - Select a project from the pop-up menu
-      - Set the Role
+      - Click Add projects and check the projects
+      - Check the roles
       - Click Add
 
 ![](../../images/RedmineGroups/RedmineMemberToGroupNew.png)\

@@ -3,6 +3,7 @@ source: RedmineReminderEmails
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineReminderEmails
 source_version: 15
 source_updated_on: '2017-11-25T06:42:28Z'
+updated_for: 7.0.3
 ---
 
 # Sending reminder emails
@@ -14,7 +15,7 @@ Available options:
 - days: number of days to remind about (defaults to 7)
 - tracker: id of tracker (defaults to all trackers)
 - project: id or identifier of project (defaults to all projects)
-- users: comma separated list of user ids who should be reminded
+- users: comma separated list of user/group ids who should be reminded
 - version: name of target version for filtering issues (defaults to none)
 
 The following example will send an email to each user who has assigned issues that are past due or due in the next 7 days:

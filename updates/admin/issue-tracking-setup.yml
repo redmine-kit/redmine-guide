@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 the status can be changed with "Edit issues", or with "Edit own issues" for issues the user created.
+    source: app/models/issue.rb (attributes_editable?, safe_attributes 'status_id'), config/locales/en.yml (permission_edit_own_issues)
+    replace: |-
+      they need to have either ‘Edit issues’ permission (see
+    with: |-
+      they need to have either ‘Edit issues’ or ‘Edit own issues’ permission (the latter only for the issues they created) (see

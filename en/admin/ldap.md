@@ -3,6 +3,7 @@ source: RedmineLDAP
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineLDAP
 source_version: 29
 source_updated_on: '2024-10-03T10:38:11Z'
+updated_for: 7.0.3
 ---
 
 # LDAP Authentication
@@ -18,7 +19,7 @@ Enter the following:
 - **Name**: an arbitrary name for the directory
 - **Host**: the LDAP host name
 - **Port**: the LDAP port (default is 389)
-- **LDAPS**: check this if you want or need to use LDAPS to access the directory
+- **LDAP**, **LDAPS (without certificate check)** or **LDAPS**: in the drop-down list next to the port, choose whether to use LDAPS to access the directory, and whether to check the server certificate (LDAPS with the certificate check is recommended)
 - **Account**: enter a username that has read access to the LDAP , otherwise leave this field empty if your LDAP can be read anonymously (Active Directory servers generally do not allow anonymous access)
 - **Password**: password for the account
 - **Base DN**: the top level DN of your LDAP directory tree
@@ -207,7 +208,7 @@ If succesful, you will get a listing of the contents of the AD, matching your se
 
 ### Account value format
 
-The username for the bind credentials might need to be specified as a DN (i.e. CN=user,OU=optional,DC=domain,DC=com) rather than as a UPN (user@domain.com) or as domain\user, as pointed out by this comment in source:trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb:
+The username for the bind credentials might need to be specified as a DN (i.e. CN=user,OU=optional,DC=domain,DC=com) rather than as a UPN (user@domain.com) or as domain\user, as pointed out by this comment in lib/net/ldap.rb of the net-ldap gem:
 
       # As described under #bind, most LDAP servers require that you supply a complete DN
       # as a binding-credential, along with an authenticator such as a password.

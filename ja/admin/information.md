@@ -31,31 +31,41 @@ admin アカウントのパスワードが、デフォルトの「admin」から
 
 添付ファイルを保存するディレクトリに書き込めるかどうかを示します。このディレクトリのデフォルトのパスはインストール先のディレクトリの下の `files` で、`config/configuration.yml` の `attachments_storage_path` で変更できます。
 
-感嘆符が表示されているときは、ユーザーがファイルをアップロードできません。Redmine がファイルを保存できるように、ディレクトリに書き込みの権限を設定してください。詳しくは、[「インストール」の手順 8 (ファイルシステムのパーミッション)](../install/install.md#Step-8-File-system-permissions)を参照してください。
+感嘆符が表示されているときは、ユーザーがファイルをアップロードできません。Redmine がファイルを保存できるように、ディレクトリに書き込みの権限を設定してください。詳しくは、[「インストール」の手順 9 (ファイルシステムの権限)](../install/install.md#Step-9-File-system-permissions)を参照してください。
 
-### プラグインのアセットのディレクトリに書き込み可能
+### すべてのデータベースマイグレーションが実行済
 
-プラグインのアセットを保存するディレクトリ(インストール先のディレクトリの下の `public/plugin_assets`)に書き込めるかどうかを示します。
+データベースのマイグレーションがすべて実行されているかどうかを示します。
 
-感嘆符が表示されているときは、プラグインをインストールまたは更新した後、Redmine の起動時に例外が発生することがあります。プラグインが使う画像や CSS を、Redmine がこのディレクトリにコピーできないためです。Redmine がファイルを保存できるように、ディレクトリに書き込みの権限を設定してください。
+感嘆符が表示されているときは、データベースのマイグレーションを実行してください。詳しくは、[「インストール」の手順 7 (データベースのスキーマの作成)](../install/install.md#Step-7-Database-schema-objects-creation)を参照してください。
 
-### MiniMagickが利用可能
+### MiniMagickが利用可能 (オプション)
 
 画像の処理に使う MiniMagick の gem が使えるかどうかを示します。
 
 感嘆符が表示されるのは、Redmine のインストールで bundler を実行するときに `--without minimagick` のオプションを指定した場合だけです。`--without ''` のオプションを指定して bundler をもう一度実行すると直ります。bundler について詳しくは、[「インストール」の手順 4 (依存関係のインストール)](../install/install.md#Step-4-Dependencies-installation)も参照してください。
 
-### ImageMagickのconvertコマンドが利用可能
+### ImageMagickのconvertコマンドが利用可能 (オプション)
 
 ImageMagick の一部である `convert` コマンドが使えるかどうかを示します。
 
 `convert` コマンドが使えないときは、画像のサムネイルの表示やガントチャートの PNG 画像へのエクスポートなど、いくつかの機能が無効になります。ImageMagick をインストールすると直ります。ImageMagick をインストールしているのにチェックが通らないときは、`config/configuration.yml` の `imagemagick_convert_command` を設定する必要があるかもしれません。
 
-### ImageMagickのPDFサポートが利用可能
+### ImageMagickのPDFサポートが利用可能 (オプション)
 
 サーバーの ImageMagick の `convert` コマンドが PDF ファイルに対応しているかどうかを示します。
 
 使えないときは、PDF ファイルのサムネイルを表示する機能が無効になります。ImageMagick と GhostScript の両方をインストールすると直ります。
+
+### Pandocが利用可能 (オプション)
+
+Pandoc のコマンドが使えるかどうかを示します。Redmine は、対応している Microsoft Office と LibreOffice の添付ファイルを、プレビューのために Pandoc で Markdown に変換します。
+
+使えないときは、これらのファイルのプレビューが無効になります。Pandoc をインストールすると直ります。Pandoc をインストールしているのにチェックが通らないときは、`config/configuration.yml` の `pandoc_command` を設定する必要があるかもしれません。
+
+### キューアダプターがデフォルト (開発・テスト用) 以外のものに変更済み
+
+本番環境でだけ表示されます。Active Job のキューアダプターが、開発とテストにだけ適したデフォルトのものから変更されているかどうかを示します。詳しくは、[「インストール」のキューのアダプター](../install/install.md#Queues-adapter)を参照してください。
 
 ## 環境の情報
 

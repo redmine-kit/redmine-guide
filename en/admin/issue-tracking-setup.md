@@ -3,6 +3,7 @@ source: RedmineIssueTrackingSetup
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineIssueTrackingSetup
 source_version: 41
 source_updated_on: '2020-06-13T07:35:04Z'
+updated_for: 7.0.3
 ---
 
 # Issue tracking system
@@ -47,7 +48,7 @@ The workflow lets you define status transitions that the various project members
 
 On the workflow setup screen, select the role and the tracker for which you want to edit the workflow, then click ‘Edit’. The screen lets you select the authorized transitions for the chosen role and tracker. The “Current status” column indicates the initial status of an issue. The “New statuses allowed” columns stand for the statuses that can be applied.
 
-Note: For a user to change an issue status, they need to have either ‘Edit issues’ permission (see [Roles and permissions](roles.md)).
+Note: For a user to change an issue status, they need to have either ‘Edit issues’ or ‘Edit own issues’ permission (the latter only for the issues they created) (see [Roles and permissions](roles.md)).
 
 ![](../../images/RedmineIssueTrackingSetup/workflow_example@2x.png)
 

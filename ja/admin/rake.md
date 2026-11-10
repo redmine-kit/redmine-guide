@@ -93,11 +93,11 @@ POP3 サーバーからメールを読み込みます。
 
 ### `rake redmine:plugins`
 
-プラグインのマイグレーションを実行し、アセットをコピーします。
+プラグインのマイグレーションを実行します。
 
 ### `rake redmine:plugins:assets`
 
-プラグインのアセットを public ディレクトリにコピーします。
+Redmine 7.0.3 には、このタスクはありません。
 
 ### `rake redmine:plugins:migrate`
 
@@ -107,8 +107,8 @@ POP3 サーバーからメールを読み込みます。
 
 ### `rake redmine:migrate_from_mantis`
 
-Mantis からの移行スクリプトです。
+Mantis からの移行スクリプトです。このタスクはメンテナンスされておらず、Redmine 7.0.3 では使えません (Redmine 7.0.0 で非推奨になりました)。
 
 ### `rake redmine:migrate_from_trac`
 
-Trac からの移行スクリプトです。
+Trac からの移行スクリプトです。このタスクはメンテナンスされておらず、Redmine 7.0.3 では使えません (Redmine 7.0.0 で非推奨になりました)。

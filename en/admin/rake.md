@@ -3,6 +3,7 @@ source: RedmineRake
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineRake
 source_version: 13
 source_updated_on: '2017-09-12T07:25:12Z'
+updated_for: 7.0.3
 ---
 
 # Rake tasks
@@ -95,11 +96,11 @@ List all permissions and the actions registered with them
 
 ### `rake redmine:plugins`
 
-Migrates and copies plugins assets.
+Migrates plugins.
 
 ### `rake redmine:plugins:assets`
 
-Copies plugins assets into the public directory.
+Redmine 7.0.3 no longer has this task.
 
 ### `rake redmine:plugins:migrate`
 
@@ -109,8 +110,8 @@ Migrates installed plugins.
 
 ### `rake redmine:migrate_from_mantis`
 
-Mantis migration script
+Mantis migration script. This task is no longer maintained and cannot be used in Redmine 7.0.3 (deprecated in Redmine 7.0.0).
 
 ### `rake redmine:migrate_from_trac`
 
-Trac migration script
+Trac migration script. This task is no longer maintained and cannot be used in Redmine 7.0.3 (deprecated in Redmine 7.0.0).

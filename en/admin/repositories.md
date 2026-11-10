@@ -3,6 +3,7 @@ source: RedmineRepositories
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineRepositories
 source_version: 64
 source_updated_on: '2025-10-25T07:40:43Z'
+updated_for: 7.0.3
 ---
 
 # Repositories
@@ -36,7 +37,7 @@ Finally, be sure to enable any SCM you wish to use globally in `Administration->
 
 ## Attaching an existing repository to a project
 
-In the project settings, make sure that the ‘Repository’ module is enabled and go to the ‘Repository’ tab.\
+In the project settings, make sure that the ‘Repository’ module is enabled, go to the ‘Repositories’ tab and click ‘New repository’.\
 Select the SCM that corresponds to your repository and enter the path or URL of your repository.
 
 **Important**: When you first browse the repository, Redmine retrieves the description of all of the existing commits and stores them in the database.\
@@ -187,7 +188,7 @@ hgsync.sh:
 
 ### Bazaar repository
 
-Put in the full path to your repository in “Root directory”\
+Put in the full path to your repository in “Path to repository”\
 i.e. /home/username/bzr/repo/trunk
 
 You’ll need to make sure that bzr and bzrlib can be found in ENV\[’PATH’\] and ENV\[’PYTHONPATH’\] respectively.\
@@ -198,7 +199,7 @@ ie. edit config/environment.rb and add:
 
 ## Repository user-mapping
 
-In the project -\> settings -\> repository there is a link called users (on the lower right).
+In the project -\> settings -\> repositories there is a link called Users in the row of each repository.
 
 That allows you to map users that have commits to the users in redmine. If the login name / email matches the mapping is automatic, otherwise you need to establish the map of repository users to redmine users.
 

@@ -1,0 +1,36 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 the projects list is a query; its status filter has no "All" value, and projects can also be closed.
+    source: app/models/project_query.rb (initialize, initialize_available_filters), app/models/project_admin_query.rb (project_statuses_values)
+    replace: |-
+      To view all projects (active and archived projects) change the status filter to *All*.
+    with: |-
+      To view all projects (active, closed and archived projects), remove the status filter or select all the statuses in it.
+  - why: In Redmine 7.0.3 the default columns are Name, Identifier and Description; other columns such as Public and Created can be added.
+    source: config/settings.yml (project_list_defaults), app/models/project_query.rb (available_columns, default_columns_names), config/locales/en.yml (field_name, field_identifier, label_options)
+    replace: |-
+      - **Project:** The project name
+    with: |-
+      By default the list shows the Name, Identifier and Description columns. Other columns, such as Public and Created, can be added in the Options of the list.
+
+      - **Name:** The project name
+      - **Identifier:** The project identifier
+  - why: In Redmine 7.0.3 Archive is in the context menu of the projects list.
+    source: app/views/projects/_list.html.erb, app/views/context_menus/projects.html.erb, app/helpers/application_helper.rb (link_to_context_menu), config/locales/en.yml (button_actions)
+    replace: |-
+      From the projects list, click the **Archive** link to archive a project.
+    with: |-
+      From the projects list, right-click the project (or click the **Actions** button at the end of its row) and select **Archive** to archive a project.
+  - why: In Redmine 7.0.3 Copy is in the context menu of the projects list.
+    source: app/views/context_menus/projects.html.erb
+    replace: |-
+      From the projects list, click the **Copy** link on the right of the project you want to copy.
+    with: |-
+      From the projects list, right-click the project you want to copy (or click the **Actions** button at the end of its row) and select **Copy**.
+  - why: In Redmine 7.0.3 Delete is in the context menu, the confirmation asks for the project identifier, and the project is deleted in the background.
+    source: app/views/context_menus/projects.html.erb, app/controllers/projects_controller.rb (destroy, bulk_destroy), app/jobs/destroy_project_job.rb, config/locales/en.yml (text_project_destroy_enter_identifier, project_status_scheduled_for_deletion)
+    replace: |-
+      From the projects list, click the **Delete** link. You will be asked for confirmation on a separate screen.
+    with: |-
+      From the projects list, right-click the project (or click the **Actions** button at the end of its row) and select **Delete**. You will be asked for confirmation on a separate screen, where you enter the project’s identifier. The project is then scheduled for deletion and deleted in the background. Several selected projects can be deleted at once.

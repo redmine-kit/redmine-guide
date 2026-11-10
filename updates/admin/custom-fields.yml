@@ -1,0 +1,40 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 also has the File format.
+    source: lib/redmine/field_format.rb (AttachmentFormat), config/locales/en.yml (label_attachment)
+    replace: |-
+      - **Date**: date
+    with: |-
+      - **Date**: date
+      - **File**: file attached to the object
+  - why: Redmine 7.0.3 also has the Key/value list format.
+    source: lib/redmine/field_format.rb (EnumerationFormat), config/locales/en.yml (label_field_format_enumeration)
+    replace: |-
+      - **Integer**: positive or negative number
+    with: |-
+      - **Integer**: positive or negative number
+      - **Key/value list**: drop down list whose values can be renamed (see [Lists and Key/Values list](custom-fields.md#Lists-and-KeyValues-list))
+  - why: The "Text" format is a single line of text, and Redmine 6.1.0 added the Progress bar format.
+    source: lib/redmine/field_format.rb (StringFormat, TextFormat, ProgressbarFormat), config/locales/en.yml (label_string, label_text, label_progressbar), doc/CHANGELOG (Feature #42335)
+    replace: |-
+      - **Text**: multiple lines text (supports rich text formatting as of 2.50)
+    with: |-
+      - **Progress bar**: percentage between 0 and 100, displayed as a progress bar (since 6.1.0)
+      - **Text**: single line of text (supports rich text formatting as of 2.50)
+  - why: In Redmine 7.0.3 "Link values to URL" is also available for float and key/value list fields.
+    source: app/views/custom_fields/formats/_bool.html.erb, _date.html.erb, _enumeration.erb, _list.html.erb, _numeric.html.erb, _string.html.erb (url_pattern)
+    replace: |-
+      “Link values to URL” can be defined for boolean, date, list, integer and text format fields.
+    with: |-
+      “Link values to URL” can be defined for boolean, date, float, integer, key/value list, list and text format fields.
+  - why: In Redmine 7.0.3 group custom fields are edited in the group form and displayed on the group page.
+    source: app/views/groups/_form.html.erb, app/views/groups/show.html.erb, app/views/custom_fields/_form.html.erb (is_filter)
+    replace: |-
+      **Note**: group custom fields are not (yet) used in the Redmine core, though other plugins or themes *can/may* use them. No setting here has any effect on any other parts of Redmine for the time being.
+
+      ### Fields for Activities (time tracking)
+    with: |-
+      Data in group custom fields can be edited in the group form and is displayed on the group page.
+
+      ### Fields for Activities (time tracking)

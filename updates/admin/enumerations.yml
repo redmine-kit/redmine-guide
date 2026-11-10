@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 enumerations have the Active and Default value settings.
+    source: app/views/enumerations/_form.html.erb, config/locales/en.yml (field_active, field_is_default)
+    replace: |-
+      They all have one configurable setting which is if the current enumeration should be the default value.
+    with: |-
+      They all have two configurable settings: **Active**, whether the enumeration can be selected, and **Default value**, whether the current enumeration should be the default value.

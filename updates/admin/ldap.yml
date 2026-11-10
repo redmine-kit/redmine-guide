@@ -1,0 +1,15 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 LDAPS is chosen in a drop-down list next to the port, with or without the certificate check.
+    source: app/views/auth_sources/_form_auth_source_ldap.html.erb, app/models/auth_source_ldap.rb (LDAP_MODES), config/locales/en.yml (label_ldap, label_ldaps_verify_none, label_ldaps_verify_peer, label_ldaps_warning)
+    replace: |-
+      - **LDAPS**: check this if you want or need to use LDAPS to access the directory
+    with: |-
+      - **LDAP**, **LDAPS (without certificate check)** or **LDAPS**: in the drop-down list next to the port, choose whether to use LDAPS to access the directory, and whether to check the server certificate (LDAPS with the certificate check is recommended)
+  - why: Redmine 7.0.3 uses the net-ldap gem; it no longer has a vendored ruby-net-ldap plugin.
+    source: Gemfile (net-ldap)
+    replace: |-
+      as pointed out by this comment in source:trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb:
+    with: |-
+      as pointed out by this comment in lib/net/ldap.rb of the net-ldap gem:

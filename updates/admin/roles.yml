@@ -1,0 +1,81 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The field is labeled "Issues can be assigned to users with this role" in Redmine 7.0.3.
+    source: config/locales/en.yml (field_assignable)
+    replace: |-
+      - **Issues can be assigned to this role**: if unchecked
+    with: |-
+      - **Issues can be assigned to users with this role**: if unchecked
+  - why: Since Redmine 6.0.0 new roles, and the Non member and Anonymous roles, default to "Members of visible projects".
+    source: db/migrate/20241103184550_change_builtin_roles_user_visibility.rb
+    replace: |-
+      user search when adding watchers). The following rules apply to the users of the projects the user is tied to through it and beyond:
+        - *All active users* : the user can see all active users (i.e. all active user accounts that are registered in Redmine). This is the default.
+        - *Members of visible projects* : the user can only see users who are members of visible projects.
+    with: |-
+      user search when adding watchers). The following rules apply to the users of the projects the user is tied to through it and beyond:
+        - *All active users* : the user can see all active users (i.e. all active user accounts that are registered in Redmine).
+        - *Members of visible projects* : the user can only see users who are members of visible projects. This is the default.
+  - why: Redmine 7.0.3 has the "Edit own issues" permission, which lets the author of an issue edit it.
+    source: lib/redmine/preparation.rb (edit_own_issues), app/models/issue.rb (attributes_editable?), config/locales/en.yml (permission_edit_own_issues)
+    replace: |-
+      <td>Edit issues</td>
+      <td>Allow user to fully edit existing issues</td>
+      </tr>
+    with: |-
+      <td>Edit issues</td>
+      <td>Allow user to fully edit existing issues</td>
+      </tr>
+      <tr>
+      <td>Edit own issues</td>
+      <td>Allow user to fully edit the issues they created</td>
+      </tr>
+  - why: In Redmine 7.0.3 "Manage public queries" and "Save queries" are project permissions only (listed above), and "View gantt chart" and "View calendar" belong to the Gantt and Calendar modules.
+    source: lib/redmine/preparation.rb (AccessControl.map)
+    replace: |-
+      <tr>
+      <td>Manage public queries</td>
+      <td>Allow user to add/edit/delete issue queries that are visible by all users</td>
+      </tr>
+      <tr>
+      <td>Save queries</td>
+      <td>Allow user to save its own issue queries</td>
+      </tr>
+      <tr>
+      <td>View gantt chart</td>
+      <td>Allow user to view the gantt chart</td>
+      </tr>
+      <tr>
+      <td>View calendar</td>
+      <td>Allow user to view the calendar</td>
+      </tr>
+      <tr>
+      <td>View watchers list</td>
+    with: |-
+      <tr>
+      <td>View watchers list</td>
+  - why: In Redmine 7.0.3 "View calendar" and "View gantt chart" are the permissions of the Calendar and Gantt modules.
+    source: lib/redmine/preparation.rb (project_module :calendar, project_module :gantt), config/locales/en.yml (project_module_calendar, project_module_gantt)
+    replace: |-
+      <td>Allow user to lock/unlock wiki pages, and edit locked pages</td>
+      </tr>
+      </tbody>
+    with: |-
+      <td>Allow user to lock/unlock wiki pages, and edit locked pages</td>
+      </tr>
+      <tr>
+      <td colspan="2"><strong><em>Calendar permissions</em></strong></td>
+      </tr>
+      <tr>
+      <td>View calendar</td>
+      <td>Allow user to view the calendar</td>
+      </tr>
+      <tr>
+      <td colspan="2"><strong><em>Gantt permissions</em></strong></td>
+      </tr>
+      <tr>
+      <td>View gantt chart</td>
+      <td>Allow user to view the gantt chart</td>
+      </tr>
+      </tbody>

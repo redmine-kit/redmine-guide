@@ -3,6 +3,7 @@ source: RedmineReceivingEmails
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineReceivingEmails
 source_version: 93
 source_updated_on: '2023-07-10T12:31:19Z'
+updated_for: 7.0.3
 ---
 
 # Receiving emails
@@ -134,7 +135,9 @@ Available IMAP options:
 
       host=HOST                IMAP server host (default: 127.0.0.1)
       port=PORT                IMAP server port (default: 143)
-      ssl=SSL                  Use SSL? (default: false)
+      ssl=SSL                  Use SSL/TLS? (default: false)
+                               Setting `ssl=force` disables server certificate
+                               verification
       starttls=STARTTLS        Use STARTTLS? (default: false)
       username=USERNAME        IMAP account
       password=PASSWORD        IMAP password
@@ -153,6 +156,7 @@ User and permissions options:
       no_permission_check=1    disable permission checking when receiving
                                the email
       no_account_notice=1      disable new user account notification
+      no_notification=1        disable email notification to new user
       default_group=foo,bar    adds created user to foo and bar groups
 
 Issue attributes control options:
@@ -180,7 +184,6 @@ Examples for the rake command:
 
       rake redmine:email:receive_imap RAILS_ENV="production" \\
         host=imap.foo.bar username=redmine@somenet.foo password=xxx
-
 
       # Fixed project and default tracker specified, but emails can override
       # both tracker and priority attributes:
@@ -213,6 +216,9 @@ Available POP3 options:
       username=USERNAME        POP3 account
       password=PASSWORD        POP3 password (use '' if it fails, ex: 'my-password')
       apop=1                   use APOP authentication (default: false)
+      ssl=SSL                  Use SSL? (default: false)
+                               Setting `ssl=force` disables server certificate
+                               verification
       delete_unprocessed=1     delete messages that could not be processed
                                successfully from the server (default
                                behaviour is to leave them on the server)
@@ -423,8 +429,8 @@ Watchers are added only when the issue is created. To or Cc fields are ignored o
 
 ### Email format and attachments
 
-Redmine tries to use the plain text part of the email to fill the description of the issue.\
-If a HTML-only email is received, HTML tags are removed from its body.
+Redmine uses the part of the email chosen in the “Preferred part of multipart (HTML) emails” setting (“Text” by default) to fill the description of the issue, and the other part if the email has no such part.\
+HTML parts are converted to text.
 
 Email attachments are automatically attached to the issue, unless their size exceeds the [maximum attachment size](settings.md#Attachment-max-size) defined in the application settings.
 

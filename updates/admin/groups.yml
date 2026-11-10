@@ -1,0 +1,19 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 users are added in a dialog opened with "New user" on the Users tab.
+    source: app/views/groups/_users.html.erb, app/views/groups/_new_users_modal.html.erb, config/locales/en.yml (label_user_new)
+    replace: |-
+      - Add users by checking the username box for each user
+    with: |-
+      - Click New user and check the box for each user to add
+  - why: In Redmine 7.0.3 projects are added in a dialog opened with "Add projects", with checkboxes for the projects and the roles.
+    source: app/views/principal_memberships/_index.html.erb, _new_form.html.erb, _new_modal.html.erb, config/locales/en.yml (label_add_projects)
+    replace: |-
+      - Projects
+            - Select a project from the pop-up menu
+            - Set the Role
+    with: |-
+      - Projects
+            - Click Add projects and check the projects
+            - Check the roles

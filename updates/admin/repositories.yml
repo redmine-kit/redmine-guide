@@ -1,0 +1,21 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3 the project settings tab is "Repositories", and a repository is added with "New repository".
+    source: app/helpers/projects_helper.rb (project_settings_tabs), app/views/projects/settings/_repositories.html.erb, config/locales/en.yml (label_repository_plural, label_repository_new)
+    replace: |-
+      make sure that the ‘Repository’ module is enabled and go to the ‘Repository’ tab.\
+    with: |-
+      make sure that the ‘Repository’ module is enabled, go to the ‘Repositories’ tab and click ‘New repository’.\
+  - why: The field for a Bazaar repository is labeled "Path to repository" in Redmine 7.0.3.
+    source: app/helpers/repositories_helper.rb (bazaar_field_tags), config/locales/en.yml (field_path_to_repository)
+    replace: |-
+      Put in the full path to your repository in “Root directory”\
+    with: |-
+      Put in the full path to your repository in “Path to repository”\
+  - why: In Redmine 7.0.3 the Users link is in the row of each repository on the Repositories tab.
+    source: app/views/projects/settings/_repositories.html.erb, config/locales/en.yml (label_user_plural)
+    replace: |-
+      In the project -\> settings -\> repository there is a link called users (on the lower right).
+    with: |-
+      In the project -\> settings -\> repositories there is a link called Users in the row of each repository.
