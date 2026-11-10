@@ -210,14 +210,17 @@ module Textile
   end
 
   # A code block: fenced, with its language or `text`, so that every code
-  # block looks the same (an indented block has no language).
+  # block looks the same (an indented block has no language), and without
+  # the indentation that all its lines share.
   Code = Struct.new(:lines, :lang) do
     def to_s(indent = '')
       return '' if lines.all?(&:empty?)
 
+      shared = lines.reject { |line| line.strip.empty? }.map { |line| line[/\A */].size }.min
+      body = lines.map { |line| line[shared..] || '' }
       fence = '```'
-      fence += '`' while lines.any? { |line| line.include?(fence) }
-      ["#{fence}#{lang.to_s.empty? ? 'text' : lang}", *lines, fence].map { |line| line.empty? ? '' : "#{indent}#{line}" }.join("\n")
+      fence += '`' while body.any? { |line| line.include?(fence) }
+      ["#{fence}#{lang.to_s.empty? ? 'text' : lang}", *body, fence].map { |line| line.empty? ? '' : "#{indent}#{line}" }.join("\n")
     end
 
     def to_html
