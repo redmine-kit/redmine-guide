@@ -46,14 +46,18 @@ This is done only once per repository but can take a very long time (or even tim
 To avoid this, you can do it offline.\
 After having your repository declared in Redmine, run the following command:
 
-    $ ./bin/rails runner "Repository.fetch_changesets" -e production
+```text
+$ ./bin/rails runner "Repository.fetch_changesets" -e production
+```
 
 All commits will be retrieved in to the Redmine database.
 
 Since version 0.9.x, you can also call an URL via WS to execute `fetch_changesets` :
 
-    http://redmine.example.com/sys/fetch_changesets?key=<WS key> (=> fetches changesets for all active projects)
-    http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches changesets for project foo only)
+```text
+http://redmine.example.com/sys/fetch_changesets?key=<WS key> (=> fetches changesets for all active projects)
+http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches changesets for project foo only)
+```
 
 Don’t forget to enable [WS for repository management](settings.md#Enable-WS-for-repository-management) and append `WS key` authentication information configured in the [Repository management WS API key](settings.md#Repository-management-WS-API-key) setting.
 
@@ -65,7 +69,9 @@ The usual protocols are supported (eg. `http:`, `svn:`, `file:`), just enter the
 
 For example:
 
-    http://host/path/to/the/repository
+```text
+http://host/path/to/the/repository
+```
 
 You can specify a username and password if the repository requires authentication.
 
@@ -81,7 +87,9 @@ Enter:
 
 For example:
 
-    :pserver:login:password@host:/path/to/the/repository
+```text
+:pserver:login:password@host:/path/to/the/repository
+```
 
 ### Git repository
 
@@ -94,9 +102,11 @@ Redmine requires a repository which is **bare** and **local** to enable browsing
 Imagine you want to browse the to-do list manager project “Donebox”: its clone URL is `git://github.com/ook/donebox.git`.\
 On the server where you’re running Redmine, create a directory accessible by the user running your Redmine server:
 
-    $ sudo mkdir -p /var/redmine/git_repositories
-    $ sudo chown rails:rails /var/redmine/git_repositories
-    $ cd /var/redmine/git_repositories
+```text
+$ sudo mkdir -p /var/redmine/git_repositories
+$ sudo chown rails:rails /var/redmine/git_repositories
+$ cd /var/redmine/git_repositories
+```
 
 Note the second line: it changes the ownership of the newly created directory to the user `rails` and the group `rails`. Of course, you have to replace it according to your server settings (it can be `www-data`, `apache` or when you are having a very bad sysadmin: `root`). Keep in mind that this user needs to have the (local-)permissions to run the `git` command.
 
@@ -104,16 +114,18 @@ Note the second line: it changes the ownership of the newly created directory to
 
 After the preceding steps have been taken it is time to create our bare repository:
 
-    $ pwd
-    /var/redmine/git_repositories
-    $ git clone --bare git://github.com/ook/donebox.git donebox.git
-    Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
-    remote: Counting objects: 401, done.
-    remote: Compressing objects: 100% (246/246), done.
-    remote: Total 401 (delta 134), reused 401 (delta 134)
-    Receiving objects: 100% (401/401), 179.55 KiB | 185 KiB/s, done.
-    Resolving deltas: 100% (134/134), done.
-    $ cd donebox.git
+```text
+$ pwd
+/var/redmine/git_repositories
+$ git clone --bare git://github.com/ook/donebox.git donebox.git
+Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
+remote: Counting objects: 401, done.
+remote: Compressing objects: 100% (246/246), done.
+remote: Total 401 (delta 134), reused 401 (delta 134)
+Receiving objects: 100% (401/401), 179.55 KiB | 185 KiB/s, done.
+Resolving deltas: 100% (134/134), done.
+$ cd donebox.git
+```
 
 Our bare repository is now created successfully! Now go to your Redmine project settings, go to the repositories tab and choose `git` as the SCM, then put in the *Path to repository* (in our example this is `/var/redmine/git_repositories/donebox.git/`) and save the settings. Have a look at your repository tab: you should now be able to browse your repository successfully.
 
@@ -128,12 +140,16 @@ Note: of course, this git repository won’t update by itself. You’ll have to 
 
 To have your repository (and all your branches) refresh every 10 minutes you can add a cronjob like:
 
-    */10 * * * * cd /srv/repos/git/myrepo.git && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft
+```text
+*/10 * * * * cd /srv/repos/git/myrepo.git && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft
+```
 
 Or you can use a post-receive hook, like this one :
 
-    echo "Post receive-hook => updating Redmine repository"
-    sudo -u my_redmine_user -p secret perl -we '`cd /redmine/repositories/my_repo.git && git fetch && git reset --soft refs/remotes/origin/master`'
+```text
+echo "Post receive-hook => updating Redmine repository"
+sudo -u my_redmine_user -p secret perl -we '`cd /redmine/repositories/my_repo.git && git fetch && git reset --soft refs/remotes/origin/master`'
+```
 
 Note the git reset, you’ll **need it** to update the git tree and see your changes in the Repository view. The ‘soft’ option is required since it is a bare repository and the default option (mixed) will fail since there is no working tree.
 
@@ -151,22 +167,24 @@ The method above works fine under most circumstances but it can take a lot of tw
 
 This method will help to keep branches from the repository’s origin updated and visible in Redmine’s repository browser. This is really only relevant if the local copy of the repository is only being used as a read-only copy specifically for Redmine’s use. For example, the project is hosted on GitHub but Redmine is being used for issue tracking.
 
-    $ pwd
-    /var/redmine/git_repositories
-    $ git clone --mirror git://github.com/ook/donebox.git donebox.git
-    Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
-    remote: Counting objects: 717, done.
-    remote: Compressing objects: 100% (561/561), done.
-    remote: Total 717 (delta 320), reused 371 (delta 134)
-    Receiving objects: 100% (717/717), 211.35 KiB | 86 KiB/s, done.
-    Resolving deltas: 100% (320/320), done.
-    $ cd donebox.git
-    $ git branch
-      WW
-      asap
-      bugcat
-      comeback
-    * master
+```text
+$ pwd
+/var/redmine/git_repositories
+$ git clone --mirror git://github.com/ook/donebox.git donebox.git
+Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
+remote: Counting objects: 717, done.
+remote: Compressing objects: 100% (561/561), done.
+remote: Total 717 (delta 320), reused 371 (delta 134)
+Receiving objects: 100% (717/717), 211.35 KiB | 86 KiB/s, done.
+Resolving deltas: 100% (320/320), done.
+$ cd donebox.git
+$ git branch
+  WW
+  asap
+  bugcat
+  comeback
+* master
+```
 
 This method relies on the `--mirror` option available for the git clone command. This option may not be available to older versions of git. In that case, please reference the [Stack Overflow question](http://stackoverflow.com/questions/4698649/how-do-i-get-a-remote-tracking-branch-to-stay-up-to-date-with-remote-origin-in-a) for some ideas on how to setup this type of mirror functionality without using the `--mirror` option.
 
@@ -179,12 +197,14 @@ This will start checking out the Mercurial repository, and you won’t see the r
 Redmine does not synchronize (push/pull) external repositories, but you can set up a script to do this before fetching updates.\
 hgsync.sh:
 
-    #!/bin/bash
-    for file in /var/www/sources.example.com/*; do
-       if [ -d $file ]; then
-          cd $file; hg pull -u
-       fi
-    done
+```text
+#!/bin/bash
+for file in /var/www/sources.example.com/*; do
+   if [ -d $file ]; then
+      cd $file; hg pull -u
+   fi
+done
+```
 
 ### Bazaar repository
 
@@ -194,8 +214,10 @@ i.e. /home/username/bzr/repo/trunk
 You’ll need to make sure that bzr and bzrlib can be found in ENV\[’PATH’\] and ENV\[’PYTHONPATH’\] respectively.\
 ie. edit config/environment.rb and add:
 
-    ENV['PYTHONPATH'] = '/path/to/pythonlib'
-    ENV['PATH'] = "#{ENV['PATH']}:/path/to/bzr/bin"
+```text
+ENV['PYTHONPATH'] = '/path/to/pythonlib'
+ENV['PATH'] = "#{ENV['PATH']}:/path/to/bzr/bin"
+```
 
 ## Repository user-mapping
 

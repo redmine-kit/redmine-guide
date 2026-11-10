@@ -43,14 +43,18 @@ Redmine は、次のバージョン管理システム(SCM)との連携に標準�
 これを避けるには、オフラインで実行します。\
 Redmine にリポジトリを登録した後、次のコマンドを実行します。
 
-    $ ./bin/rails runner "Repository.fetch_changesets" -e production
+```text
+$ ./bin/rails runner "Repository.fetch_changesets" -e production
+```
 
 すべてのコミットが Redmine のデータベースに取得されます。
 
 バージョン 0.9.x から、Web サービスの URL を呼び出して `fetch_changesets` を実行することもできます。
 
-    http://redmine.example.com/sys/fetch_changesets?key=<WS key> (=> fetches changesets for all active projects)
-    http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches changesets for project foo only)
+```text
+http://redmine.example.com/sys/fetch_changesets?key=<WS key> (=> fetches changesets for all active projects)
+http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches changesets for project foo only)
+```
 
 1 行目はすべての有効なプロジェクトの、2 行目はプロジェクト foo だけのコミットを取得します。[リポジトリ管理用の Web サービス](settings.md#Enable-WS-for-repository-management)を有効にし、[「APIキー」](settings.md#Repository-management-WS-API-key)の設定で決めた API キーを `key` に付けるのを忘れないでください。
 
@@ -62,7 +66,9 @@ Redmine にリポジトリを登録した後、次のコマンドを実行しま
 
 例:
 
-    http://host/path/to/the/repository
+```text
+http://host/path/to/the/repository
+```
 
 リポジトリに認証が必要なときは、ユーザー名とパスワードを指定できます。
 
@@ -78,7 +84,9 @@ Redmine にリポジトリを登録した後、次のコマンドを実行しま
 
 例:
 
-    :pserver:login:password@host:/path/to/the/repository
+```text
+:pserver:login:password@host:/path/to/the/repository
+```
 
 ### Git のリポジトリ
 
@@ -91,9 +99,11 @@ Redmine で閲覧するには、**ベア**で**ローカル**のリポジトリ�
 ToDo リストの管理のプロジェクト「Donebox」を閲覧するとします。そのクローンの URL は `git://github.com/ook/donebox.git` です。\
 Redmine を動かしているサーバーで、Redmine のサーバーを実行しているユーザーがアクセスできるディレクトリを作成します。
 
-    $ sudo mkdir -p /var/redmine/git_repositories
-    $ sudo chown rails:rails /var/redmine/git_repositories
-    $ cd /var/redmine/git_repositories
+```text
+$ sudo mkdir -p /var/redmine/git_repositories
+$ sudo chown rails:rails /var/redmine/git_repositories
+$ cd /var/redmine/git_repositories
+```
 
 2 行目に注意してください。作成したディレクトリの所有者を、ユーザー `rails` とグループ `rails` に変更しています。もちろん、サーバーの設定に合わせて置き換える必要があります(`www-data`、`apache`、または管理がとてもまずいサーバーでは `root` など)。このユーザーには、`git` コマンドを実行する(ローカルの)権限が必要です。
 
@@ -101,16 +111,18 @@ Redmine を動かしているサーバーで、Redmine のサーバーを実行�
 
 上の手順が済んだら、ベアリポジトリを作成します。
 
-    $ pwd
-    /var/redmine/git_repositories
-    $ git clone --bare git://github.com/ook/donebox.git donebox.git
-    Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
-    remote: Counting objects: 401, done.
-    remote: Compressing objects: 100% (246/246), done.
-    remote: Total 401 (delta 134), reused 401 (delta 134)
-    Receiving objects: 100% (401/401), 179.55 KiB | 185 KiB/s, done.
-    Resolving deltas: 100% (134/134), done.
-    $ cd donebox.git
+```text
+$ pwd
+/var/redmine/git_repositories
+$ git clone --bare git://github.com/ook/donebox.git donebox.git
+Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
+remote: Counting objects: 401, done.
+remote: Compressing objects: 100% (246/246), done.
+remote: Total 401 (delta 134), reused 401 (delta 134)
+Receiving objects: 100% (401/401), 179.55 KiB | 185 KiB/s, done.
+Resolving deltas: 100% (134/134), done.
+$ cd donebox.git
+```
 
 これでベアリポジトリができました。Redmine のプロジェクトの設定で「リポジトリ」のタブを開き、バージョン管理システムに `git` を選択し、*リポジトリのパス*(この例では `/var/redmine/git_repositories/donebox.git/`)を入力して設定を保存します。プロジェクトの「リポジトリ」のタブを開くと、リポジトリを閲覧できるはずです。
 
@@ -125,12 +137,16 @@ Redmine を動かしているサーバーで、Redmine のサーバーを実行�
 
 リポジトリ(とすべてのブランチ)を 10 分ごとに更新するには、次のような cron ジョブを追加します。
 
-    */10 * * * * cd /srv/repos/git/myrepo.git && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft
+```text
+*/10 * * * * cd /srv/repos/git/myrepo.git && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft
+```
 
 または、次のような post-receive フックを使います。
 
-    echo "Post receive-hook => updating Redmine repository"
-    sudo -u my_redmine_user -p secret perl -we '`cd /redmine/repositories/my_repo.git && git fetch && git reset --soft refs/remotes/origin/master`'
+```text
+echo "Post receive-hook => updating Redmine repository"
+sudo -u my_redmine_user -p secret perl -we '`cd /redmine/repositories/my_repo.git && git fetch && git reset --soft refs/remotes/origin/master`'
+```
 
 git reset に注意してください。Git のツリーを更新して、変更を「リポジトリ」の画面に表示するには、これが**必要です**。ベアリポジトリなので「soft」のオプションが必要です。デフォルトのオプション(mixed)は、作業ツリーがないため失敗します。
 
@@ -148,22 +164,24 @@ GitHub を使っているときは、[Github Hook Plugin](https://www.redmine.or
 
 この方法では、リポジトリの origin のブランチを最新の状態に保ち、Redmine のリポジトリブラウザーに表示できます。これが意味を持つのは、リポジトリのローカルのコピーを、Redmine で使う読み取り専用のコピーとしてだけ使う場合です。たとえば、プロジェクトは GitHub でホストし、チケットトラッキングには Redmine を使う場合です。
 
-    $ pwd
-    /var/redmine/git_repositories
-    $ git clone --mirror git://github.com/ook/donebox.git donebox.git
-    Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
-    remote: Counting objects: 717, done.
-    remote: Compressing objects: 100% (561/561), done.
-    remote: Total 717 (delta 320), reused 371 (delta 134)
-    Receiving objects: 100% (717/717), 211.35 KiB | 86 KiB/s, done.
-    Resolving deltas: 100% (320/320), done.
-    $ cd donebox.git
-    $ git branch
-      WW
-      asap
-      bugcat
-      comeback
-    * master
+```text
+$ pwd
+/var/redmine/git_repositories
+$ git clone --mirror git://github.com/ook/donebox.git donebox.git
+Initialized empty Git repository in /var/redmine/git_repositories/donebox.git/
+remote: Counting objects: 717, done.
+remote: Compressing objects: 100% (561/561), done.
+remote: Total 717 (delta 320), reused 371 (delta 134)
+Receiving objects: 100% (717/717), 211.35 KiB | 86 KiB/s, done.
+Resolving deltas: 100% (320/320), done.
+$ cd donebox.git
+$ git branch
+  WW
+  asap
+  bugcat
+  comeback
+* master
+```
 
 この方法は、git clone コマンドの `--mirror` のオプションを使います。古いバージョンの Git には、このオプションがないことがあります。その場合は、`--mirror` のオプションを使わずにこの種類のミラーを設定する方法について、[Stack Overflow の質問](http://stackoverflow.com/questions/4698649/how-do-i-get-a-remote-tracking-branch-to-stay-up-to-date-with-remote-origin-in-a)を参照してください。
 
@@ -176,12 +194,14 @@ Mercurial のリポジトリの読み込みが始まりますが、結果はす�
 Redmine は外部のリポジトリを同期(push/pull)しません。更新を取得する前に同期するスクリプトを設定できます。\
 hgsync.sh:
 
-    #!/bin/bash
-    for file in /var/www/sources.example.com/*; do
-       if [ -d $file ]; then
-          cd $file; hg pull -u
-       fi
-    done
+```text
+#!/bin/bash
+for file in /var/www/sources.example.com/*; do
+   if [ -d $file ]; then
+      cd $file; hg pull -u
+   fi
+done
+```
 
 ### Bazaar のリポジトリ
 
@@ -191,8 +211,10 @@ hgsync.sh:
 bzr が ENV\[’PATH’\] から、bzrlib が ENV\[’PYTHONPATH’\] から見つかるようにする必要があります。\
 たとえば、config/environment.rb を編集して次を追加します。
 
-    ENV['PYTHONPATH'] = '/path/to/pythonlib'
-    ENV['PATH'] = "#{ENV['PATH']}:/path/to/bzr/bin"
+```text
+ENV['PYTHONPATH'] = '/path/to/pythonlib'
+ENV['PATH'] = "#{ENV['PATH']}:/path/to/bzr/bin"
+```
 
 ## リポジトリのユーザーの対応付け
 

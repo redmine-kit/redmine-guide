@@ -15,8 +15,10 @@ Returns the files available for the project of given id or identifier (:project_
 
 <u>Examples</u>:
 
-    GET /projects/foo/files.xml
-    GET /projects/1/files.xml
+```text
+GET /projects/foo/files.xml
+GET /projects/1/files.xml
+```
 
 <u>Response</u>:
 
@@ -66,7 +68,9 @@ Upload a file for the project of given id or identifier (:project_id).
 
 <u>Example</u>:
 
-    POST /projects/1/files.xml
+```text
+POST /projects/1/files.xml
+```
 
 <u>Response</u>:
 

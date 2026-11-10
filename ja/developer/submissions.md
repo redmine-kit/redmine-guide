@@ -21,13 +21,13 @@ translated_from_version: 30
 
 - データベース管理システムのバージョン(例: PostgreSQL 9.2)
 - Ruby のバージョン(例: Ruby 3.2.2)
-- Redmine のバージョン(「Affected version」でバージョン番号を選びます)と、リポジトリのコードを使っている場合は正確なリビジョン(例: r22769)
+- Redmine のバージョン(「Affected version」でバージョン番号を選びます)と、リポジトリのコードを使っている場合は正確なリビジョン(例: [r22769](https://www.redmine.org/projects/redmine/repository/svn/revisions/22769))
 - 問題が SCM との連携に関するものであれば、SCM のコマンドのバージョン(例: svn 1.14.3、git 2.44.0)
 - 使っているプラグイン(例: Code Review プラグイン)
 
 環境の情報を得るいちばん簡単な方法は、Redmine のインストール先で次のコマンドを実行することです。
 
-```sh
+```text
 ruby bin/about
 ```
 

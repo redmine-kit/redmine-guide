@@ -16,23 +16,25 @@ Macros are invoked using double curly brackets. Arguments must be enclosed in pa
 
 Examples:
 
-    No arguments:
-    {{my_macro}}
+```text
+No arguments:
+{{my_macro}}
 
-    With arguments:
-    {{my_macro(arg1, arg2)}}
+With arguments:
+{{my_macro(arg1, arg2)}}
 
-    With a block of text:
-    {{my_macro
-    multiple lines
-    of text
-    }}
+With a block of text:
+{{my_macro
+multiple lines
+of text
+}}
 
-    With arguments and a block of text
-    {{my_macro(arg1, arg2)
-    multiple lines
-    of text
-    }}
+With arguments and a block of text
+{{my_macro(arg1, arg2)
+multiple lines
+of text
+}}
+```
 
 If a block of text is given, the closing tag `}}` must be at the start of a new line.
 

@@ -50,7 +50,7 @@ Redmine の右上に、シンプルな検索ボックスがあります。何か
 
 まずはソースを確認しましょう。
 
-source:/trunk/app/controllers/search_controller.rb
+[source:/trunk/app/controllers/search_controller.rb](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/app/controllers/search_controller.rb)
 
 コントローラーをさらに詳しく見ると、上で説明した動作のいくつかがわかります。
 

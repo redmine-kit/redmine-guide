@@ -48,7 +48,7 @@ email_delivery:
 Redmine::Configuration['email_delivery']['smtp_settings'][:address]
 ```
 
-<sup>1</sup> 出典: message#59809
+<sup>1</sup> 出典: <a href="https://www.redmine.org/boards/2/topics/59809">how to get at config variables from a plugin</a>
 
 ## Redmine の設定値を取得する
 
@@ -75,7 +75,7 @@ Redmine は、アプリケーションの設定値をデータベースに保存
 
 プラグインが Redmine 本体の特定の機能を必要としたり、特定のビューを上書きしたりする場合は、必要な本体があることを保証するために、プラグインをインストールできる Redmine の(特定の)バージョンを制限する必要があります。そうすることで、プラグインの互換性に関する多くの問題を防げます。
 
-これは `requires_redmine` メソッドで実現できます(source:/trunk/lib/redmine/plugin.rb@19983#L227 を参照)。このメソッドを使うと、特定のバージョンの Redmine を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
+これは `requires_redmine` メソッドで実現できます([source:/trunk/lib/redmine/plugin.rb@19983#L227](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L227) を参照)。このメソッドを使うと、特定のバージョンの Redmine を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
 
 注: `requires_redmine` には、*ブランチの接尾辞*(`stable`/`devel`)の付いた Redmine のバージョン番号を渡さないでください。対応していません。これについての議論は [#35345](https://www.redmine.org/issues/35345) を参照してください。
 
@@ -106,7 +106,7 @@ requires_redmine :version => '0.7'..'0.9'         # >= 0.7.x and <= 0.9.x
 
 プラグインが、ほかの Redmine プラグインの特定の機能や、ほかのプラグインの特定のバージョンにある機能を必要とする場合は、必要なプラグイン(のバージョン)があることを保証するために、インストールの前に依存関係を制御する必要があります。そうすることで、プラグイン間の互換性に関する多くの問題を防げます。
 
-これは `requires_redmine_plugin` メソッドで実現できます(source:/trunk/lib/redmine/plugin.rb@19983#L274 を参照)。このメソッドを使うと、特定の Redmine プラグイン(の特定のバージョン)を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
+これは `requires_redmine_plugin` メソッドで実現できます([source:/trunk/lib/redmine/plugin.rb@19983#L274](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L274) を参照)。このメソッドを使うと、特定の Redmine プラグイン(の特定のバージョン)を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
 
 <details>
 <summary>requires_redmine_plugin メソッドの使用例を表示...</summary>

@@ -8,7 +8,7 @@ updated_for: 7.0.3
 
 # Contribute
 
-Redmine is built and maintained by community volunteers. If you enjoy using Redmine and would like give back to the community, there are several ways to contribute back to the project. Also read the message#4325 forum thread for some more specific ideas.
+Redmine is built and maintained by community volunteers. If you enjoy using Redmine and would like give back to the community, there are several ways to contribute back to the project. Also read the [How to contribute](https://www.redmine.org/boards/1/topics/4325) forum thread for some more specific ideas.
 
 ## Contributors
 
@@ -46,7 +46,7 @@ Patches to fix bugs or add new features are always appreciated. If you are going
 1.  Make sure you are working on the **svn trunk** or **mercurial default named branch** or **git master branch**.\
     Patches are not accepted for stable releases because someone would have to port a patch to trunk first and then port it back to stable (i.e. double the work).\
     If you use mercurial, you can use [graft](http://www.selenic.com/hg/help/graft) or [mercurial queues extension](http://mercurial.selenic.com/wiki/MqExtension) .
-2.  Redmine has **tests** (source:trunk/test). Make sure all the existing tests pass. You can check the current build statuses on the [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration). You can run “rake test” for entire tests or “ruby test/unit/issue_test.rb” for an each test. For more details, see source:trunk/doc/RUNNING_TESTS
+2.  Redmine has **tests** ([source:trunk/test](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/test)). Make sure all the existing tests pass. You can check the current build statuses on the [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration). You can run “rake test” for entire tests or “ruby test/unit/issue_test.rb” for an each test. For more details, see [source:trunk/doc/RUNNING_TESTS](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/doc/RUNNING_TESTS)
 3.  Add tests to show the new functionality and check for bugs
 4.  Post the patch to the issue.\
     **<span style="color: red">Do not send a pull request on GitHub and Bitbucket</span>**.\

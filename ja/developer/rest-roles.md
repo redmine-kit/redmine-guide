@@ -13,7 +13,7 @@ translated_from_version: 4
 
 <u>例</u>:
 
-```
+```text
 GET /roles.xml
 ```
 
@@ -37,11 +37,11 @@ GET /roles.xml
 
 ### GET
 
-指定したロールの権限の一覧を返します(version:2.2.0)。
+指定したロールの権限の一覧を返します([2.2.0](https://www.redmine.org/versions/56))。
 
 <u>例</u>:
 
-```
+```text
 GET /roles/5.xml
 ```
 

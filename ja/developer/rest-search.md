@@ -40,7 +40,7 @@ translated_from_version: 2
 
 <u>例</u>:
 
-```
+```text
 GET /search.xml?q=query_string
 
 Paging example:
@@ -52,7 +52,7 @@ GET /search.xml?q=issue_keyword wiki_keyword&issues=1&wiki_pages=1
 
 <u>レスポンス</u>:
 
-```
+```text
 <results total_count="2" offset="0" limit="25" type="array">
   <result>
     <id>5</id>

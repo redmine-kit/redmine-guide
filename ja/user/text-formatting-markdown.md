@@ -23,9 +23,9 @@ URL(http、https、ftp、ftps)は、自動でクリックできるリンクに�
 URL とは別のテキストをリンクに使うこともできます。
 
 - **\[Redmine web site\](http://www.redmine.org)** — 別のテキストを使った外部リンク: [Redmine web site](http://www.redmine.org)
-- **\[\*Redmine web site\*\](http://www.redmine.org)** — URL にリンクする、タイトル付きの外部の画像:
+- **\[\![Redmine web site\](http://www.redmine.org/attachments/7069/Redmine_logo.png)\](http://www.redmine.org)** — URL にリンクする、タイトル付きの外部の画像:
 
-[![Redmine web site](http://www.redmine.org/attachments/7069/Redmine_logo.png "Redmine web site")](http://www.redmine.org)
+[![Redmine web site](../../images/RedmineTextFormattingMarkdown/Redmine_logo.png "Redmine web site")](http://www.redmine.org)
 
 ### メールアドレス
 
@@ -50,19 +50,21 @@ Markdown では使えません。
 
 ### フォントスタイル
 
-    * **bold** __bold__
-    * *italic* _italic_
-    * ***bold italic*** ___bold italic___
-    * <ins>underline</ins>
-    * <del>strike through</del>
-    * Plain <sup>superscript</sup>
-    * Plain <sub>subscript</sub>
-    * `inline monospace`
-    * normal **bold** _italic_ normal;E=mc<sup>2</sup>
-    * normal<strong>bold</strong><em>italic</em>normal;E=mc<sup>2</sup>
-    * Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
-    * <notextile><pre>**some lines**      some [link](http://www.redmine.org)</pre></notextile>
-    * <notextile><pre>\*\*some lines\*\*      some \[link](http\://www\.redmine\.org)</pre></notextile>
+```text
+* **bold** __bold__
+* *italic* _italic_
+* ***bold italic*** ___bold italic___
+* <ins>underline</ins>
+* <del>strike through</del>
+* Plain <sup>superscript</sup>
+* Plain <sub>subscript</sub>
+* `inline monospace`
+* normal **bold** _italic_ normal;E=mc<sup>2</sup>
+* normal<strong>bold</strong><em>italic</em>normal;E=mc<sup>2</sup>
+* Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
+* <notextile><pre>**some lines**      some [link](http://www.redmine.org)</pre></notextile>
+* <notextile><pre>\*\*some lines\*\*      some \[link](http\://www\.redmine\.org)</pre></notextile>
+```
 
 表示:
 
@@ -84,11 +86,13 @@ Markdown では使えません。
 
 ### 色
 
-    <notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
-    * <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue'ish</span>
-    * <span style="background-color:lightgreen">Lightgreen Background</span> <span style="background-color:yellow">Yellow Background</span>
-    * <span style="background-color:lightgreen">Lightgreen Background</span><span style="background-color:yellow">Yellow Background</span>
-    </notextile>
+```text
+<notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
+* <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue'ish</span>
+* <span style="background-color:lightgreen">Lightgreen Background</span> <span style="background-color:yellow">Yellow Background</span>
+* <span style="background-color:lightgreen">Lightgreen Background</span><span style="background-color:yellow">Yellow Background</span>
+</notextile>
+```
 
 表示:
 
@@ -116,19 +120,21 @@ Wikiページに添付した画像は、ファイル名を使ってインライ�
 
 ### 見出し
 
-    # Heading
+```text
+# Heading
 
-    ## Subheading
+## Subheading
 
-    ### Subheading
+### Subheading
 
-    or
+or
 
-    Heading
-    =======
+Heading
+=======
 
-    Subheading
-    ----------
+Subheading
+----------
+```
 
 Redmine はこれらの見出しにそれぞれアンカーを付けるため、「\#Heading」、「\#Subheading」などでリンクできます。
 
@@ -136,27 +142,29 @@ Redmine はこれらの見出しにそれぞれアンカーを付けるため、
 
 Markdown では、段落の配置を指定できません。必要な場合は \<div\> タグを使います。
 
-    left aligned
-    <div style="padding-left:1em;">
-    left ident 1em
-    </div>
+```text
+left aligned
+<div style="padding-left:1em;">
+left ident 1em
+</div>
 
-    <div style="padding-left:2em;">
-    left ident 2em
-    as well as for following lines
-    </div>
+<div style="padding-left:2em;">
+left ident 2em
+as well as for following lines
+</div>
 
-    <div style="text-align:right;">
-    right aligned
-    </div>
+<div style="text-align:right;">
+right aligned
+</div>
 
-    <div style="padding-right:3em;text-align:right;">
-    right ident 3em
-    </div>
+<div style="padding-right:3em;text-align:right;">
+right ident 3em
+</div>
 
-    <div style="text-align:center;">
-    This is centered paragraph.
-    </div>
+<div style="text-align:center;">
+This is centered paragraph.
+</div>
+```
 
 表示:
 
@@ -185,19 +193,25 @@ This is centered paragraph.
 
 ### 整形済みテキスト
 
-     <pre>**Your text won't become bold**</pre>
+ ```text
+  <pre>**Your text won't become bold**</pre>
+ ```
 
 表示:
 
-    **Your text won't become bold**
+```text
+**Your text won't become bold**
+```
 
 ### 引用
 
 各行の先頭に \> を付けると引用になります。\> を重ねると、入れ子の引用になります。
 
-    >> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
-    >> To go live, all you need to add is a database and a web server.
-    > Great!
+```text
+>> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+>> To go live, all you need to add is a database and a web server.
+> Great!
+```
 
 表示:
 
@@ -216,11 +230,13 @@ Great!
 
 順不同リストでは、アスタリスク(`*`)、プラス(`+`)、ハイフン(`-`)を行頭記号に使います。
 
-    * Item 1
-    * Item 2
-      * Item 21 (two spaces indentation)
-      * Item 22
-    * Item 3
+```text
+* Item 1
+* Item 2
+  * Item 21 (two spaces indentation)
+  * Item 22
+* Item 3
+```
 
 表示:
 
@@ -234,11 +250,13 @@ Great!
 
 番号つきリストでは、数字とピリオドを使います。
 
-    1. Item 1
-    3. Item 2
-    2. Item 3
-      1. Item 3.1 (two spaces)
-      1. Item 3.2
+```text
+1. Item 1
+3. Item 2
+2. Item 3
+  1. Item 3.1 (two spaces)
+  1. Item 3.2
+```
 
 表示:
 
@@ -254,7 +272,9 @@ Great!
 
 タスクリストの項目は、次の common_mark の書式で追加できます。
 
-     * [ ] Task title
+ ```text
+  * [ ] Task title
+ ```
 
 ツールバーの「タスクリスト」のアイコンをクリックしても追加できます。
 
@@ -262,11 +282,13 @@ Great!
 
 ### テーブル
 
-    |UserID (align right)|Name (align left)|Group (align center)|
-    |-------------------:|:----------------|:------------------:|
-    |2                   |John Smith       |                    |
-    |3                   |Dave Lopper      |A Team              |
-    |4                   |Robert Hill      |B Team              |
+```text
+|UserID (align right)|Name (align left)|Group (align center)|
+|-------------------:|:----------------|:------------------:|
+|2                   |John Smith       |                    |
+|3                   |Dave Lopper      |A Team              |
+|4                   |Robert Hill      |B Team              |
+```
 
 表示(連続する空白は 1 つにまとめられます):
 
@@ -299,20 +321,24 @@ Great!
 
 ### 目次
 
-    {{toc}} => left aligned toc
-    {{>toc}} => right aligned toc
+```text
+{{toc}} => left aligned toc
+{{>toc}} => right aligned toc
+```
 
 toc のタグの上と下には空行が必要で、タグの前後にはほかのテキストを置けないことに注意してください。
 
 例:
 
-    h1. headLineOne
+```text
+h1. headLineOne
 
-    h2. something
+h2. something
 
-    {{toc}}
+{{toc}}
 
-    h2. something more
+h2. something more
+```
 
 ### 脚注
 
@@ -326,7 +352,7 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 - `macro_list`: 使用できるすべてのマクロの一覧を、説明があれば説明とともに表示します。
 - `child_pages`: 子ページの一覧を表示します。引数がなければ、今の Wiki ページの子ページを表示します。例:
 
-  ```
+  ```text
   {{child_pages}} -- can be used from a wiki page only
   {{child_pages(depth=2)}} -- display 2 levels nesting only
   {{child_pages(Foo)}} -- lists all children of page Foo
@@ -335,7 +361,7 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 - `recent_pages`: 最近更新された Wiki ページの一覧を表示します。引数がなければ、過去 7 日間に更新されたページを表示します。例:
 
-  ```
+  ```text
   {{recent_pages}} -- displays pages updated within the last 7 days
   {{recent_pages(days=3)}} -- displays pages updated within the last 3 days
   {{recent_pages(limit=5)}} -- limits the maximum number of pages to display to 5
@@ -346,14 +372,14 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 - `include`: Wiki ページを挿入します。例:
 
-  ```
+  ```text
   {{include(Foo)}}
   {{include(projectname:Foo)}} -- to include a page of a specific project wiki
   ```
 
 - `collapse`: 折りたたんだテキストのブロックを挿入します。例:
 
-  ```
+  ```text
   {{collapse
   This is a block of text that is collapsed by default.
   It can be expanded by clicking a link.
@@ -366,14 +392,14 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 - `thumbnail`: 添付した画像の、クリックできるサムネイルを表示します。デフォルトのサイズは 200 ピクセルです。例:
 
-  ```
+  ```text
   {{thumbnail(image.png)}}
   {{thumbnail(image.png, size=300, title=Thumbnail)}} -- with custom title and size
   ```
 
 - `issue`: 追加の情報を含むチケットへのリンクを表示します。例:
 
-  ```
+  ```text
   {{issue(123)}}                              -- Issue #123: Enhance macro capabilities
   {{issue(123, project=true)}}                -- Andromeda - Issue #123: Enhance macro capabilities
   {{issue(123, tracker=false)}}               -- #123: Enhance macro capabilities
@@ -386,9 +412,11 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 Wikiページのコードは、次の構文でハイライトできます。
 
-    ``` ruby
-    Place your code here.
-    ```
+````text
+``` ruby
+Place your code here.
+```
+````
 
 例:
 

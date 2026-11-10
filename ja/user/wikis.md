@@ -9,7 +9,9 @@ translated_from_version: 1
 
 ほかの Wiki と同じように、作りたいページへのリンクを追加するだけです。
 
-    [[MyNewWikiPage]]
+```text
+[[MyNewWikiPage]]
+```
 
 ページを保存してそのリンクをクリックすると、「MyNewWikiPage」という名前の新しい Wiki ページの編集になります。この後は、下の「編集」の説明に従います。
 

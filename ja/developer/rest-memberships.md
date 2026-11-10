@@ -13,14 +13,14 @@ translated_from_version: 8
 
 <u>例</u>:
 
-```
+```text
 GET /projects/1/memberships.xml
 GET /projects/redmine/memberships.xml
 ```
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0" encoding="UTF-8"?>
 <memberships type="array" limit="25" offset="0" total_count="3">
   <membership>
@@ -69,7 +69,7 @@ GET /projects/redmine/memberships.xml
 
 <u>例</u>:
 
-```
+```text
 POST /projects/redmine/memberships.xml
 
 <membership>
@@ -82,7 +82,7 @@ POST /projects/redmine/memberships.xml
 
 JSON
 
-```
+```text
 {
   "membership":
   {
@@ -105,13 +105,13 @@ JSON
 
 <u>例</u>:
 
-```
+```text
 GET /memberships/1.xml
 ```
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0" encoding="UTF-8"?>
 <membership>
   <id>1</id>
@@ -135,7 +135,7 @@ GET /memberships/1.xml
 
 <u>例</u>:
 
-```
+```text
 PUT /memberships/2.xml
 
 <membership>
@@ -163,7 +163,7 @@ PUT /memberships/2.xml
 
 <u>例</u>:
 
-```
+```text
 DELETE /memberships/2.xml
 ```
 

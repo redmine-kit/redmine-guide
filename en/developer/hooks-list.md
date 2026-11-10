@@ -10,15 +10,15 @@ updated_for: 7.0.3
 
 To see the current list of plugin hooks, search for `call_hook` in the Redmine directory as shown below (the `rake redmine:plugins:hook_list` task no longer exists in Redmine 7.0.3).
 
-<table>
-<tbody>
-<tr>
-<td style="background-color:#f88;">On Redmine version#43 and up the rake task has been deprecated.<br />As an alternative you can use either of the following in the Redmine directory (see message#36062).<br /><pre><code>grep -r call_hook *                                       # list of source lines with hook calls
-grep -rohT &#39;call_hook([^)]*)&#39;                             # list of hooks calls and source files
-grep -roh  &#39;call_hook([^)]*)&#39; | sort -u | grep &#39;([^)]*)&#39;  # list of hooks calls only</code></pre></td>
-</tr>
-</tbody>
-</table>
+> [!CAUTION]
+> On Redmine [2.0.0](https://www.redmine.org/versions/43) and up the rake task has been deprecated.\
+> As an alternative you can use either of the following in the Redmine directory (see [hook list?](https://www.redmine.org/boards/4/topics/36062)).
+>
+> ```text
+> grep -r call_hook *                                       # list of source lines with hook calls
+> grep -rohT 'call_hook([^)]*)'                             # list of hooks calls and source files
+> grep -roh  'call_hook([^)]*)' | sort -u | grep '([^)]*)'  # list of hooks calls only
+> ```
 
 ## Controller hooks
 

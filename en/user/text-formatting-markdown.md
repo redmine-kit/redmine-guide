@@ -26,9 +26,9 @@ URLs (http, https, ftp and ftps) are automatically turned into clickable links:
 URLs can also use different text than the link itself:
 
 - **\[Redmine web site\](http://www.redmine.org)** — External link with different text: [Redmine web site](http://www.redmine.org)
-- **\[\*Redmine web site\*\](http://www.redmine.org)** — External image with a title that links to an URL:
+- **\[\![Redmine web site\](http://www.redmine.org/attachments/7069/Redmine_logo.png)\](http://www.redmine.org)** — External image with a title that links to an URL:
 
-[![Redmine web site](http://www.redmine.org/attachments/7069/Redmine_logo.png "Redmine web site")](http://www.redmine.org)
+[![Redmine web site](../../images/RedmineTextFormattingMarkdown/Redmine_logo.png "Redmine web site")](http://www.redmine.org)
 
 ### Email addresses
 
@@ -53,19 +53,21 @@ Not supported by Markdown
 
 ### Font style
 
-    * **bold** __bold__
-    * *italic* _italic_
-    * ***bold italic*** ___bold italic___
-    * <ins>underline</ins>
-    * <del>strike through</del>
-    * Plain <sup>superscript</sup>
-    * Plain <sub>subscript</sub>
-    * `inline monospace`
-    * normal **bold** _italic_ normal;E=mc<sup>2</sup>
-    * normal<strong>bold</strong><em>italic</em>normal;E=mc<sup>2</sup>
-    * Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
-    * <notextile><pre>**some lines**      some [link](http://www.redmine.org)</pre></notextile>
-    * <notextile><pre>\*\*some lines\*\*      some \[link](http\://www\.redmine\.org)</pre></notextile>
+```text
+* **bold** __bold__
+* *italic* _italic_
+* ***bold italic*** ___bold italic___
+* <ins>underline</ins>
+* <del>strike through</del>
+* Plain <sup>superscript</sup>
+* Plain <sub>subscript</sub>
+* `inline monospace`
+* normal **bold** _italic_ normal;E=mc<sup>2</sup>
+* normal<strong>bold</strong><em>italic</em>normal;E=mc<sup>2</sup>
+* Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
+* <notextile><pre>**some lines**      some [link](http://www.redmine.org)</pre></notextile>
+* <notextile><pre>\*\*some lines\*\*      some \[link](http\://www\.redmine\.org)</pre></notextile>
+```
 
 displays:
 
@@ -87,11 +89,13 @@ displays:
 
 ### Color
 
-    <notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
-    * <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue'ish</span>
-    * <span style="background-color:lightgreen">Lightgreen Background</span> <span style="background-color:yellow">Yellow Background</span>
-    * <span style="background-color:lightgreen">Lightgreen Background</span><span style="background-color:yellow">Yellow Background</span>
-    </notextile>
+```text
+<notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
+* <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue'ish</span>
+* <span style="background-color:lightgreen">Lightgreen Background</span> <span style="background-color:yellow">Yellow Background</span>
+* <span style="background-color:lightgreen">Lightgreen Background</span><span style="background-color:yellow">Yellow Background</span>
+</notextile>
+```
 
 displays:
 
@@ -104,11 +108,11 @@ displays:
 
 ### Inline images
 
-- **\*\*** displays an image located at image_url (textile syntax)
+- **\![\](image_url)** displays an image located at image_url (textile syntax)
 - **\![alt text\](image_url “optional title”)** displays an image with an alt/title attribute
-- **\[\*\*\](URL)** displays an image located at image_url with link URL added
+- **\[\![\](image_url)\](URL)** displays an image located at image_url with link URL added
 
-If you have an image attached to your wiki page, it can be displayed inline using its filename: **\*\***.
+If you have an image attached to your wiki page, it can be displayed inline using its filename: **\![\](attached_image.png)**.
 
 As of this writing, Markdown has no syntax for specifying the dimensions of an image; if this is important to you, you can use regular HTML \<img\> tags.
 
@@ -119,19 +123,21 @@ As of this writing, Markdown has no syntax for specifying the dimensions of an i
 
 ### Headings
 
-    # Heading
+```text
+# Heading
 
-    ## Subheading
+## Subheading
 
-    ### Subheading
+### Subheading
 
-    or
+or
 
-    Heading
-    =======
+Heading
+=======
 
-    Subheading
-    ----------
+Subheading
+----------
+```
 
 Redmine assigns an anchor to each of those headings thus you can link to them with “\#Heading”, “\#Subheading” and so forth.
 
@@ -139,27 +145,29 @@ Redmine assigns an anchor to each of those headings thus you can link to them wi
 
 Markdown does not support alignment of a paragraph. Use \<div\> tags if you need it.
 
-    left aligned
-    <div style="padding-left:1em;">
-    left ident 1em
-    </div>
+```text
+left aligned
+<div style="padding-left:1em;">
+left ident 1em
+</div>
 
-    <div style="padding-left:2em;">
-    left ident 2em
-    as well as for following lines
-    </div>
+<div style="padding-left:2em;">
+left ident 2em
+as well as for following lines
+</div>
 
-    <div style="text-align:right;">
-    right aligned
-    </div>
+<div style="text-align:right;">
+right aligned
+</div>
 
-    <div style="padding-right:3em;text-align:right;">
-    right ident 3em
-    </div>
+<div style="padding-right:3em;text-align:right;">
+right ident 3em
+</div>
 
-    <div style="text-align:center;">
-    This is centered paragraph.
-    </div>
+<div style="text-align:center;">
+This is centered paragraph.
+</div>
+```
 
 displays;
 
@@ -188,19 +196,25 @@ displays:
 
 ### Preformatted Text
 
-     <pre>**Your text won't become bold**</pre>
+```text
+ <pre>**Your text won't become bold**</pre>
+```
 
 displays:
 
-    **Your text won't become bold**
+```text
+**Your text won't become bold**
+```
 
 ### Blockquotes
 
 You can use \> at the beginning of each line and stack them for nested quotes:
 
-    >> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
-    >> To go live, all you need to add is a database and a web server.
-    > Great!
+```text
+>> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+>> To go live, all you need to add is a database and a web server.
+> Great!
+```
 
 displays:
 
@@ -219,11 +233,13 @@ Great!
 
 Unordered lists use asterisks (`*`), pluses (`+`), and hyphens (`-`) as list markers
 
-    * Item 1
-    * Item 2
-      * Item 21 (two spaces indentation)
-      * Item 22
-    * Item 3
+```text
+* Item 1
+* Item 2
+  * Item 21 (two spaces indentation)
+  * Item 22
+* Item 3
+```
 
 displays:
 
@@ -237,11 +253,13 @@ displays:
 
 Ordered lists use numbers followed by periods.
 
-    1. Item 1
-    3. Item 2
-    2. Item 3
-      1. Item 3.1 (two spaces)
-      1. Item 3.2
+```text
+1. Item 1
+3. Item 2
+2. Item 3
+  1. Item 3.1 (two spaces)
+  1. Item 3.2
+```
 
 displays:
 
@@ -257,7 +275,9 @@ Note that the actual numbers you use to mark the list have no effect on the outp
 
 You can add task list items using the common_mark format
 
-     * [ ] Task title
+```text
+ * [ ] Task title
+```
 
 or by clicking the “Task list” icon from the toolbar.
 
@@ -265,11 +285,13 @@ For now, to check the items, you need to use the Edit feature, we will try to al
 
 ### Tables
 
-    |UserID (align right)|Name (align left)|Group (align center)|
-    |-------------------:|:----------------|:------------------:|
-    |2                   |John Smith       |                    |
-    |3                   |Dave Lopper      |A Team              |
-    |4                   |Robert Hill      |B Team              |
+```text
+|UserID (align right)|Name (align left)|Group (align center)|
+|-------------------:|:----------------|:------------------:|
+|2                   |John Smith       |                    |
+|3                   |Dave Lopper      |A Team              |
+|4                   |Robert Hill      |B Team              |
+```
 
 displays (all multiple spaces are replaced by 1 space):
 
@@ -302,20 +324,24 @@ displays (all multiple spaces are replaced by 1 space):
 
 ### Table of content
 
-    {{toc}} => left aligned toc
-    {{>toc}} => right aligned toc
+```text
+{{toc}} => left aligned toc
+{{>toc}} => right aligned toc
+```
 
 Please keep in mind, that the toc-tag needs an empty line above and underneath it and no other text before and after it.
 
 Example:
 
-    h1. headLineOne
+```text
+h1. headLineOne
 
-    h2. something
+h2. something
 
-    {{toc}}
+{{toc}}
 
-    h2. something more
+h2. something more
+```
 
 ### Footnotes
 
@@ -389,9 +415,11 @@ Default code highlightment relies on [Rouge](http://rouge.jneen.net/), a syntax 
 
 You can highlight code in your wiki page using this syntax:
 
-    ``` ruby
-    Place your code here.
-    ```
+````text
+``` ruby
+Place your code here.
+```
+````
 
 Example:
 

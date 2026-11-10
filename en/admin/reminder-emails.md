@@ -20,14 +20,20 @@ Available options:
 
 The following example will send an email to each user who has assigned issues that are past due or due in the next 7 days:
 
-    bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```text
+bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```
 
 The following example will send an email to users **1**, **23**, and **56** who have assigned issues that are past due or due in the next **7 days**:
 
-    bundle exec rake redmine:send_reminders days=7 users="1,23,56" RAILS_ENV="production"
+```text
+bundle exec rake redmine:send_reminders days=7 users="1,23,56" RAILS_ENV="production"
+```
 
 When adding this to your crontab, add the rake command to a small script; eg:
 
-    #!/bin/bash
-    cd /usr/local/share/redmine
-    bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```text
+#!/bin/bash
+cd /usr/local/share/redmine
+bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```

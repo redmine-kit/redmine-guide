@@ -53,7 +53,7 @@ Here is a sample results page from this site on “test issue”.
 
 Always check the source first:
 
-source:/trunk/app/controllers/search_controller.rb
+[source:/trunk/app/controllers/search_controller.rb](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/app/controllers/search_controller.rb)
 
 A more advanced look at the controller explains some of the above behavior:
 

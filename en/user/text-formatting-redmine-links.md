@@ -45,7 +45,7 @@ Links to other resources:
   - **attachment:”file name.zip”** (double quotes can be used when the filename contains non word characters)
   - For now, attachments of the current object can be referenced only (if you’re on an issue, it’s possible to reference attachments of this issue only)
 - Changesets:
-  - **r758** (link to a changeset, displays r758)
+  - **r758** (link to a changeset, displays [r758](https://www.redmine.org/projects/redmine/repository/svn/revisions/758))
   - **commit:c6f4d0fd** (link to a changeset with a non-numeric hash)
   - **svn1\|r758** (link to a changeset of a specific repository, for projects with multiple repositories)
   - **commit:hg\|c6f4d0fd** (link to a changeset with a non-numeric hash of a specific repository)

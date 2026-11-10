@@ -15,8 +15,10 @@ Returns the versions available for the project of given id or identifier (:proje
 
 <u>Examples</u>:
 
-    GET /projects/foo/versions.xml
-    GET /projects/1/versions.xml
+```text
+GET /projects/foo/versions.xml
+GET /projects/1/versions.xml
+```
 
 <u>Response</u>:
 
@@ -77,7 +79,9 @@ Returns the version of given id.
 
 <u>Example</u>:
 
-    GET /versions/2.xml
+```text
+GET /versions/2.xml
+```
 
 <u>Response</u>:
 

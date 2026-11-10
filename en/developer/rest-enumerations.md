@@ -15,7 +15,9 @@ Returns the list of [issue](rest-issues.md) priorities.
 
 <u>Examples</u>:
 
-    GET /enumerations/issue_priorities.xml
+```text
+GET /enumerations/issue_priorities.xml
+```
 
 <u>Response</u>:
 
@@ -44,7 +46,9 @@ Returns the list of [time entry](rest-time-entries.md) activities.
 
 <u>Examples</u>:
 
-    GET /enumerations/time_entry_activities.xml
+```text
+GET /enumerations/time_entry_activities.xml
+```
 
 <u>Response</u>:
 
@@ -67,7 +71,9 @@ Returns the list of document categories.
 
 <u>Examples</u>:
 
-    GET /enumerations/document_categories.xml
+```text
+GET /enumerations/document_categories.xml
+```
 
 <u>Response</u>:
 

@@ -53,7 +53,7 @@ exit 0;
 
 注:
 
-```
+```text
     my $perl_ref = from_json($content);
 ```
 
@@ -61,14 +61,14 @@ exit 0;
 
 使い方の例:
 
-```
+```text
 ./restget http://www.redmine.org/issues/22097.json
 ./restget -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/issues/117594.json
 ```
 
 次のコマンドは、Textile の表をクリップボードに入れます。
 
-```
+```text
 ./restget http://www.redmine.org/projects/redmine/versions.json | perl -MJSON -nle 'for $v (sort{$a->{name} cmp $b->{name}}@{decode_json($_)->{versions}}){$d=$v->{description};print qq/|version:"$v->{name}"|$d|/ if $d}' > /dev/clipboard
 ```
 
@@ -76,21 +76,21 @@ exit 0;
 
 |  |  |
 |----|----|
-| version:”0.7.1” | Bug fix release |
-| version:”0.7.2” | Bug fix release |
-| version:”0.7.3” | Security+Bug fix release |
-| version:”0.9.0” | 0.9 release candidate 1 |
-| version:”0.9.6” | Security release |
-| version:”1.0.1” | Bug fixes for the 1.0.0 RC - (Estimated release date) |
-| version:”1.2.3” | Bug fix release for the 1.2.x serie |
-| version:”1.3.1” | Maintenance release |
-| version:”1.4.3” | Maintenance release |
-| version:”1.4.7” | security release |
-| version:”2.0.2” | Maintenance release |
-| version:”2.6.10” | For Rails 3.2 due to JRuby Nokogiri/Loofah does not support Rails 4.2 |
-| version:”Candidate for next major release” | Features that the contributors would like to add in the next major version |
-| version:”Candidate for next minor release” | Fixes that the contributors would like to add in the next minor version |
-| version:”Unplanned” | Features that the core contributors of Redmine would like to add in a future version |
+| [0.7.1](https://www.redmine.org/versions/3) | Bug fix release |
+| 0.7.2 | Bug fix release |
+| 0.7.3 | Security+Bug fix release |
+| [0.9.0](https://www.redmine.org/versions/6) | 0.9 release candidate 1 |
+| 0.9.6 | Security release |
+| 1.0.1 | Bug fixes for the 1.0.0 RC - (Estimated release date) |
+| 1.2.3 | Bug fix release for the 1.2.x serie |
+| 1.3.1 | Maintenance release |
+| 1.4.3 | Maintenance release |
+| 1.4.7 | security release |
+| 2.0.2 | Maintenance release |
+| 2.6.10 | For Rails 3.2 due to JRuby Nokogiri/Loofah does not support Rails 4.2 |
+| Candidate for next major release | Features that the contributors would like to add in the next major version |
+| Candidate for next minor release | Fixes that the contributors would like to add in the next minor version |
+| Unplanned | Features that the core contributors of Redmine would like to add in a future version |
 
 ## PUT
 
@@ -136,7 +136,7 @@ exit 0;
 
 使い方の例:
 
-```
+```text
 # change my name
 echo '{"user":{"firstname":"James","lastname":"Bond"}}' | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/users/current.json
 ```
@@ -174,13 +174,13 @@ exit 0;
 
 次のコマンドは、Wiki ページ「Test Page」を作成または更新します。
 
-```
+```text
 ./restwiki foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
 ```
 
 ワンライナーで書くなら、次のようにします。
 
-```
+```text
 perl -MJSON -e 'local $/;$ref->{wiki_page}->{text} = <>;print to_json($ref)' foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
 ```
 

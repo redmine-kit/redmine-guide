@@ -10,8 +10,10 @@ updated_for: 7.0.3
 
 ## Listing news
 
-    GET /news.[format]
-    GET /projects/[project_id]/news.[format]
+```text
+GET /news.[format]
+GET /projects/[project_id]/news.[format]
+```
 
 Returns a paginated list of news items. When `project_id` is given, only news from the project with the given id or identifier is returned.
 
@@ -22,14 +24,16 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 
 <u>Examples</u>:
 
-    GET /news.xml
-    GET /news.json
-    GET /projects/foo/news.xml
-    GET /projects/foo/news.json
+```text
+GET /news.xml
+GET /news.json
+GET /projects/foo/news.xml
+GET /projects/foo/news.json
 
-    Paging example:
-    GET /news.xml?offset=0&limit=100
-    GET /news.xml?offset=100&limit=100
+Paging example:
+GET /news.xml?offset=0&limit=100
+GET /news.xml?offset=100&limit=100
+```
 
 <u>Response</u>:
 
@@ -59,7 +63,9 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 
 ## Showing a news item
 
-    GET /news/[id].[format]
+```text
+GET /news/[id].[format]
+```
 
 <u>Parameters</u>:
 
@@ -70,13 +76,15 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 
 <u>Examples</u>:
 
-    GET /news/2.xml
-    GET /news/2.json
+```text
+GET /news/2.xml
+GET /news/2.json
 
-    GET /news/2.xml?include=attachments
-    GET /news/2.xml?include=comments
-    GET /news/2.xml?include=reactions
-    GET /news/2.xml?include=comments,reactions
+GET /news/2.xml?include=attachments
+GET /news/2.xml?include=comments
+GET /news/2.xml?include=reactions
+GET /news/2.xml?include=comments,reactions
+```
 
 <u>Response</u>:
 
@@ -108,7 +116,9 @@ Attachments can be added when you create a news item, see [Attaching files](rest
 
 <u>Examples</u>:
 
-    POST /projects/1/news.xml
+```text
+POST /projects/1/news.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -119,7 +129,9 @@ Attachments can be added when you create a news item, see [Attaching files](rest
 </news>
 ```
 
-    POST /projects/1/news.json
+```text
+POST /projects/1/news.json
+```
 
 ```json
 {
@@ -146,7 +158,9 @@ Attachments can be added when you update a news item, see [Attaching files](rest
 
 <u>Examples</u>:
 
-    PUT /news/[id].xml
+```text
+PUT /news/[id].xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -157,7 +171,9 @@ Attachments can be added when you update a news item, see [Attaching files](rest
 </news>
 ```
 
-    PUT /news/[id].json
+```text
+PUT /news/[id].json
+```
 
 ```json
 {

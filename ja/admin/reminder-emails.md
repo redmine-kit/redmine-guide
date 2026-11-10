@@ -17,14 +17,20 @@ Redmine には、担当していて未完了のチケットのうち、期日を
 
 次の例は、期日を過ぎたチケットか 7 日以内に期日が来るチケットを担当しているユーザーそれぞれに、メールを送ります。
 
-    bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```text
+bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```
 
 次の例は、期日を過ぎたチケットか **7 日以内**に期日が来るチケットを担当しているユーザー **1**、**23**、**56** に、メールを送ります。
 
-    bundle exec rake redmine:send_reminders days=7 users="1,23,56" RAILS_ENV="production"
+```text
+bundle exec rake redmine:send_reminders days=7 users="1,23,56" RAILS_ENV="production"
+```
 
 crontab に登録するときは、rake のコマンドを小さなスクリプトにまとめます。例:
 
-    #!/bin/bash
-    cd /usr/local/share/redmine
-    bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```text
+#!/bin/bash
+cd /usr/local/share/redmine
+bundle exec rake redmine:send_reminders days=7 RAILS_ENV="production"
+```

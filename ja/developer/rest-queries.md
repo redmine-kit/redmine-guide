@@ -13,13 +13,13 @@ translated_from_version: 3
 
 <u>例</u>:
 
-```
+```text
 GET /queries.xml
 ```
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0" encoding="UTF-8"?>
 <queries type="array" total_count="5" limit="25" offset="0">
   <query>
@@ -39,7 +39,7 @@ GET /queries.xml
 
 クエリの ID がわかれば、次のようにして対応するチケットの一覧を取得できます。
 
-```
+```text
 GET /issues.xml?query_id=:id
 GET /issues.xml?query_id=:id&project_id=foo
 ```

@@ -39,39 +39,41 @@ NB: operators containing “\>”, “\<” or “=” should be hex-encoded so 
 
 <u>Examples</u>:
 
-    GET /issues.xml
-    GET /issues.xml?issue_id=1
-    GET /issues.xml?issue_id=1,2
-    GET /issues.xml?project_id=2
-    GET /issues.xml?project_id=2&tracker_id=1
-    GET /issues.xml?assigned_to_id=6
-    GET /issues.xml?assigned_to_id=me
-    GET /issues.xml?status_id=closed
-    GET /issues.xml?status_id=*
-    GET /issues.xml?cf_1=abcdef
-    GET /issues.xml?sort=category:desc,updated_on
+```text
+GET /issues.xml
+GET /issues.xml?issue_id=1
+GET /issues.xml?issue_id=1,2
+GET /issues.xml?project_id=2
+GET /issues.xml?project_id=2&tracker_id=1
+GET /issues.xml?assigned_to_id=6
+GET /issues.xml?assigned_to_id=me
+GET /issues.xml?status_id=closed
+GET /issues.xml?status_id=*
+GET /issues.xml?cf_1=abcdef
+GET /issues.xml?sort=category:desc,updated_on
 
-    Paging example:
-    GET /issues.xml?offset=0&limit=100
-    GET /issues.xml?offset=100&limit=100
+Paging example:
+GET /issues.xml?offset=0&limit=100
+GET /issues.xml?offset=100&limit=100
 
-    To fetch issues for a date range (uncrypted filter is "><2012-03-01|2012-03-07") :
-    GET /issues.xml?created_on=%3E%3C2012-03-01|2012-03-07
+To fetch issues for a date range (uncrypted filter is "><2012-03-01|2012-03-07") :
+GET /issues.xml?created_on=%3E%3C2012-03-01|2012-03-07
 
-    To fetch issues created after a certain date (uncrypted filter is ">=2012-03-01") :
-    GET /issues.xml?created_on=%3E%3D2012-03-01
+To fetch issues created after a certain date (uncrypted filter is ">=2012-03-01") :
+GET /issues.xml?created_on=%3E%3D2012-03-01
 
-    Or before a certain date (uncrypted filter is "<= 2012-03-07") :
-    GET /issues.xml?created_on=%3C%3D2012-03-07
+Or before a certain date (uncrypted filter is "<= 2012-03-07") :
+GET /issues.xml?created_on=%3C%3D2012-03-07
 
-    To fetch issues created after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
-    GET /issues.xml?created_on=%3E%3D2014-01-02T08:12:32Z
+To fetch issues created after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
+GET /issues.xml?created_on=%3E%3D2014-01-02T08:12:32Z
 
-    To fetch issues updated after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
-    GET /issues.xml?updated_on=%3E%3D2014-01-02T08:12:32Z
+To fetch issues updated after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
+GET /issues.xml?updated_on=%3E%3D2014-01-02T08:12:32Z
 
-    To fetch issues for which custom field 4 contains the substring "foo" :
-    GET /issues.xml?cf_4=~foo
+To fetch issues for which custom field 4 contains the substring "foo" :
+GET /issues.xml?cf_4=~foo
+```
 
 <u>Response</u>:
 
@@ -115,7 +117,9 @@ NB: operators containing “\>”, “\<” or “=” should be hex-encoded so 
 
 ## Showing an issue
 
-    GET /issues/[id].[format]
+```text
+GET /issues/[id].[format]
+```
 
 <u>Parameters</u>:
 
@@ -135,14 +139,16 @@ NB: operators containing “\>”, “\<” or “=” should be hex-encoded so 
 
 <u>Examples</u>:
 
-    GET /issues/2.xml
-    GET /issues/2.json
+```text
+GET /issues/2.xml
+GET /issues/2.json
 
-    GET /issues/2.xml
-    GET /issues/2.xml?include=attachments
-    GET /issues/2.xml?include=attachments,journals
-    GET /issues/2.xml?include=reactions
-    GET /issues/2.xml?include=journals,reactions
+GET /issues/2.xml
+GET /issues/2.xml?include=attachments
+GET /issues/2.xml?include=attachments,journals
+GET /issues/2.xml?include=reactions
+GET /issues/2.xml?include=journals,reactions
+```
 
 <u>Response</u> (`include=reactions`):
 
@@ -180,7 +186,9 @@ Attachments can be added when you create an issue, see [Attaching files](rest-ap
 
 <u>Examples</u>:
 
-    POST /issues.xml
+```text
+POST /issues.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -191,7 +199,9 @@ Attachments can be added when you create an issue, see [Attaching files](rest-ap
 </issue>
 ```
 
-    POST /issues.json
+```text
+POST /issues.json
+```
 
 ```json
 {
@@ -222,7 +232,9 @@ Attachments can be added when you update an issue, see [Attaching files](rest-ap
 
 <u>Examples</u>:
 
-    PUT /issues/[id].xml
+```text
+PUT /issues/[id].xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -232,7 +244,9 @@ Attachments can be added when you update an issue, see [Attaching files](rest-ap
 </issue>
 ```
 
-    PUT /issues/[id].json
+```text
+PUT /issues/[id].json
+```
 
 ```json
 {

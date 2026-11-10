@@ -78,7 +78,7 @@ If the login specified with the `X-Redmine-Switch-User` header does not exist or
 
 ### Collection resources and pagination
 
-The response to a GET request on a collection resources (eg. `/issues.xml`, `/users.xml`) generally won’t return all the objects available in your database. Redmine version:1.1.0 introduces a common way to query such resources using the following parameters:
+The response to a GET request on a collection resources (eg. `/issues.xml`, `/users.xml`) generally won’t return all the objects available in your database. Redmine [1.1.0](https://www.redmine.org/versions/20) introduces a common way to query such resources using the following parameters:
 
 - `offset`: the offset of the first object to retrieve
 - `limit`: the number of items to be present in the response (default is 25, maximum is 100)
@@ -86,72 +86,84 @@ The response to a GET request on a collection resources (eg. `/issues.xml`, `/us
 
 Examples:
 
-    GET /issues.xml
-    => returns the 25 first issues
+```text
+GET /issues.xml
+=> returns the 25 first issues
 
-    GET /issues.xml?limit=100
-    => returns the 100 first issues
+GET /issues.xml?limit=100
+=> returns the 100 first issues
 
-    GET /issues.xml?offset=30&limit=10
-    => returns 10 issues from the 30th
+GET /issues.xml?offset=30&limit=10
+=> returns 10 issues from the 30th
 
-    GET /issues.xml?page=3&limit=10
-    => returns 10 issues starting from the 21st issue
+GET /issues.xml?page=3&limit=10
+=> returns 10 issues starting from the 21st issue
+```
 
 Responses to GET requests on collection resources provide information about the total object count available in Redmine and the offset/limit used for the response. Examples:
 
-    GET /issues.xml
+```text
+GET /issues.xml
 
-    <issues type="array" total_count="2595" limit="25" offset="0">
-      ...
-    </issues>
+<issues type="array" total_count="2595" limit="25" offset="0">
+  ...
+</issues>
+```
 
-    GET /issues.json
+```text
+GET /issues.json
 
-    { "issues":[...], "total_count":2595, "limit":25, "offset":0 }
+{ "issues":[...], "total_count":2595, "limit":25, "offset":0 }
+```
 
 Note: if you’re using a REST client that does not support such top level attributes (total_count, limit, offset), you can set the `nometa` parameter or `X-Redmine-Nometa` HTTP header to 1 to get responses without them. Example:
 
-    GET /issues.xml?nometa=1
+```text
+GET /issues.xml?nometa=1
 
-    <issues type="array">
-      ...
-    </issues>
+<issues type="array">
+  ...
+</issues>
+```
 
 ### Fetching associated data
 
-Since of version:1.1.0, you have to explicitly specify the associations you want to be included in the query result by appending the `include` parameter to the query url :
+Since of [1.1.0](https://www.redmine.org/versions/20), you have to explicitly specify the associations you want to be included in the query result by appending the `include` parameter to the query url :
 
 Example:
 
 To retrieve issue journals with its description:
 
-    GET /issues/296.xml?include=journals
+```text
+GET /issues/296.xml?include=journals
 
-    <issue>
-      <id>296</id>
-      ...
-      <journals type="array">
-      ...
-      </journals>
-    </issue>
+<issue>
+  <id>296</id>
+  ...
+  <journals type="array">
+  ...
+  </journals>
+</issue>
+```
 
 You can also load multiple associations using a comma separated list of items.
 
 Example:
 
-    GET /issues/296.xml?include=journals,changesets
+```text
+GET /issues/296.xml?include=journals,changesets
 
-    <issue>
-      <id>296</id>
-      ...
-      <journals type="array">
-      ...
-      </journals>
-      <changesets type="array">
-      ...
-      </changesets>
-    </issue>
+<issue>
+  <id>296</id>
+  ...
+  <journals type="array">
+  ...
+  </journals>
+  <changesets type="array">
+  ...
+  </changesets>
+</issue>
+```
 
 ### Working with custom fields
 
@@ -159,164 +171,184 @@ Most of the Redmine objects support custom fields. Their values can be found in 
 
 XML Example:
 
-    GET /issues/296.xml      # an issue with 2 custom fields
+```text
+GET /issues/296.xml      # an issue with 2 custom fields
 
-    <issue>
-      <id>296</id>
-      ...
-      <custom_fields type="array">
-        <custom_field name="Affected version" id="1">
-          <value>1.0.1</value>
-        </custom_field>
-        <custom_field name="Resolution" id="2">
-          <value>Fixed</value>
-        </custom_field>
-      </custom_fields>
-    </issue>
+<issue>
+  <id>296</id>
+  ...
+  <custom_fields type="array">
+    <custom_field name="Affected version" id="1">
+      <value>1.0.1</value>
+    </custom_field>
+    <custom_field name="Resolution" id="2">
+      <value>Fixed</value>
+    </custom_field>
+  </custom_fields>
+</issue>
+```
 
 JSON Example:
 
-    GET /issues/296.json      # an issue with 2 custom fields
+```text
+GET /issues/296.json      # an issue with 2 custom fields
 
-    {"issue":
-      {
-        "id":8471,
-        ...
-        "custom_fields":
-          [
-            {"value":"1.0.1","name":"Affected version","id":1},
-            {"value":"Fixed","name":"Resolution","id":2}
-          ]
-      }
-    }
+{"issue":
+  {
+    "id":8471,
+    ...
+    "custom_fields":
+      [
+        {"value":"1.0.1","name":"Affected version","id":1},
+        {"value":"Fixed","name":"Resolution","id":2}
+      ]
+  }
+}
+```
 
 You can also set/change the values of the custom fields when creating/updating an object using the same syntax (except that the custom field name is not required).
 
 XML Example:
 
-    PUT /issues/296.xml
+```text
+PUT /issues/296.xml
 
-    <issue>
-      <subject>Updating custom fields of an issue</subject>
-      ...
-      <custom_fields type="array">
-        <custom_field id="1">
-          <value>1.0.2</value>
-        </custom_field>
-        <custom_field id="2">
-          <value>Invalid</value>
-        </custom_field>
-      </custom_fields>
-    </issue>
+<issue>
+  <subject>Updating custom fields of an issue</subject>
+  ...
+  <custom_fields type="array">
+    <custom_field id="1">
+      <value>1.0.2</value>
+    </custom_field>
+    <custom_field id="2">
+      <value>Invalid</value>
+    </custom_field>
+  </custom_fields>
+</issue>
+```
 
 Note: the `type="array"` attribute on `custom_fields` XML tag is strictly required.
 
 JSON Example:
 
-    PUT /issues/296.json
+```text
+PUT /issues/296.json
 
-    {"issue":
-      {
-        "subject":"Updating custom fields of an issue",
-        ...
-        "custom_fields":
-          [
-            {"value":"1.0.2","id":1},
-            {"value":"Invalid","id":2}
-          ]
-      }
-    }
+{"issue":
+  {
+    "subject":"Updating custom fields of an issue",
+    ...
+    "custom_fields":
+      [
+        {"value":"1.0.2","id":1},
+        {"value":"Invalid","id":2}
+      ]
+  }
+}
+```
 
 ### Attaching files
 
-Support for adding attachments through the REST API is added in Redmine version:1.4.0.
+Support for adding attachments through the REST API is added in Redmine [1.4.0](https://www.redmine.org/versions/40).
 
 First, you need to upload each file with a POST request to `/uploads.xml` (or `/uploads.json`). The request body should be the content of the file you want to attach and the `Content-Type` header must be set to `application/octet-stream` (otherwise you’ll get a `406 Not Acceptable` response). If the upload succeeds, you get a 201 response that contains a token for your uploaded file.
 
 Then you can use this token to attach your uploaded file to a new or an existing issue.
 
-Note: as of Redmine version:7.1.0, the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead. Redmine 7.0.3 still uses the attribute. The attribute has always been optional, so removing it from your requests is safe with any version of Redmine.
+Note: as of Redmine [7.1.0](https://www.redmine.org/versions/228), the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead. Redmine 7.0.3 still uses the attribute. The attribute has always been optional, so removing it from your requests is safe with any version of Redmine.
 
 <u>XML Example</u>
 
 First, upload your file:
 
-    POST /uploads.xml?filename=image.png
-    Content-Type: application/octet-stream
-    ...
-    (request body is the file content)
+```text
+POST /uploads.xml?filename=image.png
+Content-Type: application/octet-stream
+...
+(request body is the file content)
 
-    # 201 response
-    <upload>
-      <token>7167.ed1ccdb093229ca1bd0b043618d88743</token>
-    </upload>
+# 201 response
+<upload>
+  <token>7167.ed1ccdb093229ca1bd0b043618d88743</token>
+</upload>
+```
 
 Then create the issue using the upload token:
 
-    POST /issues.xml
-    <issue>
-      <project_id>1</project_id>
-      <subject>Creating an issue with a uploaded file</subject>
-      <uploads type="array">
-        <upload>
-          <token>7167.ed1ccdb093229ca1bd0b043618d88743</token>
-          <filename>image.png</filename>
-          <description>An optional description here</description>
-          <content_type>image/png</content_type>
-        </upload>
-      </uploads>
-    </issue>
+```text
+POST /issues.xml
+<issue>
+  <project_id>1</project_id>
+  <subject>Creating an issue with a uploaded file</subject>
+  <uploads type="array">
+    <upload>
+      <token>7167.ed1ccdb093229ca1bd0b043618d88743</token>
+      <filename>image.png</filename>
+      <description>An optional description here</description>
+      <content_type>image/png</content_type>
+    </upload>
+  </uploads>
+</issue>
+```
 
 If you try to upload a file that exceeds the maximum size allowed, you get a 422 response:
 
-    POST /uploads.xml?filename=image.png
-    Content-Type: application/octet-stream
-    ...
-    (request body larger than the maximum size allowed)
+```text
+POST /uploads.xml?filename=image.png
+Content-Type: application/octet-stream
+...
+(request body larger than the maximum size allowed)
 
-    # 422 response
-    <errors>
-      <error>This file cannot be uploaded because it exceeds the maximum allowed file size (1024000)</error>
-    </errors>
+# 422 response
+<errors>
+  <error>This file cannot be uploaded because it exceeds the maximum allowed file size (1024000)</error>
+</errors>
+```
 
 <u>JSON Example</u>
 
 First, upload your file:
 
-    POST /uploads.json?filename=image.png
-    Content-Type: application/octet-stream
-    ...
-    (request body is the file content)
+```text
+POST /uploads.json?filename=image.png
+Content-Type: application/octet-stream
+...
+(request body is the file content)
 
-    # 201 response
-    {"upload":{"token":"7167.ed1ccdb093229ca1bd0b043618d88743"}}
+# 201 response
+{"upload":{"token":"7167.ed1ccdb093229ca1bd0b043618d88743"}}
+```
 
 Then create the issue using the upload token:
 
-    POST /issues.json
-    {
-      "issue": {
-        "project_id": "1",
-        "subject": "Creating an issue with a uploaded file",
-        "uploads": [
-          {"token": "7167.ed1ccdb093229ca1bd0b043618d88743", "filename": "image.png", "content_type": "image/png"}
-        ]
-      }
-    }
+```text
+POST /issues.json
+{
+  "issue": {
+    "project_id": "1",
+    "subject": "Creating an issue with a uploaded file",
+    "uploads": [
+      {"token": "7167.ed1ccdb093229ca1bd0b043618d88743", "filename": "image.png", "content_type": "image/png"}
+    ]
+  }
+}
+```
 
 You can also upload multiple files (by doing multiple POST requests to `/uploads.json`), then create an issue with multiple attachments:
 
-    POST /issues.json
-    {
-      "issue": {
-        "project_id": "1",
-        "subject": "Creating an issue with a uploaded file",
-        "uploads": [
-          {"token": "7167.ed1ccdb093229ca1bd0b043618d88743", "filename": "image1.png", "content_type": "image/png"},
-          {"token": "7168.d595398bbb104ed3bba0eed666785cc6", "filename": "image2.png", "content_type": "image/png"}
-        ]
-      }
-    }
+```text
+POST /issues.json
+{
+  "issue": {
+    "project_id": "1",
+    "subject": "Creating an issue with a uploaded file",
+    "uploads": [
+      {"token": "7167.ed1ccdb093229ca1bd0b043618d88743", "filename": "image1.png", "content_type": "image/png"},
+      {"token": "7168.d595398bbb104ed3bba0eed666785cc6", "filename": "image2.png", "content_type": "image/png"}
+    ]
+  }
+}
+```
 
 ### Validation errors
 
@@ -324,39 +356,43 @@ When trying to create or update an object with invalid or missing attribute para
 
 <u>XML Example</u>:
 
-    # Request with invalid or missing attributes
-    POST /users.xml
-    <user>
-      <login>john</login>
-      <lastname>Smith</lastname>
-      <mail>john</mail>
-    </uer>
+```text
+# Request with invalid or missing attributes
+POST /users.xml
+<user>
+  <login>john</login>
+  <lastname>Smith</lastname>
+  <mail>john</mail>
+</uer>
 
-    # 422 response with the error messages in its body
-    <errors type="array">
-      <error>First name can't be blank</error>
-      <error>Email is invalid</error>
-    </errors>
+# 422 response with the error messages in its body
+<errors type="array">
+  <error>First name can't be blank</error>
+  <error>Email is invalid</error>
+</errors>
+```
 
 <u>JSON Example</u>:
 
-    # Request with invalid or missing attributes
-    POST /users.json
-    {
-      "user":{
-        "login":"john",
-        "lastname":"Smith",
-        "mail":"john"
-      }
-    }
+```text
+# Request with invalid or missing attributes
+POST /users.json
+{
+  "user":{
+    "login":"john",
+    "lastname":"Smith",
+    "mail":"john"
+  }
+}
 
-    # 422 response with the error messages in its body
-    {
-      "errors":[
-        "First name can't be blank",
-        "Email is invalid"
-      ]
-    }
+# 422 response with the error messages in its body
+{
+  "errors":[
+    "First name can't be blank",
+    "Email is invalid"
+  ]
+}
+```
 
 ### JSONP Support
 
@@ -364,9 +400,11 @@ Redmine 2.1.0+ API supports [JSONP](http://en.wikipedia.org/wiki/JSONP) to reque
 
 Example:
 
-    GET /issues.json?callback=myHandler
+```text
+GET /issues.json?callback=myHandler
 
-    myHandler({"issues":[ ... ]})
+myHandler({"issues":[ ... ]})
+```
 
 ## API Usage in various languages/tools
 
@@ -384,7 +422,7 @@ Example:
 
 This section lists changes to the existing API features that may have broken backward compatibility. New features of the API are listed in the [API Description](rest-api.md#API-Description).
 
-### 2026-08-20: Attachment content type is detected from the file contents (r24959, version:7.1.0)
+### 2026-08-20: Attachment content type is detected from the file contents ([r24959](https://www.redmine.org/projects/redmine/repository/svn/revisions/24959), [7.1.0](https://www.redmine.org/versions/228))
 
 Redmine no longer uses the content type sent by the client when a file is uploaded. It reads the file and detects the content type itself. The following are ignored:
 
@@ -395,22 +433,24 @@ Neither returns an error. The value is simply ignored, so existing clients keep 
 
 This change is not in Redmine 7.0.3, which still uses the content type sent by the client.
 
-### 2012-01-29: Multiselect custom fields (r8721, version:1.4.0)
+### 2012-01-29: Multiselect custom fields ([r8721](https://www.redmine.org/projects/redmine/repository/svn/revisions/8721), [1.4.0](https://www.redmine.org/versions/40))
 
 Custom fields with multiple values are now supported in Redmine and may be found in API responses. These custom fields have a `multiple=true attribute` and their `value` attribute is an array.
 
 Example:
 
-    GET /issues/296.json
+```text
+GET /issues/296.json
 
-    {"issue":
-      {
-        "id":8471,
-        ...
-        "custom_fields":
-          [
-            {"value":["1.0.1","1.0.2"],"multiple":true,"name":"Affected version","id":1},
-            {"value":"Fixed","name":"Resolution","id":2}
-          ]
-      }
-    }
+{"issue":
+  {
+    "id":8471,
+    ...
+    "custom_fields":
+      [
+        {"value":["1.0.1","1.0.2"],"multiple":true,"name":"Affected version","id":1},
+        {"value":"Fixed","name":"Resolution","id":2}
+      ]
+  }
+}
+```

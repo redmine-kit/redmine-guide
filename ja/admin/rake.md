@@ -32,7 +32,7 @@ rake redmine:permissions
 
 ### `rake redmine:attachments:prune`
 
-*バージョン 2.3.0 から使えます。*
+*バージョン [2.3.0](https://www.redmine.org/versions/60) から使えます。*
 
 ユーザーがチケットや Wiki ページなどにファイルを添付すると、ファイルはすぐにアップロードされ、フォームを送信した後に添付されます。
 
@@ -66,7 +66,7 @@ POP3 サーバーからメールを読み込みます。
 ### `rake redmine:watchers:prune`
 
 閲覧できなくなったものから、ウォッチャーを削除します。\
-バージョン 2.3.0 から使えます。
+バージョン [2.3.0](https://www.redmine.org/versions/60) から使えます。
 
 ## その他の保守のタスク
 
@@ -81,7 +81,7 @@ POP3 サーバーからメールを読み込みます。
 ### `rake redmine:attachments:move_to_subdirectories`
 
 ファイルのディレクトリの直下に保存されている添付ファイルを移動します(つまり\
-バージョン 2.3.0 から使えます。
+バージョン [2.3.0](https://www.redmine.org/versions/60) から使えます。
 
 ### `rake redmine:email:test[login]`
 

@@ -13,7 +13,7 @@ translated_from_version: 3
 
 <u>例</u>:
 
-```
+```text
 GET /enumerations/issue_priorities.xml
 ```
 
@@ -44,7 +44,7 @@ GET /enumerations/issue_priorities.xml
 
 <u>例</u>:
 
-```
+```text
 GET /enumerations/time_entry_activities.xml
 ```
 
@@ -69,7 +69,7 @@ GET /enumerations/time_entry_activities.xml
 
 <u>例</u>:
 
-```
+```text
 GET /enumerations/document_categories.xml
 ```
 

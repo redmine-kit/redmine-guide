@@ -15,25 +15,29 @@ Returns the issue categories available for the project of given id or identifier
 
 <u>Examples</u>:
 
-    GET /projects/foo/issue_categories.xml
-    GET /projects/1/issue_categories.xml
+```text
+GET /projects/foo/issue_categories.xml
+GET /projects/1/issue_categories.xml
+```
 
 <u>Response</u>:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <issue_categories type="array" total_count="2">
-      <issue_category>
-        <id>57</id>
-        <project name="Foo" id="17"/>
-        <name>UI</name>
-        <assigned_to name="John Smith" id="22"/>
-      </issue_category>
-      <issue_category>
-        <id>58</id>
-        <project name="Foo" id="17"/>
-        <name>Test</name>
-      </issue_category>
-    </issue_categories>
+```text
+<?xml version="1.0" encoding="UTF-8"?>
+<issue_categories type="array" total_count="2">
+  <issue_category>
+    <id>57</id>
+    <project name="Foo" id="17"/>
+    <name>UI</name>
+    <assigned_to name="John Smith" id="22"/>
+  </issue_category>
+  <issue_category>
+    <id>58</id>
+    <project name="Foo" id="17"/>
+    <name>Test</name>
+  </issue_category>
+</issue_categories>
+```
 
 ### POST
 
@@ -58,16 +62,20 @@ Returns the issue category of given id.
 
 <u>Example</u>:
 
-    GET /issue_categories/2.xml
+```text
+GET /issue_categories/2.xml
+```
 
 <u>Response</u>:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <issue_category>
-      <id>2</id>
-      <project name="Redmine" id="1"/>
-      <name>UI</name>
-    </version>
+```text
+<?xml version="1.0" encoding="UTF-8"?>
+<issue_category>
+  <id>2</id>
+  <project name="Redmine" id="1"/>
+  <name>UI</name>
+</version>
+```
 
 ### PUT
 
@@ -92,8 +100,10 @@ Deletes the issue category of given id.
 
 <u>Example</u>:
 
-    DELETE /issue_categories/2.xml
-    DELETE /issue_categories/2.xml?reassign_to_id=1
+```text
+DELETE /issue_categories/2.xml
+DELETE /issue_categories/2.xml?reassign_to_id=1
+```
 
 <u>Response</u>:
 

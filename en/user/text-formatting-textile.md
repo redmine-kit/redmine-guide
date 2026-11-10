@@ -26,9 +26,9 @@ URLs (http, https, ftp and ftps) are automatically turned into clickable links:
 URLs can also use different text than the link itself:
 
 - **“Redmine web site”:http://www.redmine.org** — External link with different text: [Redmine web site](http://www.redmine.org)
-- **[![Redmine web site](http://www.redmine.org/attachments/7069/Redmine_logo.png "Redmine web site")](http://www.redmine.org)** — External image with a title that links to an URL:
+- **[![Redmine web site](../../images/RedmineTextFormattingTextile/Redmine_logo.png "Redmine web site")](http://www.redmine.org)** — External image with a title that links to an URL:
 
-[![Redmine web site](http://www.redmine.org/attachments/7069/Redmine_logo.png "Redmine web site")](http://www.redmine.org)
+[![Redmine web site](../../images/RedmineTextFormattingTextile/Redmine_logo.png "Redmine web site")](http://www.redmine.org)
 
 File URI can be used to link UNC path:
 
@@ -54,7 +54,9 @@ For things such as headlines, bold, tables, lists, Redmine supports [Textile syn
 
 ### Acronym
 
-    JPL(Jean-Philippe Lang)
+```text
+JPL(Jean-Philippe Lang)
+```
 
 displays:
 
@@ -62,19 +64,21 @@ JPL (Jean-Philippe Lang)
 
 ### Font style
 
-    * *bold*
-    * _italic_
-    * *_bold italic_*
-    * +underline+
-    * -strike-through-
-    * Plain ^superscript^
-    * Plain ~subscript~
-    * @inline monospace@
-    * <notextile>normal *bold* _italic_ normal;E=mc ^2^</notextile>
-    * <notextile>normal<notextile></notextile>*bold*<notextile></notextile>_italic_<notextile></notextile>normal;E=mc<notextile></notextile>^2^</notextile>
-    * <notextile>Escaping: <notextile>*bold* _italic_ @inlinemono@</notextile> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alternative using HTML-codes: &#42;bold&#42; &#95;italic&#95; &#64;inlinemono&#64;</notextile>
-    * <notextile><pre>*some lines*      some "link":http://www.redmine.org</pre></notextile>
-    * <notextile><pre><notextile></notextile>*some lines*      some "link":http://www.redmine.org</pre></notextile>
+```text
+* *bold*
+* _italic_
+* *_bold italic_*
+* +underline+
+* -strike-through-
+* Plain ^superscript^
+* Plain ~subscript~
+* @inline monospace@
+* <notextile>normal *bold* _italic_ normal;E=mc ^2^</notextile>
+* <notextile>normal<notextile></notextile>*bold*<notextile></notextile>_italic_<notextile></notextile>normal;E=mc<notextile></notextile>^2^</notextile>
+* <notextile>Escaping: <notextile>*bold* _italic_ @inlinemono@</notextile> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alternative using HTML-codes: &#42;bold&#42; &#95;italic&#95; &#64;inlinemono&#64;</notextile>
+* <notextile><pre>*some lines*      some "link":http://www.redmine.org</pre></notextile>
+* <notextile><pre><notextile></notextile>*some lines*      some "link":http://www.redmine.org</pre></notextile>
+```
 
 displays:
 
@@ -94,11 +98,13 @@ displays:
 
 ### Color
 
-    <notextile>* %{color:red}red% %{color:green}green% %{color:yellow}yellow% %{color:#82B6E1}blue'ish%
-    * %{color:red}red%<notextile></notextile>%{color:green}green%<notextile></notextile>%{color:yellow}yellow%<notextile></notextile>%{color:#82B6E1}blue'ish%
-    * %{background:lightgreen}Lightgreen Background% %{background:yellow}Yellow Background%
-    * %{background:lightgreen}Lightgreen Background%<notextile></notextile>%{background:yellow}Yellow Background%
-    </notextile>
+```text
+<notextile>* %{color:red}red% %{color:green}green% %{color:yellow}yellow% %{color:#82B6E1}blue'ish%
+* %{color:red}red%<notextile></notextile>%{color:green}green%<notextile></notextile>%{color:yellow}yellow%<notextile></notextile>%{color:#82B6E1}blue'ish%
+* %{background:lightgreen}Lightgreen Background% %{background:yellow}Yellow Background%
+* %{background:lightgreen}Lightgreen Background%<notextile></notextile>%{background:yellow}Yellow Background%
+</notextile>
+```
 
 displays:
 
@@ -120,28 +126,32 @@ You can also apply a CSS style to the image in the same ways as styling SPANs. T
 
 ### Headings
 
-    h1. Heading
+```text
+h1. Heading
 
-    h2. Subheading
+h2. Subheading
 
-    h3. Subheading
+h3. Subheading
+```
 
 Redmine assigns an anchor to each of those headings thus you can link to them with “\#Heading”, “\#Subheading” and so forth.
 
 ### Paragraphs
 
-    p. left aligned
+```text
+p. left aligned
 
-    p(. left ident 1em
+p(. left ident 1em
 
-    p((. left ident 2em
-    as well as for following lines
+p((. left ident 2em
+as well as for following lines
 
-    p>. right aligned
+p>. right aligned
 
-    p)))>. right ident 3em
+p)))>. right ident 3em
 
-    p=. This is centered paragraph.
+p=. This is centered paragraph.
+```
 
 displays;
 
@@ -168,18 +178,24 @@ displays:
 
 ### Preformatted Text
 
-     <pre>*Your text won't become bold*</pre>
+```text
+ <pre>*Your text won't become bold*</pre>
+```
 
 displays:
 
-     *Your text won't become bold*
+```text
+ *Your text won't become bold*
+```
 
 ### Blockquotes
 
 Start the paragraph with **bq.**:
 
-    bq. Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
-    To go live, all you need to add is a database and a web server.
+```text
+bq. Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+To go live, all you need to add is a database and a web server.
+```
 
 displays:
 
@@ -188,9 +204,11 @@ displays:
 
 You can also use \> at the beginning of each line and stack them for nested quotes:
 
-    >> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
-    >> To go live, all you need to add is a database and a web server.
-    > Great!
+```text
+>> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+>> To go live, all you need to add is a database and a web server.
+> Great!
+```
 
 displays:
 
@@ -207,11 +225,13 @@ Great!
 
 ### Unordered lists
 
-    * Item 1
-    * Item 2
-    ** Item 21
-    ** Item 22
-    * Item 3
+```text
+* Item 1
+* Item 2
+** Item 21
+** Item 22
+* Item 3
+```
 
 displays:
 
@@ -223,11 +243,13 @@ displays:
 
 ### Ordered lists
 
-    # Item 1
-    # Item 2
-    # Item 3
-    ## Item 3.1
-    ## Item 3.2
+```text
+# Item 1
+# Item 2
+# Item 3
+## Item 3.1
+## Item 3.2
+```
 
 displays:
 
@@ -239,15 +261,17 @@ displays:
 
 ### Tables
 
-    |_.UserID      |_.Name          |_.Group     |_. attribute list   |
-    |Starting with | a              |   simple   |row                 |
-    |\3=.IT                                      |<. align left       |
-    |1             |Artur Pirozhkov |/2.Users    |>. align right      |
-    |2             |Vasya Rogov     |=. center   |
-    |3             |John Smith      |Admin
-                                     (root)      |^. valign top       |
-    |4             |-               |Nobody
-                                     (anonymous) |~. valign bottom    |
+```text
+|_.UserID      |_.Name          |_.Group     |_. attribute list   |
+|Starting with | a              |   simple   |row                 |
+|\3=.IT                                      |<. align left       |
+|1             |Artur Pirozhkov |/2.Users    |>. align right      |
+|2             |Vasya Rogov     |=. center   |
+|3             |John Smith      |Admin
+                                 (root)      |^. valign top       |
+|4             |-               |Nobody
+                                 (anonymous) |~. valign bottom    |
+```
 
 displays (all multiple spaces are replaced by 1 space):
 
@@ -305,9 +329,11 @@ If you want to include pipe characters inside your table (e.g. for Wiki links), 
 
 If you want to specify the width of the table, you need to put **table{width:100%}.** just before your table definition:
 
-    table{width:100%}.
-    | This table will use
-    all horizontal space |
+```text
+table{width:100%}.
+| This table will use
+all horizontal space |
+```
 
 This way the table will extend to the whole page width …
 
@@ -353,36 +379,44 @@ If the table control sequences are used in the wrong order, they will not be int
 
 ### Table of content
 
-    {{toc}} => left aligned toc
-    {{>toc}} => right aligned toc
+```text
+{{toc}} => left aligned toc
+{{>toc}} => right aligned toc
+```
 
 Please keep in mind, that the toc-tag needs an empty line above and underneath it and no other text before and after it.
 
 Example:
 
-    h1. headLineOne
+```text
+h1. headLineOne
 
-    h2. something
+h2. something
 
-    {{toc}}
+{{toc}}
 
-    h2. something more
+h2. something more
+```
 
 ### Footnotes
 
 Marker:
 
-    This is a first word[1] with a footnote.
+```text
+This is a first word[1] with a footnote.
 
-    This is a second word[2] with a footnote.
+This is a second word[2] with a footnote.
+```
 
 **Note:** Marker directly attached to word (no space, no dot or any thing else in between).
 
 Definition:
 
-    fn1. Footnote for the first word
+```text
+fn1. Footnote for the first word
 
-    fn2. Footnote for the second word
+fn2. Footnote for the second word
+```
 
 **Note:** Each definition on its own line anywhere within the document. Empty lines between definitions.
 
@@ -464,9 +498,11 @@ Default code highlightment relies on [Rouge](http://rouge.jneen.net/), a syntax 
 
 You can highlight code in your wiki page using this syntax:
 
-    <pre><code class="ruby">
-      Place your code here.
-    </code></pre>
+```text
+<pre><code class="ruby">
+  Place your code here.
+</code></pre>
+```
 
 Example:
 
@@ -487,12 +523,14 @@ end
 
 Textile can style text using CSS. Examples as follows:
 
-    Three primary colors of light are %{color: #f00}red%, %{color: #0f0}green% and %{color: #00f}blue%.
+```text
+Three primary colors of light are %{color: #f00}red%, %{color: #0f0}green% and %{color: #00f}blue%.
 
-    p{border: solid 1px #000; padding: 0.5em;}. The quick brown fox jumps over the lazy dog.
+p{border: solid 1px #000; padding: 0.5em;}. The quick brown fox jumps over the lazy dog.
 
-    table{width: 100%}.
-    |={width: 30%; background-color: #aaf;}. column 1 |={width: 70%}. column 2 |
+table{width: 100%}.
+|={width: 30%; background-color: #aaf;}. column 1 |={width: 70%}. column 2 |
+```
 
 displays:
 
@@ -515,7 +553,7 @@ The quick brown fox jumps over the lazy dog.
 
 ### Allowed CSS properties
 
-Redmine allows the following properties. Other properties are not allowed for security reasons (see r2192).
+Redmine allows the following properties. Other properties are not allowed for security reasons (see [r2192](https://www.redmine.org/projects/redmine/repository/svn/revisions/2192)).
 
 - background
 - background-\*

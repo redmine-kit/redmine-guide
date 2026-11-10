@@ -36,13 +36,13 @@ translated_from_version: 29
 - 「正規表現」: 正規表現でフィールドの内容を検証できます。例:
   1.  *英大文字 4 文字の後に 1 文字以上の数字*
 
-      ```
+      ```text
       ^\[A-Z]{4}\d+$
       ```
 
   2.  *数字を含まない文字列*
 
-      ```
+      ```text
       ^[^0-9]*$
       ```
 
@@ -79,7 +79,9 @@ translated_from_version: 29
 
 例:
 
-    https://www.redmine.org/issues/%value%
+```text
+https://www.redmine.org/issues/%value%
+```
 
 ### 入力欄の表示
 

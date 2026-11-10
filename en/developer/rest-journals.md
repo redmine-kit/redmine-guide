@@ -16,8 +16,10 @@ Returns the journals for an issue. Journals are included in the issue response w
 
 <u>Examples</u>:
 
-    GET /issues/1.xml?include=journals
-    GET /issues/1.json?include=journals
+```text
+GET /issues/1.xml?include=journals
+GET /issues/1.json?include=journals
+```
 
 <u>Response</u>:
 
@@ -85,7 +87,9 @@ Updates the notes of a journal. The user must have permission to edit the journa
 
 <u>Examples</u>:
 
-    PUT /journals/1.xml
+```text
+PUT /journals/1.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -94,7 +98,9 @@ Updates the notes of a journal. The user must have permission to edit the journa
 </journal>
 ```
 
-    PUT /journals/1.json
+```text
+PUT /journals/1.json
+```
 
 ```json
 {
@@ -106,7 +112,9 @@ Updates the notes of a journal. The user must have permission to edit the journa
 
 The `private_notes` attribute can be updated by users who have permission to set notes as private:
 
-    PUT /journals/1.json
+```text
+PUT /journals/1.json
+```
 
 ```json
 {
@@ -130,7 +138,9 @@ If `notes` is set to an empty value, the notes are cleared but the journal itsel
 
 <u>Examples</u>:
 
-    PUT /journals/1.xml
+```text
+PUT /journals/1.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -139,7 +149,9 @@ If `notes` is set to an empty value, the notes are cleared but the journal itsel
 </journal>
 ```
 
-    PUT /journals/1.json
+```text
+PUT /journals/1.json
+```
 
 ```json
 {

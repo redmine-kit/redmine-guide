@@ -96,7 +96,9 @@ You can checkout the latest stable source with one of the following commands:
 
 **Subversion**
 
-    svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
+```text
+svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
+```
 
 It will create a directory named `redmine-7.0` and you’ll be able to update your Redmine copy using `svn update` in this directory.
 
@@ -106,7 +108,9 @@ You can checkout the latest development source from the trunk with one of the fo
 
 **Subversion**
 
-    svn co https://svn.redmine.org/redmine/trunk redmine
+```text
+svn co https://svn.redmine.org/redmine/trunk redmine
+```
 
 ## Third-party Redmine bundles
 

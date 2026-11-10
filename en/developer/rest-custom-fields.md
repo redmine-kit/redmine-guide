@@ -17,7 +17,9 @@ This endpoint requires admin privileges.
 
 <u>Examples</u>:
 
-    GET /custom_fields.xml
+```text
+GET /custom_fields.xml
+```
 
 <u>Response</u>:
 

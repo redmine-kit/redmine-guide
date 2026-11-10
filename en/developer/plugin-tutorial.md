@@ -19,42 +19,50 @@ It assumes that you’re familiar with the Ruby on Rails framework.
 
 You may need to set the RAILS_ENV variable in order to use the command below:
 
-    $ export RAILS_ENV="production"
+```text
+$ export RAILS_ENV="production"
+```
 
 On windows:
 
-    $ set RAILS_ENV=production
+```text
+$ set RAILS_ENV=production
+```
 
 Creating a new plugin can be done using the Redmine plugin generator.\
 Syntax for this generator is:
 
-    bundle exec rails generate redmine_plugin <plugin_name>
+```text
+bundle exec rails generate redmine_plugin <plugin_name>
+```
 
 So open up a command prompt and “cd” to your redmine directory, then execute the following command:
 
-    $ bundle exec rails generate redmine_plugin Polls
-          create  plugins/polls/app
-          create  plugins/polls/app/controllers
-          create  plugins/polls/app/helpers
-          create  plugins/polls/app/models
-          create  plugins/polls/app/views
-          create  plugins/polls/db/migrate
-          create  plugins/polls/lib/tasks
-          create  plugins/polls/assets/images
-          create  plugins/polls/assets/javascripts
-          create  plugins/polls/assets/stylesheets
-          create  plugins/polls/config/locales
-          create  plugins/polls/test
-          create  plugins/polls/test/fixtures
-          create  plugins/polls/test/unit
-          create  plugins/polls/test/functional
-          create  plugins/polls/test/integration
-          create  plugins/polls/test/system
-          create  plugins/polls/README.rdoc
-          create  plugins/polls/init.rb
-          create  plugins/polls/config/routes.rb
-          create  plugins/polls/config/locales/en.yml
-          create  plugins/polls/test/test_helper.rb
+```text
+$ bundle exec rails generate redmine_plugin Polls
+      create  plugins/polls/app
+      create  plugins/polls/app/controllers
+      create  plugins/polls/app/helpers
+      create  plugins/polls/app/models
+      create  plugins/polls/app/views
+      create  plugins/polls/db/migrate
+      create  plugins/polls/lib/tasks
+      create  plugins/polls/assets/images
+      create  plugins/polls/assets/javascripts
+      create  plugins/polls/assets/stylesheets
+      create  plugins/polls/config/locales
+      create  plugins/polls/test
+      create  plugins/polls/test/fixtures
+      create  plugins/polls/test/unit
+      create  plugins/polls/test/functional
+      create  plugins/polls/test/integration
+      create  plugins/polls/test/system
+      create  plugins/polls/README.rdoc
+      create  plugins/polls/init.rb
+      create  plugins/polls/config/routes.rb
+      create  plugins/polls/config/locales/en.yml
+      create  plugins/polls/test/test_helper.rb
+```
 
 The plugin structure is created in `plugins/polls`. Edit `plugins/polls/init.rb` to adjust plugin information (name, author, description and version):
 
@@ -80,14 +88,18 @@ Note: any change to the `init.rb` file of your plugin requires to restart the ap
 
 For now plugin doesn’t store anything. Let’s create a simple Poll model for our plugin. Syntax is:
 
-       bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
+```text
+   bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
+```
 
 So, go to the command prompt and run:
 
-    $ bundle exec rails generate redmine_plugin_model polls poll question:string yes:integer no:integer
-          create  plugins/polls/app/models/poll.rb
-          create  plugins/polls/test/unit/poll_test.rb
-          create  plugins/polls/db/migrate/xxxxxxxxxxxx_create_polls.rb
+```text
+$ bundle exec rails generate redmine_plugin_model polls poll question:string yes:integer no:integer
+      create  plugins/polls/app/models/poll.rb
+      create  plugins/polls/test/unit/poll_test.rb
+      create  plugins/polls/db/migrate/xxxxxxxxxxxx_create_polls.rb
+```
 
 This creates the Poll model and the corresponding migration file `xxxxxxxxxxxx_create_polls.rb` in `plugins/polls/db/migrate`:
 
@@ -107,22 +119,26 @@ NOTE: For Redmine 3.x `class CreatePolls < ActiveRecord::Migration[5.2]` is `cla
 
 You can adjust your migration file (eg. default values…) then migrate the database using the following command:
 
-    $ bundle exec rake redmine:plugins:migrate
+```text
+$ bundle exec rake redmine:plugins:migrate
 
-    Migrating polls (Polls plugin)...
-    ==  CreatePolls: migrating ====================================================
-    -- create_table(:polls)
-       -> 0.0410s
-    ==  CreatePolls: migrated (0.0420s) ===========================================
+Migrating polls (Polls plugin)...
+==  CreatePolls: migrating ====================================================
+-- create_table(:polls)
+   -> 0.0410s
+==  CreatePolls: migrated (0.0420s) ===========================================
+```
 
 Note that each plugin has its own set of migrations.
 
 Let’s add some Polls in the console so we have something to work with. The console is where you can interactively work and examine the Redmine environment and is very informative to play around in. But for now we just need create two Poll objects
 
-    bundle exec rails console
-    >> Poll.create(question: "Can you see this poll")
-    >> Poll.create(question: "And can you see this other poll")
-    >> exit
+```text
+bundle exec rails console
+>> Poll.create(question: "Can you see this poll")
+>> Poll.create(question: "And can you see this other poll")
+>> exit
+```
 
 Edit `plugins/polls/app/models/poll.rb` in your plugin directory to add a \#vote method that will be invoked from our controller:
 
@@ -139,16 +155,20 @@ end
 For now, the plugin doesn’t do anything. So let’s create a controller for our plugin.\
 We can use the plugin controller generator for that. Syntax is:
 
-    bundle exec rails generate redmine_plugin_controller <plugin_name> <controller_name> [<actions>]
+```text
+bundle exec rails generate redmine_plugin_controller <plugin_name> <controller_name> [<actions>]
+```
 
 So go back to the command prompt and run:
 
-    $ bundle exec rails generate redmine_plugin_controller Polls polls index vote
-          create  plugins/polls/app/controllers/polls_controller.rb
-          create  plugins/polls/app/helpers/polls_helper.rb
-          create  plugins/polls/test/functional/polls_controller_test.rb
-          create  plugins/polls/app/views/polls/index.html.erb
-          create  plugins/polls/app/views/polls/vote.html.erb
+```text
+$ bundle exec rails generate redmine_plugin_controller Polls polls index vote
+      create  plugins/polls/app/controllers/polls_controller.rb
+      create  plugins/polls/app/helpers/polls_helper.rb
+      create  plugins/polls/test/functional/polls_controller_test.rb
+      create  plugins/polls/app/views/polls/index.html.erb
+      create  plugins/polls/app/views/polls/vote.html.erb
+```
 
 A controller `PollsController` with 2 actions (`#index` and `#vote`) is created.
 
@@ -464,7 +484,7 @@ Example:
 
 ### Hooks in views
 
-Hooks in Redmine views lets you insert custom content to regular Redmine views. For example, looking at source:tags/2.0.0/app/views/projects/show.html.erb#L52 shows that there are 2 hooks available: one named `:view_projects_show_left` for adding content to the left part and one named `:view_projects_show_right` for adding content to the right part of the view.
+Hooks in Redmine views lets you insert custom content to regular Redmine views. For example, looking at [source:tags/2.0.0/app/views/projects/show.html.erb#L52](https://www.redmine.org/projects/redmine/repository/svn/show/tags/2.0.0/app/views/projects/show.html.erb#L52) shows that there are 2 hooks available: one named `:view_projects_show_left` for adding content to the left part and one named `:view_projects_show_right` for adding content to the right part of the view.
 
 To use one or more hooks in views, you need to create a class that inherits from `Redmine::Hook::ViewListener` and implement methods named with the hook(s) you want to use. To append some content to the project overview, add a class to your plugin and require it in your `init.rb`, then implement methods whose name match the hook names.
 
@@ -555,7 +575,9 @@ Finally, the :default in the settings method call is to register a value that wi
 
 Here are the contents of my test helper file:
 
-    require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
+```text
+require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
+```
 
 ### Sample test
 
@@ -597,11 +619,15 @@ end
 
 Initialize the test database if necessary:
 
-    $ RAILS_ENV=test bundle exec rake db:drop db:create db:migrate redmine:plugins:migrate redmine:load_default_data
+```text
+$ RAILS_ENV=test bundle exec rake db:drop db:create db:migrate redmine:plugins:migrate redmine:load_default_data
+```
 
 To execute the polls_controller_test.rb:
 
-    $ RAILS_ENV=test bundle exec rake test TEST=plugins/polls/test/functional/polls_controller_test.rb
+```text
+$ RAILS_ENV=test bundle exec rake test TEST=plugins/polls/test/functional/polls_controller_test.rb
+```
 
 ### Testing with permissions
 
@@ -636,44 +662,46 @@ end
 
 Here is a simple list of all the files and directories mentioned in this Tutorial and [Hooks](hooks.md). This is useful to ensure standard paths are used and also useful for newbies to know here files should go.
 
-    plugins/PLUGIN/README.rdoc
-    plugins/PLUGIN/init.rb
-    plugins/PLUGIN/app/
-    plugins/PLUGIN/app/controllers/
-    plugins/PLUGIN/app/controllers/CONTROLLER_controller.rb
-    plugins/PLUGIN/app/helpers/
-    plugins/PLUGIN/app/helpers/CONTROLLER_helper.rb
-    plugins/PLUGIN/app/models/
-    plugins/PLUGIN/app/models/MODEL.rb
-    plugins/PLUGIN/app/views/
-    plugins/PLUGIN/app/views/CONTROLLER/
-    plugins/PLUGIN/app/views/CONTROLLER/_PARTIAL.html.erb
-    plugins/PLUGIN/app/views/CONTROLLER/CONTROLLER-ACTION.html.erb
-    plugins/PLUGIN/app/views/hooks/
-    plugins/PLUGIN/app/views/hooks/_HOOK.html.erb
-    plugins/PLUGIN/app/views/settings/
-    plugins/PLUGIN/app/views/settings/_MODEL_settings.html.erb
-    plugins/PLUGIN/assets/
-    plugins/PLUGIN/assets/images/
-    plugins/PLUGIN/assets/javascripts/
-    plugins/PLUGIN/assets/stylesheets/
-    plugins/PLUGIN/assets/stylesheets/voting.css
-    plugins/PLUGIN/config/
-    plugins/PLUGIN/config/locales/
-    plugins/PLUGIN/config/locales/en.yml
-    plugins/PLUGIN/config/routes.rb
-    plugins/PLUGIN/db/
-    plugins/PLUGIN/db/migrate/
-    plugins/PLUGIN/db/migrate/001_create_MODELs.rb
-    plugins/PLUGIN/lib/
-    plugins/PLUGIN/lib/PLUGIN_hook_listener.rb
-    plugins/PLUGIN/lib/PLUGIN/
-    plugins/PLUGIN/lib/PLUGIN/hooks.rb
-    plugins/PLUGIN/lib/PLUGIN/MODEL_patch.rb
-    plugins/PLUGIN/lib/tasks/
-    plugins/PLUGIN/test/
-    plugins/PLUGIN/test/test_helper.rb
-    plugins/PLUGIN/test/functional/
-    plugins/PLUGIN/test/functional/CONTROLLER_controller_test.rb
-    plugins/PLUGIN/test/unit/
-    plugins/PLUGIN/test/unit/MODEL_test.rb
+```text
+plugins/PLUGIN/README.rdoc
+plugins/PLUGIN/init.rb
+plugins/PLUGIN/app/
+plugins/PLUGIN/app/controllers/
+plugins/PLUGIN/app/controllers/CONTROLLER_controller.rb
+plugins/PLUGIN/app/helpers/
+plugins/PLUGIN/app/helpers/CONTROLLER_helper.rb
+plugins/PLUGIN/app/models/
+plugins/PLUGIN/app/models/MODEL.rb
+plugins/PLUGIN/app/views/
+plugins/PLUGIN/app/views/CONTROLLER/
+plugins/PLUGIN/app/views/CONTROLLER/_PARTIAL.html.erb
+plugins/PLUGIN/app/views/CONTROLLER/CONTROLLER-ACTION.html.erb
+plugins/PLUGIN/app/views/hooks/
+plugins/PLUGIN/app/views/hooks/_HOOK.html.erb
+plugins/PLUGIN/app/views/settings/
+plugins/PLUGIN/app/views/settings/_MODEL_settings.html.erb
+plugins/PLUGIN/assets/
+plugins/PLUGIN/assets/images/
+plugins/PLUGIN/assets/javascripts/
+plugins/PLUGIN/assets/stylesheets/
+plugins/PLUGIN/assets/stylesheets/voting.css
+plugins/PLUGIN/config/
+plugins/PLUGIN/config/locales/
+plugins/PLUGIN/config/locales/en.yml
+plugins/PLUGIN/config/routes.rb
+plugins/PLUGIN/db/
+plugins/PLUGIN/db/migrate/
+plugins/PLUGIN/db/migrate/001_create_MODELs.rb
+plugins/PLUGIN/lib/
+plugins/PLUGIN/lib/PLUGIN_hook_listener.rb
+plugins/PLUGIN/lib/PLUGIN/
+plugins/PLUGIN/lib/PLUGIN/hooks.rb
+plugins/PLUGIN/lib/PLUGIN/MODEL_patch.rb
+plugins/PLUGIN/lib/tasks/
+plugins/PLUGIN/test/
+plugins/PLUGIN/test/test_helper.rb
+plugins/PLUGIN/test/functional/
+plugins/PLUGIN/test/functional/CONTROLLER_controller_test.rb
+plugins/PLUGIN/test/unit/
+plugins/PLUGIN/test/unit/MODEL_test.rb
+```

@@ -12,7 +12,9 @@ updated_for: 7.0.3
 
 As in every wiki, just add a link to the page you want to create.
 
-    [[MyNewWikiPage]]
+```text
+[[MyNewWikiPage]]
+```
 
 Save the page and click on that link: you are now editing the new wiki page with the name “MyNewWikiPage”. Follow the **Edit** instructions below.
 

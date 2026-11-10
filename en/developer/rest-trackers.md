@@ -15,7 +15,9 @@ Returns the list of all trackers.
 
 <u>Examples</u>:
 
-    GET /trackers.xml
+```text
+GET /trackers.xml
+```
 
 <u>Response</u>:
 

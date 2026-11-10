@@ -13,7 +13,7 @@ GET /issues/\[issue_id\].\[format\]?include=journals
 
 <u>例</u>:
 
-```
+```text
 GET /issues/1.xml?include=journals
 GET /issues/1.json?include=journals
 ```
@@ -84,7 +84,9 @@ PUT /journals/\[id\].\[format\]
 
 <u>例</u>:
 
-    PUT /journals/1.xml
+```text
+PUT /journals/1.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -93,7 +95,9 @@ PUT /journals/\[id\].\[format\]
 </journal>
 ```
 
-    PUT /journals/1.json
+```text
+PUT /journals/1.json
+```
 
 ```json
 {
@@ -105,7 +109,9 @@ PUT /journals/\[id\].\[format\]
 
 `private_notes` 属性は、コメントをプライベートにする権限を持つユーザーが更新できます。
 
-    PUT /journals/1.json
+```text
+PUT /journals/1.json
+```
 
 ```json
 {
@@ -129,7 +135,9 @@ PUT /journals/\[id\].\[format\]
 
 <u>例</u>:
 
-    PUT /journals/1.xml
+```text
+PUT /journals/1.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -138,7 +146,9 @@ PUT /journals/\[id\].\[format\]
 </journal>
 ```
 
-    PUT /journals/1.json
+```text
+PUT /journals/1.json
+```
 
 ```json
 {

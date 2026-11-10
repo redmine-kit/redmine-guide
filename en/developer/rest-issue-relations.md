@@ -15,7 +15,9 @@ Returns the relations for the issue of given id (:issue_id).
 
 <u>XML example</u>:
 
-    GET /issues/8470/relations.xml
+```text
+GET /issues/8470/relations.xml
+```
 
 <u>Response</u>:
 
@@ -41,7 +43,9 @@ Returns the relations for the issue of given id (:issue_id).
 
 <u>json example</u>:
 
-    GET /issues/8470/relations.json
+```text
+GET /issues/8470/relations.json
+```
 
 <u>Response</u>:
 
@@ -86,7 +90,9 @@ Creates a relation for the issue of given id (:issue_id).
 
 <u>Examples</u>:
 
-    POST /issues/83/relations.xml
+```text
+POST /issues/83/relations.xml
+```
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -96,7 +102,9 @@ Creates a relation for the issue of given id (:issue_id).
 </relation>
 ```
 
-    POST /issues/83/relations.json
+```text
+POST /issues/83/relations.json
+```
 
 ```json
 {
@@ -115,7 +123,9 @@ Returns the relation of given id.
 
 <u>XML example</u>:
 
-    GET /relations/1819.xml
+```text
+GET /relations/1819.xml
+```
 
 <u>Response</u>:
 
@@ -132,7 +142,9 @@ Returns the relation of given id.
 
 <u>json example</u>:
 
-    GET /relations/1819.json
+```text
+GET /relations/1819.json
+```
 
 <u>Response</u>:
 

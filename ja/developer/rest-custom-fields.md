@@ -15,7 +15,7 @@ translated_from_version: 3
 
 <u>例</u>:
 
-```
+```text
 GET /custom_fields.xml
 ```
 

@@ -62,7 +62,7 @@ GET /projects/\[id\].xml
 
 <u>例</u>:
 
-```
+```text
 GET /projects/12.xml
 GET /projects/12.xml?include=trackers
 GET /projects/12.xml?include=trackers,issue_categories
@@ -118,7 +118,7 @@ POST /projects.xml
   - `issue_custom_field_ids`: チケットのカスタムフィールドの ID の配列。
   - `custom_field_values`: `id => value` の組の配列
 
-```
+```text
 POST /projects.xml
 ```
 
@@ -131,7 +131,9 @@ POST /projects.xml
 </project>
 ```
 
-    POST /projects.json
+```text
+POST /projects.json
+```
 
 ```json
 {

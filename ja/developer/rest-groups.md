@@ -19,7 +19,7 @@ GET /groups.xml
 
 <u>レスポンス</u>:
 
-```
+```text
 <groups type="array">
   <group>
     <id>53</id>
@@ -46,7 +46,7 @@ GET /groups.xml
 
 <u>例</u>:
 
-```
+```text
 POST /groups.xml
 
 <group>
@@ -56,7 +56,9 @@ POST /groups.xml
     <user_id>5</user_id>
   </user_ids>
 </group>
+```
 
+```text
 POST /groups.json
 
 {
@@ -92,7 +94,7 @@ GET /groups/20.xml?include=users
 
 <u>レスポンス</u>:
 
-```
+```text
 <group>
   <id>20</id>
   <name>Developers</name>
@@ -129,7 +131,7 @@ GET /groups/20.xml?include=users
 
 <u>例</u>:
 
-```
+```text
 POST /groups/10/users.xml
 
 <user_id>5</user_id>
@@ -149,7 +151,7 @@ POST /groups/10/users.xml
 
 <u>例</u>:
 
-```
+```text
 DELETE /groups/10/users/5.xml
 ```
 

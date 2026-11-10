@@ -7,7 +7,7 @@ translated_from_version: 7
 
 ## ニュースの一覧
 
-```
+```text
 GET /news.[format]
 GET /projects/[project_id]/news.[format]
 ```
@@ -21,7 +21,7 @@ GET /projects/[project_id]/news.[format]
 
 <u>例</u>:
 
-```
+```text
 GET /news.xml
 GET /news.json
 GET /projects/foo/news.xml
@@ -60,7 +60,7 @@ GET /news.xml?offset=100&limit=100
 
 ## ニュースの表示
 
-```
+```text
 GET /news/[id].[format]
 ```
 
@@ -73,7 +73,7 @@ GET /news/[id].[format]
 
 <u>例</u>:
 
-```
+```text
 GET /news/2.xml
 GET /news/2.json
 
@@ -113,7 +113,9 @@ POST /projects/\[project_id\]/news.\[format\]
 
 <u>例</u>:
 
-    POST /projects/1/news.xml
+```text
+POST /projects/1/news.xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -124,7 +126,9 @@ POST /projects/\[project_id\]/news.\[format\]
 </news>
 ```
 
-    POST /projects/1/news.json
+```text
+POST /projects/1/news.json
+```
 
 ```json
 {
@@ -151,7 +155,9 @@ PUT /news/\[id\].\[format\]
 
 <u>例</u>:
 
-    PUT /news/[id].xml
+```text
+PUT /news/[id].xml
+```
 
 ```xml
 <?xml version="1.0"?>
@@ -162,7 +168,9 @@ PUT /news/\[id\].\[format\]
 </news>
 ```
 
-    PUT /news/[id].json
+```text
+PUT /news/[id].json
+```
 
 ```json
 {

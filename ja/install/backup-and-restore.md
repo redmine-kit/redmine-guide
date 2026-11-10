@@ -18,7 +18,7 @@ Redmine のバックアップには、次のものを含めます。
 
 `mysqldump` コマンドで、MySQL のデータベースの内容をテキストファイルにバックアップできます。例:
 
-```sh
+```text
 /usr/bin/mysqldump -u <username> -p<password> -h <hostname> <redmine_database> > /path/to/backup/db/redmine.sql
 ```
 
@@ -28,7 +28,7 @@ Redmine のバックアップには、次のものを含めます。
 
 `pg_dump` コマンドで、PostgreSQL のデータベースの内容をテキストファイルにバックアップできます。例:
 
-```sh
+```text
 /usr/bin/pg_dump -U <username> -h <hostname> -Fc --file=redmine.sqlc <redmine_database>
 ```
 
@@ -57,7 +57,7 @@ SQLite のデータベースのファイル名は、`config/database.yml` で確
 
 毎日のバックアップに使える簡単なシェルスクリプトの例です(MySQL のデータベースを使っている場合)。
 
-```sh
+```text
 # Database
 /usr/bin/mysqldump -u <username> -p<password> <redmine_database> | gzip > /path/to/backup/db/redmine_`date +%Y-%m-%d`.gz
 
@@ -73,7 +73,7 @@ rsync -a /path/to/redmine/files /path/to/backup/files
 
 たとえば、`2018-07-30.gz` という名前の gzip で圧縮したダンプファイルがある場合は、次のコマンドでデータベースを復元できます。
 
-```sh
+```text
 gunzip -c 2018-07-30.gz | mysql -u <username> --password <redmine_database>
 Enter password:
 ```
@@ -82,13 +82,13 @@ Enter password:
 
 上の例のように `pg_dump` コマンドで `-Fc` オプションを使った場合は、`pg_restore` コマンドを使います。
 
-```sh
+```text
 pg_restore -U <username> -h <hostname> -d <redmine_database> redmine.sqlc
 ```
 
 そうでない場合は、テキストファイルを `psql` で復元できます。
 
-```sh
+```text
 psql <redmine_database> < <infile>
 ```
 

@@ -5,7 +5,7 @@ translated_from_version: 53
 
 # Redmine への貢献
 
-Redmine は、コミュニティのボランティアが開発し、メンテナンスしています。Redmine を気に入って使っていて、コミュニティに恩返しをしたい場合は、いくつかの方法でプロジェクトに貢献できます。より具体的なアイデアは、フォーラムのスレッド message#4325 も読んでください。
+Redmine は、コミュニティのボランティアが開発し、メンテナンスしています。Redmine を気に入って使っていて、コミュニティに恩返しをしたい場合は、いくつかの方法でプロジェクトに貢献できます。より具体的なアイデアは、フォーラムのスレッド [How to contribute](https://www.redmine.org/boards/1/topics/4325) も読んでください。
 
 ## コントリビューター
 
@@ -43,7 +43,7 @@ Redmine の現在のコントリビューターと作者の一覧は、[概要�
 1.  **svn の trunk**、**Mercurial の default の名前付きブランチ**、または **Git の master ブランチ**で作業していることを確認します。\
     安定バージョンのリリースへのパッチは受け付けていません。誰かがパッチをまず trunk に移植し、それから安定バージョンに戻して移植することになる(つまり作業が 2 倍になる)ためです。\
     Mercurial を使う場合は、[graft](http://www.selenic.com/hg/help/graft) や [mercurial queues extension](http://mercurial.selenic.com/wiki/MqExtension) を使えます。
-2.  Redmine には**テスト**(source:trunk/test)があります。既存のテストがすべて通ることを確認します。現在のビルドの状態は [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration) で確認できます。すべてのテストは「rake test」で、個別のテストは「ruby test/unit/issue_test.rb」で実行できます。詳しくは source:trunk/doc/RUNNING_TESTS を参照してください。
+2.  Redmine には**テスト**([source:trunk/test](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/test))があります。既存のテストがすべて通ることを確認します。現在のビルドの状態は [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration) で確認できます。すべてのテストは「rake test」で、個別のテストは「ruby test/unit/issue_test.rb」で実行できます。詳しくは [source:trunk/doc/RUNNING_TESTS](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/doc/RUNNING_TESTS) を参照してください。
 3.  新しい機能を示し、不具合を確認するテストを追加します。
 4.  パッチをチケットに投稿します。\
     **<span style="color: red">GitHub や Bitbucket でプルリクエストを送らないでください</span>**。\

@@ -13,23 +13,25 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 例:
 
-    引数なし:
-    {{my_macro}}
+```text
+引数なし:
+{{my_macro}}
 
-    引数あり:
-    {{my_macro(arg1, arg2)}}
+引数あり:
+{{my_macro(arg1, arg2)}}
 
-    テキストのブロックあり:
-    {{my_macro
-    multiple lines
-    of text
-    }}
+テキストのブロックあり:
+{{my_macro
+multiple lines
+of text
+}}
 
-    引数とテキストのブロックあり
-    {{my_macro(arg1, arg2)
-    multiple lines
-    of text
-    }}
+引数とテキストのブロックあり
+{{my_macro(arg1, arg2)
+multiple lines
+of text
+}}
+```
 
 テキストのブロックを渡す場合は、閉じタグ `}}` を新しい行の先頭に置く必要があります。
 

@@ -13,39 +13,41 @@ To use this library from PowerShell, see [REST API with PowerShell](https://www.
 
 Sample usage:
 
-    using System;
-    using System.Collections.Specialized;
-    using Redmine.Net.Api;
-    using Redmine.Net.Api.Types;
+```text
+using System;
+using System.Collections.Specialized;
+using Redmine.Net.Api;
+using Redmine.Net.Api.Types;
 
-    namespace RedmineTest
+namespace RedmineTest
+{
+    class Program
     {
-        class Program
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
-                string host = "";
-                string apiKey = "";
-                string issueId = "<issue-id>";
+            string host = "";
+            string apiKey = "";
+            string issueId = "<issue-id>";
 
-                var manager = new RedmineManager(host, apiKey);
+            var manager = new RedmineManager(host, apiKey);
 
-                //parameter - fetch associated relations.
-                var parameters = new NameValueCollection {{RedmineKeys.INCLUDE, RedmineKeys.RELATIONS}};
+            //parameter - fetch associated relations.
+            var parameters = new NameValueCollection {{RedmineKeys.INCLUDE, RedmineKeys.RELATIONS}};
 
-                var issue = manager.GetObject<Issue>(issueId, parameters);
-                Console.WriteLine("Issue: {0}.", issue);
+            var issue = manager.GetObject<Issue>(issueId, parameters);
+            Console.WriteLine("Issue: {0}.", issue);
 
-                //Create a issue.
-                Issue newissue = new Issue();
-                newissue.Project = IdentifiableName.Create<IdentifiableName>(id: 1);
-                newissue.Tracker = IdentifiableName.Create<IdentifiableName>(id: 1);
-                newissue.Subject = "Example";
-                newissue.Description = "Description";
+            //Create a issue.
+            Issue newissue = new Issue();
+            newissue.Project = IdentifiableName.Create<IdentifiableName>(id: 1);
+            newissue.Tracker = IdentifiableName.Create<IdentifiableName>(id: 1);
+            newissue.Subject = "Example";
+            newissue.Description = "Description";
 
-                Issue savedIssue = manager.CreateObject(newissue);
-                Console.WriteLine("Saved issue {0}." ,savedIssue);
+            Issue savedIssue = manager.CreateObject(newissue);
+            Console.WriteLine("Saved issue {0}." ,savedIssue);
 
-            }
         }
     }
+}
+```

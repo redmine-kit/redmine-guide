@@ -55,22 +55,24 @@ See also:
 
 TODO
 
-    ## This statement is important ##
-    In editing mode, leave the Password field blank in order to keep the user's password unchanged.
+```text
+## This statement is important ##
+In editing mode, leave the Password field blank in order to keep the user's password unchanged.
 
-    ## Improve this list to match global descriptions and to prevent duplication ##
-     * Login - The User's Login account.
-     * Firstname  - The User's First name.
-     * Lastname - The User's Last name
-     * Email - A user's email address which receives a mail sent by project.
-     * Language - Set a User's mother language.
-     * Administrator - If checked this property, this account has unrestricted access to the application and to all projects.
-     * Authentication
-     ** Password  - New password
-     ** Confirmation - Confirm a new password
-     * Send account information to the user - If checked, send Account information to the user's email address when changed user's information by administrator (active users only).
+## Improve this list to match global descriptions and to prevent duplication ##
+ * Login - The User's Login account.
+ * Firstname  - The User's First name.
+ * Lastname - The User's Last name
+ * Email - A user's email address which receives a mail sent by project.
+ * Language - Set a User's mother language.
+ * Administrator - If checked this property, this account has unrestricted access to the application and to all projects.
+ * Authentication
+ ** Password  - New password
+ ** Confirmation - Confirm a new password
+ * Send account information to the user - If checked, send Account information to the user's email address when changed user's information by administrator (active users only).
+```
 
 ## Deleting a User
 
-Prior to Redmine version#27, user accounts couldn’t be deleted from Redmine. Starting from Redmine version#27, administrators have the ability to delete users (#7296) and from Redmine version#46 onwards, all users have the ability to delete their own account depending on the “[Allow users to delete their own account](settings.md#Allow-users-to-delete-their-own-account)” setting (#10664).\
+Prior to Redmine [1.2.0](https://www.redmine.org/versions/27), user accounts couldn’t be deleted from Redmine. Starting from Redmine [1.2.0](https://www.redmine.org/versions/27), administrators have the ability to delete users (#7296) and from Redmine [1.4.1](https://www.redmine.org/versions/46) onwards, all users have the ability to delete their own account depending on the “[Allow users to delete their own account](settings.md#Allow-users-to-delete-their-own-account)” setting (#10664).\
 When a user is deleted, their personal data (e.g. the user record itself, their saved preferences, any saved tokens or keys for the user, their project memberships, their private queries…) is deleted and their public data (e.g. any authorship references of issues, journals, wiki edits/pages, attachments…, or any other any changes done by the user) is reassigned to the `Anonymous` user. Issues assigned to the user become unassigned.

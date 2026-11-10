@@ -16,39 +16,43 @@ Returns a paginated list of the project memberships. `:project_id` can be either
 
 <u>Examples</u>:
 
-    GET /projects/1/memberships.xml
-    GET /projects/redmine/memberships.xml
+```text
+GET /projects/1/memberships.xml
+GET /projects/redmine/memberships.xml
+```
 
 <u>Response</u>:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <memberships type="array" limit="25" offset="0" total_count="3">
-      <membership>
-        <id>1</id>
-        <project name="Redmine" id="1"/>
-        <user name="David Robert" id="17"/>
-        <roles type="array">
-          <role name="Manager" id="1"/>
-        </roles>
-      </membership>
-      <membership>
-        <id>3</id>
-        <project name="Redmine" id="1"/>
-        <group name="Contributors" id="24"/>
-        <roles type="array">
-          <role name="Contributor" id="3"/>
-        </roles>
-      </membership>
-      <membership>
-        <id>4</id>
-        <project name="Redmine" id="1"/>
-        <user name="John Smith" id="27"/>
-        <roles type="array">
-          <role name="Developer" id="2" />
-          <role name="Contributor" id="3" inherited="true" />
-        </roles>
-      </membership>
-    </memberships>
+```text
+<?xml version="1.0" encoding="UTF-8"?>
+<memberships type="array" limit="25" offset="0" total_count="3">
+  <membership>
+    <id>1</id>
+    <project name="Redmine" id="1"/>
+    <user name="David Robert" id="17"/>
+    <roles type="array">
+      <role name="Manager" id="1"/>
+    </roles>
+  </membership>
+  <membership>
+    <id>3</id>
+    <project name="Redmine" id="1"/>
+    <group name="Contributors" id="24"/>
+    <roles type="array">
+      <role name="Contributor" id="3"/>
+    </roles>
+  </membership>
+  <membership>
+    <id>4</id>
+    <project name="Redmine" id="1"/>
+    <user name="John Smith" id="27"/>
+    <roles type="array">
+      <role name="Developer" id="2" />
+      <role name="Contributor" id="3" inherited="true" />
+    </roles>
+  </membership>
+</memberships>
+```
 
 Notes:
 
@@ -68,24 +72,28 @@ Adds a project member.
 
 <u>Example</u>:
 
-    POST /projects/redmine/memberships.xml
+```text
+POST /projects/redmine/memberships.xml
 
-    <membership>
-      <user_id>27</user_id>
-      <role_ids type="array">
-        <role_id>2</role_id>
-      </role_ids>
-    </membership>
+<membership>
+  <user_id>27</user_id>
+  <role_ids type="array">
+    <role_id>2</role_id>
+  </role_ids>
+</membership>
+```
 
 JSON
 
-    {
-      "membership":
-      {
-        "user_id": 27,
-        "role_ids": [ 2 ]
-      }
-    }
+```text
+{
+  "membership":
+  {
+    "user_id": 27,
+    "role_ids": [ 2 ]
+  }
+}
+```
 
 <u>Response</u>:
 
@@ -100,20 +108,24 @@ Returns the membership of given `:id`.
 
 <u>Examples</u>:
 
-    GET /memberships/1.xml
+```text
+GET /memberships/1.xml
+```
 
 <u>Response</u>:
 
-    <?xml version="1.0" encoding="UTF-8"?>
-    <membership>
-      <id>1</id>
-      <project name="Redmine" id="1"/>
-      <user name="David Robert" id="17"/>
-      <roles type="array">
-        <role name="Developer" id="2"/>
-        <role name="Manager" id="1"/>
-      </roles>
-    </membership>
+```text
+<?xml version="1.0" encoding="UTF-8"?>
+<membership>
+  <id>1</id>
+  <project name="Redmine" id="1"/>
+  <user name="David Robert" id="17"/>
+  <roles type="array">
+    <role name="Developer" id="2"/>
+    <role name="Manager" id="1"/>
+  </roles>
+</membership>
+```
 
 ### PUT
 
@@ -126,14 +138,16 @@ Updates the membership of given :id. Only the roles can be updated, the project 
 
 <u>Example</u>:
 
-    PUT /memberships/2.xml
+```text
+PUT /memberships/2.xml
 
-    <membership>
-      <role_ids type="array">
-        <role_id>3</role_id>
-        <role_id>4</role_id>
-      </role_ids>
-    </membership>
+<membership>
+  <role_ids type="array">
+    <role_id>3</role_id>
+    <role_id>4</role_id>
+  </role_ids>
+</membership>
+```
 
 <u>Response</u>:
 
@@ -152,7 +166,9 @@ Memberships inherited from a group membership can not be deleted. You must delet
 
 <u>Example</u>:
 
-    DELETE /memberships/2.xml
+```text
+DELETE /memberships/2.xml
+```
 
 <u>Response</u>:
 

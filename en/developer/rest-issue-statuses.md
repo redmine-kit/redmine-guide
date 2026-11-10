@@ -15,7 +15,9 @@ Returns the list of all issue statuses.
 
 <u>Examples</u>:
 
-    GET /issue_statuses.xml
+```text
+GET /issue_statuses.xml
+```
 
 <u>Response</u>:
 

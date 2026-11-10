@@ -23,13 +23,15 @@ When filling a bug report, please give the following information with the descri
 
 - your database manager version (e.g. PostgreSQL 9.2)
 - your Ruby version (e.g. Ruby 3.2.2)
-- your Redmine version (pick the version number in the *Affected version* field) and the exact revision (eg. r22769) if you’re using repository code
+- your Redmine version (pick the version number in the *Affected version* field) and the exact revision (eg. [r22769](https://www.redmine.org/projects/redmine/repository/svn/revisions/22769)) if you’re using repository code
 - your scm binary version (e.g. svn 1.14.3, or git 2.44.0) if your problem is about scm integration
 - your using plugins (eg. Code Review plugin)
 
 The simplest way to get information about your environment is to run the following command from within your Redmine installation:
 
-    ruby bin/about
+```text
+ruby bin/about
+```
 
 When reporting an application error, post the full error stack trace that you should find in the log file (eg. `log/production.log`). The message displayed by the application (eg. *…An error occurred on the page you were trying to access…*) is useless here.
 

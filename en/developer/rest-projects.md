@@ -65,11 +65,13 @@ Returns the project of given id or identifier.
 
 <u>Examples</u>:
 
-    GET /projects/12.xml
-    GET /projects/12.xml?include=trackers
-    GET /projects/12.xml?include=trackers,issue_categories
-    GET /projects/12.xml?include=enabled_modules
-    GET /projects/redmine.xml
+```text
+GET /projects/12.xml
+GET /projects/12.xml?include=trackers
+GET /projects/12.xml?include=trackers,issue_categories
+GET /projects/12.xml?include=enabled_modules
+GET /projects/redmine.xml
+```
 
 <u>Response</u>:
 
@@ -119,7 +121,7 @@ Creates a project.
   - `issue_custom_field_ids`: an array of issue custom field IDs.
   - `custom_field_values`: array with `id => value` pairs
 
-```
+```text
 POST /projects.xml
 ```
 
@@ -132,7 +134,9 @@ POST /projects.xml
 </project>
 ```
 
-    POST /projects.json
+```text
+POST /projects.json
+```
 
 ```json
 {

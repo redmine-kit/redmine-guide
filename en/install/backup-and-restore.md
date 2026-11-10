@@ -20,7 +20,9 @@ Redmine backups should include:
 
 The `mysqldump` command can be used to backup the contents of your MySQL database to a text file. For example:
 
-    /usr/bin/mysqldump -u <username> -p<password> -h <hostname> <redmine_database> > /path/to/backup/db/redmine.sql
+```text
+/usr/bin/mysqldump -u <username> -p<password> -h <hostname> <redmine_database> > /path/to/backup/db/redmine.sql
+```
 
 You can find `<username>`, `<password>`, `<hostname>`, and `<redmine_database>` in the file `config/database.yml`. `<host_name>` may not be required depending on your installation of the database.
 
@@ -28,7 +30,9 @@ You can find `<username>`, `<password>`, `<hostname>`, and `<redmine_database>` 
 
 The `pg_dump` command can be used to backup the contents of a PostgreSQL database to a text file. Here is an example:
 
-    /usr/bin/pg_dump -U <username> -h <hostname> -Fc --file=redmine.sqlc <redmine_database>
+```text
+/usr/bin/pg_dump -U <username> -h <hostname> -Fc --file=redmine.sqlc <redmine_database>
+```
 
 You can find `<username>`, `<hostname>`, and `<redmine_database>` in the file `config/database.yml`. `<hostname>` may not be required depending on your installation of the database. The `pg_dump` command will prompt you to enter the password when necessary.
 
@@ -55,11 +59,13 @@ Keep also in mind, you may you have plugins installed that my have a different s
 
 Here is a simple shell script that can be used for daily backups (assuming youâ€™re using a MySQL database):
 
-    # Database
-    /usr/bin/mysqldump -u <username> -p<password> <redmine_database> | gzip > /path/to/backup/db/redmine_`date +%Y-%m-%d`.gz
+```text
+# Database
+/usr/bin/mysqldump -u <username> -p<password> <redmine_database> | gzip > /path/to/backup/db/redmine_`date +%Y-%m-%d`.gz
 
-    # Attachments
-    rsync -a /path/to/redmine/files /path/to/backup/files
+# Attachments
+rsync -a /path/to/redmine/files /path/to/backup/files
+```
 
 ## Restore
 
@@ -69,18 +75,24 @@ Here is a simple shell script that can be used for daily backups (assuming youâ€
 
 For example if you have a gziped dump file with the name `2018-07-30.gz`, then the database can be restored with the following command:
 
-    gunzip -c 2018-07-30.gz | mysql -u <username> --password <redmine_database>
-    Enter password:
+```text
+gunzip -c 2018-07-30.gz | mysql -u <username> --password <redmine_database>
+Enter password:
+```
 
 #### PostgreSQL
 
 When the option `-Fc` of the command `pg_dump` is used like it is at the above example then you need to use the command `pg_restore`:
 
-    pg_restore -U <username> -h <hostname> -d <redmine_database> redmine.sqlc
+```text
+pg_restore -U <username> -h <hostname> -d <redmine_database> redmine.sqlc
+```
 
 otherwise a text file can be restored with `psql`:
 
-    psql <redmine_database> < <infile>
+```text
+psql <redmine_database> < <infile>
+```
 
 #### SQLite
 

@@ -94,7 +94,9 @@ Redmine のソースコードは Subversion のリポジトリからチェック
 
 **Subversion**
 
-    svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
+```text
+svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
+```
 
 `redmine-7.0` というディレクトリが作成されます。このディレクトリで `svn update` を実行すると、Redmine を更新できます。
 
@@ -104,7 +106,9 @@ Redmine のソースコードは Subversion のリポジトリからチェック
 
 **Subversion**
 
-    svn co https://svn.redmine.org/redmine/trunk redmine
+```text
+svn co https://svn.redmine.org/redmine/trunk redmine
+```
 
 ## サードパーティの Redmine のバンドル
 

@@ -15,7 +15,9 @@ Returns the list of roles.
 
 <u>Examples</u>:
 
-    GET /roles.xml
+```text
+GET /roles.xml
+```
 
 <u>Response</u>:
 
@@ -37,11 +39,13 @@ Returns the list of roles.
 
 ### GET
 
-Returns the list of permissions for a given role (version:2.2.0).
+Returns the list of permissions for a given role ([2.2.0](https://www.redmine.org/versions/56)).
 
 <u>Examples</u>:
 
-    GET /roles/5.xml
+```text
+GET /roles/5.xml
+```
 
 <u>Response</u>:
 

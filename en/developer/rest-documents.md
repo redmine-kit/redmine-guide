@@ -12,7 +12,9 @@ Note: the Documents API is not available in Redmine 7.0.3.
 
 ## Listing documents
 
-    GET /projects/[project_id]/documents.[format]
+```text
+GET /projects/[project_id]/documents.[format]
+```
 
 Returns a paginated list of documents for the project with the given id or identifier.
 
@@ -23,13 +25,17 @@ Parameters:
 
 Examples:
 
-    GET /projects/foo/documents.xml
-    GET /projects/foo/documents.json
-    GET /projects/foo/documents.xml?offset=0&limit=100
+```text
+GET /projects/foo/documents.xml
+GET /projects/foo/documents.json
+GET /projects/foo/documents.xml?offset=0&limit=100
+```
 
 ## Showing a document
 
-    GET /documents/[id].[format]
+```text
+GET /documents/[id].[format]
+```
 
 Parameters:
 
@@ -38,13 +44,17 @@ Parameters:
 
 Examples:
 
-    GET /documents/1.xml
-    GET /documents/1.json
-    GET /documents/1.json?include=attachments
+```text
+GET /documents/1.xml
+GET /documents/1.json
+GET /documents/1.json?include=attachments
+```
 
 ## Creating a document
 
-    POST /projects/[project_id]/documents.[format]
+```text
+POST /projects/[project_id]/documents.[format]
+```
 
 Parameters:
 
@@ -60,7 +70,9 @@ Returns `201 Created` on success.
 
 ## Updating a document
 
-    PUT /documents/[id].[format]
+```text
+PUT /documents/[id].[format]
+```
 
 Parameters:
 
@@ -72,7 +84,9 @@ Returns `204 No Content` on success.
 
 ## Deleting a document
 
-    DELETE /documents/[id].[format]
+```text
+DELETE /documents/[id].[format]
+```
 
 Returns `204 No Content` on success.
 

@@ -136,5 +136,5 @@ If this string is not defined in locale file, the humanized filename \<myblocks_
 
 ## References
 
-- message#4283
-- message#4095
+- [Can a plugin modify the view of the projects page?](https://www.redmine.org/boards/3/topics/4283)
+- [Rails Engines and extending the issue model](https://www.redmine.org/boards/3/topics/4095)

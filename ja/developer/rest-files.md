@@ -13,7 +13,7 @@ translated_from_version: 4
 
 <u>例</u>:
 
-```
+```text
 GET /projects/foo/files.xml
 GET /projects/1/files.xml
 ```
@@ -66,7 +66,7 @@ GET /projects/1/files.xml
 
 <u>例</u>:
 
-```
+```text
 POST /projects/1/files.xml
 ```
 

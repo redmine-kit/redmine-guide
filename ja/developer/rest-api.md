@@ -75,7 +75,7 @@ Redmine 2.2.0 から、API のリクエストに `X-Redmine-Switch-User` ヘッ�
 
 ### コレクションのリソースとページ分割
 
-コレクションのリソース(例: `/issues.xml`、`/users.xml`)への GET リクエストは、通常、データベースにあるすべてのオブジェクトを返すわけではありません。Redmine version:1.1.0 で、次のパラメーターでこうしたリソースを取得する共通の方法が導入されました。
+コレクションのリソース(例: `/issues.xml`、`/users.xml`)への GET リクエストは、通常、データベースにあるすべてのオブジェクトを返すわけではありません。Redmine [1.1.0](https://www.redmine.org/versions/20) で、次のパラメーターでこうしたリソースを取得する共通の方法が導入されました。
 
 - `offset`: 取得する最初のオブジェクトのオフセット
 - `limit`: レスポンスに含める件数(デフォルトは 25、最大は 100)
@@ -83,7 +83,7 @@ Redmine 2.2.0 から、API のリクエストに `X-Redmine-Switch-User` ヘッ�
 
 例:
 
-```
+```text
 GET /issues.xml
 => returns the 25 first issues
 
@@ -99,13 +99,15 @@ GET /issues.xml?page=3&limit=10
 
 コレクションのリソースへの GET リクエストのレスポンスには、Redmine にあるオブジェクトの総数と、レスポンスに使った offset/limit の情報が含まれます。例:
 
-```
+```text
 GET /issues.xml
 
 <issues type="array" total_count="2595" limit="25" offset="0">
   ...
 </issues>
+```
 
+```text
 GET /issues.json
 
 { "issues":[...], "total_count":2595, "limit":25, "offset":0 }
@@ -113,7 +115,7 @@ GET /issues.json
 
 注: これらの最上位の属性(total_count、limit、offset)に対応していない REST クライアントを使う場合は、パラメーター `nometa` か HTTP ヘッダー `X-Redmine-Nometa` を 1 にすると、これらを含まないレスポンスを受け取れます。例:
 
-```
+```text
 GET /issues.xml?nometa=1
 
 <issues type="array">
@@ -123,13 +125,13 @@ GET /issues.xml?nometa=1
 
 ### 関連するデータの取得
 
-version:1.1.0 から、取得の結果に含める関連は、URL にパラメーター `include` を付けて明示的に指定する必要があります。
+[1.1.0](https://www.redmine.org/versions/20) から、取得の結果に含める関連は、URL にパラメーター `include` を付けて明示的に指定する必要があります。
 
 例:
 
 チケットの履歴を説明と一緒に取得するには、次のようにします。
 
-```
+```text
 GET /issues/296.xml?include=journals
 
 <issue>
@@ -145,7 +147,7 @@ GET /issues/296.xml?include=journals
 
 例:
 
-```
+```text
 GET /issues/296.xml?include=journals,changesets
 
 <issue>
@@ -166,7 +168,7 @@ Redmine のほとんどのオブジェクトはカスタムフィールドに対
 
 XML の例:
 
-```
+```text
 GET /issues/296.xml      # an issue with 2 custom fields
 
 <issue>
@@ -185,7 +187,7 @@ GET /issues/296.xml      # an issue with 2 custom fields
 
 JSON の例:
 
-```
+```text
 GET /issues/296.json      # an issue with 2 custom fields
 
 {"issue":
@@ -205,7 +207,7 @@ GET /issues/296.json      # an issue with 2 custom fields
 
 XML の例:
 
-```
+```text
 PUT /issues/296.xml
 
 <issue>
@@ -226,7 +228,7 @@ PUT /issues/296.xml
 
 JSON の例:
 
-```
+```text
 PUT /issues/296.json
 
 {"issue":
@@ -244,19 +246,19 @@ PUT /issues/296.json
 
 ### ファイルの添付
 
-REST API による添付ファイルの追加は、Redmine version:1.4.0 で対応しました。
+REST API による添付ファイルの追加は、Redmine [1.4.0](https://www.redmine.org/versions/40) で対応しました。
 
 まず、各ファイルを `/uploads.xml`(または `/uploads.json`)への POST リクエストでアップロードします。リクエストの本文は添付するファイルの内容にし、`Content-Type` ヘッダーは `application/octet-stream` にする必要があります(そうしないと `406 Not Acceptable` が返ります)。アップロードに成功すると、アップロードしたファイルのトークンを含む 201 のレスポンスが返ります。
 
 続けて、このトークンを使って、アップロードしたファイルを新しいチケットや既存のチケットに添付します。
 
-注: Redmine version:7.1.0 から、`content_type` 属性は無視されます。代わりに、Redmine がファイルの内容からコンテンツタイプを判定します。Redmine 7.0.3 では、この属性は引き続き使われます。この属性はもともと任意なので、リクエストから削除しても、どのバージョンの Redmine でも問題ありません。
+注: Redmine [7.1.0](https://www.redmine.org/versions/228) から、`content_type` 属性は無視されます。代わりに、Redmine がファイルの内容からコンテンツタイプを判定します。Redmine 7.0.3 では、この属性は引き続き使われます。この属性はもともと任意なので、リクエストから削除しても、どのバージョンの Redmine でも問題ありません。
 
 <u>XML の例</u>
 
 まず、ファイルをアップロードします。
 
-```
+```text
 POST /uploads.xml?filename=image.png
 Content-Type: application/octet-stream
 ...
@@ -270,7 +272,7 @@ Content-Type: application/octet-stream
 
 続けて、アップロードのトークンを使ってチケットを作成します。
 
-```
+```text
 POST /issues.xml
 <issue>
   <project_id>1</project_id>
@@ -288,7 +290,7 @@ POST /issues.xml
 
 許可されている最大のサイズを超えるファイルをアップロードしようとすると、422 のレスポンスが返ります。
 
-```
+```text
 POST /uploads.xml?filename=image.png
 Content-Type: application/octet-stream
 ...
@@ -304,7 +306,7 @@ Content-Type: application/octet-stream
 
 まず、ファイルをアップロードします。
 
-```
+```text
 POST /uploads.json?filename=image.png
 Content-Type: application/octet-stream
 ...
@@ -316,7 +318,7 @@ Content-Type: application/octet-stream
 
 続けて、アップロードのトークンを使ってチケットを作成します。
 
-```
+```text
 POST /issues.json
 {
   "issue": {
@@ -331,7 +333,7 @@ POST /issues.json
 
 複数のファイルをアップロードし(`/uploads.json` への POST リクエストを複数回行います)、複数の添付ファイルの付いたチケットを作成することもできます。
 
-```
+```text
 POST /issues.json
 {
   "issue": {
@@ -351,7 +353,7 @@ POST /issues.json
 
 <u>XML の例</u>:
 
-```
+```text
 # Request with invalid or missing attributes
 POST /users.xml
 <user>
@@ -369,7 +371,7 @@ POST /users.xml
 
 <u>JSON の例</u>:
 
-```
+```text
 # Request with invalid or missing attributes
 POST /users.json
 {
@@ -395,7 +397,7 @@ Redmine 2.1.0 以降の API は、別のドメインの Redmine のサーバー�
 
 例:
 
-```
+```text
 GET /issues.json?callback=myHandler
 
 myHandler({"issues":[ ... ]})
@@ -417,7 +419,7 @@ myHandler({"issues":[ ... ]})
 
 ここでは、既存の API の機能への変更のうち、後方互換性が失われた可能性のあるものを示します。API の新機能は [API の一覧](rest-api.md#API-Description)にあります。
 
-### 2026-08-20: 添付ファイルのコンテンツタイプをファイルの内容から判定(r24959、version:7.1.0)
+### 2026-08-20: 添付ファイルのコンテンツタイプをファイルの内容から判定 ([r24959](https://www.redmine.org/projects/redmine/repository/svn/revisions/24959)、[7.1.0](https://www.redmine.org/versions/228))
 
 ファイルのアップロードで、Redmine はクライアントが送るコンテンツタイプを使わなくなりました。ファイルを読み、コンテンツタイプを自分で判定します。次のものは無視されます。
 
@@ -428,13 +430,13 @@ myHandler({"issues":[ ... ]})
 
 この変更は Redmine 7.0.3 にはありません。Redmine 7.0.3 では、クライアントが送るコンテンツタイプが引き続き使われます。
 
-### 2012-01-29: 複数選択のカスタムフィールド(r8721、version:1.4.0)
+### 2012-01-29: 複数選択のカスタムフィールド ([r8721](https://www.redmine.org/projects/redmine/repository/svn/revisions/8721)、[1.4.0](https://www.redmine.org/versions/40))
 
 Redmine が複数の値を持つカスタムフィールドに対応し、API のレスポンスにも現れるようになりました。これらのカスタムフィールドには `multiple=true` 属性があり、`value` 属性は配列です。
 
 例:
 
-```
+```text
 GET /issues/296.json
 
 {"issue":

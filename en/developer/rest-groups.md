@@ -22,16 +22,18 @@ GET /groups.xml
 
 <u>Response</u>:
 
-    <groups type="array">
-      <group>
-        <id>53</id>
-        <name>Managers</name>
-      </group>
-      <group>
-        <id>55</id>
-        <name>Developers</name>
-      </group>
-    </groups>
+```text
+<groups type="array">
+  <group>
+    <id>53</id>
+    <name>Managers</name>
+  </group>
+  <group>
+    <id>55</id>
+    <name>Developers</name>
+  </group>
+</groups>
+```
 
 ### POST
 
@@ -47,24 +49,28 @@ This endpoint requires admin privileges.
 
 <u>Example</u>:
 
-    POST /groups.xml
+```text
+POST /groups.xml
 
-    <group>
-      <name>Developers</name>
-      <user_ids type="array">
-        <user_id>3</user_id>
-        <user_id>5</user_id>
-      </user_ids>
-    </group>
+<group>
+  <name>Developers</name>
+  <user_ids type="array">
+    <user_id>3</user_id>
+    <user_id>5</user_id>
+  </user_ids>
+</group>
+```
 
-    POST /groups.json
+```text
+POST /groups.json
 
-    {
-      "group": {
-        "name": "Developers",
-        "user_ids": [ 3, 5 ]
-      }
-    }
+{
+  "group": {
+    "name": "Developers",
+    "user_ids": [ 3, 5 ]
+  }
+}
+```
 
 <u>Response</u>:
 
@@ -91,14 +97,16 @@ GET /groups/20.xml?include=users
 
 <u>Response</u>:
 
-    <group>
-      <id>20</id>
-      <name>Developers</name>
-      <users type="array">
-        <user id="5" name="John Smith"/>
-        <user id="8" name="Dave Loper"/>
-      </users>
-    </group>
+```text
+<group>
+  <id>20</id>
+  <name>Developers</name>
+  <users type="array">
+    <user id="5" name="John Smith"/>
+    <user id="8" name="Dave Loper"/>
+  </users>
+</group>
+```
 
 ### PUT
 
@@ -126,9 +134,11 @@ This endpoint requires admin privileges.
 
 <u>Example</u>:
 
-    POST /groups/10/users.xml
+```text
+POST /groups/10/users.xml
 
-    <user_id>5</user_id>
+<user_id>5</user_id>
+```
 
 <u>Response</u>:
 
@@ -144,7 +154,9 @@ This endpoint requires admin privileges.
 
 <u>Example</u>:
 
-    DELETE /groups/10/users/5.xml
+```text
+DELETE /groups/10/users/5.xml
+```
 
 <u>Response</u>:
 

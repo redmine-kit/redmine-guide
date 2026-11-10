@@ -9,7 +9,7 @@ translated_from_version: 1
 
 ## 文書の一覧
 
-```
+```text
 GET /projects/[project_id]/documents.[format]
 ```
 
@@ -22,7 +22,7 @@ GET /projects/[project_id]/documents.[format]
 
 例:
 
-```
+```text
 GET /projects/foo/documents.xml
 GET /projects/foo/documents.json
 GET /projects/foo/documents.xml?offset=0&limit=100
@@ -30,7 +30,7 @@ GET /projects/foo/documents.xml?offset=0&limit=100
 
 ## 文書の表示
 
-```
+```text
 GET /documents/[id].[format]
 ```
 
@@ -41,7 +41,7 @@ GET /documents/[id].[format]
 
 例:
 
-```
+```text
 GET /documents/1.xml
 GET /documents/1.json
 GET /documents/1.json?include=attachments
@@ -49,7 +49,7 @@ GET /documents/1.json?include=attachments
 
 ## 文書の作成
 
-```
+```text
 POST /projects/[project_id]/documents.[format]
 ```
 
@@ -67,7 +67,7 @@ POST /projects/[project_id]/documents.[format]
 
 ## 文書の更新
 
-```
+```text
 PUT /documents/[id].[format]
 ```
 
@@ -81,7 +81,7 @@ PUT /documents/[id].[format]
 
 ## 文書の削除
 
-```
+```text
 DELETE /documents/[id].[format]
 ```
 

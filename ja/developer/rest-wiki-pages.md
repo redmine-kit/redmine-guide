@@ -7,7 +7,7 @@ translated_from_version: 9
 
 ## Wiki のページの一覧の取得
 
-```
+```text
 GET /projects/foo/wiki/index.xml
 ```
 
@@ -15,7 +15,7 @@ GET /projects/foo/wiki/index.xml
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0"?>
 <wiki_pages type="array">
   <wiki_page>
@@ -37,7 +37,7 @@ GET /projects/foo/wiki/index.xml
 
 ## Wiki ページの取得
 
-```
+```text
 GET /projects/foo/wiki/UsersGuide.xml
 ```
 
@@ -49,7 +49,7 @@ Wiki ページの詳細を返します。
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0"?>
 <wiki_page>
   <title>UsersGuide</title>
@@ -67,7 +67,7 @@ Wiki ページの詳細を返します。
 
 ## Wiki ページの古いバージョンの取得
 
-```
+```text
 GET /projects/foo/wiki/UsersGuide/23.xml
 ```
 
@@ -83,7 +83,7 @@ Wiki ページの古いバージョンの詳細を返します。
 
 ## Wiki ページの作成・更新
 
-```
+```text
 PUT /projects/foo/wiki/UsersGuide.xml
 <?xml version="1.0"?>
 <wiki_page>
@@ -99,7 +99,7 @@ Wiki ページを作成または更新します。
 
 既存のページを更新するときは、`version` 属性を含めると、更新しようとしているページが特定のバージョンであることを確認できます(たとえば、ページを取得した後に行われた更新を上書きしたくない場合)。例:
 
-```
+```text
 PUT /projects/foo/wiki/UsersGuide.xml
 <?xml version="1.0"?>
 <wiki_page>
@@ -117,7 +117,7 @@ PUT /projects/foo/wiki/UsersGuide.xml
 
 まず、ファイルをアップロードします。
 
-```
+```text
 POST /uploads.json
 Content-Type: application/octet-stream
 ...
@@ -130,7 +130,7 @@ Content-Type: application/octet-stream
 複数のファイルを添付する場合は、1 つずつアップロードし、すべてのトークンを控えておきます。\
 続けて、添付ファイルのトークンを使って Wiki ページを作成・更新します(1 つ以上のファイルを、オブジェクトの配列で指定します)。
 
-```
+```text
 PUT /projects/project_name/wiki/wiki_name.json
 {
     "wiki_page": {
@@ -157,7 +157,7 @@ Wiki ページを作成・更新するときは、text フィールドを必ず�
 
 ## Wiki ページの削除
 
-```
+```text
 DELETE /projects/foo/wiki/UsersGuide.xml
 ```
 

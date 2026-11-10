@@ -38,13 +38,13 @@ The stored file name is prefixed with a timestamp of the upload (`yymmddHHMMSS_`
 
 #### Unattached uploaded files
 
-Uploaded files can be left unattached if the user don’t submit the form; a [Rake task](../admin/rake.md#rake-redmineattachementsprune) is made available and can be scheduled for regular deletion of these files.
+Uploaded files can be left unattached if the user don’t submit the form; a [Rake task](../admin/rake.md#rake-redmineattachmentsprune) is made available and can be scheduled for regular deletion of these files.
 
 ## Attach files form
 
 The input form is as shown below.
 
-Starting from version version:2.3.0, it is possible to:
+Starting from version [2.3.0](https://www.redmine.org/versions/60), it is possible to:
 
 - select and attach multiple files at once
 - drag and drop files over the form
@@ -57,4 +57,4 @@ The optional description field, which appears once the file upload is finished, 
 
 At the bottom of wiki pages is a collapsible “Files” section, and document pages have a “New file” link. Attaching a file makes that page the parent of the file and it is limited in scope to that page.
 
-See the [Usage](files.md#Usage) section for more information.
+See the [Files Module](files.md#Files-Module) section for more information.

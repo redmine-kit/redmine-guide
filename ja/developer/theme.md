@@ -90,7 +90,7 @@ export default class extends Controller {
 - `javascripts/theme.js`(任意): テーマの独自の JavaScript
 - `stylesheets/application.css`(必須): テーマの CSS
 
-```
+```text
 themes/
   +- <theme name>/
        |

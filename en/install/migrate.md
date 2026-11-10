@@ -41,12 +41,14 @@ The script was tested with a 0.10 Trac sqlite database and a 0.11 Trac sqlite3 d
 
 rake redmine:migrate_from_trac RAILS_ENV=”test”
 
-2\. The script (source:trunk/lib/tasks/migrate_from_trac.rake) asks you for your Trac settings:
+2\. The script ([source:trunk/lib/tasks/migrate_from_trac.rake](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/tasks/migrate_from_trac.rake)) asks you for your Trac settings:
 
-    Trac directory []: /var/trac/myproject
-    Trac database adapter (sqlite, sqlite3, mysql, postgresql) [sqlite]:
-    Database encoding [UTF-8]:
-    Target project identifier []: myproject
+```text
+Trac directory []: /var/trac/myproject
+Trac database adapter (sqlite, sqlite3, mysql, postgresql) [sqlite]:
+Database encoding [UTF-8]:
+Target project identifier []: myproject
+```
 
 Trac directory is the root directory of your Trac environment. Redmine will look in this directory for `db/trac.db` (if you choose sqlite/sqlite3 database) and the `attachments` directory.\
 When using a mysql or postgresql Trac database, the script will ask you for the connection parameters (host, database name, username and password).\
@@ -54,19 +56,21 @@ Target project identifier is the identifier of the Redmine project in which the 
 
 3\. The script migrates your data:
 
-    Deleting data
-    Migrating components..............................
-    Migrating milestones..............
-    Migrating custom fields.......
-    Migrating tickets.................................
-    Migrating wiki...........
+```text
+Deleting data
+Migrating components..............................
+Migrating milestones..............
+Migrating custom fields.......
+Migrating tickets.................................
+Migrating wiki...........
 
-    Components: 29/30
-    Milestones: 14/14
-    Tickets: 1275/1275
-    Ticket files: 106/106
-    Custom values: 4409/4409
-    Wiki edits: 102/102
+Components: 29/30
+Milestones: 14/14
+Tickets: 1275/1275
+Ticket files: 106/106
+Custom values: 4409/4409
+Wiki edits: 102/102
+```
 
 The script gives you the total number of migrated objects.\
 Now, you should see a project called Myproject in Redmine with your Trac data loaded in this project.
@@ -102,13 +106,15 @@ rake redmine:migrate_from_mantis RAILS_ENV=”test”
 
 2\. The script asks you for your Mantis database settings:
 
-    Please enter settings for your Mantis database
-    adapter [mysql]:
-    host [localhost]:
-    database [bugtracker]: mantis
-    username [root]:
-    password []:
-    encoding [UTF-8]:
+```text
+Please enter settings for your Mantis database
+adapter [mysql]:
+host [localhost]:
+database [bugtracker]: mantis
+username [root]:
+password []:
+encoding [UTF-8]:
+```
 
 Give the adapter, host name, database name, login, password and encoding of your Mantis database, or leave the default values.
 
@@ -116,24 +122,26 @@ The adapter can be mysql (default) or postgresql.
 
 3\. The script migrates your data:
 
-    Migrating users...............
-    Migrating projects.............
-    Migrating bugs........................................
-    Migrating news...
-    Migrating custom fields..
+```text
+Migrating users...............
+Migrating projects.............
+Migrating bugs........................................
+Migrating news...
+Migrating custom fields..
 
-    Users: 15/15
-    Projects: 13/13
-    Memberships: 10/10
-    Versions: 33/33
-    Categories: 4/4
-    Bugs: 180/180
-    Bug notes: 336/336
-    Bug files: 46/46
-    Bug relations: 11/11
-    Bug monitors: 8/8
-    News: 3/3
-    Custom fields: 2/2
+Users: 15/15
+Projects: 13/13
+Memberships: 10/10
+Versions: 33/33
+Categories: 4/4
+Bugs: 180/180
+Bug notes: 336/336
+Bug files: 46/46
+Bug relations: 11/11
+Bug monitors: 8/8
+News: 3/3
+Custom fields: 2/2
+```
 
 The script gives you the total number of migrated objects.
 

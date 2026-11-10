@@ -13,7 +13,7 @@ translated_from_version: 2
 
 <u>例</u>:
 
-```
+```text
 GET /my/account.xml
 GET /my/account.json
 ```

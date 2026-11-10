@@ -13,7 +13,7 @@ translated_from_version: 10
 
 <u>XML の例</u>:
 
-```
+```text
 GET /issues/8470/relations.xml
 ```
 
@@ -41,7 +41,7 @@ GET /issues/8470/relations.xml
 
 <u>JSON の例</u>:
 
-```
+```text
 GET /issues/8470/relations.json
 ```
 
@@ -88,7 +88,9 @@ GET /issues/8470/relations.json
 
 <u>例</u>:
 
-    POST /issues/83/relations.xml
+```text
+POST /issues/83/relations.xml
+```
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -98,7 +100,9 @@ GET /issues/8470/relations.json
 </relation>
 ```
 
-    POST /issues/83/relations.json
+```text
+POST /issues/83/relations.json
+```
 
 ```json
 {
@@ -117,7 +121,7 @@ GET /issues/8470/relations.json
 
 <u>XML の例</u>:
 
-```
+```text
 GET /relations/1819.xml
 ```
 
@@ -136,7 +140,7 @@ GET /relations/1819.xml
 
 <u>JSON の例</u>:
 
-```
+```text
 GET /relations/1819.json
 ```
 

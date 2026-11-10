@@ -16,7 +16,7 @@ API でファイルを添付する方法は、共通の事項の[ファイルの
 
 <u>例</u>:
 
-```
+```text
 GET /attachments/13.xml
 ```
 
@@ -49,6 +49,6 @@ GET /attachments/13.xml
 
 <u>例</u>:
 
-```
+```text
 DELETE /attachments/6243.json
 ```

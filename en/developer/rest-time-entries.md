@@ -31,15 +31,21 @@ Returns time entries.
 
 When filtering by project id, you can use either project numeric ID or its string identifier, e.g.
 
-    ...&project_id=123
+```text
+...&project_id=123
+```
 
-    ...&project_id=my-custom-project
+```text
+...&project_id=my-custom-project
+```
 
 ### `spent_on` filter
 
 When filtering by date, you can require a min / max date with a custom syntax:
 
-    /time_entries.json?project_id=338&from=2019-01-01&to=2019-01-03&limit=100
+```text
+/time_entries.json?project_id=338&from=2019-01-01&to=2019-01-03&limit=100
+```
 
 ## Showing a time entry
 

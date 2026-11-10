@@ -51,7 +51,7 @@ Then the value of the `address` configuration key can be retrieved by calling:
 Redmine::Configuration['email_delivery']['smtp_settings'][:address]
 ```
 
-<sup>1</sup> source: message#59809
+<sup>1</sup> source: [how to get at config variables from a plugin](https://www.redmine.org/boards/2/topics/59809)
 
 ## Retrieve Redmine settings values
 
@@ -77,7 +77,7 @@ It is not recommended to manually modify (set) settings values from a plugin. In
 
 Sometimes plugins require a specific feature implemented in the Redmine core or the plugin overrides a specific view which requires you to control on which (specific) versions of Redmine the plugin can be installed to assure that the required core is available. Such prevents a lot of issues regarding plugin-compatibility.
 
-The above can be accomplished by utilizing the `requires_redmine` method (see source:/trunk/lib/redmine/plugin.rb@19983#L227). Utilisation of the method provides an easy, reliable way to create plugins that require a specific version of Redmine and which are setup to stop Redmine with a message about a non-supported version if the version-requirement is not met.
+The above can be accomplished by utilizing the `requires_redmine` method (see [source:/trunk/lib/redmine/plugin.rb@19983#L227](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L227)). Utilisation of the method provides an easy, reliable way to create plugins that require a specific version of Redmine and which are setup to stop Redmine with a message about a non-supported version if the version-requirement is not met.
 
 Note: do not pass a Redmine version number with a *branch suffix* (`stable`/`devel`) to `requires_redmine`; that’s not supported. See [#35345](https://www.redmine.org/issues/35345) for a discussion about this.
 
@@ -108,7 +108,7 @@ requires_redmine :version => '0.7'..'0.9'         # >= 0.7.x and <= 0.9.x
 
 Sometimes plugins require a specific feature implemented in another Redmine plugin or even a feature that is implemented in a specific version of another plugin which requires you to control dependencies on which the plugin relies before it can be installed to assure that the required plugin (version) is available. Such prevents a lot of issues regarding (inter) plugin-compatibility.
 
-The above can be accomplished by utilizing the `requires_redmine_plugin` method (see source:/trunk/lib/redmine/plugin.rb@19983#L274). Utilisation of the method provides an easy, reliable way to create plugins that require a specific (version of a) Redmine plugin and which are setup to stop Redmine with a message about a non-supported version if the version-requirement is not met.
+The above can be accomplished by utilizing the `requires_redmine_plugin` method (see [source:/trunk/lib/redmine/plugin.rb@19983#L274](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L274)). Utilisation of the method provides an easy, reliable way to create plugins that require a specific (version of a) Redmine plugin and which are setup to stop Redmine with a message about a non-supported version if the version-requirement is not met.
 
 <details>
 <summary>View usage examples for requires_redmine_plugin method...</summary>

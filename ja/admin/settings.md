@@ -318,7 +318,7 @@ Redmine が、連番のプロジェクト識別子を提案します。提案さ
 
 ### サブプロジェクトのチケットをメインプロジェクトに表示する
 
-「はい」にすると、メインのプロジェクトのチケットの一覧、カレンダー、ガントチャートに、デフォルトでサブプロジェクトのチケットを表示します(r1198 から)。*デフォルト: はい*
+「はい」にすると、メインのプロジェクトのチケットの一覧、カレンダー、ガントチャートに、デフォルトでサブプロジェクトのチケットを表示します([r1198](https://www.redmine.org/projects/redmine/repository/svn/revisions/1198) から)。*デフォルト: はい*
 
 ### 進捗率の算出方法
 
@@ -445,15 +445,21 @@ Redmine は、メールでチケットの作成やコメントの追加ができ
 このオプションを無効にし、cron で Repository#fetch_changesets を呼び出すように自動化して、すべてのリポジトリのリビジョンをバックグラウンドで定期的に取得することもできます。\
 例:
 
-    ruby script/runner "Repository.fetch_changesets" -e production
+```text
+ruby script/runner "Repository.fetch_changesets" -e production
+```
 
 Redmine 2.x の場合:
 
-    ruby script/rails runner "Repository.fetch_changesets" -e production
+```text
+ruby script/rails runner "Repository.fetch_changesets" -e production
+```
 
 Redmine 3.x の場合:
 
-    bin/rails runner "Repository.fetch_changesets" -e production
+```text
+bin/rails runner "Repository.fetch_changesets" -e production
+```
 
 リポジトリの post-commit や post-receive のフックからこのタスクを呼び出して、コミットのたびに、そのコミットを取得することもできます。\
 Git でこれを行うチュートリアル: http://web.archive.org/web/20160523024839/http://www.barricane.com/remine-git-post-receive.html
@@ -497,9 +503,11 @@ This commit refs \#1, \#2 and fixes \#3
 キーワードは大文字と小文字を区別しません。一致させるには、キーワードと最初の # の間に、少なくとも 1 つの空白かコロンが必要です。\
 上の例と同じ結果になる例を、ほかにも示します。
 
-    This commit refs:#1, #2 and fixes #3
-    This commit Refs  #1, #2 and fixes #3
-    This commit REFS: #1, #2 and fixes #3
+```text
+This commit refs:#1, #2 and fixes #3
+This commit Refs  #1, #2 and fixes #3
+This commit REFS: #1, #2 and fixes #3
+```
 
 ### コミット時に作業時間を記録する
 
@@ -509,29 +517,31 @@ This commit refs \#1, \#2 and fixes \#3
 
 チケット 1234 に N 時間の作業をしたことを記録する、有効なコミットメッセージの例です。
 
-    Implement feature #1234 @2
+```text
+Implement feature #1234 @2
 
-    Implement feature #1234 @2h
+Implement feature #1234 @2h
 
-    Implement feature #1234 @2hours
+Implement feature #1234 @2hours
 
-    Implement feature #1234 @15m
+Implement feature #1234 @15m
 
-    Implement feature #1234 @15min
+Implement feature #1234 @15min
 
-    Implement feature #1234 @3h15
+Implement feature #1234 @3h15
 
-    Implement feature #1234 @3h15m
+Implement feature #1234 @3h15m
 
-    Implement feature #1234 @3:15
+Implement feature #1234 @3:15
 
-    Implement feature #1234 @3.25
+Implement feature #1234 @3.25
 
-    Implement feature #1234 @3.25h
+Implement feature #1234 @3.25h
 
-    Implement feature #1234 @3,25
+Implement feature #1234 @3,25
 
-    Implement feature #1234 @3,25h
+Implement feature #1234 @3,25h
+```
 
 ### 作業時間の作業分類
 

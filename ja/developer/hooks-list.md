@@ -7,15 +7,15 @@ translated_from_version: 25
 
 現在のプラグインのフックの一覧を見るには、次のように Redmine のディレクトリで `call_hook` を検索します (Redmine 7.0.3 には `rake redmine:plugins:hook_list` タスクはありません)。
 
-<table>
-<tbody>
-<tr>
-<td style="background-color:#f88;">Redmine version#43 以降では、この rake タスクは非推奨になりました。<br />代わりに、Redmine のディレクトリで次のどれかを実行できます(message#36062 を参照)。<br /><pre><code>grep -r call_hook *                                       # list of source lines with hook calls
-grep -rohT &#39;call_hook([^)]*)&#39;                             # list of hooks calls and source files
-grep -roh  &#39;call_hook([^)]*)&#39; | sort -u | grep &#39;([^)]*)&#39;  # list of hooks calls only</code></pre></td>
-</tr>
-</tbody>
-</table>
+> [!CAUTION]
+> Redmine [2.0.0](https://www.redmine.org/versions/43) 以降では、この rake タスクは非推奨になりました。\
+> 代わりに、Redmine のディレクトリで次のどれかを実行できます ([hook list?](https://www.redmine.org/boards/4/topics/36062) を参照)。
+>
+> ```text
+> grep -r call_hook *                                       # list of source lines with hook calls
+> grep -rohT 'call_hook([^)]*)'                             # list of hooks calls and source files
+> grep -roh  'call_hook([^)]*)' | sort -u | grep '([^)]*)'  # list of hooks calls only
+> ```
 
 ## コントローラーのフック
 

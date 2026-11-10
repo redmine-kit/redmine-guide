@@ -13,14 +13,14 @@ translated_from_version: 4
 
 <u>例</u>:
 
-```
+```text
 GET /projects/foo/issue_categories.xml
 GET /projects/1/issue_categories.xml
 ```
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0" encoding="UTF-8"?>
 <issue_categories type="array" total_count="2">
   <issue_category>
@@ -60,13 +60,13 @@ GET /projects/1/issue_categories.xml
 
 <u>例</u>:
 
-```
+```text
 GET /issue_categories/2.xml
 ```
 
 <u>レスポンス</u>:
 
-```
+```text
 <?xml version="1.0" encoding="UTF-8"?>
 <issue_category>
   <id>2</id>
@@ -98,7 +98,7 @@ GET /issue_categories/2.xml
 
 <u>例</u>:
 
-```
+```text
 DELETE /issue_categories/2.xml
 DELETE /issue_categories/2.xml?reassign_to_id=1
 ```

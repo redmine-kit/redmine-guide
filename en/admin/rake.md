@@ -69,7 +69,7 @@ Removes expired tokens.
 ### `rake redmine:watchers:prune`
 
 Removes watchers from what they can no longer view.\
-Available in versions version:2.3.0
+Available in versions [2.3.0](https://www.redmine.org/versions/60)
 
 ## Other maintenance tasks
 
@@ -84,7 +84,7 @@ Encrypts or decrypts SCM and LDAP passwords stored in the database.
 ### `rake redmine:attachments:move_to_subdirectories`
 
 Moves attachments stored at the root of the file directory (ie.\
-Available in versions version:2.3.0
+Available in versions [2.3.0](https://www.redmine.org/versions/60)
 
 ### `rake redmine:email:test[login]`
 

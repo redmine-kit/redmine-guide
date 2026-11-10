@@ -92,7 +92,7 @@ A theme consists of the following files:
 - `javascripts/theme.js` (optional): custom JavaScript for the theme
 - `stylesheets/application.css` (required): CSS for the theme
 
-```
+```text
 themes/
   +- <theme name>/
        |

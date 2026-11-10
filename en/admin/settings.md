@@ -321,7 +321,7 @@ Options are:
 
 ### Display subprojects issues on main projects by default
 
-If set to true, subprojects issues will be displayed by default on the issue list, calendar and gantt of the main projects (Since r1198). *Default: Yes*
+If set to true, subprojects issues will be displayed by default on the issue list, calendar and gantt of the main projects (Since [r1198](https://www.redmine.org/projects/redmine/repository/svn/revisions/1198)). *Default: Yes*
 
 ### Calculate the issue done ratio
 
@@ -448,15 +448,21 @@ If this option is activated, the application automatically retrieves the new rev
 You can disable this option and automate the call to Repository#fetch_changesets using cron to regularly retrieve the revisions for all of the repositories in the background.\
 Example:
 
-    ruby script/runner "Repository.fetch_changesets" -e production
+```text
+ruby script/runner "Repository.fetch_changesets" -e production
+```
 
 For Redmine 2.x:
 
-    ruby script/rails runner "Repository.fetch_changesets" -e production
+```text
+ruby script/rails runner "Repository.fetch_changesets" -e production
+```
 
 For Redmine 3.x:
 
-    bin/rails runner "Repository.fetch_changesets" -e production
+```text
+bin/rails runner "Repository.fetch_changesets" -e production
+```
 
 You can also call this task from your repository in a post-commit or post-receive hook, so that changesets are fetched after each commit.\
 Here is a tutorial for doing so with git: http://web.archive.org/web/20160523024839/http://www.barricane.com/remine-git-post-receive.html
@@ -500,9 +506,11 @@ After a keyword issue IDs can be separated with a space, a comma or &.
 The keywords are caseinsensitive and at least one blankspace or colon is needed between the keyword and the first hash to produce\
 a match. More examples that will produce the same result as the example above:
 
-    This commit refs:#1, #2 and fixes #3
-    This commit Refs  #1, #2 and fixes #3
-    This commit REFS: #1, #2 and fixes #3
+```text
+This commit refs:#1, #2 and fixes #3
+This commit Refs  #1, #2 and fixes #3
+This commit REFS: #1, #2 and fixes #3
+```
 
 ### Enable time logging
 
@@ -512,29 +520,31 @@ The basic syntax for doing that is : `@<time>`, where time consists in a number 
 
 Here’s a list of many valid commit messages that would work if you want to say you spent N hours on issue 1234:
 
-    Implement feature #1234 @2
+```text
+Implement feature #1234 @2
 
-    Implement feature #1234 @2h
+Implement feature #1234 @2h
 
-    Implement feature #1234 @2hours
+Implement feature #1234 @2hours
 
-    Implement feature #1234 @15m
+Implement feature #1234 @15m
 
-    Implement feature #1234 @15min
+Implement feature #1234 @15min
 
-    Implement feature #1234 @3h15
+Implement feature #1234 @3h15
 
-    Implement feature #1234 @3h15m
+Implement feature #1234 @3h15m
 
-    Implement feature #1234 @3:15
+Implement feature #1234 @3:15
 
-    Implement feature #1234 @3.25
+Implement feature #1234 @3.25
 
-    Implement feature #1234 @3.25h
+Implement feature #1234 @3.25h
 
-    Implement feature #1234 @3,25
+Implement feature #1234 @3,25
 
-    Implement feature #1234 @3,25h
+Implement feature #1234 @3,25h
+```
 
 ### Activity for logged time
 

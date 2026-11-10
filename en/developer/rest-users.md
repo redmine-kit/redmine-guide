@@ -52,7 +52,9 @@ This endpoint requires admin privileges.
 
 <u>Example</u>:
 
-    POST /users.xml
+```text
+POST /users.xml
+```
 
 ```xml
 <?xml version="1.0" encoding="ISO-8859-1" ?>

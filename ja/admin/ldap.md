@@ -33,37 +33,41 @@ Redmine は、1 つまたは複数の LDAP ディレクトリを使った LDAP �
 
 Active Directory を使う典型的な例です。
 
-    Name     = My Directory
-    Host     = host.domain.org
-    Port     = 389
-    LDAPS    = no
-    Account  = MyDomain\UserName (or UserName@MyDomain depending on AD server)
-    Password = <password>
-    Base DN  = CN=users,DC=host,DC=domain,DC=org
+```text
+Name     = My Directory
+Host     = host.domain.org
+Port     = 389
+LDAPS    = no
+Account  = MyDomain\UserName (or UserName@MyDomain depending on AD server)
+Password = <password>
+Base DN  = CN=users,DC=host,DC=domain,DC=org
 
-    On-the-fly user creation = yes
-    Attributes
-      Login     = sAMAccountName
-      Firstname = givenName
-      Lastname  = sN
-      Email     = mail
+On-the-fly user creation = yes
+Attributes
+  Login     = sAMAccountName
+  Firstname = givenName
+  Lastname  = sN
+  Email     = mail
+```
 
 区分されたイントラネットの Active Directory の、別の例です。
 
-    Name     = Just a description for the auth modes page
-    Host     = DepartmentName.OrganizationName.local
-    Port     = 389
-    LDAPS    = no
-    Account  = DepartmentName\UserName (or UserName@MyDomain depending on AD server or bind DN uid=Manager,cn=users,dc=MyDomain,dc=com)
-    Password = <password>
-    Base DN  = DC=DepartmentName,DC=OrganizationName,DC=local
+```text
+Name     = Just a description for the auth modes page
+Host     = DepartmentName.OrganizationName.local
+Port     = 389
+LDAPS    = no
+Account  = DepartmentName\UserName (or UserName@MyDomain depending on AD server or bind DN uid=Manager,cn=users,dc=MyDomain,dc=com)
+Password = <password>
+Base DN  = DC=DepartmentName,DC=OrganizationName,DC=local
 
-    On-the-fly user creation = yes
-    Attributes
-      Login     = sAMAccountName
-      Firstname = givenName
-      Lastname  = sN
-      Email     = mail
+On-the-fly user creation = yes
+Attributes
+  Login     = sAMAccountName
+  Firstname = givenName
+  Lastname  = sN
+  Email     = mail
+```
 
 LDAP の属性の名前は、**大文字と小文字を区別**します。
 
@@ -80,8 +84,10 @@ LDAP の属性の名前は、**大文字と小文字を区別**します。
 グループのメンバーシップに基づくフィルタの例です。グループ `Redmine-User` のメンバーで、グループは OU `Security Groups`、`Application Settings` にあります。\
 グループを作成した場所がこれで正しいか、また順序が逆になっているかを確認してください。
 
-    Base DN: OU=Users,DC=domain,DC=lan
-    LDAP Filter: (&(objectClass=user)(memberOf=CN=Redmine-User,OU=Application Settings,OU=Security Groups,DC=domain,DC=lan))
+```text
+Base DN: OU=Users,DC=domain,DC=lan
+LDAP Filter: (&(objectClass=user)(memberOf=CN=Redmine-User,OU=Application Settings,OU=Security Groups,DC=domain,DC=lan))
+```
 
 ## グループに基づく LDAP のログイン
 
@@ -207,8 +213,10 @@ ldapsearch -x -b “dc=example,dc=com” -H ldap://hostname/ -D “DOMAIN\USER�
 
 net-ldap の gem の lib/net/ldap.rb にある次のコメントのとおり、バインドの資格情報のユーザー名は、UPN(user@domain.com)や domain\user ではなく、DN(CN=user,OU=optional,DC=domain,DC=com など)で指定する必要がある場合があります。
 
-      # As described under #bind, most LDAP servers require that you supply a complete DN
-      # as a binding-credential, along with an authenticator such as a password.
+  ```text
+    # As described under #bind, most LDAP servers require that you supply a complete DN
+    # as a binding-credential, along with an authenticator such as a password.
+  ```
 
 そのため、ユーザー名が MyDomain\MyUserName や MyUserName@MyDomain.com のユーザーは、Redmine のログイン ID として MyUserName だけを入力すればよい場合があります。
 
@@ -222,9 +230,11 @@ OpenDS のサーバーを使っているときは、指定したログイン ID 
 
 次のような、全体の ACI を追加します。
 
-    ./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll
-    --add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\
-    \"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
+```text
+./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll
+--add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\
+\"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
+```
 
 注: コマンドは 1 行で入力し、エスケープは示したとおりに正確に使ってください(「acl」の後の \\ は、空白を表す「\\ 」のつもりです)。
 
@@ -240,30 +250,34 @@ Zentyal 3.2 と Redmine 2.3 に更新した後、これにはとても悩まさ�
 
 Zentyal の読み取り専用の資格情報を使います。
 
-    > Basedomain (Base DN):  dc=your_domain,dc=your_tld
-      Rootdomain (Root DN):  cn=zentyal,dc=your_domain,dc=your_tld
-      Password:              <admin_secret_pass>
-    > Read-only root DN:     cn=zentyalro,dc=your_domain,dc=your_tld
-    > Read-only password:    <ro_secret_pass>
-      Default Users DN:      ou=Users,dc=your_domain,dc=your_tld
-      Default Groups DN:     ou=Groups,dc=your_domain,dc=your_tld
+```text
+> Basedomain (Base DN):  dc=your_domain,dc=your_tld
+  Rootdomain (Root DN):  cn=zentyal,dc=your_domain,dc=your_tld
+  Password:              <admin_secret_pass>
+> Read-only root DN:     cn=zentyalro,dc=your_domain,dc=your_tld
+> Read-only password:    <ro_secret_pass>
+  Default Users DN:      ou=Users,dc=your_domain,dc=your_tld
+  Default Groups DN:     ou=Groups,dc=your_domain,dc=your_tld
+```
 
 Redmine では、上の資格情報を(\<\> を除いて)使います。LDAP のポートが 390 に変わっていることに注意してください(上の記事を参照)。
 
-    Name     = Just a description for the auth modes page
-    > Host     = <IP of the host>
-    > Port     = <390>
-      LDAPS    = no
-    > Account  = <Read-only root DN>
-    > Password = <ro_secret_pass>
-    > Base DN  = <Basedomain (Base DN)>
+```text
+Name     = Just a description for the auth modes page
+> Host     = <IP of the host>
+> Port     = <390>
+  LDAPS    = no
+> Account  = <Read-only root DN>
+> Password = <ro_secret_pass>
+> Base DN  = <Basedomain (Base DN)>
 
-    On-the-fly user creation = yes
-    Attributes
-    >  Login     = uid
-       Firstname = givenName
-    >  Lastname  = sN
-      Email     = mail
+On-the-fly user creation = yes
+Attributes
+>  Login     = uid
+   Firstname = givenName
+>  Lastname  = sN
+  Email     = mail
+```
 
 ### Zentyal 4.x、Redmine 3.3.x
 
@@ -271,54 +285,60 @@ Redmine では、上の資格情報を(\<\> を除いて)使います。LDAP の
 
 ### Zentyal 5.0、Redmine 3.2
 
-      Name     = Just a description for the auth modes page
-      Host     = <IP of the host>
-      Port     = <389>
-      LDAPS    = no (yes/checked is ok too with Port set to 636)
-      Account  = username@domain.tld
-      Password = <username_pass>
-      Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)
+  ```text
+    Name     = Just a description for the auth modes page
+    Host     = <IP of the host>
+    Port     = <389>
+    LDAPS    = no (yes/checked is ok too with Port set to 636)
+    Account  = username@domain.tld
+    Password = <username_pass>
+    Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)
 
-    On-the-fly user creation = yes
-    Attributes
-       Login     = sAMAccountName
-       Firstname = givenName
-       Lastname  = sN
-       Email     = mail
+  On-the-fly user creation = yes
+  Attributes
+     Login     = sAMAccountName
+     Firstname = givenName
+     Lastname  = sN
+     Email     = mail
+  ```
 
 ### OpenLDAP、Redmine 3.4.2.stable
 
-      Name     = Some random description
-      Host     = <IP of the host>
-      Port     = <389>
-      LDAPS    = no
-      Account  = < Admins DN > (cn=admin,dc=domain,dc=tld)
-      Password = < Admins Pass >
-      Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)
+  ```text
+    Name     = Some random description
+    Host     = <IP of the host>
+    Port     = <389>
+    LDAPS    = no
+    Account  = < Admins DN > (cn=admin,dc=domain,dc=tld)
+    Password = < Admins Pass >
+    Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)
 
-    On-the-fly user creation = yes
-    Attributes
-       Login     = uid
-       Firstname = givenName
-       Lastname  = sn
-       Email     = mail
+  On-the-fly user creation = yes
+  Attributes
+     Login     = uid
+     Firstname = givenName
+     Lastname  = sn
+     Email     = mail
+  ```
 
 admin のアカウントは、全体の読み取りの権限がある別の LDAP のアカウントでもかまいません。「domain」と「tld」の部分は、ほかの部分と同じく LDAP の設定に合わせる必要があります。ログインにはログイン ID の属性を使います。残りは LDAP の設定に合わせます。
 
 ### FreeIPA 4.6.8、Redmine 3.2.6
 
-      Name     = Service Description or server name etc.
-      Host     = <IP/domain of the host>
-      Port     = <389>
-      LDAPS    = no ("yes" not tested)
-      Account  = uid=<bind username>,cn=users,cn=accounts,dc=<domain>,dc=<tld>
-      Password = <bind password>
-      Base DN   = cn=accounts,dc=<domain>,dc=<tld>
+  ```text
+    Name     = Service Description or server name etc.
+    Host     = <IP/domain of the host>
+    Port     = <389>
+    LDAPS    = no ("yes" not tested)
+    Account  = uid=<bind username>,cn=users,cn=accounts,dc=<domain>,dc=<tld>
+    Password = <bind password>
+    Base DN   = cn=accounts,dc=<domain>,dc=<tld>
 
-    Attributes
-       Login     = uid
-       Firstname = givenName
-       Lastname  = sn
-       Email     = mail
+  Attributes
+     Login     = uid
+     Firstname = givenName
+     Lastname  = sn
+     Email     = mail
+  ```
 
 「domain」と「tld」の部分は、ほかの部分と同じく LDAP の設定に合わせる必要があります。ログインには uid の属性を使います。

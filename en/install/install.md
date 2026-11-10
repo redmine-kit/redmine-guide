@@ -232,8 +232,10 @@ production:
 
 Redmine uses [Bundler](http://gembundler.com/) to manage gems dependencies. You can install all the gems required by Redmine using the following command:
 
-    bundle config set --local without 'development test'
-    bundle install
+```text
+bundle config set --local without 'development test'
+bundle install
+```
 
 #### Optional dependencies
 
@@ -253,15 +255,19 @@ If you need to load gems that are not required by Redmine core (eg. Puma, fcgi),
 
 Example:
 
-    # Gemfile.local
-    gem 'puma'
+```text
+# Gemfile.local
+gem 'puma'
+```
 
 ### Step 5 - Session store secret generation
 
 This step generates a random key used by Rails to encode cookies storing session data thus preventing their tampering.\
 Generating a new secret token invalidates all existing sessions after restart.
 
-    bundle exec rake generate_secret_token
+```text
+bundle exec rake generate_secret_token
+```
 
 Alternatively, you can store this secret in config/secrets.yml:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
@@ -284,12 +290,16 @@ If you experience issues with missing assets in the browser, try removing the pu
 
 Create the database structure, by running the following command under the application root directory:
 
-    RAILS_ENV=production bundle exec rake db:migrate
+```text
+RAILS_ENV=production bundle exec rake db:migrate
+```
 
 **Windows syntax:**
 
-    set RAILS_ENV=production
-    bundle exec rake db:migrate
+```text
+set RAILS_ENV=production
+bundle exec rake db:migrate
+```
 
 It will create tables by running all migrations one by one then create the application administrator account, named `admin`.
 
@@ -309,9 +319,11 @@ RAILS_ENV=production REDMINE_LANG=fr bundle exec rake redmine:load_default_data
 
 Windows:
 
-    set RAILS_ENV=production
-    set REDMINE_LANG=fr
-    bundle exec rake redmine:load_default_data
+```text
+set RAILS_ENV=production
+set REDMINE_LANG=fr
+bundle exec rake redmine:load_default_data
+```
 
 ### Step 9 - File system permissions
 
@@ -326,19 +338,25 @@ The user account running the application must have write permission on the follo
 
 E.g., assuming you run the application with a redmine user account:
 
-    mkdir -p tmp tmp/pdf public/assets
-    sudo chown -R redmine:redmine files log tmp public/assets
-    sudo chmod -R 755 files log tmp public/assets
+```text
+mkdir -p tmp tmp/pdf public/assets
+sudo chown -R redmine:redmine files log tmp public/assets
+sudo chmod -R 755 files log tmp public/assets
+```
 
 Note: If you have files in these directories (e.g. restore files from backup), make sure these files are not executable.
 
-    sudo find files log tmp public/assets -type f -exec chmod -x {} +
+```text
+sudo find files log tmp public/assets -type f -exec chmod -x {} +
+```
 
 ### Step 10 - Test the installation
 
 Test the installation by running Puma web server. Puma is not installed when the `development` and `test` groups are excluded, so add it to `Gemfile.local` first, as in the example in Step 4:
 
-    bundle exec rails server -e production
+```text
+bundle exec rails server -e production
+```
 
 ### Step 11 - Logging into the application
 
@@ -426,20 +444,28 @@ When running command as described in this guide, you have to set the `RAILS_ENV`
 
 I.e. commands with the following syntaxes:
 
-    RAILS_ENV=production <any commmand>
+```text
+RAILS_ENV=production <any commmand>
+```
 
-    <any commmand> RAILS_ENV=production
+```text
+<any commmand> RAILS_ENV=production
+```
 
 have to be turned into 2 subsequent commands:
 
-    set RAILS_ENV=production
-    <any commmand>
+```text
+set RAILS_ENV=production
+<any commmand>
+```
 
 <u>MySQL gem installation issue:</u>
 
 You may need to manually install the mysql2 gem using the following command:
 
-    gem install mysql2
+```text
+gem install mysql2
+```
 
 And in some case it is required to copy the *libmysql.dll* file in your ruby/bin directory.\
 Not all libmysql.dll are ok this seem to works http://instantrails.rubyforge.org/svn/trunk/InstantRails-win/InstantRails/mysql/bin/libmySQL.dll.

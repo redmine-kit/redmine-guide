@@ -18,7 +18,9 @@ The file can actually be downloaded at the URL given by the `content_url` attrib
 
 <u>Example</u>:
 
-    GET /attachments/13.xml
+```text
+GET /attachments/13.xml
+```
 
 <u>Response</u>:
 
@@ -49,4 +51,6 @@ Delete an attachment.
 
 <u>Example</u>:
 
-    DELETE /attachments/6243.json
+```text
+DELETE /attachments/6243.json
+```

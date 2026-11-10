@@ -43,8 +43,10 @@ Also, remember to add write permissions to the `files`, `log`, `tmp` and `public
 
 6\. Install the required gems by running:
 
-    bundle config set --local without 'development test'
-    bundle install
+```text
+bundle config set --local without 'development test'
+bundle install
+```
 
 Only the gems that are needed by the adapters you’ve specified in your database configuration file are actually installed (eg. if your config/database.yml uses the ‘mysql2’ adapter, then only the mysql2 gem will be installed). Don’t forget to re-run \`bundle install\` when you change config/database.yml for using other database adapters.
 
@@ -71,7 +73,9 @@ VERY IMPORTANT: do NOT overwrite `config/settings.yml` with the old one.
 
 1\. Go to the Redmine root directory and run the following command:
 
-    svn update
+```text
+svn update
+```
 
 2\. Install the required gems by running the following command:
 
@@ -81,11 +85,15 @@ bundle update
 
 This step is the one that could change the contents of your database. Go to your new redmine directory, then migrate your database:
 
-    bundle exec rake db:migrate RAILS_ENV=production
+```text
+bundle exec rake db:migrate RAILS_ENV=production
+```
 
 If you have installed any plugins, you should also run their database migrations:
 
-    bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+```text
+bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+```
 
 ## Step 5 - Clean up
 
@@ -105,9 +113,9 @@ There were several new features added to the reposman.rb file, make sure you hav
 
 ### Generating a new `secret_token.rb`
 
-Before version:2.0.0, a `session_store.rb` file needed to be generated in Redmine’s `config` directory for the cookie based sessions to work.
+Before [2.0.0](https://www.redmine.org/versions/43), a `session_store.rb` file needed to be generated in Redmine’s `config` directory for the cookie based sessions to work.
 
-Starting from version:2.0.0, the `session_store.rb` file should not exist. Instead, the following command will generate the `secret_token.rb` file:
+Starting from [2.0.0](https://www.redmine.org/versions/43), the `session_store.rb` file should not exist. Instead, the following command will generate the `secret_token.rb` file:
 
 bundle exec rake generate_secret_token
 

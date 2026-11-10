@@ -28,9 +28,11 @@ GET /time_entries.xml
 
 プロジェクトの ID で絞り込むときは、プロジェクトの数値の ID か、文字列の識別子を使えます。例:
 
-```
+```text
 ...&project_id=123
+```
 
+```text
 ...&project_id=my-custom-project
 ```
 
@@ -38,7 +40,7 @@ GET /time_entries.xml
 
 日付で絞り込むときは、独自の構文で日付の下限・上限を指定できます。
 
-```
+```text
 /time_entries.json?project_id=338&from=2019-01-01&to=2019-01-03&limit=100
 ```
 

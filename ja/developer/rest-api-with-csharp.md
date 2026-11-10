@@ -11,7 +11,7 @@ PowerShell からこのライブラリを使う方法は、[REST API with PowerS
 
 使い方の例:
 
-```
+```text
 using System;
 using System.Collections.Specialized;
 using Redmine.Net.Api;

@@ -40,8 +40,10 @@ Redmine のバックアップの方法は、[Redmine のバックアップと復
 
 6\. 次のコマンドで、必要な gem をインストールします。
 
-    bundle config set --local without 'development test'
-    bundle install
+```text
+bundle config set --local without 'development test'
+bundle install
+```
 
 インストールされるのは、データベースの設定ファイルで指定したアダプターに必要な gem だけです(たとえば config/database.yml で「mysql2」アダプターを使う場合は、mysql2 の gem だけがインストールされます)。別のデータベースのアダプターを使うように config/database.yml を変更したら、`bundle install` をもう一度実行してください。
 
@@ -68,7 +70,9 @@ http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
 1\. Redmine のルートディレクトリに移動し、次のコマンドを実行します。
 
-    svn update
+```text
+svn update
+```
 
 2\. 次のコマンドで、必要な gem をインストールします。
 
@@ -78,11 +82,15 @@ bundle update
 
 この手順では、データベースの内容が変わる可能性があります。新しい Redmine のディレクトリに移動し、データベースをマイグレーションします。
 
-    bundle exec rake db:migrate RAILS_ENV=production
+```text
+bundle exec rake db:migrate RAILS_ENV=production
+```
 
 プラグインをインストールしている場合は、プラグインのデータベースのマイグレーションも実行します。
 
-    bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+```text
+bundle exec rake redmine:plugins:migrate RAILS_ENV=production
+```
 
 ## 手順 5 - 後片付け
 
@@ -102,9 +110,9 @@ reposman.rb にいくつかの新機能が追加されました。問題が起�
 
 ### 新しい `secret_token.rb` の生成
 
-バージョン 2.0.0 より前は、Cookie を使うセッションを動かすために、Redmine の `config` ディレクトリに `session_store.rb` を生成する必要がありました。
+バージョン [2.0.0](https://www.redmine.org/versions/43) より前は、Cookie を使うセッションを動かすために、Redmine の `config` ディレクトリに `session_store.rb` を生成する必要がありました。
 
-バージョン 2.0.0 以降は、`session_store.rb` があってはいけません。代わりに、次のコマンドで `secret_token.rb` を生成します。
+バージョン [2.0.0](https://www.redmine.org/versions/43) 以降は、`session_store.rb` があってはいけません。代わりに、次のコマンドで `secret_token.rb` を生成します。
 
 bundle exec rake generate_secret_token
 

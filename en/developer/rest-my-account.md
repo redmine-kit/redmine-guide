@@ -15,8 +15,10 @@ Returns the details of your account.
 
 <u>Examples</u>:
 
-    GET /my/account.xml
-    GET /my/account.json
+```text
+GET /my/account.xml
+GET /my/account.json
+```
 
 <u>Response</u>:
 

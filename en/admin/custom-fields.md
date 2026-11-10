@@ -39,13 +39,13 @@ Some validations can be defined for each custom field:
 - **Regular Expression**: a regular expression can be used to validate the field content. Examples:
   1.  *4 capital letters followed by one or several digits*
 
-      ```
+      ```text
       ^\[A-Z]{4}\d+$
       ```
 
   2.  *characters only, no digits*
 
-      ```
+      ```text
       ^[^0-9]*$
       ```
 
@@ -82,7 +82,9 @@ You can create your own list of values which you want your users to add. A poste
 
 Example:
 
-    https://www.redmine.org/issues/%value%
+```text
+https://www.redmine.org/issues/%value%
+```
 
 ### Input field styling
 

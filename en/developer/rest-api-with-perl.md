@@ -55,38 +55,44 @@ exit 0;
 
 Note:
 
-        my $perl_ref = from_json($content);
+```text
+    my $perl_ref = from_json($content);
+```
 
 Here a [Perl reference](http://perldoc.perl.org/perlref.html") `$perl_ref` is a reference to a whole data structure parsed.
 
 Usage examples:
 
-    ./restget http://www.redmine.org/issues/22097.json
-    ./restget -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/issues/117594.json
+```text
+./restget http://www.redmine.org/issues/22097.json
+./restget -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/issues/117594.json
+```
 
 The next commands put a textile table into the clipboard.
 
-    ./restget http://www.redmine.org/projects/redmine/versions.json | perl -MJSON -nle 'for $v (sort{$a->{name} cmp $b->{name}}@{decode_json($_)->{versions}}){$d=$v->{description};print qq/|version:"$v->{name}"|$d|/ if $d}' > /dev/clipboard
+```text
+./restget http://www.redmine.org/projects/redmine/versions.json | perl -MJSON -nle 'for $v (sort{$a->{name} cmp $b->{name}}@{decode_json($_)->{versions}}){$d=$v->{description};print qq/|version:"$v->{name}"|$d|/ if $d}' > /dev/clipboard
+```
 
 You can paste it on your Wiki page as follows.
 
 |  |  |
 |----|----|
-| version:”0.7.1” | Bug fix release |
-| version:”0.7.2” | Bug fix release |
-| version:”0.7.3” | Security+Bug fix release |
-| version:”0.9.0” | 0.9 release candidate 1 |
-| version:”0.9.6” | Security release |
-| version:”1.0.1” | Bug fixes for the 1.0.0 RC - (Estimated release date) |
-| version:”1.2.3” | Bug fix release for the 1.2.x serie |
-| version:”1.3.1” | Maintenance release |
-| version:”1.4.3” | Maintenance release |
-| version:”1.4.7” | security release |
-| version:”2.0.2” | Maintenance release |
-| version:”2.6.10” | For Rails 3.2 due to JRuby Nokogiri/Loofah does not support Rails 4.2 |
-| version:”Candidate for next major release” | Features that the contributors would like to add in the next major version |
-| version:”Candidate for next minor release” | Fixes that the contributors would like to add in the next minor version |
-| version:”Unplanned” | Features that the core contributors of Redmine would like to add in a future version |
+| [0.7.1](https://www.redmine.org/versions/3) | Bug fix release |
+| 0.7.2 | Bug fix release |
+| 0.7.3 | Security+Bug fix release |
+| [0.9.0](https://www.redmine.org/versions/6) | 0.9 release candidate 1 |
+| 0.9.6 | Security release |
+| 1.0.1 | Bug fixes for the 1.0.0 RC - (Estimated release date) |
+| 1.2.3 | Bug fix release for the 1.2.x serie |
+| 1.3.1 | Maintenance release |
+| 1.4.3 | Maintenance release |
+| 1.4.7 | security release |
+| 2.0.2 | Maintenance release |
+| 2.6.10 | For Rails 3.2 due to JRuby Nokogiri/Loofah does not support Rails 4.2 |
+| Candidate for next major release | Features that the contributors would like to add in the next major version |
+| Candidate for next minor release | Fixes that the contributors would like to add in the next minor version |
+| Unplanned | Features that the core contributors of Redmine would like to add in a future version |
 
 ## PUT
 
@@ -132,8 +138,10 @@ exit 0;
 
 Usage examples:
 
-    # change my name
-    echo '{"user":{"firstname":"James","lastname":"Bond"}}' | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/users/current.json
+```text
+# change my name
+echo '{"user":{"firstname":"James","lastname":"Bond"}}' | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/users/current.json
+```
 
 The following script converts a Wiki content to JSON format.
 
@@ -168,11 +176,15 @@ exit 0;
 
 The following commands create or update a Wiki page “Test Page”.
 
-    ./restwiki foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
+```text
+./restwiki foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
+```
 
 You, a one-liner, may want to do as follows;
 
-    perl -MJSON -e 'local $/;$ref->{wiki_page}->{text} = <>;print to_json($ref)' foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
+```text
+perl -MJSON -e 'local $/;$ref->{wiki_page}->{text} = <>;print to_json($ref)' foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
+```
 
 ## Resources
 

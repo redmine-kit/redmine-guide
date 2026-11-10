@@ -249,6 +249,8 @@ Redmine 4.0.0 から、デフォルトのコードハイライトには [Rouge](
 
 上の表は、次のコマンドを実行して生成できます。
 
-    bundle exec rougify list | ruby -nle 'if $_ =~ /^([a-z0-9_-]+): (.+)/ ; puts "| @#{$1}@ | #{$2} |"; end'
+```text
+bundle exec rougify list | ruby -nle 'if $_ =~ /^([a-z0-9_-]+): (.+)/ ; puts "| @#{$1}@ | #{$2} |"; end'
+```
 
 </details>

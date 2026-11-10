@@ -92,7 +92,7 @@ The following properties are configurable for (each of the) versions:
   - projects in the project tree: root project + all its descendants (same as above)
   - all projects (can be set by admin users only)
 
-```
+```text
 ---------------------------------------------------------------------------------
 | None          | Subprojects   | Hierarchy     | Tree          | All projects  |
 |               |               |               |               |               |

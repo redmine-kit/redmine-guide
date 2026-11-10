@@ -36,37 +36,41 @@ For that, you have to specify the LDAP attributes name (firstname, lastname, ema
 
 Here is an typical example using Active Directory:
 
-    Name     = My Directory
-    Host     = host.domain.org
-    Port     = 389
-    LDAPS    = no
-    Account  = MyDomain\UserName (or UserName@MyDomain depending on AD server)
-    Password = <password>
-    Base DN  = CN=users,DC=host,DC=domain,DC=org
+```text
+Name     = My Directory
+Host     = host.domain.org
+Port     = 389
+LDAPS    = no
+Account  = MyDomain\UserName (or UserName@MyDomain depending on AD server)
+Password = <password>
+Base DN  = CN=users,DC=host,DC=domain,DC=org
 
-    On-the-fly user creation = yes
-    Attributes
-      Login     = sAMAccountName
-      Firstname = givenName
-      Lastname  = sN
-      Email     = mail
+On-the-fly user creation = yes
+Attributes
+  Login     = sAMAccountName
+  Firstname = givenName
+  Lastname  = sN
+  Email     = mail
+```
 
 Here is another example for Active Directory with a compartmentalized intranet:
 
-    Name     = Just a description for the auth modes page
-    Host     = DepartmentName.OrganizationName.local
-    Port     = 389
-    LDAPS    = no
-    Account  = DepartmentName\UserName (or UserName@MyDomain depending on AD server or bind DN uid=Manager,cn=users,dc=MyDomain,dc=com)
-    Password = <password>
-    Base DN  = DC=DepartmentName,DC=OrganizationName,DC=local
+```text
+Name     = Just a description for the auth modes page
+Host     = DepartmentName.OrganizationName.local
+Port     = 389
+LDAPS    = no
+Account  = DepartmentName\UserName (or UserName@MyDomain depending on AD server or bind DN uid=Manager,cn=users,dc=MyDomain,dc=com)
+Password = <password>
+Base DN  = DC=DepartmentName,DC=OrganizationName,DC=local
 
-    On-the-fly user creation = yes
-    Attributes
-      Login     = sAMAccountName
-      Firstname = givenName
-      Lastname  = sN
-      Email     = mail
+On-the-fly user creation = yes
+Attributes
+  Login     = sAMAccountName
+  Firstname = givenName
+  Lastname  = sN
+  Email     = mail
+```
 
 Note that LDAP attribute names are **case sensitive**.
 
@@ -83,8 +87,10 @@ Although it’s quite possible that the Base DN above is standard for Active Dir
 An example of a filter based on a group membership. Member of the group `Redmine-User`, located in OU `Security Groups`, `Application Settings`.\
 Verify if this is the right place the group was created, and that it is in reversed order.
 
-    Base DN: OU=Users,DC=domain,DC=lan
-    LDAP Filter: (&(objectClass=user)(memberOf=CN=Redmine-User,OU=Application Settings,OU=Security Groups,DC=domain,DC=lan))
+```text
+Base DN: OU=Users,DC=domain,DC=lan
+LDAP Filter: (&(objectClass=user)(memberOf=CN=Redmine-User,OU=Application Settings,OU=Security Groups,DC=domain,DC=lan))
+```
 
 ## Group based LDAP login
 
@@ -210,8 +216,10 @@ If succesful, you will get a listing of the contents of the AD, matching your se
 
 The username for the bind credentials might need to be specified as a DN (i.e. CN=user,OU=optional,DC=domain,DC=com) rather than as a UPN (user@domain.com) or as domain\user, as pointed out by this comment in lib/net/ldap.rb of the net-ldap gem:
 
-      # As described under #bind, most LDAP servers require that you supply a complete DN
-      # as a binding-credential, along with an authenticator such as a password.
+```text
+  # As described under #bind, most LDAP servers require that you supply a complete DN
+  # as a binding-credential, along with an authenticator such as a password.
+```
 
 Therefore user with MyDomain\MyUserName or MyUserName@MyDomain.com username might enter only MyUserName as a Redmine login name.
 
@@ -225,9 +233,11 @@ If you are using the OpenDS server, you might have issues with the request contr
 
 Add a global ACI like this
 
-    ./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll
-    --add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\
-    \"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
+```text
+./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll
+--add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\
+\"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
+```
 
 Note: Enter the command on one line, use the escaping exactly as indicated (the \\ after “acl” is meant to be “\\ ” for a space).
 
@@ -243,30 +253,34 @@ Because this really drove me nuts after an update to Zentyal 3.2 and Redmine 2.3
 
 Using zentyals readonly credentials:
 
-    > Basedomain (Base DN):  dc=your_domain,dc=your_tld
-      Rootdomain (Root DN):  cn=zentyal,dc=your_domain,dc=your_tld
-      Password:              <admin_secret_pass>
-    > Read-only root DN:     cn=zentyalro,dc=your_domain,dc=your_tld
-    > Read-only password:    <ro_secret_pass>
-      Default Users DN:      ou=Users,dc=your_domain,dc=your_tld
-      Default Groups DN:     ou=Groups,dc=your_domain,dc=your_tld
+```text
+> Basedomain (Base DN):  dc=your_domain,dc=your_tld
+  Rootdomain (Root DN):  cn=zentyal,dc=your_domain,dc=your_tld
+  Password:              <admin_secret_pass>
+> Read-only root DN:     cn=zentyalro,dc=your_domain,dc=your_tld
+> Read-only password:    <ro_secret_pass>
+  Default Users DN:      ou=Users,dc=your_domain,dc=your_tld
+  Default Groups DN:     ou=Groups,dc=your_domain,dc=your_tld
+```
 
 And in Redmine (use the credentials above, without \<\>) and be aware of the changed LDAP port 390 (read the article above):
 
-    Name     = Just a description for the auth modes page
-    > Host     = <IP of the host>
-    > Port     = <390>
-      LDAPS    = no
-    > Account  = <Read-only root DN>
-    > Password = <ro_secret_pass>
-    > Base DN  = <Basedomain (Base DN)>
+```text
+Name     = Just a description for the auth modes page
+> Host     = <IP of the host>
+> Port     = <390>
+  LDAPS    = no
+> Account  = <Read-only root DN>
+> Password = <ro_secret_pass>
+> Base DN  = <Basedomain (Base DN)>
 
-    On-the-fly user creation = yes
-    Attributes
-    >  Login     = uid
-       Firstname = givenName
-    >  Lastname  = sN
-      Email     = mail
+On-the-fly user creation = yes
+Attributes
+>  Login     = uid
+   Firstname = givenName
+>  Lastname  = sN
+  Email     = mail
+```
 
 ### Zentyal 4.x, Redmine 3.3.x
 
@@ -274,54 +288,60 @@ Use port 389 and sAMAccountName instead of uid
 
 ### Zentyal 5.0, Redmine 3.2
 
-      Name     = Just a description for the auth modes page
-      Host     = <IP of the host>
-      Port     = <389>
-      LDAPS    = no (yes/checked is ok too with Port set to 636)
-      Account  = username@domain.tld
-      Password = <username_pass>
-      Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)
+```text
+  Name     = Just a description for the auth modes page
+  Host     = <IP of the host>
+  Port     = <389>
+  LDAPS    = no (yes/checked is ok too with Port set to 636)
+  Account  = username@domain.tld
+  Password = <username_pass>
+  Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)
 
-    On-the-fly user creation = yes
-    Attributes
-       Login     = sAMAccountName
-       Firstname = givenName
-       Lastname  = sN
-       Email     = mail
+On-the-fly user creation = yes
+Attributes
+   Login     = sAMAccountName
+   Firstname = givenName
+   Lastname  = sN
+   Email     = mail
+```
 
 ### OpenLDAP, Redmine 3.4.2.stable
 
-      Name     = Some random description
-      Host     = <IP of the host>
-      Port     = <389>
-      LDAPS    = no
-      Account  = < Admins DN > (cn=admin,dc=domain,dc=tld)
-      Password = < Admins Pass >
-      Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)
+```text
+  Name     = Some random description
+  Host     = <IP of the host>
+  Port     = <389>
+  LDAPS    = no
+  Account  = < Admins DN > (cn=admin,dc=domain,dc=tld)
+  Password = < Admins Pass >
+  Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)
 
-    On-the-fly user creation = yes
-    Attributes
-       Login     = uid
-       Firstname = givenName
-       Lastname  = sn
-       Email     = mail
+On-the-fly user creation = yes
+Attributes
+   Login     = uid
+   Firstname = givenName
+   Lastname  = sn
+   Email     = mail
+```
 
 The admin account may be any other LDAP account with global read permission. The “domain” and “tld” part has to fit the LDAP setup, as everything else. Login attribute is used for login. The rest has to be according to LDAP setup.
 
 ### FreeIPA 4.6.8, Redmine 3.2.6
 
-      Name     = Service Description or server name etc.
-      Host     = <IP/domain of the host>
-      Port     = <389>
-      LDAPS    = no ("yes" not tested)
-      Account  = uid=<bind username>,cn=users,cn=accounts,dc=<domain>,dc=<tld>
-      Password = <bind password>
-      Base DN   = cn=accounts,dc=<domain>,dc=<tld>
+```text
+  Name     = Service Description or server name etc.
+  Host     = <IP/domain of the host>
+  Port     = <389>
+  LDAPS    = no ("yes" not tested)
+  Account  = uid=<bind username>,cn=users,cn=accounts,dc=<domain>,dc=<tld>
+  Password = <bind password>
+  Base DN   = cn=accounts,dc=<domain>,dc=<tld>
 
-    Attributes
-       Login     = uid
-       Firstname = givenName
-       Lastname  = sn
-       Email     = mail
+Attributes
+   Login     = uid
+   Firstname = givenName
+   Lastname  = sn
+   Email     = mail
+```
 
 The “domain” and “tld” part has to fit the LDAP setup, as everything else. uid attribute is used for login.

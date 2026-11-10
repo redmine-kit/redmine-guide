@@ -229,8 +229,10 @@ production:
 
 Redmine は gem の依存関係を [Bundler](http://gembundler.com/) で管理しています。Redmine に必要な gem は、次のコマンドですべてインストールできます。
 
-    bundle config set --local without 'development test'
-    bundle install
+```text
+bundle config set --local without 'development test'
+bundle install
+```
 
 #### 任意の依存関係
 
@@ -250,15 +252,19 @@ Redmine 本体が必要としない gem(Puma、fcgi など)を読み込む場合
 
 例:
 
-    # Gemfile.local
-    gem 'puma'
+```text
+# Gemfile.local
+gem 'puma'
+```
 
 ### 手順 5 - セッションストアの秘密鍵の生成
 
 この手順では、セッションのデータを保存する Cookie を Rails がエンコードするためのランダムな鍵を生成し、Cookie の改ざんを防ぎます。\
 新しい秘密鍵を生成すると、再起動の後、既存のセッションはすべて無効になります。
 
-    bundle exec rake generate_secret_token
+```text
+bundle exec rake generate_secret_token
+```
 
 代わりに、この秘密鍵を config/secrets.yml に保存することもできます:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
@@ -281,12 +287,16 @@ http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
 アプリケーションのルートディレクトリで次のコマンドを実行し、データベースの構造を作成します。
 
-    RAILS_ENV=production bundle exec rake db:migrate
+```text
+RAILS_ENV=production bundle exec rake db:migrate
+```
 
 **Windows の場合:**
 
-    set RAILS_ENV=production
-    bundle exec rake db:migrate
+```text
+set RAILS_ENV=production
+bundle exec rake db:migrate
+```
 
 すべてのマイグレーションを順に実行してテーブルを作成し、`admin` という名前のアプリケーションの管理者アカウントを作成します。
 
@@ -306,9 +316,11 @@ RAILS_ENV=production REDMINE_LANG=fr bundle exec rake redmine:load_default_data
 
 Windows:
 
-    set RAILS_ENV=production
-    set REDMINE_LANG=fr
-    bundle exec rake redmine:load_default_data
+```text
+set RAILS_ENV=production
+set REDMINE_LANG=fr
+bundle exec rake redmine:load_default_data
+```
 
 ### 手順 9 - ファイルシステムの権限
 
@@ -323,19 +335,25 @@ Windows:
 
 たとえば、アプリケーションを redmine というユーザーアカウントで実行する場合は、次のようにします。
 
-    mkdir -p tmp tmp/pdf public/assets
-    sudo chown -R redmine:redmine files log tmp public/assets
-    sudo chmod -R 755 files log tmp public/assets
+```text
+mkdir -p tmp tmp/pdf public/assets
+sudo chown -R redmine:redmine files log tmp public/assets
+sudo chmod -R 755 files log tmp public/assets
+```
 
 注: これらのディレクトリにすでにファイルがある場合(バックアップからファイルを戻した場合など)は、ファイルに実行権限が付いていないようにしてください。
 
-    sudo find files log tmp public/assets -type f -exec chmod -x {} +
+```text
+sudo find files log tmp public/assets -type f -exec chmod -x {} +
+```
 
 ### 手順 10 - インストールの確認
 
 Web サーバーの Puma を起動して、インストールを確認します。`development` と `test` のグループを除外すると Puma はインストールされないため、先に手順 4 の例のように `Gemfile.local` に追加してください。
 
-    bundle exec rails server -e production
+```text
+bundle exec rails server -e production
+```
 
 ### 手順 11 - アプリケーションへのログイン
 
@@ -423,20 +441,28 @@ Ruby MRI のビルド済みのインストーラーが http://rubyinstaller.org 
 
 つまり、次のような形のコマンドは、
 
-    RAILS_ENV=production <any commmand>
+```text
+RAILS_ENV=production <any commmand>
+```
 
-    <any commmand> RAILS_ENV=production
+```text
+<any commmand> RAILS_ENV=production
+```
 
 続けて実行する 2 つのコマンドに書き換えます。
 
-    set RAILS_ENV=production
-    <any commmand>
+```text
+set RAILS_ENV=production
+<any commmand>
+```
 
 <u>MySQL の gem のインストールの問題:</u>
 
 次のコマンドで mysql2 の gem を手動でインストールする必要がある場合があります。
 
-    gem install mysql2
+```text
+gem install mysql2
+```
 
 また、*libmysql.dll* を ruby/bin ディレクトリにコピーする必要がある場合もあります。\
 どの libmysql.dll でもよいわけではありません。次のものは動くようです: http://instantrails.rubyforge.org/svn/trunk/InstantRails-win/InstantRails/mysql/bin/libmySQL.dll
