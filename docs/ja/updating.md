@@ -44,9 +44,27 @@ redmine.org のガイドは、ときどき変わります。`upstream` のブラ
 
 - Wiki の Textile を、pandoc で GitHub の Markdown にする
 - Wiki のリンク(`[[RedmineIssues#Updating|...]]`)を、トピックのあいだの相対のリンクにする。ガイドの外のページは redmine.org へのリンクにする。アンカーは Redmine の見出しのアンカーに合わせる
-- 画像を `images/<ページ>/` に向ける
+- 画像を、Redmine 7.0.3 で撮り直したスクリーンショット(`images/en/<ページ>/`、[スクリーンショット](#screenshots)を参照)に向け、なければ `images/<ページ>/` の古い画像に向ける。翻訳では、その言語のスクリーンショット(`images/<言語>/<ページ>/`)に向ける
 - 文の中の Redmine の古い PNG のアイコンを置き換える。後ろにラベルのあるアイコンは消し、ほかは `guide.yml` のとおりに置き換える(**Apply** のような Redmine のラベル)
 - `#123` を redmine.org のチケットへのリンクにする
 - 出典のページ、URL、バージョン、更新日時の front matter を付ける
 
 CI は、`main` の Markdown が、`upstream` から `bin/convert` で作ったものと同じであることを確認します。
+
+<a id="screenshots"></a>
+
+## スクリーンショット
+
+redmine.org の画像は、古いバージョンの Redmine で英語の画面を撮ったものです。`bin/screenshots` は、Redmine 7.0.3 と Redmine のテスト用のデータで、すべての言語の画面を撮り直し、`bin/convert` を実行してページに入れます。
+
+```sh
+bin/screenshots
+```
+
+`screenshots/screens.rb` の各ショットは、置き換える画像の名前を持ち(`RedmineIssueList/sidebar.jpg` は `images/<言語>/RedmineIssueList/sidebar@2x.png` になります)、画面を開いて撮る範囲を返します。一部だけ撮り直すには、パターンを渡します。
+
+```sh
+ONLY=RedmineIssueList bin/screenshots
+```
+
+ショットのない画像は、古い画像のままです。Redmine 7.0.3 にない画面(変更履歴)、Redmine にないコードが要る画面(プラグインのチュートリアル)、Redmine に同梱されなくなったテーマの画面がこれに当たります。

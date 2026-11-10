@@ -40,9 +40,25 @@ The guide on redmine.org changes from time to time. The `upstream` branch keeps 
 
 - converts the wiki's Textile to GitHub Markdown with pandoc;
 - turns wiki links (`[[RedmineIssues#Updating|...]]`) into relative links between topics, or into links to redmine.org for pages outside the guide; anchors follow Redmine's heading anchors;
-- points images at `images/<page>/`;
+- points images at the screenshot retaken in Redmine 7.0.3 (`images/en/<page>/`, see [Screenshots](#screenshots)), or else at the old image in `images/<page>/`; in the translations, at the screenshot in their language (`images/<lang>/<page>/`);
 - replaces Redmine's old PNG icons in the text: an icon followed by its label is dropped; the others are replaced as `guide.yml` lists (with Redmine's labels, such as **Apply**);
 - links `#123` to redmine.org's issues;
 - adds front matter with the source page, its URL, version and update time.
 
 CI checks that the Markdown on `main` is what `bin/convert` makes from `upstream`.
+
+## Screenshots
+
+The images on redmine.org were taken in old versions of Redmine, in English. `bin/screenshots` takes them again in Redmine 7.0.3, in every language, with Redmine's test data, and runs `bin/convert`, which puts them into the pages:
+
+```sh
+bin/screenshots
+```
+
+Each shot in `screenshots/screens.rb` is named after the image it replaces (`RedmineIssueList/sidebar.jpg` becomes `images/<lang>/RedmineIssueList/sidebar@2x.png`), opens the screen and says what to capture. To take some of them again, give a pattern:
+
+```sh
+ONLY=RedmineIssueList bin/screenshots
+```
+
+An image with no shot keeps the old one: the screen no longer exists in Redmine 7.0.3 (the change log), it needs code that is not in Redmine (the plugin tutorial), or it shows a theme Redmine no longer ships.
