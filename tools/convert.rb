@@ -30,8 +30,14 @@ config = YAML.safe_load_file(File.join(OUT, 'guide.yml'))
 VERSIONS = config.fetch('versions', {}).transform_keys(&:to_i).freeze
 MESSAGES = config.fetch('messages', {}).to_h { |id, message| [id.to_i, [message['board'], message['subject']]] }.freeze
 
+# A page name without accents: redmine.org's Rest_api_ẅith_python is
+# Rest_api_with_python, which other pages link.
+def plain(name)
+  name.unicode_normalize(:nfkd).gsub(/\p{Mn}/, '')
+end
+
 def slug(title)
-  title.sub(/\ARedmine(?=[A-Z])/, '')
+  plain(title).sub(/\ARedmine(?=[A-Z])/, '')
        .gsub(/([a-z\d])([A-Z])/, '\1-\2').gsub(/([A-Z]+)([A-Z][a-z])/, '\1-\2')
        .downcase.gsub(/[^a-z0-9]+/, '-').gsub(/\A-|-\z/, '')
 end
@@ -73,7 +79,7 @@ topics.each do |page, topic|
   end
   taken[topics[page]] = true
 end
-by_lower = topics.keys.to_h { |page| [page.downcase, page] }
+by_lower = topics.keys.to_h { |page| [plain(page).downcase, page] }
 
 # The guide's own names for its pages, from the links of its index pages
 # ([[RedmineAccounts|User accounts]]): the title of a page without a heading.
@@ -100,7 +106,7 @@ end
 def wiki_href(from_topic, target, topics, by_lower)
   page, hash = target.split('#', 2)
   page = page.strip.tr(' ', '_')
-  real = by_lower[page.downcase]
+  real = by_lower[plain(page).downcase]
   fragment = hash ? "##{anchor(hash)}" : ''
   if page.empty?
     fragment
@@ -170,12 +176,6 @@ def redmine_ref(match)
   ["source:#{source}", "#{REPOSITORY_URL}/show/#{path.delete_prefix('/')}#{"?rev=#{rev}" if rev}#{"##{anchor}" if anchor}"]
 end
 
-def link_issues(markdown)
-  fence = false
-  markdown.lines.map do |line|
-    fence = !fence if line.lstrip.start_with?('```')
-    next line if fence
-
 # The language of a page's code blocks that name none (guide.yml,
 # code_languages), for pages whose code is all in one language.
 CODE_LANGUAGES = config.fetch('code_languages', {}).freeze
@@ -184,6 +184,12 @@ def with_code_language(markdown, page)
   language = CODE_LANGUAGES[page]
   language ? markdown.gsub(/^([ \t>]*`{3,})text$/) { "#{Regexp.last_match(1)}#{language}" } : markdown
 end
+
+def link_issues(markdown)
+  fence = false
+  markdown.lines.map do |line|
+    fence = !fence if line.lstrip.start_with?('```')
+    next line if fence
 
     line.split(/(`[^`]*`|<[^<>\n]+>|\]\([^)]*\))/).map do |part|
       next part if part.start_with?('`', '<', '](')
