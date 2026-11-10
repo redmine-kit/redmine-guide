@@ -120,6 +120,31 @@ def full_width_art?(text)
   end
 end
 
+# A fenced block that holds a fence of its own (```` around ```text), or whose
+# lines all keep the indentation of an indented block.
+def fence_problems(text)
+  problems = []
+  fence = nil
+  fence_indent = ''
+  body = []
+  text.each_line(chomp: true) do |line|
+    if fence
+      if line.strip.start_with?(fence) && line.strip.delete(fence[0]).empty?
+        lines = body.reject { |l| l.strip.empty? }
+        problems << 'a code fence inside a fenced block' if body.any? { |l| l.match?(/\A\s*(`{3,}|~{3,})\S/) }
+        problems << 'a fenced block whose lines all keep a 4-space indent' if lines.any? && lines.all? { |l| l.start_with?(fence_indent + '    ') }
+        fence = nil
+      else
+        body << line
+      end
+    elsif (fence = line[/\A\s*(`{3,}|~{3,})/, 1])
+      fence_indent = line[/\A\s*/]
+      body = []
+    end
+  end
+  problems.uniq
+end
+
 # The text formatting pages show inline styles as examples.
 STYLE_EXAMPLES = %r{\Auser/text-formatting}
 
@@ -128,6 +153,7 @@ def conversion_failures(text, file = '')
   unfenced = text.gsub(/^[ \t]*(`{3,}|~{3,}).*?^[ \t]*\1\s*$/m, '')
   found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (IN_CODE.include?(problem) ? unfenced : body).match?(pattern) }
   found << 'an indented code block (fence it, with a language or `text`)' if indented_code?(text)
+  found.concat(fence_problems(text)) unless file.match?(STYLE_EXAMPLES)
   found << 'full-width characters in ASCII art of a code block (use ASCII and a legend)' if full_width_art?(text)
   found << 'an image from another site (keep a copy in images/)' if body.match?(/(?<!\\)!\[(?:[^\]\\]|\\.)*\]\(\s*<?https?:|<img\b[^>]*\bsrc=["']?https?:/i)
   found << 'an inline background colour (a note is an alert: > [!NOTE])' if !file.match?(STYLE_EXAMPLES) && body.match?(/style="[^"]*background/i)
