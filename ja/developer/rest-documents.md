@@ -1,0 +1,88 @@
+---
+source: Rest_Documents
+translated_from_version: 1
+---
+
+# 文書
+
+## 文書の一覧
+
+```
+GET /projects/[project_id]/documents.[format]
+```
+
+指定した ID または識別子のプロジェクトの文書を、ページ分割した一覧で返します。
+
+パラメーター:
+
+- `offset`: レスポンスで飛ばす文書の数(任意)
+- `limit`: 1 ページあたりの文書の数(任意)
+
+例:
+
+```
+GET /projects/foo/documents.xml
+GET /projects/foo/documents.json
+GET /projects/foo/documents.xml?offset=0&limit=100
+```
+
+## 文書の表示
+
+```
+GET /documents/[id].[format]
+```
+
+パラメーター:
+
+- `include`: 関連するデータを取得します(任意)。指定できる値:
+  - `attachments`
+
+例:
+
+```
+GET /documents/1.xml
+GET /documents/1.json
+GET /documents/1.json?include=attachments
+```
+
+## 文書の作成
+
+```
+POST /projects/[project_id]/documents.[format]
+```
+
+パラメーター:
+
+- `document`: 文書の属性のハッシュ:
+  - `title`
+  - `description`
+  - `category_id`
+  - `custom_fields`
+
+文書の作成時に添付ファイルを追加できます。[ファイルの添付](rest-api.md#Attaching-files)を参照してください。
+
+成功すると `201 Created` を返します。
+
+## 文書の更新
+
+```
+PUT /documents/[id].[format]
+```
+
+パラメーター:
+
+文書の作成と同じです。
+
+文書の更新時に添付ファイルを追加できます。[ファイルの添付](rest-api.md#Attaching-files)を参照してください。
+
+成功すると `204 No Content` を返します。
+
+## 文書の削除
+
+```
+DELETE /documents/[id].[format]
+```
+
+成功すると `204 No Content` を返します。
+
+既存の権限 `view_documents`、`add_documents`、`edit_documents`、`delete_documents` が適用されます。
