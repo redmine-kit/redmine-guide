@@ -189,11 +189,12 @@ class GuideScreenshots < ApplicationSystemTestCase
     visit '/account/register'
     '#content'
   end
+  # Redmine 7.0.3 has the Activate link of a registered user on the user's
+  # page, not in the users list.
   shot('RedmineRegister/activate-account') do
-    visit '/users?set_filter=1&f[]=status&op[status]==&v[status][]=2'
-    find('tr.user a.js-contextmenu').click
-    find('#context-menu', visible: true)
-    :window
+    visit "/users/#{User.find_by(login: 'eclark').id}/edit"
+    find('#content > .contextual a.icon-unlock')
+    '#content'
   end
 
   shot('RedmineAccounts/myaccount-info') { visit '/my/account'; box(:label_information_plural) }
