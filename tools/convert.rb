@@ -226,11 +226,12 @@ topics.each do |page, topic|
     target, label = links[Regexp.last_match(1).to_i]
     wiki_link(topic, target, label, topics, by_lower)
   end
-  markdown = markdown.gsub(/!\[([^\]]*)\]\(([^)\s]+)\)/) do
+  # Images (not an escaped example of the syntax), with their title.
+  markdown = markdown.gsub(/(?<!\\)!\[((?:[^\]\\]|\\.)*)\]\(([^)\s]+)(\s+"[^"]*")?\)/) do
     alt = Regexp.last_match(1)
     path = image_path.call(Regexp.last_match(2))
     if path
-      "![#{alt}](#{path})"
+      "![#{alt}](#{path}#{title})"
     else
       alt.empty? ? '' : "*#{alt}*"
     end
@@ -266,6 +267,7 @@ topics.each do |page, topic|
   info = pages[page]
   front = {
     'source' => page,
+    title = Regexp.last_match(3)
     'source_url' => info['url'],
     'source_version' => info['version'],
     'source_updated_on' => info['updated_on'],
