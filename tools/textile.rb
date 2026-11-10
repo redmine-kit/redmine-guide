@@ -14,7 +14,8 @@
 # - {{collapse(Label) ... }} is a collapsed section;
 # - <notextile> text is shown as it is;
 # - %{style}text% is a styled span, also before punctuation;
-# - lines that start with > are a quote.
+# - lines that start with > are a quote;
+# - a table of one cell with a background colour (a note) is an alert.
 require 'cgi'
 require 'open3'
 
@@ -24,6 +25,26 @@ module Textile
   class Held
     def initialize
       @blocks = []
+      @alerts = []
+    end
+
+    def code?(index)
+      @blocks[index].is_a?(Code)
+    end
+
+    # An alert around the paragraphs between its markers (+restore_alerts+).
+    def alert(type, title)
+      @alerts << [type, title]
+      @alerts.size - 1
+    end
+
+    # Alerts as GitHub's, which Redmine 7 shows too: `> [!CAUTION] Note`.
+    def restore_alerts(markdown)
+      markdown.gsub(/^RGALERTx(\d+)x\n+(.*?)\n+RGALERTENDx$/m) do
+        type, title = @alerts[Regexp.last_match(1).to_i]
+        body = Regexp.last_match(2).split("\n").map { |line| line.empty? ? '>' : "> #{line}" }
+        ["> [!#{type}]#{" #{title}" if title}", *body].join("\n")
+      end
     end
 
     # A block (a paragraph of its own), or inline text.
@@ -387,7 +408,9 @@ module Textile
         end
         rows << row
       end
-      if special_table?(rows)
+      if (alert = alert(rows, held))
+        out.concat(alert.split("\n", -1))
+      elsif special_table?(rows)
         style = out.pop[/\Atable(?:\{([^}]*)\})?\.\s*\z/, 1].to_s if out.last&.match?(/\Atable(?:\{[^}]*\})?\.\s*\z/)
         found << [rows, style]
         out << "RGTABLEx#{found.size - 1}x"
@@ -403,6 +426,59 @@ module Textile
     html = cells_to_html(cells.flat_map { |cell| cell[:segments].grep(String) }, &inline)
     cells.each { |cell| cell[:html] = cell[:segments].map { |segment| segment.is_a?(String) ? html.shift : segment[:html] }.join }
     text.gsub(/^RGTABLEx(\d+)x$/) { held.hold(table_html(parsed[Regexp.last_match(1).to_i], found[Regexp.last_match(1).to_i][1])).strip }
+  end
+
+  # A table of one cell with a background colour, as redmine.org's pages
+  # write a note: the paragraphs of an alert of that colour, with the cell's
+  # bold label (`*Note*:`) as its title.
+  def alert(rows, held)
+    return unless rows.size == 1 && (cells = split_cells(rows.first)).size == 1
+
+    attributes = cells.first[CELL_ATTRIBUTES, 2].to_s
+    style = attributes[/\{([^}]*)\}/, 1].to_s
+    color = style[/background(?:-color)?\s*:\s*([^;]+)/, 1]
+    return unless color
+
+    content = cells.first.sub(CELL_ATTRIBUTES, '').strip
+    content = content[1...-1].strip if content.match?(/\A_.*_\z/m)
+    title = nil
+    content = content.sub(/\A\*([^*\n]+)\*\s*[:.]?\s*/) do
+      title = Regexp.last_match(1).strip
+      ''
+    end
+    content = content.gsub(/RGHELDx(\d+)x/) { held.code?(Regexp.last_match(1).to_i) ? "\n\nRGHELDx#{Regexp.last_match(1)}x\n\n" : Regexp.last_match(0) }
+    "\nRGALERTx#{held.alert(alert_type(color), title)}x\n\n#{content.strip}\n\nRGALERTENDx\n"
+  end
+
+  # The alert of a colour: red CAUTION, orange and yellow WARNING, green TIP,
+  # blue NOTE, others IMPORTANT.
+  def alert_type(color)
+    color = color.strip.downcase
+    rgb = case color
+          when /\A#(\h)(\h)(\h)\z/ then Regexp.last_match.captures.map { |c| (c * 2).hex }
+          when /\A#(\h\h)(\h\h)(\h\h)\z/ then Regexp.last_match.captures.map(&:hex)
+          end
+    hue = rgb && hue(*rgb)
+    hue ||= { 'red' => 0, 'pink' => 350, 'salmon' => 6, 'orange' => 39, 'yellow' => 60, 'gold' => 51, 'green' => 120,
+              'lightgreen' => 120, 'lime' => 120, 'blue' => 240, 'lightblue' => 195, 'cyan' => 180, 'aqua' => 180 }[color]
+    case hue
+    when nil then 'IMPORTANT'
+    when 0...20, 340..360 then 'CAUTION'
+    when 20...75 then 'WARNING'
+    when 75...165 then 'TIP'
+    when 165...260 then 'NOTE'
+    else 'IMPORTANT'
+    end
+  end
+
+  def hue(red, green, blue)
+    max, min = [red, green, blue].minmax.reverse
+    return if max == min
+
+    if max == red then (60.0 * (green - blue) / (max - min)) % 360
+    elsif max == green then (60.0 * (blue - red) / (max - min)) + 120
+    else (60.0 * (red - green) / (max - min)) + 240
+    end
   end
 
   def special_table?(rows)
