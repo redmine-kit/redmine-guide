@@ -19,7 +19,7 @@ The [Redmine guide](https://www.redmine.org/guide) as Markdown, with translation
 
 ## Source and attribution
 
-The guide's text and images come from the Redmine wiki at https://www.redmine.org (the source of each page is in its front matter and in `manifest.json` on `upstream`). They are © Jean-Philippe Lang and the Redmine contributors; redmine.org does not state a license for the wiki's text. The translations are this project's own, made from the English pages (not from other translations). The tools in this repository are released under the GNU General Public License, version 2 or (at your option) any later version.
+The guide's text and images come from the Redmine wiki at https://www.redmine.org (the source of each page is in its front matter and in `manifest.json` on `upstream`). They are © Jean-Philippe Lang and the Redmine contributors; redmine.org does not state a license for the wiki's text ([License](#license)). The translations are this project's own, made from the English pages (not from other translations).
 
 ## Sponsors
 
@@ -32,4 +32,10 @@ The guide's text and images come from the Redmine wiki at https://www.redmine.or
 
 ## License
 
-Redmine Guide is released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE). An unofficial project for Redmine.
+The guide's English text and its images come from the Redmine wiki at https://www.redmine.org: © Jean-Philippe Lang and the Redmine contributors. redmine.org does not state a license for the wiki's text. Each page links its source.
+
+The translations (`ja/`), the updates for Redmine 7.0.3 (`updates/` and the changes they make to the pages in `en/`) and the screenshots retaken in Redmine 7.0.3 (`images/<lang>/`) are this project's and are released under the Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0), the license that [redmine.jp](https://redmine.jp/guide/) uses for its Japanese translation of the guide. See [LICENSES/CC-BY-SA-4.0.txt](LICENSES/CC-BY-SA-4.0.txt).
+
+The tools are released under the GNU General Public License, version 2 or (at your option) any later version. See [LICENSE](LICENSE).
+
+An unofficial project for Redmine.

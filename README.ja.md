@@ -23,7 +23,7 @@
 
 ## 出典と著作権
 
-ガイドの文と画像は、https://www.redmine.org の Redmine の Wiki から取得したものです(各ページの出典は、ページの先頭の front matter と、`upstream` の `manifest.json` にあります)。著作権は Jean-Philippe Lang と Redmine の貢献者にあります。redmine.org は、Wiki の文のライセンスを示していません。翻訳は、英語のページからこのプロジェクトが作ったものです(ほかの翻訳は使っていません)。このリポジトリのツールは、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。
+ガイドの文と画像は、https://www.redmine.org の Redmine の Wiki から取得したものです(各ページの出典は、ページの先頭の front matter と、`upstream` の `manifest.json` にあります)。著作権は Jean-Philippe Lang と Redmine の貢献者にあります。redmine.org は、Wiki の文のライセンスを示していません ([ライセンス](#license))。翻訳は、英語のページからこのプロジェクトが作ったものです(ほかの翻訳は使っていません)。
 
 <a id="sponsors"></a>
 
@@ -40,4 +40,10 @@
 
 ## ライセンス
 
-Redmine Guide は、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。Redmine の非公式のプロジェクトです。
+ガイドの英語の文と画像は、https://www.redmine.org の Redmine の Wiki から取得したもので、著作権は Jean-Philippe Lang と Redmine の貢献者にあります。redmine.org は、Wiki の文のライセンスを示していません。各ページに出典へのリンクがあります。
+
+翻訳 (`ja/`)、Redmine 7.0.3 に合わせた更新 (`updates/` と、それによる `en/` のページの変更)、Redmine 7.0.3 で撮り直したスクリーンショット (`images/<言語>/`) は、このプロジェクトが作ったもので、クリエイティブ・コモンズ 表示 - 継承 4.0 国際 ライセンス (CC BY-SA 4.0) で公開しています。[redmine.jp](https://redmine.jp/guide/) がガイドの日本語訳に使っているライセンスと同じです。[LICENSES/CC-BY-SA-4.0.txt](LICENSES/CC-BY-SA-4.0.txt) を参照してください。
+
+ツールは、GNU General Public License バージョン 2 またはそれ以降のバージョンで公開しています。[LICENSE](LICENSE) を参照してください。
+
+Redmine の非公式のプロジェクトです。
