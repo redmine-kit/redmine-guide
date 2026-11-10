@@ -10,7 +10,7 @@ The guide on redmine.org changes from time to time. The `upstream` branch keeps 
    bin/fetch
    ```
 
-   `bin/fetch` requests the pages one by one with a delay (1.5 s; `FETCH_DELAY`), follows renamed pages, and respects robots.txt. It fetches the page Guide, the pages it includes, the pages they link, and the pages those link whose wiki parent is a guide page. The guides in other languages are not fetched.
+   `bin/fetch` requests the pages one by one with a delay (1.5 s; `FETCH_DELAY`), follows renamed pages, and respects robots.txt. With each page it fetches the images the page shows, also those it shows from redmine.org by their URL (recorded in `manifest.json` under `image_sources`), so that the guide shows no image from another site. It fetches the page Guide, the pages it includes, the pages they link, and the pages those link whose wiki parent is a guide page. The guides in other languages are not fetched.
 2. **Compare.** See what changed on redmine.org:
 
    ```sh
@@ -38,11 +38,11 @@ The guide on redmine.org changes from time to time. The `upstream` branch keeps 
 
 `bin/convert` (`tools/convert.rb`, run in Docker with pandoc 3.11):
 
-- converts the wiki's Textile to GitHub Markdown with pandoc, and renders itself what pandoc gets wrong in Redmine's Textile (`tools/textile.rb`, after Redmine's own rendering): `<pre>` blocks as code blocks with their language, `@code@` as inline code (also next to punctuation, and with `@` inside), HTML tags other than `<pre>`, `<code>`, `<kbd>` and `<notextile>` as text, footnotes as Redmine shows them (a superscript number and the note in place), tables with spanned or aligned cells as HTML, indented list items as nested lists, escaped Redmine links (`!#124`) as their text, `{{collapse}}` as a `<details>` section, lines that start with `>` as a quote, `%{color: red}text%` as a styled span, and `<notextile>` as literal text;
+- converts the wiki's Textile to GitHub Markdown with pandoc, and renders itself what pandoc gets wrong in Redmine's Textile (`tools/textile.rb`, after Redmine's own rendering): `<pre>` blocks as fenced code blocks with their language (`text` when they have none), a table of one cell with a background colour (a note) as an alert (`> [!CAUTION] Note`: the colour gives the kind, the cell's bold label the title), `@code@` as inline code (also next to punctuation, and with `@` inside), HTML tags other than `<pre>`, `<code>`, `<kbd>` and `<notextile>` as text, footnotes as Redmine shows them (a superscript number and the note in place), tables with spanned or aligned cells as HTML, indented list items as nested lists, escaped Redmine links (`!#124`) as their text, `{{collapse}}` as a `<details>` section, lines that start with `>` as a quote, `%{color: red}text%` as a styled span, and `<notextile>` as literal text;
 - turns wiki links (`[[RedmineIssues#Updating|...]]`) into relative links between topics, or into links to redmine.org for pages outside the guide; anchors follow Redmine's heading anchors;
 - points images at the screenshot retaken in Redmine 7.0.3 (`images/en/<page>/`, see [Screenshots](#screenshots)), or else at the old image in `images/<page>/`; in the translations, at the screenshot in their language (`images/<lang>/<page>/`);
 - replaces Redmine's old PNG icons in the text: an icon followed by its label is dropped; the others are replaced as `guide.yml` lists (with Redmine's labels, such as **Apply**);
-- links `#123` to redmine.org's issues;
+- links `#123` to redmine.org's issues, and shows Redmine's links to other objects of redmine.org as redmine.org shows them: a version by its name (`version#43`, `version:2.3.0`), a forum message by its subject (`message#36062`; both listed in `guide.yml`), a revision (`r3162`) and a file of the repository (`source:...`), each linked to redmine.org;
 - adds front matter with the source page, its URL, version and update time.
 
 CI checks that the Markdown on `main` is what `bin/convert` makes from `upstream`.
