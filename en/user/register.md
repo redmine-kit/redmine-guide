@@ -3,6 +3,7 @@ source: RedmineRegister
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineRegister
 source_version: 9
 source_updated_on: '2018-01-08T13:58:12Z'
+updated_for: 7.0.3
 ---
 
 # Register
@@ -25,7 +26,7 @@ Such method is often used to prevent email spamming.
 
 ### Manual Account Activation
 
-After providing the information required on the Registration page, the user must wait for the approval of an administrator. The administrator will enable the user account on “Administration” \> ["Users" page](../admin/users.md). When the user account is enabled, the user is allowed to login.
+After providing the information required on the Registration page, the user must wait for the approval of an administrator. The administrator opens the user from “Administration” \> ["Users" page](../admin/users.md) and clicks **Activate** at the upper right of the user's page. When the user account is enabled, the user is allowed to login.
 
 ![](../../images/en/RedmineRegister/activate-account@2x.png)
 

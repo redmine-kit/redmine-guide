@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "In Redmine 7.0.3 a registered user is activated with \"Activate\" on the user's page; the users list's context menu has no such action."
+    source: "app/views/users/edit.html.erb (change_status_link), app/helpers/users_helper.rb, app/views/context_menus/users.html.erb, config/locales/en.yml (button_activate)"
+    replace: |-
+      The administrator will enable the user account on “Administration” \> ["Users" page](../admin/users.md).
+    with: |-
+      The administrator opens the user from “Administration” \> ["Users" page](../admin/users.md) and clicks **Activate** at the upper right of the user's page.
