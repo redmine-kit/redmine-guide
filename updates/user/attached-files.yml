@@ -32,3 +32,15 @@ updates:
       At the bottom of many of the pages in Redmine is a “New File” link.
     with: |-
       At the bottom of wiki pages is a collapsible “Files” section, and document pages have a “New file” link.
+  - why: The link to the Rake task has a misspelled anchor on redmine.org (attachements); the task's heading on the Rake tasks page is rake redmine:attachments:prune.
+    source: en/admin/rake.md (### `rake redmine:attachments:prune`), lib/tasks/redmine.rake (redmine:attachments:prune)
+    replace: |-
+      [Rake task](../admin/rake.md#rake-redmineattachementsprune)
+    with: |-
+      [Rake task](../admin/rake.md#rake-redmineattachmentsprune)
+  - why: The Files page has no "Usage" section; the section about the Files module is "Files Module".
+    source: en/user/files.md (## Files Module)
+    replace: |-
+      See the [Usage](files.md#Usage) section for more information.
+    with: |-
+      See the [Files Module](files.md#Files-Module) section for more information.
