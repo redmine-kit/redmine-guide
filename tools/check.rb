@@ -38,7 +38,8 @@ def headings(text)
 end
 
 def links(text)
-  text.gsub(/```.*?```/m, '').scan(/\]\(([^)\s]+)\)/).flatten
+  # Not an escaped example of the syntax (\![\](image.png)).
+  text.gsub(/```.*?```/m, '').scan(/(?<!\\)\]\(([^)\s]+)\)/).flatten
 end
 
 # The text outside code: fenced and indented blocks and code spans removed.
@@ -66,10 +67,51 @@ CONVERSION_FAILURES = {
 # Found in the text with its indented code (the others: outside code).
 IN_CODE = ['<code class> in a code block', 'an indented code block taken into a list item'].freeze
 
-def conversion_failures(text)
+# An indented code block (Markdown): a line indented by four spaces or a tab
+# after a blank line, outside fenced blocks, lists and HTML blocks. Code
+# blocks are fenced, with a language or `text`, so that all look the same.
+def indented_code?(text)
+  fence = nil
+  list = html = false
+  blank = true
+  text.sub(/\A---\n.*?\n---\n/m, '').each_line(chomp: true) do |line|
+    if fence
+      fence = nil if line.strip.start_with?(fence) && line.strip.delete(fence[0]).empty?
+      next
+    end
+    if (fence = line[/\A\s*(`{3,}|~{3,})/, 1])
+      # A fence at the margin ends a list.
+      list &&= !line.match?(/\A[`~]/)
+      blank = false
+      next
+    end
+    if line.strip.empty?
+      blank = true
+      html = false
+      next
+    end
+    indented = line.match?(/\A(?: {4}|\t)/)
+    return true if indented && blank && !list && !html
+
+    unless indented
+      list = line.match?(/\A\s*(?:[-*+]|\d+[.)])\s/) || (list && line.match?(/\A\s+\S/))
+      html ||= blank && line.match?(%r{\A<[a-zA-Z/!]})
+    end
+    blank = false
+  end
+  false
+end
+
+# The text formatting pages show inline styles as examples.
+STYLE_EXAMPLES = %r{\Auser/text-formatting}
+
+def conversion_failures(text, file = '')
   body = prose(text)
   unfenced = text.gsub(/^[ \t]*(`{3,}|~{3,}).*?^[ \t]*\1\s*$/m, '')
   found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (IN_CODE.include?(problem) ? unfenced : body).match?(pattern) }
+  found << 'an indented code block (fence it, with a language or `text`)' if indented_code?(text)
+  found << 'an image from another site (keep a copy in images/)' if body.match?(/(?<!\\)!\[(?:[^\]\\]|\\.)*\]\(\s*<?https?:|<img\b[^>]*\bsrc=["']?https?:/i)
+  found << 'an inline background colour (a note is an alert: > [!NOTE])' if !file.match?(STYLE_EXAMPLES) && body.match?(/style="[^"]*background/i)
   tags = body.scan(%r{(?<!\\)</?([A-Za-z][A-Za-z0-9]*)[\s>/]}).flatten.map(&:downcase).uniq - HTML_TAGS
   found << "HTML tags that Markdown would hide (#{tags.map { |tag| "<#{tag}>" }.join(', ')})" unless tags.empty?
   found
@@ -80,7 +122,7 @@ languages.each do |lang|
   Dir.glob('**/*.md', base: File.join(ROOT, lang)).sort.each do |file|
     path = File.join(ROOT, lang, file)
     text = File.read(path)
-    conversion_failures(text).each { |problem| problems << "#{lang}/#{file}: #{problem}" }
+    conversion_failures(text, file).each { |problem| problems << "#{lang}/#{file}: #{problem}" }
     links(text).each do |href|
       next if href.match?(/\A([a-z]+:|#)/i)
       # Only links to pages and images; the text formatting pages show syntax.
