@@ -3,6 +3,7 @@ source: RedmineTimeTracking
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineTimeTracking
 source_version: 19
 source_updated_on: '2018-09-18T07:33:25Z'
+updated_for: 7.0.3
 ---
 
 # Time tracking
@@ -40,11 +41,11 @@ Estimated and spent time can be entered using either separated hour and minutes 
 
 ### Decimal time format
 
-When entering estimated or spent time values in Redmine using [decimal time format](http://en.wikipedia.org/wiki/Decimal_time) you have to be aware that Redmine will also show accumulated time values in decimal time format.
+When entering estimated or spent time values in Redmine using [decimal time format](http://en.wikipedia.org/wiki/Decimal_time) you have to be aware that, if the **Time span format** setting (Administration > Settings > Display) is set to the decimal format (0.75), Redmine will also show accumulated time values in decimal time format. With the default format (0:45 h), time values are shown in hours and minutes (e.g. 1:39).
 
 Consider the following example:
 
-- in a project you have 4 issues with the following spent time values: **1.00**, **0.10**, **0.15** & **0.40**. Now in the Spent Time reports (Project overview -\> Spent time -\> \[Details \| Report\]) you will see the accumulated total of the decimal values of 1.65 hours (1 hour 39 minutes), not a separate accumulation of the hour and minutes after the decimal point (which would yield an incorrect value of 2.05 hours).
+- in a project you have 4 issues with the following spent time values: **1.00**, **0.10**, **0.15** & **0.40**. Now in the Spent Time reports (Project overview -\> Time tracking -\> \[Details \| Report\]) you will see the accumulated total of the decimal values of 1.65 hours (1 hour 39 minutes), not a separate accumulation of the hour and minutes after the decimal point (which would yield an incorrect value of 2.05 hours).
 - *Explanation*: this is intended behaviour since the four spent time values are entered in decimal time format. The values are interpreted as follows:
   - 1.00 decimal equals 60 minutes (1 hour)
   - 0.10 decimal equals 6 minutes
@@ -64,9 +65,9 @@ Some references:
 
 A handy feature for developers committing to SCM systems integrated with a Redmine instance is that they can register “spent time” against an issue via their commit messages when referencing an issue.
 
-For this to work the **Enable time logging** option must be activated under *Application settings -\> Repositories* (refer to [documentation](../admin/settings.md#Enable-time-logging)). Also the activity under which spent time is logged must be explicitly choosen in the **Activity for logged time** option under *Application settings -\> Repositories* (refer to [documentation](../admin/settings.md#Activity-for-logged-time)) (the default activity ‘Default’ doesn’t work).
+For this to work the **Enable time logging** option must be activated under *Administration -\> Settings -\> Repositories* (refer to [documentation](../admin/settings.md#Enable-time-logging)). Also the activity under which spent time is logged is chosen in the **Activity for logged time** option under *Administration -\> Settings -\> Repositories* (refer to [documentation](../admin/settings.md#Activity-for-logged-time)) (with ‘Default’, the default time entry activity is used).
 
-The time specification in the commit message can be any of the above [accepted time formats](time-tracking.md#Accepted-time-formats) but must be preceded with a valid issue reference as configured under “Referencing and fixing issues in commit messages” in *Application settings -\> Repositories* ([refer to documentation](../admin/settings.md#Referencing-issues-in-commit-messages)).
+The time specification in the commit message can be any of the above [accepted time formats](time-tracking.md#Accepted-time-formats) but must be preceded with a valid issue reference as configured under “Referencing and fixing issues in commit messages” in *Administration -\> Settings -\> Repositories* ([refer to documentation](../admin/settings.md#Referencing-issues-in-commit-messages)).
 
 An example using the default issue referencing keyword “refs”:
 

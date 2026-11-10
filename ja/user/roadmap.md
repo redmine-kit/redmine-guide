@@ -7,7 +7,7 @@ translated_from_version: 19
 
 ロードマップは、チケットをバージョンごとに見られる、細かく設定できる表示です。プロジェクトの開発の計画と管理に役立ちます。また、プロジェクトの現在の状態を(バージョンごとに)詳しく見渡せます。
 
-*注: プロジェクトのメニューに[ロードマップ](roadmap.md)が表示されるのは、プロジェクトで「チケットトラッキング」の[モジュール](project-settings.md#Core-modules)が有効で、[プロジェクト設定](project-settings.md)で[バージョン](project-settings.md#Versions)を 1 つ以上設定しているときだけです。*
+*注: プロジェクトのメニューに[ロードマップ](roadmap.md)が表示されるのは、プロジェクトで「チケットトラッキング」の[モジュール](project-settings.md#Core-modules)が有効で、プロジェクトで使える[バージョン](project-settings.md#Versions) ([プロジェクト設定](project-settings.md)で設定したものか、ほかのプロジェクトから共有されたもの) が 1 つ以上あるときだけです。*
 
 ## 概要
 

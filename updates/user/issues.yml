@@ -1,0 +1,71 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "The order of the messages is the \"Display comments\" preference of My account."
+    source: "app/views/users/_preferences.html.erb, config/locales/en.yml (label_my_account, field_comments_sorting)"
+    replace: |-
+      (to change the order - see the setting in ‘My Accounts’)
+    with: |-
+      (to change the order - see the **Display comments** setting in ‘My account’)
+  - why: "The relation is \"Is duplicate of\", and duplicates are closed only when \"Close duplicate issues automatically\" is enabled (the default)."
+    source: "app/models/issue_relation.rb (TYPES), app/models/issue.rb (close_duplicates), config/settings.yml (close_duplicate_issues), config/locales/en.yml (label_duplicates, setting_close_duplicate_issues)"
+    replace: |-
+      - **duplicates** - Links issues so that closing one, will close the other (e.g. closing A will close B)\
+    with: |-
+      - **Is duplicate of** - Links issues so that closing one, will close the other (e.g. closing A will close B) when the **Close duplicate issues automatically** setting is enabled (default)\
+  - why: "The relation is \"Has duplicate\" in Redmine 7.0.3."
+    source: "app/models/issue_relation.rb (TYPES), config/locales/en.yml (label_duplicated_by)"
+    replace: |-
+      - **duplicated by** - Reciprocal of *duplicates*.\
+    with: |-
+      - **Has duplicate** - Reciprocal of *Is duplicate of*.\
+  - why: "Adding watchers needs the \"Add watchers\" permission and opens a dialog with a user search and checkboxes."
+    source: "app/views/watchers/_watchers.html.erb, app/views/watchers/_new.html.erb, app/views/watchers/new.js.erb, config/locales/en.yml (permission_add_issue_watchers, label_user_search)"
+    replace: |-
+      If you are logged in as a project administrator, it is possible for you to add users to the watch list on this page. By clicking on the Add link, a drop-down menu with a **Add** button appear, which allows you to select which user to add to the watch list.
+    with: |-
+      If your role has the **Add watchers** permission, it is possible for you to add users to the watch list on this page. By clicking on the Add link, a dialog with a **Search for user:** field and a list of users appears; check the users to add to the watch list and click the **Add** button.
+  - why: "Associated revisions are a tab of the issue history in Redmine 7.0.3."
+    source: "app/helpers/issues_helper.rb (issue_history_tabs), app/views/issues/tabs/_changesets.html.erb, config/locales/en.yml (label_associated_revisions)"
+    replace: |-
+      under the Associated revisions block (generally to the right of the first reply).
+    with: |-
+      in the **Associated revisions** tab of the issue history.
+  - why: "The link is \"Edit\" in Redmine 7.0.3."
+    source: "app/views/issues/_action_menu.html.erb, config/locales/en.yml (button_edit)"
+    replace: |-
+      To edit the issue, Click *Update* link (having a pencil icon)
+    with: |-
+      To edit the issue, Click *Edit* link (having a pencil icon)
+  - why: "The link is \"Edit\" in Redmine 7.0.3."
+    source: "app/views/issues/_action_menu.html.erb, config/locales/en.yml (button_edit)"
+    replace: |-
+      2.  Click *Update* link (having a pen icon)
+    with: |-
+      2.  Click *Edit* link (having a pen icon)
+  - why: "The field is \"Parent task\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_parent_issue)"
+    replace: |-
+      into the ‘parents task’ field of the subtask.
+    with: |-
+      into the ‘Parent task’ field of the subtask.
+  - why: "Dates, priority and done ratio of parent tasks are configurable (calculated from subtasks by default); spent and estimated time are shown as totals, not summed into the parent's own values; priority comes from open subtasks; done ratio is weighted by estimated time."
+    source: "app/models/issue.rb (recalculate_attributes_for, total_estimated_hours), app/helpers/issues_helper.rb (issue_estimated_hours_details, issue_spent_hours_details), config/settings.yml (parent_issue_dates, parent_issue_priority, parent_issue_done_ratio), config/locales/en.yml (label_parent_task_attributes, label_parent_task_attributes_independent)"
+    replace: |-
+      - The parent task’s done percentage is the weighted average ratio of subtasks.
+      - The parent task’s start is the lowest date of subtasks.
+      - The parent task’s due date is the highest due date of subtasks.
+      - The parent task’s spent time is the sum of the subtasks’ spent times.
+      - The parent task’s estimation time is the sum of the subtasks’ estimation times.
+      - The parent task’s priority is the highest of the subtasks’ priorities.
+      - Subtasks are rescheduled when a ‘precedes’ relation is set on a parent task.
+    with: |-
+      - The parent task’s done percentage is the average ratio of subtasks, weighted by their estimated time (closed subtasks count as 100%).
+      - The parent task’s start is the lowest date of subtasks.
+      - The parent task’s due date is the highest due date of subtasks.
+      - The parent task’s spent time shows its own spent time and the total including the subtasks’ spent times.
+      - The parent task’s estimated time shows its own estimated time and the total including the subtasks’ estimated times.
+      - The parent task’s priority is the highest of the open subtasks’ priorities.
+      - Subtasks are rescheduled when a ‘precedes’ relation is set on a parent task.
+
+      The dates, priority and done percentage are calculated from subtasks by default; each can be set to “Independent of subtasks” in the **Parent tasks attributes** settings (Administration > Settings > Issue tracking).

@@ -14,6 +14,7 @@ translated_from_version: 5
 - チケットを担当しているユーザー
 - チケットを作成したユーザー(作成者)
 - バージョン
+- サブプロジェクト (プロジェクトにサブプロジェクトがあるときだけ)
 - カテゴリ
 
 ![](../../images/RedmineIssueSummary/issue_summary@2x.png)

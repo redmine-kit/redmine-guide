@@ -1,0 +1,15 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "A single Chinese character (Han: Chinese hanzi, Japanese kanji) is accepted as a token."
+    source: "lib/redmine/search.rb (Tokenizer#tokens)"
+    replace: |-
+      - Tokens must be at least 2 characters long
+    with: |-
+      - Tokens must be at least 2 characters long (a single Chinese/Japanese kanji character is accepted)
+  - why: "The number of results per page is the \"Search results per page\" setting (default 10)."
+    source: "app/controllers/search_controller.rb (index), config/settings.yml (search_results_per_page), config/locales/en.yml (setting_search_results_per_page)"
+    replace: |-
+      - Results are returned in paginated sets of 10
+    with: |-
+      - Results are paginated according to the **Search results per page** setting (default 10)

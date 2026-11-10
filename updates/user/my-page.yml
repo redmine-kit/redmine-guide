@@ -1,0 +1,33 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "The block is \"Reported issues\", and Redmine 7.0.3 also has the \"Updated issues\" and \"Activity\" blocks."
+    source: "lib/redmine/my_page.rb (CORE_BLOCKS, default_layout), config/locales/en.yml (label_reported_issues, label_updated_issues, label_activity)"
+    replace: |-
+      The following blocks are available. Only “Issues assigned to me” and “Reported issue” block are enabled by default.
+    with: |-
+      The following blocks are available, as well as the “Updated issues” and “Activity” blocks. Only “Issues assigned to me” and “Reported issues” block are enabled by default.
+  - why: "The issue blocks are issue lists with columns that can be changed."
+    source: "app/helpers/my_helper.rb (render_issuesassignedtome_block, render_issuesreportedbyme_block, render_issueswatched_block: default columns project, tracker, status, subject), app/views/my/blocks/_issues.erb"
+    replace: |-
+      which are assigned to the current user, showing the issue id’s, projects, trackers and subjects with the current issue status appended between braces.
+    with: |-
+      which are assigned to the current user, showing by default the project, tracker, status and subject of each issue (the columns can be changed with the block’s options).
+  - why: "The issue blocks are issue lists with columns that can be changed."
+    source: "app/helpers/my_helper.rb (render_issuesassignedtome_block, render_issuesreportedbyme_block, render_issueswatched_block: default columns project, tracker, status, subject), app/views/my/blocks/_issues.erb"
+    replace: |-
+      which are reported by the current user, showing the issue id’s, projects, trackers and subjects with the current issue status appended between braces.
+    with: |-
+      which are reported by the current user, showing by default the project, tracker, status and subject of each issue (the columns can be changed with the block’s options).
+  - why: "The issue blocks are issue lists with columns that can be changed."
+    source: "app/helpers/my_helper.rb (render_issuesassignedtome_block, render_issuesreportedbyme_block, render_issueswatched_block: default columns project, tracker, status, subject), app/views/my/blocks/_issues.erb"
+    replace: |-
+      which are watched by the current user, showing the issue id’s, projects, trackers and subjects with the current issue status appended between braces.
+    with: |-
+      which are watched by the current user, showing by default the project, tracker, status and subject of each issue (the columns can be changed with the block’s options).
+  - why: "The number of days of the Spent time block can be changed (1 to 365, default 7)."
+    source: "app/helpers/my_helper.rb (render_timelog_block), app/views/my/blocks/_timelog.html.erb"
+    replace: |-
+      of the spent time entries of the current user of the last seven days.
+    with: |-
+      of the spent time entries of the current user of the last seven days (the number of days can be changed with the block’s options).

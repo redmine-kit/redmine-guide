@@ -1,0 +1,93 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "Two-factor authentication can be disabled, optional, required for administrators or required in Redmine 7.0.3."
+    source: "app/views/settings/_authentication.html.erb (setting_select :twofa), config/locales/en.yml (label_disabled, label_optional, label_required_administrators, label_required_lower)"
+    replace: |-
+      (options: blocked/optional/required)
+    with: |-
+      (options: disabled/optional/required for administrators/required)
+  - why: "Notifications are sent as a separate email to each recipient, in the To field; Redmine 7.0.3 does not put watchers in CC."
+    source: "app/models/mailer.rb (deliver_issue_edit sends one mail per user; issue_edit: mail :to => user)"
+    replace: |-
+      Note that this will put your email address into the `CC` instead of the `To` field.
+    with: |-
+      Each recipient receives a separate email, with their address in the `To` field.
+  - why: "With this option, the selected projects notify of all events and the other projects notify like \"Only for things I watch or I'm involved in\"."
+    source: "app/models/project.rb (notified_users), app/models/user.rb (notify_about?), config/locales/en.yml (text_user_mail_option)"
+    replace: |-
+      <td>Same as “Only for things I watch or I’m involved in”, but limited to the selected projects.<br />
+    with: |-
+      <td>Receive all events on the selected projects. For unselected projects, same as “Only for things I watch or I’m involved in”.<br />
+  - why: "The option is \"Only for things I watch or I am assigned to\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (label_user_mail_option_only_assigned)"
+    replace: |-
+      <td><strong>Only for things I am assigned to</strong></td>
+    with: |-
+      <td><strong>Only for things I watch or I am assigned to</strong></td>
+  - why: "The option is \"Only for things I watch or I am the owner of\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (label_user_mail_option_only_owner)"
+    replace: |-
+      <td><strong>Only for things I am the owner of</strong></td>
+    with: |-
+      <td><strong>Only for things I watch or I am the owner of</strong></td>
+  - why: "Redmine 7.0.3 also has the option \"Only for things I watch\"."
+    source: "app/models/user.rb (MAIL_NOTIFICATION_OPTIONS, notify_about?), config/locales/en.yml (label_user_mail_option_only_my_watches)"
+    replace: |-
+      <tr>
+      <td><strong>No events</strong></td>
+    with: |-
+      <tr>
+      <td><strong>Only for things I watch</strong></td>
+      <td>Notify only for issues the user is watching</td>
+      </tr>
+      <tr>
+      <td><strong>No events</strong></td>
+  - why: "The high priority option adds notifications about high priority issues; it does not filter out other notifications."
+    source: "app/models/issue.rb (notified_users), app/views/users/_mail_notifications.html.erb, config/locales/en.yml (label_user_mail_notify_about_high_priority_issues_html)"
+    replace: |-
+      From version 4.2.0 you can choose whether you only want to receive notifications with high importance and thus filter out changes with low priority.
+    with: |-
+      From version 4.2.0 you can choose to also be notified about all issues with a high priority (or higher) in your projects, regardless of the option selected above.
+  - why: "The preference is \"Hide my email address\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_hide_mail)"
+    replace: |-
+      - **Do not show email address:**
+    with: |-
+      - **Hide my email address:**
+  - why: "The preference is \"Display comments\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_comments_sorting)"
+    replace: |-
+      - **Show comments:**
+    with: |-
+      - **Display comments:**
+  - why: "The preference is \"Warn me when leaving a page with unsaved text\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_warn_on_leaving_unsaved)"
+    replace: |-
+      - **Warn before leaving a page with unsecured text in the editor:**
+    with: |-
+      - **Warn me when leaving a page with unsaved text:**
+  - why: "The preference is \"Font used for text areas\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_textarea_font)"
+    replace: |-
+      - **Font for text areas:**
+    with: |-
+      - **Font used for text areas:**
+  - why: "The preference is \"Number of recently used projects in jump box\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_recently_used_projects)"
+    replace: |-
+      - **Number of recently used projects in the project jump box:**
+    with: |-
+      - **Number of recently used projects in jump box:**
+  - why: "The preference is \"Issue's history default tab\" in Redmine 7.0.3."
+    source: "config/locales/en.yml (field_history_default_tab)"
+    replace: |-
+      - **Standard tab for ticket history:**
+    with: |-
+      - **Issue's history default tab:**
+  - why: "The preference is \"Code highlighting toolbar languages\" in Redmine 7.0.3 (the old line also had zero-width spaces)."
+    source: "config/locales/en.yml (field_toolbar_language_options), app/models/user_preference.rb (DEFAULT_TOOLBAR_LANGUAGE_OPTIONS)"
+    replace: |-
+      - **Languages ​​for code highlighting, editor S toolbar**: Specifies which programming languages ​​are to be recognized and parsed accordingly.
+    with: |-
+      - **Code highlighting toolbar languages**: Specifies which programming languages are to be recognized and parsed accordingly.

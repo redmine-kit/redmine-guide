@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "The page is the Details tab of the project's Spent time menu; the Overview box that links to it is \"Time tracking\"."
+    source: "lib/redmine/preparation.rb (project_menu :time_entries), app/views/timelog/_date_range.html.erb, app/views/projects/show.html.erb, config/locales/en.yml (label_spent_time, label_details, label_report, label_time_tracking)"
+    replace: |-
+      The **Timelog Details** page is accessible from the Overview \> Spent Time \> Details menu.
+    with: |-
+      The **Timelog Details** page is the **Details** tab of the project’s **Spent time** menu (also linked from the **Time tracking** box of the Overview).

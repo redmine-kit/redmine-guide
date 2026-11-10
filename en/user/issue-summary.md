@@ -3,6 +3,7 @@ source: RedmineIssueSummary
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineIssueSummary
 source_version: 5
 source_updated_on: '2018-09-19T14:07:13Z'
+updated_for: 7.0.3
 ---
 
 # Issue summary
@@ -16,6 +17,7 @@ The issue summary provides a report of the amount of all the issues at a project
 - User to which the issue is assigned to
 - User who opened the issue (the author)
 - Version
+- Subproject (only when the project has subprojects)
 - Category
 
 ![](../../images/RedmineIssueSummary/issue_summary@2x.png)

@@ -3,6 +3,7 @@ source: RedmineIssueList
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineIssueList
 source_version: 27
 source_updated_on: '2017-12-24T13:57:08Z'
+updated_for: 7.0.3
 ---
 
 # The issue list
@@ -27,8 +28,8 @@ It is possible to select multiple values at once for a specified field by pressi
 
 Filters you built can be saved as custom queries. And you can apply the saved filters with a single click.
 
-Custom queries can be saved by clicking on **Save**.\
-A form lets you give it a name and select the columns that you want to be displayed on the issue list for this query (both standard and [custom fields](../admin/custom-fields.md) can be displayed). Checking the **public** attribute will make the query visible to everyone, otherwise only you will see the query.
+Custom queries can be saved by clicking on **Save custom query**.\
+A form lets you give it a name and select the columns that you want to be displayed on the issue list for this query (both standard and [custom fields](../admin/custom-fields.md) can be displayed). The **Visible** option lets you make the query visible **to me only**, **to any users** or **to these roles only**. This option needs the **Manage public queries** permission; without it, only you will see the query.
 
 ![](../../images/RedmineIssueList/ext_newquery@2x.png)
 
@@ -38,8 +39,8 @@ Once saved, the query is listed in the [sidebar](issue-list.md#Sidebar).
 
 ## Shortcut menu
 
-A context menu pops up when right clicking (ALT + Left click for Opera users) on an issue of the issue list.\
-This menu offers several shortcuts to quickly edit, reprioritize, reassign, copy, move or delete the issue.
+A context menu pops up when right clicking on an issue of the issue list, or when clicking the **Actions** (…) button at the end of its row.\
+This menu offers several shortcuts to quickly edit, reprioritize, reassign, copy or delete the issue.
 
 ![](../../images/RedmineIssueList/shortcut_menu@2x.png)
 
@@ -55,18 +56,9 @@ You can also use the little tick at the upper-left corner of the list to select/
 
 ## Sidebar
 
-![](../../images/RedmineIssueList/sidebar.jpg) The contextual sidebar on the right of the issue list provides links to several different things:
+![](../../images/RedmineIssueList/sidebar.jpg) The contextual sidebar on the right of the issue list provides links to the custom queries you can use:
 
-- a quicklink to the default issuelist without any other filters applied (thus only open issues), which is useful when you are looking at a custom query and want to get back to the default issue list
-- a link to the [issue summary](issue-summary.md), which is a report of all the issues at a project-level (in contrast to the [version overview](version.md) which provides an overview at version-level)
-- a link to the [change log](issue-changelog.md), which provides a project-level overview of all closed **and** targeted issues, sorted per target-versions
-- links to several levels of custom queries:
-  - global (cross-project) queries
-    - public queries
-    - private queries
-  - current-project’s queries
-    - public queries
-    - private queries
-- depending on the [project settings](project-settings.md) it also shows a planning section with links to:
-  - the [calendar](calendar.md)
-  - the [gantt](gantt.md) chart
+- **My custom queries**: the queries that are visible to you only
+- **Custom queries**: the queries that are visible to other users (to any users or to some roles), for the current project or for all projects
+
+The [issue summary](issue-summary.md), which is a report of all the issues at a project-level (in contrast to the [version overview](version.md) which provides an overview at version-level), is available as **Summary** in the actions menu (…) at the upper right of the issue list. Depending on the [project settings](project-settings.md), the [calendar](calendar.md) and the [gantt](gantt.md) chart are available as tabs in the project menu.

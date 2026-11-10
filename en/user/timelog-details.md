@@ -3,6 +3,7 @@ source: RedmineTimelogDetails
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineTimelogDetails
 source_version: 8
 source_updated_on: '2015-02-23T02:44:08Z'
+updated_for: 7.0.3
 ---
 
 # Redmine Timelog Details
@@ -11,7 +12,7 @@ source_updated_on: '2015-02-23T02:44:08Z'
 
 After building a set of time entries through Redmine the **Timelog Details** page can help show running totals of time against a project.
 
-The **Timelog Details** page is accessible from the Overview \> Spent Time \> Details menu.\
+The **Timelog Details** page is the **Details** tab of the project’s **Spent time** menu (also linked from the **Time tracking** box of the Overview).\
 Note that the timelog feature is available only when the project’s “Time tracking” module is activated.
 
 ## Searching

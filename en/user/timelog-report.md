@@ -3,6 +3,7 @@ source: RedmineTimelogReport
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineTimelogReport
 source_version: 7
 source_updated_on: '2015-02-23T02:45:00Z'
+updated_for: 7.0.3
 ---
 
 # Redmine Timelog Report
@@ -13,7 +14,7 @@ Time entries can be viewed at a [detailed level](timelog-details.md), but someti
 
 **Timelog Report** allows users to display their time grouped by categories.
 
-The **Timelog Report** page is accessible from the Overview \> Spent Time \> Report menu.\
+The **Timelog Report** page is the **Report** tab of the project’s **Spent time** menu (also linked from the **Time tracking** box of the Overview).\
 Note that the timelog feature is available only when the project’s “Time tracking” module is activated.
 
 ## Searching

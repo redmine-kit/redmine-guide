@@ -1,0 +1,12 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "The summary also has a Subproject block when the project has subprojects."
+    source: "app/views/reports/issue_report.html.erb, app/controllers/reports_controller.rb (issue_report_details: subproject), config/locales/en.yml (field_subproject)"
+    replace: |-
+      - Version
+      - Category
+    with: |-
+      - Version
+      - Subproject (only when the project has subprojects)
+      - Category

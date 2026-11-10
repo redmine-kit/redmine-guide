@@ -3,6 +3,7 @@ source: Getting_Started
 source_url: https://www.redmine.org/projects/redmine/wiki/Getting_Started
 source_version: 9
 source_updated_on: '2018-11-14T10:48:11Z'
+updated_for: 7.0.3
 ---
 
 # Getting Started
@@ -11,11 +12,11 @@ This is a guide to the basics of Redmine, written from a new user’s perspectiv
 
 ## Step One — Creating a project
 
-Before you let loose your development team, you’ll want to set up a project for them to work on. This can be done as the Admin user (username and password are both “admin”). Click on ***Projects*** (upper left), then on ***New Project*** (upper right). Fill in all the data. A description of some of the fields can be found [here](project-settings.md). The only box that might be confusing is the Project Identifier — this is used internally by Redmine (for URLs and other things).
+Before you let loose your development team, you’ll want to set up a project for them to work on. This can be done as the Admin user (username and password are both “admin”). Click on ***Projects*** (upper left), then on ***New project*** (upper right). Fill in all the data. A description of some of the fields can be found [here](project-settings.md). The only box that might be confusing is the Project Identifier — this is used internally by Redmine (for URLs and other things).
 
 ## Step Two — Get some Users
 
-You’ll want to get a few users registered, so that you can assign them to the project. Note that by default, you must activate users manually. So after a user fills out the registration page, you must log in as Admin, navigate to Administration:Users, and set the Filter to All. Activate users as necessary.
+You’ll want to get a few users registered, so that you can assign them to the project. Note that by default, you must activate users manually. So after a user fills out the registration page, you must log in as Admin, navigate to Administration:Users, and change the **Status** filter (which shows only active users by default) to list the registered users. Activate users as necessary.
 
 Once active, you can assign a user to a project. When you do this you can specify one or more ***roles*** that they play. The default options for roles are:
 
@@ -39,7 +40,7 @@ These roles affect what each user is allowed to do within each project. It shoul
 - Closed
 - Rejected
 
-By default, anyone who’s logged in can create an issue (Bug or Feature), but only Managers can Reject them or Reopen a closed issue.
+By default, anyone who’s logged in can create an issue (Bug, Feature or Support), but only Managers can Reject them or Reopen a closed issue.
 
 ### Resolved vs Closed?
 

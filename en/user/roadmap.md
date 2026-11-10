@@ -3,13 +3,14 @@ source: RedmineRoadmap
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineRoadmap
 source_version: 19
 source_updated_on: '2017-10-09T12:15:18Z'
+updated_for: 7.0.3
 ---
 
 # Roadmap
 
 The roadmap provides a highly-configurable, version-based view on the issue tracking system that helps planning and managing the development of a project. It also provides an in-depth (version-based) overview of the current state of your project.
 
-*Note: the [roadmap](roadmap.md) menu-item shows up in the project-menu only when the issue tracking [module](project-settings.md#Core-modules) is enabled for the project and at least one [version](project-settings.md#Versions) is configured in the [projects settings](project-settings.md).*
+*Note: the [roadmap](roadmap.md) menu-item shows up in the project-menu only when the issue tracking [module](project-settings.md#Core-modules) is enabled for the project and at least one [version](project-settings.md#Versions) is available to the project (configured in the [projects settings](project-settings.md) or shared with it from another project).*
 
 ## Overview
 

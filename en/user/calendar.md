@@ -3,24 +3,25 @@ source: RedmineCalendar
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineCalendar
 source_version: 9
 source_updated_on: '2024-03-17T18:38:02Z'
+updated_for: 7.0.3
 ---
 
 # Calendar
 
 ## Overview
 
-The calendar provides an overview of the current project as a monthly view. This view displays all the issues that have at least a start date and indicates their start date and (if available) their due date. The calendar also displays all versions which have a due date set.
+The calendar provides an overview of the current project as a monthly view. This view displays all the issues that have a start date or a due date in the displayed month and indicates their start date and/or their due date. The calendar also displays all versions which have a due date set.
 
 ## Access control
 
 ### Module activation
 
-The calendar module can be enabled or disabled per project via the project’s configuration tab. Within the configuration page go to the Modules tab and check or uncheck the Calendar checkbox to activate or disable the module.
+The calendar module can be enabled or disabled per project via the project’s configuration tab. Within the configuration page go to the **Modules** section of the **Project** tab and check or uncheck the **Calendar** checkbox to activate or disable the module.
 
 ### Roles and permissions
 
 Access to the module can be granted or denied at a role level.\
-To do this go to the administration page, follow the roles and permissions link, choose a role and check or uncheck the Calendar permissions checkbox.
+To do this go to the administration page, follow the roles and permissions link, choose a role and check or uncheck the **View calendar** permission checkbox.
 
 ## Filters
 

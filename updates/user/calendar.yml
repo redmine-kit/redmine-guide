@@ -1,0 +1,21 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "The calendar shows the issues whose start date or due date is in the displayed month, not only issues with a start date."
+    source: "app/controllers/calendars_controller.rb (show: start_date or due_date between startdt and enddt)"
+    replace: |-
+      This view displays all the issues that have at least a start date and indicates their start date and (if available) their due date.
+    with: |-
+      This view displays all the issues that have a start date or a due date in the displayed month and indicates their start date and/or their due date.
+  - why: "Modules are a section of the Project tab of the project settings in Redmine 7.0.3."
+    source: "app/helpers/projects_helper.rb (project_settings_tabs), app/views/projects/_form.html.erb (project_modules), config/locales/en.yml (label_module_plural, label_project, project_module_calendar)"
+    replace: |-
+      Within the configuration page go to the Modules tab and check or uncheck the Calendar checkbox to activate or disable the module.
+    with: |-
+      Within the configuration page go to the **Modules** section of the **Project** tab and check or uncheck the **Calendar** checkbox to activate or disable the module.
+  - why: "The permission is \"View calendar\"."
+    source: "lib/redmine/preparation.rb (project_module :calendar), config/locales/en.yml (permission_view_calendar)"
+    replace: |-
+      choose a role and check or uncheck the Calendar permissions checkbox.
+    with: |-
+      choose a role and check or uncheck the **View calendar** permission checkbox.

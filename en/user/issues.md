@@ -3,6 +3,7 @@ source: RedmineIssues
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineIssues
 source_version: 47
 source_updated_on: '2018-12-26T23:44:51Z'
+updated_for: 7.0.3
 ---
 
 # Issue Tracking
@@ -11,7 +12,7 @@ Issues are the heart of the Redmine business. An issue is bound to a project, ow
 
 ## Listing of the issue
 
-From a selected issue page, you can see the work in progress that is done to fix the issue. The messages are displayed in chronological order, (to change the order - see the setting in ‘My Accounts’). It is possible to quote others’ messages as well as to edit yours.
+From a selected issue page, you can see the work in progress that is done to fix the issue. The messages are displayed in chronological order, (to change the order - see the **Display comments** setting in ‘My account’). It is possible to quote others’ messages as well as to edit yours.
 
 ### Related issues
 
@@ -20,11 +21,11 @@ From a selected issue page, you can see the work in progress that is done to fix
 It is possible to link issues based on various relations. Current relations are:
 
 - **related to** - Just adds a link to the other issue.
-- **duplicates** - Links issues so that closing one, will close the other (e.g. closing A will close B)\
+- **Is duplicate of** - Links issues so that closing one, will close the other (e.g. closing A will close B) when the **Close duplicate issues automatically** setting is enabled (default)\
   For example, if issue B **duplicates** A:\
   - closing B will leave A open\
   - closing A will automatically close B
-- **duplicated by** - Reciprocal of *duplicates*.\
+- **Has duplicate** - Reciprocal of *Is duplicate of*.\
   For example, if issue A is **duplicated by** issue B:\
   - closing B will leave A open\
   - closing A will automatically close B
@@ -51,7 +52,7 @@ Administrators can define the [permissions](../admin/roles.md#Permissions) of us
 
 Display a list of all the users who are watching this issue. If the issue is updated, those users will be notified.
 
-If you are logged in as a project administrator, it is possible for you to add users to the watch list on this page. By clicking on the Add link, a drop-down menu with a **Add** button appear, which allows you to select which user to add to the watch list.
+If your role has the **Add watchers** permission, it is possible for you to add users to the watch list on this page. By clicking on the Add link, a dialog with a **Search for user:** field and a list of users appears; check the users to add to the watch list and click the **Add** button.
 
 ![](../../images/RedmineIssues/redmine-watchers.png)
 
@@ -59,7 +60,7 @@ Administrators can define the [permissions](../admin/roles.md#Permissions) of us
 
 ### Associated revisions
 
-If the administrator has defined [Referencing Issues Keywords](../admin/settings.md#Referencing-issues-in-commit-messages), a developer that uses such keyword(s) will see its commit message displayed on the issue page, under the Associated revisions block (generally to the right of the first reply).
+If the administrator has defined [Referencing Issues Keywords](../admin/settings.md#Referencing-issues-in-commit-messages), a developer that uses such keyword(s) will see its commit message displayed on the issue page, in the **Associated revisions** tab of the issue history.
 
 ![](../../images/RedmineIssues/redmine-associated-revision.png)
 
@@ -76,7 +77,7 @@ When creating a new issue, one of the most important items is the [tracker field
 
 (TODO: describe and upload a screen-shot of update panel)
 
-To edit the issue, Click *Update* link (having a pencil icon) at the top or the bottom of the issue page:
+To edit the issue, Click *Edit* link (having a pencil icon) at the top or the bottom of the issue page:
 
 ![](../../images/RedmineIssues/RedmineEditIssue_Update_Link.png)
 
@@ -87,7 +88,7 @@ Depending you your role permissions (see [roles and permissions](../admin/roles.
 In order to edit an existing issue, your role has to have the [Issue Tracking > Edit Issues](../admin/roles.md#Permissions) right in the [roles and permissions](../admin/roles.md) configuration.
 
 1.  Open the issue
-2.  Click *Update* link (having a pen icon) at the top or the bottom of the issue page.
+2.  Click *Edit* link (having a pen icon) at the top or the bottom of the issue page.
 
 The description of the issue has pencil icon right next to it that you can click to change the description.
 
@@ -95,7 +96,7 @@ The description of the issue has pencil icon right next to it that you can click
 
 ## Subtasks
 
-Sometimes it is useful to break huge tasks down into smaller subtasks to have more control over the task or to assign smaller parts of it to different users. One can create a subtask by either clicking the ‘Add’ link in the subtasks section of the parent task or by filling the parents task id into the ‘parents task’ field of the subtask. This is also possible after creation by [updating the task](issues.md#Updating-an-existing-issue). Because it’s just a normal task a subtask can also have subtasks. There is no limit in the depth of this stack.
+Sometimes it is useful to break huge tasks down into smaller subtasks to have more control over the task or to assign smaller parts of it to different users. One can create a subtask by either clicking the ‘Add’ link in the subtasks section of the parent task or by filling the parents task id into the ‘Parent task’ field of the subtask. This is also possible after creation by [updating the task](issues.md#Updating-an-existing-issue). Because it’s just a normal task a subtask can also have subtasks. There is no limit in the depth of this stack.
 
 Subtasks can belong to a different project than the parent task. This functionality is configurable in the [settings section](../admin/settings.md#Allow-cross-project-subtasks) in the administration menu. Defining subtasks requires the permission ‘Manage subtasks’ which can be set in the [roles and permissions section](../admin/roles.md) in the administration menu.\
 If a project gets copied the whole tree beneath the parent task is copied, too. When copying only the parent task one can choose if the subtasks should also be copied.
@@ -114,10 +115,12 @@ As long as the tasks share the same target version the tree structure is also vi
 Some properties of the parent task are influenced by the subtasks underneath.\
 The following relations exist between the parent task and its subtasks.
 
-- The parent task’s done percentage is the weighted average ratio of subtasks.
+- The parent task’s done percentage is the average ratio of subtasks, weighted by their estimated time (closed subtasks count as 100%).
 - The parent task’s start is the lowest date of subtasks.
 - The parent task’s due date is the highest due date of subtasks.
-- The parent task’s spent time is the sum of the subtasks’ spent times.
-- The parent task’s estimation time is the sum of the subtasks’ estimation times.
-- The parent task’s priority is the highest of the subtasks’ priorities.
+- The parent task’s spent time shows its own spent time and the total including the subtasks’ spent times.
+- The parent task’s estimated time shows its own estimated time and the total including the subtasks’ estimated times.
+- The parent task’s priority is the highest of the open subtasks’ priorities.
 - Subtasks are rescheduled when a ‘precedes’ relation is set on a parent task.
+
+The dates, priority and done percentage are calculated from subtasks by default; each can be set to “Independent of subtasks” in the **Parent tasks attributes** settings (Administration > Settings > Issue tracking).

@@ -3,6 +3,7 @@ source: RedmineAccounts
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineAccounts
 source_version: 16
 source_updated_on: '2025-12-04T13:28:08Z'
+updated_for: 7.0.3
 ---
 
 # User accounts
@@ -18,13 +19,13 @@ This area enables you to adapt your existing account to your needs.
 ### Information
 
 Here you can edit your user data: first name, last name, email address, display language.\
-From version 4.2.0 you can, if activated in the system configuration (options: blocked/optional/required), increase security by activating two-factor authentication for your access.
+From version 4.2.0 you can, if activated in the system configuration (options: disabled/optional/required for administrators/required), increase security by activating two-factor authentication for your access.
 
 ![](../../images/RedmineAccounts/myaccount-info.png)
 
 ### Mail notifications
 
-Users receive notifications for projects they’re a member of. It’s possible to receive notifications for an issue regardless the notification settings by watching it. Note that this will put your email address into the `CC` instead of the `To` field.\
+Users receive notifications for projects they’re a member of. It’s possible to receive notifications for an issue regardless the notification settings by watching it. Each recipient receives a separate email, with their address in the `To` field.\
 It’s possible to pick one of these options:
 
 <table>
@@ -35,7 +36,7 @@ It’s possible to pick one of these options:
 </tr>
 <tr>
 <td><strong>For any event on the selected projects only…</strong></td>
-<td>Same as “Only for things I watch or I’m involved in”, but limited to the selected projects.<br />
+<td>Receive all events on the selected projects. For unselected projects, same as “Only for things I watch or I’m involved in”.<br />
 <em>Note: The User has to be member of the project for it to show up in this list</em></td>
 </tr>
 <tr>
@@ -43,13 +44,17 @@ It’s possible to pick one of these options:
 <td>Notify if the event is for an issue is: created by the user, assigned to the user or previously assigned to the user</td>
 </tr>
 <tr>
-<td><strong>Only for things I am assigned to</strong></td>
+<td><strong>Only for things I watch or I am assigned to</strong></td>
 <td>Notify if the event is for an issue: assigned to the user or previously assigned to the user</td>
 </tr>
 <tr>
-<td><strong>Only for things I am the owner of</strong></td>
+<td><strong>Only for things I watch or I am the owner of</strong></td>
 <td>Notify if the event is for an issue created by the user<br />
 <em>Note: Even if a ticket was assigned to the user, they won’t get any notifications unless they’re watching the ticket.</em></td>
+</tr>
+<tr>
+<td><strong>Only for things I watch</strong></td>
+<td>Notify only for issues the user is watching</td>
 </tr>
 <tr>
 <td><strong>No events</strong></td>
@@ -58,7 +63,7 @@ It’s possible to pick one of these options:
 </tbody>
 </table>
 
-From version 4.2.0 you can choose whether you only want to receive notifications with high importance and thus filter out changes with low priority.\
+From version 4.2.0 you can choose to also be notified about all issues with a high priority (or higher) in your projects, regardless of the option selected above.\
 You can also tick that you do not want to be notified of your own changes.
 
 ![](../../images/RedmineAccounts/myaccount-notification.png)
@@ -75,14 +80,14 @@ In a window you can enter the other addresses, delete them and deactivate / acti
 
 Personal settings for display in Redmine.
 
-- **Do not show email address:** Hides the email address in the profile page so that other users cannot see it.
+- **Hide my email address:** Hides the email address in the profile page so that other users cannot see it.
 - **Time zone:** Here you can select a time zone that differs from the default setting in Redmine. The time zone controls the display of the date and time.
-- **Show comments:** Controls the chronological sorting of comments.
-- **Warn before leaving a page with unsecured text in the editor:** Security setting against data loss.
-- **Font for text areas:** Here you can force a predefined proportional or non-proportional font instead of the standard font.
-- **Number of recently used projects in the project jump box:** Here you can specify how many of your recently used projects are shown above the standard list. Default is 3.
-- **Standard tab for ticket history:** The detailed contents of the tickets are divided into tabs, here you can specify which tab should be opened when a ticket is called up. The default is notes.
-- **Languages ​​for code highlighting, editor S toolbar**: Specifies which programming languages ​​are to be recognized and parsed accordingly. Default: ` c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml `
+- **Display comments:** Controls the chronological sorting of comments.
+- **Warn me when leaving a page with unsaved text:** Security setting against data loss.
+- **Font used for text areas:** Here you can force a predefined proportional or non-proportional font instead of the standard font.
+- **Number of recently used projects in jump box:** Here you can specify how many of your recently used projects are shown above the standard list. Default is 3.
+- **Issue's history default tab:** The detailed contents of the tickets are divided into tabs, here you can specify which tab should be opened when a ticket is called up. The default is notes.
+- **Code highlighting toolbar languages**: Specifies which programming languages are to be recognized and parsed accordingly. Default: ` c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml `
 
 ![](../../images/RedmineAccounts/myaccount-preferences.png)
 

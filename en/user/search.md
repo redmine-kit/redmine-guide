@@ -3,6 +3,7 @@ source: RedmineSearch
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineSearch
 source_version: 7
 source_updated_on: '2017-11-24T02:52:16Z'
+updated_for: 7.0.3
 ---
 
 # RedmineSearch
@@ -57,5 +58,5 @@ source:/trunk/app/controllers/search_controller.rb
 A more advanced look at the controller explains some of the above behavior:
 
 - Only searches the first 5 tokens of a search
-- Tokens must be at least 2 characters long
-- Results are returned in paginated sets of 10
+- Tokens must be at least 2 characters long (a single Chinese/Japanese kanji character is accepted)
+- Results are paginated according to the **Search results per page** setting (default 10)

@@ -1,0 +1,21 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The link is "New project" in Redmine 7.0.3.
+    source: app/helpers/projects_helper.rb (render_project_action_links), config/locales/en.yml (label_project_new)
+    replace: |-
+      then on ***New Project*** (upper right)
+    with: |-
+      then on ***New project*** (upper right)
+  - why: The user list is a query with a Status filter that shows only active users by default.
+    source: app/models/user_query.rb (default filter status = active, user_statuses_values), app/views/users/index.html.erb
+    replace: |-
+      navigate to Administration:Users, and set the Filter to All. Activate users as necessary.
+    with: |-
+      navigate to Administration:Users, and change the **Status** filter (which shows only active users by default) to list the registered users. Activate users as necessary.
+  - why: The default trackers are Bug, Feature and Support, and the Non member role can add issues.
+    source: lib/redmine/default_data/loader.rb (Role.non_member permissions, trackers)
+    replace: |-
+      can create an issue (Bug or Feature)
+    with: |-
+      can create an issue (Bug, Feature or Support)

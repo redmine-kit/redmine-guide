@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "The Roadmap tab also shows when the project only has versions shared with it by other projects."
+    source: "lib/redmine/preparation.rb (project_menu :roadmap, shared_versions)"
+    replace: |-
+      and at least one [version](project-settings.md#Versions) is configured in the [projects settings](project-settings.md).*
+    with: |-
+      and at least one [version](project-settings.md#Versions) is available to the project (configured in the [projects settings](project-settings.md) or shared with it from another project).*

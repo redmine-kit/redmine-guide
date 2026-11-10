@@ -1,0 +1,27 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: "Time values are shown in decimal format only when the \"Time span format\" setting is 0.75; the default (0:45 h) shows hours and minutes."
+    source: "config/settings.yml (timespan_format: minutes), lib/redmine/i18n.rb (format_hours), app/views/settings/_display.html.erb, config/locales/en.yml (setting_timespan_format)"
+    replace: |-
+      you have to be aware that Redmine will also show accumulated time values in decimal time format.
+    with: |-
+      you have to be aware that, if the **Time span format** setting (Administration > Settings > Display) is set to the decimal format (0.75), Redmine will also show accumulated time values in decimal time format. With the default format (0:45 h), time values are shown in hours and minutes (e.g. 1:39).
+  - why: "The project overview box with the Details and Report links is \"Time tracking\"."
+    source: "app/views/projects/show.html.erb, config/locales/en.yml (label_time_tracking)"
+    replace: |-
+      (Project overview -\> Spent time -\> \[Details \| Report\])
+    with: |-
+      (Project overview -\> Time tracking -\> \[Details \| Report\])
+  - why: "The repository settings are in Administration > Settings > Repositories, and with \"Default\" the default time entry activity is used."
+    source: "app/views/settings/_repositories.html.erb, app/helpers/settings_helper.rb (administration_settings_tabs), app/models/project.rb (commit_logtime_activity), app/models/changeset.rb (log_time), app/models/time_entry.rb (initialize: default_activity_id)"
+    replace: |-
+      For this to work the **Enable time logging** option must be activated under *Application settings -\> Repositories* (refer to [documentation](../admin/settings.md#Enable-time-logging)). Also the activity under which spent time is logged must be explicitly choosen in the **Activity for logged time** option under *Application settings -\> Repositories* (refer to [documentation](../admin/settings.md#Activity-for-logged-time)) (the default activity ‘Default’ doesn’t work).
+    with: |-
+      For this to work the **Enable time logging** option must be activated under *Administration -\> Settings -\> Repositories* (refer to [documentation](../admin/settings.md#Enable-time-logging)). Also the activity under which spent time is logged is chosen in the **Activity for logged time** option under *Administration -\> Settings -\> Repositories* (refer to [documentation](../admin/settings.md#Activity-for-logged-time)) (with ‘Default’, the default time entry activity is used).
+  - why: "The repository settings are in Administration > Settings > Repositories."
+    source: "app/helpers/settings_helper.rb (administration_settings_tabs)"
+    replace: |-
+      “Referencing and fixing issues in commit messages” in *Application settings -\> Repositories*
+    with: |-
+      “Referencing and fixing issues in commit messages” in *Administration -\> Settings -\> Repositories*
