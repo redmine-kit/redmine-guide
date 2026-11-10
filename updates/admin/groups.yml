@@ -17,3 +17,27 @@ updates:
       - Projects
             - Click Add projects and check the projects
             - Check the roles
+  - why: "The figures of Redmine 7.0.3 show the dialog first and the tab second, so the captions of figures 1 and 2 are swapped to match them."
+    source: "screenshots/screens.rb (RedmineGroups/RedmineMemberToGroupNew, RedmineMembersToGroup), app/views/groups/_new_users_modal.html.erb"
+    replace: |-
+      Figure 1: Example Group Users tab
+    with: |-
+      Figure 1: Adding Members to a Group
+  - why: "The second figure shows the Users tab."
+    source: "screenshots/screens.rb (RedmineGroups/RedmineMembersToGroup), app/views/groups/_users.html.erb"
+    replace: |-
+      Figure 2: Adding Members to a Group
+    with: |-
+      Figure 2: Example Group Users tab
+  - why: "The third figure shows the \"Add projects\" dialog."
+    source: "screenshots/screens.rb (RedmineGroups/RedmineGroupToProjectNew), app/views/principal_memberships/_new_modal.html.erb"
+    replace: |-
+      Figure 3: Example Group Project tab
+    with: |-
+      Figure 3: Associating a group to a project (from the Group context)
+  - why: "The fourth figure shows the Projects tab."
+    source: "screenshots/screens.rb (RedmineGroups/RedmineGroupToProjects), app/views/principal_memberships/_index.html.erb"
+    replace: |-
+      Figure 4: Associating a group to a project (from the Group context)
+    with: |-
+      Figure 4: Example Group Project tab

@@ -38,13 +38,13 @@ translated_from_version: 6
       - 「追加」をクリックします
 
 ![](../../images/ja/RedmineGroups/RedmineMemberToGroupNew@2x.png)\
-図 1: グループの「ユーザー」タブの例
+図 1: グループへのメンバーの追加
 
 ![](../../images/ja/RedmineGroups/RedmineMembersToGroup@2x.png)\
-図 2: グループへのメンバーの追加
+図 2: グループの「ユーザー」タブの例
 
 ![](../../images/ja/RedmineGroups/RedmineGroupToProjectNew@2x.png)\
-図 3: グループの「プロジェクト」タブの例
+図 3: グループの画面からのプロジェクトの関連付け
 
 ![](../../images/ja/RedmineGroups/RedmineGroupToProjects@2x.png)\
-図 4: グループの画面からのプロジェクトの関連付け
+図 4: グループの「プロジェクト」タブの例
