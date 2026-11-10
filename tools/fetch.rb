@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 # Fetches the Redmine guide from www.redmine.org into a directory: the wiki's
-# Textile source of every page, the images the pages show, and manifest.json
+# Textile source of every page, the images the pages show (also those shown
+# from redmine.org by their URL), and manifest.json
 # (URL, page version, update time, fetch date). bin/fetch runs it into the
 # upstream branch, so that a diff shows what changed on redmine.org.
 #
@@ -76,6 +77,19 @@ def images(text)
   text.scan(/!(?:[<>=]|\{[^}]*\}\.?)*([^!\s(]+\.(?:png|jpe?g|gif|svg))(?:\([^)]*\))?!/i).flatten.uniq
 end
 
+# An image a page shows from redmine.org by its URL
+# (!http://www.redmine.org/attachments/7069/Redmine_logo.png!): its
+# attachment, fetched with the page's own images, so that the guide shows no
+# image from another site.
+EXTERNAL_IMAGE = %r{\Ahttps?://(?:www\.)?redmine\.org/attachments/(?:download/)?(\d+)/([^/?#]+)\z}
+
+def external_images(shown)
+  shown.filter_map do |src|
+    match = src.match(EXTERNAL_IMAGE)
+    match && { 'filename' => match[2], 'content_url' => "#{BASE}/attachments/download/#{match[1]}/#{match[2]}", 'source' => src }
+  end
+end
+
 pages = {}
 queue = [['Guide', 0, nil]]
 seen = {}
@@ -118,7 +132,8 @@ manifest = { 'source' => "#{BASE}/guide", 'fetched_at' => Time.now.utc.iso8601, 
 pages.sort.each do |title, page|
   File.write(File.join(OUT, 'pages', "#{title}.textile"), page['text'])
   shown = images(page['text'])
-  files = page['attachments'].select { |a| shown.include?(a['filename']) }
+  external = external_images(shown)
+  files = page['attachments'].select { |a| shown.include?(a['filename']) } + external
   files.each do |file|
     data = get(URI(file['content_url']).path)
     next unless data
@@ -128,6 +143,7 @@ pages.sort.each do |title, page|
     File.binwrite(File.join(dir, file['filename']), data)
   end
   manifest['pages'][title] = page.except('text', 'attachments').merge('images' => files.map { |f| f['filename'] })
+  manifest['pages'][title]['image_sources'] = external.to_h { |f| [f['filename'], f['source']] } if external.any?
 end
 File.write(File.join(OUT, 'manifest.json'), "#{JSON.pretty_generate(manifest)}\n")
 warn "#{pages.size} pages"
