@@ -126,3 +126,10 @@ messages:
   4283: { board: 3, subject: "Can a plugin modify the view of the projects page?" }
   4325: { board: 1, subject: "How to contribute" }
   59809: { board: 2, subject: "how to get at config variables from a plugin" }
+
+# The language of the code blocks that name none, for pages whose code is all
+# in one language (redmine.org shows them without highlighting).
+code_languages:
+  Rest_api_with_java: java
+  Rest_api_with_csharp: csharp
+  Rest_api_with_curl: sh

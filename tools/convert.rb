@@ -176,6 +176,15 @@ def link_issues(markdown)
     fence = !fence if line.lstrip.start_with?('```')
     next line if fence
 
+# The language of a page's code blocks that name none (guide.yml,
+# code_languages), for pages whose code is all in one language.
+CODE_LANGUAGES = config.fetch('code_languages', {}).freeze
+
+def with_code_language(markdown, page)
+  language = CODE_LANGUAGES[page]
+  language ? markdown.gsub(/^([ \t>]*`{3,})text$/) { "#{Regexp.last_match(1)}#{language}" } : markdown
+end
+
     line.split(/(`[^`]*`|<[^<>\n]+>|\]\([^)]*\))/).map do |part|
       next part if part.start_with?('`', '<', '](')
 
@@ -280,7 +289,7 @@ topics.each do |page, topic|
   markdown = literals.markdown(Textile.restore_hashes(Textile.footnotes(link_issues(markdown))))
   # The blocks kept out of pandoc come back after the issue links: code is
   # shown as it is.
-  markdown = held.restore_alerts(held.restore(Textile.compact_tables(markdown.gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, ''))))
+  markdown = with_code_language(held.restore_alerts(held.restore(Textile.compact_tables(markdown.gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, '')))), page)
   unless markdown.lstrip.start_with?('# ')
     markdown = markdown.sub(/\A\s*##\s+/, '# ') if markdown.lstrip.start_with?('## ')
     markdown = "# #{labels[page] || page.tr('_', ' ')}\n\n#{markdown}" unless markdown.lstrip.start_with?('# ')
