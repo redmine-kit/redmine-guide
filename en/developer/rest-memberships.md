@@ -3,6 +3,7 @@ source: Rest_Memberships
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Memberships
 source_version: 8
 source_updated_on: '2021-09-09T13:18:15Z'
+updated_for: 7.0.3
 ---
 
 # Project Memberships
@@ -155,5 +156,5 @@ Memberships inherited from a group membership can not be deleted. You must delet
 
 <u>Response</u>:
 
-- `200 OK`: membership was deleted
+- `204 No Content`: membership was deleted
 - `422 Unprocessable Entity`: membership was not deleted

@@ -5,6 +5,8 @@ translated_from_version: 1
 
 # 文書
 
+注: 文書の API は Redmine 7.0.3 では利用できません。
+
 ## 文書の一覧
 
 ```

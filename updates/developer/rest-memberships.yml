@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Deleting a membership returns 204 No Content in Redmine 7.0.3.
+    source: app/controllers/members_controller.rb (destroy, render_api_ok); app/controllers/application_controller.rb (render_api_ok, head :no_content)
+    replace: |-
+      - `200 OK`: membership was deleted
+    with: |-
+      - `204 No Content`: membership was deleted

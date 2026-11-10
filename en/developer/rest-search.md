@@ -3,6 +3,7 @@ source: Rest_Search
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Search
 source_version: 2
 source_updated_on: '2021-07-14T07:34:27Z'
+updated_for: 7.0.3
 ---
 
 # Search
@@ -23,7 +24,7 @@ Optional filters:
 
 - `scope`: search scope condition
   - ‘all’: search all projects
-  - ‘my_project’: search assigned projects
+  - ‘my_projects’: search assigned projects
   - ‘subprojects’: include subproject when project spacified
 - `all_words`: matched all query strings or not
 - `titles_only`: matched only title or not

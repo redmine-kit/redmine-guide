@@ -3,6 +3,7 @@ source: Rest_Users
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Users
 source_version: 30
 source_updated_on: '2023-12-08T19:32:04Z'
+updated_for: 7.0.3
 ---
 
 # Users
@@ -21,7 +22,7 @@ GET /users.xml
 
 Optional filters:
 
-- `status`: get only users with the given status. See [app/models/principal.rb](https://www.redmine.org/projects/redmine/repository/entry/trunk/app/models/principal.rb#L22-25) for a list of available statuses. Supply an empty value to match all users regardless of their status. Default is `1` (active users). Possible values are:
+- `status`: get only users with the given status. See [app/models/principal.rb](https://www.redmine.org/projects/redmine/repository/entry/trunk/app/models/principal.rb#L22-25) for a list of available statuses. Use `*` to match all users regardless of their status (you can also give several statuses separated by `|`, e.g. `1|3`). Default is `1` (active users). Possible values are:
   - `1`: Active (User can login and use their account)
   - `2`: Registered (User has registered but not yet confirmed their email address or was not yet activated by an administrator. User can not login)
   - `3`: Locked (User was once active and is now locked, User can not login)
@@ -142,10 +143,9 @@ Returns the details about user ID 3, and additional detail about the user’s pr
 
 If the user doing the request is not admin, it depends on the requested user:
 
-- if the user is not locked and is not admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `mail`, `created_on`
-- if the user is not locked and is admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `created_on`, `last_login_on`
+- if the user is visible and not locked, the endpoint returns a user object with the fields `login`, `firstname`, `lastname`, `mail` (unless hidden by the user's preference), `created_on`, `updated_on`, `last_login_on`, `passwd_changed_on`, `avatar_url` (if Gravatar is enabled)
 - if the user is locked, the endpoint returns 404 status code
-- if the user is the requesting user, you will also have the fields `login`, `api_key`
+- if the user is the requesting user, you will also have the fields `admin`, `twofa_scheme`, `api_key` (`api_key` is not returned when authenticated with OAuth)
 
 If the user doing the request is admin, a user object is always returned (blocked or not). It will have some more details:
 

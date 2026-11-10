@@ -3,6 +3,7 @@ source: Contribute
 source_url: https://www.redmine.org/projects/redmine/wiki/Contribute
 source_version: 53
 source_updated_on: '2015-12-18T14:11:59Z'
+updated_for: 7.0.3
 ---
 
 # Contribute
@@ -34,7 +35,7 @@ See the [Patch Queue](http://www.redmine.org/projects/redmine/issues?query_id=93
 
 ### Code documentation
 
-Documenting classes and methods using [RDoc](http://rdoc.sourceforge.net/) will help developers understand how Redmine works better. Once you have a copy of Redmine installed, running `rake doc` will generate the latest RDoc in `doc/app`. Patches for methods without documentation or with poor documentation would be helpful and an easy way to contribute. [List of documentation issues](http://www.redmine.org/projects/redmine/issues?query_id=84*)\*
+Documenting classes and methods using [RDoc](http://rdoc.sourceforge.net/) will help developers understand how Redmine works better. Once you have a copy of Redmine installed, running `bin/rake yard` will generate the latest documentation (YARD) in `doc/app`. Patches for methods without documentation or with poor documentation would be helpful and an easy way to contribute. [List of documentation issues](http://www.redmine.org/projects/redmine/issues?query_id=84*)\*
 
 ### Development
 

@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Time entry comments can be up to 1024 characters in Redmine 7.0.3.
+    source: app/models/time_entry.rb (validates_length_of :comments, :maximum => 1024)
+    replace: |-
+      short description for the entry (255 characters max)
+    with: |-
+      short description for the entry (1024 characters max)

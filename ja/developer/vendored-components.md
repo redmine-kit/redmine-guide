@@ -17,6 +17,122 @@ translated_from_version: 8
 
 このページでは、Redmine が依存し、Redmine と一緒に配布している、本体に同梱のサードパーティのコンポーネントを説明します。
 
+## Redmine 7.0.3 (source:/tags/7.0.3)
+
+<table>
+<thead>
+<tr>
+<th>名前</th>
+<th>バージョン</th>
+<th>場所<sup>1</sup></th>
+<th>パッチ適用</th>
+<th>圧縮</th>
+<th>元のソースのメンテナンス</th>
+<th>アップストリームのサイト</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="7" style="text-align: center;"><strong>Ruby のライブラリ</strong></td>
+</tr>
+<tr>
+<td><code>acts_as_tree</code></td>
+<td>2007-09-11</td>
+<td>source:/tags/7.0.3/lib/plugins/acts_as_tree</td>
+<td>はい</td>
+<td>該当なし</td>
+<td>いいえ<sup>3</sup></td>
+<td><details><summary>URL...</summary>https://github.com/rails/acts_as_tree<br />https://github.com/amerine/acts_as_tree (https://rubygems.org/gems/acts_as_tree)</details></td>
+</tr>
+<tr>
+<td><code>gravatar</code></td>
+<td>2009-09-17</td>
+<td>source:/tags/7.0.3/lib/plugins/gravatar</td>
+<td>はい</td>
+<td>該当なし</td>
+<td>いいえ<sup>3</sup></td>
+<td><details><summary>URL...</summary>https://github.com/woods/gravatar-plugin</details></td>
+</tr>
+<tr>
+<td><code>Diff</code> [<code>string_array_diff</code>]</td>
+<td>0.3</td>
+<td>source:/tags/7.0.3/lib/redmine/string_array_diff</td>
+<td>はい</td>
+<td>該当なし</td>
+<td>いいえ<sup>3</sup></td>
+<td><details><summary>URL...</summary>http://web.archive.org/web/20140421214841/http://users.cybercity.dk/~dsl8950/ruby/diff.html<br />https://github.com/pmarreck/diff</details></td>
+</tr>
+<tr>
+<td><code>redcloth3</code></td>
+<td>3.0.4</td>
+<td>source:/tags/7.0.3/lib/redmine/wiki_formatting/textile/redcloth3.rb</td>
+<td>はい</td>
+<td>該当なし</td>
+<td>いいえ<sup>4</sup></td>
+<td><details><summary>URL...</summary>https://github.com/jgarber/redcloth (https://rubygems.org/gems/RedCloth)</details></td>
+</tr>
+<tr>
+<td colspan="7" style="text-align: center;"><strong>JavaScript のライブラリ</strong></td>
+</tr>
+<tr>
+<td><code>jstoolbar</code></td>
+<td>&lt;= 2006-11-05</td>
+<td>source:/tags/7.0.3/app/assets/javascripts/jstoolbar</td>
+<td>はい</td>
+<td>いいえ</td>
+<td>いいえ</td>
+<td><details><summary>URL...</summary>https://dotclear.org/</details></td>
+</tr>
+<tr>
+<td><code>Chart.js</code></td>
+<td>4.5.1</td>
+<td>source:/tags/7.0.3/vendor/javascript/chart.min.js</td>
+<td>いいえ</td>
+<td>はい</td>
+<td>はい</td>
+<td><details><summary>URL...</summary>https://github.com/chartjs/Chart.js</details></td>
+</tr>
+<tr>
+<td><code>jQuery</code> / <code>jQuery-UI</code></td>
+<td>3.7.1 / 1.13.3</td>
+<td>source:/tags/7.0.3/app/assets/javascripts/jquery-3.7.1-ui-1.13.3.js</td>
+<td>いいえ<sup>2</sup></td>
+<td>はい / はい</td>
+<td>はい</td>
+<td><details><summary>URL...</summary>https://github.com/jquery/jquery<br />https://github.com/jquery/jquery-ui</details></td>
+</tr>
+<tr>
+<td><code>tablesort</code> / <code>tablesort-number</code></td>
+<td>5.7.0</td>
+<td>source:/tags/7.0.3/vendor/javascript/tablesort.min.js<br />source:/tags/7.0.3/vendor/javascript/tablesort.number.min.js</td>
+<td>いいえ</td>
+<td>はい</td>
+<td>はい</td>
+<td><details><summary>URL...</summary>https://github.com/tristen/tablesort</details></td>
+</tr>
+<tr>
+<td><code>Tribute</code></td>
+<td>5.1.3</td>
+<td>source:/tags/7.0.3/app/assets/javascripts/tribute-5.1.3.min.js<br />source:/tags/7.0.3/app/assets/javascripts/tribute.min.js.map</td>
+<td>いいえ</td>
+<td>はい</td>
+<td>はい</td>
+<td><details><summary>URL...</summary>https://github.com/zurb/tribute</details></td>
+</tr>
+<tr>
+<td><code>Turndown</code></td>
+<td>7.2.0</td>
+<td>source:/tags/7.0.3/vendor/javascript/turndown.js</td>
+<td>いいえ</td>
+<td>はい</td>
+<td>はい</td>
+<td><details><summary>URL...</summary>https://github.com/mixmark-io/turndown</details></td>
+</tr>
+</tbody>
+</table>
+
+Redmine 7.0.3 では、`rails-ujs` は jQuery と結合されなくなり、Rails (actionview) から読み込まれます。Raphael.js は Redmine 7.0.0 で削除されました。同梱しているサードパーティのコンポーネントのライセンスファイルは `doc/licenses` にあります。
+
 ## r21879 時点の Redmine trunk(source:/trunk@21879)
 
 <table>

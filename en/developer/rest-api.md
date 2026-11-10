@@ -3,6 +3,7 @@ source: Rest_api
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_api
 source_version: 106
 source_updated_on: '2026-09-16T08:48:49Z'
+updated_for: 7.0.3
 ---
 
 # Redmine API
@@ -22,7 +23,7 @@ Redmine exposes some of its data through a REST API. This API provides access an
 | [Issue Relations](rest-issue-relations.md) | Alpha |  | 1.3 |
 | [Versions](rest-versions.md) | Alpha |  | 1.3 |
 | [Wiki Pages](rest-wiki-pages.md) | Alpha |  | 2.2 |
-| [Documents](rest-documents.md) |  |  | 7.1 |
+| [Documents](rest-documents.md) |  | Not available in Redmine 7.0.3 | 7.1 |
 | [Queries](rest-queries.md) | Alpha |  | 1.3 |
 | [Attachments](rest-attachments.md) | Beta | Adding attachments via the API added in 1.4 | 1.3 |
 | [Issue Statuses](rest-issue-statuses.md) | Alpha | Provides the list of all statuses | 1.3 |
@@ -58,13 +59,14 @@ When creating or updating a remote element, the `Content-Type` of the request **
 
 ### Authentication
 
-Most of the time, the API requires authentication. To enable the API-style authentication, you have to check **Enable REST API** in Administration -\> Settings -\> API. Then, authentication can be done in 2 different ways:
+Most of the time, the API requires authentication. To enable the API-style authentication, you have to check **Enable REST web service** in Administration -\> Settings -\> Integrations. Then, authentication can be done in 3 different ways:
 
-- using your regular login/password via HTTP Basic authentication.
+- using your regular login/password via HTTP Basic authentication (not allowed for users with two-factor authentication enabled, since Redmine 5.0.0; use the API key instead).
 - using your API key which is a handy way to avoid putting a password in a script. The API key may be attached to each request in one of the following way:
   - passed in as a “key” parameter
   - passed in as a username with a random password via HTTP Basic authentication
   - passed in as a “X-Redmine-API-Key” HTTP header (added in Redmine 1.1.0)
+- using an OAuth2 access token (`Authorization: Bearer <token>` header) issued to an application registered in Administration -\> Applications. Only the authorization code flow is supported (added in Redmine 6.1.0).
 
 You can find your API key on your account page ( /my/account ) when logged in, on the right-hand pane of the default layout.
 
@@ -233,7 +235,7 @@ First, you need to upload each file with a POST request to `/uploads.xml` (or `/
 
 Then you can use this token to attach your uploaded file to a new or an existing issue.
 
-Note: as of Redmine version:7.1.0, the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead. The attribute has always been optional, so removing it from your requests is safe with any version of Redmine.
+Note: as of Redmine version:7.1.0, the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead. Redmine 7.0.3 still uses the attribute. The attribute has always been optional, so removing it from your requests is safe with any version of Redmine.
 
 <u>XML Example</u>
 
@@ -358,7 +360,7 @@ When trying to create or update an object with invalid or missing attribute para
 
 ### JSONP Support
 
-Redmine 2.1.0+ API supports [JSONP](http://en.wikipedia.org/wiki/JSONP) to request data from a Redmine server in a different domain (say, with JQuery). The callback can be passed using the `callback` or `jsonp` parameter. As of Redmine 2.3.0, JSONP support is optional and disabled by default, you can enable it by checking **Enable JSONP support** in Administration -\> Settings -\> API.
+Redmine 2.1.0+ API supports [JSONP](http://en.wikipedia.org/wiki/JSONP) to request data from a Redmine server in a different domain (say, with JQuery). The callback can be passed using the `callback` or `jsonp` parameter. As of Redmine 2.3.0, JSONP support is optional and disabled by default, you can enable it by checking **Enable JSONP support** in Administration -\> Settings -\> Integrations.
 
 Example:
 
@@ -390,6 +392,8 @@ Redmine no longer uses the content type sent by the client when a file is upload
 - the `content_type` query parameter of `POST /uploads`
 
 Neither returns an error. The value is simply ignored, so existing clients keep working. Only the stored content type changes.
+
+This change is not in Redmine 7.0.3, which still uses the content type sent by the client.
 
 ### 2012-01-29: Multiselect custom fields (r8721, version:1.4.0)
 

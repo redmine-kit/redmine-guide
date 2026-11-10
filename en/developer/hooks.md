@@ -3,6 +3,7 @@ source: Hooks
 source_url: https://www.redmine.org/projects/redmine/wiki/Hooks
 source_version: 14
 source_updated_on: '2013-11-26T22:58:29Z'
+updated_for: 7.0.3
 ---
 
 # Redmine plugin hooks
@@ -15,7 +16,7 @@ Additional methods to extend or replace Redmine code are:
 
 - [Adding new methods](plugin-internals.md#Adding-a-new-method)
 - [Using rails callbacks](plugin-internals.md#Using-Rails-callbacks-in-Redmine-plugins)
-- [Wrapping an existing method](plugin-internals.md#Wrapping-an-existing-method) using `alias_method_chain`
+- [Wrapping an existing method](plugin-internals.md#Wrapping-an-existing-method) using `alias_method_chain` (only in Redmine versions below 4.0.0; in Redmine 7.0.3, use `Module#prepend`)
 
 ## Fundamentals
 
@@ -68,7 +69,7 @@ As you can see, the hook function can change the `issue` object in-place. It is 
 
 ### Model hooks
 
-There are very few model hooks in Redmine. Most extensions in model code can be done by adding new methods or encapsulating existing ones by creatively applying the [alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) pattern. The hooks can be used in the same way as the controller hooks.
+There are very few model hooks in Redmine. Most extensions in model code can be done by adding new methods or encapsulating existing ones by creatively applying the [alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) pattern (only in Redmine versions below 4.0.0; in Redmine 7.0.3, use `Module#prepend`). The hooks can be used in the same way as the controller hooks.
 
 ## Register functions to hooks
 
@@ -82,12 +83,12 @@ The following example is going to hook a function into the hook `view_issues_for
     module MyPlugin
       class Hooks < Redmine::Hook::ViewListener
         # This just renders the partial in
-        # app/views/hooks/my_plugin/_view_issues_form_details_bottom.rhtml
+        # app/views/hooks/my_plugin/_view_issues_form_details_bottom.html.erb
         # The contents of the context hash is made available as local variables to the partial.
         #
         # Additional context fields
         #   :issue  => the issue this is edited
-        #   :f      => the form object to create additional fields
+        #   :form   => the form object to create additional fields
         render_on :view_issues_form_details_bottom,
                   :partial => 'hooks/my_plugin/view_issues_form_details_bottom'
       end
@@ -127,7 +128,6 @@ end
       [...]
     end
     ```
-
 
 ### Controller and Model hooks
 

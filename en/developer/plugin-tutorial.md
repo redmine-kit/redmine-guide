@@ -3,6 +3,7 @@ source: Plugin_Tutorial
 source_url: https://www.redmine.org/projects/redmine/wiki/Plugin_Tutorial
 source_version: 119
 source_updated_on: '2023-12-01T05:27:04Z'
+updated_for: 7.0.3
 ---
 
 # Plugin Tutorial
@@ -216,7 +217,7 @@ So let’s add a new item to the application menu.
 Edit `plugins/polls/init.rb` at the root of your plugin directory to add the following line at the end of the plugin registration block:
 
 ```ruby
-Redmine::Plugin.register :redmine_polls do
+Redmine::Plugin.register :polls do
   [...]
 
   menu :application_menu, :polls, { controller: 'polls', action: 'index' }, caption: 'Polls'
@@ -233,7 +234,7 @@ There are five menus that you can extend:
 - `:account_menu` - the top right menu with sign in/sign out links
 - `:application_menu` - the main menu displayed when the user is not inside a project
 - `:project_menu` - the main menu displayed when the user is inside a project
-- `:admin_menu` - the menu displayed on the Administration page (can only insert after Settings, before Plugins)
+- `:admin_menu` - the menu displayed on the Administration page (items are inserted before Plugins by default)
 
 Available options are:
 
@@ -247,7 +248,7 @@ Available options are:
 - `:first`, `:last` - if set to true, the item will stay at the beginning/end of the menu (eg. `last: true`)
 - `:html` - a hash of html options that are passed to `link_to` when rendering the menu item
 
-In our example, we’ve added an item to the application menu which is empty by default.\
+In our example, we’ve added an item to the application menu (the menu that already contains Projects, Activity, Issues, etc.).\
 Restart the application and go to http://localhost:3000/projects:
 
 ![](../../images/Plugin_Tutorial/application_menu.png)
@@ -260,7 +261,7 @@ Now, let’s consider that the polls are defined at project level (even if it’
 Open `init.rb` and replace the line that was added just before with these 2 lines:
 
 ```ruby
-Redmine::Plugin.register :redmine_polls do
+Redmine::Plugin.register :polls do
   [...]
 
   permission :polls, { polls: [:index, :vote] }, public: true
@@ -282,7 +283,6 @@ def index
   @project = Project.find(params[:project_id])
   @polls = Poll.all # @project.polls
 end
-
 
 def vote
   poll = Poll.find(params[:id])
@@ -325,7 +325,7 @@ Now, you should see the project menu when viewing the polls:
 To remove an item in a menu, you can use `delete_menu_item` like in this example:
 
 ```ruby
-Redmine::Plugin.register :redmine_polls do
+Redmine::Plugin.register :polls do
   [...]
 
   delete_menu_item :top_menu, :my_page
@@ -430,7 +430,7 @@ a.vote.yes { color: green; }
 a.vote.no  { color: red; }
 ```
 
-When starting the application, plugin assets are automatically copied to `public/plugin_assets/polls/` to make them available through your web server. So any change to your plugin stylesheets or javascripts needs an application restart.
+Plugin assets are served through the asset pipeline (Propshaft) under the `plugin_assets/polls/` path. In production, Redmine compiles the assets into `public/assets` when the application starts if it detects changes (you can also run `bin/rails assets:precompile`), so any change to your plugin stylesheets or javascripts needs an application restart.
 
 The introduced classes need to be used by the links. So change in file `plugins/polls/app/views/polls/index.html.erb` the link declarations to:
 
@@ -571,7 +571,7 @@ class PollsControllerTest < ActionController::TestCase
     get :index, params: { project_id: 1 }
 
     assert_response :success
-    assert_template 'index'
+    assert_select 'h2', :text => 'Polls'
   end
 end
 ```

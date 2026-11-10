@@ -3,6 +3,7 @@ source: Rest_Issues
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Issues
 source_version: 72
 source_updated_on: '2026-08-17T01:25:07Z'
+updated_for: 7.0.3
 ---
 
 # Issues
@@ -49,7 +50,6 @@ NB: operators containing “\>”, “\<” or “=” should be hex-encoded so 
     GET /issues.xml?status_id=*
     GET /issues.xml?cf_1=abcdef
     GET /issues.xml?sort=category:desc,updated_on
-
 
     Paging example:
     GET /issues.xml?offset=0&limit=100
@@ -131,7 +131,7 @@ NB: operators containing “\>”, “\<” or “=” should be hex-encoded so 
     - the existence of any open subtask(s);
     - the existence of any open blocking issue(s);
     - the existence of a closed parent issue.
-  - `reactions` - Since 7.1.0, Returns the users who reacted to the issue. Combined with `journals`, the reactions on each journal are returned as well. Only the users that are visible to the requesting user are returned. Nothing is returned if the reactions feature is disabled.
+  - `reactions` - Since 7.1.0, Returns the users who reacted to the issue. Combined with `journals`, the reactions on each journal are returned as well. Only the users that are visible to the requesting user are returned. Nothing is returned if the reactions feature is disabled. Not available in Redmine 7.0.3.
 
 <u>Examples</u>:
 

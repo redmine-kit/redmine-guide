@@ -1,0 +1,33 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Engines is no longer used; Redmine::Plugin.register prepends the plugin's app/views directory to the view paths.
+    source: lib/redmine/plugin.rb (register)
+    replace: |-
+      (because of Redmine’s patch to Engines)
+    with: |-
+      (because `Redmine::Plugin.register` prepends the plugin's views directory)
+  - why: Plugins are in the plugins directory, not vendor/plugins.
+    source: config/application.rb (redmine_plugins_directory), lib/redmine/plugin.rb (register)
+    replace: |-
+      3.  Rails finds a views directory in *../vendor/plugins/my_plugin/app/views*
+    with: |-
+      3.  Rails finds a views directory in *../plugins/my_plugin/app/views*
+  - why: Plugins are in the plugins directory, not vendor/plugins.
+    source: config/application.rb (redmine_plugins_directory)
+    replace: |-
+      add a file to *../vendor/plugins/my_plugin/app/views/projects/index.html.erb*.
+    with: |-
+      add a file to *../plugins/my_plugin/app/views/projects/index.html.erb*.
+  - why: Plugins are in the plugins directory; My page blocks of plugins are partials (app/views/my/blocks/_<name>.erb or .html.erb), and plugin locales are loaded from config/locales.
+    source: lib/redmine/my_page.rb (additional_blocks), lib/redmine/plugin.rb (register)
+    replace: |-
+      This entry must have the same name as the “my site” block filename, e.g. redmine/vendor/plugins/\<myplugin_folder\>/app/views/my/blocks/\<myblocks_view_file_name\>.erb. So you need to add a line “\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>” in your locale, e.g redmine/vendor/plugins/\<myplugin_folder\>/config/locale/en.yml.
+    with: |-
+      This entry must have the same name as the “my site” block partial name, e.g. redmine/plugins/\<myplugin_folder\>/app/views/my/blocks/\_\<myblocks_view_file_name\>.html.erb. So you need to add a line “\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>” in your locale, e.g redmine/plugins/\<myplugin_folder\>/config/locales/en.yml.
+  - why: Without a translation, the label is the humanized block name.
+    source: lib/redmine/my_page.rb (block_options)
+    replace: |-
+      If this string is not defined in locale file, alyways the filename \<myblocks_view_file_name\> without extension is made for label in drop-down.
+    with: |-
+      If this string is not defined in locale file, the humanized filename \<myblocks_view_file_name\> (without the leading underscore and extension) is used as the label in drop-down.

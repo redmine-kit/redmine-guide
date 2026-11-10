@@ -3,6 +3,7 @@ source: Rest_TimeEntries
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_TimeEntries
 source_version: 15
 source_updated_on: '2021-09-09T13:19:49Z'
+updated_for: 7.0.3
 ---
 
 # Rest TimeEntries
@@ -59,7 +60,7 @@ Creates a time entry.
   - `spent_on`: the date the time was spent (default to the current date); format is e.g. `2020-12-24`
   - `hours` (required): the number of spent hours
   - `activity_id`: the id of the time activity. This parameter is required unless a default activity is defined in Redmine.
-  - `comments`: short description for the entry (255 characters max)
+  - `comments`: short description for the entry (1024 characters max)
   - `user_id`: user id to be specified in need of posting time on behalf of another user
 
 <u>Response</u>:

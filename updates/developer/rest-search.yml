@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The scope value for the user's projects is `my_projects` in Redmine 7.0.3.
+    source: app/controllers/search_controller.rb (index, params[:scope])
+    replace: |2-
+        - ‘my_project’: search assigned projects
+    with: |2-
+        - ‘my_projects’: search assigned projects

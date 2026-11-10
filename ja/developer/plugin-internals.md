@@ -24,11 +24,11 @@ Redmine では、ビューは上書きできますが、コントローラーや
 
 ### ビュー
 
-ビューの読み込みもほとんど同じですが、小さな違いが 1 つあります(Redmine が Engines に当てているパッチのためです)。
+ビューの読み込みもほとんど同じですが、小さな違いが 1 つあります (`Redmine::Plugin.register` がプラグインのビューのディレクトリを先頭に追加するためです)。
 
 1.  Rails が起動し、フレームワークをすべて読み込みます
 2.  Rails がプラグインのコードを読み込み始めます
-3.  Rails が *../vendor/plugins/my_plugin/app/views* にビューのディレクトリを見つけ、ビューのパスの**先頭に追加**します
+3.  Rails が *../plugins/my_plugin/app/views* にビューのディレクトリを見つけ、ビューのパスの**先頭に追加**します
 4.  Rails がほかのプラグインをすべて読み込みます
 5.  Rails が *../app* からアプリケーションを読み込みます
 6.  Rails が読み込みを終え、リクエストを処理します
@@ -38,7 +38,7 @@ Redmine では、ビューは上書きできますが、コントローラーや
 
 モデルとコントローラーは Ruby の方法で(モジュールを include して)簡単に拡張できるため、Redmine は本体のモデルやコントローラーを上書きするための API を用意するべきではなく、実際に用意していません。一方、ビューは(Rails の仕組みのせいで)扱いが難しいため、上書きのための API がはるかに役に立ちます(そのため Redmine に実装されています)。
 
-Redmine 本体の既存のビューを上書きするには、*../app/views/* にあるものとまったく同じ名前のビューのファイルを作成するだけで、Redmine がそれを使います。たとえば、プロジェクトの一覧のページを上書きするには、*../vendor/plugins/my_plugin/app/views/projects/index.html.erb* にファイルを追加します。
+Redmine 本体の既存のビューを上書きするには、*../app/views/* にあるものとまったく同じ名前のビューのファイルを作成するだけで、Redmine がそれを使います。たとえば、プロジェクトの一覧のページを上書きするには、*../plugins/my_plugin/app/views/projects/index.html.erb* にファイルを追加します。
 
 ## Redmine 本体の拡張
 
@@ -127,9 +127,9 @@ end
 
 ### FAQ
 
-- 自分のブロックのドロップダウンの選択肢が翻訳されないのはなぜですか? ドロップダウンの項目の名前は、慣例として、プラグインのロケールファイルの項目から作られます。この項目は、「マイページ」のブロックのファイル名と同じ名前にする必要があります。たとえば redmine/vendor/plugins/\<myplugin_folder\>/app/views/my/blocks/\<myblocks_view_file_name\>.erb です。そのため、ロケールファイル(たとえば redmine/vendor/plugins/\<myplugin_folder\>/config/locale/en.yml)に「\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>」という行を追加する必要があります。
+- 自分のブロックのドロップダウンの選択肢が翻訳されないのはなぜですか? ドロップダウンの項目の名前は、慣例として、プラグインのロケールファイルの項目から作られます。この項目は、「マイページ」のブロックのパーシャルの名前と同じ名前にする必要があります。たとえば redmine/plugins/\<myplugin_folder\>/app/views/my/blocks/\_\<myblocks_view_file_name\>.html.erb です。そのため、ロケールファイル (たとえば redmine/plugins/\<myplugin_folder\>/config/locales/en.yml) に「\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>」という行を追加する必要があります。
 
-この文字列がロケールファイルにない場合は、拡張子を除いたファイル名 \<myblocks_view_file_name\> が、常にドロップダウンのラベルになります。
+この文字列がロケールファイルにない場合は、先頭のアンダースコアと拡張子を除いたファイル名 \<myblocks_view_file_name\> を humanize した文字列が、ドロップダウンのラベルになります。
 
 ## 参考
 

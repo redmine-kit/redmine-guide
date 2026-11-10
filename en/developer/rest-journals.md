@@ -3,6 +3,7 @@ source: Rest_Journals
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Journals
 source_version: 1
 source_updated_on: '2026-06-06T09:22:55Z'
+updated_for: 7.0.3
 ---
 
 # Journals
@@ -121,11 +122,11 @@ The `private_notes` attribute can be updated by users who have permission to set
 
 ## Deleting a journal
 
-Journals cannot be deleted with the `DELETE` method. To delete a journal, update it with an empty `notes` value.
+Journals cannot be deleted through the API (there is no `DELETE` method). You can clear the notes of a journal by updating it with an empty `notes` value.
 
 PUT /journals/\[id\].\[format\]
 
-If the journal has no details and `notes` is set to an empty value, the journal is deleted.
+If `notes` is set to an empty value, the notes are cleared but the journal itself is kept, even if it has no details.
 
 <u>Examples</u>:
 

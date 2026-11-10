@@ -3,9 +3,12 @@ source: Rest_Documents
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Documents
 source_version: 1
 source_updated_on: '2026-09-16T09:09:33Z'
+updated_for: 7.0.3
 ---
 
 # Rest Documents
+
+Note: the Documents API is not available in Redmine 7.0.3.
 
 ## Listing documents
 

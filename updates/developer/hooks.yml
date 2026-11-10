@@ -1,0 +1,27 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 runs on Rails 8.1, which no longer has alias_method_chain; Redmine patches methods with Module#prepend.
+    source: Gemfile (rails 8.1.4), config/initializers/10-patches.rb:97, 108, 127
+    replace: |-
+      - [Wrapping an existing method](plugin-internals.md#Wrapping-an-existing-method) using `alias_method_chain`
+    with: |-
+      - [Wrapping an existing method](plugin-internals.md#Wrapping-an-existing-method) using `alias_method_chain` (only in Redmine versions below 4.0.0; in Redmine 7.0.3, use `Module#prepend`)
+  - why: Redmine 7.0.3 runs on Rails 8.1, which no longer has alias_method_chain; Redmine patches methods with Module#prepend.
+    source: Gemfile (rails 8.1.4), config/initializers/10-patches.rb:97, 108, 127
+    replace: |-
+      by creatively applying the [alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) pattern.
+    with: |-
+      by creatively applying the [alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) pattern (only in Redmine versions below 4.0.0; in Redmine 7.0.3, use `Module#prepend`).
+  - why: Rails 8.1 has no template handler for .rhtml; the views of Redmine 7.0.3 are .html.erb.
+    source: app/views (*.html.erb); Rails 8.1 actionview/lib/action_view/template/handlers.rb (raw, erb, html, builder, ruby)
+    replace: |-
+      # app/views/hooks/my_plugin/_view_issues_form_details_bottom.rhtml
+    with: |-
+      # app/views/hooks/my_plugin/_view_issues_form_details_bottom.html.erb
+  - why: The hook view_issues_form_details_bottom passes the form as :form.
+    source: app/views/issues/_form.html.erb:52
+    replace: |-
+      #   :f      => the form object to create additional fields
+    with: |-
+      #   :form   => the form object to create additional fields

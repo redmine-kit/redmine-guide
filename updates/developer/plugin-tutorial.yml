@@ -1,0 +1,69 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The plugin id must be the name of the plugin directory (plugins/polls, made by the generator), or Redmine::Plugin.register raises PluginNotFound.
+    source: lib/redmine/plugin.rb (register), lib/generators/redmine_plugin/redmine_plugin_generator.rb
+    replace: |-
+      Redmine::Plugin.register :redmine_polls do
+        [...]
+
+        menu :application_menu
+    with: |-
+      Redmine::Plugin.register :polls do
+        [...]
+
+        menu :application_menu
+  - why: The plugin id must be the name of the plugin directory (plugins/polls, made by the generator), or Redmine::Plugin.register raises PluginNotFound.
+    source: lib/redmine/plugin.rb (register), lib/generators/redmine_plugin/redmine_plugin_generator.rb
+    replace: |-
+      Redmine::Plugin.register :redmine_polls do
+        [...]
+
+        permission :polls
+    with: |-
+      Redmine::Plugin.register :polls do
+        [...]
+
+        permission :polls
+  - why: The plugin id must be the name of the plugin directory (plugins/polls, made by the generator), or Redmine::Plugin.register raises PluginNotFound.
+    source: lib/redmine/plugin.rb (register), lib/generators/redmine_plugin/redmine_plugin_generator.rb
+    replace: |-
+      Redmine::Plugin.register :redmine_polls do
+        [...]
+
+        delete_menu_item
+    with: |-
+      Redmine::Plugin.register :polls do
+        [...]
+
+        delete_menu_item
+  - why: A new admin menu item is added before the last items (Plugins and Information); :before and :after work as in the other menus.
+    source: lib/redmine/preparation.rb (admin_menu, :last => true), lib/redmine/menu_manager.rb (MenuNode#add)
+    replace: |-
+      (can only insert after Settings, before Plugins)
+    with: |-
+      (items are inserted before Plugins by default)
+  - why: The application menu has Projects, Activity, Issues, Spent time, Gantt, Calendar and News in Redmine 7.0.3.
+    source: lib/redmine/preparation.rb (application_menu)
+    replace: |-
+      In our example, we’ve added an item to the application menu which is empty by default.
+    with: |-
+      In our example, we’ve added an item to the application menu (the menu that already contains Projects, Activity, Issues, etc.).
+  - why: Redmine 7.0.3 serves plugin assets through Propshaft under plugin_assets/<plugin id>/ and compiles them into public/assets; nothing is copied to public/plugin_assets.
+    source: lib/redmine/plugin.rb (asset_prefix, asset_paths), config/initializers/30-redmine.rb, config/environments/production.rb (redmine_detect_update), doc/INSTALL (6. Compile assets)
+    replace: |-
+      When starting the application, plugin assets are automatically copied to `public/plugin_assets/polls/` to make them available through your web server. So any change to your plugin stylesheets or javascripts needs an application restart.
+    with: |-
+      Plugin assets are served through the asset pipeline (Propshaft) under the `plugin_assets/polls/` path. In production, Redmine compiles the assets into `public/assets` when the application starts if it detects changes (you can also run `bin/rails assets:precompile`), so any change to your plugin stylesheets or javascripts needs an application restart.
+  - why: assert_template was moved out of Rails into the rails-controller-testing gem, which Redmine 7.0.3 does not include.
+    source: Gemfile (group :test)
+    replace: |2-
+          get :index, params: { project_id: 1 }
+
+          assert_response :success
+          assert_template 'index'
+    with: |2-
+          get :index, params: { project_id: 1 }
+
+          assert_response :success
+          assert_select 'h2', :text => 'Polls'

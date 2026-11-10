@@ -3,6 +3,7 @@ source: Rest_Groups
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Groups
 source_version: 10
 source_updated_on: '2021-09-09T13:29:39Z'
+updated_for: 7.0.3
 ---
 
 # Groups
@@ -121,7 +122,7 @@ This endpoint requires admin privileges.
 
 <u>Parameters</u>:
 
-- `user_id` (required): id of the user to add to the group.
+- `user_id` or `user_ids` (required): id of the user (or array of ids of the users) to add to the group.
 
 <u>Example</u>:
 
@@ -137,7 +138,7 @@ This endpoint requires admin privileges.
 
 ### DELETE
 
-Removes a user from a group.
+Removes a user from a group. This endpoint is deprecated and will be removed in Redmine 8.0; use `DELETE /groups/:id/users.:format` with the `user_ids` parameter (an array of user ids) instead.
 
 This endpoint requires admin privileges.
 

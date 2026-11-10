@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 has no doc rake task; its yard task (the yard gem is in the development group) generates the documentation in doc/app.
+    source: lib/tasks/yardoc.rake:18-38, Gemfile (group :development, gem 'yard')
+    replace: |-
+      Once you have a copy of Redmine installed, running `rake doc` will generate the latest RDoc in `doc/app`.
+    with: |-
+      Once you have a copy of Redmine installed, running `bin/rake yard` will generate the latest documentation (YARD) in `doc/app`.

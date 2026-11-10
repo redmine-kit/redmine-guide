@@ -3,6 +3,7 @@ source: Rest_Projects
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_Projects
 source_version: 42
 source_updated_on: '2026-06-09T03:12:39Z'
+updated_for: 7.0.3
 ---
 
 # Projects
@@ -181,6 +182,18 @@ Archives the project of given id or identifier. Available since Redmine 5.0.
 PUT /projects/\[id\]/unarchive.xml
 
 Unrchives the project of given id or identifier. Available since Redmine 5.0.
+
+## Closing a project
+
+PUT /projects/\[id\]/close.xml
+
+Closes the project of given id or identifier. Available since Redmine 5.0.
+
+## Reopening a project
+
+PUT /projects/\[id\]/reopen.xml
+
+Reopens the project of given id or identifier. Available since Redmine 5.0.
 
 ## Deleting a project
 

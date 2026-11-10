@@ -1,0 +1,21 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 5.0.0 added API endpoints to close and reopen a project; the page lists only archive and unarchive.
+    source: config/routes.rb (projects member close, reopen); app/controllers/projects_controller.rb (accept_api_auth, close, reopen); doc/CHANGELOG 5.0.0 Feature #35507
+    replace: |-
+      Unrchives the project of given id or identifier. Available since Redmine 5.0.
+    with: |-
+      Unrchives the project of given id or identifier. Available since Redmine 5.0.
+
+      ## Closing a project
+
+      PUT /projects/\[id\]/close.xml
+
+      Closes the project of given id or identifier. Available since Redmine 5.0.
+
+      ## Reopening a project
+
+      PUT /projects/\[id\]/reopen.xml
+
+      Reopens the project of given id or identifier. Available since Redmine 5.0.

@@ -3,6 +3,7 @@ source: Plugin_FAQ
 source_url: https://www.redmine.org/projects/redmine/wiki/Plugin_FAQ
 source_version: 8
 source_updated_on: '2021-08-22T10:21:22Z'
+updated_for: 7.0.3
 ---
 
 # Frequently Asked Questions about Redmine plugins
@@ -17,7 +18,7 @@ If your project is in the `@project` variable:
 if @project.module_enabled?("<module_name>")
 ```
 
-First *modules* are a project level concept. So be sure to make this check in an action that operates at project level. Redmine core generally uses a `before_filter` called `find_project` to find the current project in standard actions, which populates the `@project` variable.
+First *modules* are a project level concept. So be sure to make this check in an action that operates at project level. Redmine core generally uses a `before_action` called `find_project` to find the current project in standard actions, which populates the `@project` variable.
 
 Available modules as of Redmine 2.3.x are: boards, calendar, documents, files, gantt, issue_tracking, news, repository, time_tracking, wiki. Each plugin can add its own module (see [Plugin_Tutorial](plugin-tutorial.md) which adds a “polls” module).
 
@@ -69,7 +70,6 @@ Examples:
   ```ruby
   Setting.plugin_polls['notification_default']
   ```
-
 
 It is not recommended to manually modify (set) settings values from a plugin. Instead, set these values via the provided UI’s.
 

@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Rails 8.1 has no before_filter; Redmine 7.0.3 uses before_action.
+    source: Gemfile (rails 8.1.4), app/controllers/wikis_controller.rb:22 (before_action :find_project)
+    replace: |-
+      Redmine core generally uses a `before_filter` called `find_project`
+    with: |-
+      Redmine core generally uses a `before_action` called `find_project`

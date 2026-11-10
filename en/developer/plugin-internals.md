@@ -3,6 +3,7 @@ source: Plugin_Internals
 source_url: https://www.redmine.org/projects/redmine/wiki/Plugin_Internals
 source_version: 24
 source_updated_on: '2022-09-16T07:36:06Z'
+updated_for: 7.0.3
 ---
 
 # Plugin Internals
@@ -26,11 +27,11 @@ You can override views but not controllers or models in Redmine. Here’s how Re
 
 ### Views
 
-View loading is very similar but with one small difference (because of Redmine’s patch to Engines)
+View loading is very similar but with one small difference (because `Redmine::Plugin.register` prepends the plugin's views directory)
 
 1.  Rails bootstraps and loads all its framework
 2.  Rails starts to load code in the plugins
-3.  Rails finds a views directory in *../vendor/plugins/my_plugin/app/views* and **pre-pends** it to the views path
+3.  Rails finds a views directory in *../plugins/my_plugin/app/views* and **pre-pends** it to the views path
 4.  Rails loads all the other plugins
 5.  Rails then loads the application from *../app*
 6.  Rails finishes loading and serves up requests
@@ -40,7 +41,7 @@ View loading is very similar but with one small difference (because of Redmine�
 
 Due to the fact that it is so easy to extend models and controllers the Ruby way (via including modules), Redmine shouldn’t (and doesn’t) maintain an API for overriding the core’s models and/or controllers. Views on the other hand are tricky (because of Rails magic) so an API for overriding them is way more useful (and thus implemented in Redmine).
 
-To override an existing Redmine Core view just create a view file named exactly after the one in *../app/views/* and Redmine will use it. For example to override the project index page add a file to *../vendor/plugins/my_plugin/app/views/projects/index.html.erb*.
+To override an existing Redmine Core view just create a view file named exactly after the one in *../app/views/* and Redmine will use it. For example to override the project index page add a file to *../plugins/my_plugin/app/views/projects/index.html.erb*.
 
 ## Extending the Redmine Core
 
@@ -129,9 +130,9 @@ If you want to hook into new issues only you can use the `before_create` callbac
 
 ### FAQ
 
-- Why is the drop-down selection for my blocks not localized? The Name of the entry in the drop-dwon box is per convention made of the entry in the locale file of the plugin. This entry must have the same name as the “my site” block filename, e.g. redmine/vendor/plugins/\<myplugin_folder\>/app/views/my/blocks/\<myblocks_view_file_name\>.erb. So you need to add a line “\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>” in your locale, e.g redmine/vendor/plugins/\<myplugin_folder\>/config/locale/en.yml.
+- Why is the drop-down selection for my blocks not localized? The Name of the entry in the drop-dwon box is per convention made of the entry in the locale file of the plugin. This entry must have the same name as the “my site” block partial name, e.g. redmine/plugins/\<myplugin_folder\>/app/views/my/blocks/\_\<myblocks_view_file_name\>.html.erb. So you need to add a line “\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>” in your locale, e.g redmine/plugins/\<myplugin_folder\>/config/locales/en.yml.
 
-If this string is not defined in locale file, alyways the filename \<myblocks_view_file_name\> without extension is made for label in drop-down.
+If this string is not defined in locale file, the humanized filename \<myblocks_view_file_name\> (without the leading underscore and extension) is used as the label in drop-down.
 
 ## References
 

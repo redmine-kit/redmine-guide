@@ -182,6 +182,18 @@ PUT /projects/\[id\]/unarchive.xml
 
 指定した ID または識別子のプロジェクトのアーカイブを解除します。Redmine 5.0 から利用できます。
 
+## プロジェクトの終了
+
+PUT /projects/\[id\]/close.xml
+
+指定した ID または識別子のプロジェクトを終了します。Redmine 5.0 から利用できます。
+
+## プロジェクトの再開
+
+PUT /projects/\[id\]/reopen.xml
+
+指定した ID または識別子のプロジェクトを再開します。Redmine 5.0 から利用できます。
+
 ## プロジェクトの削除
 
 DELETE /projects/\[id\].xml

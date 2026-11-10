@@ -1,0 +1,142 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 has no redmine:plugins:hook_list rake task.
+    source: lib/tasks/*.rake (no hook_list task)
+    replace: |-
+      To see the current list of plugin hooks, run `rake redmine:plugins:hook_list` in the Redmine directory.
+    with: |-
+      To see the current list of plugin hooks, search for `call_hook` in the Redmine directory as shown below (the `rake redmine:plugins:hook_list` task no longer exists in Redmine 7.0.3).
+  - why: Helper hooks of Redmine 7.0.3 that the list did not have.
+    source: app/helpers/queries_helper.rb:249, 289
+    replace: |-
+      | `:helper_issues_show_detail_after_setting` | Passes data to the hook to allow it to set the label and value. | `:detail, :label, :value, :old_value` |
+    with: |-
+      | `:helper_issues_show_detail_after_setting` | Passes data to the hook to allow it to set the label and value. | `:detail, :label, :value, :old_value` |
+      | `:helper_queries_column_content` |  | `:content, :column, :item` |
+      | `:helper_queries_column_value` |  | `:content, :column, :item, :value` |
+  - why: The hook also passes the action in Redmine 7.0.3.
+    source: app/models/changeset.rb:255-256
+    replace: |-
+      | `:model_changeset_scan_commit_for_issue_ids_pre_issue_update` |  | `:changeset, :issue` |
+    with: |-
+      | `:model_changeset_scan_commit_for_issue_ids_pre_issue_update` |  | `:changeset, :issue, :action` |
+  - why: View hooks of Redmine 7.0.3 that the list did not have.
+    source: app/views/admin/projects.html.erb:22, app/views/calendars/show.html.erb:57
+    replace: |-
+      | `:view_account_login_bottom` |  | (none) |
+    with: |-
+      | `:view_account_login_bottom` |  | (none) |
+      | `:view_admin_projects_sidebar_queries_bottom` |  | (none) |
+      | `:view_calendars_show_bottom` |  | `:year, :month, :project, :query` |
+  - why: View hooks of Redmine 7.0.3 that the list did not have.
+    source: app/helpers/principal_memberships_helper.rb:27, 35
+    replace: |-
+      | `:view_issue_statuses_form` |  | `:issue_status` |
+    with: |-
+      | `:view_issue_statuses_form` |  | `:issue_status` |
+      | `:view_groups_memberships_table_header` |  | `:group` |
+      | `:view_groups_memberships_table_row` |  | `:group, :membership` |
+  - why: View hook added in Redmine 7.0.0 (Patch #43084).
+    source: app/views/issues/_edit.html.erb:2
+    replace: |-
+      | `:view_issues_bulk_edit_details_bottom` | Appends content to the bulk edit form before the note | `:issues` |
+    with: |-
+      | `:view_issues_bulk_edit_details_bottom` | Appends content to the bulk edit form before the note | `:issues` |
+      | `:view_issues_edit_top` | Prepends content to the issue edit form | `:issue, :form` |
+  - why: View hook of Redmine 7.0.3 that the list did not have.
+    source: app/views/issues/_form.html.erb:2
+    replace: |-
+      | `:view_issues_edit_notes_bottom` | Appends content to the note bottom before files form | `:issue, :notes, :form` |
+    with: |-
+      | `:view_issues_edit_notes_bottom` | Appends content to the note bottom before files form | `:issue, :notes, :form` |
+      | `:view_issues_form_details_top` | Prepends content to the issue form | `:issue, :form` |
+  - why: View hooks of Redmine 7.0.3 that the list did not have.
+    source: app/views/issues/tabs/_changesets.html.erb:29, app/views/issues/tabs/_time_entries.html.erb:33, app/views/issues/index.html.erb:77
+    replace: |-
+      | `:view_issues_history_journal_bottom` |  | `:journal` |
+    with: |-
+      | `:view_issues_history_journal_bottom` |  | `:journal` |
+      | `:view_issues_history_changeset_bottom` |  | `:changeset` |
+      | `:view_issues_history_time_entry_bottom` |  | `:time_entry` |
+      | `:view_issues_index_bottom` |  | `:issues, :project, :query` |
+  - why: The issue move form and its hook view_issues_move_bottom no longer exist in Redmine 7.0.3, and view_journals_update_rjs_bottom is view_journals_update_js_bottom, with the journal only.
+    source: app/views (no call_hook(:view_issues_move_bottom)), app/views/journals/update.js.erb:20
+    replace: |-
+      | `:view_issues_move_bottom` |  | `:issue, :target_project, :copy` |
+      | `:view_journals_notes_form_after_notes` |  | `:journal` |
+      | `:view_journals_update_rjs_bottom` |  | `:page, :journal` |
+    with: |-
+      | `:view_journals_notes_form_after_notes` |  | `:journal` |
+      | `:view_journals_update_js_bottom` |  | `:journal` |
+  - why: View hooks of Redmine 7.0.3 that the list did not have (My page hooks added in 6.0.0, Feature #41044).
+    source: app/views/my/account.html.erb:73, app/views/my/page.html.erb:6, 17
+    replace: |-
+      | `:view_my_account_contextual` |  | `:user` |
+    with: |-
+      | `:view_my_account_contextual` |  | `:user` |
+      | `:view_my_account_preferences` |  | `:user, :form` |
+      | `:view_my_page_contextual` |  | `:user` |
+      | `:view_my_page_splitcontent` |  | `:user` |
+  - why: View hook of Redmine 7.0.3 that the list did not have (the project is the source project and the form key is :f).
+    source: app/views/projects/copy.html.erb:15
+    replace: |-
+      | `:view_projects_form` |  | `:project, :form` |
+    with: |-
+      | `:view_projects_form` |  | `:project, :form` |
+      | `:view_projects_copy_only_items` |  | `:project, :f` |
+  - why: View hooks of Redmine 7.0.3 that the list did not have.
+    source: app/views/projects/_sidebar.html.erb:2, app/views/reports/issue_report.html.erb:41, 74
+    replace: |-
+      | `:view_projects_show_sidebar_bottom` |  | `:project` |
+    with: |-
+      | `:view_projects_show_sidebar_bottom` |  | `:project` |
+      | `:view_projects_sidebar_queries_bottom` |  | (none) |
+      | `:view_reports_issue_report_split_content_left` |  | `:project` |
+      | `:view_reports_issue_report_split_content_right` |  | `:project` |
+  - why: View hook of Redmine 7.0.3 that the list did not have.
+    source: app/views/search/index.html.erb:35
+    replace: |-
+      | `:view_repositories_show_contextual` | Appends content to the contextual menu in the Repositories pane | `:project, :repository` |
+    with: |-
+      | `:view_repositories_show_contextual` | Appends content to the contextual menu in the Repositories pane | `:project, :repository` |
+      | `:view_search_index_options_content_bottom` |  | (none) |
+  - why: View hooks of Redmine 7.0.3 that the list did not have.
+    source: app/views/timelog/bulk_edit.html.erb:79, app/views/context_menus/time_entries.html.erb:10, 40
+    replace: |-
+      | `:view_timelog_edit_form_bottom` |  | `:time_entry, :form` |
+    with: |-
+      | `:view_timelog_edit_form_bottom` |  | `:time_entry, :form` |
+      | `:view_time_entries_bulk_edit_details_bottom` |  | `:time_entries` |
+      | `:view_time_entries_context_menu_start` |  | `:time_entries, :can, :back` |
+      | `:view_time_entries_context_menu_end` |  | `:time_entries, :can, :back` |
+  - why: The hook passes the user and the membership only in Redmine 7.0.3.
+    source: app/helpers/principal_memberships_helper.rb:37
+    replace: |-
+      | `:view_users_memberships_table_row` |  | `:user, :membership, :roles, :projects` |
+    with: |-
+      | `:view_users_memberships_table_row` |  | `:user, :membership` |
+  - why: View hooks of Redmine 7.0.3 that the list did not have.
+    source: app/views/users/_form.html.erb:87, app/views/users/index.html.erb:60
+    replace: |-
+      | `:view_users_form` |  | `:user, :form` |
+    with: |-
+      | `:view_users_form` |  | `:user, :form` |
+      | `:view_users_form_preferences` |  | `:user, :form` |
+      | `:view_users_sidebar_queries_bottom` |  | (none) |
+  - why: View hook added in Redmine 4.1.0 (Patch #7975).
+    source: app/views/wiki/_sidebar.html.erb:24
+    replace: |-
+      | `:view_welcome_index_right` |  | `:project` |
+    with: |-
+      | `:view_welcome_index_right` |  | `:project` |
+      | `:view_wiki_show_sidebar_bottom` |  | `:wiki, :page` |
+  - why: Hook called after the plugins are loaded, added in Redmine 4.2.0 (Patch #34072).
+    source: lib/redmine/plugin_loader.rb:60-63
+    replace: |-
+      | Name | Description | Context |
+      |------|-------------|---------|
+    with: |-
+      | Name | Description | Context |
+      |------|-------------|---------|
+      | `:after_plugins_loaded` | Called after the `init.rb` of all plugins has been loaded | (none) |

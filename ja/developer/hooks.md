@@ -13,7 +13,7 @@ Redmine のコードを拡張・置き換えるほかの方法には、次のも
 
 - [新しいメソッドの追加](plugin-internals.md#Adding-a-new-method)
 - [Rails のコールバックの利用](plugin-internals.md#Using-Rails-callbacks-in-Redmine-plugins)
-- `alias_method_chain` による[既存のメソッドのラップ](plugin-internals.md#Wrapping-an-existing-method)
+- `alias_method_chain` による[既存のメソッドのラップ](plugin-internals.md#Wrapping-an-existing-method) (Redmine 4.0.0 より前のバージョンだけ。Redmine 7.0.3 では `Module#prepend` を使います)
 
 ## 基本
 
@@ -66,7 +66,7 @@ call_hook(:do_something, :issue => issue)
 
 ### モデルのフック
 
-Redmine のモデルのフックはごくわずかです。モデルのコードの拡張は、ほとんどの場合、新しいメソッドを追加するか、[alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) のパターンを工夫して既存のメソッドをラップすることで実現できます。モデルのフックは、コントローラーのフックと同じように使えます。
+Redmine のモデルのフックはごくわずかです。モデルのコードの拡張は、ほとんどの場合、新しいメソッドを追加するか、[alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) のパターンを工夫して既存のメソッドをラップすることで実現できます (Redmine 4.0.0 より前のバージョンだけ。Redmine 7.0.3 では `Module#prepend` を使います)。モデルのフックは、コントローラーのフックと同じように使えます。
 
 ## フックへの関数の登録
 
@@ -80,12 +80,12 @@ Redmine のモデルのフックはごくわずかです。モデルのコード
     module MyPlugin
       class Hooks < Redmine::Hook::ViewListener
         # This just renders the partial in
-        # app/views/hooks/my_plugin/_view_issues_form_details_bottom.rhtml
+        # app/views/hooks/my_plugin/_view_issues_form_details_bottom.html.erb
         # The contents of the context hash is made available as local variables to the partial.
         #
         # Additional context fields
         #   :issue  => the issue this is edited
-        #   :f      => the form object to create additional fields
+        #   :form   => the form object to create additional fields
         render_on :view_issues_form_details_bottom,
                   :partial => 'hooks/my_plugin/view_issues_form_details_bottom'
       end

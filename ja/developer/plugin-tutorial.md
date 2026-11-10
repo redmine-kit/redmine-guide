@@ -214,7 +214,7 @@ Rails のルートについて詳しくは http://guides.rubyonrails.org/routing
 プラグインのディレクトリの直下にある `plugins/polls/init.rb` を編集し、プラグインの登録のブロックの最後に次の行を追加します。
 
 ```ruby
-Redmine::Plugin.register :redmine_polls do
+Redmine::Plugin.register :polls do
   [...]
 
   menu :application_menu, :polls, { controller: 'polls', action: 'index' }, caption: 'Polls'
@@ -231,7 +231,7 @@ menu(menu_name, item_name, url, options={})
 - `:account_menu` - ログイン/ログアウトのリンクがある右上のメニュー
 - `:application_menu` - プロジェクトの外にいるときに表示されるメインメニュー
 - `:project_menu` - プロジェクトの中にいるときに表示されるメインメニュー
-- `:admin_menu` - 「管理」のページに表示されるメニュー(「設定」の後、「プラグイン」の前にしか挿入できません)
+- `:admin_menu` - 「管理」のページに表示されるメニュー (デフォルトでは「プラグイン」の前に挿入されます)
 
 使えるオプションは次のとおりです。
 
@@ -245,7 +245,7 @@ menu(menu_name, item_name, url, options={})
 - `:first`、`:last` - true にすると、項目がメニューの先頭/末尾に固定されます(例: `last: true`)
 - `:html` - メニュー項目をレンダリングするときに `link_to` に渡す HTML のオプションのハッシュ
 
-この例では、デフォルトでは空のアプリケーションのメニューに項目を追加しました。\
+この例では、アプリケーションのメニュー (「プロジェクト」「活動」「チケット」などがすでにあるメニュー) に項目を追加しました。\
 アプリケーションを再起動し、http://localhost:3000/projects を開きます。
 
 ![](../../images/Plugin_Tutorial/application_menu.png)
@@ -258,7 +258,7 @@ menu(menu_name, item_name, url, options={})
 `init.rb` を開き、先ほど追加した行を次の 2 行に置き換えます。
 
 ```ruby
-Redmine::Plugin.register :redmine_polls do
+Redmine::Plugin.register :polls do
   [...]
 
   permission :polls, { polls: [:index, :vote] }, public: true
@@ -323,7 +323,7 @@ views/polls/index.heml.erb を次のように編集します。
 メニューの項目を削除するには、次の例のように `delete_menu_item` を使います。
 
 ```ruby
-Redmine::Plugin.register :redmine_polls do
+Redmine::Plugin.register :polls do
   [...]
 
   delete_menu_item :top_menu, :my_page
@@ -428,7 +428,7 @@ a.vote.yes { color: green; }
 a.vote.no  { color: red; }
 ```
 
-アプリケーションの起動時に、プラグインのアセットは `public/plugin_assets/polls/` に自動でコピーされ、Web サーバーから配信できるようになります。そのため、プラグインのスタイルシートや JavaScript を変更したら、アプリケーションの再起動が必要です。
+プラグインのアセットは、アセットパイプライン (Propshaft) によって `plugin_assets/polls/` のパスで配信されます。本番環境では、Redmine は起動時にアセットの変更を検出すると、アセットを `public/assets` にコンパイルします (`bin/rails assets:precompile` でもコンパイルできます)。そのため、プラグインのスタイルシートや JavaScript を変更したら、アプリケーションの再起動が必要です。
 
 追加したクラスはリンクで使う必要があります。`plugins/polls/app/views/polls/index.html.erb` のリンクの宣言を次のように変えます。
 
@@ -569,7 +569,7 @@ class PollsControllerTest < ActionController::TestCase
     get :index, params: { project_id: 1 }
 
     assert_response :success
-    assert_template 'index'
+    assert_select 'h2', :text => 'Polls'
   end
 end
 ```

@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The reactions include was added after Redmine 7.0.3 (7.1.0); the news API view of Redmine 7.0.3 has no reactions.
+    source: app/views/news/show.api.rsb
+    replace: |-
+      Nothing is returned if the reactions feature is disabled. See
+    with: |-
+      Nothing is returned if the reactions feature is disabled. Not available in Redmine 7.0.3. See

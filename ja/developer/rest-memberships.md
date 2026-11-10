@@ -169,5 +169,5 @@ DELETE /memberships/2.xml
 
 <u>レスポンス</u>:
 
-- `200 OK`: メンバーを削除しました
+- `204 No Content`: メンバーを削除しました
 - `422 Unprocessable Entity`: メンバーを削除できませんでした

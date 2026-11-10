@@ -125,7 +125,7 @@ GET /groups/20.xml?include=users
 
 <u>パラメーター</u>:
 
-- `user_id`(必須): グループに追加するユーザーの ID。
+- `user_id` または `user_ids` (必須): グループに追加するユーザーの ID (または、ユーザーの ID の配列)。
 
 <u>例</u>:
 
@@ -143,7 +143,7 @@ POST /groups/10/users.xml
 
 ### DELETE
 
-ユーザーをグループから外します。
+ユーザーをグループから外します。このエンドポイントは非推奨で、Redmine 8.0 で削除される予定です。代わりに、パラメーター `user_ids` (ユーザーの ID の配列) を指定して `DELETE /groups/:id/users.:format` を使います。
 
 このエンドポイントには管理者の権限が必要です。
 

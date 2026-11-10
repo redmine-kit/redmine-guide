@@ -3,6 +3,7 @@ source: Rest_News
 source_url: https://www.redmine.org/projects/redmine/wiki/Rest_News
 source_version: 7
 source_updated_on: '2026-08-17T01:25:24Z'
+updated_for: 7.0.3
 ---
 
 # News
@@ -65,7 +66,7 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 - `include`: fetch associated data (optional, use comma to fetch multiple associations). Possible values:
   - `attachments`
   - `comments`
-  - `reactions` - Since 7.1.0, Returns the users who reacted to the news item. Combined with `comments`, the reactions on each comment are returned as well. Only the users that are visible to the requesting user are returned. Nothing is returned if the reactions feature is disabled. See [Showing an issue](rest-issues.md#Showing-an-issue) for the response format.
+  - `reactions` - Since 7.1.0, Returns the users who reacted to the news item. Combined with `comments`, the reactions on each comment are returned as well. Only the users that are visible to the requesting user are returned. Nothing is returned if the reactions feature is disabled. Not available in Redmine 7.0.3. See [Showing an issue](rest-issues.md#Showing-an-issue) for the response format.
 
 <u>Examples</u>:
 

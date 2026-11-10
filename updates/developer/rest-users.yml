@@ -1,0 +1,22 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 6.0.0 removed the empty status value; in Redmine 7.0.3 the users list is a user query, where `*` matches all statuses and `|` separates several.
+    source: app/controllers/users_controller.rb (index); app/models/user_query.rb; app/models/query.rb (add_short_filter); test/integration/api_test/users_test.rb; doc/CHANGELOG 6.0.0 Patch #40124
+    replace: |-
+      Supply an empty value to match all users regardless of their status.
+    with: |-
+      Use `*` to match all users regardless of their status (you can also give several statuses separated by `|`, e.g. `1|3`).
+  - why: In Redmine 7.0.3, a visible user is returned with the same fields whether or not the user is an administrator, and the requesting user also gets admin, twofa_scheme and api_key.
+    source: app/views/users/show.api.rsb; app/models/principal.rb (visible)
+    replace: |-
+      - if the user is not locked and is not admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `mail`, `created_on`
+      - if the user is not locked and is admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `created_on`, `last_login_on`
+    with: |-
+      - if the user is visible and not locked, the endpoint returns a user object with the fields `login`, `firstname`, `lastname`, `mail` (unless hidden by the user's preference), `created_on`, `updated_on`, `last_login_on`, `passwd_changed_on`, `avatar_url` (if Gravatar is enabled)
+  - why: In Redmine 7.0.3, login is returned for every user, and the requesting user also gets admin, twofa_scheme and api_key (not with OAuth).
+    source: app/views/users/show.api.rsb
+    replace: |-
+      - if the user is the requesting user, you will also have the fields `login`, `api_key`
+    with: |-
+      - if the user is the requesting user, you will also have the fields `admin`, `twofa_scheme`, `api_key` (`api_key` is not returned when authenticated with OAuth)

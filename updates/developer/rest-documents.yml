@@ -1,0 +1,11 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The Documents API was added after Redmine 7.0.3 (7.1); in Redmine 7.0.3, DocumentsController accepts no API authentication and has no API views.
+    source: app/controllers/documents_controller.rb (no accept_api_auth); app/views/documents (no *.api.rsb)
+    replace: |-
+      # Rest Documents
+    with: |-
+      # Rest Documents
+
+      Note: the Documents API is not available in Redmine 7.0.3.

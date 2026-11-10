@@ -15,7 +15,7 @@ translated_from_version: 8
 if @project.module_enabled?("<module_name>")
 ```
 
-まず、*モジュール*はプロジェクト単位の概念です。そのため、この判定はプロジェクト単位で動くアクションの中で行ってください。Redmine 本体は通常、標準のアクションで現在のプロジェクトを見つけるために `find_project` という `before_filter` を使い、これが `@project` 変数を設定します。
+まず、*モジュール*はプロジェクト単位の概念です。そのため、この判定はプロジェクト単位で動くアクションの中で行ってください。Redmine 本体は通常、標準のアクションで現在のプロジェクトを見つけるために `find_project` という `before_action` を使い、これが `@project` 変数を設定します。
 
 Redmine 2.3.x の時点で使えるモジュールは、boards、calendar、documents、files、gantt、issue_tracking、news、repository、time_tracking、wiki です。プラグインはそれぞれ独自のモジュールを追加できます(「polls」モジュールを追加する[プラグインのチュートリアル](plugin-tutorial.md)を参照してください)。
 

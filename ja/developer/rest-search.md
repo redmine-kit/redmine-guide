@@ -21,7 +21,7 @@ translated_from_version: 2
 
 - `scope`: 検索の範囲
   - 「all」: すべてのプロジェクトを検索
-  - 「my_project」: 参加しているプロジェクトを検索
+  - 「my_projects」: 参加しているプロジェクトを検索
   - 「subprojects」: プロジェクトを指定したとき、サブプロジェクトも含める
 - `all_words`: すべての検索文字列に一致するものだけにするかどうか
 - `titles_only`: タイトルだけを対象にするかどうか

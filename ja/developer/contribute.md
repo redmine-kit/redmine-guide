@@ -32,7 +32,7 @@ Redmine の現在のコントリビューターと作者の一覧は、[概要�
 
 ### コードのドキュメント
 
-[RDoc](http://rdoc.sourceforge.net/) でクラスとメソッドを文書化すると、開発者が Redmine の仕組みを理解しやすくなります。Redmine をインストールしたら、`rake doc` を実行すると、最新の RDoc が `doc/app` に生成されます。ドキュメントのない、または不十分なメソッドへのパッチは役に立ち、手軽な貢献の方法です。[ドキュメントのチケットの一覧](http://www.redmine.org/projects/redmine/issues?query_id=84*)\*
+[RDoc](http://rdoc.sourceforge.net/) でクラスとメソッドを文書化すると、開発者が Redmine の仕組みを理解しやすくなります。Redmine をインストールしたら、`bin/rake yard` を実行すると、最新のドキュメント (YARD) が `doc/app` に生成されます。ドキュメントのない、または不十分なメソッドへのパッチは役に立ち、手軽な貢献の方法です。[ドキュメントのチケットの一覧](http://www.redmine.org/projects/redmine/issues?query_id=84*)\*
 
 ### 開発
 

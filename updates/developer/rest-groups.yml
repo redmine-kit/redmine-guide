@@ -1,0 +1,15 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, adding users to a group also accepts an array of user ids.
+    source: config/routes.rb (post 'groups/:id/users'); app/controllers/groups_controller.rb (add_users)
+    replace: |-
+      - `user_id` (required): id of the user to add to the group.
+    with: |-
+      - `user_id` or `user_ids` (required): id of the user (or array of ids of the users) to add to the group.
+  - why: In Redmine 7.0.3, removing a single user is deprecated (to be removed in Redmine 8.0) in favor of DELETE /groups/:id/users with user_ids.
+    source: config/routes.rb (delete 'groups/:id/users', delete 'groups/:id/users/:user_id'); app/controllers/groups_controller.rb (remove_users, remove_user)
+    replace: |-
+      Removes a user from a group.
+    with: |-
+      Removes a user from a group. This endpoint is deprecated and will be removed in Redmine 8.0; use `DELETE /groups/:id/users.:format` with the `user_ids` parameter (an array of user ids) instead.
