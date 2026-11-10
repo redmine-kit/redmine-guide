@@ -251,7 +251,7 @@ translated_from_version: 34
 </tr>
 <tr>
 <td>更新履歴の閲覧</td>
-<td>チェンジセットを閲覧できるようにします</td>
+<td>更新履歴を閲覧できるようにします</td>
 </tr>
 <tr>
 <td>コミット権限</td>

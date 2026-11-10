@@ -52,7 +52,7 @@ POP3 サーバーからメールを読み込みます。
 
 ### `rake redmine:fetch_changesets`
 
-リポジトリからチェンジセットを取得します。
+リポジトリからコミットを取得します。
 
 ### `rake redmine:send_reminders`
 

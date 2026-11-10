@@ -52,7 +52,7 @@ Redmine にリポジトリを登録した後、次のコマンドを実行しま
     http://redmine.example.com/sys/fetch_changesets?key=<WS key> (=> fetches changesets for all active projects)
     http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches changesets for project foo only)
 
-1 行目はすべての有効なプロジェクトの、2 行目はプロジェクト foo だけのチェンジセットを取得します。[リポジトリ管理用の Web サービス](settings.md#Enable-WS-for-repository-management)を有効にし、[「APIキー」](settings.md#Repository-management-WS-API-key)の設定で決めた API キーを `key` に付けるのを忘れないでください。
+1 行目はすべての有効なプロジェクトの、2 行目はプロジェクト foo だけのコミットを取得します。[リポジトリ管理用の Web サービス](settings.md#Enable-WS-for-repository-management)を有効にし、[「APIキー」](settings.md#Repository-management-WS-API-key)の設定で決めた API キーを `key` に付けるのを忘れないでください。
 
 例は [HowTo_setup_automatic_refresh_of_repositories_in_Redmine_on_commit](https://www.redmine.org/projects/redmine/wiki/HowTo_setup_automatic_refresh_of_repositories_in_Redmine_on_commit) を参照してください。
 
