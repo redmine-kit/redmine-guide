@@ -407,7 +407,7 @@ myHandler({"issues":[ ... ]})
 
 - [Ruby](rest-api-with-ruby.md)
 - [PHP](rest-api-with-php.md)
-- [Python](https://www.redmine.org/projects/redmine/wiki/Rest_api_with_python)
+- [Python](rest-api-with-python.md)
 - [Perl](rest-api-with-perl.md)
 - [Java](rest-api-with-java.md)
 - [cURL](rest-api-with-curl.md)

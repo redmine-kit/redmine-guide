@@ -46,7 +46,7 @@ Redmine の現在のコントリビューターと作者の一覧は、[概要�
 2.  Redmine には**テスト**([source:trunk/test](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/test))があります。既存のテストがすべて通ることを確認します。現在のビルドの状態は [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration) で確認できます。すべてのテストは「rake test」で、個別のテストは「ruby test/unit/issue_test.rb」で実行できます。詳しくは [source:trunk/doc/RUNNING_TESTS](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/doc/RUNNING_TESTS) を参照してください。
 3.  新しい機能を示し、不具合を確認するテストを追加します。
 4.  パッチをチケットに投稿します。\
-    **<span style="color: red">GitHub や Bitbucket でプルリクエストを送らないでください</span>**。\
+    **<span style="color: red">GitHub や Bitbucket で Pull Request を送らないでください</span>**。\
     Mercurial や Git を使う場合は、パッチシリーズを作成できます。\
     [Mercurial と Git でのパッチシリーズの作成](how-to-create-patch-series-on-mercurial-and-git.md)を参照してください。
 5.  利用者と開発者にフィードバックを求めます。利用者はパッチを適用して新しい機能を試し、開発者はコードをレビューしてすべてのテストを実行します。

@@ -13,7 +13,7 @@ To use this library from PowerShell, see [REST API with PowerShell](https://www.
 
 Sample usage:
 
-```text
+```csharp
 using System;
 using System.Collections.Specialized;
 using Redmine.Net.Api;

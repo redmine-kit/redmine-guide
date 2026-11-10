@@ -91,15 +91,15 @@ Issue attributes control options:
 例:
 
   ```text
-    # No project specified. Emails MUST contain the 'Project' keyword:
-    rdm-mailhandler.rb --url http://redmine.domain.foo --key secret
+  # No project specified. Emails MUST contain the 'Project' keyword:
+  rdm-mailhandler.rb --url http://redmine.domain.foo --key secret
 
-    # Fixed project and default tracker specified, but emails can override
-    # both tracker and priority attributes:
-    rdm-mailhandler.rb --url https://domain.foo/redmine --key secret \\
-                       --project foo \\
-                       --tracker bug \\
-                       --allow-override tracker,priority
+  # Fixed project and default tracker specified, but emails can override
+  # both tracker and priority attributes:
+  rdm-mailhandler.rb --url https://domain.foo/redmine --key secret \\
+                     --project foo \\
+                     --tracker bug \\
+                     --allow-override tracker,priority
   ```
 
 Postfix のローカルのエイリアスの設定例です。
@@ -141,52 +141,52 @@ Windows のサーバーでは、[pycron](http://www.kalab.com/freeware/pycron/py
 使える IMAP のオプション:
 
   ```text
-    host=HOST                IMAP server host (default: 127.0.0.1)
-    port=PORT                IMAP server port (default: 143)
-    ssl=SSL                  Use SSL/TLS? (default: false)
-                             Setting `ssl=force` disables server certificate
-                             verification
-    starttls=STARTTLS        Use STARTTLS? (default: false)
-    username=USERNAME        IMAP account
-    password=PASSWORD        IMAP password
-    folder=FOLDER            IMAP folder to read (default: INBOX)
-    move_on_success=MAILBOX  move emails that were successfully received
-                             to MAILBOX instead of deleting them
-    move_on_failure=MAILBOX  move emails that were ignored to MAILBOX
+  host=HOST                IMAP server host (default: 127.0.0.1)
+  port=PORT                IMAP server port (default: 143)
+  ssl=SSL                  Use SSL/TLS? (default: false)
+                           Setting `ssl=force` disables server certificate
+                           verification
+  starttls=STARTTLS        Use STARTTLS? (default: false)
+  username=USERNAME        IMAP account
+  password=PASSWORD        IMAP password
+  folder=FOLDER            IMAP folder to read (default: INBOX)
+  move_on_success=MAILBOX  move emails that were successfully received
+                           to MAILBOX instead of deleting them
+  move_on_failure=MAILBOX  move emails that were ignored to MAILBOX
   ```
 
 ユーザーと権限のオプション:
 
   ```text
-    unknown_user=ACTION      how to handle emails from an unknown user
-                             ACTION can be one of the following values:
-                             ignore: email is ignored (default)
-                             accept: accept as anonymous user
-                             create: create a user account
-    no_permission_check=1    disable permission checking when receiving
-                             the email
-    no_account_notice=1      disable new user account notification
-    no_notification=1        disable email notification to new user
-    default_group=foo,bar    adds created user to foo and bar groups
+  unknown_user=ACTION      how to handle emails from an unknown user
+                           ACTION can be one of the following values:
+                           ignore: email is ignored (default)
+                           accept: accept as anonymous user
+                           create: create a user account
+  no_permission_check=1    disable permission checking when receiving
+                           the email
+  no_account_notice=1      disable new user account notification
+  no_notification=1        disable email notification to new user
+  default_group=foo,bar    adds created user to foo and bar groups
   ```
 
 チケットの属性を制御するオプション:
 
   ```text
-    project=PROJECT          identifier of the target project
-    project_from_subaddress=ADDR
-                             select project from subaddress of ADDR found
-                             in To, Cc, Bcc headers
-    status=STATUS            name of the target status
-    tracker=TRACKER          name of the target tracker
-    category=CATEGORY        name of the target category
-    priority=PRIORITY        name of the target priority
-    assigned_to=ASSIGNEE     assignee (username or group name)
-    fixed_version=VERSION    name of the target version
-    private                  create new issues as private
-    allow_override=ATTRS     allow email content to set attributes values
-                             ATTRS is a comma separated list of attributes
-                             or 'all' to allow all attributes to be overridable
+  project=PROJECT          identifier of the target project
+  project_from_subaddress=ADDR
+                           select project from subaddress of ADDR found
+                           in To, Cc, Bcc headers
+  status=STATUS            name of the target status
+  tracker=TRACKER          name of the target tracker
+  category=CATEGORY        name of the target category
+  priority=PRIORITY        name of the target priority
+  assigned_to=ASSIGNEE     assignee (username or group name)
+  fixed_version=VERSION    name of the target version
+  private                  create new issues as private
+  allow_override=ATTRS     allow email content to set attributes values
+                           ATTRS is a comma separated list of attributes
+                           or 'all' to allow all attributes to be overridable
   ```
 
 `allow-override` のオプションに使える値の一覧は、[チケットの属性](receiving-emails.md#Issue-attributes)を参照してください。
@@ -194,27 +194,27 @@ Windows のサーバーでは、[pycron](http://www.kalab.com/freeware/pycron/py
 rake コマンドの例:
 
   ```text
-    # No project specified. Emails MUST contain the 'Project' keyword:
+  # No project specified. Emails MUST contain the 'Project' keyword:
 
-    rake redmine:email:receive_imap RAILS_ENV="production" \\
-      host=imap.foo.bar username=redmine@somenet.foo password=xxx
+  rake redmine:email:receive_imap RAILS_ENV="production" \\
+    host=imap.foo.bar username=redmine@somenet.foo password=xxx
 
 
-    # Fixed project and default tracker specified, but emails can override
-    # both tracker and priority attributes:
+  # Fixed project and default tracker specified, but emails can override
+  # both tracker and priority attributes:
 
-    rake redmine:email:receive_imap RAILS_ENV="production" \\
-      host=imap.foo.bar username=redmine@somenet.foo password=xxx ssl=1 \\
-      project=foo \\
-      tracker=bug \\
-      allow_override=tracker,priority
+  rake redmine:email:receive_imap RAILS_ENV="production" \\
+    host=imap.foo.bar username=redmine@somenet.foo password=xxx ssl=1 \\
+    project=foo \\
+    tracker=bug \\
+    allow_override=tracker,priority
 
-    # Move successful emails to the 'read' mailbox and failed emails to
-    # the 'failed' mailbox
+  # Move successful emails to the 'read' mailbox and failed emails to
+  # the 'failed' mailbox
 
-    rake redmine:email:receive_imap RAILS_ENV="production" \\
-      host=imap.foo.bar username=redmine@somenet.foo password=xxx \\
-      move_on_success=read move_on_failure=failed
+  rake redmine:email:receive_imap RAILS_ENV="production" \\
+    host=imap.foo.bar username=redmine@somenet.foo password=xxx \\
+    move_on_success=read move_on_failure=failed
   ```
 
 無視したメールは IMAP サーバーで「既読」になりますが、削除はされません。無視するのは、未登録のユーザーや存在しないプロジェクトのメール、Redmine の送信用のアカウントからのメールなどです。
@@ -228,17 +228,17 @@ rake タスク(`redmine:email:receive_pop3`)で、POP3 サーバーから受信�
 使える POP3 のオプション:
 
   ```text
-    host=HOST                POP3 server host (default: 127.0.0.1)
-    port=PORT                POP3 server port (default: 110)
-    username=USERNAME        POP3 account
-    password=PASSWORD        POP3 password (use '' if it fails, ex: 'my-password')
-    apop=1                   use APOP authentication (default: false)
-    ssl=SSL                  Use SSL? (default: false)
-                             Setting `ssl=force` disables server certificate
-                             verification
-    delete_unprocessed=1     delete messages that could not be processed
-                             successfully from the server (default
-                             behaviour is to leave them on the server)
+  host=HOST                POP3 server host (default: 127.0.0.1)
+  port=PORT                POP3 server port (default: 110)
+  username=USERNAME        POP3 account
+  password=PASSWORD        POP3 password (use '' if it fails, ex: 'my-password')
+  apop=1                   use APOP authentication (default: false)
+  ssl=SSL                  Use SSL? (default: false)
+                           Setting `ssl=force` disables server certificate
+                           verification
+  delete_unprocessed=1     delete messages that could not be processed
+                           successfully from the server (default
+                           behaviour is to leave them on the server)
   ```
 
 チケットの属性を制御するオプションは、上の [IMAP の rake タスク](receiving-emails.md#Fetching-emails-from-an-IMAP-server)を参照してください。
@@ -252,15 +252,15 @@ rake タスク(`redmine:email:read`)で、標準入力から生のメールを 1
 例:
 
   ```text
-    # No project specified. Emails MUST contain the 'Project' keyword:
-    rake redmine:email:read RAILS_ENV="production" < raw_email
+  # No project specified. Emails MUST contain the 'Project' keyword:
+  rake redmine:email:read RAILS_ENV="production" < raw_email
 
-    # Fixed project and default tracker specified, but emails can override
-    # both tracker and priority attributes:
-    rake redmine:email:read RAILS_ENV="production" \\
-                    project=foo \\
-                    tracker=bug \\
-                    allow_override=tracker,priority < raw_email
+  # Fixed project and default tracker specified, but emails can override
+  # both tracker and priority attributes:
+  rake redmine:email:read RAILS_ENV="production" \\
+                  project=foo \\
+                  tracker=bug \\
+                  allow_override=tracker,priority < raw_email
   ```
 
 *allow_override* のオプションは、rake に渡したデフォルト値を上書きするためだけでなく、メールのすべての属性に使います。メールでトラッカーを上書きするには、パラメータに *allow_override=tracker* を付ける必要があります。
@@ -281,7 +281,7 @@ unknown_user=ACTION     how to handle emails from an unknown user where ACTION c
 rake タスクでメールを受信するときは、未登録のユーザーのオプションを次のように書きます。
 
  ```text
-  unknown_user=[ignore|accept|create]
+ unknown_user=[ignore|accept|create]
  ```
 
 「no_permission_check」のオプションで、権限のチェックを無効にできます。
@@ -378,8 +378,8 @@ Project: foo
 例:
 
   ```text
-    # Create issues on project foo by default
-    rake redmine:email:receive_imap [...] project=foo allow_override=project
+  # Create issues on project foo by default
+  rake redmine:email:receive_imap [...] project=foo allow_override=project
   ```
 
 もちろん、ユーザーの権限はチェックされます。メールを送ったユーザーにプロジェクト foo でチケットを追加する権限がないときは、このメールは無視されます。\
@@ -391,19 +391,15 @@ Project: foo
 
 この機能を有効にするには、コマンドに `project_from_subaddress=redmine@somenet.foo` を追加します。例:
 
-````text
 ```text
-    rake redmine:email:receive_imap [...] project_from_subaddress=redmine@somenet.foo
+rake redmine:email:receive_imap [...] project_from_subaddress=redmine@somenet.foo
 ```
-````
 
 コマンドラインでプロジェクトも指定すると、`redmine@somenet.foo` に送られたメールに使うデフォルトのプロジェクトになります。つまり、次のコマンドでは
 
-````text
 ```text
-    rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmine@somenet.foo
+rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmine@somenet.foo
 ```
-````
 
 `redmine@somenet.foo` か `redmine+bar@somenet.foo` へのメールはプロジェクト bar のチケットになり、`redmine+foo@somenet.foo` へのメールはプロジェクト foo に入ります。
 
@@ -466,8 +462,8 @@ Status: Resolved
 例:
 
   ```text
-    # Allow overriding project, tracker, status & priority
-    rake redmine:email:receive_imap [...] allow_override=project,tracker,status,priority
+  # Allow overriding project, tracker, status & priority
+  rake redmine:email:receive_imap [...] allow_override=project,tracker,status,priority
   ```
 
 ### ウォッチャー

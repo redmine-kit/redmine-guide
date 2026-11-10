@@ -86,7 +86,7 @@ end
 今のところ、プラグインは何も保存しません。プラグインに簡単な Poll モデルを作成してみます。構文は次のとおりです。
 
    ```text
-      bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
+   bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
    ```
 
 コマンドプロンプトで次のコマンドを実行します。
@@ -362,8 +362,8 @@ end
 `plugins/polls/init.rb` を編集し、前の権限の宣言を次の 2 行に置き換えます。
 
 ```ruby
-  permission :view_polls, polls: :index
-  permission :vote_polls, polls: :vote
+permission :view_polls, polls: :index
+permission :vote_polls, polls: :vote
 ```
 
 アプリケーションを再起動し、http://localhost:3000/roles/permissions を開きます。
@@ -422,10 +422,10 @@ end
 `init.rb` を編集し、権限の宣言を変えます。
 
 ```ruby
-  project_module :polls do
-    permission :view_polls, polls: :index
-    permission :vote_polls, polls: :vote
-  end
+project_module :polls do
+  permission :view_polls, polls: :index
+  permission :vote_polls, polls: :vote
+end
 ```
 
 アプリケーションを再起動し、プロジェクトのどれかの設定を開きます。\
@@ -475,7 +475,7 @@ JavaScript も、同じように `javascript_include_tag` ヘルパーでプラ�
 例:
 
 ```erb
-  <% html_title "Polls" %>
+<% html_title "Polls" %>
 ```
 
 ## フックの利用

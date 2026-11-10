@@ -13,7 +13,7 @@ source_updated_on: '2019-10-18T11:18:04Z'
 
 Here is a simple example of a command that can be used to update an issue:
 
-```text
+```sh
 curl -v -H "Content-Type: application/json" -X PUT --data-binary "@388.json" -u login:password http://redmine/issues/388.json
 curl -v -H "Content-Type: application/json" -X PUT --data-binary "@388.json" -H "X-Redmine-API-Key: xxxx" http://redmine/issues/388.json
 ```
@@ -38,7 +38,7 @@ Note: it’s required to set the `Content-Type` header according to the format o
 
 Here is a simple example of a command that can be used to create an issue with custom fields:
 
-```text
+```sh
 curl -v -H "Content-Type: application/xml" -X POST --data-binary "@issue.xml" -u login:password http://redmine/issues.xml
 curl -v -H "Content-Type: application/xml" -X POST --data-binary "@issue.xml" -H "X-Redmine-API-Key: xxxx" http://redmine/issues.xml
 ```
@@ -68,7 +68,7 @@ Where issue.xml content is:
 
 If you want to use some text formatting (e.g to update a wiki page on your project), you should make sure to use curl’s option `--data-binary` instead of `--data` to load the file. Only that way, curl will send newline characters unchanged and will retain all formatting.
 
-```text
+```sh
 curl -v -H "Content-Type: application/xml" -X PUT --data-binary "@wiki.xml" -u login:password http://redmine/projects/foo/wiki/page_test.xml
 ```
 
@@ -89,7 +89,7 @@ h1. TITLE
 
 If you want to create an issue with image.png attached, you need to upload this file first:
 
-```text
+```sh
 curl --data-binary "@image.png" -H "Content-Type: application/octet-stream" -X POST -u login:password http://redmine/uploads.xml?filename=image.png
 
 # 201 response
@@ -100,7 +100,7 @@ curl --data-binary "@image.png" -H "Content-Type: application/octet-stream" -X P
 
 Then, use the token to create the issue:
 
-```text
+```sh
 curl -v -H "Content-Type: application/xml" -X POST --data-binary "@issue.xml" -u login:password http://redmine/issues.xml
 ```
 

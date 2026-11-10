@@ -54,7 +54,7 @@ exit 0;
 注:
 
 ```text
-    my $perl_ref = from_json($content);
+my $perl_ref = from_json($content);
 ```
 
 ここで、[Perl のリファレンス](http://perldoc.perl.org/perlref.html") `$perl_ref` は、解析したデータ構造全体へのリファレンスです。

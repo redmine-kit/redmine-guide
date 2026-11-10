@@ -176,13 +176,13 @@ This is centered paragraph.
 ### 整形済みテキスト
 
  ```text
-  <pre>*Your text won't become bold*</pre>
+ <pre>*Your text won't become bold*</pre>
  ```
 
 表示:
 
  ```text
-  *Your text won't become bold*
+ *Your text won't become bold*
  ```
 
 ### 引用

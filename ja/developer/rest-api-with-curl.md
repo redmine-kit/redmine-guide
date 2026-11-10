@@ -11,7 +11,7 @@ translated_from_version: 10
 
 チケットを更新するコマンドの簡単な例です。
 
-```text
+```sh
 curl -v -H "Content-Type: application/json" -X PUT --data-binary "@388.json" -u login:password http://redmine/issues/388.json
 curl -v -H "Content-Type: application/json" -X PUT --data-binary "@388.json" -H "X-Redmine-API-Key: xxxx" http://redmine/issues/388.json
 ```
@@ -36,7 +36,7 @@ Redmine に送るデータのファイル(上の例では 388.json)は、次の�
 
 カスタムフィールドのあるチケットを作成するコマンドの簡単な例です。
 
-```text
+```sh
 curl -v -H "Content-Type: application/xml" -X POST --data-binary "@issue.xml" -u login:password http://redmine/issues.xml
 curl -v -H "Content-Type: application/xml" -X POST --data-binary "@issue.xml" -H "X-Redmine-API-Key: xxxx" http://redmine/issues.xml
 ```
@@ -66,7 +66,7 @@ issue.xml の内容は次のとおりです。
 
 テキスト書式を使う場合(たとえばプロジェクトの Wiki ページを更新する場合)は、ファイルの読み込みに curl のオプション `--data` ではなく `--data-binary` を使ってください。そうすることで初めて、curl は改行をそのまま送り、書式がすべて保たれます。
 
-```text
+```sh
 curl -v -H "Content-Type: application/xml" -X PUT --data-binary "@wiki.xml" -u login:password http://redmine/projects/foo/wiki/page_test.xml
 ```
 
@@ -87,7 +87,7 @@ h1. TITLE
 
 image.png を添付したチケットを作成するには、まずこのファイルをアップロードする必要があります。
 
-```text
+```sh
 curl --data-binary "@image.png" -H "Content-Type: application/octet-stream" -X POST -u login:password http://redmine/uploads.xml?filename=image.png
 
 # 201 response
@@ -98,7 +98,7 @@ curl --data-binary "@image.png" -H "Content-Type: application/octet-stream" -X P
 
 続けて、トークンを使ってチケットを作成します。
 
-```text
+```sh
 curl -v -H "Content-Type: application/xml" -X POST --data-binary "@issue.xml" -u login:password http://redmine/issues.xml
 ```
 

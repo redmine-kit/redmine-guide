@@ -23,13 +23,13 @@ developer/plugin-internals: Plugin_Internals
 developer/plugin-tutorial: Plugin_Tutorial
 developer/release-management: ReleaseManagement
 developer/rest-api: Rest_api
-developer/rest-api-ith-python: Rest_api_ẅith_python
 developer/rest-api-with-csharp: Rest_api_with_csharp
 developer/rest-api-with-curl: Rest_api_with_curl
 developer/rest-api-with-delphi: Rest_api_with_delphi
 developer/rest-api-with-java: Rest_api_with_java
 developer/rest-api-with-perl: Rest_api_with_perl
 developer/rest-api-with-php: Rest_api_with_php
+developer/rest-api-with-python: Rest_api_ẅith_python
 developer/rest-api-with-ruby: Rest_api_with_ruby
 developer/rest-attachments: Rest_Attachments
 developer/rest-custom-fields: Rest_CustomFields

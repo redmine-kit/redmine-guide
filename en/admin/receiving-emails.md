@@ -94,15 +94,15 @@ See [Issue-attributes](receiving-emails.md#Issue-attributes) for a list of value
 Examples:
 
 ```text
-  # No project specified. Emails MUST contain the 'Project' keyword:
-  rdm-mailhandler.rb --url http://redmine.domain.foo --key secret
+# No project specified. Emails MUST contain the 'Project' keyword:
+rdm-mailhandler.rb --url http://redmine.domain.foo --key secret
 
-  # Fixed project and default tracker specified, but emails can override
-  # both tracker and priority attributes:
-  rdm-mailhandler.rb --url https://domain.foo/redmine --key secret \\
-                     --project foo \\
-                     --tracker bug \\
-                     --allow-override tracker,priority
+# Fixed project and default tracker specified, but emails can override
+# both tracker and priority attributes:
+rdm-mailhandler.rb --url https://domain.foo/redmine --key secret \\
+                   --project foo \\
+                   --tracker bug \\
+                   --allow-override tracker,priority
 ```
 
 Here is an example for a Postfix local alias entry:
@@ -144,52 +144,52 @@ It can be necessary that you open the firewall on the machine for outgoing TCP c
 Available IMAP options:
 
 ```text
-  host=HOST                IMAP server host (default: 127.0.0.1)
-  port=PORT                IMAP server port (default: 143)
-  ssl=SSL                  Use SSL/TLS? (default: false)
-                           Setting `ssl=force` disables server certificate
-                           verification
-  starttls=STARTTLS        Use STARTTLS? (default: false)
-  username=USERNAME        IMAP account
-  password=PASSWORD        IMAP password
-  folder=FOLDER            IMAP folder to read (default: INBOX)
-  move_on_success=MAILBOX  move emails that were successfully received
-                           to MAILBOX instead of deleting them
-  move_on_failure=MAILBOX  move emails that were ignored to MAILBOX
+host=HOST                IMAP server host (default: 127.0.0.1)
+port=PORT                IMAP server port (default: 143)
+ssl=SSL                  Use SSL/TLS? (default: false)
+                         Setting `ssl=force` disables server certificate
+                         verification
+starttls=STARTTLS        Use STARTTLS? (default: false)
+username=USERNAME        IMAP account
+password=PASSWORD        IMAP password
+folder=FOLDER            IMAP folder to read (default: INBOX)
+move_on_success=MAILBOX  move emails that were successfully received
+                         to MAILBOX instead of deleting them
+move_on_failure=MAILBOX  move emails that were ignored to MAILBOX
 ```
 
 User and permissions options:
 
 ```text
-  unknown_user=ACTION      how to handle emails from an unknown user
-                           ACTION can be one of the following values:
-                           ignore: email is ignored (default)
-                           accept: accept as anonymous user
-                           create: create a user account
-  no_permission_check=1    disable permission checking when receiving
-                           the email
-  no_account_notice=1      disable new user account notification
-  no_notification=1        disable email notification to new user
-  default_group=foo,bar    adds created user to foo and bar groups
+unknown_user=ACTION      how to handle emails from an unknown user
+                         ACTION can be one of the following values:
+                         ignore: email is ignored (default)
+                         accept: accept as anonymous user
+                         create: create a user account
+no_permission_check=1    disable permission checking when receiving
+                         the email
+no_account_notice=1      disable new user account notification
+no_notification=1        disable email notification to new user
+default_group=foo,bar    adds created user to foo and bar groups
 ```
 
 Issue attributes control options:
 
 ```text
-  project=PROJECT          identifier of the target project
-  project_from_subaddress=ADDR
-                           select project from subaddress of ADDR found
-                           in To, Cc, Bcc headers
-  status=STATUS            name of the target status
-  tracker=TRACKER          name of the target tracker
-  category=CATEGORY        name of the target category
-  priority=PRIORITY        name of the target priority
-  assigned_to=ASSIGNEE     assignee (username or group name)
-  fixed_version=VERSION    name of the target version
-  private                  create new issues as private
-  allow_override=ATTRS     allow email content to set attributes values
-                           ATTRS is a comma separated list of attributes
-                           or 'all' to allow all attributes to be overridable
+project=PROJECT          identifier of the target project
+project_from_subaddress=ADDR
+                         select project from subaddress of ADDR found
+                         in To, Cc, Bcc headers
+status=STATUS            name of the target status
+tracker=TRACKER          name of the target tracker
+category=CATEGORY        name of the target category
+priority=PRIORITY        name of the target priority
+assigned_to=ASSIGNEE     assignee (username or group name)
+fixed_version=VERSION    name of the target version
+private                  create new issues as private
+allow_override=ATTRS     allow email content to set attributes values
+                         ATTRS is a comma separated list of attributes
+                         or 'all' to allow all attributes to be overridable
 ```
 
 See [Issue-attributes](receiving-emails.md#Issue-attributes) for a list of values that can be used for the `allow-override` option.
@@ -197,26 +197,26 @@ See [Issue-attributes](receiving-emails.md#Issue-attributes) for a list of value
 Examples for the rake command:
 
 ```text
-  # No project specified. Emails MUST contain the 'Project' keyword:
+# No project specified. Emails MUST contain the 'Project' keyword:
 
-  rake redmine:email:receive_imap RAILS_ENV="production" \\
-    host=imap.foo.bar username=redmine@somenet.foo password=xxx
+rake redmine:email:receive_imap RAILS_ENV="production" \\
+  host=imap.foo.bar username=redmine@somenet.foo password=xxx
 
-  # Fixed project and default tracker specified, but emails can override
-  # both tracker and priority attributes:
+# Fixed project and default tracker specified, but emails can override
+# both tracker and priority attributes:
 
-  rake redmine:email:receive_imap RAILS_ENV="production" \\
-    host=imap.foo.bar username=redmine@somenet.foo password=xxx ssl=1 \\
-    project=foo \\
-    tracker=bug \\
-    allow_override=tracker,priority
+rake redmine:email:receive_imap RAILS_ENV="production" \\
+  host=imap.foo.bar username=redmine@somenet.foo password=xxx ssl=1 \\
+  project=foo \\
+  tracker=bug \\
+  allow_override=tracker,priority
 
-  # Move successful emails to the 'read' mailbox and failed emails to
-  # the 'failed' mailbox
+# Move successful emails to the 'read' mailbox and failed emails to
+# the 'failed' mailbox
 
-  rake redmine:email:receive_imap RAILS_ENV="production" \\
-    host=imap.foo.bar username=redmine@somenet.foo password=xxx \\
-    move_on_success=read move_on_failure=failed
+rake redmine:email:receive_imap RAILS_ENV="production" \\
+  host=imap.foo.bar username=redmine@somenet.foo password=xxx \\
+  move_on_success=read move_on_failure=failed
 ```
 
 Ignored emails are marked as ‘Seen’ but are not deleted from the IMAP server—these include unknown user, unknown project and emails from the redmine emission account.
@@ -230,17 +230,17 @@ A rake task (`redmine:email:receive_pop3`) can be used to fetch incoming emails 
 Available POP3 options:
 
 ```text
-  host=HOST                POP3 server host (default: 127.0.0.1)
-  port=PORT                POP3 server port (default: 110)
-  username=USERNAME        POP3 account
-  password=PASSWORD        POP3 password (use '' if it fails, ex: 'my-password')
-  apop=1                   use APOP authentication (default: false)
-  ssl=SSL                  Use SSL? (default: false)
-                           Setting `ssl=force` disables server certificate
-                           verification
-  delete_unprocessed=1     delete messages that could not be processed
-                           successfully from the server (default
-                           behaviour is to leave them on the server)
+host=HOST                POP3 server host (default: 127.0.0.1)
+port=PORT                POP3 server port (default: 110)
+username=USERNAME        POP3 account
+password=PASSWORD        POP3 password (use '' if it fails, ex: 'my-password')
+apop=1                   use APOP authentication (default: false)
+ssl=SSL                  Use SSL? (default: false)
+                         Setting `ssl=force` disables server certificate
+                         verification
+delete_unprocessed=1     delete messages that could not be processed
+                         successfully from the server (default
+                         behaviour is to leave them on the server)
 ```
 
 See the [IMAP rake task](receiving-emails.md#Fetching-emails-from-an-IMAP-server) above for issue attributes control options.
@@ -254,15 +254,15 @@ See the [IMAP rake task](receiving-emails.md#Fetching-emails-from-an-IMAP-server
 Examples:
 
 ```text
-  # No project specified. Emails MUST contain the 'Project' keyword:
-  rake redmine:email:read RAILS_ENV="production" < raw_email
+# No project specified. Emails MUST contain the 'Project' keyword:
+rake redmine:email:read RAILS_ENV="production" < raw_email
 
-  # Fixed project and default tracker specified, but emails can override
-  # both tracker and priority attributes:
-  rake redmine:email:read RAILS_ENV="production" \\
-                  project=foo \\
-                  tracker=bug \\
-                  allow_override=tracker,priority < raw_email
+# Fixed project and default tracker specified, but emails can override
+# both tracker and priority attributes:
+rake redmine:email:read RAILS_ENV="production" \\
+                project=foo \\
+                tracker=bug \\
+                allow_override=tracker,priority < raw_email
 ```
 
 The option *allow_override* is not only for overriding default values given to rake, but for every attribute in a mail. If you want to override the tracker in your mail you have to add *allow_override=tracker* as a parameter.
@@ -283,7 +283,7 @@ Permissions have to be consistent with the chosen option. E.g. if you choose ‘
 If you receive emails via the rake task, the unknown-user option has to be written as:
 
 ```text
- unknown_user=[ignore|accept|create]
+unknown_user=[ignore|accept|create]
 ```
 
 You can disable permission checking using the ‘no_permission_check’ option:
@@ -381,8 +381,8 @@ You can set a default project using the `project` option and let users override 
 Example:
 
 ```text
-  # Create issues on project foo by default
-  rake redmine:email:receive_imap [...] project=foo allow_override=project
+# Create issues on project foo by default
+rake redmine:email:receive_imap [...] project=foo allow_override=project
 ```
 
 Of course, user permissions are checked and this email would be ignored if the user who sent this email is not allowed to add issues to project foo.\
@@ -395,13 +395,13 @@ This feature was introduced in ver 3.2.0 (SVN rev [r14687](https://www.redmine.o
 To enable this feature add the `project_from_subaddress=redmine@somenet.foo` to the command e.g.
 
 ```text
-    rake redmine:email:receive_imap [...] project_from_subaddress=redmine@somenet.foo
+rake redmine:email:receive_imap [...] project_from_subaddress=redmine@somenet.foo
 ```
 
 If a project is included in the command-line then it becomes the default project that will be used for emails sent to `redmine@somenet.foo`. So with the command:
 
 ```text
-    rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmine@somenet.foo
+rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmine@somenet.foo
 ```
 
 emails to `redmine@somenet.foo` or `redmine+bar@somenet.foo` will raise issues in project bar; emails to `redmine+foo@somenet.foo` will go into project foo.
@@ -465,8 +465,8 @@ Multiple attribute values can be specified in order to allow only certain keywor
 Example:
 
 ```text
-  # Allow overriding project, tracker, status & priority
-  rake redmine:email:receive_imap [...] allow_override=project,tracker,status,priority
+# Allow overriding project, tracker, status & priority
+rake redmine:email:receive_imap [...] allow_override=project,tracker,status,priority
 ```
 
 ### Watchers

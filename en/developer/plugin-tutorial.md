@@ -89,7 +89,7 @@ Note: any change to the `init.rb` file of your plugin requires to restart the ap
 For now plugin doesn’t store anything. Let’s create a simple Poll model for our plugin. Syntax is:
 
 ```text
-   bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
+bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
 ```
 
 So, go to the command prompt and run:
@@ -364,8 +364,8 @@ We’re going to declare 2 project based permissions, one for viewing the polls 
 Edit `plugins/polls/init.rb` to replace the previous permission declaration with these 2 lines:
 
 ```ruby
-  permission :view_polls, polls: :index
-  permission :vote_polls, polls: :vote
+permission :view_polls, polls: :index
+permission :vote_polls, polls: :vote
 ```
 
 Restart the application and go to http://localhost:3000/roles/permissions:
@@ -424,10 +424,10 @@ So, let’s create a ‘Polls’ project module. This is done by wrapping the pe
 Edit `init.rb` and change the permissions declaration:
 
 ```ruby
-  project_module :polls do
-    permission :view_polls, polls: :index
-    permission :vote_polls, polls: :vote
-  end
+project_module :polls do
+  permission :view_polls, polls: :index
+  permission :vote_polls, polls: :vote
+end
 ```
 
 Restart the application and go to one of your project settings.\
@@ -477,7 +477,7 @@ You can set the HTML title from inside your views by using the `html_title` help
 Example:
 
 ```erb
-  <% html_title "Polls" %>
+<% html_title "Polls" %>
 ```
 
 ## Using hooks

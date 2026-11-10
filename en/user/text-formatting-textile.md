@@ -179,13 +179,13 @@ displays:
 ### Preformatted Text
 
 ```text
- <pre>*Your text won't become bold*</pre>
+<pre>*Your text won't become bold*</pre>
 ```
 
 displays:
 
 ```text
- *Your text won't become bold*
+*Your text won't become bold*
 ```
 
 ### Blockquotes
@@ -438,7 +438,7 @@ Redmine includes a macros system that lets you add custom functions to insert dy
 - `macro_list`: Displays a list of all available macros, including description if available.
 - `child_pages`: Displays a list of child pages. With no argument, it displays the child pages of the current wiki page. Examples:
 
-  ```
+  ```text
   {{child_pages}} -- can be used from a wiki page only
   {{child_pages(depth=2)}} -- display 2 levels nesting only
   {{child_pages(Foo)}} -- lists all children of page Foo
@@ -447,7 +447,7 @@ Redmine includes a macros system that lets you add custom functions to insert dy
 
 - `recent_pages`: Displays a list of recently updated wiki pages. With no argument, it displays pages that have been updated within the last 7 days. Examples:
 
-  ```
+  ```text
   {{recent_pages}} -- displays pages updated within the last 7 days
   {{recent_pages(days=3)}} -- displays pages updated within the last 3 days
   {{recent_pages(limit=5)}} -- limits the maximum number of pages to display to 5
@@ -458,14 +458,14 @@ Redmine includes a macros system that lets you add custom functions to insert dy
 
 - `include`: Includes a wiki page. Examples:
 
-  ```
+  ```text
   {{include(Foo)}}
   {{include(projectname:Foo)}} -- to include a page of a specific project wiki
   ```
 
 - `collapse`: Inserts of collapsed block of text. Examples:
 
-  ```
+  ```text
   {{collapse
   This is a block of text that is collapsed by default.
   It can be expanded by clicking a link.
@@ -478,14 +478,14 @@ Redmine includes a macros system that lets you add custom functions to insert dy
 
 - `thumbnail`: Displays a clickable thumbnail of an attached image. Default size is 200 pixels. Examples:
 
-  ```
+  ```text
   {{thumbnail(image.png)}}
   {{thumbnail(image.png, size=300, title=Thumbnail)}} -- with custom title and size
   ```
 
 - `issue`: Displays an issue link including additional information. Examples:
 
-  ```
+  ```text
   {{issue(123)}}                              -- Issue #123: Enhance macro capabilities
   {{issue(123, project=true)}}                -- Andromeda - Issue #123: Enhance macro capabilities
   {{issue(123, tracker=false)}}               -- #123: Enhance macro capabilities

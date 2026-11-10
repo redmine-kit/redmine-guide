@@ -80,7 +80,7 @@ pages:
   developer/submissions: { ja: redmine.org への投稿, note: The English title }
   developer/rest-api-with-ruby: { ja: Ruby で REST API を使う, note: "The English title; the same form for every language" }
   developer/rest-api-with-php: { ja: PHP で REST API を使う, note: As developer/rest-api-with-ruby }
-  developer/rest-api-ith-python: { ja: Python で REST API を使う, note: As developer/rest-api-with-ruby }
+  developer/rest-api-with-python: { ja: Python で REST API を使う, note: As developer/rest-api-with-ruby }
   developer/rest-api-with-java: { ja: Java で REST API を使う, note: As developer/rest-api-with-ruby }
   developer/rest-api-with-csharp: { ja: .NET で REST API を使う, note: As developer/rest-api-with-ruby }
   developer/rest-api-with-delphi: { ja: Delphi で REST API を使う, note: As developer/rest-api-with-ruby }

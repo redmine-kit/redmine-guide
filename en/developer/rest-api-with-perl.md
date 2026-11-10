@@ -56,7 +56,7 @@ exit 0;
 Note:
 
 ```text
-    my $perl_ref = from_json($content);
+my $perl_ref = from_json($content);
 ```
 
 Here a [Perl reference](http://perldoc.perl.org/perlref.html") `$perl_ref` is a reference to a whole data structure parsed.

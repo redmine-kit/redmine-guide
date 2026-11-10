@@ -194,7 +194,7 @@ This is centered paragraph.
 ### 整形済みテキスト
 
  ```text
-  <pre>**Your text won't become bold**</pre>
+ <pre>**Your text won't become bold**</pre>
  ```
 
 表示:
@@ -273,7 +273,7 @@ Great!
 タスクリストの項目は、次の common_mark の書式で追加できます。
 
  ```text
-  * [ ] Task title
+ * [ ] Task title
  ```
 
 ツールバーの「タスクリスト」のアイコンをクリックしても追加できます。

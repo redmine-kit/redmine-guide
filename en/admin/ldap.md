@@ -217,8 +217,8 @@ If succesful, you will get a listing of the contents of the AD, matching your se
 The username for the bind credentials might need to be specified as a DN (i.e. CN=user,OU=optional,DC=domain,DC=com) rather than as a UPN (user@domain.com) or as domain\user, as pointed out by this comment in lib/net/ldap.rb of the net-ldap gem:
 
 ```text
-  # As described under #bind, most LDAP servers require that you supply a complete DN
-  # as a binding-credential, along with an authenticator such as a password.
+# As described under #bind, most LDAP servers require that you supply a complete DN
+# as a binding-credential, along with an authenticator such as a password.
 ```
 
 Therefore user with MyDomain\MyUserName or MyUserName@MyDomain.com username might enter only MyUserName as a Redmine login name.

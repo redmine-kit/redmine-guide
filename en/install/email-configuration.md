@@ -183,13 +183,13 @@ production:
 If you get this error, there’s probably a problem verifying the SSL certificate of your smtp relay. As a temporary fix, you can set this option in the appropriate “smtp_settings” section:
 
 ```yml
-    enable_starttls_auto: false
+enable_starttls_auto: false
 ```
 
 If you have to enable starttls and just want to bypass the certificate verification, you can add following option in the appropriate “smtp_settings” section:
 
 ```yml
-    openssl_verify_mode: "NONE"
+openssl_verify_mode: "NONE"
 ```
 
 ### Error: “Mail failure - no recipient addresses”

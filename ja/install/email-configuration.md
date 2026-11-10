@@ -180,13 +180,13 @@ production:
 このエラーが出る場合は、SMTP リレーの SSL 証明書の検証に問題がある可能性があります。一時的な対処として、該当する「smtp_settings」のセクションに次のオプションを設定できます。
 
 ```yml
-    enable_starttls_auto: false
+enable_starttls_auto: false
 ```
 
 STARTTLS は有効にしたまま、証明書の検証だけを省く場合は、該当する「smtp_settings」のセクションに次のオプションを追加します。
 
 ```yml
-    openssl_verify_mode: "NONE"
+openssl_verify_mode: "NONE"
 ```
 
 ### エラー:「Mail failure - no recipient addresses」

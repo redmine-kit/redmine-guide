@@ -214,8 +214,8 @@ ldapsearch -x -b “dc=example,dc=com” -H ldap://hostname/ -D “DOMAIN\USER�
 net-ldap の gem の lib/net/ldap.rb にある次のコメントのとおり、バインドの資格情報のユーザー名は、UPN(user@domain.com)や domain\user ではなく、DN(CN=user,OU=optional,DC=domain,DC=com など)で指定する必要がある場合があります。
 
   ```text
-    # As described under #bind, most LDAP servers require that you supply a complete DN
-    # as a binding-credential, along with an authenticator such as a password.
+  # As described under #bind, most LDAP servers require that you supply a complete DN
+  # as a binding-credential, along with an authenticator such as a password.
   ```
 
 そのため、ユーザー名が MyDomain\MyUserName や MyUserName@MyDomain.com のユーザーは、Redmine のログイン ID として MyUserName だけを入力すればよい場合があります。
