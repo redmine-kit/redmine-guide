@@ -145,7 +145,7 @@ ISSUE_REF = /(?<![\w&\/\[(#\\])(?<!\.org )\\?#(\d{2,6})\b/
 def link_issues(markdown)
   fence = false
   markdown.lines.map do |line|
-    fence = !fence if line.start_with?('```')
+    fence = !fence if line.lstrip.start_with?('```')
     next line if fence
 
     line.split(/(`[^`]*`|<[^<>\n]+>)/).map do |part|

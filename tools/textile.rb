@@ -39,13 +39,6 @@ module Textile
           block = @blocks[Regexp.last_match(2).to_i]
           block.is_a?(Code) ? "\n\n#{block.to_s(Regexp.last_match(1))}\n" : Regexp.last_match(0)
         end
-        # An indented code block right after a list would be taken into the
-        # list's last item: fenced instead.
-        markdown = markdown.gsub(/(?<=\n\n)RGHELDx(\d+)x$/) do
-          block = @blocks[Regexp.last_match(1).to_i]
-          after_list = Regexp.last_match.pre_match.rstrip.split("\n").last.to_s.match?(/\A(?:\s*(?:[-*+]|\d+\.)\s|\s+\S)/)
-          block.is_a?(Code) && after_list ? block.to_s(fenced: true) : Regexp.last_match(0)
-        end
         markdown = markdown.gsub(/RGHELDx(\d+)x/) { @blocks[Regexp.last_match(1).to_i].to_s }
       end
       markdown
@@ -195,19 +188,15 @@ module Textile
     end.join
   end
 
-  # A code block: fenced with its language, or indented (fenced within a
-  # list item).
+  # A code block: fenced, with its language or `text`, so that every code
+  # block looks the same (an indented block has no language).
   Code = Struct.new(:lines, :lang) do
-    def to_s(indent = '', fenced: false)
+    def to_s(indent = '')
       return '' if lines.all?(&:empty?)
 
-      if (lang && !lang.empty?) || !indent.empty? || fenced
-        fence = '```'
-        fence += '`' while lines.any? { |line| line.include?(fence) }
-        ["#{fence}#{lang}", *lines, fence].map { |line| line.empty? ? '' : "#{indent}#{line}" }.join("\n")
-      else
-        lines.map { |line| line.empty? ? '' : "    #{line}" }.join("\n")
-      end
+      fence = '```'
+      fence += '`' while lines.any? { |line| line.include?(fence) }
+      ["#{fence}#{lang.to_s.empty? ? 'text' : lang}", *lines, fence].map { |line| line.empty? ? '' : "#{indent}#{line}" }.join("\n")
     end
 
     def to_html

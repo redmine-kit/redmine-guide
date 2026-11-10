@@ -76,8 +76,12 @@ updates:
     replace: |-
       You may need to manually install the mysql gem using the following command:
 
-          gem install mysql
+      ```text
+      gem install mysql
+      ```
     with: |-
       You may need to manually install the mysql2 gem using the following command:
 
-          gem install mysql2
+      ```text
+      gem install mysql2
+      ```
