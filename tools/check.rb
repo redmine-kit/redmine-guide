@@ -102,6 +102,24 @@ def indented_code?(text)
   false
 end
 
+# Full-width characters in a line of a code block drawn as aligned ASCII art
+# (columns of | or +-): a code font does not draw them exactly two columns
+# wide, so the columns do not line up. Use ASCII and a legend below.
+FULL_WIDTH = /[\p{Han}\p{Hiragana}\p{Katakana}\u3000-\u303F\uFF01-\uFF60]/
+
+def full_width_art?(text)
+  fence = nil
+  text.each_line(chomp: true).any? do |line|
+    if fence
+      fence = nil if line.strip.start_with?(fence) && line.strip.delete(fence[0]).empty?
+      fence && line.match?(FULL_WIDTH) && (line.count('|') >= 2 || line.match?(/\+-|-\+/))
+    else
+      fence = line[/\A\s*(`{3,}|~{3,})/, 1]
+      false
+    end
+  end
+end
+
 # The text formatting pages show inline styles as examples.
 STYLE_EXAMPLES = %r{\Auser/text-formatting}
 
@@ -110,6 +128,7 @@ def conversion_failures(text, file = '')
   unfenced = text.gsub(/^[ \t]*(`{3,}|~{3,}).*?^[ \t]*\1\s*$/m, '')
   found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (IN_CODE.include?(problem) ? unfenced : body).match?(pattern) }
   found << 'an indented code block (fence it, with a language or `text`)' if indented_code?(text)
+  found << 'full-width characters in ASCII art of a code block (use ASCII and a legend)' if full_width_art?(text)
   found << 'an image from another site (keep a copy in images/)' if body.match?(/(?<!\\)!\[(?:[^\]\\]|\\.)*\]\(\s*<?https?:|<img\b[^>]*\bsrc=["']?https?:/i)
   found << 'an inline background colour (a note is an alert: > [!NOTE])' if !file.match?(STYLE_EXAMPLES) && body.match?(/style="[^"]*background/i)
   tags = body.scan(%r{(?<!\\)</?([A-Za-z][A-Za-z0-9]*)[\s>/]}).flatten.map(&:downcase).uniq - HTML_TAGS
