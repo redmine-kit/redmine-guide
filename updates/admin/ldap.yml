@@ -10,6 +10,6 @@ updates:
   - why: Redmine 7.0.3 uses the net-ldap gem; it no longer has a vendored ruby-net-ldap plugin.
     source: Gemfile (net-ldap)
     replace: |-
-      as pointed out by this comment in source:trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb:
+      as pointed out by this comment in [source:trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb):
     with: |-
       as pointed out by this comment in lib/net/ldap.rb of the net-ldap gem:

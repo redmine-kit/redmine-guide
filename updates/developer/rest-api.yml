@@ -29,7 +29,7 @@ updates:
   - why: Redmine 7.0.3 still uses the content_type sent with an upload; ignoring it is a Redmine 7.1 change.
     source: app/controllers/attachments_controller.rb (upload, params[:content_type]); app/models/attachment.rb (safe_attributes 'content_type')
     replace: |-
-      Note: as of Redmine version:7.1.0, the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead.
+      Note: as of Redmine [7.1.0](https://www.redmine.org/versions/228), the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead.
     with: |-
       Note: as of Redmine version:7.1.0, the `content_type` attribute is ignored. Redmine detects the content type from the file contents instead. Redmine 7.0.3 still uses the attribute.
   - why: The JSONP setting is on the Integrations tab.

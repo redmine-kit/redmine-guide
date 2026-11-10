@@ -11,6 +11,6 @@ updates:
   - why: The builtin macros of Redmine 7.0.3 start at line 199.
     source: lib/redmine/wiki_formatting/macros.rb
     replace: |-
-      source:/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162
+      [source:/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162](https://www.redmine.org/projects/redmine/repository/svn/show/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162)
     with: |-
       [lib/redmine/wiki_formatting/macros.rb](https://github.com/redmine/redmine/blob/7.0.3/lib/redmine/wiki_formatting/macros.rb#L199)

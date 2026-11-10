@@ -4,7 +4,7 @@ updates:
   - why: The page lists the components of 2022 (r21879). Redmine 7.0.3 has other versions and locations (JavaScript in app/assets/javascripts and vendor/javascript), Turndown, no Raphael.js and no jQuery-UJS in the jQuery file.
     source: app/assets/javascripts, vendor/javascript (version banners), config/importmap.rb, app/helpers/application_helper.rb (javascript_heads), lib/plugins, lib/redmine/string_array_diff/diff.rb, lib/redmine/wiki_formatting/textile/redcloth3.rb, doc/licenses, doc/CHANGELOG (7.0.0, Patch #43845)
     replace: |-
-      ## Redmine trunk at r21879 (source:/trunk@21879)
+      ## Redmine trunk at [r21879](https://www.redmine.org/projects/redmine/repository/svn/revisions/21879) ([source:/trunk@21879](https://www.redmine.org/projects/redmine/repository/svn/show/trunk?rev=21879))
     with: |-
       ## Redmine 7.0.3 (source:/tags/7.0.3)
 

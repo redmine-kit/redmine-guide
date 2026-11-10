@@ -102,3 +102,27 @@ icons:
     true.png: "✓"
     locked.png: "🔒"
     unlock.png: "🔓"
+
+# Redmine's links to versions and forum messages of redmine.org in the
+# guide's text (version#43, version:2.3.0, message#36062), shown as
+# redmine.org shows them: a version by its name, a message by its subject.
+# From https://www.redmine.org/projects/redmine/versions.json and the
+# messages' pages; a version not listed is shown by its name without a link.
+versions:
+  3: "0.7.1"
+  6: "0.9.0"
+  20: "1.1.0"
+  27: "1.2.0"
+  40: "1.4.0"
+  43: "2.0.0"
+  46: "1.4.1"
+  56: "2.2.0"
+  60: "2.3.0"
+  191: "5.1.1"
+  228: "7.1.0"
+messages:
+  36062: { board: 4, subject: "hook list?" }
+  4095: { board: 3, subject: "Rails Engines and extending the issue model" }
+  4283: { board: 3, subject: "Can a plugin modify the view of the projects page?" }
+  4325: { board: 1, subject: "How to contribute" }
+  59809: { board: 2, subject: "how to get at config variables from a plugin" }

@@ -27,6 +27,8 @@ INDEX_PAGES = %w[Guide Installation_Guide Administrator_Guide User_Guide Develop
 manifest = JSON.parse(File.read(File.join(UPSTREAM, 'manifest.json')))
 pages = manifest['pages']
 config = YAML.safe_load_file(File.join(OUT, 'guide.yml'))
+VERSIONS = config.fetch('versions', {}).transform_keys(&:to_i).freeze
+MESSAGES = config.fetch('messages', {}).to_h { |id, message| [id.to_i, [message['board'], message['subject']]] }.freeze
 
 def slug(title)
   title.sub(/\ARedmine(?=[A-Z])/, '')
@@ -142,14 +144,45 @@ end
 # (also when pandoc escaped the # as \#), but not another site's ("bugs.ruby-lang.org #21856").
 ISSUE_REF = /(?<![\w&\/\[(#\\])(?<!\.org )\\?#(\d{2,6})\b/
 
+# Redmine's links to other objects of redmine.org, shown as redmine.org
+# shows them (ApplicationHelper#parse_redmine_links): a version by its name
+# (guide.yml, versions), a revision, a forum message by its subject
+# (guide.yml, messages), a file of the repository. A version that
+# redmine.org does not have is shown by its name, without a link.
+REDMINE_REF = %r{(?<![\w/#:.*\[\\-])(?:version\\?#(\d+)|version:["“”]([^"“”]+)["“”]|version:(\d[\w.-]*\w)|r(\d{2,6})|message\\?#(\d+)|source:(/?[\w.-][^\s<>()|\]*\\]*?))(?=[.,;:!?]?(?:[\s<)\]|、。）」]|$))}
+REPOSITORY_URL = 'https://www.redmine.org/projects/redmine/repository/svn'
+
+def redmine_ref(match)
+  version_id, quoted, named, revision, message, source = match.captures
+  if version_id || quoted || named
+    name = version_id ? VERSIONS[version_id.to_i] : (quoted || named)
+    id = version_id&.to_i || VERSIONS.key(name)
+    return [name || match[0], id && "https://www.redmine.org/versions/#{id}"]
+  end
+  return ["r#{revision}", "#{REPOSITORY_URL}/revisions/#{revision}"] if revision
+  if message
+    board, subject = MESSAGES[message.to_i]
+    return [subject ? subject : match[0], board && "https://www.redmine.org/boards/#{board}/topics/#{message}"]
+  end
+
+  path, anchor = source.split('#', 2)
+  path, rev = path.split('@', 2)
+  ["source:#{source}", "#{REPOSITORY_URL}/show/#{path.delete_prefix('/')}#{"?rev=#{rev}" if rev}#{"##{anchor}" if anchor}"]
+end
+
 def link_issues(markdown)
   fence = false
   markdown.lines.map do |line|
     fence = !fence if line.lstrip.start_with?('```')
     next line if fence
 
-    line.split(/(`[^`]*`|<[^<>\n]+>)/).map do |part|
-      part.start_with?('`', '<') ? part : part.gsub(ISSUE_REF) { "[##{Regexp.last_match(1)}](#{ISSUE_URL}#{Regexp.last_match(1)})" }
+    line.split(/(`[^`]*`|<[^<>\n]+>|\]\([^)]*\))/).map do |part|
+      next part if part.start_with?('`', '<', '](')
+
+      part.gsub(ISSUE_REF) { "[##{Regexp.last_match(1)}](#{ISSUE_URL}#{Regexp.last_match(1)})" }.gsub(REDMINE_REF) do
+        text, url = redmine_ref(Regexp.last_match)
+        url ? "[#{text.gsub(/([\[\]*])/, '\\\\\\1')}](#{url})" : text
+      end
     end.join
   end.join
 end
@@ -163,7 +196,12 @@ def link_issues_html(html)
       code = false if part == '</code>'
       part
     else
-      code ? part : part.gsub(ISSUE_REF) { %(<a href="#{ISSUE_URL}#{Regexp.last_match(1)}">##{Regexp.last_match(1)}</a>) }
+      next part if code
+
+      part.gsub(ISSUE_REF) { %(<a href="#{ISSUE_URL}#{Regexp.last_match(1)}">##{Regexp.last_match(1)}</a>) }.gsub(REDMINE_REF) do
+        text, url = redmine_ref(Regexp.last_match)
+        url ? %(<a href="#{url}">#{CGI.escapeHTML(text)}</a>) : CGI.escapeHTML(text)
+      end
     end
   end.join
 end
@@ -229,6 +267,7 @@ topics.each do |page, topic|
   # Images (not an escaped example of the syntax), with their title.
   markdown = markdown.gsub(/(?<!\\)!\[((?:[^\]\\]|\\.)*)\]\(([^)\s]+)(\s+"[^"]*")?\)/) do
     alt = Regexp.last_match(1)
+    title = Regexp.last_match(3)
     path = image_path.call(Regexp.last_match(2))
     if path
       "![#{alt}](#{path}#{title})"
@@ -260,14 +299,17 @@ topics.each do |page, topic|
       found = markdown.scan(find).size
       abort "updates/#{topic}.yml: update #{index + 1} (#{update['why']}): the text to replace is on the page #{found} times, not once" unless found == 1
 
-      markdown = markdown.sub(find) { update.fetch('with').to_s.chomp }
+      # Redmine's links in the new text become links as in the converted text.
+      with = update.fetch('with').to_s.chomp.split(/(\n{2,})/).map do |block|
+        block.lstrip.start_with?('<') ? link_issues_html(block) : link_issues(block)
+      end.join
+      markdown = markdown.sub(find) { with }
     end
     markdown = markdown.gsub(/\n{3,}/, "\n\n")
   end
   info = pages[page]
   front = {
     'source' => page,
-    title = Regexp.last_match(3)
     'source_url' => info['url'],
     'source_version' => info['version'],
     'source_updated_on' => info['updated_on'],
