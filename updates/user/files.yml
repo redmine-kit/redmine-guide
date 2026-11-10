@@ -1,0 +1,33 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: The label is "New file" in Redmine 7.0.3, and it is a link.
+    source: app/views/files/index.html.erb, config/locales/en.yml (label_attachment_new)
+    replace: |-
+      New files are added via the **New File** button in the upper right hand corner.
+    with: |-
+      New files are added via the **New file** link in the upper right hand corner.
+  - why: Redmine 7.0.3 stores the files in YYYY/MM subdirectories, and the directory can be set with attachments_storage_path.
+    source: app/models/attachment.rb (storage_path, target_directory), config/configuration.yml.example (attachments_storage_path)
+    replace: |-
+      All uploaded files are stored at the `/{install dir}/files` directory.
+    with: |-
+      All uploaded files are stored in `YYYY/MM` subdirectories (the year and month of the upload) of the `/{install dir}/files` directory, or of the directory set by `attachments_storage_path` in `config/configuration.yml`.
+  - why: Redmine 7.0.3 prefixes the stored file name with a timestamp and replaces a non-ASCII or long name by a hash.
+    source: app/models/attachment.rb (create_diskfile)
+    replace: |-
+      The uploaded file name is prefixed with a unique id based on it’s parent for directory storage.
+    with: |-
+      The stored file name is prefixed with a timestamp of the upload (`yymmddHHMMSS_`); a file name that contains characters other than ASCII letters, digits, `_`, `.` and `-`, or is longer than 50 characters, is replaced by a hash (keeping the extension when it is short).
+  - why: Redmine 7.0.3 has no "Add another file" link; several files can be selected at once or dropped onto the form.
+    source: app/views/attachments/_form.html.erb (multiple, filedrop), app/views/files/new.html.erb
+    replace: |-
+      Adding multiple files at once is possible using the “Add another file” link.
+    with: |-
+      Multiple files can be added at once by selecting them together in the file dialog or by dragging and dropping them onto the form.
+  - why: In Redmine 7.0.3's files list, the description is the title attribute (tooltip) of the file name.
+    source: app/views/files/index.html.erb (link_to_attachment file, :title => file.description)
+    replace: |-
+      The optional description is used for an `alt` text.
+    with: |-
+      The optional description is shown as a tooltip on the file name in the files list.

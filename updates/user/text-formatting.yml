@@ -1,0 +1,17 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, the setting is "Text formatting" on the "General" tab.
+    source: app/views/settings/_general.html.erb, app/helpers/settings_helper.rb, config/locales/en.yml (setting_text_formatting, label_general)
+    replace: |-
+      (Administration → Settings → Text Formatting)
+    with: |-
+      (Administration → Settings → General → Text formatting)
+  - why: In Redmine 7.0.3, the formats are Textile and "CommonMark Markdown (GitHub Flavored)", and the default is CommonMark Markdown.
+    source: config/settings.yml (text_formatting default common_mark), lib/redmine/preparation.rb (WikiFormatting.map)
+    replace: |-
+      - [Textile](text-formatting-textile.md) (default)
+      - [Markdown](text-formatting-markdown.md)
+    with: |-
+      - [Textile](text-formatting-textile.md)
+      - [Markdown](text-formatting-markdown.md) (CommonMark Markdown (GitHub Flavored), default)

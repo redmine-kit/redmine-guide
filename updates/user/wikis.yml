@@ -1,0 +1,33 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, only Edit and Watch are buttons; the other actions are in the Actions menu.
+    source: app/views/wiki/show.html.erb (actions_dropdown), app/helpers/application_helper.rb (actions_dropdown, button_actions)
+    replace: |-
+      Each wiki page has a toolbar located in the upper right corner with buttons for actions to perform on the page. Depending
+    with: |-
+      Each wiki page has a toolbar located in the upper right corner with buttons for actions to perform on the page: **Edit** and **Watch** are shown as buttons, and the other actions (**History**, **Lock** or **Unlock**, **Rename**, **Delete** and **New wiki page**) are in the **Actions** menu. Depending
+  - why: Redmine 7.0.3 shows "Revision 31/41 (diff)".
+    source: app/views/wiki/show.html.erb (label_revision)
+    replace: |-
+      What is displayed can be misleading: `Version 31/41 (diff)` means
+    with: |-
+      What is displayed can be misleading: `Revision 31/41 (diff)` means
+  - why: Redmine 7.0.3 shows "Revision 30/41".
+    source: app/views/wiki/show.html.erb (label_revision)
+    replace: |-
+      you’ll see Version 30/41, and
+    with: |-
+      you’ll see Revision 30/41, and
+  - why: The button is "View differences" in Redmine 7.0.3.
+    source: app/views/wiki/history.html.erb, config/locales/en.yml (label_view_diff)
+    replace: |-
+      click ‘View changes’
+    with: |-
+      click ‘View differences’
+  - why: Redmine 7.0.3 can delete single versions from the history list.
+    source: app/views/wiki/history.html.erb (delete_link), app/controllers/wiki_controller.rb (destroy_version), lib/redmine/preparation.rb (delete_wiki_pages)
+    replace: |-
+      delete the page and re-create it with the same name. Then re-insert the copied content.
+    with: |-
+      delete the page and re-create it with the same name. Then re-insert the copied content. Individual versions can be deleted from the history list by users with the “Delete wiki pages” permission.

@@ -1,0 +1,70 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+# The headings stay as they are: map.yml and other pages link to their anchors.
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, these settings are on the "Project" tab.
+    source: app/helpers/projects_helper.rb (project_settings_tabs, label_project)
+    replace: |-
+      In this screen you can configure the basic (though important) settings for the selected project.
+    with: |-
+      In this screen (the **Project** tab) you can configure the basic (though important) settings for the selected project.
+  - why: In Redmine 7.0.3, the project custom fields follow "Subproject of" and "Inherit members".
+    source: app/views/projects/_form.html.erb, config/locales/en.yml (field_parent, field_inherit_members)
+    replace: |-
+      they’ll show up behind the “Public”-setting noted above.
+    with: |-
+      they’ll show up below the “Subproject of” and “Inherit members” settings.
+  - why: In Redmine 7.0.3, trackers and issue custom fields are on the "Issue tracking" tab, shown when the Issue tracking module is enabled, with the default version, assignee and issue query.
+    source: app/helpers/projects_helper.rb (project_settings_tabs, :module => :issue_tracking), app/views/projects/settings/_issues.html.erb, config/locales/en.yml (label_issue_tracking, field_default_version, field_default_assigned_to, field_default_issue_query)
+    replace: |-
+      ### Trackers
+
+      Redmine lets you define
+    with: |-
+      ### Trackers
+
+      The trackers and the custom fields below are set on the **Issue tracking** tab, which is shown when the Issue tracking module is enabled. This tab also has the **Default version**, **Default assignee** and **Default issue query** of the project.
+
+      Redmine lets you define
+  - why: Redmine 7.0.3 has no Modules tab; the modules are chosen in the Modules section of the Project tab.
+    source: app/helpers/projects_helper.rb (project_settings_tabs), app/views/projects/_form.html.erb (label_module_plural)
+    replace: |-
+      This screen lets you choose the modules you want to use for the project.
+    with: |-
+      The **Modules** section at the bottom of the **Project** tab lets you choose the modules you want to use for the project.
+  - why: The module is "Forums" in Redmine 7.0.3.
+    source: config/locales/en.yml (project_module_boards)
+    replace: |-
+      - Boards: provides [Forum](forums.md) feature
+    with: |-
+      - Forums: provides [Forum](forums.md) feature
+  - why: The label is "Wiki page" in Redmine 7.0.3.
+    source: app/views/versions/_form.html.erb, config/locales/en.yml (label_wiki_page)
+    replace: |-
+      - **Wiki Page**: The name
+    with: |-
+      - **Wiki page**: The name
+  - why: The label is "Assignee" in Redmine 7.0.3.
+    source: app/views/issue_categories/_form.html.erb, config/locales/en.yml (field_assigned_to)
+    replace: |-
+      - **Assigned to**: The project member
+    with: |-
+      - **Assignee**: The project member
+  - why: Redmine 7.0.3 has no Wiki tab; the wiki is created with the start page "Wiki", and another page is made the start page from its Rename screen.
+    source: app/helpers/projects_helper.rb (project_settings_tabs), app/models/wiki.rb (create_default), app/views/wiki/rename.html.erb (is_start_page), app/models/wiki_page.rb (manage_wiki), config/locales/en.yml (field_start_page, permission_manage_wiki)
+    replace: |-
+      (default: ‘Wiki’). *This field is required.*
+    with: |-
+      (default: ‘Wiki’). To use another page as the start page, open that page, click **Rename** and check **Start page** (requires the “Manage wiki” permission).
+  - why: Redmine 7.0.3 can have several repositories per project, on the "Repositories" tab.
+    source: app/helpers/projects_helper.rb (label_repository_plural), app/views/projects/settings/_repositories.html.erb
+    replace: |-
+      A SCM repository can be associated with each project. Once the repository is configured,
+    with: |-
+      One or more SCM repositories can be associated with each project (**Repositories** tab). Once a repository is configured,
+  - why: In Redmine 7.0.3, the column is "Active", on the "Time tracking" tab.
+    source: app/views/projects/settings/_activities.html.erb (field_active), app/helpers/projects_helper.rb (label_time_tracking)
+    replace: |-
+      The value which is unchecked “Enabled” on this screen,
+    with: |-
+      The value which is unchecked “Active” on this screen (**Time tracking** tab),

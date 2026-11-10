@@ -1,0 +1,16 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3's macro also accepts the option :sections.
+    source: lib/redmine/wiki_formatting/macros.rb (macro, assert_valid_keys; collapse), app/helpers/application_helper.rb (parse_sections)
+    replace: |-
+      - `:parse_args => false` - Disables arguments parsing (the whole arguments string is passed to the macro)
+    with: |-
+      - `:parse_args => false` - Disables arguments parsing (the whole arguments string is passed to the macro)
+      - `:sections => true` - Headings in the macro output are sections of the page and get section edit links (eg. the block of text is part of the page)
+  - why: The builtin macros of Redmine 7.0.3 start at line 199.
+    source: lib/redmine/wiki_formatting/macros.rb
+    replace: |-
+      source:/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162
+    with: |-
+      [lib/redmine/wiki_formatting/macros.rb](https://github.com/redmine/redmine/blob/7.0.3/lib/redmine/wiki_formatting/macros.rb#L199)

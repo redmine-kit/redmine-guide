@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 draws two bar charts in the browser, "Commits per month" (the last 12 months) and "Commits per author".
+    source: app/views/repositories/stats.html.erb, app/javascript/controllers/repositories/stats_controller.js, app/controllers/repositories_controller.rb (graph_commits_per_month), config/locales/en.yml (label_commits_per_month, label_commits_per_author)
+    replace: |-
+      Redmine generates two images representing the number of *Changes* and the number of *Revisions* in the configured repository. One image shows a month to month break down of *Changes* vs *Revisions*. The other image shows the number of *Changes* and *Revisions* made by each commiter.
+    with: |-
+      Redmine displays two bar charts representing the number of *Changes* and the number of *Revisions* in the configured repository. One chart (**Commits per month**) shows a month to month break down of *Changes* vs *Revisions* for the last 12 months. The other chart (**Commits per author**) shows the number of *Changes* and *Revisions* made by each commiter.

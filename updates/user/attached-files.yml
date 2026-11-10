@@ -1,0 +1,34 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+# The heading "Files added via “New File”" stays: other links use its anchor.
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, wiki pages have a collapsible "Files" section at the bottom and a files form on the edit page, not a "New file" link.
+    source: app/views/wiki/show.html.erb (label_attachment_plural, add_attachment_form), app/views/wiki/edit.html.erb
+    replace: |-
+      - wiki pages - using the ["New File" link](attached-files.md#Files-added-via-New-File) at the bottom of the page
+    with: |-
+      - wiki pages - using the [“Files” section](attached-files.md#Files-added-via-New-File) at the bottom of the page, or the [attach files form](attached-files.md#Attach-files-form) while editing the page
+  - why: Redmine 7.0.3 stores the files in YYYY/MM subdirectories, and the directory can be set with attachments_storage_path.
+    source: app/models/attachment.rb (storage_path, target_directory), config/configuration.yml.example (attachments_storage_path)
+    replace: |-
+      Uploaded attached files are stored in `<Redmine install dir>/files` directory subdirectories named after the year the file has been uploaded.
+    with: |-
+      Uploaded attached files are stored in subdirectories of the `<Redmine install dir>/files` directory (or of the directory set by `attachments_storage_path` in `config/configuration.yml`) named after the year and month the file has been uploaded (`YYYY/MM`).
+  - why: Redmine 7.0.3 prefixes the stored file name with a timestamp and replaces a non-ASCII or long name by a hash.
+    source: app/models/attachment.rb (create_diskfile)
+    replace: |-
+      The uploaded file name is prefixed with a unique id based on it’s parent for directory storage.
+    with: |-
+      The stored file name is prefixed with a timestamp of the upload (`yymmddHHMMSS_`); a file name that contains characters other than ASCII letters, digits, `_`, `.` and `-`, or is longer than 50 characters, is replaced by a hash (keeping the extension when it is short).
+  - why: Redmine 7.0.3 does not support Internet Explorer; the browsers it supports all allow this.
+    source: app/views/attachments/_form.html.erb (multiple, filedrop), doc/CHANGELOG (Patch #41402, #43388)
+    replace: |-
+      Starting from version version:2.3.0 and depending on the browser supporting it (IE10+), it is possible to:
+    with: |-
+      Starting from version version:2.3.0, it is possible to:
+  - why: In Redmine 7.0.3, the "New file" link is on document pages; wiki pages have a collapsible "Files" section.
+    source: app/views/documents/show.html.erb (label_attachment_new), app/views/wiki/show.html.erb (label_attachment_plural)
+    replace: |-
+      At the bottom of many of the pages in Redmine is a “New File” link.
+    with: |-
+      At the bottom of wiki pages is a collapsible “Files” section, and document pages have a “New file” link.

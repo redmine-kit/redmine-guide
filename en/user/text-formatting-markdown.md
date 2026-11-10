@@ -9,7 +9,7 @@ updated_for: 7.0.3
 # Markdown formatting
 
 Below is **Markdown** formatting. For **Textile** formatting see [Textile formatting](text-formatting-textile.md).\
-Currently HTML tags are not allowed by default. See [#15520](https://www.redmine.org/issues/15520) and [#20497](https://www.redmine.org/issues/20497) for details. For other limitations of the current **Markdown** formatting see [#16373](https://www.redmine.org/issues/16373) and [#21443](https://www.redmine.org/issues/21443).
+HTML tags can be used; the output is sanitized, so only a list of safe HTML elements, attributes and CSS properties is kept. For other limitations of the current **Markdown** formatting see [#16373](https://www.redmine.org/issues/16373) and [#21443](https://www.redmine.org/issues/21443).
 
 ## Links
 
@@ -45,7 +45,7 @@ More complex email instructions can be added to an email link. A default subject
 
 ## Text formatting
 
-For things such as headlines, bold, tables, lists, Redmine supports [Markdown syntax](http://en.wikipedia.org/wiki/Markdown). See http://daringfireball.net/projects/markdown/syntax, http://agea.github.io/tutorial.md/, http://stackoverflow.com/editing-help for information on using any of these features. A few samples are included below, but the engine is capable of much more of that. For conversions see [Pandoc](http://pandoc.org). The [Redcarpet formatter](https://github.com/alminium/redmine_redcarpet_formatter) is used.
+For things such as headlines, bold, tables, lists, Redmine supports [Markdown syntax](http://en.wikipedia.org/wiki/Markdown). See http://daringfireball.net/projects/markdown/syntax, http://agea.github.io/tutorial.md/, http://stackoverflow.com/editing-help for information on using any of these features. A few samples are included below, but the engine is capable of much more of that. For conversions see [Pandoc](http://pandoc.org). The CommonMark Markdown (GitHub Flavored) formatter, based on the [commonmarker](https://github.com/gjtorikian/commonmarker) gem, is used.
 
 ### Acronym
 
@@ -83,8 +83,7 @@ displays:
 - `<notextile></notextile>*some lines*      some "link":http://www.redmine.org`
 - `**some lines**      some [link](http://www.redmine.org)`
 
-**Note:** HTML tags need to be allowed to use the HTML tags (\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
-More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+**Note:** The HTML tags used above (\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>) are allowed by the CommonMark Markdown formatter; no patch is needed.
 
 ### Color
 
@@ -101,8 +100,7 @@ displays:
 - <span style="background:lightgreen">Lightgreen Background</span> <span style="background:yellow">Yellow Background</span>
 - <span style="background:lightgreen">Lightgreen Background</span><span style="background:yellow">Yellow Background</span>
 
-**Note:** HTML tags need to be allowed to use the HTML tag (\<span\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
-More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+**Note:** The HTML tag (\<span\>) is allowed by the CommonMark Markdown formatter; its `style` attribute is limited to a list of allowed CSS properties, which includes `color` and `background-color`. No patch is needed.
 
 ### Inline images
 
@@ -117,8 +115,7 @@ As of this writing, Markdown has no syntax for specifying the dimensions of an i
 - \<img style=”float:right” src=”URL”/\>
 - \<img style=”width:100%” src=”attached_image.png”/\>
 
-**Note:** HTML tags need to be allowed to use the HTML tag (\<img\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
-More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+**Note:** The HTML tag (\<img\>) is allowed by the CommonMark Markdown formatter, including a `style` attribute with allowed CSS properties such as `float` and `width`. No patch is needed.
 
 ### Headings
 
@@ -179,8 +176,7 @@ p)))\>. right ident 3em
 
 This is centered paragraph.
 
-**Note:** HTML tags need to be allowed to use the HTML tags (\<div\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
-More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+**Note:** The HTML tag (\<div\>) is allowed by the CommonMark Markdown formatter, including a `style` attribute with allowed CSS properties such as `padding-left`, `padding-right` and `text-align`. No patch is needed.
 
 ### Horizontal rule
 

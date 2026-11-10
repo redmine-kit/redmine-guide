@@ -6,7 +6,7 @@ translated_from_version: 32
 # Markdown
 
 ここでは **Markdown** の書式を説明します。**Textile** の書式は、[Textile](text-formatting-textile.md) を参照してください。\
-現在、HTML タグはデフォルトでは使えません。詳しくは、[#15520](https://www.redmine.org/issues/15520) と [#20497](https://www.redmine.org/issues/20497) を参照してください。現在の **Markdown** の書式のそのほかの制限については、[#16373](https://www.redmine.org/issues/16373) と [#21443](https://www.redmine.org/issues/21443) を参照してください。
+HTML タグを使えます。出力はサニタイズされ、安全な HTML の要素、属性、CSS プロパティだけが残ります。現在の **Markdown** の書式のそのほかの制限については、[#16373](https://www.redmine.org/issues/16373) と [#21443](https://www.redmine.org/issues/21443) を参照してください。
 
 ## リンク
 
@@ -42,7 +42,7 @@ URL とは別のテキストをリンクに使うこともできます。
 
 ## テキスト書式
 
-見出し、太字、テーブル、リストなどの書式には、Redmine は [Markdown の構文](http://en.wikipedia.org/wiki/Markdown)に対応しています。これらの機能の使い方は、http://daringfireball.net/projects/markdown/syntax, http://agea.github.io/tutorial.md/, http://stackoverflow.com/editing-help を参照してください。以下にいくつか例を示しますが、エンジンはこれよりはるかに多くのことができます。変換については [Pandoc](http://pandoc.org) を参照してください。[Redcarpet のフォーマッター](https://github.com/alminium/redmine_redcarpet_formatter)を使っています。
+見出し、太字、テーブル、リストなどの書式には、Redmine は [Markdown の構文](http://en.wikipedia.org/wiki/Markdown)に対応しています。これらの機能の使い方は、http://daringfireball.net/projects/markdown/syntax, http://agea.github.io/tutorial.md/, http://stackoverflow.com/editing-help を参照してください。以下にいくつか例を示しますが、エンジンはこれよりはるかに多くのことができます。変換については [Pandoc](http://pandoc.org) を参照してください。[commonmarker](https://github.com/gjtorikian/commonmarker) の gem による CommonMark Markdown (GitHub Flavored) のフォーマッターを使っています。
 
 ### 頭字語
 
@@ -80,8 +80,7 @@ Markdown では使えません。
 - `<notextile></notextile>*some lines*      some "link":http://www.redmine.org`
 - `**some lines**      some [link](http://www.redmine.org)`
 
-**注:** HTML タグ(\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
-具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
+**注:** 上の HTML タグ (\<strong\>、\<em\>、\<ins\>、\<del\>、\<sup\>、\<sub\>) は、CommonMark Markdown のフォーマッターで使えます。パッチは不要です。
 
 ### 色
 
@@ -98,8 +97,7 @@ Markdown では使えません。
 - <span style="background:lightgreen">Lightgreen Background</span> <span style="background:yellow">Yellow Background</span>
 - <span style="background:lightgreen">Lightgreen Background</span><span style="background:yellow">Yellow Background</span>
 
-**注:** HTML タグ(\<span\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
-具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
+**注:** HTML タグ (\<span\>) は、CommonMark Markdown のフォーマッターで使えます。`style` 属性に指定できるのは許可された CSS プロパティだけで、`color` と `background-color` はその中に含まれます。パッチは不要です。
 
 ### インライン画像
 
@@ -114,8 +112,7 @@ Wikiページに添付した画像は、ファイル名を使ってインライ�
 - \<img style=”float:right” src=”URL”/\>
 - \<img style=”width:100%” src=”attached_image.png”/\>
 
-**注:** HTML タグ(\<img\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
-具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
+**注:** HTML タグ (\<img\>) は、CommonMark Markdown のフォーマッターで使えます。`style` 属性には、`float` や `width` など、許可された CSS プロパティを指定できます。パッチは不要です。
 
 ### 見出し
 
@@ -176,8 +173,7 @@ p)))\>. right ident 3em
 
 This is centered paragraph.
 
-**注:** HTML タグ(\<div\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
-具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
+**注:** HTML タグ (\<div\>) は、CommonMark Markdown のフォーマッターで使えます。`style` 属性には、`padding-left`、`padding-right`、`text-align` など、許可された CSS プロパティを指定できます。パッチは不要です。
 
 ### 水平線
 

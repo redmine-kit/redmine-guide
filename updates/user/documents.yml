@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, the title links to the document page, which lists the attached files and has the "New file" link.
+    source: app/views/documents/_document.html.erb (document_path), app/views/documents/show.html.erb (label_attachment_new)
+    replace: |-
+      Once documents have been uploaded, the title is used as the link to download the attached documents, and add more if necessary.
+    with: |-
+      Once documents have been created, the title is used as the link to the document page, where the attached files can be downloaded and more files can be added using the **New file** link.

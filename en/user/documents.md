@@ -3,6 +3,7 @@ source: RedmineDocuments
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineDocuments
 source_version: 5
 source_updated_on: '2010-10-17T03:29:58Z'
+updated_for: 7.0.3
 ---
 
 # Redmine Documents
@@ -26,6 +27,6 @@ These categories can be modified and other categories can be added by a Redmine 
 
 ## Viewing Documents
 
-Once documents have been uploaded, the title is used as the link to download the attached documents, and add more if necessary.
+Once documents have been created, the title is used as the link to the document page, where the attached files can be downloaded and more files can be added using the **New file** link.
 
 ![](../../images/RedmineDocuments/Documents.png)

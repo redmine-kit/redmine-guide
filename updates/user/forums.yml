@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, the forums are managed by members with the "Manage forums" permission, not only by the administrator.
+    source: lib/redmine/preparation.rb (manage_boards), app/helpers/projects_helper.rb (project_settings_tabs), config/locales/en.yml (permission_manage_boards)
+    replace: |-
+      The administrator defines a list of forums in the [Project Settings](project-settings.md#Forums).
+    with: |-
+      Users with the “Manage forums” permission define a list of forums in the [Project Settings](project-settings.md#Forums).

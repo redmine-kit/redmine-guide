@@ -62,3 +62,43 @@ updates:
         {{issue(123, tracker=false)}}               -- #123: Enhance macro capabilities
         {{issue(123, subject=false, project=true)}} -- Andromeda - Issue #123
         ```
+  - why: Redmine 7.0.3's CommonMark Markdown renders raw HTML and sanitizes it with an allowlist of elements, attributes and CSS properties.
+    source: lib/redmine/wiki_formatting/common_mark/formatter.rb (unsafe, tagfilter), lib/redmine/wiki_formatting/common_mark/sanitization_filter.rb (ALLOWLIST)
+    replace: |-
+      Currently HTML tags are not allowed by default. See [#15520](https://www.redmine.org/issues/15520) and [#20497](https://www.redmine.org/issues/20497) for details.
+    with: |-
+      HTML tags can be used; the output is sanitized, so only a list of safe HTML elements, attributes and CSS properties is kept.
+  - why: Redmine 7.0.3 uses the commonmarker gem (CommonMark Markdown, GitHub Flavored), not Redcarpet.
+    source: Gemfile (commonmarker ~> 2.8.2), lib/redmine/preparation.rb (format.register :common_mark)
+    replace: |-
+      The [Redcarpet formatter](https://github.com/alminium/redmine_redcarpet_formatter) is used.
+    with: |-
+      The CommonMark Markdown (GitHub Flavored) formatter, based on the [commonmarker](https://github.com/gjtorikian/commonmarker) gem, is used.
+  - why: Redmine 7.0.3 allows these tags without a patch.
+    source: lib/redmine/wiki_formatting/common_mark/sanitization_filter.rb (ALLOWLIST elements)
+    replace: |-
+      **Note:** HTML tags need to be allowed to use the HTML tags (\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
+      More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+    with: |-
+      **Note:** The HTML tags used above (\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>) are allowed by the CommonMark Markdown formatter; no patch is needed.
+  - why: Redmine 7.0.3 allows span with a style attribute limited to allowed CSS properties, without a patch.
+    source: lib/redmine/wiki_formatting/common_mark/sanitization_filter.rb (ALLOWLIST elements, attributes :all style, css properties)
+    replace: |-
+      **Note:** HTML tags need to be allowed to use the HTML tag (\<span\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
+      More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+    with: |-
+      **Note:** The HTML tag (\<span\>) is allowed by the CommonMark Markdown formatter; its `style` attribute is limited to a list of allowed CSS properties, which includes `color` and `background-color`. No patch is needed.
+  - why: Redmine 7.0.3 allows img with a style attribute limited to allowed CSS properties, without a patch.
+    source: lib/redmine/wiki_formatting/common_mark/sanitization_filter.rb (ALLOWLIST elements, attributes, protocols, css properties)
+    replace: |-
+      **Note:** HTML tags need to be allowed to use the HTML tag (\<img\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
+      More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+    with: |-
+      **Note:** The HTML tag (\<img\>) is allowed by the CommonMark Markdown formatter, including a `style` attribute with allowed CSS properties such as `float` and `width`. No patch is needed.
+  - why: Redmine 7.0.3 allows div with a style attribute limited to allowed CSS properties, without a patch.
+    source: lib/redmine/wiki_formatting/common_mark/sanitization_filter.rb (ALLOWLIST elements, css properties)
+    replace: |-
+      **Note:** HTML tags need to be allowed to use the HTML tags (\<div\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
+      More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
+    with: |-
+      **Note:** The HTML tag (\<div\>) is allowed by the CommonMark Markdown formatter, including a `style` attribute with allowed CSS properties such as `padding-left`, `padding-right` and `text-align`. No patch is needed.

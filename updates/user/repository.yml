@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, a directory is expanded with an arrow icon, not "+".
+    source: app/views/repositories/_dir_list_content.html.erb (sprite_icon('angle-right'))
+    replace: |-
+      You can expand a directory by clicking on **+**.
+    with: |-
+      You can expand a directory by clicking on the arrow icon in front of its name.

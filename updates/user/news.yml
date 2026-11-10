@@ -1,0 +1,9 @@
+# Updates of the page for Redmine 7.0.3 (docs/updating.md#updates).
+redmine: 7.0.3
+updates:
+  - why: In Redmine 7.0.3, "Add news" is a link with an outline icon in the link color, the form opens above the list of news, and only the title and the description are required.
+    source: app/views/news/index.html.erb (label_news_new, showAndScrollTo("add-news")), app/views/news/_form.html.erb, app/assets/stylesheets/application.css (a.icon .icon-svg)
+    replace: |-
+      you have a green plus sign (\*+ Add news\*) in the upper right of you screen. If you click on that, you can add a new news item. On this page, you have to insert the **Title**, **Summary** and **Description** of the news item.
+    with: |-
+      you have an **Add news** link in the upper right of you screen. If you click on that, the form for adding a news item opens above the list of news. In this form, you have to insert the **Title** and **Description** of the news item; the **Summary** is optional.

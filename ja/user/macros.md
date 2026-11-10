@@ -45,6 +45,7 @@ Redmine::WikiFormatting::Macros.macro(name, options={}, &block)
 
 - `:desc` - マクロの説明
 - `:parse_args => false` - 引数の解析を無効にします(引数の文字列全体がそのままマクロに渡されます)
+- `:sections => true` - マクロの出力の見出しをページのセクションとして扱い、セクションの編集リンクを付けます (テキストのブロックがページの一部である場合など)
 
 マクロのブロックは、2 つまたは 3 つの引数を受け取ります。
 
@@ -82,4 +83,4 @@ macro :my_macro do |obj, args, text|
 end
 ```
 
-独自のマクロを書き始めるときは、組み込みのマクロの定義を参考にしてください: source:/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162
+独自のマクロを書き始めるときは、組み込みのマクロの定義を参考にしてください: [lib/redmine/wiki_formatting/macros.rb](https://github.com/redmine/redmine/blob/7.0.3/lib/redmine/wiki_formatting/macros.rb#L199)

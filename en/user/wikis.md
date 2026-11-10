@@ -3,6 +3,7 @@ source: RedmineWikis
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineWikis
 source_version: 1
 source_updated_on: '2024-09-19T10:33:13Z'
+updated_for: 7.0.3
 ---
 
 # Wikis
@@ -39,7 +40,7 @@ These relations can be set by assigning a parent page to a to-be child-page.
 
 ## Toolbar
 
-Each wiki page has a toolbar located in the upper right corner with buttons for actions to perform on the page. Depending on the [Roles and permissions](../admin/roles.md) of the site your user might not have permission to perform some of the actions, in this case the respective button will not be displayed at all.
+Each wiki page has a toolbar located in the upper right corner with buttons for actions to perform on the page: **Edit** and **Watch** are shown as buttons, and the other actions (**History**, **Lock** or **Unlock**, **Rename**, **Delete** and **New wiki page**) are in the **Actions** menu. Depending on the [Roles and permissions](../admin/roles.md) of the site your user might not have permission to perform some of the actions, in this case the respective button will not be displayed at all.
 
 ![](../../images/RedmineWikis/wiki-toolbar.png)
 
@@ -83,13 +84,13 @@ To view a specific version of the page click on its number.
 
 ![](../../images/RedmineWikis/page_version.png)
 
-What is displayed can be misleading: `Version 31/41 (diff)` means that you are viewing version 31 out of 41, it does not mean that the diff link will show you the differences between 31 and 41. It does show you the differences between version 30 and 31. If you’re looking at version 30, you’ll see Version 30/41, and the diff will show you the changes in version 30.
+What is displayed can be misleading: `Revision 31/41 (diff)` means that you are viewing version 31 out of 41, it does not mean that the diff link will show you the differences between 31 and 41. It does show you the differences between version 30 and 31. If you’re looking at version 30, you’ll see Revision 30/41, and the diff will show you the changes in version 30.
 
-If you want to see differences between 40 and 41, go to the revisions list and click ‘View changes’ (by default, it will show the diff of the last version).
+If you want to see differences between 40 and 41, go to the revisions list and click ‘View differences’ (by default, it will show the diff of the last version).
 
 You can revert a page to a previous version by clicking on **Rollback to this version**, then **Save**. In that case a new page version is created without losing the wiki page history.
 
-If you instead do want to delete all history of a wiki page you have to copy the content of that page to a safe place (copy/paste in edit window), delete the page and re-create it with the same name. Then re-insert the copied content.
+If you instead do want to delete all history of a wiki page you have to copy the content of that page to a safe place (copy/paste in edit window), delete the page and re-create it with the same name. Then re-insert the copied content. Individual versions can be deleted from the history list by users with the “Delete wiki pages” permission.
 
 ## Sidebar
 

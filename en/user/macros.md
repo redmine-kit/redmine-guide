@@ -3,6 +3,7 @@ source: RedmineMacros
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineMacros
 source_version: 3
 source_updated_on: '2012-10-17T20:35:48Z'
+updated_for: 7.0.3
 ---
 
 # Macros
@@ -47,6 +48,7 @@ Options:
 
 - `:desc` - A description of the macro
 - `:parse_args => false` - Disables arguments parsing (the whole arguments string is passed to the macro)
+- `:sections => true` - Headings in the macro output are sections of the page and get section edit links (eg. the block of text is part of the page)
 
 Macro blocks accept 2 or 3 arguments:
 
@@ -84,4 +86,4 @@ macro :my_macro do |obj, args, text|
 end
 ```
 
-As a starting point for writing your own macros, you can have a look at the builtin macros definitions: source:/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162
+As a starting point for writing your own macros, you can have a look at the builtin macros definitions: [lib/redmine/wiki_formatting/macros.rb](https://github.com/redmine/redmine/blob/7.0.3/lib/redmine/wiki_formatting/macros.rb#L199)
