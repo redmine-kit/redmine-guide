@@ -118,7 +118,9 @@ Creates a project.
   - `issue_custom_field_ids`: an array of issue custom field IDs.
   - `custom_field_values`: array with `id => value` pairs
 
-    POST /projects.xml
+```
+POST /projects.xml
+```
 
 ```xml
 <project>

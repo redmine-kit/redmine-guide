@@ -73,8 +73,12 @@ end
 
 ### Wrapping an existing method
 
-\> **Caution!**\
-\> The alias_method_chain pattern is deprecated in Rails 5 so this technique is only applicable to Redmine versions below 4.0.0.
+<blockquote>
+
+**Caution!**\
+The alias_method_chain pattern is deprecated in Rails 5 so this technique is only applicable to Redmine versions below 4.0.0.
+
+</blockquote>
 
 A quick example of **wrapping an existing method** can be found on Eric Davis’ [Rate plugin](http://github.com/edavis10/redmine_rate/blob/4666ddb10e1061ca3ef362735d0d264676b99024/lib/rate_users_helper_patch.rb). Here he uses the `alias_method_chain` to hook into the UsersHelper and wrap the `user_settings_tabs` method. So when the Redmine Core calls `user_settings_tabs` the codepath looks like:
 

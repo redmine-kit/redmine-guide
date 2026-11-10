@@ -207,9 +207,16 @@ You can use \> at the beginning of each line and stack them for nested quotes:
 
 displays:
 
-\>\> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.\
-\>\> To go live, all you need to add is a database and a web server.\
-\> Great!
+<blockquote><blockquote>
+
+Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.\
+To go live, all you need to add is a database and a web server.
+
+</blockquote>
+
+Great!
+
+</blockquote>
 
 ### Unordered lists
 

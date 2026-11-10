@@ -92,14 +92,16 @@ A theme consists of the following files:
 - `javascripts/theme.js` (optional): custom JavaScript for the theme
 - `stylesheets/application.css` (required): CSS for the theme
 
-    themes/
-      +- <theme name>/
-           |
-           +- favicon/
-           |    +- <favicon file> (e.g. favicon.ico, favicon.png)
-           |
-           +- javascripts/
-           |    +- theme.js
-           |
-           +- stylesheets/
-                +- application.css
+```
+themes/
+  +- <theme name>/
+       |
+       +- favicon/
+       |    +- <favicon file> (e.g. favicon.ico, favicon.png)
+       |
+       +- javascripts/
+       |    +- theme.js
+       |
+       +- stylesheets/
+            +- application.css
+```

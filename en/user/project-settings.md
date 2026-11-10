@@ -89,23 +89,25 @@ The following properties are configurable for (each of the) versions:
   - projects in the project tree: root project + all its descendants (same as above)
   - all projects (can be set by admin users only)
 
-    ---------------------------------------------------------------------------------
-    | None          | Subprojects   | Hierarchy     | Tree          | All projects  |
-    |               |               |               |               |               |
-    |      X     X  |      X     X  |      o     X  |      o     X  |      o     o  |
-    |      |     |  |      |     |  |      |     |  |      |     |  |      |     |  |
-    |    --X--   X  |    --X--   X  |    --o--   X  |    --o--   X  |    --o--   o  |
-    |   /  |  \     |   /  |  \     |   /  |  \     |   /  |  \     |   /  |  \     |
-    |  X   V   X    |  X   V   X    |  X   V   X    |  o   V   o    |  o   V   o    |
-    |     / \       |     / \       |     / \       |     / \       |     / \       |
-    |    X   X      |    o   o      |    o   o      |    o   o      |    o   o      |
-    |   /           |   /           |   /           |   /           |   /           |
-    |  X            |  o            |  o            |  o            |  o            |
-    ---------------------------------------------------------------------------------
+```
+---------------------------------------------------------------------------------
+| None          | Subprojects   | Hierarchy     | Tree          | All projects  |
+|               |               |               |               |               |
+|      X     X  |      X     X  |      o     X  |      o     X  |      o     o  |
+|      |     |  |      |     |  |      |     |  |      |     |  |      |     |  |
+|    --X--   X  |    --X--   X  |    --o--   X  |    --o--   X  |    --o--   o  |
+|   /  |  \     |   /  |  \     |   /  |  \     |   /  |  \     |   /  |  \     |
+|  X   V   X    |  X   V   X    |  X   V   X    |  o   V   o    |  o   V   o    |
+|     / \       |     / \       |     / \       |     / \       |     / \       |
+|    X   X      |    o   o      |    o   o      |    o   o      |    o   o      |
+|   /           |   /           |   /           |   /           |   /           |
+|  X            |  o            |  o            |  o            |  o            |
+---------------------------------------------------------------------------------
 
-    V = project with the shared version
-    o = projects that can assign issues to the shared version
-    X = projects that can't assign issues to the shared version
+V = project with the shared version
+o = projects that can assign issues to the shared version
+X = projects that can't assign issues to the shared version
+```
 
 Sharing a version of a private project with public projects will make its name visible to everyone.
 

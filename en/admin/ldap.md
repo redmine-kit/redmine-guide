@@ -93,65 +93,101 @@ If you want to just allow logins to users that belongs to a particular LDAP grou
 
 1.1. Create a file:
 
-\>vim ~/memberof_add.ldif
+<blockquote>
+
+vim ~/memberof_add.ldif
+
+</blockquote>
 
 With below content:
 
-\>dn: cn=module,cn=config\
-\>objectClass: olcModuleList\
-\>cn: module\
-\>olcModulePath: /usr/lib/ldap\
-\>olcModuleLoad: memberof
+<blockquote>
+
+dn: cn=module,cn=config\
+objectClass: olcModuleList\
+cn: module\
+olcModulePath: /usr/lib/ldap\
+olcModuleLoad: memberof
+
+</blockquote>
 
 1.2. Create a file:
 
-\>vim ~/memberof_config.ldif
+<blockquote>
+
+vim ~/memberof_config.ldif
+
+</blockquote>
 
 With below content:
 
-\>dn: olcOverlay=memberof,olcDatabase={1}hdb,cn=config\
-\>objectClass: olcMemberOf\
-\>objectClass: olcOverlayConfig\
-\>objectClass: olcConfig\
-\>objectClass: top\
-\>olcOverlay: memberof\
-\>olcMemberOfDangling: ignore\
-\>olcMemberOfRefInt: TRUE\
-\>olcMemberOfGroupOC: groupOfNames\
-\>olcMemberOfMemberAD: member\
-\>olcMemberOfMemberOfAD: memberOf
+<blockquote>
+
+dn: olcOverlay=memberof,olcDatabase={1}hdb,cn=config\
+objectClass: olcMemberOf\
+objectClass: olcOverlayConfig\
+objectClass: olcConfig\
+objectClass: top\
+olcOverlay: memberof\
+olcMemberOfDangling: ignore\
+olcMemberOfRefInt: TRUE\
+olcMemberOfGroupOC: groupOfNames\
+olcMemberOfMemberAD: member\
+olcMemberOfMemberOfAD: memberOf
+
+</blockquote>
 
 1.3. Load them. It will depend on your OpenLDAP configuration, so we will propose some possibilities:
 
-\>sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_add.ldif\
-\>sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_config.ldif
+<blockquote>
+
+sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_add.ldif\
+sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_config.ldif
+
+</blockquote>
 
 Or:
 
-\>ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_add.ldif\
-\>ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_config.ldif
+<blockquote>
+
+ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_add.ldif\
+ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_config.ldif
+
+</blockquote>
 
 A restart is NOT needed if you use dynamic runtime configuration engine (slapd-config).
 
 1.4. (Optional) Test it:
 
-\>ldapsearch -D cn=admin,dc=example,dc=com -x -W -b ‘dc=example,dc=com’ -H ‘ldap://127.0.0.1:389/’ ‘(&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))’
+<blockquote>
+
+ldapsearch -D cn=admin,dc=example,dc=com -x -W -b ‘dc=example,dc=com’ -H ‘ldap://127.0.0.1:389/’ ‘(&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))’
+
+</blockquote>
 
 2\. (OpenLDAP server) Create the group. In this example the user is “ldap_user_1” and the group is “ldapredmine”:
 
-\>dn: cn=ldapredmine,ou=groups,dc=example,dc=com\
-\>cn: ldapredmine\
-\>description: Staff members allowed to login to redmine ticketing system\
-\>member: cn=ldap_user_1,ou=people,dc=example,dc=com\
-\>objectclass: groupOfNames\
-\>objectclass: top
+<blockquote>
+
+dn: cn=ldapredmine,ou=groups,dc=example,dc=com\
+cn: ldapredmine\
+description: Staff members allowed to login to redmine ticketing system\
+member: cn=ldap_user_1,ou=people,dc=example,dc=com\
+objectclass: groupOfNames\
+objectclass: top
+
+</blockquote>
 
 Adjust “dn” and “cn”s to fit to your DIT structure
 
 3\. (Redmine) Edit the LDAP authentication mode. In my case “ldap_user_1” is a “posixAccount” objectclass:
 
-\>Base DN: dc=example,dc=com\
-\>Filter: (&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))
+<blockquote>
+
+Base DN: dc=example,dc=com\
+Filter: (&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))
+
+</blockquote>
 
 ## Troubleshooting
 

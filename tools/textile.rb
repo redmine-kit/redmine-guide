@@ -13,7 +13,8 @@
 # - ! before a Redmine link (!#124) shows the link's text;
 # - {{collapse(Label) ... }} is a collapsed section;
 # - <notextile> text is shown as it is;
-# - %{style}text% is a styled span, also before punctuation.
+# - %{style}text% is a styled span, also before punctuation;
+# - lines that start with > are a quote.
 require 'cgi'
 require 'open3'
 
@@ -37,6 +38,13 @@ module Textile
         markdown = markdown.gsub(/\\?\n([ \t]+)RGHELDx(\d+)x\\?[ \t]*$/) do
           block = @blocks[Regexp.last_match(2).to_i]
           block.is_a?(Code) ? "\n\n#{block.to_s(Regexp.last_match(1))}\n" : Regexp.last_match(0)
+        end
+        # An indented code block right after a list would be taken into the
+        # list's last item: fenced instead.
+        markdown = markdown.gsub(/(?<=\n\n)RGHELDx(\d+)x$/) do
+          block = @blocks[Regexp.last_match(1).to_i]
+          after_list = Regexp.last_match.pre_match.rstrip.split("\n").last.to_s.match?(/\A(?:\s*(?:[-*+]|\d+\.)\s|\s+\S)/)
+          block.is_a?(Code) && after_list ? block.to_s(fenced: true) : Regexp.last_match(0)
         end
         markdown = markdown.gsub(/RGHELDx(\d+)x/) { @blocks[Regexp.last_match(1).to_i].to_s }
       end
@@ -117,6 +125,12 @@ module Textile
     out << text[pos..]
   end
 
+  # HTML written as it is, in Markdown and in a table's HTML.
+  Raw = Struct.new(:html) do
+    alias_method :to_s, :html
+    alias_method :to_html, :html
+  end
+
   # Inline code.
   Span = Struct.new(:text) do
     def to_s
@@ -161,21 +175,25 @@ module Textile
 
   # %{color: red}text%: a span with the style (pandoc needs a space after
   # it).
-  def styled_spans(text)
+  def styled_spans(text, held)
     text.split(/(@[^@\n]+@)/).each_with_index.map do |part, index|
       next part if index.odd?
 
-      part.gsub(/%\{([^}\n]*)\}([^%\n]+)%/) { %(<span style="#{CGI.escapeHTML(Regexp.last_match(1).strip)}">#{Regexp.last_match(2)}</span>) }
+      part.gsub(/%\{([^}\n]*)\}([^%\n]+)%/) do
+        # The tags are held: pandoc reads <span after * as an attribute.
+        held.hold(Raw.new(%(<span style="#{CGI.escapeHTML(Regexp.last_match(1).strip)}">)), inline: true) +
+          Regexp.last_match(2) + held.hold(Raw.new('</span>'), inline: true)
+      end
     end.join
   end
 
   # A code block: fenced with its language, or indented (fenced within a
   # list item).
   Code = Struct.new(:lines, :lang) do
-    def to_s(indent = '')
+    def to_s(indent = '', fenced: false)
       return '' if lines.all?(&:empty?)
 
-      if (lang && !lang.empty?) || !indent.empty?
+      if (lang && !lang.empty?) || !indent.empty? || fenced
         fence = '```'
         fence += '`' while lines.any? { |line| line.include?(fence) }
         ["#{fence}#{lang}", *lines, fence].map { |line| line.empty? ? '' : "#{indent}#{line}" }.join("\n")
@@ -293,6 +311,26 @@ module Textile
       out << '' if split
     end
     out.join("\n")
+  end
+
+  # Lines that start with > (RedCloth3#block_textile_quotes): a quote, one
+  # level per >.
+  def quotes(text, held)
+    text.gsub(/(?:^>+[^\n]*(?:\n|\z))+/) do |match|
+      out = +''
+      level = 0
+      match.split("\n").each do |line|
+        marks, content = line.match(/\A([> ]+)(.*)\z/).captures
+        depth = marks.count('>')
+        if depth != level
+          tags = depth > level ? '<blockquote>' * (depth - level) : '</blockquote>' * (level - depth)
+          out << held.hold(Raw.new(tags))
+          level = depth
+        end
+        out << "#{content}\n"
+      end
+      out << held.hold(Raw.new('</blockquote>' * level))
+    end
   end
 
   # {{collapse(Show, Hide) ... }}: a <details> section with the first label.

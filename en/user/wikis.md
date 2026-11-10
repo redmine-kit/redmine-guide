@@ -19,13 +19,19 @@ Save the page and click on that link: you are now editing the new wiki page with
 
 It is possible to create parent/child relationships between wiki pages. This has two benefits:
 
-- On the “Index by title”, the page tree is sorted according to the relationships:\
-  \> \* Guide\
-  \> RedmineAccounts\
-  \> RedmineCustomFields\
-  \> RedmineInstall\
-  \> RedmineIssueList\
-  \> RedmineIssues
+- On the “Index by title”, the page tree is sorted according to the relationships:
+
+<blockquote>
+
+- Guide
+  - RedmineAccounts
+  - RedmineCustomFields
+  - RedmineInstall
+  - RedmineIssueList
+  - RedmineIssues
+
+</blockquote>
+
 - On each child page a breadcrumb is displayed showing the location of the page within the page tree:\
   TODO, add image
 

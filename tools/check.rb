@@ -47,23 +47,28 @@ end
 
 # HTML that Markdown shows (the guide's tables, footnotes, collapsed
 # sections, spans); any other tag would be hidden.
-HTML_TAGS = %w[a br code del details div em img ins kbd li ol p pre span strong sub summary sup table tbody td th thead tr u ul].freeze
+HTML_TAGS = %w[a blockquote br code del details div em img ins kbd li ol p pre span strong sub summary sup table tbody td th thead tr u ul].freeze
 CONVERSION_FAILURES = {
   /^\s*<code class="[^"]*">\s*$/ => '<code class> in a code block',
   /\{\{[a-z_>]/i => 'a macro left in the text',
   /^\\\*/ => 'an escaped list marker (\\*)',
   /^<!-- -->$/ => 'a list split in two (<!-- -->)',
   /!\[#\d/ => 'a broken link (![#...])',
-  /^(?:h[1-6]|bq|fn\d+)\.\s/ => 'a Textile heading, quote or footnote',
+  /^(?:h[1-6]|bq|fn\d+)\.\s|^\\>/ => 'a Textile heading, quote or footnote',
   /^\|(?:_|[\\\/]\d)/ => 'a Textile table',
   /"[^"\n]+":(?:https?:|\/)/ => 'a Textile link',
   /\[\^\d+\]/ => 'a footnote marker that is not Redmine\'s',
   /RG[A-Z]+x\d+x|RGHASH/ => 'a placeholder of the conversion',
+  /(?<![<\w])(?:span|div|img|a|p) [a-z-]+=["”]/ => 'the text of an HTML tag shown',
+  /^(?:- |\* |\+ ).*\n\n {4}(?![-*+ ]|\d+\.)\S/ => 'an indented code block taken into a list item',
 }.freeze
+# Found in the text with its indented code (the others: outside code).
+IN_CODE = ['<code class> in a code block', 'an indented code block taken into a list item'].freeze
 
 def conversion_failures(text)
   body = prose(text)
-  found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (pattern.source.include?('<code') ? text : body).match?(pattern) }
+  unfenced = text.gsub(/^(`{3,}|~{3,}).*?^\1\s*$/m, '')
+  found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (IN_CODE.include?(problem) ? unfenced : body).match?(pattern) }
   tags = body.scan(%r{(?<!\\)</?([A-Za-z][A-Za-z0-9]*)[\s>/]}).flatten.map(&:downcase).uniq - HTML_TAGS
   found << "HTML tags that Markdown would hide (#{tags.map { |tag| "<#{tag}>" }.join(', ')})" unless tags.empty?
   found

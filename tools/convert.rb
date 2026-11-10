@@ -200,7 +200,7 @@ topics.each do |page, topic|
                "RGLINKx#{links.size - 1}x"
              end
   text = Textile.unescape_links(text)
-  text = Textile.styled_spans(Textile.escape_html_tags(text))
+  text = Textile.styled_spans(Textile.escape_html_tags(text), held)
   text = Textile.mark_footnotes(text)
   text = Textile.tables(text, held) do |html|
     html = html.gsub(/RGLINKx(\d+)x/) do
@@ -214,7 +214,7 @@ topics.each do |page, topic|
     html = html.gsub(%r{href="(/(?!/)[^"]*)"}) { %(href="https://www.redmine.org#{Regexp.last_match(1)}") }
     held.html(literals.html(Textile.restore_hashes(Textile.footnotes(link_issues_html(html)))))
   end
-  text = Textile.collapse(text, held)
+  text = Textile.quotes(Textile.collapse(text, held), held)
   text = Textile.normalize_lists(text)
   markdown, status = Open3.capture2('pandoc', '-f', 'textile', '-t', 'gfm', '--wrap=none', stdin_data: text)
   abort "pandoc failed on #{page}" unless status.success?

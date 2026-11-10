@@ -264,8 +264,13 @@ This, together with the ‘unknown-user’, provides the ability to let anyone s
 
 will let anyone submit emails to a private project ‘foo’.
 
-TODO: Is this true and is this related to the `no_permission_check` option?:\
-\> Since Redmine 0.9 the project doesn’t have to be public, but authentication required in the Administration-\> Settings-\>Authentication tab has to be unchecked.
+TODO: Is this true and is this related to the `no_permission_check` option?:
+
+<blockquote>
+
+Since Redmine 0.9 the project doesn’t have to be public, but authentication required in the Administration-\> Settings-\>Authentication tab has to be unchecked.
+
+</blockquote>
 
 If you do not want an “new account notification email” sent to every newly created user by rdm-mailhandler you must add the option “—no-account-notice”. Is implemneted with version#60 in issue [#11498](https://www.redmine.org/issues/11498). Now an example:
 

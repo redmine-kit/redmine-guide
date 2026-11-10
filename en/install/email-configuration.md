@@ -56,7 +56,11 @@ development:
     ...
 ```
 
-\> **Please note:** Since Redmine 4.0 asynchronous email sending is removed in favour of Rails ActiveJob module which sends emails asynchronously.See https://www.redmine.org/projects/redmine/repository/entry/tags/4.0.0/lib/redmine/configuration.rb#L53 for more details.
+<blockquote>
+
+**Please note:** Since Redmine 4.0 asynchronous email sending is removed in favour of Rails ActiveJob module which sends emails asynchronously.See https://www.redmine.org/projects/redmine/repository/entry/tags/4.0.0/lib/redmine/configuration.rb#L53 for more details.
+
+</blockquote>
 
 ## Example configuration.yml Configurations
 

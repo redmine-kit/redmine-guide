@@ -141,8 +141,14 @@ The script gives you the total number of migrated objects.
 
 You can find other importers created by Redmine users:
 
-- [Non-destructive migration from Mantis to Redmine](http://blog.foaa.de/2010/04/non-destructive-migration-from-mantis-to-redmine/)\
-  \> \* No support anymore
+- [Non-destructive migration from Mantis to Redmine](http://blog.foaa.de/2010/04/non-destructive-migration-from-mantis-to-redmine/)
+
+<blockquote>
+
+- No support anymore
+
+</blockquote>
+
 - Jira importer: [#1385](https://www.redmine.org/issues/1385)
 - Bugzilla importer: [#989](https://www.redmine.org/issues/989) There are currently two bugzilla importers. bz2redmine http://github.com/ralli/bz2redmine and migrate_from_bugzilla http://github.com/ralli/migrate_from_bugzilla. The bz2redmine preserves the original bugzilla bug numbers and the migrate_from_bugzilla rake task uses the ActiveRecord framework and may be used to migrate from and to postgresql databases.
 - Scarab importer: [#2928](https://www.redmine.org/issues/2928)
