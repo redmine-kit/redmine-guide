@@ -18,8 +18,9 @@
 # - The images the pages show, in public/images/.
 # - The top pages list the guide's sections (index.yml); docs/README.md
 #   becomes about.md.
-# - sidebar.json: the sections and their topics in index.yml's order, with
-#   the pages index.yml does not list under the page that links them.
+# - sidebar.json: the sections and their topics in index.yml's order and
+#   titles (Japanese: glossary/ja.pages.yml), with the pages index.yml does
+#   not list under the page that links them.
 #
 # Runs with the Ruby of the GitHub runner, without gems.
 
@@ -156,6 +157,11 @@ sources = read_yaml('topics.yml')
 ja_titles = read_yaml('glossary/ja.pages.yml')['pages']
 images = []
 pages = {}
+# English titles: the guide's table of contents (index.yml) where it names
+# the topic with a title, else the page's H1.
+index_titles = index['sections'].flat_map { |section| section['topics'] }.select { |topic| topic.is_a?(Hash) }
+                               .map { |topic| [topic['id'], topic.dig('title', 'en')] }.to_h
+                               .select { |_, title| title.to_s.match?(/\A[A-Z]/) }
 
 topic_ids.each do |id|
   meta, en_body = front_matter(File.read(File.join(ROOT, 'en', "#{id}.md"), encoding: 'UTF-8'))
@@ -164,7 +170,7 @@ topic_ids.each do |id|
     source: source,
     source_url: meta['source_url'] || "https://www.redmine.org/projects/redmine/wiki/#{source}",
     updated_for: meta['updated_for'],
-    titles: { 'en' => h1(en_body) },
+    titles: { 'en' => index_titles[id] || h1(en_body) },
   }
   _, en_headings = heading_lines(en_body)
   en_ids = anchors(en_headings.map(&:last))
