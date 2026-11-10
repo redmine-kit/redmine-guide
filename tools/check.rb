@@ -14,6 +14,12 @@
 #   levels): redmine_help finds an English anchor in a translation by the
 #   heading's position, so translations need no anchors of their own.
 #
+# - the conversion left no Textile behind and broke nothing that a reader
+#   would see (the conversion's known failures: <code class> in code
+#   blocks, macros, escaped list markers, lists split by <!-- -->, broken
+#   links such as ![#124](...), HTML tags that Markdown would hide, Textile
+#   headings, footnotes, tables and links), in en/ and the translations.
+#
 #   ruby check.rb <guide directory>
 require 'yaml'
 
@@ -34,11 +40,41 @@ def links(text)
   text.gsub(/```.*?```/m, '').scan(/\]\(([^)\s]+)\)/).flatten
 end
 
+# The text outside code: fenced and indented blocks and code spans removed.
+def prose(text)
+  text.sub(/\A---\n.*?\n---\n/m, '').gsub(/^(`{3,}|~{3,}).*?^\1\s*$/m, '').gsub(/^(?: {4}|\t).*$/, '').gsub(/(`+).+?\1/, '')
+end
+
+# HTML that Markdown shows (the guide's tables, footnotes, collapsed
+# sections, spans); any other tag would be hidden.
+HTML_TAGS = %w[a br code del details div em img ins kbd li ol p pre span strong sub summary sup table tbody td th thead tr u ul].freeze
+CONVERSION_FAILURES = {
+  /^\s*<code class="[^"]*">\s*$/ => '<code class> in a code block',
+  /\{\{[a-z_>]/i => 'a macro left in the text',
+  /^\\\*/ => 'an escaped list marker (\\*)',
+  /^<!-- -->$/ => 'a list split in two (<!-- -->)',
+  /!\[#\d/ => 'a broken link (![#...])',
+  /^(?:h[1-6]|bq|fn\d+)\.\s/ => 'a Textile heading, quote or footnote',
+  /^\|(?:_|[\\\/]\d)/ => 'a Textile table',
+  /"[^"\n]+":(?:https?:|\/)/ => 'a Textile link',
+  /\[\^\d+\]/ => 'a footnote marker that is not Redmine\'s',
+  /RG[A-Z]+x\d+x|RGHASH/ => 'a placeholder of the conversion',
+}.freeze
+
+def conversion_failures(text)
+  body = prose(text)
+  found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (pattern.source.include?('<code') ? text : body).match?(pattern) }
+  tags = body.scan(%r{(?<!\\)</?([A-Za-z][A-Za-z0-9]*)[\s>/]}).flatten.map(&:downcase).uniq - HTML_TAGS
+  found << "HTML tags that Markdown would hide (#{tags.map { |tag| "<#{tag}>" }.join(', ')})" unless tags.empty?
+  found
+end
+
 languages = Dir.children(ROOT).select { |name| name.match?(/\A[a-z]{2}\z/) && File.directory?(File.join(ROOT, name)) }
 languages.each do |lang|
   Dir.glob('**/*.md', base: File.join(ROOT, lang)).sort.each do |file|
     path = File.join(ROOT, lang, file)
     text = File.read(path)
+    conversion_failures(text).each { |problem| problems << "#{lang}/#{file}: #{problem}" }
     links(text).each do |href|
       next if href.match?(/\A([a-z]+:|#)/i)
       # Only links to pages and images; the text formatting pages show syntax.

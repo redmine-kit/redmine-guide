@@ -52,3 +52,4 @@ It is made again when the guide follows a new Redmine version (`REDMINE_VERSION`
 - an interface term the English page marks in bold (**Apply**) that the glossary knows, when the translation does not use Redmine's string for it marked as a name (「適用」);
 - a topic or a heading in `map.yml` or `index.yml` that does not exist;
 - a translation whose H1 is not its title in `glossary/<lang>.pages.yml`, whose headings differ from the English page's in count or levels, or that has anchor tags.
+- a page (English or translated) where the conversion left Textile or broke what a reader sees: a macro, `<code class>` in a code block, an escaped list marker (`\*`), a list split in two (`<!-- -->`), a broken link such as `![#124](...)`, Textile headings, tables or links, footnote markers other than Redmine's, or an HTML tag that Markdown would hide.
