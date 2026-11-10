@@ -5,6 +5,14 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'en/**'
+      - 'ja/**'
+      - 'images/**'
+      - 'index.yml'
+      - 'topics.yml'
+      - 'glossary/*.pages.yml'
+      - 'tools/site.rb'
+      - '.github/workflows/docs.yml'
   workflow_dispatch:
 
 permissions:
@@ -20,3 +28,6 @@ jobs:
   docs:
     if: github.repository_owner == 'redmine-kit'
     uses: redmine-kit/docs-skeleton/.github/workflows/repo-docs.yml@main
+    with:
+      # Adds the guide's pages, images and sidebar to docs/ (docs/README.md#website)
+      prepare: ruby tools/site.rb docs

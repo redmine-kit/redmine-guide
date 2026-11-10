@@ -25,6 +25,16 @@ The guide has four sections: the user guide, the administrator guide, the instal
 
 Redmine Help reads this guide from the gem `redmine-guide` or from a checkout ([Redmine Help's setup](https://redmine-kit.github.io/redmine_help/setup.html#the-guide)). Each version tag publishes the gem to GitHub Packages (`https://rubygems.pkg.github.com/redmine-kit`), which needs a GitHub token with `read:packages` even for a public package.
 
+## Website
+
+The website (https://redmine-kit.github.io/redmine-guide/) shows the guide in English and in Japanese. The Docs workflow builds it with [docs-skeleton](https://github.com/redmine-kit/docs-skeleton): before the build, `tools/site.rb` adds to `docs/` the guide's pages, the images they show, the sidebar (the order of `index.yml`, the Japanese titles of `glossary/ja.pages.yml`) and the top pages, and this page becomes "Overview" under "About this project". Each page ends with its source, the copyright, what this project changed and the license of the changes ([License](#license)). A page that is not translated yet is shown in English on the Japanese site, with the note 「言語: English」, as Redmine Help shows it.
+
+To build the site locally, copy `docs/` into docs-skeleton as its README describes, then add the guide:
+
+```sh
+ruby tools/site.rb ../docs-skeleton/docs
+```
+
 ## Sponsors
 
 <Sponsors ids="keyselect"><a href="https://www.keyselect.co.jp/">KEY SELECT</a></Sponsors>
