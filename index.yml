@@ -7,6 +7,7 @@ sections:
   topics:
   - id: user/getting-started
     title:
+      en: Getting Started
       ja: はじめに
   - id: user/accounts
     title:
@@ -220,6 +221,7 @@ sections:
       ja: ほかのシステムからの移行
   - id: install/backup-and-restore
     title:
+      en: Backing up and restoring Redmine
       ja: バックアップと復元
 - id: developer
   title:
@@ -244,6 +246,7 @@ sections:
       ja: リリース管理
   - id: developer/vendored-components
     title:
+      en: List of vendored third-party core components
       ja: 同梱しているサードパーティのコンポーネント一覧
   - id: developer/plugin-tutorial
     title:
@@ -267,6 +270,7 @@ sections:
       ja: プラグインのよくある質問
   - id: developer/theme
     title:
+      en: HowTo create a custom Redmine theme
       ja: カスタムテーマの作成
   - id: developer/submissions
     title:

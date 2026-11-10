@@ -7,8 +7,8 @@
 # - interface terms: each term the English page marks in bold (**Apply**)
 #   that the glossary knows must appear in the translation as Redmine's own
 #   string in that language, marked as a name (「適用」 or **適用**);
-# - index.yml lists only existing topics, and map.yml's topics and
-#   anchors exist;
+# - index.yml lists only existing topics, each with a title in every
+#   language the index uses, and map.yml's topics and anchors exist;
 # - every updates/<topic>.yml has its topic;
 # - a translation's H1 is the page's title in glossary/<lang>.pages.yml, and
 #   its headings match the English page's one for one (same count and
@@ -158,10 +158,17 @@ Dir.glob('updates/**/*.yml', base: ROOT).each do |file|
 end
 
 index = YAML.safe_load_file(File.join(ROOT, 'index.yml'))
+# The languages of the index: a topic without a title in one of them shows
+# its id, or a title in another language, in that language's sidebar.
+index_languages = index['sections'].flat_map do |section|
+  section['title'].keys + section['topics'].flat_map { |entry| entry.is_a?(Hash) ? entry['title'].keys : [] }
+end.uniq.sort
 index['sections'].each do |section|
   section['topics'].each do |entry|
     topic = entry.is_a?(Hash) ? entry['id'] : entry
     problems << "index.yml: missing topic #{topic}" unless File.exist?(File.join(ROOT, 'en', "#{topic}.md"))
+    missing = index_languages - (entry.is_a?(Hash) ? entry['title'].keys : [])
+    problems << "index.yml: #{topic}: no title in #{missing.join(', ')}" unless missing.empty?
   end
 end
 

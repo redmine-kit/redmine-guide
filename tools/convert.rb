@@ -297,7 +297,10 @@ index = {
       next unless topic
 
       title = {}
-      title['en'] = labels[page] if labels[page]
+      # The guide's name for the page, or else the page's own heading.
+      heading = File.foreach(File.join(OUT, 'en', "#{topic}.md")).find { |line| line.start_with?('# ') }
+      title['en'] = labels[page] || heading&.delete_prefix('# ')&.strip
+      title.compact!
       page_titles.each { |lang, titles| title[lang] = titles.dig(topic, lang) if titles.dig(topic, lang) }
       title.empty? ? topic : { 'id' => topic, 'title' => title }
     end
