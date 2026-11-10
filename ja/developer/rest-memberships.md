@@ -53,8 +53,8 @@ GET /projects/redmine/memberships.xml
 
 注:
 
-- メンバーはユーザーかグループのどちらかです([グループの API](rest-groups.md) は Redmine 2.1 で追加されました)
-- 上の例で、最後のロールにある `inherited="true"` 属性は、このロールがグループから継承されたことを表します(たとえば、Jonh Smith が Contributors グループに所属し、このグループがプロジェクトのメンバーに追加されている場合)。John Smith のメンバーは、先にグループのメンバーを削除しないと削除できません。
+- メンバーはユーザーかグループのどちらかです ([グループの API](rest-groups.md) は Redmine 2.1 で追加されました)
+- 上の例で、最後のロールにある `inherited="true"` 属性は、このロールがグループから継承されたことを表します (たとえば、Jonh Smith が Contributors グループに所属し、このグループがプロジェクトのメンバーに追加されている場合)。John Smith のメンバーは、先にグループのメンバーを削除しないと削除できません。
 - 特定のユーザーのメンバーの情報は、[ユーザーの API](rest-users.md) で取得できます。
 
 ### POST
@@ -63,9 +63,9 @@ GET /projects/redmine/memberships.xml
 
 <u>パラメーター</u>:
 
-- `membership`(必須): メンバーの属性のハッシュ。次のものを含みます:
-  - `user_id`(必須): ユーザーまたはグループの数値の ID
-  - `role_ids`(必須): ロールの数値の ID の配列
+- `membership` (必須): メンバーの属性のハッシュ。次のものを含みます:
+  - `user_id` (必須): ユーザーまたはグループの数値の ID
+  - `role_ids` (必須): ロールの数値の ID の配列
 
 <u>例</u>:
 
@@ -95,7 +95,7 @@ JSON
 <u>レスポンス</u>:
 
 - `201 Created`: メンバーを作成しました
-- `422 Unprocessable Entity`: 検証に失敗したため、メンバーを作成できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 検証に失敗したため、メンバーを作成できませんでした (レスポンスの本文にエラーメッセージが入ります)
 
 ## /memberships/:id.:format
 
@@ -130,8 +130,8 @@ GET /memberships/1.xml
 
 <u>パラメーター</u>:
 
-- `membership`(必須): メンバーの属性のハッシュ。次のものを含みます:
-  - `role_ids`(必須): ロールの数値の ID の配列
+- `membership` (必須): メンバーの属性のハッシュ。次のものを含みます:
+  - `role_ids` (必須): ロールの数値の ID の配列
 
 <u>例</u>:
 
@@ -149,7 +149,7 @@ PUT /memberships/2.xml
 <u>レスポンス</u>:
 
 - `204 No Content`: メンバーを更新しました
-- `422 Unprocessable Entity`: 検証に失敗したため、メンバーを更新できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 検証に失敗したため、メンバーを更新できませんでした (レスポンスの本文にエラーメッセージが入ります)
 
 ### DELETE
 

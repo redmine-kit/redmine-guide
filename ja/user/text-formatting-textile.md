@@ -6,7 +6,7 @@ translated_from_version: 19
 # Textile
 
 ここでは **Textile** の書式を説明します。**Markdown** の書式は、[Markdown](text-formatting-markdown.md) を参照してください。\
-現在の Textile への対応の制限については、[#6269](https://www.redmine.org/issues/6269)、[#10078](https://www.redmine.org/issues/10078)(定義リスト)を参照してください。
+現在の Textile への対応の制限については、[#6269](https://www.redmine.org/issues/6269)、[#10078](https://www.redmine.org/issues/10078)(定義リスト) を参照してください。
 
 ## リンク
 
@@ -16,7 +16,7 @@ translated_from_version: 19
 
 ### 外部リンク
 
-URL(http、https、ftp、ftps)は、自動でクリックできるリンクになります。
+URL(http、https、ftp、ftps) は、自動でクリックできるリンクになります。
 
 - **http://www.redmine.org** — Redmine の Web サイトへの外部リンク: http://www.redmine.org
 
@@ -112,7 +112,7 @@ JPL (Jean-Philippe Lang)
 
 ### インライン画像
 
-- **!image_url!** は、image_url にある画像を表示します(Textile の構文)
+- **!image_url!** は、image_url にある画像を表示します (Textile の構文)
 - **!\>image_url!** は、右にフロートする画像を表示します
 - **!image_url(Image title)!** は、alt 属性と title 属性の付いた画像を表示します
 - **!image_url!:URL** は、image_url にある画像を、URL へのリンクを付けて表示します
@@ -270,7 +270,7 @@ Great!
                                  (anonymous) |~. valign bottom    |
 ```
 
-表示(連続する空白は 1 つにまとめられます):
+表示 (連続する空白は 1 つにまとめられます):
 
 <table>
 <thead>
@@ -318,7 +318,7 @@ Great!
 </tbody>
 </table>
 
-テーブルの中にパイプ文字を入れる場合(Wiki のリンクなど)は、Textile がパイプ文字を解釈しないようにする必要があります。
+テーブルの中にパイプ文字を入れる場合 (Wiki のリンクなど) は、Textile がパイプ文字を解釈しないようにする必要があります。
 
 | 入力         | 出力     |
 |--------------|----------|
@@ -354,7 +354,7 @@ only the required space</td>
 </tbody>
 </table>
 
-**table** のキーワードの前には、空行が必要です。キーワードのあと(テーブルまで)には、空行もほかの内容も置けません。
+**table** のキーワードの前には、空行が必要です。キーワードのあと (テーブルまで) には、空行もほかの内容も置けません。
 
 #### テーブルの特殊な制御シーケンス
 
@@ -405,7 +405,7 @@ This is a first word[1] with a footnote.
 This is a second word[2] with a footnote.
 ```
 
-**注:** マーカーは、単語のすぐあとに付けます(あいだに空白、ピリオドなど、何も入れません)。
+**注:** マーカーは、単語のすぐあとに付けます (あいだに空白、ピリオドなど、何も入れません)。
 
 定義:
 
@@ -550,7 +550,7 @@ The quick brown fox jumps over the lazy dog.
 
 ### 使用できる CSS のプロパティ
 
-Redmine で使用できるのは、次のプロパティです。そのほかのプロパティは、セキュリティ上の理由で使用できません([r2192](https://www.redmine.org/projects/redmine/repository/svn/revisions/2192) を参照)。
+Redmine で使用できるのは、次のプロパティです。そのほかのプロパティは、セキュリティ上の理由で使用できません ([r2192](https://www.redmine.org/projects/redmine/repository/svn/revisions/2192) を参照)。
 
 - background
 - background-\*

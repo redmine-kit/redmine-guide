@@ -5,7 +5,7 @@ translated_from_version: 14
 
 # カスタムテーマの作成
 
-Redmine は基本的なテーマの機能を備えています。テーマでは、スタイルシート(application.css)を上書きし、独自の JavaScript を追加できます。
+Redmine は基本的なテーマの機能を備えています。テーマでは、スタイルシート (application.css) を上書きし、独自の JavaScript を追加できます。
 
 **注**: Redmine 6.0 から、テーマの場所が `public/themes` から `themes` に変わりました。6.0 より前のバージョン向けのテーマを作成する場合は、以下の説明の `themes` を `public/themes` と読み替えてください。
 
@@ -86,9 +86,9 @@ export default class extends Controller {
 
 テーマは次のファイルで構成されます。
 
-- `favicon/<favicon file>`(任意): テーマのファビコン
-- `javascripts/theme.js`(任意): テーマの独自の JavaScript
-- `stylesheets/application.css`(必須): テーマの CSS
+- `favicon/<favicon file>` (任意): テーマのファビコン
+- `javascripts/theme.js` (任意): テーマの独自の JavaScript
+- `stylesheets/application.css` (必須): テーマの CSS
 
 ```text
 themes/

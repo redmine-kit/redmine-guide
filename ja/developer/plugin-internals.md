@@ -9,9 +9,9 @@ translated_from_version: 24
 
 ## Redmine 本体の上書き
 
-Redmine では、ビューは上書きできますが、コントローラーやモデルは上書きできません。架空のプラグイン `MyPlugin` でコントローラー(またはモデル)とビューを上書きしようとすると、Redmine/Rails は次のように動きます。
+Redmine では、ビューは上書きできますが、コントローラーやモデルは上書きできません。架空のプラグイン `MyPlugin` でコントローラー (またはモデル) とビューを上書きしようとすると、Redmine/Rails は次のように動きます。
 
-### コントローラー(またはモデル)
+### コントローラー (またはモデル)
 
 1.  Rails が起動し、フレームワークをすべて読み込みます
 2.  Rails がプラグインのコードを読み込み始めます
@@ -19,7 +19,7 @@ Redmine では、ビューは上書きできますが、コントローラーや
 4.  Rails がほかのプラグインをすべて読み込みます
 5.  Rails が *../app* からアプリケーションを読み込みます
 6.  Rails が `IssueController` をもう一度見つけ、こちらにも `show` アクションが定義されていることを認識します
-7.  Rails(正確には Ruby)が、プラグインの `show` アクションを *../app* のもので上書きします
+7.  Rails (正確には Ruby) が、プラグインの `show` アクションを *../app* のもので上書きします
 8.  Rails が読み込みを終え、リクエストを処理します
 
 ### ビュー
@@ -36,7 +36,7 @@ Redmine では、ビューは上書きできますが、コントローラーや
 8.  Rails が一致するテンプレートを探し、ビューのパスの**先頭に追加**されているプラグインのテンプレートを読み込みます
 9.  Rails がプラグインのビューをレンダリングします
 
-モデルとコントローラーは Ruby の方法で(モジュールを include して)簡単に拡張できるため、Redmine は本体のモデルやコントローラーを上書きするための API を用意するべきではなく、実際に用意していません。一方、ビューは(Rails の仕組みのせいで)扱いが難しいため、上書きのための API がはるかに役に立ちます(そのため Redmine に実装されています)。
+モデルとコントローラーは Ruby の方法で (モジュールを include して) 簡単に拡張できるため、Redmine は本体のモデルやコントローラーを上書きするための API を用意するべきではなく、実際に用意していません。一方、ビューは (Rails の仕組みのせいで) 扱いが難しいため、上書きのための API がはるかに役に立ちます (そのため Redmine に実装されています)。
 
 Redmine 本体の既存のビューを上書きするには、*../app/views/* にあるものとまったく同じ名前のビューのファイルを作成するだけで、Redmine がそれを使います。たとえば、プロジェクトの一覧のページを上書きするには、*../plugins/my_plugin/app/views/projects/index.html.erb* にファイルを追加します。
 
@@ -81,8 +81,8 @@ alias_method_chain のパターンは Rails 5 で非推奨になったため、�
 **既存のメソッドのラップ**の簡単な例が、Eric Davis の [Rate plugin](http://github.com/edavis10/redmine_rate/blob/4666ddb10e1061ca3ef362735d0d264676b99024/lib/rate_users_helper_patch.rb) にあります。ここでは `alias_method_chain` を使って UsersHelper にフックし、`user_settings_tabs` メソッドをラップしています。そのため、Redmine 本体が `user_settings_tabs` を呼び出すと、処理は次のように進みます。
 
 1.  Redmine 本体が `UsersHelper#user_settings_tabs` を呼び出します
-2.  `UsersHelper#user_settings_tabs` が実行されます(実際には `UsersHelper#user_settings_tabs_with_rate_tab` です)
-3.  `UsersHelper#user_settings_tabs_with_rate_tab` が、元の `UsersHelper#user_settings_tabs`(`UsersHelper#user_settings_tabs_without_rate_tab` に名前が変わっています)を呼び出します
+2.  `UsersHelper#user_settings_tabs` が実行されます (実際には `UsersHelper#user_settings_tabs_with_rate_tab` です)
+3.  `UsersHelper#user_settings_tabs_with_rate_tab` が、元の `UsersHelper#user_settings_tabs` (`UsersHelper#user_settings_tabs_without_rate_tab` に名前が変わっています) を呼び出します
 4.  その結果に新しいハッシュが追加されます
 5.  `UsersHelper#user_settings_tabs_with_rate_tab` が、まとめた結果を Redmine 本体に返し、それがレンダリングされます
 
@@ -119,7 +119,7 @@ end
 1.  http://github.com/edavis10/redmine_kanban/blob/000cf175795c18033caa43082c4e4d0a9f989623/init.rb#L10
 2.  http://github.com/edavis10/redmine_kanban/blob/000cf175795c18033caa43082c4e4d0a9f989623/lib/redmine_kanban/issue_patch.rb#L13
 
-これで、チケットを保存するたびに(新規でも更新でも)`issue.update_kanban_from_issue` が実行されます。
+これで、チケットを保存するたびに (新規でも更新でも) `issue.update_kanban_from_issue` が実行されます。
 
 新しいチケットだけにフックしたい場合は、`after_save` コールバックの代わりに `before_create` コールバックを使えます。チケットが確実に保存されてからコードを実行したい場合は、`after_create` コールバックを使うほうがよいでしょう。
 

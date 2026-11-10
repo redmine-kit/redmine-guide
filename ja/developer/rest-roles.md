@@ -37,7 +37,7 @@ GET /roles.xml
 
 ### GET
 
-指定したロールの権限の一覧を返します([2.2.0](https://www.redmine.org/versions/56))。
+指定したロールの権限の一覧を返します ([2.2.0](https://www.redmine.org/versions/56))。
 
 <u>例</u>:
 

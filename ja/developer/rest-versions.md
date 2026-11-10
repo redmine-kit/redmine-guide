@@ -9,7 +9,7 @@ translated_from_version: 11
 
 ### GET
 
-指定した ID または識別子(:project_id)のプロジェクトで使えるバージョンを返します。レスポンスには、ほかのプロジェクトから共有されたバージョンが含まれることがあります。
+指定した ID または識別子 (:project_id) のプロジェクトで使えるバージョンを返します。レスポンスには、ほかのプロジェクトから共有されたバージョンが含まれることがあります。
 
 <u>例</u>:
 
@@ -52,12 +52,12 @@ GET /projects/1/versions.xml
 
 ### POST
 
-指定した ID または識別子(:project_id)のプロジェクトにバージョンを作成します。
+指定した ID または識別子 (:project_id) のプロジェクトにバージョンを作成します。
 
 <u>パラメーター</u>:
 
-- `version`(必須): バージョンの属性のハッシュ。次のものを含みます:
-  - `name`(必須)
+- `version` (必須): バージョンの属性のハッシュ。次のものを含みます:
+  - `name` (必須)
   - `status`: バージョンのステータス。`open (default), locked, closed` のどれか
   - `sharing`: バージョンの共有。`none (default), descendants, hierarchy, tree, system` のどれか
   - `due_date`
@@ -67,7 +67,7 @@ GET /projects/1/versions.xml
 <u>レスポンス</u>:
 
 - `201 Created`: バージョンを作成しました
-- `422 Unprocessable Entity`: 検証に失敗したため、バージョンを作成できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 検証に失敗したため、バージョンを作成できませんでした (レスポンスの本文にエラーメッセージが入ります)
 
 ## /versions/:id.:format
 
@@ -110,7 +110,7 @@ GET /versions/2.xml
 <u>レスポンス</u>:
 
 - `204 No Content`: バージョンを更新しました
-- `422 Unprocessable Entity`: 検証に失敗したため、バージョンを更新できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 検証に失敗したため、バージョンを更新できませんでした (レスポンスの本文にエラーメッセージが入ります)
 
 ### DELETE
 
@@ -119,4 +119,4 @@ GET /versions/2.xml
 <u>レスポンス</u>:
 
 - `204 No Content`: バージョンを削除しました
-- `422 Unprocessable Entity`: バージョンを削除できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: バージョンを削除できませんでした (レスポンスの本文にエラーメッセージが入ります)

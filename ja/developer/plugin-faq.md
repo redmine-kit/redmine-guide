@@ -17,7 +17,7 @@ if @project.module_enabled?("<module_name>")
 
 まず、*モジュール*はプロジェクト単位の概念です。そのため、この判定はプロジェクト単位で動くアクションの中で行ってください。Redmine 本体は通常、標準のアクションで現在のプロジェクトを見つけるために `find_project` という `before_action` を使い、これが `@project` 変数を設定します。
 
-Redmine 2.3.x の時点で使えるモジュールは、boards、calendar、documents、files、gantt、issue_tracking、news、repository、time_tracking、wiki です。プラグインはそれぞれ独自のモジュールを追加できます(「polls」モジュールを追加する[プラグインのチュートリアル](plugin-tutorial.md)を参照してください)。
+Redmine 2.3.x の時点で使えるモジュールは、boards、calendar、documents、files、gantt、issue_tracking、news、repository、time_tracking、wiki です。プラグインはそれぞれ独自のモジュールを追加できます (「polls」モジュールを追加する[プラグインのチュートリアル](plugin-tutorial.md)を参照してください)。
 
 ## ページのレイアウトを変える
 
@@ -69,15 +69,15 @@ Redmine は、アプリケーションの設定値をデータベースに保存
   ```
 
 
-プラグインから設定値を手動で変更(設定)することはお勧めしません。代わりに、用意されている画面で設定してください。
+プラグインから設定値を手動で変更 (設定) することはお勧めしません。代わりに、用意されている画面で設定してください。
 
 ## 特定のバージョンの Redmine を必須にする
 
-プラグインが Redmine 本体の特定の機能を必要としたり、特定のビューを上書きしたりする場合は、必要な本体があることを保証するために、プラグインをインストールできる Redmine の(特定の)バージョンを制限する必要があります。そうすることで、プラグインの互換性に関する多くの問題を防げます。
+プラグインが Redmine 本体の特定の機能を必要としたり、特定のビューを上書きしたりする場合は、必要な本体があることを保証するために、プラグインをインストールできる Redmine の (特定の) バージョンを制限する必要があります。そうすることで、プラグインの互換性に関する多くの問題を防げます。
 
-これは `requires_redmine` メソッドで実現できます([source:/trunk/lib/redmine/plugin.rb@19983#L227](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L227) を参照)。このメソッドを使うと、特定のバージョンの Redmine を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
+これは `requires_redmine` メソッドで実現できます ([source:/trunk/lib/redmine/plugin.rb@19983#L227](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L227) を参照)。このメソッドを使うと、特定のバージョンの Redmine を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
 
-注: `requires_redmine` には、*ブランチの接尾辞*(`stable`/`devel`)の付いた Redmine のバージョン番号を渡さないでください。対応していません。これについての議論は [#35345](https://www.redmine.org/issues/35345) を参照してください。
+注: `requires_redmine` には、*ブランチの接尾辞* (`stable`/`devel`) の付いた Redmine のバージョン番号を渡さないでください。対応していません。これについての議論は [#35345](https://www.redmine.org/issues/35345) を参照してください。
 
 <details>
 <summary>requires_redmine メソッドの使用例を表示...</summary>
@@ -104,9 +104,9 @@ requires_redmine :version => '0.7'..'0.9'         # >= 0.7.x and <= 0.9.x
 
 ## 特定のバージョンの Redmine プラグインを必須にする
 
-プラグインが、ほかの Redmine プラグインの特定の機能や、ほかのプラグインの特定のバージョンにある機能を必要とする場合は、必要なプラグイン(のバージョン)があることを保証するために、インストールの前に依存関係を制御する必要があります。そうすることで、プラグイン間の互換性に関する多くの問題を防げます。
+プラグインが、ほかの Redmine プラグインの特定の機能や、ほかのプラグインの特定のバージョンにある機能を必要とする場合は、必要なプラグイン (のバージョン) があることを保証するために、インストールの前に依存関係を制御する必要があります。そうすることで、プラグイン間の互換性に関する多くの問題を防げます。
 
-これは `requires_redmine_plugin` メソッドで実現できます([source:/trunk/lib/redmine/plugin.rb@19983#L274](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L274) を参照)。このメソッドを使うと、特定の Redmine プラグイン(の特定のバージョン)を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
+これは `requires_redmine_plugin` メソッドで実現できます ([source:/trunk/lib/redmine/plugin.rb@19983#L274](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/redmine/plugin.rb?rev=19983#L274) を参照)。このメソッドを使うと、特定の Redmine プラグイン (の特定のバージョン) を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
 
 <details>
 <summary>requires_redmine_plugin メソッドの使用例を表示...</summary>

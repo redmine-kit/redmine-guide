@@ -15,21 +15,21 @@ Redmine は、1 つまたは複数の LDAP ディレクトリを使った LDAP �
 
 - 「名称」: ディレクトリの任意の名前
 - 「ホスト」: LDAP のホスト名
-- 「ポート」: LDAP のポート(デフォルトは 389)
+- 「ポート」: LDAP のポート (デフォルトは 389)
 - 「LDAP」、「LDAPS (証明書の検証なし)」、「LDAPS」: ポートの横のドロップダウンリストで、ディレクトリへのアクセスに LDAPS を使うかどうかと、サーバーの証明書を検証するかどうかを選択します (証明書を検証する LDAPS をおすすめします)
-- 「アカウント」: LDAP の読み取りのアクセス権があるユーザー名を入力します。LDAP を匿名で読み取れるときは空のままにします(Active Directory のサーバーは、通常は匿名のアクセスを許可しません)
+- 「アカウント」: LDAP の読み取りのアクセス権があるユーザー名を入力します。LDAP を匿名で読み取れるときは空のままにします (Active Directory のサーバーは、通常は匿名のアクセスを許可しません)
 - 「パスワード」: アカウントのパスワード
 - 「ベースDN」: LDAP のディレクトリツリーの最上位の DN
 - 「ログインIDの属性」: Redmine のユーザー名として使う LDAP の属性の名前を入力します
 
 これで、認証に LDAP を使うように設定されたアカウントの Redmine のユーザーは、LDAP のユーザー名とパスワードで認証できます。
 
-試すには、LDAP のアカウントと同じログイン ID で Redmine のユーザーを作成し(通常は、Redmine が LDAP のデータを参照して候補を示します)、「認証方式」のドロップダウンリストで作成した LDAP を選択し(この欄は、LDAP を登録しているときだけアカウントの画面に表示されます)、パスワードは空のままにします。LDAP のユーザー名とパスワードで Redmine にログインしてみます。
+試すには、LDAP のアカウントと同じログイン ID で Redmine のユーザーを作成し (通常は、Redmine が LDAP のデータを参照して候補を示します)、「認証方式」のドロップダウンリストで作成した LDAP を選択し (この欄は、LDAP を登録しているときだけアカウントの画面に表示されます)、パスワードは空のままにします。LDAP のユーザー名とパスワードで Redmine にログインしてみます。
 
 ## ユーザーの自動作成
 
 「ユーザーが存在しなければ作成」にチェックを入れると、LDAP のユーザーが初めて Redmine にログインしたときに、そのユーザーの Redmine のアカウントが自動で作成されます。\
-そのためには、Redmine のアカウントの作成に使う LDAP の属性の名前(名、姓、メールアドレス)を指定する必要があります。
+そのためには、Redmine のアカウントの作成に使う LDAP の属性の名前 (名、姓、メールアドレス) を指定する必要があります。
 
 Active Directory を使う典型的な例です。
 
@@ -93,7 +93,7 @@ LDAP Filter: (&(objectClass=user)(memberOf=CN=Redmine-User,OU=Application Settin
 
 特定の LDAP のグループに所属するユーザーだけにログインを許可するときは、次の手順に従います。手順は、OpenLDAP の LDAP サーバーと Redmine 2.3.0 に基づいています。
 
-1\. (OpenLDAP のサーバー)memberof のオーバーレイを有効にします
+1\. (OpenLDAP のサーバー) memberof のオーバーレイを有効にします
 
 1.1. 次のファイルを作成します。
 
@@ -159,9 +159,9 @@ ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_config.
 
 </blockquote>
 
-実行時に動的に設定するエンジン(slapd-config)を使っているときは、再起動は必要ありません。
+実行時に動的に設定するエンジン (slapd-config) を使っているときは、再起動は必要ありません。
 
-1.4. (任意)テストします。
+1.4. (任意) テストします。
 
 <blockquote>
 
@@ -169,7 +169,7 @@ ldapsearch -D cn=admin,dc=example,dc=com -x -W -b ‘dc=example,dc=com’ -H ‘
 
 </blockquote>
 
-2\. (OpenLDAP のサーバー)グループを作成します。この例では、ユーザーは「ldap_user_1」、グループは「ldapredmine」です。
+2\. (OpenLDAP のサーバー) グループを作成します。この例では、ユーザーは「ldap_user_1」、グループは「ldapredmine」です。
 
 <blockquote>
 
@@ -196,14 +196,14 @@ Filter: (&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=exampl
 ## トラブルシューティング
 
 ユーザーの自動作成を使うときは、正しいユーザーを作成するのに必要な情報を、Redmine が LDAP からすべて取得できることを確認してください。\
-たとえば、ディレクトリに正しいメールアドレスがないと、ユーザーの自動作成は動きません(ログインしようとすると「Invalid username/password」のエラーメッセージが表示されます)。\
+たとえば、ディレクトリに正しいメールアドレスがないと、ユーザーの自動作成は動きません (ログインしようとすると「Invalid username/password」のエラーメッセージが表示されます)。\
 (新しいバージョンの Redmine では当てはまりません。ユーザーの作成のダイアログに LDAP サーバーから見つかった情報がすべて入力され、残りは新しいユーザーが入力するように求められます。)
 
 また、ユーザーアカウントのカスタムフィールドで「必須」にしているものがないことを確認してください。必須のカスタムフィールドがあると、ユーザーアカウントを自動で作成できません。
 
 ログインの仕組みのエラーは、Redmine のログに役立つ情報が記録されないため、トラブルシューティングは難しくなります。ただし、Redmine のホストと LDAP サーバーの間で Wireshark を使うと、必要な情報はほとんど得られます。これは、この 2 つのホストの間のネットワークの通信を読み取る権限があるときだけ使えます。
 
-ツール「ldapsearch」で、設定が正しいかどうかを確認することもできます。Redmine を動かしている Linux のマシンにログインし(必要なら ldaputils をインストールし)、次を実行します。
+ツール「ldapsearch」で、設定が正しいかどうかを確認することもできます。Redmine を動かしている Linux のマシンにログインし (必要なら ldaputils をインストールし)、次を実行します。
 
 ldapsearch -x -b “dc=example,dc=com” -H ldap://hostname/ -D “DOMAIN\USER” -w mypassword \[searchterm\]
 
@@ -211,7 +211,7 @@ ldapsearch -x -b “dc=example,dc=com” -H ldap://hostname/ -D “DOMAIN\USER�
 
 ### アカウントの値の形式
 
-net-ldap の gem の lib/net/ldap.rb にある次のコメントのとおり、バインドの資格情報のユーザー名は、UPN(user@domain.com)や domain\user ではなく、DN(CN=user,OU=optional,DC=domain,DC=com など)で指定する必要がある場合があります。
+net-ldap の gem の lib/net/ldap.rb にある次のコメントのとおり、バインドの資格情報のユーザー名は、UPN(user@domain.com) や domain\user ではなく、DN (CN=user,OU=optional,DC=domain,DC=com など) で指定する必要がある場合があります。
 
   ```text
   # As described under #bind, most LDAP servers require that you supply a complete DN
@@ -222,7 +222,7 @@ net-ldap の gem の lib/net/ldap.rb にある次のコメントのとおり、�
 
 ### LDAP の認証が遅い
 
-LDAP の認証が遅く、AD のクラスターを使っているときは、「ホスト」の欄に AD の物理サーバーの 1 つを指定してみてください(http://www.redmine.org/boards/2/topics/3056)。改善することがあります。
+LDAP の認証が遅く、AD のクラスターを使っているときは、「ホスト」の欄に AD の物理サーバーの 1 つを指定してみてください (http://www.redmine.org/boards/2/topics/3056)。改善することがあります。
 
 ### OpenDS
 
@@ -236,13 +236,13 @@ OpenDS のサーバーを使っているときは、指定したログイン ID 
 \"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
 ```
 
-注: コマンドは 1 行で入力し、エスケープは示したとおりに正確に使ってください(「acl」の後の \\ は、空白を表す「\\ 」のつもりです)。
+注: コマンドは 1 行で入力し、エスケープは示したとおりに正確に使ってください (「acl」の後の \\ は、空白を表す「\\ 」のつもりです)。
 
 ## 解決例:
 
 ### Zentyal 3.2、Redmine 2.3.x
 
-Ubuntu 12.04 LTS のサーバーで、Zentyal 3.2 の更新と(再)設定に成功しました。
+Ubuntu 12.04 LTS のサーバーで、Zentyal 3.2 の更新と (再) 設定に成功しました。
 
 Zentyal 3.2 と Redmine 2.3 に更新した後、これにはとても悩まされたので、手短に、この簡単な解決方法を共有します。
 
@@ -260,7 +260,7 @@ Zentyal の読み取り専用の資格情報を使います。
   Default Groups DN:     ou=Groups,dc=your_domain,dc=your_tld
 ```
 
-Redmine では、上の資格情報を(\<\> を除いて)使います。LDAP のポートが 390 に変わっていることに注意してください(上の記事を参照)。
+Redmine では、上の資格情報を (\<\> を除いて) 使います。LDAP のポートが 390 に変わっていることに注意してください (上の記事を参照)。
 
 ```text
 Name     = Just a description for the auth modes page

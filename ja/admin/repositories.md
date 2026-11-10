@@ -7,7 +7,7 @@ translated_from_version: 64
 
 ## 基本情報
 
-Redmine は、次のバージョン管理システム(SCM)との連携に標準で対応しています。
+Redmine は、次のバージョン管理システム (SCM) との連携に標準で対応しています。
 
 |  |  |  |
 |----|----|----|
@@ -15,8 +15,8 @@ Redmine は、次のバージョン管理システム(SCM)との連携に標準�
 | [Bazaar](http://bazaar.canonical.com/en/) | 1.0.0.candidate.1 ～ 2.7.0 |  |
 | [CVS](http://www.nongnu.org/cvs/) | 1.12.12、1.12.13 | 1.12 が必要。CVSNT では動きません |
 | [Git](https://git-scm.com/) | 1.5.4.2 ～ 2.11.0 |  |
-| [Mercurial](http://www.selenic.com/mercurial/) | 5.1 以降 | 5.1 より前の Mercurial への対応は、Redmine 6.1.0 で終了しました(#33784) |
-| [Subversion](http://subversion.apache.org/) | 1.3 ～ 1.9.7 | 1.3 以降が必要。Subversion の Ruby バインディングには対応していません。Subversion 1.7.0 と 1.7.1 には不具合があります(#9541) |
+| [Mercurial](http://www.selenic.com/mercurial/) | 5.1 以降 | 5.1 より前の Mercurial への対応は、Redmine 6.1.0 で終了しました (#33784) |
+| [Subversion](http://subversion.apache.org/) | 1.3 ～ 1.9.7 | 1.3 以降が必要。Subversion の Ruby バインディングには対応していません。Subversion 1.7.0 と 1.7.1 には不具合があります (#9541) |
 
 <u>注 1</u>: 該当するバイナリを、**Redmine と同じホスト**に**必ず**インストールしてください。
 
@@ -38,7 +38,7 @@ Redmine は、次のバージョン管理システム(SCM)との連携に標準�
 リポジトリに合ったバージョン管理システムを選択し、リポジトリのパスか URL を入力します。
 
 **重要**: 初めてリポジトリを閲覧するときに、Redmine は既存のすべてのコミットの説明を取得してデータベースに保存します。\
-これはリポジトリごとに 1 回だけですが、リポジトリに数百のコミットがあると、とても長い時間がかかる(タイムアウトすることもある)場合があります。
+これはリポジトリごとに 1 回だけですが、リポジトリに数百のコミットがあると、とても長い時間がかかる (タイムアウトすることもある) 場合があります。
 
 これを避けるには、オフラインで実行します。\
 Redmine にリポジトリを登録した後、次のコマンドを実行します。
@@ -62,7 +62,7 @@ http://redmine.example.com/sys/fetch_changesets?key=<WS key>&id=foo (=> fetches 
 
 ### Subversion のリポジトリ
 
-一般的なプロトコル(`http:`、`svn:`、`file:` など)に対応しています。リポジトリの URL を入力するだけです。
+一般的なプロトコル (`http:`、`svn:`、`file:` など) に対応しています。リポジトリの URL を入力するだけです。
 
 例:
 
@@ -79,7 +79,7 @@ http://host/path/to/the/repository
 
 次の項目を入力します。
 
-- リポジトリの URL(パスか、`:pserver` などの接続文字列)
+- リポジトリの URL (パスか、`:pserver` などの接続文字列)
 - モジュール名
 
 例:
@@ -90,7 +90,7 @@ http://host/path/to/the/repository
 
 ### Git のリポジトリ
 
-([HowTo_Easily_integrate_a_(SSH_secured)_GIT_repository_into_redmine](https://www.redmine.org/projects/redmine/wiki/HowTo_Easily_integrate_a_(SSH_secured)_GIT_repository_into_redmine) も参照してください。)
+([HowTo_Easily_integrate_a_ (SSH_secured)_GIT_repository_into_redmine](https://www.redmine.org/projects/redmine/wiki/HowTo_Easily_integrate_a_(SSH_secured)_GIT_repository_into_redmine) も参照してください。)
 
 #### ローカルの環境の準備
 
@@ -105,7 +105,7 @@ $ sudo chown rails:rails /var/redmine/git_repositories
 $ cd /var/redmine/git_repositories
 ```
 
-2 行目に注意してください。作成したディレクトリの所有者を、ユーザー `rails` とグループ `rails` に変更しています。もちろん、サーバーの設定に合わせて置き換える必要があります(`www-data`、`apache`、または管理がとてもまずいサーバーでは `root` など)。このユーザーには、`git` コマンドを実行する(ローカルの)権限が必要です。
+2 行目に注意してください。作成したディレクトリの所有者を、ユーザー `rails` とグループ `rails` に変更しています。もちろん、サーバーの設定に合わせて置き換える必要があります (`www-data`、`apache`、または管理がとてもまずいサーバーでは `root` など)。このユーザーには、`git` コマンドを実行する (ローカルの) 権限が必要です。
 
 #### ベアリポジトリの作成
 
@@ -124,7 +124,7 @@ Resolving deltas: 100% (134/134), done.
 $ cd donebox.git
 ```
 
-これでベアリポジトリができました。Redmine のプロジェクトの設定で「リポジトリ」のタブを開き、バージョン管理システムに `git` を選択し、*リポジトリのパス*(この例では `/var/redmine/git_repositories/donebox.git/`)を入力して設定を保存します。プロジェクトの「リポジトリ」のタブを開くと、リポジトリを閲覧できるはずです。
+これでベアリポジトリができました。Redmine のプロジェクトの設定で「リポジトリ」のタブを開き、バージョン管理システムに `git` を選択し、*リポジトリのパス* (この例では `/var/redmine/git_repositories/donebox.git/`) を入力して設定を保存します。プロジェクトの「リポジトリ」のタブを開くと、リポジトリを閲覧できるはずです。
 
 注: 不具合 [#8548](https://www.redmine.org/issues/8548) により、*ファイルとディレクトリの最新コミットを表示する*を設定すると、リポジトリのファイルとディレクトリの一覧に次の 4 つの列が追加されます。
 
@@ -135,7 +135,7 @@ $ cd donebox.git
 
 注: もちろん、この Git のリポジトリは自動では更新されません。定期的に手で `git fetch` するか、`git fetch` コマンドを自動で実行する cron ジョブを設定する必要があります。
 
-リポジトリ(とすべてのブランチ)を 10 分ごとに更新するには、次のような cron ジョブを追加します。
+リポジトリ (とすべてのブランチ) を 10 分ごとに更新するには、次のような cron ジョブを追加します。
 
 ```text
 */10 * * * * cd /srv/repos/git/myrepo.git && git fetch origin +refs/heads/*:refs/heads/* && git reset --soft
@@ -148,7 +148,7 @@ echo "Post receive-hook => updating Redmine repository"
 sudo -u my_redmine_user -p secret perl -we '`cd /redmine/repositories/my_repo.git && git fetch && git reset --soft refs/remotes/origin/master`'
 ```
 
-git reset に注意してください。Git のツリーを更新して、変更を「リポジトリ」の画面に表示するには、これが**必要です**。ベアリポジトリなので「soft」のオプションが必要です。デフォルトのオプション(mixed)は、作業ツリーがないため失敗します。
+git reset に注意してください。Git のツリーを更新して、変更を「リポジトリ」の画面に表示するには、これが**必要です**。ベアリポジトリなので「soft」のオプションが必要です。デフォルトのオプション (mixed) は、作業ツリーがないため失敗します。
 
 GitHub を使っているときは、[Github Hook Plugin](https://www.redmine.org/projects/redmine/wiki/Plugin_List#Github-Hook-plugin) を使えます。
 
@@ -156,9 +156,9 @@ GitHub を使っているときは、[Github Hook Plugin](https://www.redmine.or
 
 ベアリポジトリを **Windows** にインストールしているときは、環境変数 %%PATH%% に次を追加します。\
 `;%GIT_PATH%\cmd;%GIT_PATH%\bin;`\
-%%GIT_PATH%% は Git のインストール先のディレクトリです(例: *C:/Git*)。
+%%GIT_PATH%% は Git のインストール先のディレクトリです (例: *C:/Git*)。
 
-#### ミラーリポジトリの設定(近道、追跡ブランチ)
+#### ミラーリポジトリの設定 (近道、追跡ブランチ)
 
 上の方法はほとんどの場合にうまく動きますが、master 以外のブランチもあるときは、うまく動かすのに多くの調整が必要になることがあります。この問題と解決方法について詳しくは、[Stack Overflow の質問](http://stackoverflow.com/questions/4698649/how-do-i-get-a-remote-tracking-branch-to-stay-up-to-date-with-remote-origin-in-a)を参照してください。
 
@@ -189,9 +189,9 @@ $ git branch
 
 Mercurial のリポジトリと同期するには、Redmine をインストールしたサーバーに、リポジトリのローカルのクローンが必要です。Redmine を /var/www/redmine.example.com/www に、Mercurial のリポジトリを /var/www/sources.example.com/repo/example に置いたとします。この場合、バージョン管理システムに **Mercurial** を選択し、リポジトリの入力欄に **/var/www/sources.example.com/repo/example** を入力します。
 
-Mercurial のリポジトリの読み込みが始まりますが、結果はすぐには表示されません。数秒(場合によっては数分)待ってから、プロジェクトの「リポジトリ」のタブ(設定の画面のタブではありません)をクリックします。結果が表示されるはずです。
+Mercurial のリポジトリの読み込みが始まりますが、結果はすぐには表示されません。数秒 (場合によっては数分) 待ってから、プロジェクトの「リポジトリ」のタブ (設定の画面のタブではありません) をクリックします。結果が表示されるはずです。
 
-Redmine は外部のリポジトリを同期(push/pull)しません。更新を取得する前に同期するスクリプトを設定できます。\
+Redmine は外部のリポジトリを同期 (push/pull) しません。更新を取得する前に同期するスクリプトを設定できます。\
 hgsync.sh:
 
 ```text

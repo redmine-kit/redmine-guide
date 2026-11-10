@@ -52,4 +52,4 @@ GET /custom_fields.xml
 </custom_fields>
 ```
 
-`customized_type` 属性は、カスタムフィールドを適用するオブジェクトの種類(issue、project、time_entry など)を表します。
+`customized_type` 属性は、カスタムフィールドを適用するオブジェクトの種類 (issue、project、time_entry など) を表します。

@@ -5,7 +5,7 @@ translated_from_version: 10
 
 # MySQL の設定
 
-MySQL 5.6、5.7、8.0、8.1、またはそれに相当するバージョンの MariaDB をデータベースに使う Redmine には、チケットの入れ子集合を同時に変更したとき(つまり、複数のチケットの parent_id を並行して変更したとき)の既知の問題があります。詳しくはチケット [#39437](https://www.redmine.org/issues/39437) と、それに関連するチケットを参照してください。
+MySQL 5.6、5.7、8.0、8.1、またはそれに相当するバージョンの MariaDB をデータベースに使う Redmine には、チケットの入れ子集合を同時に変更したとき (つまり、複数のチケットの parent_id を並行して変更したとき) の既知の問題があります。詳しくはチケット [#39437](https://www.redmine.org/issues/39437) と、それに関連するチケットを参照してください。
 
 Redmine [5.1.1](https://www.redmine.org/versions/191) 以降には、この問題を軽減する重要な修正 ([r22458](https://www.redmine.org/projects/redmine/repository/svn/revisions/22458)、[r22459](https://www.redmine.org/projects/redmine/repository/svn/revisions/22459)、[r22460](https://www.redmine.org/projects/redmine/repository/svn/revisions/22460)) が入っています。ただし、これらの修正が正しく働くには、`transaction_isolation` を `READ COMMITTED` に変える必要があります。[公式のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html)によると、MySQL のデフォルトのトランザクション分離レベルは `REPEATABLE READ` です。
 

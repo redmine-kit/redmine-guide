@@ -5,7 +5,7 @@ translated_from_version: 106
 
 # Redmine API
 
-Redmine は、データの一部を REST API で公開しています。この API では、以下のリソースにアクセスし、基本的な CRUD の操作(作成、更新、削除)を行えます。API は [XML](http://en.wikipedia.org/wiki/Xml) と [JSON](http://en.wikipedia.org/wiki/JSON) の両方の形式に対応しています。
+Redmine は、データの一部を REST API で公開しています。この API では、以下のリソースにアクセスし、基本的な CRUD の操作 (作成、更新、削除) を行えます。API は [XML](http://en.wikipedia.org/wiki/Xml) と [JSON](http://en.wikipedia.org/wiki/JSON) の両方の形式に対応しています。
 
 ## API の一覧
 
@@ -49,7 +49,7 @@ Redmine は、データの一部を REST API で公開しています。この A
 
 ### `POST`/`PUT` のリクエストでの `Content-Type` の指定
 
-リモートの要素を作成・更新するときは、URL に対応する拡張子が付いていても(例: `POST ../issues.json`)、リクエストの `Content-Type` を**必ず**指定してください。
+リモートの要素を作成・更新するときは、URL に対応する拡張子が付いていても (例: `POST ../issues.json`)、リクエストの `Content-Type` を**必ず**指定してください。
 
 - JSON の場合は `Content-Type: application/json` にします。
 - XML の場合は `Content-Type: application/xml` にします。
@@ -61,24 +61,24 @@ API はほとんどの場合、認証が必要です。API の認証を有効に
 - 通常のログインID/パスワードで、HTTP の Basic 認証を使う (Redmine 5.0.0 から、二要素認証を有効にしているユーザーは使えません。代わりに API キーを使います)。
 - API キーを使う。スクリプトにパスワードを書かずに済む便利な方法です。API キーは、次のどれかの方法で各リクエストに付けます。
   - パラメーター「key」で渡す
-  - HTTP の Basic 認証で、ユーザー名として渡す(パスワードは任意の文字列)
-  - HTTP ヘッダー「X-Redmine-API-Key」で渡す(Redmine 1.1.0 で追加)
+  - HTTP の Basic 認証で、ユーザー名として渡す (パスワードは任意の文字列)
+  - HTTP ヘッダー「X-Redmine-API-Key」で渡す (Redmine 1.1.0 で追加)
 - 「管理」→「アプリケーション」で登録したアプリケーションに発行された OAuth2 のアクセストークンを使う (ヘッダー `Authorization: Bearer <token>`)。対応しているのは認可コードフローだけです (Redmine 6.1.0 で追加)。
 
-API キーは、ログインして「個人設定」のページ(/my/account)を開くと、デフォルトのレイアウトでは右側の欄に表示されます。
+API キーは、ログインして「個人設定」のページ (/my/account) を開くと、デフォルトのレイアウトでは右側の欄に表示されます。
 
 ### ユーザーの偽装
 
-Redmine 2.2.0 から、API のリクエストに `X-Redmine-Switch-User` ヘッダーを付けると、REST API でほかのユーザーを偽装できます。値にはユーザーのログインIDを指定します(例: `X-Redmine-Switch-User: jsmith`)。これは管理者のアカウントで API を使う場合だけ働きます。一般のユーザーのアカウントで API を使う場合、このヘッダーは無視されます。
+Redmine 2.2.0 から、API のリクエストに `X-Redmine-Switch-User` ヘッダーを付けると、REST API でほかのユーザーを偽装できます。値にはユーザーのログインIDを指定します (例: `X-Redmine-Switch-User: jsmith`)。これは管理者のアカウントで API を使う場合だけ働きます。一般のユーザーのアカウントで API を使う場合、このヘッダーは無視されます。
 
 `X-Redmine-Switch-User` ヘッダーで指定したログインIDが存在しないか有効でない場合は、412 のエラーが返ります。
 
 ### コレクションのリソースとページ分割
 
-コレクションのリソース(例: `/issues.xml`、`/users.xml`)への GET リクエストは、通常、データベースにあるすべてのオブジェクトを返すわけではありません。Redmine [1.1.0](https://www.redmine.org/versions/20) で、次のパラメーターでこうしたリソースを取得する共通の方法が導入されました。
+コレクションのリソース (例: `/issues.xml`、`/users.xml`) への GET リクエストは、通常、データベースにあるすべてのオブジェクトを返すわけではありません。Redmine [1.1.0](https://www.redmine.org/versions/20) で、次のパラメーターでこうしたリソースを取得する共通の方法が導入されました。
 
 - `offset`: 取得する最初のオブジェクトのオフセット
-- `limit`: レスポンスに含める件数(デフォルトは 25、最大は 100)
+- `limit`: レスポンスに含める件数 (デフォルトは 25、最大は 100)
 - `page`: 取得するページの番号。指定した limit でオフセットに変換されます。たとえば `page=3&limit=100` は `offset=200&limit=100` と同じです。`offset` と `page` の両方を指定すると、`offset` が優先されます。
 
 例:
@@ -113,7 +113,7 @@ GET /issues.json
 { "issues":[...], "total_count":2595, "limit":25, "offset":0 }
 ```
 
-注: これらの最上位の属性(total_count、limit、offset)に対応していない REST クライアントを使う場合は、パラメーター `nometa` か HTTP ヘッダー `X-Redmine-Nometa` を 1 にすると、これらを含まないレスポンスを受け取れます。例:
+注: これらの最上位の属性 (total_count、limit、offset) に対応していない REST クライアントを使う場合は、パラメーター `nometa` か HTTP ヘッダー `X-Redmine-Nometa` を 1 にすると、これらを含まないレスポンスを受け取れます。例:
 
 ```text
 GET /issues.xml?nometa=1
@@ -203,7 +203,7 @@ GET /issues/296.json      # an issue with 2 custom fields
 }
 ```
 
-オブジェクトを作成・更新するときも、同じ構文でカスタムフィールドの値を設定・変更できます(カスタムフィールドの名前は不要です)。
+オブジェクトを作成・更新するときも、同じ構文でカスタムフィールドの値を設定・変更できます (カスタムフィールドの名前は不要です)。
 
 XML の例:
 
@@ -248,7 +248,7 @@ PUT /issues/296.json
 
 REST API による添付ファイルの追加は、Redmine [1.4.0](https://www.redmine.org/versions/40) で対応しました。
 
-まず、各ファイルを `/uploads.xml`(または `/uploads.json`)への POST リクエストでアップロードします。リクエストの本文は添付するファイルの内容にし、`Content-Type` ヘッダーは `application/octet-stream` にする必要があります(そうしないと `406 Not Acceptable` が返ります)。アップロードに成功すると、アップロードしたファイルのトークンを含む 201 のレスポンスが返ります。
+まず、各ファイルを `/uploads.xml` (または `/uploads.json`) への POST リクエストでアップロードします。リクエストの本文は添付するファイルの内容にし、`Content-Type` ヘッダーは `application/octet-stream` にする必要があります (そうしないと `406 Not Acceptable` が返ります)。アップロードに成功すると、アップロードしたファイルのトークンを含む 201 のレスポンスが返ります。
 
 続けて、このトークンを使って、アップロードしたファイルを新しいチケットや既存のチケットに添付します。
 
@@ -331,7 +331,7 @@ POST /issues.json
 }
 ```
 
-複数のファイルをアップロードし(`/uploads.json` への POST リクエストを複数回行います)、複数の添付ファイルの付いたチケットを作成することもできます。
+複数のファイルをアップロードし (`/uploads.json` への POST リクエストを複数回行います)、複数の添付ファイルの付いたチケットを作成することもできます。
 
 ```text
 POST /issues.json
@@ -393,7 +393,7 @@ POST /users.json
 
 ### JSONP への対応
 
-Redmine 2.1.0 以降の API は、別のドメインの Redmine のサーバーからデータを取得する(たとえば jQuery で)ための [JSONP](http://en.wikipedia.org/wiki/JSONP) に対応しています。コールバックは、パラメーター `callback` か `jsonp` で渡せます。Redmine 2.3.0 から JSONP への対応は任意で、デフォルトでは無効です。「管理」→「設定」→「連携」で「JSONPを有効にする」をオンにすると有効になります。
+Redmine 2.1.0 以降の API は、別のドメインの Redmine のサーバーからデータを取得する (たとえば jQuery で) ための [JSONP](http://en.wikipedia.org/wiki/JSONP) に対応しています。コールバックは、パラメーター `callback` か `jsonp` で渡せます。Redmine 2.3.0 から JSONP への対応は任意で、デフォルトでは無効です。「管理」→「設定」→「連携」で「JSONPを有効にする」をオンにすると有効になります。
 
 例:
 
@@ -411,7 +411,7 @@ myHandler({"issues":[ ... ]})
 - [Perl](rest-api-with-perl.md)
 - [Java](rest-api-with-java.md)
 - [cURL](rest-api-with-curl.md)
-- [Drupal の Redmine API モジュール、2.x ブランチ(現在は不安定)](http://drupal.org/project/redmine)
+- [Drupal の Redmine API モジュール、2.x ブランチ (現在は不安定)](http://drupal.org/project/redmine)
 - [.NET](rest-api-with-csharp.md)
 - [Delphi](rest-api-with-delphi.md)
 

@@ -9,7 +9,7 @@ translated_from_version: 4
 
 ### GET
 
-指定した ID または識別子(:project_id)のプロジェクトにあるファイルを返します。
+指定した ID または識別子 (:project_id) のプロジェクトにあるファイルを返します。
 
 <u>例</u>:
 
@@ -54,12 +54,12 @@ GET /projects/1/files.xml
 
 ### POST
 
-指定した ID または識別子(:project_id)のプロジェクトにファイルをアップロードします。
+指定した ID または識別子 (:project_id) のプロジェクトにファイルをアップロードします。
 
 <u>パラメーター</u>:
 
-- `file`(必須): ファイルの属性のハッシュ。次のものを含みます:
-  - `token`(必須): アップロードしたファイルのトークン。[ファイルの添付](rest-api.md#Attaching-files)を参照してください。
+- `file` (必須): ファイルの属性のハッシュ。次のものを含みます:
+  - `token` (必須): アップロードしたファイルのトークン。[ファイルの添付](rest-api.md#Attaching-files)を参照してください。
   - `version_id`
   - `filename`
   - `description`

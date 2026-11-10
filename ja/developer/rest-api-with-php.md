@@ -49,14 +49,14 @@ $issue->destroy ();
 
 **既知の問題**
 
-- 大きな説明を扱うと、Web サーバーが 417 のエラー(Bad Expectation)を返すことがあります。\
+- 大きな説明を扱うと、Web サーバーが 417 のエラー (Bad Expectation) を返すことがあります。\
   *ActiveResource.php* の 381 行目を次のコードに置き換えてください。
 
 ```php
 curl_setopt ($ch, CURLOPT_HTTPHEADER, array ('Expect:',"Content-Type: text/xml", "Length: " . strlen ($params)));
 ```
 
-- このクラスで `time_entries` を書き込もうとすると、404 のレスポンスが返ります(#9375)。このクラスが、エンティティの名前の複数形から正しい単数形を作れないためです(2011-10-06 追記: Web サイトによると、この不具合は最新のリリースで修正されています: https://github.com/lux/phpactiveresource/issues/7#issuecomment-2300502)。\
+- このクラスで `time_entries` を書き込もうとすると、404 のレスポンスが返ります (#9375)。このクラスが、エンティティの名前の複数形から正しい単数形を作れないためです (2011-10-06 追記: Web サイトによると、この不具合は最新のリリースで修正されています: https://github.com/lux/phpactiveresource/issues/7#issuecomment-2300502)。\
   *ActiveResource.php* を次のように修正すると直せます。
 
 1.  クラス変数 `$sOriginalElementName` を追加します。

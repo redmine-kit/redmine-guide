@@ -16,7 +16,7 @@ translated_from_version: 58
 
 設定できる値:
 
-- `nil`(またはキーを省略): 認証なし
+- `nil` (またはキーを省略): 認証なし
 - `:plain`
 - `:login`
 - `:cram_md5`
@@ -27,21 +27,21 @@ translated_from_version: 58
 
 メールの送信方法です。
 
-設定できる値(Redmine v3.x 以前):
+設定できる値 (Redmine v3.x 以前):
 
 - `:smtp`
 - `:sendmail`
 - `:async_smtp`
 - `:async_sendmail`
 
-設定できる値(Redmine v4.x 以降。[#30068](https://www.redmine.org/issues/30068) を参照):
+設定できる値 (Redmine v4.x 以降。[#30068](https://www.redmine.org/issues/30068) を参照):
 
 - `:smtp`
 - `:sendmail`
 
 #### 非同期の delivery_method
 
-`:async_smtp` と `:async_sendmail` は非同期で送信します。つまり、Redmine はメールの送信を待たずに次のページを表示します。詳しくは [Asynchronous Email Delivery](http://redmineblog.com/articles/asynchronous-email-delivery/) を参照してください。SMTP サーバーの中には、スパム対策として処理を始める前に待ち時間を設けるものがあり、同期の送信方法ではその間 Redmine が止まります(デフォルトの値は [10 秒](https://community.bitnami.com/t/updating-an-issue-in-redmine-takes-10-seconds/4421)のことがあります。詳しくは [#11376](https://www.redmine.org/issues/11376) も参照してください)。
+`:async_smtp` と `:async_sendmail` は非同期で送信します。つまり、Redmine はメールの送信を待たずに次のページを表示します。詳しくは [Asynchronous Email Delivery](http://redmineblog.com/articles/asynchronous-email-delivery/) を参照してください。SMTP サーバーの中には、スパム対策として処理を始める前に待ち時間を設けるものがあり、同期の送信方法ではその間 Redmine が止まります (デフォルトの値は [10 秒](https://community.bitnami.com/t/updating-an-issue-in-redmine-takes-10-seconds/4421)のことがあります。詳しくは [#11376](https://www.redmine.org/issues/11376) も参照してください)。
 
 この送信方法では、SMTP の設定を `smtp_settings` ではなく `async_smtp_settings` に書きます。
 
@@ -62,7 +62,7 @@ development:
 
 ## configuration.yml の設定例
 
-### シンプルなログイン認証(デフォルトの設定)
+### シンプルなログイン認証 (デフォルトの設定)
 
 ```yml
 # Outgoing email settings
@@ -105,15 +105,15 @@ production:
     password: "your_password"
 ```
 
-G Suite(旧 Google Apps)から送信する場合は、送信の上限がはるかに大きい **SMTP リレー** を使うとよいでしょう。\
+G Suite (旧 Google Apps) から送信する場合は、送信の上限がはるかに大きい **SMTP リレー** を使うとよいでしょう。\
 SMTP リレーの詳しい情報と有効にする手順は https://support.google.com/a/answer/2956491 にあります。\
 SMTP リレーサービスは、たとえば次のように設定します。
 
 - 名前: Redmine
 - 1\. 許可する送信者:
-  - 自分のドメインの登録済みの Apps ユーザーのみ(Redmine 専用の G Suite ユーザーを作成した場合)
+  - 自分のドメインの登録済みの Apps ユーザーのみ (Redmine 専用の G Suite ユーザーを作成した場合)
 - 2\. 認証
-  - \[x\] 指定した IP アドレスからのメールのみ受け付ける(Redmine のサーバーの IP アドレス)
+  - \[x\] 指定した IP アドレスからのメールのみ受け付ける (Redmine のサーバーの IP アドレス)
   - \[x\] SMTP 認証を必須とする
 - 3\. 暗号化
   - \[x\] TLS 暗号化を必須とする
@@ -134,7 +134,7 @@ production:
 
 ### Office 365, Exchange Online
 
-Office 365(Exchange Online)の利用者向けの例です。送信者にはアカウントが必要です。共有メールボックスから送信する場合は、下のアカウントに、Redmine の「メール通知」の設定で指定した送信者として「送信者として送信」する権限が必要です。
+Office 365(Exchange Online) の利用者向けの例です。送信者にはアカウントが必要です。共有メールボックスから送信する場合は、下のアカウントに、Redmine の「メール通知」の設定で指定した送信者として「送信者として送信」する権限が必要です。
 
 ```yml
 production:
@@ -209,7 +209,7 @@ default:
 
 ### SSL の SMTP サーバーへの接続による「Timeout:Error」
 
-configuration.yml に ssl のオプションを追加します([#17239](https://www.redmine.org/issues/17239))。
+configuration.yml に ssl のオプションを追加します ([#17239](https://www.redmine.org/issues/17239))。
 
 ```yml
 default:

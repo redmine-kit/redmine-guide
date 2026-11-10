@@ -74,7 +74,7 @@ Redmine の各バージョンに必要な Ruby のバージョンと、対応す
 
 <sup>1</sup> サポートしている Ruby のバージョンのうち、古いものはサポートが終了している場合があります。各バージョンの現在のメンテナンスの状況は https://www.ruby-lang.org/en/downloads/branches/ を参照してください。
 
-<sup>2</sup> Ruby 4.0.0 から 4.0.3 では、Ruby の実行環境そのものの不具合により、Wiki の表示が大幅に遅くなります(#43737。Ruby 側では bugs.ruby-lang.org の \#21856 で追跡されています)。Ruby 4.0.4 で修正されたため、Redmine 7.0 は Ruby 4.0.4 以降で動かすことを推奨します。
+<sup>2</sup> Ruby 4.0.0 から 4.0.3 では、Ruby の実行環境そのものの不具合により、Wiki の表示が大幅に遅くなります (#43737。Ruby 側では bugs.ruby-lang.org の \#21856 で追跡されています)。Ruby 4.0.4 で修正されたため、Redmine 7.0 は Ruby 4.0.4 以降で動かすことを推奨します。
 
 <sup>3</sup> **MySQL** を正しく動かすには、`transaction_isolation` を `READ COMMITTED` に変える必要があります。[MySQL_configuration](mysql-configuration.md) を参照してください。
 
@@ -82,14 +82,14 @@ Redmine の各バージョンに必要な Ruby のバージョンと、対応す
 
 - **Redmine は JRuby に対応していません**。
 - Microsoft SQL Server は [2012 以降](https://github.com/rails-sqlserver/activerecord-sqlserver-adapter/blob/v4.2.3/README.md#activerecord-sql-server-adapter-for-sql-server-2012-and-higher)
-- SQLite 3(複数のユーザーが使う本番環境には向きません)
+- SQLite 3 (複数のユーザーが使う本番環境には向きません)
 
 ### 追加のコンポーネント
 
-- SCM のコマンド(`svn` など)。リポジトリの閲覧に使います(PATH から実行できる必要があります)。SCM の対応状況と要件は [RedmineRepositories](../admin/repositories.md) を参照してください。
+- SCM のコマンド (`svn` など)。リポジトリの閲覧に使います (PATH から実行できる必要があります)。SCM の対応状況と要件は [RedmineRepositories](../admin/repositories.md) を参照してください。
 - [ImageMagick](http://www.imagemagick.org/)。ガントチャートの PNG 画像へのエクスポートと、サムネイルの生成に使います。
 - [Ghostscript](https://www.ghostscript.com/)。PDF の添付ファイルのサムネイルの生成に使います。
-- [Pandoc](https://pandoc.org/)。Redmine 7.0 以降で、Microsoft Office の文書(.docx、.xlsx、.pptx)と LibreOffice Writer の文書(.odt)のプレビューに使います。バージョン 3.8.3 以降を推奨します。それより前の Pandoc は .docx と .odt だけに対応しています。
+- [Pandoc](https://pandoc.org/)。Redmine 7.0 以降で、Microsoft Office の文書 (.docx、.xlsx、.pptx) と LibreOffice Writer の文書 (.odt) のプレビューに使います。バージョン 3.8.3 以降を推奨します。それより前の Pandoc は .docx と .odt だけに対応しています。
 - [Sidekiq](https://github.com/sidekiq/sidekiq)。本番環境に推奨するキューのバックエンドです。
 
 ## Redmine のバージョン
@@ -167,7 +167,7 @@ GO
 
 `config/database.yml.example` を `config/database.yml` にコピーし、「production」環境のデータベースの設定を書きます。MySQL の場合は [MySQL_configuration](mysql-configuration.md) も読んでください。
 
-MySQL のデータベースの例(デフォルトのポート):
+MySQL のデータベースの例 (デフォルトのポート):
 
 ```yml
 production:
@@ -180,7 +180,7 @@ production:
     transaction_isolation: "READ-COMMITTED"
 ```
 
-サーバーが標準のポート(3306)以外で動いている場合は、次のように設定します。
+サーバーが標準のポート (3306) 以外で動いている場合は、次のように設定します。
 
 ```yml
 production:
@@ -194,7 +194,7 @@ production:
     transaction_isolation: "READ-COMMITTED"
 ```
 
-PostgreSQL のデータベースの例(デフォルトのポート):
+PostgreSQL のデータベースの例 (デフォルトのポート):
 
 ```yml
 production:
@@ -215,7 +215,7 @@ production:
   database: db/redmine.sqlite3
 ```
 
-SQL Server のデータベースの例(デフォルトのホストは `localhost`、デフォルトのポートは `1433`):
+SQL Server のデータベースの例 (デフォルトのホストは `localhost`、デフォルトのポートは `1433`):
 
 ```yml
 production:
@@ -238,7 +238,7 @@ bundle install
 
 ##### データベースのアダプター
 
-Redmine は `config/database.yml` を読み、データベースの設定に必要なアダプターの gem を自動でインストールします(たとえば `mysql2` アダプターの接続だけを設定した場合は、`mysql2` の gem だけがインストールされます)。
+Redmine は `config/database.yml` を読み、データベースの設定に必要なアダプターの gem を自動でインストールします (たとえば `mysql2` アダプターの接続だけを設定した場合は、`mysql2` の gem だけがインストールされます)。
 
 `config/database.yml` でアダプターを追加・削除したら、`bundle install` をもう一度実行してください。
 
@@ -246,9 +246,9 @@ Redmine は `config/database.yml` を読み、データベースの設定に必�
 
 Redmine はデフォルトのキューのアダプターとして `ActiveJob::QueueAdapters::AsyncAdapter` を使いますが、これは本番環境には[推奨されていません](https://api.rubyonrails.org/classes/ActiveJob/QueueAdapters/AsyncAdapter.html)。推奨するアダプターは、永続化に Redis を使う [Sidekiq](https://github.com/sidekiq/sidekiq) です。設定の手順: [SidekiqConfiguration](https://www.redmine.org/projects/redmine/wiki/SidekiqConfiguration)
 
-#### 追加の依存関係(`Gemfile.local`)
+#### 追加の依存関係 (`Gemfile.local`)
 
-Redmine 本体が必要としない gem(Puma、fcgi など)を読み込む場合は、Redmine のディレクトリの直下に `Gemfile.local` というファイルを作成します。このファイルは `bundle install` の実行時に自動で読み込まれます。
+Redmine 本体が必要としない gem (Puma、fcgi など) を読み込む場合は、Redmine のディレクトリの直下に `Gemfile.local` というファイルを作成します。このファイルは `bundle install` の実行時に自動で読み込まれます。
 
 例:
 
@@ -269,13 +269,13 @@ bundle exec rake generate_secret_token
 代わりに、この秘密鍵を config/secrets.yml に保存することもできます:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
-### 手順 6 - アセットのコンパイル(任意)
+### 手順 6 - アセットのコンパイル (任意)
 
 この手順は任意です。スタイルシート、JavaScript、画像などのアセットを、Web サーバーから配信するために `public/assets` ディレクトリにコンパイルします。
 
 デフォルトでは、Redmine は本番モードでアプリケーションの起動時にアセットを自動で再コンパイルします。この動作は、設定ファイルの `config.assets.redmine_detect_update` で切り替えられます。
 
-自動のコンパイルを無効にしている場合や、生成されたアセット(プラグインやカスタムテーマのアセットを含む)に問題がある場合は、アセットを手動で更新できます。
+自動のコンパイルを無効にしている場合や、生成されたアセット (プラグインやカスタムテーマのアセットを含む) に問題がある場合は、アセットを手動で更新できます。
 
 使用するコマンド: `bin/rails assets:precompile RAILS_ENV="production"`
 
@@ -328,10 +328,10 @@ bundle exec rake redmine:load_default_data
 
 アプリケーションを実行するユーザーアカウントには、次のサブディレクトリへの書き込み権限が必要です。
 
-1.  `files`(添付ファイルの保存先)
-2.  `log`(アプリケーションのログファイル `production.log`)
-3.  `tmp` と `tmp/pdf`(ない場合は作成します。PDF 文書の生成などに使います)
-4.  `public/assets`(すべてのアセット)
+1.  `files` (添付ファイルの保存先)
+2.  `log` (アプリケーションのログファイル `production.log`)
+3.  `tmp` と `tmp/pdf` (ない場合は作成します。PDF 文書の生成などに使います)
+4.  `public/assets` (すべてのアセット)
 
 たとえば、アプリケーションを redmine というユーザーアカウントで実行する場合は、次のようにします。
 
@@ -341,7 +341,7 @@ sudo chown -R redmine:redmine files log tmp public/assets
 sudo chmod -R 755 files log tmp public/assets
 ```
 
-注: これらのディレクトリにすでにファイルがある場合(バックアップからファイルを戻した場合など)は、ファイルに実行権限が付いていないようにしてください。
+注: これらのディレクトリにすでにファイルがある場合 (バックアップからファイルを戻した場合など) は、ファイルに実行権限が付いていないようにしてください。
 
 ```text
 sudo find files log tmp public/assets -type f -exec chmod -x {} +
@@ -370,7 +370,7 @@ Redmine の設定は `config/configuration.yml` というファイルに書き�
 
 アプリケーションのデフォルトの設定を変える場合は、`config/configuration.yml.example` を `config/configuration.yml` にコピーして編集します。ファイルには詳しいコメントがあるので、目を通してください。
 
-これらの設定は Rails の環境(`production`/`development`/`test`)別に書けます。
+これらの設定は Rails の環境 (`production`/`development`/`test`) 別に書けます。
 
 <u>重要</u>: 変更した後は、必ずアプリケーションを再起動してください。
 
@@ -382,10 +382,10 @@ Redmine の設定は `config/configuration.yml` というファイルに書き�
 
 この設定では、次のことができます。
 
-- `PATH` にある SCM のコマンドが標準の名前でない場合に、デフォルトのコマンド名を上書きする(Windows の .bat/.cmd の名前は使えません)
+- `PATH` にある SCM のコマンドが標準の名前でない場合に、デフォルトのコマンド名を上書きする (Windows の .bat/.cmd の名前は使えません)
 - コマンドのフルパスを指定する
 
-例(Subversion の場合):
+例 (Subversion の場合):
 
 コマンド名の上書き:
 
@@ -421,8 +421,8 @@ config.logger.level = Logger::INFO
 
 Redmine のバックアップには、次のものを含めます。
 
-- データ(Redmine のデータベースに保存されています)
-- 添付ファイル(Redmine のインストール先の `files` ディレクトリに保存されています)
+- データ (Redmine のデータベースに保存されています)
+- 添付ファイル (Redmine のインストール先の `files` ディレクトリに保存されています)
 
 詳しくは [Redmine のバックアップと復元](https://www.redmine.org/projects/redmine/wiki/RedmineBackupAndRestore)を参照してください。
 

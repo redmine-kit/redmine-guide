@@ -12,14 +12,14 @@ Redmine は、メールでチケットの作成やコメントの追加ができ
 Redmine でメールを受信するには、次のいずれかの方法で設定します。
 
 - メールサーバーからメールを転送する
-  - 長所: リモートのメールサーバーで使える。メールがすぐに処理される。速い(環境を読み込み直さない)
-  - 短所: メール転送エージェント(Postfix、Sendmail など)の設定が必要
+  - 長所: リモートのメールサーバーで使える。メールがすぐに処理される。速い (環境を読み込み直さない)
+  - 短所: メール転送エージェント (Postfix、Sendmail など) の設定が必要
 - IMAP か POP3 のサーバーからメールを取得する
   - 長所: 設定が簡単。MTA の設定が不要。リモートのメールサーバーで使える
-  - 短所: メールがすぐには処理されない(メールを定期的に読み込む cron ジョブの追加が必要)
+  - 短所: メールがすぐには処理されない (メールを定期的に読み込む cron ジョブの追加が必要)
 - 標準入力からメールを読み込む
   - 長所: テストに向いている
-  - 短所: 遅い(メールを読み込むたびに環境を読み込み直す)。MTA の設定が必要
+  - 短所: 遅い (メールを読み込むたびに環境を読み込み直す)。MTA の設定が必要
 
 ### メールサーバーからのメールの転送
 
@@ -30,7 +30,7 @@ Redmine でメールを受信するには、次のいずれかの方法で設定
 使うには、メールを受け取る API を有効にする必要があります。\
 *「設定」* > *「受信メール」*を開き、「受信メール用のWebサービスを有効にする」にチェックを入れ、秘密のキーを入力するか生成します。
 
-`rdm-mailhandler.rb` をメールサーバーにコピーし、実行できるパーミッションにして(`chmod +x rdm-mailhandler.rb`)、MTA(メール転送エージェント)を設定します。
+`rdm-mailhandler.rb` をメールサーバーにコピーし、実行できるパーミッションにして (`chmod +x rdm-mailhandler.rb`)、MTA (メール転送エージェント) を設定します。
 
 使い方:
 
@@ -108,19 +108,19 @@ Postfix のローカルのエイリアスの設定例です。
 foo: "|/path/to/rdm-mailhandler.rb --url http://redmine.domain --key secret --project foo"
 ```
 
-この行は、aliases のファイル(通常は `/etc/aliases`)に書きます。場所がわからないときは、`postconf alias_maps` コマンドで確認します。aliases のファイルを更新したら、`newaliases` を実行して、新しい設定を Postfix に通知してください。
+この行は、aliases のファイル (通常は `/etc/aliases`) に書きます。場所がわからないときは、`postconf alias_maps` コマンドで確認します。aliases のファイルを更新したら、`newaliases` を実行して、新しい設定を Postfix に通知してください。
 
-ドメインを仮想メールボックスのマップとして設定している(/etc/postfix/virtual_mailbox_maps で ` user@example.com /path/example.com/user` の形式の対応付けをしている)ときは、次のようにします。
+ドメインを仮想メールボックスのマップとして設定している (/etc/postfix/virtual_mailbox_maps で ` user@example.com /path/example.com/user` の形式の対応付けをしている) ときは、次のようにします。
 
 - `/etc/virtual` に、` foo@example.org foo` のような対応付けを作成します
 - `/etc/postfix/main.cf` を変更して、トランスポートのファイルを指定します: `transport_maps = hash:/etc/postfix/transport`
 - トランスポートのファイルに、` foo@example.org local:` のような行を追加します
 
-**説明:** - ドメインに virtual_mailbox_maps を設定すると、デフォルトのトランスポートは virtual になります。そのため、`/etc/postfix/virtual` にローカルのエイリアスを指定しても失敗します(「unknown user」になります)。これを直すには、該当するメールアドレスにローカルのトランスポートを指定して、デフォルトのトランスポートを上書きします。こうすると、ローカルのエイリアスが正しく解決され、スクリプトが実行されます。
+**説明:** - ドメインに virtual_mailbox_maps を設定すると、デフォルトのトランスポートは virtual になります。そのため、`/etc/postfix/virtual` にローカルのエイリアスを指定しても失敗します (「unknown user」になります)。これを直すには、該当するメールアドレスにローカルのトランスポートを指定して、デフォルトのトランスポートを上書きします。こうすると、ローカルのエイリアスが正しく解決され、スクリプトが実行されます。
 
 ### IMAP サーバーからのメールの取得
 
-rake タスク(`redmine:email:receive_imap`)で、IMAP サーバーから受信メールを取得できます。cron ジョブから rake コマンドを実行するときは、rake コマンドに `-f /path/to/redmine/appdir/Rakefile` のスイッチを付けます。付けないと Rakefile が見つかりません。30 分ごとにメールを取得する cron のファイルの行の例です。
+rake タスク (`redmine:email:receive_imap`) で、IMAP サーバーから受信メールを取得できます。cron ジョブから rake コマンドを実行するときは、rake コマンドに `-f /path/to/redmine/appdir/Rakefile` のスイッチを付けます。付けないと Rakefile が見つかりません。30 分ごとにメールを取得する cron のファイルの行の例です。
 
 ```text
 */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx
@@ -223,7 +223,7 @@ rake コマンドの例:
 
 ### POP3 サーバーからのメールの取得
 
-rake タスク(`redmine:email:receive_pop3`)で、POP3 サーバーから受信メールを取得できます。
+rake タスク (`redmine:email:receive_pop3`) で、POP3 サーバーから受信メールを取得できます。
 
 使える POP3 のオプション:
 
@@ -245,7 +245,7 @@ rake タスク(`redmine:email:receive_pop3`)で、POP3 サーバーから受信�
 
 ### 標準入力からのメールの読み込み
 
-rake タスク(`redmine:email:read`)で、標準入力から生のメールを 1 通読み込めます。
+rake タスク (`redmine:email:read`) で、標準入力から生のメールを 1 通読み込めます。
 
 チケットの属性を制御するオプションは、上の [IMAP の rake タスク](receiving-emails.md#Fetching-emails-from-an-IMAP-server)を参照してください。
 
@@ -314,7 +314,7 @@ rdm-mailhandler.rb --unknown-user accept --no-permission-check --project=foo --n
 ### Rufus Scheduler によるメールの受信のスケジュール
 
 受信メールを取得する Rake タスクを cron で起動する代わりに、Rufus Scheduler を使って、Redmine と同じプロセスで Rake タスクを実行できます。\
-cron(Windows ではタスク スケジューラ)から Rake タスクを呼び出すより、使うリソースが少なく、速く動きます。
+cron (Windows ではタスク スケジューラ) から Rake タスクを呼び出すより、使うリソースが少なく、速く動きます。
 
 そのためには、rufus-scheduler の gem をインストールします。
 
@@ -322,7 +322,7 @@ cron(Windows ではタスク スケジューラ)から Rake タスクを呼び�
 gem install rufus-scheduler
 ```
 
-/config/initializers/ に what_you_want.rb のようなファイルを作成し、次の内容を書きます(この例は POP3 のアカウントの場合です。パラメータとタスクは自分のものに変えてください)。
+/config/initializers/ に what_you_want.rb のようなファイルを作成し、次の内容を書きます (この例は POP3 のアカウントの場合です。パラメータとタスクは自分のものに変えてください)。
 
 ```text
 require 'rubygems'
@@ -364,7 +364,7 @@ Redmine はメールを受信すると、メールの From のアドレスで該
 
 このオプションを使わないときは、チケットを追加するプロジェクトを、ユーザーがメールの本文で指定する必要があります。メールの本文に `"Project: foo"` のような行を入れます。
 
-例(メールの本文):
+例 (メールの本文):
 
 ```text
 This is a new issue that will be added to project foo.
@@ -387,7 +387,7 @@ Project: foo
 
 ### メールのサブアドレスによる対象のプロジェクトの指定
 
-この機能は、バージョン 3.2.0(SVN のリビジョン [r14687](https://www.redmine.org/projects/redmine/repository/svn/revisions/14687))で追加されました。プロジェクトごとにメールボックスを用意するより、Redmine のインスタンスへの受信メールすべてに 1 つのメールボックスを使うほうが望ましい場合があります。redmine@somenet.foo でメールを受信しているとき、redmine+foo@somenet.foo に送られたメールは、識別子が foo のプロジェクトにチケットとして追加されます。
+この機能は、バージョン 3.2.0 (SVN のリビジョン [r14687](https://www.redmine.org/projects/redmine/repository/svn/revisions/14687)) で追加されました。プロジェクトごとにメールボックスを用意するより、Redmine のインスタンスへの受信メールすべてに 1 つのメールボックスを使うほうが望ましい場合があります。redmine@somenet.foo でメールを受信しているとき、redmine+foo@somenet.foo に送られたメールは、識別子が foo のプロジェクトにチケットとして追加されます。
 
 この機能を有効にするには、コマンドに `project_from_subaddress=redmine@somenet.foo` を追加します。例:
 
@@ -403,13 +403,13 @@ rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmin
 
 `redmine@somenet.foo` か `redmine+bar@somenet.foo` へのメールはプロジェクト bar のチケットになり、`redmine+foo@somenet.foo` へのメールはプロジェクト foo に入ります。
 
-RFC 3598、5233 のとおりにサブアドレスに対応しているメールのプロバイダーもあります。対応していないときは、メールアドレスを「中央」のアドレスに転送すると動くことがあります(筆者の場合は動きました)。つまり、`redmine+foo@somenet.foo`、`redmine+bar@somenet.foo` などから `redmine@somenet.foo` にすべてのメールを転送するメールアドレスを設定します。管理が簡単で、それぞれに資格情報がある複数のアカウントからメールを取得する必要もありません。
+RFC 3598、5233 のとおりにサブアドレスに対応しているメールのプロバイダーもあります。対応していないときは、メールアドレスを「中央」のアドレスに転送すると動くことがあります (筆者の場合は動きました)。つまり、`redmine+foo@somenet.foo`、`redmine+bar@somenet.foo` などから `redmine@somenet.foo` にすべてのメールを転送するメールアドレスを設定します。管理が簡単で、それぞれに資格情報がある複数のアカウントからメールを取得する必要もありません。
 
 ### チケットの属性
 
-メールを受信するときに使うオプション(`allow-override` のオプションを参照)によっては、ユーザーがチケットを送るときに一部の属性を上書きできます。
+メールを受信するときに使うオプション (`allow-override` のオプションを参照) によっては、ユーザーがチケットを送るときに一部の属性を上書きできます。
 
-注: Redmine のバージョン 3.2.0 より前(#20543)は、一部の属性が*常に*上書きできましたが、このことは文書化されていませんでした。この動作は変更され、上書きできるようにするには、すべての属性を `allow_override` のオプションで明示的に指定する必要があります。すべての属性を上書きできるようにするには、`allow_override=all` を使えるようになりました(#20543)。
+注: Redmine のバージョン 3.2.0 より前 (#20543) は、一部の属性が*常に*上書きできましたが、このことは文書化されていませんでした。この動作は変更され、上書きできるようにするには、すべての属性を `allow_override` のオプションで明示的に指定する必要があります。すべての属性を上書きできるようにするには、`allow_override=all` を使えるようになりました (#20543)。
 
 `allow_override` を設定したら、メールの本文で該当するキーワードを使って、それらの属性を上書きできます。
 
@@ -428,9 +428,9 @@ RFC 3598、5233 のとおりにサブアドレスに対応しているメール�
 - `Done ratio`
 - `<Custom field name>`
 
-使える値は、その状況に応じたものです。たとえば、(そのトラッカーとそのプロジェクトで)使える `Status` の値は、ユーザーの言語のラベルで、画面に表示されるとおりのもの、またはシステムのデフォルトの言語のものです(空白があってもそのまま、引用符で囲まずに書きます)。
+使える値は、その状況に応じたものです。たとえば、(そのトラッカーとそのプロジェクトで) 使える `Status` の値は、ユーザーの言語のラベルで、画面に表示されるとおりのもの、またはシステムのデフォルトの言語のものです (空白があってもそのまま、引用符で囲まずに書きます)。
 
-例(メールの本文):
+例 (メールの本文):
 
 ```text
 This is a new issue that overrides a few attributes
@@ -452,7 +452,7 @@ Status: Resolved
 - `assigned_to`
 - `start_date`
 - `due_date`
-- `fixed_version`(対象バージョン)
+- `fixed_version` (対象バージョン)
 - `estimated_hours`
 - `done_ratio`
 - `<custom_field_name>`

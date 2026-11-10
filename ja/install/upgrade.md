@@ -34,9 +34,9 @@ Redmine のバックアップの方法は、[Redmine のバックアップと復
 
 3b. または、**1.2.0 より前のバージョンからバージョンアップする場合**は、`config/email.yml` のメールの設定を新しい `config/configuration.yml` にコピーします。`config/configuration.yml` は、付属の `configuration.yml.example` をコピーして作成できます。
 
-4\. `files` ディレクトリの内容を新しいインストール先にコピーします(このディレクトリには、アップロードされたすべてのファイルがあります)。
+4\. `files` ディレクトリの内容を新しいインストール先にコピーします (このディレクトリには、アップロードされたすべてのファイルがあります)。
 
-5\. **自分で追加した**プラグインのフォルダを、`plugins` ディレクトリ(1.x からバージョンアップする場合は `vendor/plugins` ディレクトリ)から、新しいインストール先の `plugins` ディレクトリにコピーします。以前の Redmine に最初から同梱されていたプラグインはコピーしないでください。
+5\. **自分で追加した**プラグインのフォルダを、`plugins` ディレクトリ (1.x からバージョンアップする場合は `vendor/plugins` ディレクトリ) から、新しいインストール先の `plugins` ディレクトリにコピーします。以前の Redmine に最初から同梱されていたプラグインはコピーしないでください。
 
 6\. 次のコマンドで、必要な gem をインストールします。
 
@@ -45,9 +45,9 @@ bundle config set --local without 'development test'
 bundle install
 ```
 
-インストールされるのは、データベースの設定ファイルで指定したアダプターに必要な gem だけです(たとえば config/database.yml で「mysql2」アダプターを使う場合は、mysql2 の gem だけがインストールされます)。別のデータベースのアダプターを使うように config/database.yml を変更したら、`bundle install` をもう一度実行してください。
+インストールされるのは、データベースの設定ファイルで指定したアダプターに必要な gem だけです (たとえば config/database.yml で「mysql2」アダプターを使う場合は、mysql2 の gem だけがインストールされます)。別のデータベースのアダプターを使うように config/database.yml を変更したら、`bundle install` をもう一度実行してください。
 
-Redmine 本体が必要としない gem(fcgi など)を読み込む場合は、Redmine のディレクトリの直下に Gemfile.local というファイルを作成できます。このファイルは `bundle install` の実行時に自動で読み込まれます。
+Redmine 本体が必要としない gem (fcgi など) を読み込む場合は、Redmine のディレクトリの直下に Gemfile.local というファイルを作成できます。このファイルは `bundle install` の実行時に自動で読み込まれます。
 
 7\. 新しい Redmine のルートディレクトリで、次のコマンドを実行します。
 
@@ -98,7 +98,7 @@ bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
 bundle exec rake tmp:cache:clear RAILS_ENV=production
 
-2\. アプリケーションサーバー(puma、thin、passenger など)を再起動します。
+2\. アプリケーションサーバー (puma、thin、passenger など) を再起動します。
 
 3\. 最後に、*「管理」→「ロールと権限」*で、新しい機能があればその権限を確認・設定します。
 
@@ -106,7 +106,7 @@ bundle exec rake tmp:cache:clear RAILS_ENV=production
 
 ### リポジトリの管理のエラー
 
-reposman.rb にいくつかの新機能が追加されました。問題が起きる場合は、グループを指定しているか確認してください(--group=groupnamehere)。また、Redmine.pm をコピーしただけの場合は、[こちら](https://www.redmine.org/projects/redmine/wiki/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl)の手順をもう一度実行し、Apache の設定を更新してください。推奨する設定が変わっています。
+reposman.rb にいくつかの新機能が追加されました。問題が起きる場合は、グループを指定しているか確認してください (--group=groupnamehere)。また、Redmine.pm をコピーしただけの場合は、[こちら](https://www.redmine.org/projects/redmine/wiki/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl)の手順をもう一度実行し、Apache の設定を更新してください。推奨する設定が変わっています。
 
 ### 新しい `secret_token.rb` の生成
 

@@ -11,19 +11,19 @@ translated_from_version: 30
 
 ここで不具合を報告する前に、次のことを確認してください。
 
-- 適切なバージョンの Rails を使っていること([RedmineInstall](../install/install.md) を参照)
-- データベースが最新であること。特に、以前のバージョンやリビジョンから移行した直後は注意してください([RedmineUpgrade](../install/upgrade.md) を参照)
-- 問題が svn(またはほかの SCM)に関係する場合は、Redmine のホストに適切なコマンドがインストールされていること([RedmineRepositories](../admin/repositories.md) を参照)
+- 適切なバージョンの Rails を使っていること ([RedmineInstall](../install/install.md) を参照)
+- データベースが最新であること。特に、以前のバージョンやリビジョンから移行した直後は注意してください ([RedmineUpgrade](../install/upgrade.md) を参照)
+- 問題が svn (またはほかの SCM) に関係する場合は、Redmine のホストに適切なコマンドがインストールされていること ([RedmineRepositories](../admin/repositories.md) を参照)
 
 また、[不具合の一覧](http://www.redmine.org/projects/redmine/issues?query_id=1)と [FAQ](https://www.redmine.org/projects/redmine/wiki/FAQ) を見て、すでに報告されていないか確認してください。
 
 不具合を報告するときは、問題の説明と一緒に次の情報を書いてください。
 
-- データベース管理システムのバージョン(例: PostgreSQL 9.2)
-- Ruby のバージョン(例: Ruby 3.2.2)
-- Redmine のバージョン(「Affected version」でバージョン番号を選びます)と、リポジトリのコードを使っている場合は正確なリビジョン(例: [r22769](https://www.redmine.org/projects/redmine/repository/svn/revisions/22769))
-- 問題が SCM との連携に関するものであれば、SCM のコマンドのバージョン(例: svn 1.14.3、git 2.44.0)
-- 使っているプラグイン(例: Code Review プラグイン)
+- データベース管理システムのバージョン (例: PostgreSQL 9.2)
+- Ruby のバージョン (例: Ruby 3.2.2)
+- Redmine のバージョン (「Affected version」でバージョン番号を選びます) と、リポジトリのコードを使っている場合は正確なリビジョン (例: [r22769](https://www.redmine.org/projects/redmine/repository/svn/revisions/22769))
+- 問題が SCM との連携に関するものであれば、SCM のコマンドのバージョン (例: svn 1.14.3、git 2.44.0)
+- 使っているプラグイン (例: Code Review プラグイン)
 
 環境の情報を得るいちばん簡単な方法は、Redmine のインストール先で次のコマンドを実行することです。
 
@@ -31,9 +31,9 @@ translated_from_version: 30
 ruby bin/about
 ```
 
-アプリケーションのエラーを報告するときは、ログファイル(例: `log/production.log`)にあるエラーのスタックトレースをすべて貼り付けてください。アプリケーションが表示するメッセージ(例: *…An error occurred on the page you were trying to access…*)は役に立ちません。
+アプリケーションのエラーを報告するときは、ログファイル (例: `log/production.log`) にあるエラーのスタックトレースをすべて貼り付けてください。アプリケーションが表示するメッセージ (例: *…An error occurred on the page you were trying to access…*) は役に立ちません。
 
-報告するエラーが rake タスク(例: `rake db:migrate`)の実行中に起きる場合は、`--trace` オプションを付けてタスクを実行し直し(例: `rake db:migrate --trace`)、出力をすべて貼り付けてください。
+報告するエラーが rake タスク (例: `rake db:migrate`) の実行中に起きる場合は、`--trace` オプションを付けてタスクを実行し直し (例: `rake db:migrate --trace`)、出力をすべて貼り付けてください。
 
 Debian/Ubuntu の `redmine` パッケージ、Bitnami の VM、ビルド済みの Docker イメージなど、外部のパッケージマネージャーで Redmine をインストールした場合は、問題の原因が Redmine そのものにあると確信できる場合を除き、それぞれのパッケージのサポート窓口に問い合わせてください。これらのパッケージは Redmine のチームがメンテナンスしているものではありません。独自の変更が加えられていたり、特別なセットアップの手順が必要だったりすることが多く、私たちはそれを把握しておらず、通常は手助けできません。
 

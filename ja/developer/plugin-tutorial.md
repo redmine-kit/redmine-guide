@@ -61,7 +61,7 @@ $ bundle exec rails generate redmine_plugin Polls
       create  plugins/polls/test/test_helper.rb
 ```
 
-プラグインの構成が `plugins/polls` に作成されます。`plugins/polls/init.rb` を編集して、プラグインの情報(名前、作者、説明、バージョン)を調整します。
+プラグインの構成が `plugins/polls` に作成されます。`plugins/polls/init.rb` を編集して、プラグインの情報 (名前、作者、説明、バージョン) を調整します。
 
 ```ruby
 Redmine::Plugin.register :polls do
@@ -114,7 +114,7 @@ end
 
 注: Redmine 3.x では、`class CreatePolls < ActiveRecord::Migration[5.2]` は `class CreatePolls < ActiveRecord::Migration` です。
 
-マイグレーションのファイルを調整(デフォルト値など)したら、次のコマンドでデータベースをマイグレーションします。
+マイグレーションのファイルを調整 (デフォルト値など) したら、次のコマンドでデータベースをマイグレーションします。
 
 ```text
 $ bundle exec rake redmine:plugins:migrate
@@ -167,7 +167,7 @@ $ bundle exec rails generate redmine_plugin_controller Polls polls index vote
       create  plugins/polls/app/views/polls/vote.html.erb
 ```
 
-2 つのアクション(`#index` と `#vote`)を持つコントローラー `PollsController` が作成されます。
+2 つのアクション (`#index` と `#vote`) を持つコントローラー `PollsController` が作成されます。
 
 `plugins/polls/app/controllers/polls_controller.rb` を編集して、この 2 つのアクションを実装します。
 
@@ -206,7 +206,7 @@ end
 
 ### ルートの追加
 
-Redmine には、デフォルトのワイルドカードのルート(`':controller/:action/:id'`)はありません。プラグインは、必要なルートを自分の `config/routes.rb` に宣言する必要があります。`plugins/polls/config/routes.rb` を編集し、2 つのアクションのための 2 つのルートを追加します。
+Redmine には、デフォルトのワイルドカードのルート (`':controller/:action/:id'`) はありません。プラグインは、必要なルートを自分の `config/routes.rb` に宣言する必要があります。`plugins/polls/config/routes.rb` を編集し、2 つのアクションのための 2 つのルートを追加します。
 
 ```ruby
 get 'polls', to: 'polls#index'
@@ -255,14 +255,14 @@ menu(menu_name, item_name, url, options={})
 
 使えるオプションは次のとおりです。
 
-- `:param` - プロジェクトの ID に使うパラメーターのキー(デフォルトは `:id`)
+- `:param` - プロジェクトの ID に使うパラメーターのキー (デフォルトは `:id`)
 - `:if` - 項目をレンダリングする前に呼び出される Proc。true を返したときだけ項目が表示されます
 - `:caption` - メニューの表示名。次のどれかです。
   - 翻訳された文字列のシンボル
   - 文字列
   - プロジェクトを引数に取れる Proc
-- `:before`、`:after` - メニュー項目を挿入する位置(例: `after: :activity`)
-- `:first`、`:last` - true にすると、項目がメニューの先頭/末尾に固定されます(例: `last: true`)
+- `:before`、`:after` - メニュー項目を挿入する位置 (例: `after: :activity`)
+- `:first`、`:last` - true にすると、項目がメニューの先頭/末尾に固定されます (例: `last: true`)
 - `:html` - メニュー項目をレンダリングするときに `link_to` に渡す HTML のオプションのハッシュ
 
 この例では、アプリケーションのメニュー (「プロジェクト」「活動」「チケット」などがすでにあるメニュー) に項目を追加しました。\
@@ -274,7 +274,7 @@ menu(menu_name, item_name, url, options={})
 
 ### プロジェクトのメニューの拡張
 
-次に、投票がプロジェクト単位で定義されているものとします(この例の Poll モデルはそうなっていませんが)。そこで、Polls のタブをプロジェクトのメニューに追加することにします。\
+次に、投票がプロジェクト単位で定義されているものとします (この例の Poll モデルはそうなっていませんが)。そこで、Polls のタブをプロジェクトのメニューに追加することにします。\
 `init.rb` を開き、先ほど追加した行を次の 2 行に置き換えます。
 
 ```ruby
@@ -290,7 +290,7 @@ end
 
 ![](../../images/Plugin_Tutorial/project_menu.png)
 
-Polls のタブ(3 番目)をクリックすると、プロジェクトのメニューが表示されなくなることに気づくはずです。\
+Polls のタブ (3 番目) をクリックすると、プロジェクトのメニューが表示されなくなることに気づくはずです。\
 プロジェクトのメニューを表示するには、コントローラーのインスタンス変数 `@project` を初期化する必要があります。
 
 PollsController を次のように編集します。
@@ -357,7 +357,7 @@ end
 ## 新しい権限の追加
 
 今のところ、誰でも投票できます。権限の宣言を変えて、設定できるようにしてみます。\
-プロジェクト単位の権限を 2 つ宣言します。1 つは投票の閲覧、もう 1 つは投票のための権限です。これらの権限は公開ではなくなります(`public: true` オプションを削除します)。
+プロジェクト単位の権限を 2 つ宣言します。1 つは投票の閲覧、もう 1 つは投票のための権限です。これらの権限は公開ではなくなります (`public: true` オプションを削除します)。
 
 `plugins/polls/init.rb` を編集し、前の権限の宣言を次の 2 行に置き換えます。
 
@@ -401,7 +401,7 @@ end
 これで、投票の閲覧と投票は、管理者か、プロジェクトで適切なロールを持つユーザーだけができるようになります。
 
 権限のシンボルを多言語で表示するには、言語ファイルに必要なラベルを追加する必要があります。\
-`plugins/polls/config/locales` に \*.yml ファイル(例: `en.yml`)を作成し、次のようにラベルを書きます。
+`plugins/polls/config/locales` に \*.yml ファイル (例: `en.yml`) を作成し、次のようにラベルを書きます。
 
 ```yaml
 "en":
@@ -429,7 +429,7 @@ end
 ```
 
 アプリケーションを再起動し、プロジェクトのどれかの設定を開きます。\
-「モジュール」のタブをクリックすると、モジュールの一覧の最後に Polls のモジュールが表示されます(デフォルトでは無効です)。
+「モジュール」のタブをクリックすると、モジュールの一覧の最後に Polls のモジュールが表示されます (デフォルトでは無効です)。
 
 ![](../../images/Plugin_Tutorial/modules.png)
 
@@ -516,7 +516,7 @@ class PollsHookListener < Redmine::Hook::ViewListener
 end
 ```
 
-`app/views/polls/_project_overview.html.erb` を作成して、プラグインにパーシャルを追加します。その内容(「Message from Hook!」などの文字列)が、プロジェクトの概要の左側に追加されます。Redmine の再起動を忘れないでください。
+`app/views/polls/_project_overview.html.erb` を作成して、プラグインにパーシャルを追加します。その内容 (「Message from Hook!」などの文字列) が、プロジェクトの概要の左側に追加されます。Redmine の再起動を忘れないでください。
 
 ### コントローラーのフック
 
@@ -638,7 +638,7 @@ def test_index
 end
 ```
 
-プラグインで特定の権限が必要な場合は、次のようにユーザーのロールに権限を追加できます(ユーザーにどのロールが適切かは、フィクスチャーで確認してください)。
+プラグインで特定の権限が必要な場合は、次のようにユーザーのロールに権限を追加できます (ユーザーにどのロールが適切かは、フィクスチャーで確認してください)。
 
 ```ruby
 def test_index

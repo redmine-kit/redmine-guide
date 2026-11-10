@@ -16,7 +16,7 @@ curl -v -H "Content-Type: application/json" -X PUT --data-binary "@388.json" -u 
 curl -v -H "Content-Type: application/json" -X PUT --data-binary "@388.json" -H "X-Redmine-API-Key: xxxx" http://redmine/issues/388.json
 ```
 
-Redmine に送るデータのファイル(上の例では 388.json)は、次のようになります。
+Redmine に送るデータのファイル (上の例では 388.json) は、次のようになります。
 
 ```json
 {
@@ -64,7 +64,7 @@ issue.xml の内容は次のとおりです。
 
 ## テキスト書式
 
-テキスト書式を使う場合(たとえばプロジェクトの Wiki ページを更新する場合)は、ファイルの読み込みに curl のオプション `--data` ではなく `--data-binary` を使ってください。そうすることで初めて、curl は改行をそのまま送り、書式がすべて保たれます。
+テキスト書式を使う場合 (たとえばプロジェクトの Wiki ページを更新する場合) は、ファイルの読み込みに curl のオプション `--data` ではなく `--data-binary` を使ってください。そうすることで初めて、curl は改行をそのまま送り、書式がすべて保たれます。
 
 ```sh
 curl -v -H "Content-Type: application/xml" -X PUT --data-binary "@wiki.xml" -u login:password http://redmine/projects/foo/wiki/page_test.xml

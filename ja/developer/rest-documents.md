@@ -17,8 +17,8 @@ GET /projects/[project_id]/documents.[format]
 
 パラメーター:
 
-- `offset`: レスポンスで飛ばす文書の数(任意)
-- `limit`: 1 ページあたりの文書の数(任意)
+- `offset`: レスポンスで飛ばす文書の数 (任意)
+- `limit`: 1 ページあたりの文書の数 (任意)
 
 例:
 
@@ -36,7 +36,7 @@ GET /documents/[id].[format]
 
 パラメーター:
 
-- `include`: 関連するデータを取得します(任意)。指定できる値:
+- `include`: 関連するデータを取得します (任意)。指定できる値:
   - `attachments`
 
 例:

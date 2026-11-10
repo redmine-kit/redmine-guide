@@ -16,7 +16,7 @@ HTML タグを使えます。出力はサニタイズされ、安全な HTML の
 
 ### 外部リンク
 
-URL(http、https、ftp、ftps)は、自動でクリックできるリンクになります。
+URL(http、https、ftp、ftps) は、自動でクリックできるリンクになります。
 
 - **http://www.redmine.org** — Redmine の Web サイトへの外部リンク: http://www.redmine.org
 
@@ -105,7 +105,7 @@ Markdown では使えません。
 
 ### インライン画像
 
-- **\*\*** は、image_url にある画像を表示します(Textile の構文)
+- **\*\*** は、image_url にある画像を表示します (Textile の構文)
 - **\![alt text\](image_url “optional title”)** は、alt 属性と title 属性の付いた画像を表示します
 - **\[\*\*\](URL)** は、image_url にある画像を、URL へのリンクを付けて表示します
 
@@ -228,7 +228,7 @@ Great!
 
 ### 順不同リスト
 
-順不同リストでは、アスタリスク(`*`)、プラス(`+`)、ハイフン(`-`)を行頭記号に使います。
+順不同リストでは、アスタリスク (`*`)、プラス (`+`)、ハイフン (`-`) を行頭記号に使います。
 
 ```text
 * Item 1
@@ -290,7 +290,7 @@ Great!
 |4                   |Robert Hill      |B Team              |
 ```
 
-表示(連続する空白は 1 つにまとめられます):
+表示 (連続する空白は 1 つにまとめられます):
 
 <table>
 <thead>

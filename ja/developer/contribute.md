@@ -19,7 +19,7 @@ Redmine の現在のコントリビューターと作者の一覧は、[概要�
 
 現在の開発中のコードを手元に用意する必要があります。公式のコードのリポジトリは Subversion にあり、[ダウンロード](../install/download.md)の手順でダウンロードできます。
 
-開発に Mercurial や Git を使う場合のために、ソースは [Bitbucket](https://bitbucket.org/redmine)(コミュニティが管理)と [GitHub](http://github.com/redmine/redmine)(コミュニティが管理)にミラーされています。
+開発に Mercurial や Git を使う場合のために、ソースは [Bitbucket](https://bitbucket.org/redmine)(コミュニティが管理) と [GitHub](http://github.com/redmine/redmine)(コミュニティが管理) にミラーされています。
 
 質問は、[フォーラム](http://www.redmine.org/projects/redmine/boards/1)や、IRC の[開発チーム](https://www.redmine.org/projects/redmine/wiki/Teams)に尋ねてください。
 
@@ -41,9 +41,9 @@ Redmine の現在のコントリビューターと作者の一覧は、[概要�
 ### コードで貢献する基本の流れ:
 
 1.  **svn の trunk**、**Mercurial の default の名前付きブランチ**、または **Git の master ブランチ**で作業していることを確認します。\
-    安定バージョンのリリースへのパッチは受け付けていません。誰かがパッチをまず trunk に移植し、それから安定バージョンに戻して移植することになる(つまり作業が 2 倍になる)ためです。\
+    安定バージョンのリリースへのパッチは受け付けていません。誰かがパッチをまず trunk に移植し、それから安定バージョンに戻して移植することになる (つまり作業が 2 倍になる) ためです。\
     Mercurial を使う場合は、[graft](http://www.selenic.com/hg/help/graft) や [mercurial queues extension](http://mercurial.selenic.com/wiki/MqExtension) を使えます。
-2.  Redmine には**テスト**([source:trunk/test](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/test))があります。既存のテストがすべて通ることを確認します。現在のビルドの状態は [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration) で確認できます。すべてのテストは「rake test」で、個別のテストは「ruby test/unit/issue_test.rb」で実行できます。詳しくは [source:trunk/doc/RUNNING_TESTS](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/doc/RUNNING_TESTS) を参照してください。
+2.  Redmine には**テスト** ([source:trunk/test](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/test)) があります。既存のテストがすべて通ることを確認します。現在のビルドの状態は [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration) で確認できます。すべてのテストは「rake test」で、個別のテストは「ruby test/unit/issue_test.rb」で実行できます。詳しくは [source:trunk/doc/RUNNING_TESTS](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/doc/RUNNING_TESTS) を参照してください。
 3.  新しい機能を示し、不具合を確認するテストを追加します。
 4.  パッチをチケットに投稿します。\
     **<span style="color: red">GitHub や Bitbucket で Pull Request を送らないでください</span>**。\
@@ -58,7 +58,7 @@ Redmine の現在のコントリビューターと作者の一覧は、[概要�
 
 ### 利用者のサポート
 
-[フォーラム](http://www.redmine.org/projects/redmine/boards)や IRC のチャンネル(#redmine @ freenode)でほかの利用者を手伝うことは、いつでも役に立ちます。よくある問題や質問は取り上げて、これからの利用者のために Wiki を更新できるようにしてください。
+[フォーラム](http://www.redmine.org/projects/redmine/boards)や IRC のチャンネル (#redmine @ freenode) でほかの利用者を手伝うことは、いつでも役に立ちます。よくある問題や質問は取り上げて、これからの利用者のために Wiki を更新できるようにしてください。
 
 ### ローカライズのサポート
 

@@ -9,7 +9,7 @@ Redmine の REST API は Rails の RESTful の規約に従っているので、[
 
 ## ActiveResource (Rails)
 
-Redmine 3.x(Rails 4.2)では、「activeresource」の gem を追加する必要があります。\
+Redmine 3.x(Rails 4.2) では、「activeresource」の gem を追加する必要があります。\
 たとえば Gemfile.local に次のように書きます。
 
 ```ruby
@@ -69,7 +69,7 @@ issue = Issue.find(1)
 
 *ActiveResource のクラスで `include_root_in_json = true` を設定する必要がある場合があります*
 
-## Ruby だけで使う(Ruby の標準機能のみ)
+## Ruby だけで使う (Ruby の標準機能のみ)
 
 `net/http` の PUT リクエストで、チケット #9599 のステータスを、内部の status_id 1 にする例です。
 

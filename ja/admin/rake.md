@@ -19,7 +19,7 @@ Ruby on Rails のフレームワークが定義しているタスクについて
 
 **タスクを実行するときは**、`RAILS_ENV` 変数を production に設定するのを忘れないでください。
 
-例(\*nix の場合):
+例 (\*nix の場合):
 
 rake redmine:permissions RAILS_ENV=production
 
@@ -36,7 +36,7 @@ rake redmine:permissions
 
 ユーザーがチケットや Wiki ページなどにファイルを添付すると、ファイルはすぐにアップロードされ、フォームを送信した後に添付されます。
 
-このタスクは、アップロードされたまま添付されなかった(フォームが送信されなかった)ファイルを、1 日たった後に削除します。
+このタスクは、アップロードされたまま添付されなかった (フォームが送信されなかった) ファイルを、1 日たった後に削除します。
 
 ### `rake redmine:email:read`
 
@@ -80,7 +80,7 @@ POP3 サーバーからメールを読み込みます。
 
 ### `rake redmine:attachments:move_to_subdirectories`
 
-ファイルのディレクトリの直下に保存されている添付ファイルを移動します(つまり\
+ファイルのディレクトリの直下に保存されている添付ファイルを移動します (つまり\
 バージョン [2.3.0](https://www.redmine.org/versions/60) から使えます。
 
 ### `rake redmine:email:test[login]`

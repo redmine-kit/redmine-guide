@@ -9,7 +9,7 @@ translated_from_version: 10
 
 ### GET
 
-指定した ID(:issue_id)のチケットの関連を返します。
+指定した ID(:issue_id) のチケットの関連を返します。
 
 <u>XML の例</u>:
 
@@ -72,19 +72,19 @@ GET /issues/8470/relations.json
 
 ### POST
 
-指定した ID(:issue_id)のチケットに関連を作成します。
+指定した ID(:issue_id) のチケットに関連を作成します。
 
 <u>パラメーター</u>:
 
-- `relation`(必須): 関連の属性のハッシュ。次のものを含みます:
-  - `issue_to_id`(必須): 関連するチケットの ID
-  - `relation_type`(明示する場合は必須。デフォルトは「relates」): 関連の種類(「relates」、「duplicates」、「duplicated」、「blocks」、「blocked」、「precedes」、「follows」、「copied_to」、「copied_from」のどれか)
-  - `delay`(任意): 「precedes」または「follows」の関連の遅延
+- `relation` (必須): 関連の属性のハッシュ。次のものを含みます:
+  - `issue_to_id` (必須): 関連するチケットの ID
+  - `relation_type` (明示する場合は必須。デフォルトは「relates」): 関連の種類 (「relates」、「duplicates」、「duplicated」、「blocks」、「blocked」、「precedes」、「follows」、「copied_to」、「copied_from」のどれか)
+  - `delay` (任意): 「precedes」または「follows」の関連の遅延
 
 <u>レスポンス</u>:
 
 - `201 Created`: 関連を作成しました
-- `422 Unprocessable Entity`: 検証に失敗したため、関連を作成できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 検証に失敗したため、関連を作成できませんでした (レスポンスの本文にエラーメッセージが入ります)
 
 <u>例</u>:
 
@@ -165,4 +165,4 @@ GET /relations/1819.json
 <u>レスポンス</u>:
 
 - `204 No Content`: 関連を削除しました
-- `422 Unprocessable Entity`: 関連を削除できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 関連を削除できませんでした (レスポンスの本文にエラーメッセージが入ります)

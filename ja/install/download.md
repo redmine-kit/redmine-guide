@@ -100,7 +100,7 @@ svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
 
 `redmine-7.0` というディレクトリが作成されます。このディレクトリで `svn update` を実行すると、Redmine を更新できます。
 
-### 開発中のバージョン(不安定)
+### 開発中のバージョン (不安定)
 
 最新の開発中のソースは、trunk から次のコマンドでチェックアウトできます。
 
@@ -112,5 +112,5 @@ svn co https://svn.redmine.org/redmine/trunk redmine
 
 ## サードパーティの Redmine のバンドル
 
-- [TurnKey Redmine Appliance](http://www.turnkeylinux.org/redmine) - Debian をベースにした軽量な Redmine のアプライアンスを無料で提供しています(ISO、仮想マシンのイメージ、クラウドのイメージ)。
+- [TurnKey Redmine Appliance](http://www.turnkeylinux.org/redmine) - Debian をベースにした軽量な Redmine のアプライアンスを無料で提供しています (ISO、仮想マシンのイメージ、クラウドのイメージ)。
 - [BitNami Redmine Stack](https://bitnami.com/stack/redmine) – Redmine の仮想マシン、コンテナ、クラウドのイメージを無料で提供しています。

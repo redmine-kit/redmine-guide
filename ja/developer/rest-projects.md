@@ -9,16 +9,16 @@ translated_from_version: 42
 
 GET /projects.xml
 
-すべてのプロジェクト(すべての公開プロジェクトと、ユーザーがアクセスできる非公開プロジェクト)を返します。
+すべてのプロジェクト (すべての公開プロジェクトと、ユーザーがアクセスできる非公開プロジェクト) を返します。
 
 <u>パラメーター</u>:
 
-- `include`: 関連するデータを取得します(任意)。値はカンマ「,」で区切ります。指定できる値:
+- `include`: 関連するデータを取得します (任意)。値はカンマ「,」で区切ります。指定できる値:
   - `trackers`
   - `issue_categories`
-  - `enabled_modules`(2.6.0 から)
-  - `time_entry_activities`(3.4.0 から)
-  - `issue_custom_fields`(4.2.0 から)
+  - `enabled_modules` (2.6.0 から)
+  - `time_entry_activities` (3.4.0 から)
+  - `issue_custom_fields` (4.2.0 から)
 
 <u>レスポンス</u>:
 
@@ -53,12 +53,12 @@ GET /projects/\[id\].xml
 
 <u>パラメーター</u>:
 
-- `include`: 関連するデータを取得します(任意)。値はカンマ「,」で区切ります。指定できる値:
+- `include`: 関連するデータを取得します (任意)。値はカンマ「,」で区切ります。指定できる値:
   - `trackers`
   - `issue_categories`
-  - `enabled_modules`(2.6.0 から)
-  - `time_entry_activities`(3.4.0 から)
-  - `issue_custom_fields`(4.2.0 から)
+  - `enabled_modules` (2.6.0 から)
+  - `time_entry_activities` (3.4.0 から)
+  - `issue_custom_fields` (4.2.0 から)
 
 <u>例</u>:
 
@@ -103,9 +103,9 @@ POST /projects.xml
 
 <u>パラメーター</u>:
 
-- `project`(必須): プロジェクトの属性のハッシュ。次のものを含みます:
-  - `name`(必須): プロジェクトの名前
-  - `identifier`(必須): プロジェクトの識別子
+- `project` (必須): プロジェクトの属性のハッシュ。次のものを含みます:
+  - `name` (必須): プロジェクトの名前
+  - `identifier` (必須): プロジェクトの識別子
   - `description`
   - `homepage`
   - `is_public`: true または false
@@ -164,7 +164,7 @@ POST /projects.json
 <u>レスポンス</u>:
 
 - `201 Created`: プロジェクトを作成しました
-- `422 Unprocessable Entity`: 検証に失敗したため、プロジェクトを作成できませんでした(レスポンスの本文にエラーメッセージが入ります)
+- `422 Unprocessable Entity`: 検証に失敗したため、プロジェクトを作成できませんでした (レスポンスの本文にエラーメッセージが入ります)
 
 ## プロジェクトの更新
 
@@ -204,5 +204,5 @@ DELETE /projects/\[id\].xml
 
 ## 制限:
 
-Redmine 1.0.1-2(Debian stable)では、POST リクエストは API キーでは動きませんが、ログインID/パスワードの認証では動きます\
+Redmine 1.0.1-2(Debian stable) では、POST リクエストは API キーでは動きませんが、ログインID/パスワードの認証では動きます\
 [#12104](https://www.redmine.org/issues/12104)

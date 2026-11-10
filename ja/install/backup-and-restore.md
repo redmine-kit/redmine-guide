@@ -10,7 +10,7 @@ translated_from_version: 14
 Redmine のバックアップには、次のものを含めます。
 
 - データベース
-- 添付ファイル(デフォルトでは、インストール先のディレクトリの `files` ディレクトリに保存されています)
+- 添付ファイル (デフォルトでは、インストール先のディレクトリの `files` ディレクトリに保存されています)
 
 ### データベースのバックアップ
 
@@ -42,10 +42,10 @@ SQLite のデータベースのファイル名は、`config/database.yml` で確
 
 ### 添付ファイルのバックアップ
 
-アップロードされたファイルは、すべて `attachments_storage_path`(デフォルトは `files/` ディレクトリ)に保存されます。このディレクトリの内容を別の場所にコピーすれば、簡単にバックアップできます。
+アップロードされたファイルは、すべて `attachments_storage_path` (デフォルトは `files/` ディレクトリ) に保存されます。このディレクトリの内容を別の場所にコピーすれば、簡単にバックアップできます。
 
 <u>警告:</u> `attachments_storage_path` が `files/` 以外のディレクトリを指している場合があります。役に立たないバックアップにならないように、`$RAILS_ROOT/config/configuration.yml` の設定を必ず確認してください。\
-このファイルはない場合があります(Redmine v5.0.4 の時点)。標準の値を変えるためのテンプレート `$RAILS_ROOT/config/configuration.yml.example` があるので、\
+このファイルはない場合があります (Redmine v5.0.4 の時点)。標準の値を変えるためのテンプレート `$RAILS_ROOT/config/configuration.yml.example` があるので、\
 このファイルをコピーし、`$RAILS_ROOT/config/configuration.yml` という名前にします。\
 筆者の Debian のパッケージでのインストールでは、添付ファイルは\
 `/var/lib/redmine/default/files` に保存されています。\
@@ -55,7 +55,7 @@ SQLite のデータベースのファイル名は、`config/database.yml` で確
 
 ### バックアップのスクリプトの例
 
-毎日のバックアップに使える簡単なシェルスクリプトの例です(MySQL のデータベースを使っている場合)。
+毎日のバックアップに使える簡単なシェルスクリプトの例です (MySQL のデータベースを使っている場合)。
 
 ```text
 # Database

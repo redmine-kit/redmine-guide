@@ -15,8 +15,8 @@ Trac のインポーターは、次のものを移行します。
 - コンポーネント
 - マイルストーン
 - チケット
-- チケットのコメントと変更(ステータスと解決状況)
-- Trac 固有のフィールド(解決状況など)は、Redmine のカスタムフィールドとして追加されます
+- チケットのコメントと変更 (ステータスと解決状況)
+- Trac 固有のフィールド (解決状況など) は、Redmine のカスタムフィールドとして追加されます
 - チケットのファイルとカスタムフィールド
 - 履歴を含む Wiki ページ
 
@@ -31,7 +31,7 @@ Trac のデータベースにアクセスするには、sqlite-ruby の gem が�
 \- sqlite の場合: `gem install sqlite-ruby`\
 - sqlite3 の場合: `gem install sqlite3-ruby`
 
-始める前に、**デフォルトデータを読み込んだ(必須)** 新しい Redmine のデータベースを用意します。[Redmine のインストール](install.md)を参照してください。
+始める前に、**デフォルトデータを読み込んだ (必須)** 新しい Redmine のデータベースを用意します。[Redmine のインストール](install.md)を参照してください。
 
 このスクリプトは、Trac 0.10 の sqlite のデータベースと、Trac 0.11 の sqlite3 のデータベースで試験されています。
 
@@ -39,7 +39,7 @@ Trac のデータベースにアクセスするには、sqlite-ruby の gem が�
 
 rake redmine:migrate_from_trac RAILS_ENV=”test”
 
-2\. スクリプト([source:trunk/lib/tasks/migrate_from_trac.rake](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/tasks/migrate_from_trac.rake))が Trac の設定を尋ねます。
+2\. スクリプト ([source:trunk/lib/tasks/migrate_from_trac.rake](https://www.redmine.org/projects/redmine/repository/svn/show/trunk/lib/tasks/migrate_from_trac.rake)) が Trac の設定を尋ねます。
 
 ```text
 Trac directory []: /var/trac/myproject
@@ -48,9 +48,9 @@ Database encoding [UTF-8]:
 Target project identifier []: myproject
 ```
 
-Trac directory は、Trac の環境のルートディレクトリです。Redmine はこのディレクトリで `db/trac.db`(sqlite/sqlite3 のデータベースを選んだ場合)と `attachments` ディレクトリを探します。\
-Trac のデータベースが mysql か postgresql の場合は、接続のパラメーター(ホスト、データベース名、ユーザー名、パスワード)を尋ねます。\
-Target project identifier は、データを読み込む Redmine のプロジェクトの識別子です(プロジェクトがなければ作成されます)。
+Trac directory は、Trac の環境のルートディレクトリです。Redmine はこのディレクトリで `db/trac.db` (sqlite/sqlite3 のデータベースを選んだ場合) と `attachments` ディレクトリを探します。\
+Trac のデータベースが mysql か postgresql の場合は、接続のパラメーター (ホスト、データベース名、ユーザー名、パスワード) を尋ねます。\
+Target project identifier は、データを読み込む Redmine のプロジェクトの識別子です (プロジェクトがなければ作成されます)。
 
 3\. スクリプトがデータを移行します。
 
@@ -89,11 +89,11 @@ Mantis のインポーターは、次のものを移行します。
 
 ユーザーのパスワードはすべて「mantis」になります。
 
-バグのファイルを移行できるのは、ファイルが Mantis のデータベースに保存されている場合だけです(これが Mantis のデフォルトの動作です)。
+バグのファイルを移行できるのは、ファイルが Mantis のデータベースに保存されている場合だけです (これが Mantis のデフォルトの動作です)。
 
 このスクリプトは、Mantis 1.0.x のいくつかのデータベースで試験されており、ほかの最近のバージョンでも動くはずです。
 
-始める前に、**デフォルトデータを読み込んだ(必須)** 新しい Redmine のデータベースを用意します。[Redmine のインストール](install.md)を参照してください。\
+始める前に、**デフォルトデータを読み込んだ (必須)** 新しい Redmine のデータベースを用意します。[Redmine のインストール](install.md)を参照してください。\
 データの入っている Redmine のデータベースに移行する場合は、[Ulrichs](email://uk@fortrabbit.de) の [Non-destructive migration Script](http://blog.foaa.de/2010/04/non-destructive-migration-from-mantis-to-redmine/) を使えます。
 
 パッチ [#10504](https://www.redmine.org/issues/10504) を必ず適用してください。
@@ -116,7 +116,7 @@ encoding [UTF-8]:
 
 Mantis のデータベースのアダプター、ホスト名、データベース名、ログインID、パスワード、エンコーディングを入力するか、デフォルトの値のままにします。
 
-アダプターは mysql(デフォルト)か postgresql です。
+アダプターは mysql (デフォルト) か postgresql です。
 
 3\. スクリプトがデータを移行します。
 
