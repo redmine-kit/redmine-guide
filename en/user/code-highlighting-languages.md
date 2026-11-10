@@ -3,29 +3,32 @@ source: RedmineCodeHighlightingLanguages
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineCodeHighlightingLanguages
 source_version: 11
 source_updated_on: '2024-11-14T10:41:16Z'
+updated_for: 7.0.3
 ---
 
 # Code highlighting supported languages
 
 Default code highlighting relies on [Rouge](http://rouge.jneen.net/) since Redmine 4.0.0. It supports over 200 languages. Refer [RedmineTextFormattingTextile#Code-highlighting](text-formatting-textile.md#Code-highlighting) or [RedmineTextFormattingMarkdown#Code-highlighting](text-formatting-markdown.md#Code-highlighting) for how to highlight code.
 
-Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redmine 6.0.1. You can also get a list by running `bundle exec rougify list` in the installation directory of Redmine.
+Here is a list of supported languages by Rouge 5.1.0, the latest Rouge 5 at the time of writing: Redmine 7.0.3 requires Rouge 5 (`gem 'rouge', '~> 5.0'` in its Gemfile). You can also get a list by running `bundle exec rougify list` in the installation directory of Redmine.
 
 | Language | Description |
 |----|----|
 | `abap` | SAP - Advanced Business Application Programming |
 | `actionscript` | ActionScript \[aliases: as,as3\] |
 | `ada` | The Ada 2012 programming language |
+| `addmusick` | AddmusicK and Ramekin MML (https://smwc.me/s/37906, https://codeberg.org/jneen/ramekin) \[aliases: ramekin,addmusickff,amk,rmk\] |
 | `apache` | configuration files for Apache web server |
 | `apex` | The Apex programming language (provided by salesforce) |
-| `apiblueprint` | Markdown based API description language. \[aliases: apiblueprint,apib\] |
-| `applescript` | The AppleScript scripting language by Apple Inc. (https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html) \[aliases: applescript\] |
+| `apiblueprint` | Markdown based API description language. \[aliases: apib\] |
+| `apple_script` | The AppleScript scripting language by Apple Inc. (https://developer.apple.com/library/archive/documentation/AppleScript/Conceptual/AppleScriptLangGuide/introduction/ASLR_intro.html) \[aliases: applescript,osa\] |
 | `armasm` | Arm assembly syntax |
 | `augeas` | The Augeas programming language (augeas.net) \[aliases: aug\] |
 | `awk` | pattern-directed scanning and processing language |
 | `batchfile` | Windows Batch File \[aliases: bat,batch,dosbatch,winbatch\] |
 | `bbcbasic` | BBC BASIC syntax |
 | `bibtex` | BibTeX \[aliases: bib\] |
+| `bicep` | Bicep is a domain-specific language (DSL) that uses declarative syntax to deploy Azure resources. |
 | `biml` | BIML, Business Intelligence Markup Language |
 | `bpf` | BPF bytecode syntax |
 | `brainfuck` | The Brainfuck programming language \[aliases: bf\] |
@@ -44,15 +47,14 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `coffeescript` | The Coffeescript programming language (coffeescript.org) \[aliases: coffee,coffee-script\] |
 | `common_lisp` | The Common Lisp variant of Lisp (common-lisp.net) \[aliases: cl,common-lisp,elisp,emacs-lisp,lisp\] |
 | `conf` | A generic lexer for configuration files \[aliases: config,configuration\] |
-| `console` | A generic lexer for shell sessions. Accepts ?lang and ?output lexer options, a ?prompt option, ?comments to enable \# comments, and ?error to handle error messages. \[aliases: terminal,shell_session,shell-session,terminal,shell_session,shell-session\] |
-| `coq` | Coq (coq.inria.fr) |
-| `cpp` | The C++ programming language \[aliases: c++,c++\] |
+| `console` | A generic lexer for shell sessions. Accepts ?lang and ?output lexer options, a ?prompt option, ?comments to enable \# comments, and ?error to handle error messages. \[aliases: terminal,shell_session,shell-session\] |
+| `cpp` | The C++ programming language \[aliases: c++\] |
 | `crystal` | Crystal The Programming Language (crystal-lang.org) \[aliases: cr\] |
 | `csharp` | a multi-paradigm language targeting .NET \[aliases: c#,cs\] |
 | `css` | Cascading Style Sheets, used to style web pages |
 | `csvs` | The CSV Schema Language (digital-preservation.github.io) |
 | `cuda` | Compute Unified Device Architecture, used for programming with NVIDIA GPU |
-| `cypher` | The Cypher query language (neo4j.com/docs/cypher-manual) \[aliases: cypher\] |
+| `cypher` | The Cypher query language (neo4j.com/docs/cypher-manual) |
 | `cython` | Cython and Pyrex source code (cython.org) \[aliases: pyx,pyrex\] |
 | `d` | The D programming language(dlang.org) \[aliases: dlang\] |
 | `dafny` | The Dafny programming language (github.com/dafny-lang/dafny) |
@@ -62,10 +64,11 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `digdag` | A simple, open source, multi-cloud workflow engine (https://www.digdag.io/) |
 | `docker` | Dockerfile syntax \[aliases: dockerfile,Dockerfile,containerfile,Containerfile\] |
 | `dot` | graph description language \[aliases: graphviz\] |
+| `dylan` | Dylan Language (https://opendylan.org) |
 | `ecl` | Enterprise Control Language (hpccsystems.com) |
 | `eex` | Embedded Elixir \[aliases: leex,heex\] |
 | `eiffel` | Eiffel programming language |
-| `elixir` | Elixir language (elixir-lang.org) \[aliases: elixir,exs\] |
+| `elixir` | Elixir language (elixir-lang.org) \[aliases: exs\] |
 | `elm` | The Elm programming language (http://elm-lang.org/) |
 | `email` | An email message \[aliases: eml,e-mail\] |
 | `epp` | Embedded Puppet template files |
@@ -77,20 +80,22 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `fortran` | Fortran 2008 (free-form) |
 | `freefem` | The FreeFEM programming language (freefem.org) \[aliases: ff\] |
 | `fsharp` | F# (fsharp.net) |
-| `gdscript` | The Godot Engine programming language (https://godotengine.org/) \[aliases: gd,gdscript\] |
+| `gdscript` | The Godot Engine programming language (https://godotengine.org/) \[aliases: gd,godot\] |
 | `ghc-cmm` | GHC Cmm is the intermediate representation of the GHC Haskell compiler \[aliases: cmm\] |
 | `ghc-core` | Intermediate representation of the GHC Haskell compiler. |
 | `gherkin` | A business-readable spec DSL (github.com/cucumber/cucumber/wiki/Gherkin) \[aliases: cucumber,behat\] |
+| `gjs` | Ember.js, JavaScript with \<template\> tags |
 | `glsl` | The GLSL shader language |
-| `go` | The Go programming language (http://golang.org) \[aliases: go,golang\] |
+| `go` | The Go programming language (http://golang.org) \[aliases: golang\] |
 | `gradle` | A powerful build system for the JVM |
 | `graphql` | GraphQL |
-| `groovy` | The Groovy programming language (http://www.groovy-lang.org/) \[aliases: nextflow,nf,nextflow,nf\] |
-| `hack` | The Hack programming language (hacklang.org) \[aliases: hack,hh\] |
+| `groovy` | The Groovy programming language (http://www.groovy-lang.org/) \[aliases: nextflow,nf\] |
+| `gts` | Ember.js, TypeScript with \<template\> tags |
+| `hack` | The Hack programming language (hacklang.org) \[aliases: hh\] |
 | `haml` | The Haml templating system for Ruby (haml.info) \[aliases: HAML\] |
 | `handlebars` | the Handlebars and Mustache templating languages \[aliases: hbs,mustache\] |
 | `haskell` | The Haskell programming language (haskell.org) \[aliases: hs\] |
-| `haxe` | Haxe Cross-platform Toolkit (http://haxe.org) \[aliases: hx,haxe\] |
+| `haxe` | Haxe Cross-platform Toolkit (http://haxe.org) \[aliases: hx\] |
 | `hcl` | Hashicorp Configuration Language, used by Terraform and other Hashicorp tools |
 | `hlsl` | HLSL, the High Level Shading Language for DirectX (docs.microsoft.com/en-us/windows/win32/direct3dhlsl/dx-graphics-hlsl) |
 | `hocon` | Human-Optimized Config Object Notation (https://github.com/lightbend/config) |
@@ -110,19 +115,20 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `j` | The J programming language (jsoftware.com) |
 | `janet` | The Janet programming language (janet-lang.org) \[aliases: jdn\] |
 | `java` | The Java programming language (java.com) |
-| `javascript` | JavaScript, the browser scripting language \[aliases: js,js\] |
-| `jinja` | Django/Jinja template engine (jinja.pocoo.org) \[aliases: django,django\] |
+| `javascript` | JavaScript, the browser scripting language \[aliases: js\] |
+| `jinja` | Django/Jinja template engine (jinja.pocoo.org) \[aliases: django\] |
 | `jsl` | The JMP Scripting Language (JSL) (jmp.com) |
 | `json` | JavaScript Object Notation (json.org) |
 | `json-doc` | JavaScript Object Notation with extensions for documentation \[aliases: jsonc\] |
 | `json5` | JSON 5 extension for JSON (json5.org) |
 | `jsonnet` | An elegant, formally-specified config language for JSON |
 | `jsp` | JSP |
-| `jsx` | An XML-like syntax extension to JavaScript (facebook.github.io/jsx/) \[aliases: jsx,react,jsx,react\] |
+| `jsx` | An XML-like syntax extension to JavaScript (facebook.github.io/jsx/) \[aliases: react\] |
 | `julia` | The Julia programming language \[aliases: jl\] |
+| `kick_assembler` | Kick assembler NMOS 65xx syntax \[aliases: kickass\] |
 | `kotlin` | Kotlin Programming Language (http://kotlinlang.org) |
 | `lasso` | The Lasso programming language (lassosoft.com) \[aliases: lassoscript\] |
-| `lean` | The Lean programming language (leanprover.github.io) \[aliases: lean\] |
+| `lean` | The Lean programming language (leanprover.github.io) |
 | `liquid` | Liquid is a templating engine for Ruby (liquidmarkup.org) |
 | `literate_coffeescript` | Literate coffeescript \[aliases: litcoffee\] |
 | `literate_haskell` | Literate haskell \[aliases: lithaskell,lhaskell,lhs\] |
@@ -134,13 +140,13 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `m68k` | Motorola 68k Assembler |
 | `magik` | Smallworld Magik |
 | `make` | Makefile syntax \[aliases: makefile,mf,gnumake,bsdmake\] |
-| `markdown` | Markdown, a light-weight markup language for authors \[aliases: md,mkd,md,mkd\] |
+| `markdown` | Markdown, a light-weight markup language for authors \[aliases: md,mkd\] |
 | `mason` | The HTML::Mason framework (https://metacpan.org/pod/HTML::Mason) |
 | `mathematica` | Wolfram Mathematica, the world’s definitive system for modern technical computing. \[aliases: wl,wolfram\] |
 | `matlab` | Matlab \[aliases: m\] |
 | `meson` | Meson’s specification language (mesonbuild.com) |
 | `minizinc` | MiniZinc is a free and open-source constraint modeling language (minizinc.org) |
-| `mojo` | The Mojo programming language (modular.com) \[aliases: mojo\] |
+| `mojo` | The Mojo programming language (modular.com) |
 | `moonscript` | Moonscript (http://www.moonscript.org) \[aliases: moon\] |
 | `mosel` | An optimization language used by Fico’s Xpress. |
 | `msgtrans` | RISC OS message translator messages file |
@@ -159,34 +165,36 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `opentype_feature_file` | Feature specifications for an OpenType font (adobe-type-tools.github.io/afdko) \[aliases: fea,opentype,opentypefeature\] |
 | `p4` | The P4 programming language |
 | `pascal` | a procedural programming language commonly used as a teaching language. |
+| `pdf` | PDF - Portable Document Format (ISO 32000) \[aliases: fdf,cos\] |
 | `perl` | The Perl scripting language (perl.org) \[aliases: pl\] |
-| `php` | The PHP scripting language (php.net) \[aliases: php,php3,php4,php5,php,php3,php4,php5\] |
+| `php` | The PHP scripting language (php.net) \[aliases: php3,php4,php5\] |
 | `plaintext` | A boring lexer that doesn’t highlight anything \[aliases: text\] |
-| `plist` | plist \[aliases: plist\] |
+| `plist` | plist |
 | `plsql` | Procedural Language Structured Query Language for Oracle relational database |
-| `postscript` | The PostScript language (adobe.com/devnet/postscript.html) \[aliases: postscr,postscript,ps,eps\] |
-| `powershell` | powershell \[aliases: posh,microsoftshell,msshell\] |
+| `postscript` | The PostScript language (adobe.com/devnet/postscript.html) \[aliases: postscr,ps,eps\] |
+| `powershell` | powershell \[aliases: posh,microsoftshell,msshell,pwsh\] |
 | `praat` | The Praat scripting language (praat.org) |
-| `prolog` | The Prolog programming language (http://en.wikipedia.org/wiki/Prolog) \[aliases: prolog\] |
-| `prometheus` | prometheus \[aliases: prometheus\] |
+| `prolog` | The Prolog programming language (http://en.wikipedia.org/wiki/Prolog) |
+| `prometheus` | prometheus |
 | `properties` | .properties config files for Java |
 | `protobuf` | Google’s language-neutral, platform-neutral, extensible mechanism for serializing structured data \[aliases: proto\] |
 | `puppet` | The Puppet configuration management language (puppetlabs.org) \[aliases: pp\] |
-| `python` | The Python programming language (python.org) \[aliases: py,py\] |
+| `python` | The Python programming language (python.org) \[aliases: py\] |
 | `q` | The Q programming language (kx.com) \[aliases: kdb+\] |
-| `qml` | QML, a UI markup language \[aliases: qml\] |
-| `r` | The R statistics language (r-project.org) \[aliases: r,R,s,S\] |
+| `qml` | QML, a UI markup language |
+| `r` | The R statistics language (r-project.org) \[aliases: R,s,S\] |
 | `racket` | Racket is a Lisp descended from Scheme (racket-lang.org) |
 | `reasonml` | New syntax on top of OCaml ecosystem (reasonml.github.io) |
 | `rego` | The Rego open-policy-agent (OPA) policy language (openpolicyagent.org) |
 | `rescript` | The ReScript programming language (rescript-lang.org) |
 | `rml` | A system agnostic domain-specific language for runtime monitoring and verification (https://rmlatdibris.github.io/) |
 | `robot_framework` | Robot Framework is a generic open source automation testing framework (robotframework.org) \[aliases: robot,robot-framework\] |
-| `ruby` | The Ruby programming language (ruby-lang.org) \[aliases: rb,rb\] |
+| `rocq` | The Rocq Prover (rocq-prover.org) \[aliases: coq\] |
+| `ruby` | The Ruby programming language (ruby-lang.org) \[aliases: rb\] |
 | `rust` | The Rust programming language (rust-lang.org) \[aliases: rs,rust,no_run,rs,no_run,rust,ignore,rs,ignore,rust,should_panic,rs,should_panic\] |
 | `sas` | SAS (Statistical Analysis Software) |
 | `sass` | The Sass stylesheet language language (sass-lang.com) |
-| `scala` | The Scala programming language (scala-lang.org) \[aliases: scala\] |
+| `scala` | The Scala programming language (scala-lang.org) |
 | `scheme` | The Scheme variant of Lisp |
 | `scss` | SCSS stylesheets (sass-lang.com) |
 | `sed` | sed, the ultimate stream editor |
@@ -195,7 +203,7 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `slice` | Specification Language for Ice (doc.zeroc.com) |
 | `slim` | The Slim template language |
 | `smalltalk` | The Smalltalk programming language \[aliases: st,squeak\] |
-| `smarty` | Smarty Template Engine \[aliases: smarty\] |
+| `smarty` | Smarty Template Engine |
 | `sml` | Standard ML \[aliases: ml\] |
 | `sparql` | Semantic Query Language, for RDF data |
 | `sqf` | Status Quo Function, a Real Virtuality engine scripting language |
@@ -209,14 +217,15 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `systemd` | A lexer for systemd unit files \[aliases: unit-file\] |
 | `syzlang` | Syscall description language used by syzkaller |
 | `syzprog` | Program description language used by syzkaller |
-| `tap` | Test Anything Protocol \[aliases: tap\] |
+| `tap` | Test Anything Protocol |
 | `tcl` | The Tool Command Language (tcl.tk) |
 | `terraform` | Terraform HCL Interpolations \[aliases: tf\] |
 | `tex` | The TeX typesetting system \[aliases: TeX,LaTeX,latex\] |
+| `thrift` | Apache Thrift interface definition language \[aliases: apache-thrift\] |
 | `toml` | the TOML configuration format (https://github.com/toml-lang/toml) |
 | `tsx` | TypeScript-compatible JSX (www.typescriptlang.org/docs/handbook/jsx.html) |
 | `ttcn3` | The TTCN3 programming language (ttcn-3.org) |
-| `tulip` | the tulip programming language (twitter.com/tuliplang) \[aliases: tulip\] |
+| `tulip` | the tulip programming language (twitter.com/tuliplang) |
 | `turtle` | Terse RDF Triple Language, TriG |
 | `twig` | Twig template engine (twig.sensiolabs.org) |
 | `typescript` | TypeScript, a superset of JavaScript (https://www.typescriptlang.org/) \[aliases: ts\] |
@@ -225,6 +234,7 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `vcl` | The configuration language for Varnish HTTP Cache (varnish-cache.org) \[aliases: varnishconf,varnish\] |
 | `velocity` | Velocity is a Java-based template engine (velocity.apache.org) |
 | `verilog` | The System Verilog hardware description language |
+| `veryl` | The Veryl hardware description language (https://veryl-lang.org) |
 | `vhdl` | Very High Speed Integrated Circuit Hardware Description Language |
 | `viml` | VimL, the scripting language for the Vim editor (vim.org) \[aliases: vim,vimscript,ex\] |
 | `vue` | Vue.js single-file components \[aliases: vuejs\] |
@@ -233,7 +243,7 @@ Here is a list of supported languages by Rouge 4.5.0, which is bundled with Redm
 | `xojo` | Xojo \[aliases: realbasic\] |
 | `xpath` | XML Path Language (XPath) 3.1 |
 | `xquery` | XQuery 3.1: An XML Query Language |
-| `yaml` | Yaml Ain’t Markup Language (yaml.org) \[aliases: yml,yml\] |
+| `yaml` | Yaml Ain’t Markup Language (yaml.org) \[aliases: yml\] |
 | `yang` | Lexer for the YANG 1.1 modeling language (RFC7950) |
 | `zig` | The Zig programming language (ziglang.org) \[aliases: zir\] |
 

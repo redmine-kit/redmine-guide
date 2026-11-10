@@ -3,6 +3,7 @@ source: RedmineTextFormattingMarkdown
 source_url: https://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingMarkdown
 source_version: 32
 source_updated_on: '2023-09-29T10:49:32Z'
+updated_for: 7.0.3
 ---
 
 # Markdown formatting
@@ -328,7 +329,63 @@ A footnote works very much like a reference-style link: it consists of a marker 
 
 Redmine includes a macros system that lets you add custom functions to insert dynamic content in formatted text. You can learn about writing your own macros in [RedmineMacros](macros.md). Redmine also includes a few builtin macros:
 
-{{macro_list}}
+- `hello_world`: Sample macro.
+- `macro_list`: Displays a list of all available macros, including description if available.
+- `child_pages`: Displays a list of child pages. With no argument, it displays the child pages of the current wiki page. Examples:
+
+  ```
+  {{child_pages}} -- can be used from a wiki page only
+  {{child_pages(depth=2)}} -- display 2 levels nesting only
+  {{child_pages(Foo)}} -- lists all children of page Foo
+  {{child_pages(Foo, parent=1)}} -- same as above with a link to page Foo
+  ```
+
+- `recent_pages`: Displays a list of recently updated wiki pages. With no argument, it displays pages that have been updated within the last 7 days. Examples:
+
+  ```
+  {{recent_pages}} -- displays pages updated within the last 7 days
+  {{recent_pages(days=3)}} -- displays pages updated within the last 3 days
+  {{recent_pages(limit=5)}} -- limits the maximum number of pages to display to 5
+  {{recent_pages(time=true)}} -- displays pages updated within the last 7 days with updated time
+  {{recent_pages(project=identifier)}} -- displays pages updated within the last 7 days from a specific project
+  {{recent_pages(include_subprojects=true)}} -- includes pages from subprojects
+  ```
+
+- `include`: Includes a wiki page. Examples:
+
+  ```
+  {{include(Foo)}}
+  {{include(projectname:Foo)}} -- to include a page of a specific project wiki
+  ```
+
+- `collapse`: Inserts of collapsed block of text. Examples:
+
+  ```
+  {{collapse
+  This is a block of text that is collapsed by default.
+  It can be expanded by clicking a link.
+  }}
+
+  {{collapse(View details...)
+  With custom link text.
+  }}
+  ```
+
+- `thumbnail`: Displays a clickable thumbnail of an attached image. Default size is 200 pixels. Examples:
+
+  ```
+  {{thumbnail(image.png)}}
+  {{thumbnail(image.png, size=300, title=Thumbnail)}} -- with custom title and size
+  ```
+
+- `issue`: Displays an issue link including additional information. Examples:
+
+  ```
+  {{issue(123)}}                              -- Issue #123: Enhance macro capabilities
+  {{issue(123, project=true)}}                -- Andromeda - Issue #123: Enhance macro capabilities
+  {{issue(123, tracker=false)}}               -- #123: Enhance macro capabilities
+  {{issue(123, subject=false, project=true)}} -- Andromeda - Issue #123
+  ```
 
 ## Code highlighting
 

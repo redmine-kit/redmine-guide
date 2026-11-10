@@ -326,7 +326,63 @@ toc のタグの上と下には空行が必要で、タグの前後にはほか�
 
 Redmine にはマクロの仕組みがあり、書式付きテキストに動的な内容を挿入する独自の機能を追加できます。独自のマクロの書き方は、[マクロ](macros.md)を参照してください。Redmine には、いくつかの組み込みのマクロもあります。
 
-{{macro_list}}
+- `hello_world`: サンプルのマクロです。
+- `macro_list`: 使用できるすべてのマクロの一覧を、説明があれば説明とともに表示します。
+- `child_pages`: 子ページの一覧を表示します。引数がなければ、今の Wiki ページの子ページを表示します。例:
+
+  ```
+  {{child_pages}} -- can be used from a wiki page only
+  {{child_pages(depth=2)}} -- display 2 levels nesting only
+  {{child_pages(Foo)}} -- lists all children of page Foo
+  {{child_pages(Foo, parent=1)}} -- same as above with a link to page Foo
+  ```
+
+- `recent_pages`: 最近更新された Wiki ページの一覧を表示します。引数がなければ、過去 7 日間に更新されたページを表示します。例:
+
+  ```
+  {{recent_pages}} -- displays pages updated within the last 7 days
+  {{recent_pages(days=3)}} -- displays pages updated within the last 3 days
+  {{recent_pages(limit=5)}} -- limits the maximum number of pages to display to 5
+  {{recent_pages(time=true)}} -- displays pages updated within the last 7 days with updated time
+  {{recent_pages(project=identifier)}} -- displays pages updated within the last 7 days from a specific project
+  {{recent_pages(include_subprojects=true)}} -- includes pages from subprojects
+  ```
+
+- `include`: Wiki ページを挿入します。例:
+
+  ```
+  {{include(Foo)}}
+  {{include(projectname:Foo)}} -- to include a page of a specific project wiki
+  ```
+
+- `collapse`: 折りたたんだテキストのブロックを挿入します。例:
+
+  ```
+  {{collapse
+  This is a block of text that is collapsed by default.
+  It can be expanded by clicking a link.
+  }}
+
+  {{collapse(View details...)
+  With custom link text.
+  }}
+  ```
+
+- `thumbnail`: 添付した画像の、クリックできるサムネイルを表示します。デフォルトのサイズは 200 ピクセルです。例:
+
+  ```
+  {{thumbnail(image.png)}}
+  {{thumbnail(image.png, size=300, title=Thumbnail)}} -- with custom title and size
+  ```
+
+- `issue`: 追加の情報を含むチケットへのリンクを表示します。例:
+
+  ```
+  {{issue(123)}}                              -- Issue #123: Enhance macro capabilities
+  {{issue(123, project=true)}}                -- Andromeda - Issue #123: Enhance macro capabilities
+  {{issue(123, tracker=false)}}               -- #123: Enhance macro capabilities
+  {{issue(123, subject=false, project=true)}} -- Andromeda - Issue #123
+  ```
 
 ## コードハイライト
 
