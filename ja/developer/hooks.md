@@ -66,7 +66,7 @@ call_hook(:do_something, :issue => issue)
 
 ### モデルのフック
 
-Redmine のモデルのフックはごくわずかです。モデルのコードの拡張は、ほとんどの場合、新しいメソッドを追加するか、[alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) のパターンを工夫して既存のメソッドを包み込むことで実現できます。モデルのフックは、コントローラーのフックと同じように使えます。
+Redmine のモデルのフックはごくわずかです。モデルのコードの拡張は、ほとんどの場合、新しいメソッドを追加するか、[alias_method_chain](plugin-internals.md#Wrapping-an-existing-method) のパターンを工夫して既存のメソッドをラップすることで実現できます。モデルのフックは、コントローラーのフックと同じように使えます。
 
 ## フックへの関数の登録
 
