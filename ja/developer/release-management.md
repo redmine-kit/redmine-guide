@@ -43,4 +43,4 @@ Redmine は現在、メジャーリリースを行っていません(1.0.0 よ�
 
 ## 参考
 
-\[#1901](https://www.redmine.org/issues/1901)#note-14
+[#1901](https://www.redmine.org/issues/1901)#note-14

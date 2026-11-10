@@ -66,7 +66,7 @@ GET /search.xml?q=issue_keyword wiki_keyword&issues=1&wiki_pages=1
   </result>
   <result>
     <id>10</id>
-    <title>Issue [#10](https://www.redmine.org/issues/10) (Closed): Issue_Title</title>
+    <title>Issue #10 (Closed): Issue_Title</title>
     <type>issue closed</type>
     <url>http://www.redmin.org/issues/10</url>
     <description>issue_keyword</description>

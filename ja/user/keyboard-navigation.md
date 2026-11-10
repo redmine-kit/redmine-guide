@@ -21,7 +21,7 @@ Redmine の一部の機能は、アクセスキーで使えます。\
 
 ### アクセスキーを使うショートカット
 
-次の表の <Accesskey> は、上の表にある、使っているブラウザーとオペレーティングシステムの修飾キーを表します。
+次の表の \<Accesskey\> は、上の表にある、使っているブラウザーとオペレーティングシステムの修飾キーを表します。
 
 <table>
 <thead>
@@ -33,17 +33,17 @@ Redmine の一部の機能は、アクセスキーで使えます。\
 </thead>
 <tbody>
 <tr>
-<td><Accesskey> + 7</td>
+<td>&lt;Accesskey&gt; + 7</td>
 <td>新しいチケットを作成します。</td>
 <td>チケットを追加できるプロジェクトのすべての場所。ただし、「新規オブジェクト作成タブ」が「なし」の場合を除きます。</td>
 </tr>
 <tr>
-<td><Accesskey> + 4</td>
+<td>&lt;Accesskey&gt; + 4</td>
 <td>検索のページを開きます。</td>
 <td>すべての場所(プロジェクトの中ではプロジェクトの検索、それ以外では全体の検索)。</td>
 </tr>
 <tr>
-<td><Accesskey> + n</td>
+<td>&lt;Accesskey&gt; + n</td>
 <td>次へ移動します。</td>
 <td><ul>
 <li>前後のチケットに移動できるチケットのページ</li>
@@ -55,7 +55,7 @@ Redmine の一部の機能は、アクセスキーで使えます。\
 </ul></td>
 </tr>
 <tr>
-<td><Accesskey> + p</td>
+<td>&lt;Accesskey&gt; + p</td>
 <td>前へ移動します。</td>
 <td><ul>
 <li>前後のチケットに移動できるチケットのページ</li>
@@ -67,12 +67,12 @@ Redmine の一部の機能は、アクセスキーで使えます。\
 </ul></td>
 </tr>
 <tr>
-<td><Accesskey> + f</td>
+<td>&lt;Accesskey&gt; + f</td>
 <td>検索ボックスにカーソルを移動します。</td>
 <td>ヘッダーに検索ボックスがあるページ。</td>
 </tr>
 <tr>
-<td><Accesskey> + e</td>
+<td>&lt;Accesskey&gt; + e</td>
 <td>編集モードに切り替えるか、テキストエリアにカーソルを移動します。</td>
 <td>チケット、Wikiページ、ニュース、文書、フォーラムのメッセージ。</td>
 </tr>

@@ -50,10 +50,9 @@ GET /users.xml
 
 <u>例</u>:
 
-```
-POST /users.xml
+    POST /users.xml
 
-<code class="xml">
+```xml
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <user>
   <login>jplang</login>
@@ -63,7 +62,6 @@ POST /users.xml
   <mail>jp_lang@yahoo.fr</mail>
   <auth_source_id>2</auth_source_id>
 </user>
-</code>
 ```
 
 JSON

@@ -5,9 +5,13 @@ translated_from_version: 7
 
 # 変更履歴
 
-|  |
-|----|
-| ***注記**: ここで説明している機能は Redmine の[ロードマップ](roadmap.md)に統合され、Redmine version#6 から(具体的には r3162 で)独立した画面としては削除されました。* |
+<table>
+<tbody>
+<tr>
+<td style="background-color:#f88;"><em><strong>注記</strong>: ここで説明している機能は Redmine の<a href="roadmap.md">ロードマップ</a>に統合され、Redmine version#6 から(具体的には r3162 で)独立した画面としては削除されました。</em></td>
+</tr>
+</tbody>
+</table>
 
 ## 概要
 

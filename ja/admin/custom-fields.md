@@ -32,9 +32,17 @@ translated_from_version: 29
 - 「最短 - 最大長」: フィールドの最小と最大の長さ(0 は制限なし)
 - 「正規表現」: 正規表現でフィールドの内容を検証できます。例:
   1.  *英大文字 4 文字の後に 1 文字以上の数字*
-          ^\[A-Z]{4}\d+$
+
+      ```
+      ^\[A-Z]{4}\d+$
+      ```
+
   2.  *数字を含まない文字列*
-          ^[^0-9]*$
+
+      ```
+      ^[^0-9]*$
+      ```
+
 - 正規表現の一覧は、Ruby Users Guide にあります。
 
 ### 値
@@ -124,7 +132,7 @@ translated_from_version: 29
 
 ### 作業分類 (時間管理) のフィールド
 
-作業分類のカスタムフィールドのデータは、[作業時間のレポート](../user/timelog-report.md)と[プロジェクト設定](../user/project-settings.md#Activities-time-tracking)で使われたり、表示されたりします[^1]。この便利な機能について詳しくは、\[#4077](https://www.redmine.org/issues/4077) も参照してください。
+作業分類のカスタムフィールドのデータは、[作業時間のレポート](../user/timelog-report.md)と[プロジェクト設定](../user/project-settings.md#Activities-time-tracking)で使われたり、表示されたりします<sup>1</sup>。この便利な機能について詳しくは、[#4077](https://www.redmine.org/issues/4077) も参照してください。
 
 - **必須**: 作業分類を作成または保存するときに必須のフィールドです
 
@@ -136,4 +144,4 @@ translated_from_version: 29
 
 **注記**: 文書カテゴリのカスタムフィールドは、Redmine 本体では(まだ)使われていません。ただし、ほかのプラグインやテーマが使うことは*あります*。今のところ、ここの設定は Redmine のほかの部分には影響しません。
 
-[^1]: 例外があります。\[#19121](https://www.redmine.org/issues/19121)#note-1 を参照してください。
+<sup>1</sup> 例外があります。[#19121](https://www.redmine.org/issues/19121)#note-1 を参照してください。

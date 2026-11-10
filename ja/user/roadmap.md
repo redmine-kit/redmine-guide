@@ -33,7 +33,7 @@ translated_from_version: 19
 予定工数のないチケットには、予定工数の平均で重みを付けます。\
 予定工数のあるチケットが 1 つもなければ、すべてのチケットに同じ重みを付けます。
 
-詳しくは \[#2182](https://www.redmine.org/issues/2182)#note-6 を参照してください。
+詳しくは [#2182](https://www.redmine.org/issues/2182)#note-6 を参照してください。
 
 ## ロードマップの管理
 

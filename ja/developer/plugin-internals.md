@@ -71,8 +71,12 @@ end
 
 ### 既存のメソッドのラップ
 
-> **注意!**\
-> alias_method_chain のパターンは Rails 5 で非推奨になったため、この方法は 4.0.0 より前の Redmine にしか使えません。
+<blockquote>
+
+**注意!**\
+alias_method_chain のパターンは Rails 5 で非推奨になったため、この方法は 4.0.0 より前の Redmine にしか使えません。
+
+</blockquote>
 
 **既存のメソッドのラップ**の簡単な例が、Eric Davis の [Rate plugin](http://github.com/edavis10/redmine_rate/blob/4666ddb10e1061ca3ef362735d0d264676b99024/lib/rate_users_helper_patch.rb) にあります。ここでは `alias_method_chain` を使って UsersHelper にフックし、`user_settings_tabs` メソッドをラップしています。そのため、Redmine 本体が `user_settings_tabs` を呼び出すと、処理は次のように進みます。
 
@@ -123,9 +127,9 @@ end
 
 ### FAQ
 
-- 自分のブロックのドロップダウンの選択肢が翻訳されないのはなぜですか? ドロップダウンの項目の名前は、慣例として、プラグインのロケールファイルの項目から作られます。この項目は、「マイページ」のブロックのファイル名と同じ名前にする必要があります。たとえば redmine/vendor/plugins/<myplugin_folder>/app/views/my/blocks/<myblocks_view_file_name>.erb です。そのため、ロケールファイル(たとえば redmine/vendor/plugins/<myplugin_folder>/config/locale/en.yml)に「<myblocks_view_file_name>: <put here translation for the drop down item in my blocks configuration>」という行を追加する必要があります。
+- 自分のブロックのドロップダウンの選択肢が翻訳されないのはなぜですか? ドロップダウンの項目の名前は、慣例として、プラグインのロケールファイルの項目から作られます。この項目は、「マイページ」のブロックのファイル名と同じ名前にする必要があります。たとえば redmine/vendor/plugins/\<myplugin_folder\>/app/views/my/blocks/\<myblocks_view_file_name\>.erb です。そのため、ロケールファイル(たとえば redmine/vendor/plugins/\<myplugin_folder\>/config/locale/en.yml)に「\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>」という行を追加する必要があります。
 
-この文字列がロケールファイルにない場合は、拡張子を除いたファイル名 <myblocks_view_file_name> が、常にドロップダウンのラベルになります。
+この文字列がロケールファイルにない場合は、拡張子を除いたファイル名 \<myblocks_view_file_name\> が、常にドロップダウンのラベルになります。
 
 ## 参考
 

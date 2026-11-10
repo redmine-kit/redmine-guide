@@ -6,7 +6,7 @@ translated_from_version: 19
 # Textile
 
 ここでは **Textile** の書式を説明します。**Markdown** の書式は、[Markdown](text-formatting-markdown.md) を参照してください。\
-現在の Textile への対応の制限については、\[#6269](https://www.redmine.org/issues/6269)、\[#10078](https://www.redmine.org/issues/10078)(定義リスト)を参照してください。
+現在の Textile への対応の制限については、[#6269](https://www.redmine.org/issues/6269)、[#10078](https://www.redmine.org/issues/10078)(定義リスト)を参照してください。
 
 ## リンク
 
@@ -59,7 +59,7 @@ JPL (Jean-Philippe Lang)
 
 ### フォントスタイル
 
-    <code>* *bold*
+    * *bold*
     * _italic_
     * *_bold italic_*
     * +underline+
@@ -70,51 +70,39 @@ JPL (Jean-Philippe Lang)
     * <notextile>normal *bold* _italic_ normal;E=mc ^2^</notextile>
     * <notextile>normal<notextile></notextile>*bold*<notextile></notextile>_italic_<notextile></notextile>normal;E=mc<notextile></notextile>^2^</notextile>
     * <notextile>Escaping: <notextile>*bold* _italic_ @inlinemono@</notextile> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Alternative using HTML-codes: &#42;bold&#42; &#95;italic&#95; &#64;inlinemono&#64;</notextile>
-    * <notextile><pre>*some lines*      some "link":http://www.redmine.org
-
-</notextile>
-
-\* \<pre\>\<notextile\>**some lines** some [link](http://www.redmine.org</pre></notextile>)\
-</code>
-
-</pre>
+    * <notextile><pre>*some lines*      some "link":http://www.redmine.org</pre></notextile>
+    * <notextile><pre><notextile></notextile>*some lines*      some "link":http://www.redmine.org</pre></notextile>
 
 表示:
 
-\* **bold**\
-\* *italic*\
-\* ***bold italic***\
-\* <u>underline</u>\
-\* ~~strike-through~~\
-\* Plain <sup>superscript</sup>\
-\* Plain <sub>subscript</sub>\
-\* `inline monospace`\
-\* normal **bold** *italic* normal;E=mc <sup>2</sup>\
-\* normal**bold***italic*normal;E=mc<sup>2</sup>\
-\* Escaping: \*bold\* \_italic\_ @inlinemono@       Alternative using HTML-codes: \*bold\* \_italic\_ @inlinemono@\
-\*
-
-    *some lines*      some "link":http://www.redmine.org
-
-\
-\*
-
-    <notextile></notextile>*some lines*      some "link":http://www.redmine.org
+- **bold**
+- *italic*
+- ***bold italic***
+- <u>underline</u>
+- ~~strike-through~~
+- Plain <sup>superscript</sup>
+- Plain <sub>subscript</sub>
+- `inline monospace`
+- normal **bold** *italic* normal;E=mc <sup>2</sup>
+- normal**bold***italic*normal;E=mc<sup>2</sup>
+- Escaping: \*bold\* \_italic\_ @inlinemono@       Alternative using HTML-codes: \*bold\* \_italic\_ @inlinemono@
+- `*some lines*      some "link":http://www.redmine.org`
+- `<notextile></notextile>*some lines*      some "link":http://www.redmine.org`
 
 ### 色
 
-    <code><notextile>* %{color:red}red% %{color:green}green% %{color:yellow}yellow% %{color:#82B6E1}blue'ish%
+    <notextile>* %{color:red}red% %{color:green}green% %{color:yellow}yellow% %{color:#82B6E1}blue'ish%
     * %{color:red}red%<notextile></notextile>%{color:green}green%<notextile></notextile>%{color:yellow}yellow%<notextile></notextile>%{color:#82B6E1}blue'ish%
     * %{background:lightgreen}Lightgreen Background% %{background:yellow}Yellow Background%
     * %{background:lightgreen}Lightgreen Background%<notextile></notextile>%{background:yellow}Yellow Background%
-    </notextile></code>
+    </notextile>
 
 表示:
 
-\* <span style="color:red;">red</span> <span style="color:green;">green</span> <span style="color:yellow;">yellow</span> <span style="color:#82B6E1;">blue’ish</span>\
-\* %{color:red}red%%{color:green}green%%{color:yellow}yellow%<span style="color:#82B6E1;">blue’ish</span>\
-\* <span style="background:lightgreen;">Lightgreen Background</span> <span style="background:yellow;">Yellow Background</span>\
-\* %{background:lightgreen}Lightgreen Background%<span style="background:yellow;">Yellow Background</span>
+- <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue’ish</span>
+- <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue’ish</span>
+- <span style="background:lightgreen">Lightgreen Background</span> <span style="background:yellow">Yellow Background</span>
+- <span style="background:lightgreen">Lightgreen Background</span><span style="background:yellow">Yellow Background</span>
 
 ### インライン画像
 
@@ -129,30 +117,28 @@ SPAN にスタイルを設定するのと同じ方法で、画像に CSS のス�
 
 ### 見出し
 
-    <code>h1. Heading
+    h1. Heading
 
     h2. Subheading
 
     h3. Subheading
-    </code>
 
 Redmine はこれらの見出しにそれぞれアンカーを付けるため、「\#Heading」、「\#Subheading」などでリンクできます。
 
 ### 段落
 
-    <code>p. left aligned
+    p. left aligned
 
     p(. left ident 1em
 
     p((. left ident 2em
     as well as for following lines
 
-    right aligned
+    p>. right aligned
 
     p)))>. right ident 3em
 
-    This is centered paragraph.
-    </code>
+    p=. This is centered paragraph.
 
 表示:
 
@@ -179,21 +165,18 @@ This is centered paragraph.
 
 ### 整形済みテキスト
 
-     <pre>*Your text won't become bold*
-
-</pre>
+     <pre>*Your text won't become bold*</pre>
 
 表示:
 
-     *Your text won't become bold* 
+     *Your text won't become bold*
 
 ### 引用
 
 段落の先頭に **bq.** を付けます。
 
-    <code>bq. Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
+    bq. Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.
     To go live, all you need to add is a database and a web server.
-    </code>
 
 表示:
 
@@ -208,9 +191,16 @@ This is centered paragraph.
 
 表示:
 
-\>\> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.\
-\>\> To go live, all you need to add is a database and a web server.\
-\> Great!
+<blockquote><blockquote>
+
+Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.\
+To go live, all you need to add is a database and a web server.
+
+</blockquote>
+
+Great!
+
+</blockquote>
 
 ### 順不同リスト
 
@@ -261,59 +251,54 @@ This is centered paragraph.
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">UserID</th>
-<th style="text-align: left;">Name</th>
-<th style="text-align: center;">Group</th>
-<th style="text-align: right;">attribute list</th>
+<th>UserID</th>
+<th>Name</th>
+<th>Group</th>
+<th>attribute list</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">Starting with</td>
-<td style="text-align: left;">a</td>
-<td style="text-align: center;">simple</td>
-<td style="text-align: right;">row</td>
+<td>Starting with</td>
+<td>a</td>
+<td>simple</td>
+<td>row</td>
 </tr>
 <tr>
-<td style="text-align: center;">IT</td>
+<td colspan="3" style="text-align: center;">IT</td>
 <td style="text-align: left;">align left</td>
-<td style="text-align: center;"></td>
-<td style="text-align: right;"></td>
 </tr>
 <tr>
-<td style="text-align: center;">1</td>
-<td style="text-align: left;">Artur Pirozhkov</td>
-<td style="text-align: center;">Users</td>
+<td>1</td>
+<td>Artur Pirozhkov</td>
+<td rowspan="2">Users</td>
 <td style="text-align: right;">align right</td>
 </tr>
 <tr>
-<td style="text-align: center;">2</td>
-<td style="text-align: left;">Vasya Rogov</td>
+<td>2</td>
+<td>Vasya Rogov</td>
 <td style="text-align: center;">center</td>
-<td style="text-align: right;"></td>
 </tr>
 <tr>
-<td style="text-align: center;">3</td>
-<td style="text-align: left;">John Smith</td>
-<td style="text-align: center;">Admin<br />
-(root)</td>
-<td style="text-align: right;">^. valign top</td>
+<td>3</td>
+<td>John Smith</td>
+<td>Admin<br />(root)</td>
+<td style="vertical-align: top;">valign top</td>
 </tr>
 <tr>
-<td style="text-align: center;">4</td>
-<td style="text-align: left;">-</td>
-<td style="text-align: center;">Nobody<br />
-(anonymous)</td>
-<td style="text-align: right;">~. valign bottom</td>
+<td>4</td>
+<td>-</td>
+<td>Nobody<br />(anonymous)</td>
+<td style="vertical-align: bottom;">valign bottom</td>
 </tr>
 </tbody>
 </table>
 
 テーブルの中にパイプ文字を入れる場合(Wiki のリンクなど)は、Textile がパイプ文字を解釈しないようにする必要があります。
 
-| 入力 | 出力 |  |  |
-|----|----|----|----|
-| \*<notextile><notextile> | </notextile></notextile>\* | <notextile> | </notextile> |
+| 入力         | 出力     |
+|--------------|----------|
+| **\<notextile\>\|\</notextile\>** | \| |
 
 テーブルの幅を指定する場合は、テーブルの定義の直前に **table{width:100%}.** を置く必要があります。
 
@@ -361,25 +346,24 @@ only the required space</td>
 | \>       | 3   | テキストを右揃えにする |
 | ^        | 3   | テキストを上揃えにする |
 | ~        | 3   | テキストを下揃えにする |
-| .        | 4   | 制御シーケンスの終わり |
+| . | 4   | 制御シーケンスの終わり |
 
 ### 目次
 
-    <code> => left aligned toc
-     => right aligned toc
-    </code>
+    {{toc}} => left aligned toc
+    {{>toc}} => right aligned toc
 
 toc のタグの上と下には空行が必要で、タグの前後にはほかのテキストを置けないことに注意してください。
 
 例:
 
-    <code>
     h1. headLineOne
 
     h2. something
 
+    {{toc}}
+
     h2. something more
-    </code>
 
 ### 脚注
 
@@ -395,49 +379,50 @@ toc のタグの上と下には空行が必要で、タグの前後にはほか�
 
     fn1. Footnote for the first word
 
-    *Note:* Each definition on its own line anywhere within the document. Empty lines between definitions.
+    fn2. Footnote for the second word
 
-    displays:
+**注:** 定義は、文書の中の任意の場所に 1 つずつ別の行に書きます。定義と定義のあいだには空行を入れます。
 
-    This is a first word[1] with a footnote.
+表示:
 
-    This is a second word[2] with a footnote.
+This is a first word<sup>1</sup> with a footnote.
 
-    h2. Macros
+This is a second word<sup>2</sup> with a footnote.
 
-    Redmine includes a macros system that lets you add custom functions to insert dynamic content in formatted text. You can learn about writing your own macros in [RedmineMacros](macros.md). Redmine also includes a few builtin macros:
+<sup>1</sup> Footnote for the first word
 
-    {{macro_list}}
+<sup>2</sup> Footnote for the second word
 
-    h2. Code highlighting
+## マクロ
 
-    Default code highlightment relies on "Rouge":http://rouge.jneen.net/, a syntax highlighting library written in pure Ruby. It supports many commonly used languages such as *c*, *cpp* (c++), *csharp* (c#, cs), *css*, *diff* (patch, udiff), *go* (golang), *groovy*, *html*, *java*, *javascript* (js), *kotlin*, *objective_c* (objc), *perl* (pl), *php*, *python* (py), *r*, *ruby* (rb), *sass*, *scala*, *shell* (bash, zsh, ksh, sh), *sql*, *swift*, *xml* and *yaml* (yml) languages, where the names inside parentheses are aliases. Please refer to [RedmineCodeHighlightingLanguages](code-highlighting-languages.md) for the full list of supported languages.
+Redmine にはマクロの仕組みがあり、書式付きテキストに動的な内容を挿入する独自の機能を追加できます。独自のマクロの書き方は、[マクロ](macros.md)を参照してください。Redmine には、いくつかの組み込みのマクロもあります。
 
-    You can highlight code in your wiki page using this syntax:
+{{macro_list}}
 
-    <pre><code><pre><code class="ruby">
+## コードハイライト
+
+デフォルトのコードハイライトには、Ruby だけで書かれたシンタックスハイライトのライブラリ [Rouge](http://rouge.jneen.net/) を使っています。Rouge は、**c**, **cpp** (c++), **csharp** (c#, cs), **css**, **diff** (patch, udiff), **go** (golang), **groovy**, **html**, **java**, **javascript** (js), **kotlin**, **objective_c** (objc), **perl** (pl), **php**, **python** (py), **r**, **ruby** (rb), **sass**, **scala**, **shell** (bash, zsh, ksh, sh), **sql**, **swift**, **xml**, **yaml** (yml) など、よく使われる多くの言語に対応しています。かっこの中の名前は別名です。対応しているすべての言語は、[コードハイライトの対応言語](code-highlighting-languages.md)を参照してください。
+
+Wikiページのコードは、次の構文でハイライトできます。
+
+    <pre><code class="ruby">
       Place your code here.
-    </code>
-
-\
-</code>
-
-</pre>
+    </code></pre>
 
 例:
 
-    <code class="ruby">
-    # The Greeter class
-    class Greeter
-      def initialize(name)
-        @name = name.capitalize
-      end
+```ruby
+# The Greeter class
+class Greeter
+  def initialize(name)
+    @name = name.capitalize
+  end
 
-      def salute
-        puts "Hello #{@name}!"
-      end
-    end
-    </code>
+  def salute
+    puts "Hello #{@name}!"
+  end
+end
+```
 
 ## CSS によるテキストのスタイル設定
 
@@ -445,24 +430,29 @@ Textile では、CSS を使ってテキストのスタイルを設定できま�
 
     Three primary colors of light are %{color: #f00}red%, %{color: #0f0}green% and %{color: #00f}blue%.
 
-    p{border: solid 1px [#000](https://www.redmine.org/issues/000); padding: 0.5em;}. The quick brown fox jumps over the lazy dog.
+    p{border: solid 1px #000; padding: 0.5em;}. The quick brown fox jumps over the lazy dog.
 
     table{width: 100%}.
     |={width: 30%; background-color: #aaf;}. column 1 |={width: 70%}. column 2 |
 
 表示:
 
-Three primary colors of light are %{color: \#f00}red%, <span style="color: #0f0;">green</span> and %{color: \#00f}blue%.
+Three primary colors of light are <span style="color: #f00">red</span>, <span style="color: #0f0">green</span> and <span style="color: #00f">blue</span>.
 
-<div style="border: solid 1px [#000](https://www.redmine.org/issues/000); padding: 0.5em;;">
+<div style="border: solid 1px #000; padding: 0.5em;;">
 
 The quick brown fox jumps over the lazy dog.
 
 </div>
 
-|          |          |
-|:--------:|:--------:|
-| column 1 | column 2 |
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td style="text-align: center; width: 30%; background-color: #aaf;">column 1</td>
+<td style="text-align: center; width: 70%;">column 2</td>
+</tr>
+</tbody>
+</table>
 
 ### 使用できる CSS のプロパティ
 

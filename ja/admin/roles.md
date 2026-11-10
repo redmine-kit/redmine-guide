@@ -41,13 +41,11 @@ translated_from_version: 34
 </thead>
 <tbody>
 <tr>
-<td><strong><em>プロジェクト</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>プロジェクト</em></strong></td>
 </tr>
 <tr>
 <td>プロジェクトの追加</td>
-<td>管理者でないユーザーが、最上位のプロジェクトを作成できるようにします<br />
-管理者でないユーザーがプロジェクトを作成したときに自動で割り当てるロールを指定できます([「設定」の「プロジェクト」](settings.md#Projects)を参照)</td>
+<td>管理者でないユーザーが、最上位のプロジェクトを作成できるようにします<br />管理者でないユーザーがプロジェクトを作成したときに自動で割り当てるロールを指定できます(<a href="settings.md#Projects">「設定」の「プロジェクト」</a>を参照)</td>
 </tr>
 <tr>
 <td>プロジェクトの編集</td>
@@ -82,8 +80,7 @@ translated_from_version: 34
 <td>自分の非公開のクエリを保存、編集、削除できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>フォーラム</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>フォーラム</em></strong></td>
 </tr>
 <tr>
 <td>メッセージの閲覧</td>
@@ -114,8 +111,7 @@ translated_from_version: 34
 <td>自分のトピックや返信を削除できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>文書</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>文書</em></strong></td>
 </tr>
 <tr>
 <td>文書の追加</td>
@@ -134,8 +130,7 @@ translated_from_version: 34
 <td>文書を閲覧できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>ファイル</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>ファイル</em></strong></td>
 </tr>
 <tr>
 <td>ファイルの管理</td>
@@ -146,8 +141,7 @@ translated_from_version: 34
 <td>ファイルを閲覧できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>チケットトラッキング</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>チケットトラッキング</em></strong></td>
 </tr>
 <tr>
 <td>チケットのカテゴリの管理</td>
@@ -222,8 +216,7 @@ translated_from_version: 34
 <td>チケットのウォッチャーを削除できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>ニュース</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>ニュース</em></strong></td>
 </tr>
 <tr>
 <td>ニュースの閲覧</td>
@@ -238,8 +231,7 @@ translated_from_version: 34
 <td>ニュースにコメントを追加できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>リポジトリ</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>リポジトリ</em></strong></td>
 </tr>
 <tr>
 <td>リポジトリの管理</td>
@@ -255,12 +247,10 @@ translated_from_version: 34
 </tr>
 <tr>
 <td>コミット権限</td>
-<td>Redmine.pm が、プロジェクトのリポジトリへの書き込みのアクセスを許可するのに使います<br />
-[Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl](https://www.redmine.org/projects/redmine/wiki/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl) を参照してください</td>
+<td>Redmine.pm が、プロジェクトのリポジトリへの書き込みのアクセスを許可するのに使います<br /><a href="https://www.redmine.org/projects/redmine/wiki/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl">Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl</a> を参照してください</td>
 </tr>
 <tr>
-<td><strong><em>時間管理</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>時間管理</em></strong></td>
 </tr>
 <tr>
 <td>作業時間の記録</td>
@@ -283,13 +273,11 @@ translated_from_version: 34
 <td>作業分類を追加、編集、削除できるようにします</td>
 </tr>
 <tr>
-<td><strong><em>Wiki</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Wiki</em></strong></td>
 </tr>
 <tr>
 <td>Wikiの管理</td>
-<td>プロジェクトの Wiki を作成または削除できるようにします<br />
-Wiki の削除は<strong>元に戻せない</strong>操作です。すべてのページ、その履歴、すべての添付ファイルが削除されます。</td>
+<td>プロジェクトの Wiki を作成または削除できるようにします<br />Wiki の削除は<strong>元に戻せない</strong>操作です。すべてのページ、その履歴、すべての添付ファイルが削除されます。</td>
 </tr>
 <tr>
 <td>Wikiページ名の変更</td>
@@ -297,8 +285,7 @@ Wiki の削除は<strong>元に戻せない</strong>操作です。すべての�
 </tr>
 <tr>
 <td>Wikiページの削除</td>
-<td>Wiki ページを削除できるようにします<br />
-Wiki ページの削除は<strong>元に戻せない</strong>操作です。ページとその履歴がすべて削除されます。</td>
+<td>Wiki ページを削除できるようにします<br />Wiki ページの削除は<strong>元に戻せない</strong>操作です。ページとその履歴がすべて削除されます。</td>
 </tr>
 <tr>
 <td>Wikiの閲覧</td>

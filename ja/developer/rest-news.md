@@ -113,21 +113,20 @@ POST /projects/\[project_id\]/news.\[format\]
 
 <u>例</u>:
 
-```
-POST /projects/1/news.xml
+    POST /projects/1/news.xml
 
-<code class="xml">
+```xml
 <?xml version="1.0"?>
 <news>
   <title>Example</title>
   <summary>News summary</summary>
   <description>News description</description>
 </news>
-</code>
+```
 
-POST /projects/1/news.json
+    POST /projects/1/news.json
 
-<code class="json">
+```json
 {
   "news": {
     "title": "Example",
@@ -135,7 +134,6 @@ POST /projects/1/news.json
     "description": "News description"
   }
 }
-</code>
 ```
 
 ## ニュースの更新
@@ -153,21 +151,20 @@ PUT /news/\[id\].\[format\]
 
 <u>例</u>:
 
-```
-PUT /news/[id].xml
+    PUT /news/[id].xml
 
-<code class="xml">
+```xml
 <?xml version="1.0"?>
 <news>
   <title>Title changed</title>
   <summary>Summary changed</summary>
   <description>Description changed</description>
 </news>
-</code>
+```
 
-PUT /news/[id].json
+    PUT /news/[id].json
 
-<code class="json">
+```json
 {
   "news": {
     "title": "Title changed",
@@ -175,7 +172,6 @@ PUT /news/[id].json
     "description": "Description changed"
   }
 }
-</code>
 ```
 
 ## ニュースの削除

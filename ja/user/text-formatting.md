@@ -9,7 +9,4 @@ Redmine は、設定(「管理」→「設定」→「テキスト書式」)に�
 
 - [Textile](text-formatting-textile.md)(デフォルト)
 - [Markdown](text-formatting-markdown.md)
-
-<!-- -->
-
 - [コードハイライトの対応言語](code-highlighting-languages.md)

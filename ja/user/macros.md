@@ -37,9 +37,9 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 カスタムマクロは、Redmine のプラグインから次の構文で追加できます。
 
-    <code class="ruby">
-    Redmine::WikiFormatting::Macros.macro(name, options={}, &block)
-    </code>
+```ruby
+Redmine::WikiFormatting::Macros.macro(name, options={}, &block)
+```
 
 オプション:
 
@@ -58,28 +58,28 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 デフォルトでは、マクロを呼び出すと、コンマ区切りの引数の一覧が分割され、配列としてマクロのブロックに渡されます。引数がない場合は、空の配列でマクロが呼び出されます。
 
-    <code class="ruby">
-    macro :my_macro, :desc => 'This is a custom macro' do |obj, args|
-      # args は配列
-      # このマクロはテキストのブロックを受け付けない
-    end
-    </code>
+```ruby
+macro :my_macro, :desc => 'This is a custom macro' do |obj, args|
+  # args は配列
+  # このマクロはテキストのブロックを受け付けない
+end
+```
 
 `:parse_args => false` オプションで、引数の分割を無効にできます。この場合は、引数の文字列全体がマクロに渡されます。
 
-    <code class="ruby">
-    macro :my_macro, :parse_args => false do |obj, args|
-      # args は文字列
-    end
-    </code>
+```ruby
+macro :my_macro, :parse_args => false do |obj, args|
+  # args は文字列
+end
+```
 
 マクロは、3 つ目の引数としてテキストのブロックを受け取ることもできます。
 
-    <code class="ruby">
-    macro :my_macro do |obj, args, text|
-      # このマクロはテキストのブロックを受け付ける
-      # text はマクロに渡されたテキスト全体を表す String
-    end
-    </code>
+```ruby
+macro :my_macro do |obj, args, text|
+  # このマクロはテキストのブロックを受け付ける
+  # text はマクロに渡されたテキスト全体を表す String
+end
+```
 
 独自のマクロを書き始めるときは、組み込みのマクロの定義を参考にしてください: source:/tags/2.1.0/lib/redmine/wiki_formatting/macros.rb#L162

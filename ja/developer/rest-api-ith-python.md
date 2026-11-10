@@ -35,7 +35,7 @@ datetime.datetime(2013, 12, 31, 13, 27, 47)
 <redminelib.resultsets.ResourceSet object with Issue resources>
 
 >>> project.issues[0]
-<redminelib.resources.Issue [#34441](https://www.redmine.org/issues/34441) "Vacation">
+<redminelib.resources.Issue #34441 "Vacation">
 
 >>> dir(project.issues[0])
 ['assigned_to', 'author', 'created_on', 'description', 'done_ratio',
@@ -76,7 +76,6 @@ for issue in project.issues(assigned_to_id=user.id):
     if issue.due_date is not None:
        issue.due_date += relativedelta(weeks=+2)
        issue.save('Giving Eric more time to complete - he was out ill')
-
 ```
 
 ## **PyActiveResource** の例:
@@ -99,7 +98,6 @@ issue = Issue.find(1345)
 # Issue attributes
 
 # Updating an attribute
-
 ```
 
 ## **PyRed** の例: 未定

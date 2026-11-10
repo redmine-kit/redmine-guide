@@ -15,14 +15,68 @@ Ruby が動くプラットフォームであれば、Redmine はほとんどの 
 
 ### Ruby インタープリタと対応データベース
 
-Redmine の各バージョンに必要な Ruby のバージョンと、対応するデータベースは次のとおりです。PostgreSQL から SQLite までの 4 列が、推奨するデータベースです。
+Redmine の各バージョンに必要な Ruby のバージョンと、対応するデータベースは次のとおりです。
 
-| Redmine のバージョン | 対応する Ruby のバージョン[^1] | 使用する Rails のバージョン | PostgreSQL | MySQL | MSSQL | SQLite |
-|----|----|----|----|----|----|----|
-| trunk | Ruby 3.2, 3.3, 3.4, 4.0[^2] | Rails 8.1 | 14 | 8.0 - 8.4[^3] | \>2012 | 3 |
-| 7.0 | Ruby 3.2, 3.3, 3.4, 4.0[^2] | Rails 8.1 | 14 | 8.0 - 8.4[^3] | \>2012 | 3 |
-| 6.1 | Ruby 3.2, 3.3, 3.4 | Rails 7.2 | 14 | 8.0 - 8.4[^3] | \>2012 | 3 |
-| 6.0 | Ruby 3.1, 3.2, 3.3 | Rails 7.2 | 14 | 8.0 - 8.1[^3] | \>2012 | 3 |
+<table>
+<thead>
+<tr>
+<th rowspan="2" style="vertical-align: middle;">Redmine のバージョン</th>
+<th rowspan="2" style="vertical-align: middle;">対応する Ruby のバージョン<sup>1</sup></th>
+<th rowspan="2" style="vertical-align: middle;">使用する Rails のバージョン</th>
+<th colspan="4" style="text-align: center;">推奨するデータベース</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PostgreSQL</strong></td>
+<td><strong>MySQL</strong></td>
+<td><strong>MSSQL</strong></td>
+<td><strong>SQLite</strong></td>
+</tr>
+<tr>
+<td>trunk</td>
+<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+<td>Rails 8.1</td>
+<td>14</td>
+<td>8.0 - 8.4<sup>2</sup></td>
+<td>&gt;2012</td>
+<td>3</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td>Ruby 3.2, 3.3, 3.4, 4.0<sup>1</sup></td>
+<td>Rails 8.1</td>
+<td>14</td>
+<td>8.0 - 8.4<sup>2</sup></td>
+<td>&gt;2012</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>Ruby 3.2, 3.3, 3.4</td>
+<td>Rails 7.2</td>
+<td>14</td>
+<td>8.0 - 8.4<sup>2</sup></td>
+<td>&gt;2012</td>
+<td>3</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td>Ruby 3.1, 3.2, 3.3</td>
+<td>Rails 7.2</td>
+<td>14</td>
+<td>8.0 - 8.1<sup>2</sup></td>
+<td>&gt;2012</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+<sup>1</sup> サポートしている Ruby のバージョンのうち、古いものはサポートが終了している場合があります。各バージョンの現在のメンテナンスの状況は https://www.ruby-lang.org/en/downloads/branches/ を参照してください。
+
+<sup>2</sup> Ruby 4.0.0 から 4.0.3 では、Ruby の実行環境そのものの不具合により、Wiki の表示が大幅に遅くなります(#43737。Ruby 側では bugs.ruby-lang.org の \#21856 で追跡されています)。Ruby 4.0.4 で修正されたため、Redmine 7.0 は Ruby 4.0.4 以降で動かすことを推奨します。
+
+<sup>3</sup> **MySQL** を正しく動かすには、`transaction_isolation` を `READ COMMITTED` に変える必要があります。[MySQL_configuration](mysql-configuration.md) を参照してください。
 
 重要な注意:
 
@@ -80,7 +134,8 @@ CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine;
 
 `SQLCMD` のコマンドラインで作成する場合の基本的な例を示します。
 
-{{collapse(Show SQL,Hide SQL)
+<details>
+<summary>SQL を表示</summary>
 
 ```sql
 USE [master]
@@ -106,8 +161,7 @@ EXEC sp_addrolemember N'db_datawriter', N'REDMINE'
 GO
 ```
 
-\
-}}
+</details>
 
 ### 手順 3 - データベースの接続の設定
 
@@ -115,7 +169,7 @@ GO
 
 MySQL のデータベースの例(デフォルトのポート):
 
-```yaml
+```yml
 production:
   adapter: mysql2
   database: redmine
@@ -128,7 +182,7 @@ production:
 
 サーバーが標準のポート(3306)以外で動いている場合は、次のように設定します。
 
-```yaml
+```yml
 production:
   adapter: mysql2
   database: redmine
@@ -142,7 +196,7 @@ production:
 
 PostgreSQL のデータベースの例(デフォルトのポート):
 
-```yaml
+```yml
 production:
   adapter: postgresql
   database: <your_database_name>
@@ -155,7 +209,7 @@ production:
 
 SQLite のデータベースの例:
 
-```yaml
+```yml
 production:
   adapter: sqlite3
   database: db/redmine.sqlite3
@@ -163,7 +217,7 @@ production:
 
 SQL Server のデータベースの例(デフォルトのホストは `localhost`、デフォルトのポートは `1433`):
 
-```yaml
+```yml
 production:
   adapter: sqlserver
   database: redmine
@@ -175,10 +229,8 @@ production:
 
 Redmine は gem の依存関係を [Bundler](http://gembundler.com/) で管理しています。Redmine に必要な gem は、次のコマンドですべてインストールできます。
 
-```sh
-bundle config set --local without 'development test'
-bundle install
-```
+    bundle config set --local without 'development test'
+    bundle install
 
 #### 任意の依存関係
 
@@ -198,19 +250,15 @@ Redmine 本体が必要としない gem(Puma、fcgi など)を読み込む場合
 
 例:
 
-```ruby
-# Gemfile.local
-gem 'puma'
-```
+    # Gemfile.local
+    gem 'puma'
 
 ### 手順 5 - セッションストアの秘密鍵の生成
 
 この手順では、セッションのデータを保存する Cookie を Rails がエンコードするためのランダムな鍵を生成し、Cookie の改ざんを防ぎます。\
 新しい秘密鍵を生成すると、再起動の後、既存のセッションはすべて無効になります。
 
-```sh
-bundle exec rake generate_secret_token
-```
+    bundle exec rake generate_secret_token
 
 代わりに、この秘密鍵を config/secrets.yml に保存することもできます:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
@@ -221,38 +269,24 @@ http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
 デフォルトでは、Redmine は本番モードでアプリケーションの起動時にアセットを自動で再コンパイルします。この動作は、設定ファイルの `config.assets.redmine_detect_update` で切り替えられます。
 
-自動のコンパイルを無効にしている場合や、生成されたアセット(プラグインやカスタムテーマのアセットを含む)に問題がある場合は、次のコマンドで手動で更新できます。
+自動のコンパイルを無効にしている場合や、生成されたアセット(プラグインやカスタムテーマのアセットを含む)に問題がある場合は、アセットを手動で更新できます。
 
-```sh
-bin/rails assets:precompile RAILS_ENV="production"
-```
+使用するコマンド: `bin/rails assets:precompile RAILS_ENV="production"`
 
-サブ URI にデプロイする場合は、相対 URL のルートを次のように指定します。
+サブ URI にデプロイする場合は、相対 URL のルートを次のように指定します: `bin/rails assets:precompile RAILS_ENV="production" RAILS_RELATIVE_URL_ROOT=/sub-uri`
 
-```sh
-bin/rails assets:precompile RAILS_ENV="production" RAILS_RELATIVE_URL_ROOT=/sub-uri
-```
-
-ブラウザでアセットが見つからない問題が起きる場合は、public/assets ディレクトリを削除してから、プリコンパイルをもう一度実行してください。
-
-```sh
-bin/rails assets:clobber RAILS_ENV="production"
-```
+ブラウザでアセットが見つからない問題が起きる場合は、public/assets ディレクトリを削除してから、プリコンパイルをもう一度実行してください: `bin/rails assets:clobber RAILS_ENV="production"`
 
 ### 手順 7 - データベースのスキーマの作成
 
 アプリケーションのルートディレクトリで次のコマンドを実行し、データベースの構造を作成します。
 
-```sh
-RAILS_ENV=production bundle exec rake db:migrate
-```
+    RAILS_ENV=production bundle exec rake db:migrate
 
 **Windows の場合:**
 
-```sh
-set RAILS_ENV=production
-bundle exec rake db:migrate
-```
+    set RAILS_ENV=production
+    bundle exec rake db:migrate
 
 すべてのマイグレーションを順に実行してテーブルを作成し、権限の一式と、`admin` という名前のアプリケーションの管理者アカウントを作成します。
 
@@ -260,9 +294,7 @@ bundle exec rake db:migrate
 
 次のコマンドを実行し、デフォルトの設定データをデータベースに登録します。
 
-```sh
 RAILS_ENV=production bundle exec rake redmine:load_default_data
-```
 
 読み込むデータの言語を Redmine が尋ねます。コマンドの実行前に環境変数 `REDMINE_LANG` を設定しておくと、タスクはその値を使い、言語を尋ねません。
 
@@ -270,17 +302,13 @@ RAILS_ENV=production bundle exec rake redmine:load_default_data
 
 Unix 系:
 
-```sh
 RAILS_ENV=production REDMINE_LANG=fr bundle exec rake redmine:load_default_data
-```
 
 Windows:
 
-```sh
-set RAILS_ENV=production
-set REDMINE_LANG=fr
-bundle exec rake redmine:load_default_data
-```
+    set RAILS_ENV=production
+    set REDMINE_LANG=fr
+    bundle exec rake redmine:load_default_data
 
 ### 手順 9 - ファイルシステムの権限
 
@@ -295,25 +323,19 @@ bundle exec rake redmine:load_default_data
 
 たとえば、アプリケーションを redmine というユーザーアカウントで実行する場合は、次のようにします。
 
-```sh
-mkdir -p tmp tmp/pdf public/assets
-sudo chown -R redmine:redmine files log tmp public/assets
-sudo chmod -R 755 files log tmp public/assets
-```
+    mkdir -p tmp tmp/pdf public/assets
+    sudo chown -R redmine:redmine files log tmp public/assets
+    sudo chmod -R 755 files log tmp public/assets
 
 注: これらのディレクトリにすでにファイルがある場合(バックアップからファイルを戻した場合など)は、ファイルに実行権限が付いていないようにしてください。
 
-```sh
-sudo find files log tmp public/assets -type f -exec chmod -x {} +
-```
+    sudo find files log tmp public/assets -type f -exec chmod -x {} +
 
 ### 手順 10 - インストールの確認
 
 Web サーバーの Puma を起動して、インストールを確認します。
 
-```sh
-bundle exec rails server -e production
-```
+    bundle exec rails server -e production
 
 ### 手順 11 - アプリケーションへのログイン
 
@@ -349,15 +371,11 @@ Redmine の設定は `config/configuration.yml` というファイルに書き�
 
 コマンド名の上書き:
 
-```yaml
-scm_subversion_command: "svn_replacement.exe"
-```
+scm_subversion_command: “svn_replacement.exe”
 
 絶対パス:
 
-```yaml
-scm_subversion_command: "C:\Program Files\Subversion\bin\svn.exe"
-```
+scm_subversion_command: “C:\Program Files\Subversion\bin\svn.exe”
 
 ### 添付ファイルの保存先の設定
 
@@ -365,13 +383,9 @@ scm_subversion_command: "C:\Program Files\Subversion\bin\svn.exe"
 
 例:
 
-```yaml
 attachments_storage_path: /var/redmine/files
-```
 
-```yaml
 attachments_storage_path: D:/redmine/files
-```
 
 ## ログの設定
 
@@ -409,51 +423,37 @@ Ruby MRI のビルド済みのインストーラーが http://rubyinstaller.org 
 
 つまり、次のような形のコマンドは、
 
-```sh
-RAILS_ENV=production <any commmand>
-```
+    RAILS_ENV=production <any commmand>
 
-```sh
-<any commmand> RAILS_ENV=production
-```
+    <any commmand> RAILS_ENV=production
 
 続けて実行する 2 つのコマンドに書き換えます。
 
-```sh
-set RAILS_ENV=production
-<any commmand>
-```
+    set RAILS_ENV=production
+    <any commmand>
 
 <u>MySQL の gem のインストールの問題:</u>
 
 次のコマンドで mysql の gem を手動でインストールする必要がある場合があります。
 
-```sh
-gem install mysql
-```
+    gem install mysql
 
 また、*libmysql.dll* を ruby/bin ディレクトリにコピーする必要がある場合もあります。\
 どの libmysql.dll でもよいわけではありません。次のものは動くようです: http://instantrails.rubyforge.org/svn/trunk/InstantRails-win/InstantRails/mysql/bin/libmySQL.dll
 
 **Windows 7 以降での重要な注意**\
-Windows 7 以降では、hosts ファイルの `localhost` がコメントアウトされており[^8]、IPv6 がデフォルトです[^9]。mysql2 の gem は IPv6 のアドレスに対応していないため[^10]、接続できず、「`Can't connect to MySQL server on 'localhost' (10061)`」というエラーになります。\
+Windows 7 以降では、hosts ファイルの `localhost` がコメントアウトされており<sup>5</sup>、IPv6 がデフォルトです<sup>6</sup>。mysql2 の gem は IPv6 のアドレスに対応していないため<sup>7</sup>、接続できず、「`Can't connect to MySQL server on 'localhost' (10061)`」というエラーになります。\
 `localhost` に ping を実行すると確認できます。ping の宛先が「::1:」であれば、IPv6 が使われています。
 
 <u>回避策:</u>\
 database.yml の `localhost` を `127.0.0.1` に置き換えます。
 
+<sup>5</sup> http://serverfault.com/questions/4689/windows-7-localhost-name-resolution-is-handled-within-dns-itself-why
+
+<sup>6</sup> http://www.victor-ratajczyk.com/post/2012/02/25/mysql-fails-to-resolve-localhost-disable-ipv6-on-windows.aspx
+
+<sup>7</sup> https://github.com/brianmario/mysql2/issues/279
+
 ## 手動のインストールの代わりに
 
 手動でインストールする代わりに、ダウンロードのページにある[サードパーティの Redmine のバンドル](download.md#Third-party-Redmine-bundles)を使うこともできます。
-
-[^1]: サポートしている Ruby のバージョンのうち、古いものはサポートが終了している場合があります。各バージョンの現在のメンテナンスの状況は https://www.ruby-lang.org/en/downloads/branches/ を参照してください。
-
-[^2]: Ruby 4.0.0 から 4.0.3 では、Ruby の実行環境そのものの不具合により、Wiki の表示が大幅に遅くなります(#43737。Ruby 側では bugs.ruby-lang.org の \[#21856](https://www.redmine.org/issues/21856) で追跡されています)。Ruby 4.0.4 で修正されたため、Redmine 7.0 は Ruby 4.0.4 以降で動かすことを推奨します。
-
-[^3]: *MySQL* を正しく動かすには、`transaction_isolation` を `READ COMMITTED` に変える必要があります。[MySQL_configuration](mysql-configuration.md) を参照してください。
-
-[^8]: http://serverfault.com/questions/4689/windows-7-localhost-name-resolution-is-handled-within-dns-itself-why
-
-[^9]: http://www.victor-ratajczyk.com/post/2012/02/25/mysql-fails-to-resolve-localhost-disable-ipv6-on-windows.aspx
-
-[^10]: https://github.com/brianmario/mysql2/issues/279

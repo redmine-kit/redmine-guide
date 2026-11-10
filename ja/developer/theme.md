@@ -15,15 +15,11 @@ Redmine は基本的なテーマの機能を備えています。テーマでは
 
 例:
 
-```
 themes/my_theme
-```
 
 独自の `application.css` を作成し、`stylesheets` というサブディレクトリに保存します。
 
-```
 themes/my_theme/stylesheets/application.css
-```
 
 いくつかの設定だけを上書きする、独自のスタイルシートの例です。
 
@@ -36,6 +32,7 @@ themes/my_theme/stylesheets/application.css
     background: #507AAA url(../images/logo.png) no-repeat 2px;
     padding-left: 86px;
 }
+
 
 /* move the project menu to the right */
 #main-menu {

@@ -6,7 +6,7 @@ translated_from_version: 32
 # Markdown
 
 ここでは **Markdown** の書式を説明します。**Textile** の書式は、[Textile](text-formatting-textile.md) を参照してください。\
-現在、HTML タグはデフォルトでは使えません。詳しくは、\[#15520](https://www.redmine.org/issues/15520) と \[#20497](https://www.redmine.org/issues/20497) を参照してください。現在の **Markdown** の書式のそのほかの制限については、\[#16373](https://www.redmine.org/issues/16373) と \[#21443](https://www.redmine.org/issues/21443) を参照してください。
+現在、HTML タグはデフォルトでは使えません。詳しくは、[#15520](https://www.redmine.org/issues/15520) と [#20497](https://www.redmine.org/issues/20497) を参照してください。現在の **Markdown** の書式のそのほかの制限については、[#16373](https://www.redmine.org/issues/16373) と [#21443](https://www.redmine.org/issues/21443) を参照してください。
 
 ## リンク
 
@@ -50,7 +50,7 @@ Markdown では使えません。
 
 ### フォントスタイル
 
-    <code>* **bold** __bold__
+    * **bold** __bold__
     * *italic* _italic_
     * ***bold italic*** ___bold italic___
     * <ins>underline</ins>
@@ -61,56 +61,44 @@ Markdown では使えません。
     * normal **bold** _italic_ normal;E=mc<sup>2</sup>
     * normal<strong>bold</strong><em>italic</em>normal;E=mc<sup>2</sup>
     * Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
-    * <notextile><pre>**some lines**      some [link](http://www.redmine.org)
-
-</notextile>
-
-\* \<pre\>\\\\some lines\\\\      some \\link\](http\\//www\\redmine\\org)\</pre\>\
-</code>
-
-</pre>
+    * <notextile><pre>**some lines**      some [link](http://www.redmine.org)</pre></notextile>
+    * <notextile><pre>\*\*some lines\*\*      some \[link](http\://www\.redmine\.org)</pre></notextile>
 
 表示:
 
-\* **bold** **bold**\
-\* *italic* *italic*\
-\* ***bold italic*** ***bold italic***\
-\* <u>underline</u>\
-\* ~~strike-through~~\
-\* Plain <sup>superscript</sup>\
-\* Plain <sub>subscript</sub>\
-\* `inline monospace`\
-\* normal **bold** *italic* normal;E=mc<sup>2</sup>\
-\* normal**bold***italic*normal;E=mc<sup>2</sup>\
-\* Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`\
-\*
+- **bold** **bold**
+- *italic* *italic*
+- ***bold italic*** ***bold italic***
+- <u>underline</u>
+- ~~strike-through~~
+- Plain <sup>superscript</sup>
+- Plain <sub>subscript</sub>
+- `inline monospace`
+- normal **bold** *italic* normal;E=mc<sup>2</sup>
+- normal**bold***italic*normal;E=mc<sup>2</sup>
+- Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
+- `<notextile></notextile>*some lines*      some "link":http://www.redmine.org`
+- `**some lines**      some [link](http://www.redmine.org)`
 
-    <notextile></notextile>*some lines*      some "link":http://www.redmine.org
-
-\
-\*
-
-    **some lines**      some [link](http://www.redmine.org)
-
-**注:** HTML タグ(<strong>, <em>, <ins>, <del>, <sup>, <sub>)を使うには、HTML タグを許可する必要があります。詳しくは、\[#15520](https://www.redmine.org/issues/15520)-16 と \[#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
+**注:** HTML タグ(\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
 具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
 
 ### 色
 
-    <code><notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
+    <notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
     * <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue'ish</span>
     * <span style="background-color:lightgreen">Lightgreen Background</span> <span style="background-color:yellow">Yellow Background</span>
     * <span style="background-color:lightgreen">Lightgreen Background</span><span style="background-color:yellow">Yellow Background</span>
-    </notextile></code>
+    </notextile>
 
 表示:
 
-\* <span style="color:red;">red</span> <span style="color:green;">green</span> <span style="color:yellow;">yellow</span> <span style="color:#82B6E1;">blue’ish</span>\
-\* %{color:red}red%%{color:green}green%%{color:yellow}yellow%<span style="color:#82B6E1;">blue’ish</span>\
-\* <span style="background:lightgreen;">Lightgreen Background</span> <span style="background:yellow;">Yellow Background</span>\
-\* %{background:lightgreen}Lightgreen Background%<span style="background:yellow;">Yellow Background</span>
+- <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue’ish</span>
+- <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue’ish</span>
+- <span style="background:lightgreen">Lightgreen Background</span> <span style="background:yellow">Yellow Background</span>
+- <span style="background:lightgreen">Lightgreen Background</span><span style="background:yellow">Yellow Background</span>
 
-**注:** HTML タグ(<span>)を使うには、HTML タグを許可する必要があります。詳しくは、\[#15520](https://www.redmine.org/issues/15520)-16 と \[#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
+**注:** HTML タグ(\<span\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
 具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
 
 ### インライン画像
@@ -121,17 +109,17 @@ Markdown では使えません。
 
 Wikiページに添付した画像は、ファイル名を使ってインラインで表示できます: **\*\***。
 
-この文書を書いた時点では、Markdown には画像のサイズを指定する構文がありません。サイズの指定が必要な場合は、通常の HTML の <img> タグを使えます。
+この文書を書いた時点では、Markdown には画像のサイズを指定する構文がありません。サイズの指定が必要な場合は、通常の HTML の \<img\> タグを使えます。
 
-- <img style="float:right" src="URL"/>
-- <img style="width:100%" src="attached_image.png"/>
+- \<img style=”float:right” src=”URL”/\>
+- \<img style=”width:100%” src=”attached_image.png”/\>
 
-**注:** HTML タグ(<img>)を使うには、HTML タグを許可する必要があります。詳しくは、\[#15520](https://www.redmine.org/issues/15520)-16 と \[#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
+**注:** HTML タグ(\<img\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
 具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
 
 ### 見出し
 
-    <code># Heading
+    # Heading
 
     ## Subheading
 
@@ -144,7 +132,6 @@ Wikiページに添付した画像は、ファイル名を使ってインライ�
 
     Subheading
     ----------
-    </code>
 
 Redmine はこれらの見出しにそれぞれアンカーを付けるため、「\#Heading」、「\#Subheading」などでリンクできます。
 
@@ -152,7 +139,7 @@ Redmine はこれらの見出しにそれぞれアンカーを付けるため、
 
 Markdown では、段落の配置を指定できません。必要な場合は \<div\> タグを使います。
 
-    <code>left aligned
+    left aligned
     <div style="padding-left:1em;">
     left ident 1em
     </div>
@@ -172,7 +159,7 @@ Markdown では、段落の配置を指定できません。必要な場合は \
 
     <div style="text-align:center;">
     This is centered paragraph.
-    </div></code>
+    </div>
 
 表示:
 
@@ -189,11 +176,7 @@ p)))\>. right ident 3em
 
 This is centered paragraph.
 
-**注:** HTML タグ(
-
-<div>
-
-)を使うには、HTML タグを許可する必要があります。詳しくは、\[#15520](https://www.redmine.org/issues/15520)-16 と \[#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
+**注:** HTML タグ(\<div\>)を使うには、HTML タグを許可する必要があります。詳しくは、[#15520](https://www.redmine.org/issues/15520)-16 と [#15520](https://www.redmine.org/issues/15520)-17 を参照してください。\
 具体的には、[この投稿](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)で説明しているように、Redmine にパッチを当てる必要があります。
 
 ### 水平線
@@ -206,9 +189,7 @@ This is centered paragraph.
 
 ### 整形済みテキスト
 
-     <pre>**Your text won't become bold**
-
-</pre>
+     <pre>**Your text won't become bold**</pre>
 
 表示:
 
@@ -224,9 +205,16 @@ This is centered paragraph.
 
 表示:
 
-\>\> Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.\
-\>\> To go live, all you need to add is a database and a web server.\
-\> Great!
+<blockquote><blockquote>
+
+Rails is a full-stack framework for developing database-backed web applications according to the Model-View-Control pattern.\
+To go live, all you need to add is a database and a web server.
+
+</blockquote>
+
+Great!
+
+</blockquote>
 
 ### 順不同リスト
 
@@ -270,7 +258,7 @@ This is centered paragraph.
 
 タスクリストの項目は、次の common_mark の書式で追加できます。
 
-     * [ ] Task title 
+     * [ ] Task title
 
 ツールバーの「タスクリスト」のアイコンをクリックしても追加できます。
 
@@ -286,38 +274,53 @@ This is centered paragraph.
 
 表示(連続する空白は 1 つにまとめられます):
 
-| UserID (align right) | Name (align left) | Group (align center) |
-|---------------------:|:------------------|:--------------------:|
-|                    2 | John Smith        |                      |
-|                    3 | Dave Lopper       |        A Team        |
-|                    4 | Robert Hill       |        B Team        |
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">UserID (align right)</th>
+<th style="text-align: left;">Name (align left)</th>
+<th style="text-align: center;">Group (align center)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">John Smith</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Dave Lopper</td>
+<th style="text-align: center;">A Team</th>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Robert Hill</td>
+<th style="text-align: center;">B Team</th>
+</tr>
+</tbody>
+</table>
 
 ### 目次
 
-    <code> => left aligned toc
-     => right aligned toc
-    </code>
+    {{toc}} => left aligned toc
+    {{>toc}} => right aligned toc
 
 toc のタグの上と下には空行が必要で、タグの前後にはほかのテキストを置けないことに注意してください。
 
 例:
 
-    <code>h1. headLineOne
+    h1. headLineOne
 
     h2. something
 
+    {{toc}}
+
     h2. something more
-    </code>
 
 ### 脚注
 
-脚注は、参照形式のリンクとほぼ同じように働きます。脚注は、テキストの横に付けるマーカーと、文書の中の任意の場所に 1 行で書く脚注の定義からなります。マーカーの例:
-
-    This is a sentence.[^1]
-
-脚注の定義の例:
-
-    [^1]: This is a footnote.
+脚注は、参照形式のリンクとほぼ同じように働きます。脚注は、テキストの横に付けるマーカーと、文書の中の任意の場所に 1 行で書く脚注の定義からなります。マーカーの例は `This is a sentence.[^1]`、脚注の定義の例は `[^1]: This is a footnote.` です。
 
 ## マクロ
 
@@ -331,24 +334,24 @@ Redmine にはマクロの仕組みがあり、書式付きテキストに動的
 
 Wikiページのコードは、次の構文でハイライトできます。
 
-    <code>``` ruby
+    ``` ruby
     Place your code here.
-    ```</code>
+    ```
 
 例:
 
-    <code class="ruby">
-    # The Greeter class
-    class Greeter
-      def initialize(name)
-        @name = name.capitalize
-      end
+```ruby
+# The Greeter class
+class Greeter
+  def initialize(name)
+    @name = name.capitalize
+  end
 
-      def salute
-        puts "Hello #{@name}!"
-      end
-    end
-    </code>
+  def salute
+    puts "Hello #{@name}!"
+  end
+end
+```
 
 ## 翻訳
 

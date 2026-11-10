@@ -26,7 +26,7 @@ translated_from_version: 29
 
 **プロジェクトを終了するリンクは、それぞれのプロジェクトの[「概要」](../user/project-overview.md)の画面にあります。上のプロジェクトの一覧にはありません。**
 
-詳しくは、機能の \[#3640](https://www.redmine.org/issues/3640) を参照してください。
+詳しくは、機能の [#3640](https://www.redmine.org/issues/3640) を参照してください。
 
 ## プロジェクトのアーカイブ
 

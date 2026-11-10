@@ -84,39 +84,35 @@ PUT /journals/\[id\].\[format\]
 
 <u>例</u>:
 
-```
-PUT /journals/1.xml
+    PUT /journals/1.xml
 
-<code class="xml">
+```xml
 <?xml version="1.0"?>
 <journal>
   <notes>Changed notes</notes>
 </journal>
-</code>
+```
 
-PUT /journals/1.json
+    PUT /journals/1.json
 
-<code class="json">
+```json
 {
   "journal": {
     "notes": "Changed notes"
   }
 }
-</code>
 ```
 
 `private_notes` 属性は、コメントをプライベートにする権限を持つユーザーが更新できます。
 
-```
-PUT /journals/1.json
+    PUT /journals/1.json
 
-<code class="json">
+```json
 {
   "journal": {
     "private_notes": true
   }
 }
-</code>
 ```
 
 <u>レスポンス</u>:
@@ -133,25 +129,23 @@ PUT /journals/\[id\].\[format\]
 
 <u>例</u>:
 
-```
-PUT /journals/1.xml
+    PUT /journals/1.xml
 
-<code class="xml">
+```xml
 <?xml version="1.0"?>
 <journal>
   <notes></notes>
 </journal>
-</code>
+```
 
-PUT /journals/1.json
+    PUT /journals/1.json
 
-<code class="json">
+```json
 {
   "journal": {
     "notes": ""
   }
 }
-</code>
 ```
 
 <u>レスポンス</u>:

@@ -94,24 +94,25 @@ Redmine のモデルのフックはごくわずかです。モデルのコード
 
     次のクラスは上とまったく同じ動作をしますが、短く書ける `render_on` ヘルパーではなく、メソッドを使っています。メソッドの名前で、どのコールバックに登録するかが決まります。
 
-    ```ruby
-    module MyPlugin
-      class Hooks < Redmine::Hook::ViewListener
-        def view_issues_form_details_bottom(context={ })
-          # the controller parameter is part of the current params object
-          # This will render the partial into a string and return it.
-          context[:controller].send(:render_to_string, {
-            :partial => "hooks/my_plugin/view_issues_form_details_bottom",
-            :locals => context
-          })
+```ruby
+module MyPlugin
+  class Hooks < Redmine::Hook::ViewListener
+    def view_issues_form_details_bottom(context={ })
+      # the controller parameter is part of the current params object
+      # This will render the partial into a string and return it.
+      context[:controller].send(:render_to_string, {
+        :partial => "hooks/my_plugin/view_issues_form_details_bottom",
+        :locals => context
+      })
 
-          # Instead of the above statement, you could return any string generated
-          # by your code. That string will be included into the view
-        end
-      end
+      # Instead of the above statement, you could return any string generated
+      # by your code. That string will be included into the view
     end
-    ```
-2.  `init.rb` で、フックのファイルを必ず require します。次のようになります。
+  end
+end
+```
+
+1.  `init.rb` で、フックのファイルを必ず require します。次のようになります。
 
     ```ruby
     require 'redmine'
@@ -124,6 +125,7 @@ Redmine のモデルのフックはごくわずかです。モデルのコード
       [...]
     end
     ```
+
 
 ### コントローラーとモデルのフック
 

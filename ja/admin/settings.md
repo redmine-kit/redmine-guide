@@ -61,14 +61,14 @@ Redmine はこの設定の値を推測し、入力欄の下に例として表示
 
 `config/environments/production.rb` に `config.cache_store = :memory_store` のような設定を追加すると、キャッシュストアを [MemoryStore](http://api.rubyonrails.org/classes/ActiveSupport/Cache/MemoryStore.html) や [MemCacheStore](http://api.rubyonrails.org/classes/ActiveSupport/Cache/MemCacheStore.html) などに変更できます。例:
 
-    <code class="ruby">
-    Rails.application.configure do
-      # Settings specified here will take precedence over those in config/application.rb
+```ruby
+Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb
 
-      config.cache_store = :memory_store
+  config.cache_store = :memory_store
 
-      ...
-    </code>
+  ...
+```
 
 キャッシュストアについて詳しくは、Rails のガイドを参照してください。\
 http://guides.rubyonrails.org/caching_with_rails.html#cache-stores
@@ -119,8 +119,8 @@ Redmine には、[デフォルト](https://www.redmine.org/projects/redmine/wiki
 
 日付の表示方法を選択します。
 
-\* **ユーザーの言語の設定に従う**: ユーザーごとに、その言語で決まっている形式で日付を表示します\
-\* **その他の形式**: 常に指定した形式で日付を表示します
+- **ユーザーの言語の設定に従う**: ユーザーごとに、その言語で決まっている形式で日付を表示します
+- **その他の形式**: 常に指定した形式で日付を表示します
 
 *デフォルト: ユーザーの言語の設定に従う*
 
@@ -128,8 +128,8 @@ Redmine には、[デフォルト](https://www.redmine.org/projects/redmine/wiki
 
 時刻の表示方法を選択します。
 
-\* **ユーザーの言語の設定に従う**: ユーザーごとに、その言語で決まっている形式で時刻を表示します\
-\* **その他の形式**: 常に指定した形式で時刻を表示します
+- **ユーザーの言語の設定に従う**: ユーザーごとに、その言語で決まっている形式で時刻を表示します
+- **その他の形式**: 常に指定した形式で時刻を表示します
 
 *デフォルト: ユーザーの言語の設定に従う*
 
@@ -144,11 +144,11 @@ Redmine には、[デフォルト](https://www.redmine.org/projects/redmine/wiki
 
 ユーザー名の表示方法を選択します。次の組み合わせがあります。
 
-\* *名*\
-\* *名 姓*\
-\* *姓 名*\
-\* *姓, 名*\
-\* *ユーザー名*
+- *名*
+- *名 姓*
+- *姓 名*
+- *姓, 名*
+- *ユーザー名*
 
 ### Gravatarのアイコンを使用する
 
@@ -234,8 +234,8 @@ Gravatar を持っていないユーザーに使う画像です。
 
 有効期間の最大値: セッションの最大の有効期間を、管理者が設定します。\
 無操作タイムアウト: 何時間操作がないとセッションがタイムアウトするかを、管理者が設定します。\
-%{color:red}警告 1%: これらの設定を変更すると、現在のセッション(自分のセッションを含む)が期限切れになることがあります。\
-%{color:red}警告 2%: Redmine は、セッションの管理に Rails の cookiestore を使います。セッションの有効期間の最大値を設定することを強くおすすめします。設定しないと、攻撃者がセッションの Cookie を盗んで再利用できる可能性が理論上あります。
+<span style="color:red">警告 1</span>: これらの設定を変更すると、現在のセッション(自分のセッションを含む)が期限切れになることがあります。\
+<span style="color:red">警告 2</span>: Redmine は、セッションの管理に Rails の cookiestore を使います。セッションの有効期間の最大値を設定することを強くおすすめします。設定しないと、攻撃者がセッションの Cookie を盗んで再利用できる可能性が理論上あります。
 
 ## API
 
@@ -501,29 +501,29 @@ This commit refs \#1, \#2 and fixes \#3
 
 チケット 1234 に N 時間の作業をしたことを記録する、有効なコミットメッセージの例です。
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @2
+    Implement feature #1234 @2
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @2h
+    Implement feature #1234 @2h
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @2hours
+    Implement feature #1234 @2hours
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @15m
+    Implement feature #1234 @15m
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @15min
+    Implement feature #1234 @15min
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3h15
+    Implement feature #1234 @3h15
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3h15m
+    Implement feature #1234 @3h15m
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3:15
+    Implement feature #1234 @3:15
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3.25
+    Implement feature #1234 @3.25
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3.25h
+    Implement feature #1234 @3.25h
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3,25
+    Implement feature #1234 @3,25
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3,25h
+    Implement feature #1234 @3,25h
 
 ### 作業時間の作業分類
 

@@ -9,14 +9,40 @@ translated_from_version: 251
 
 Redmine のリリースは `.tar.gz` と `.zip` の形式で入手できます。
 
-|  |  |  |  |
-|----|----|----|----|
-| redmine-6.0.12 | 2026-11-01 | [redmine-6.0.12.tar.gz](https://www.redmine.org/releases/redmine-6.0.12.tar.gz) | `9df2d08cff4264a2f49b380666018ac388cc17cddd75594c58cf55833f6d021b` |
-|  |  | [redmine-6.0.12.zip](https://www.redmine.org/releases/redmine-6.0.12.zip) | `383eb661a6a91f9217d319e57e8fc8c64f7cfba5adf3929c398c03cc8a0bbe66` |
-| redmine-6.1.6 | 2026-11-01 | [redmine-6.1.6.tar.gz](https://www.redmine.org/releases/redmine-6.1.6.tar.gz) | `a09f0541e3ef5579de8be1c21fc9cabbd7625d77ec4dd2ddddc39ad9c2c5a483` |
-|  |  | [redmine-6.1.6.zip](https://www.redmine.org/releases/redmine-6.1.6.zip) | `9fb1c4caf380db9b84bd9421f0964a58ad43d218e60841b0d8e263a436ceb792` |
-| redmine-7.0.3 | 2026-11-01 | [redmine-7.0.3.tar.gz](https://www.redmine.org/releases/redmine-7.0.3.tar.gz) | `0b6b24c033341a9d7ad52cfcfa7b1bc913c191c7a604f740d863f16249dd3c15` |
-|  |  | [redmine-7.0.3.zip](https://www.redmine.org/releases/redmine-7.0.3.zip) | `ee82a3c405aba179f1b6e27ce8a3b8ae18280778e539493e45c8de3b73229529` |
+<table>
+<tbody>
+<tr>
+<td rowspan="2">redmine-6.0.12</td>
+<td rowspan="2">2026-11-01</td>
+<td><a href="https://www.redmine.org/releases/redmine-6.0.12.tar.gz">redmine-6.0.12.tar.gz</a></td>
+<td><code>9df2d08cff4264a2f49b380666018ac388cc17cddd75594c58cf55833f6d021b</code></td>
+</tr>
+<tr>
+<td><a href="https://www.redmine.org/releases/redmine-6.0.12.zip">redmine-6.0.12.zip</a></td>
+<td><code>383eb661a6a91f9217d319e57e8fc8c64f7cfba5adf3929c398c03cc8a0bbe66</code></td>
+</tr>
+<tr>
+<td rowspan="2">redmine-6.1.6</td>
+<td rowspan="2">2026-11-01</td>
+<td><a href="https://www.redmine.org/releases/redmine-6.1.6.tar.gz">redmine-6.1.6.tar.gz</a></td>
+<td><code>a09f0541e3ef5579de8be1c21fc9cabbd7625d77ec4dd2ddddc39ad9c2c5a483</code></td>
+</tr>
+<tr>
+<td><a href="https://www.redmine.org/releases/redmine-6.1.6.zip">redmine-6.1.6.zip</a></td>
+<td><code>9fb1c4caf380db9b84bd9421f0964a58ad43d218e60841b0d8e263a436ceb792</code></td>
+</tr>
+<tr>
+<td rowspan="2">redmine-7.0.3</td>
+<td rowspan="2">2026-11-01</td>
+<td><a href="https://www.redmine.org/releases/redmine-7.0.3.tar.gz">redmine-7.0.3.tar.gz</a></td>
+<td><code>0b6b24c033341a9d7ad52cfcfa7b1bc913c191c7a604f740d863f16249dd3c15</code></td>
+</tr>
+<tr>
+<td><a href="https://www.redmine.org/releases/redmine-7.0.3.zip">redmine-7.0.3.zip</a></td>
+<td><code>ee82a3c405aba179f1b6e27ce8a3b8ae18280778e539493e45c8de3b73229529</code></td>
+</tr>
+</tbody>
+</table>
 
 変更の詳細は [Changelog](https://www.redmine.org/projects/redmine/wiki/Changelog)、インストールの手順は [RedmineInstall](install.md)、バージョンアップの手順は [RedmineUpgrade](upgrade.md) を参照してください。
 
@@ -68,9 +94,7 @@ Redmine のソースコードは Subversion のリポジトリからチェック
 
 **Subversion**
 
-```sh
-svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
-```
+    svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
 
 `redmine-7.0` というディレクトリが作成されます。このディレクトリで `svn update` を実行すると、Redmine を更新できます。
 
@@ -80,9 +104,7 @@ svn co https://svn.redmine.org/redmine/branches/7.0-stable redmine-7.0
 
 **Subversion**
 
-```sh
-svn co https://svn.redmine.org/redmine/trunk redmine
-```
+    svn co https://svn.redmine.org/redmine/trunk redmine
 
 ## サードパーティの Redmine のバンドル
 

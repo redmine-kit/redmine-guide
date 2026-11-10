@@ -40,10 +40,8 @@ Redmine のバックアップの方法は、[Redmine のバックアップと復
 
 6\. 次のコマンドで、必要な gem をインストールします。
 
-```sh
-bundle config set --local without 'development test'
-bundle install
-```
+    bundle config set --local without 'development test'
+    bundle install
 
 インストールされるのは、データベースの設定ファイルで指定したアダプターに必要な gem だけです(たとえば config/database.yml で「mysql2」アダプターを使う場合は、mysql2 の gem だけがインストールされます)。別のデータベースのアダプターを使うように config/database.yml を変更したら、`bundle install` をもう一度実行してください。
 
@@ -57,9 +55,7 @@ Redmine 2.x 以前からバージョンアップする場合は、次のファ�
 
 続けて、アプリケーションのディレクトリで次のコマンドを実行し、新しい秘密鍵を生成します。
 
-```sh
 bundle exec rake generate_secret_token
-```
 
 代わりに、この秘密鍵を config/secrets.yml に保存することもできます:\
 http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
@@ -72,37 +68,27 @@ http://guides.rubyonrails.org/upgrading_ruby_on_rails.html#config-secrets-yml
 
 1\. Redmine のルートディレクトリに移動し、次のコマンドを実行します。
 
-```sh
-svn update
-```
+    svn update
 
 2\. 次のコマンドで、必要な gem をインストールします。
 
-```sh
 bundle update
-```
 
 ## 手順 4 - データベースの更新
 
 この手順では、データベースの内容が変わる可能性があります。新しい Redmine のディレクトリに移動し、データベースをマイグレーションします。
 
-```sh
-bundle exec rake db:migrate RAILS_ENV=production
-```
+    bundle exec rake db:migrate RAILS_ENV=production
 
 プラグインをインストールしている場合は、プラグインのデータベースのマイグレーションも実行します。
 
-```sh
-bundle exec rake redmine:plugins:migrate RAILS_ENV=production
-```
+    bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
 ## 手順 5 - 後片付け
 
 1\. キャッシュを消去します。
 
-```sh
 bundle exec rake tmp:cache:clear RAILS_ENV=production
-```
 
 2\. アプリケーションサーバー(puma、thin、passenger など)を再起動します。
 
@@ -120,9 +106,7 @@ reposman.rb にいくつかの新機能が追加されました。問題が起�
 
 バージョン 2.0.0 以降は、`session_store.rb` があってはいけません。代わりに、次のコマンドで `secret_token.rb` を生成します。
 
-```sh
 bundle exec rake generate_secret_token
-```
 
 *注: Redmine のコードのリポジトリには config/initializers/secret_token.rb はありません。このファイルは上の rake コマンドで作成されます。*
 
@@ -130,7 +114,7 @@ bundle exec rake generate_secret_token
 
 次の情報が Redmine のバージョンアップに役立つかもしれません。
 
-- Redmine 1.x から SQLite でバージョンアップした後に、Wiki の履歴の表示でエラーが起きる: \[#12501](https://www.redmine.org/issues/12501) を参照
+- Redmine 1.x から SQLite でバージョンアップした後に、Wiki の履歴の表示でエラーが起きる: [#12501](https://www.redmine.org/issues/12501) を参照
 - [mod_fcgid for Apache2](http://httpd.apache.org/mod_fcgid/) で、Apache 2 で Rails を動かせました
 - [Running Redmine on Apache](http://www.redmine.org/wiki/redmine/HowTo_configure_Apache_to_run_Redmine)
 - [Notes about our 0.8.6 to 0.9.3 upgrade issues and how to resolve them](http://web.archive.org/web/20111214022108/http://www.cybersprocket.com/2010/project-management/upgrading-redmine-from-8-6-to-9-3/) —cybersprocket (2010-04-25)

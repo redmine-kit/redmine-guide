@@ -36,41 +36,40 @@ GET /issues.\[format\]
 
 <u>例</u>:
 
-```
-GET /issues.xml
-GET /issues.xml?issue_id=1
-GET /issues.xml?issue_id=1,2
-GET /issues.xml?project_id=2
-GET /issues.xml?project_id=2&tracker_id=1
-GET /issues.xml?assigned_to_id=6
-GET /issues.xml?assigned_to_id=me
-GET /issues.xml?status_id=closed
-GET /issues.xml?status_id=*
-GET /issues.xml?cf_1=abcdef
-GET /issues.xml?sort=category:desc,updated_on
+    GET /issues.xml
+    GET /issues.xml?issue_id=1
+    GET /issues.xml?issue_id=1,2
+    GET /issues.xml?project_id=2
+    GET /issues.xml?project_id=2&tracker_id=1
+    GET /issues.xml?assigned_to_id=6
+    GET /issues.xml?assigned_to_id=me
+    GET /issues.xml?status_id=closed
+    GET /issues.xml?status_id=*
+    GET /issues.xml?cf_1=abcdef
+    GET /issues.xml?sort=category:desc,updated_on
 
-Paging example:
-GET /issues.xml?offset=0&limit=100
-GET /issues.xml?offset=100&limit=100
 
-To fetch issues for a date range (uncrypted filter is "><2012-03-01|2012-03-07") :
-GET /issues.xml?created_on=%3E%3C2012-03-01|2012-03-07
+    Paging example:
+    GET /issues.xml?offset=0&limit=100
+    GET /issues.xml?offset=100&limit=100
 
-To fetch issues created after a certain date (uncrypted filter is ">=2012-03-01") :
-GET /issues.xml?created_on=%3E%3D2012-03-01
+    To fetch issues for a date range (uncrypted filter is "><2012-03-01|2012-03-07") :
+    GET /issues.xml?created_on=%3E%3C2012-03-01|2012-03-07
 
-Or before a certain date (uncrypted filter is "<= 2012-03-07") :
-GET /issues.xml?created_on=%3C%3D2012-03-07
+    To fetch issues created after a certain date (uncrypted filter is ">=2012-03-01") :
+    GET /issues.xml?created_on=%3E%3D2012-03-01
 
-To fetch issues created after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
-GET /issues.xml?created_on=%3E%3D2014-01-02T08:12:32Z
+    Or before a certain date (uncrypted filter is "<= 2012-03-07") :
+    GET /issues.xml?created_on=%3C%3D2012-03-07
 
-To fetch issues updated after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
-GET /issues.xml?updated_on=%3E%3D2014-01-02T08:12:32Z
+    To fetch issues created after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
+    GET /issues.xml?created_on=%3E%3D2014-01-02T08:12:32Z
 
-To fetch issues for which custom field 4 contains the substring "foo" :
-GET /issues.xml?cf_4=~foo
-```
+    To fetch issues updated after a certain timestamp (uncrypted filter is ">=2014-01-02T08:12:32Z") :
+    GET /issues.xml?updated_on=%3E%3D2014-01-02T08:12:32Z
+
+    To fetch issues for which custom field 4 contains the substring "foo" :
+    GET /issues.xml?cf_4=~foo
 
 <u>レスポンス</u>:
 
@@ -127,11 +126,11 @@ GET /issues/[id].[format]
   - `changesets`
   - `journals` - 詳しくは [Issue journals](https://www.redmine.org/projects/redmine/wiki/Rest_IssueJournals) を参照してください。
   - `watchers` - 2.3.0 から
-  - `allowed_statuses` - 5.0.x から。次のことに基づいて、変更できるステータス(チケットの編集フォームと同じ値)を返します。\
-    チケットの現在のトラッカー、チケットの現在のステータス、メンバーのロール(定義されたワークフロー)\
-    未完了の子チケットがあるかどうか\
-    ブロックしている未完了のチケットがあるかどうか\
-    完了した親チケットがあるかどうか
+  - `allowed_statuses` - 5.0.x から。次のことに基づいて、変更できるステータス(チケットの編集フォームと同じ値)を返します:
+    - チケットの現在のトラッカー、チケットの現在のステータス、メンバーのロール(定義されたワークフロー)
+    - 未完了の子チケットがあるかどうか
+    - ブロックしている未完了のチケットがあるかどうか
+    - 完了した親チケットがあるかどうか
   - `reactions` - 7.1.0 から。チケットにリアクションしたユーザーを返します。`journals` と一緒に指定すると、各履歴へのリアクションも返します。返すのは、リクエストしたユーザーから見えるユーザーだけです。リアクションの機能が無効の場合は何も返しません。
 
 <u>例</u>:
@@ -183,21 +182,20 @@ POST /issues.\[format\]
 
 <u>例</u>:
 
-```
-POST /issues.xml
+    POST /issues.xml
 
-<code class="xml">
+```xml
 <?xml version="1.0"?>
 <issue>
   <project_id>1</project_id>
   <subject>Example</subject>
   <priority_id>4</priority_id>
 </issue>
-</code>
+```
 
-POST /issues.json
+    POST /issues.json
 
-<code class="json">
+```json
 {
   "issue": {
     "project_id": 1,
@@ -205,7 +203,6 @@ POST /issues.json
     "priority_id": 4
   }
 }
-</code>
 ```
 
 ## チケットの更新
@@ -227,20 +224,19 @@ PUT /issues/\[id\].\[format\]
 
 <u>例</u>:
 
-```
-PUT /issues/[id].xml
+    PUT /issues/[id].xml
 
-<code class="xml">
+```xml
 <?xml version="1.0"?>
 <issue>
   <subject>Subject changed</subject>
   <notes>The subject was changed</notes>
 </issue>
-</code>
+```
 
-PUT /issues/[id].json
+    PUT /issues/[id].json
 
-<code class="json">
+```json
 {
   "issue": {
     "subject": "Subject changed",

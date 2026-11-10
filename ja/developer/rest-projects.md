@@ -120,19 +120,20 @@ POST /projects.xml
 
 ```
 POST /projects.xml
+```
 
-<code class="xml">
+```xml
 <project>
   <name>test project</name>
   <identifier>test</identifier>
   <enabled_module_names>time_tracking</enabled_module_names>
   <enabled_module_names>issue_tracking</enabled_module_names>
 </project>
-</code>
+```
 
-POST /projects.json
+    POST /projects.json
 
-<code class="json">
+```json
 {
    "project":{
       "name":"Example name",
@@ -156,7 +157,6 @@ POST /projects.json
       }
    }
 }
-</code>
 ```
 
 <u>レスポンス</u>:
@@ -191,4 +191,4 @@ DELETE /projects/\[id\].xml
 ## 制限:
 
 Redmine 1.0.1-2(Debian stable)では、POST リクエストは API キーでは動きませんが、ログインID/パスワードの認証では動きます\
-\[#12104](https://www.redmine.org/issues/12104)
+[#12104](https://www.redmine.org/issues/12104)

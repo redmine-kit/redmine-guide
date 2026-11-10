@@ -69,13 +69,7 @@ LDAP の属性の名前は、**大文字と小文字を区別**します。
 
 ### 動的なバインドのアカウント
 
-上の設定では、Redmine が事前の認証に使う専用のアカウントが、ディレクトリサーバーに必要です。アカウントの欄でキーワード **\$login** を使うと、ログインしようとしているユーザーのログイン ID に置き換えられます。この場合、パスワードは空のままにできます。例:
-
-    Account: $login@COMPANY.DOMAIN.NAME
-
-または
-
-    Account: company\$login
+上の設定では、Redmine が事前の認証に使う専用のアカウントが、ディレクトリサーバーに必要です。アカウントの欄でキーワード **\$login** を使うと、ログインしようとしているユーザーのログイン ID に置き換えられます。この場合、パスワードは空のままにできます。例: `Account: $login@COMPANY.DOMAIN.NAME` または `Account: company\$login`
 
 ### ベースDN の別の例
 
@@ -97,65 +91,101 @@ LDAP の属性の名前は、**大文字と小文字を区別**します。
 
 1.1. 次のファイルを作成します。
 
-\>vim ~/memberof_add.ldif
+<blockquote>
+
+vim ~/memberof_add.ldif
+
+</blockquote>
 
 内容は次のとおりです。
 
-\>dn: cn=module,cn=config\
-\>objectClass: olcModuleList\
-\>cn: module\
-\>olcModulePath: /usr/lib/ldap\
-\>olcModuleLoad: memberof
+<blockquote>
+
+dn: cn=module,cn=config\
+objectClass: olcModuleList\
+cn: module\
+olcModulePath: /usr/lib/ldap\
+olcModuleLoad: memberof
+
+</blockquote>
 
 1.2. 次のファイルを作成します。
 
-\>vim ~/memberof_config.ldif
+<blockquote>
+
+vim ~/memberof_config.ldif
+
+</blockquote>
 
 内容は次のとおりです。
 
-\>dn: olcOverlay=memberof,olcDatabase={1}hdb,cn=config\
-\>objectClass: olcMemberOf\
-\>objectClass: olcOverlayConfig\
-\>objectClass: olcConfig\
-\>objectClass: top\
-\>olcOverlay: memberof\
-\>olcMemberOfDangling: ignore\
-\>olcMemberOfRefInt: TRUE\
-\>olcMemberOfGroupOC: groupOfNames\
-\>olcMemberOfMemberAD: member\
-\>olcMemberOfMemberOfAD: memberOf
+<blockquote>
+
+dn: olcOverlay=memberof,olcDatabase={1}hdb,cn=config\
+objectClass: olcMemberOf\
+objectClass: olcOverlayConfig\
+objectClass: olcConfig\
+objectClass: top\
+olcOverlay: memberof\
+olcMemberOfDangling: ignore\
+olcMemberOfRefInt: TRUE\
+olcMemberOfGroupOC: groupOfNames\
+olcMemberOfMemberAD: member\
+olcMemberOfMemberOfAD: memberOf
+
+</blockquote>
 
 1.3. これらを読み込みます。方法は OpenLDAP の設定によって異なるため、いくつかの方法を示します。
 
-\>sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_add.ldif\
-\>sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_config.ldif
+<blockquote>
+
+sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_add.ldif\
+sudo ldapadd -c -Y EXTERNAL -H ldapi:/// -f memberof_config.ldif
+
+</blockquote>
 
 または
 
-\>ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_add.ldif\
-\>ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_config.ldif
+<blockquote>
+
+ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_add.ldif\
+ldapadd -D cn=admin,cn=config -w “password” -H ldapi:/// -f memberof_config.ldif
+
+</blockquote>
 
 実行時に動的に設定するエンジン(slapd-config)を使っているときは、再起動は必要ありません。
 
 1.4. (任意)テストします。
 
-\>ldapsearch -D cn=admin,dc=example,dc=com -x -W -b ‘dc=example,dc=com’ -H ‘ldap://127.0.0.1:389/’ ‘(&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))’
+<blockquote>
+
+ldapsearch -D cn=admin,dc=example,dc=com -x -W -b ‘dc=example,dc=com’ -H ‘ldap://127.0.0.1:389/’ ‘(&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))’
+
+</blockquote>
 
 2\. (OpenLDAP のサーバー)グループを作成します。この例では、ユーザーは「ldap_user_1」、グループは「ldapredmine」です。
 
-\>dn: cn=ldapredmine,ou=groups,dc=example,dc=com\
-\>cn: ldapredmine\
-\>description: Staff members allowed to login to redmine ticketing system\
-\>member: cn=ldap_user_1,ou=people,dc=example,dc=com\
-\>objectclass: groupOfNames\
-\>objectclass: top
+<blockquote>
+
+dn: cn=ldapredmine,ou=groups,dc=example,dc=com\
+cn: ldapredmine\
+description: Staff members allowed to login to redmine ticketing system\
+member: cn=ldap_user_1,ou=people,dc=example,dc=com\
+objectclass: groupOfNames\
+objectclass: top
+
+</blockquote>
 
 「dn」と「cn」は、DIT の構造に合わせて調整してください。
 
 3\. (Redmine)LDAP の認証方式を編集します。この例では、「ldap_user_1」は objectclass が「posixAccount」です。
 
-\>Base DN: dc=example,dc=com\
-\>Filter: (&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))
+<blockquote>
+
+Base DN: dc=example,dc=com\
+Filter: (&(objectClass=posixAccount)(memberOf=cn=ldapredmine,ou=groups,dc=example,dc=com))
+
+</blockquote>
 
 ## トラブルシューティング
 
@@ -180,7 +210,6 @@ source:trunk/vendor/plugins/ruby-net-ldap-0.0.4/lib/net/ldap.rb の次のコメ�
       # As described under #bind, most LDAP servers require that you supply a complete DN
       # as a binding-credential, along with an authenticator such as a password.
 
-\
 そのため、ユーザー名が MyDomain\MyUserName や MyUserName@MyDomain.com のユーザーは、Redmine のログイン ID として MyUserName だけを入力すればよい場合があります。
 
 ### LDAP の認証が遅い
@@ -193,8 +222,8 @@ OpenDS のサーバーを使っているときは、指定したログイン ID 
 
 次のような、全体の ACI を追加します。
 
-    ./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll 
-    --add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\ 
+    ./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll
+    --add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\
     \"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
 
 注: コマンドは 1 行で入力し、エスケープは示したとおりに正確に使ってください(「acl」の後の \\ は、空白を表す「\\ 」のつもりです)。
@@ -248,7 +277,7 @@ Redmine では、上の資格情報を(\<\> を除いて)使います。LDAP の
       LDAPS    = no (yes/checked is ok too with Port set to 636)
       Account  = username@domain.tld
       Password = <username_pass>
-      Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)   
+      Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)
 
     On-the-fly user creation = yes
     Attributes
@@ -265,7 +294,7 @@ Redmine では、上の資格情報を(\<\> を除いて)使います。LDAP の
       LDAPS    = no
       Account  = < Admins DN > (cn=admin,dc=domain,dc=tld)
       Password = < Admins Pass >
-      Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)   
+      Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)
 
     On-the-fly user creation = yes
     Attributes

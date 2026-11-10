@@ -56,6 +56,7 @@ else
   puts issue.errors.full_messages
 end
 
+
 # Updating an issue
 issue = Issue.find(1)
 issue.subject = 'REST API'
@@ -70,7 +71,7 @@ issue = Issue.find(1)
 
 ## Ruby だけで使う(Ruby の標準機能のみ)
 
-`net/http` の PUT リクエストで、チケット ![#9599](https://www.redmine.org/issues/9599) のステータスを、内部の status_id 1 にする例です。
+`net/http` の PUT リクエストで、チケット #9599 のステータスを、内部の status_id 1 にする例です。
 
 ```ruby
 require 'net/https'
@@ -102,6 +103,6 @@ def update_issue_status issue_id, new_status_id, change_note
   return response
 end
 
-# Set Status of issue [#9599](https://www.redmine.org/issues/9599) to internal status_id = 1
+# Set Status of issue #9599 to internal status_id = 1
 response = update_issue_status 9599, 1, "Changed Issue Status via REST-API"
 ```

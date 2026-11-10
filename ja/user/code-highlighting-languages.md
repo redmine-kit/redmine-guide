@@ -227,7 +227,7 @@ Redmine 4.0.0 から、デフォルトのコードハイライトには [Rouge](
 | `viml` | VimL, the scripting language for the Vim editor (vim.org) \[aliases: vim,vimscript,ex\] |
 | `vue` | Vue.js single-file components \[aliases: vuejs\] |
 | `wollok` | Wollok lang |
-| `xml` | <desc for="this-lexer">XML</desc> |
+| `xml` | \<desc for=”this-lexer”\>XML\</desc\> |
 | `xojo` | Xojo \[aliases: realbasic\] |
 | `xpath` | XML Path Language (XPath) 3.1 |
 | `xquery` | XQuery 3.1: An XML Query Language |
@@ -235,10 +235,11 @@ Redmine 4.0.0 から、デフォルトのコードハイライトには [Rouge](
 | `yang` | Lexer for the YANG 1.1 modeling language (RFC7950) |
 | `zig` | The Zig programming language (ziglang.org) \[aliases: zir\] |
 
-{{collapse(Note for the wiki maintainers)\
+<details>
+<summary>Wiki のメンテナー向けの注記</summary>
+
 上の表は、次のコマンドを実行して生成できます。
 
     bundle exec rougify list | ruby -nle 'if $_ =~ /^([a-z0-9_-]+): (.+)/ ; puts "| @#{$1}@ | #{$2} |"; end'
 
-\
-}}
+</details>

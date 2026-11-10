@@ -29,7 +29,7 @@ Redmine 2.3.x の時点で使えるモジュールは、boards、calendar、docu
 
 Redmine は、アプリケーションの設定値を `config/configuration.yml` というファイルに保存しています。プラグインからこれらの設定値を取得するために、Redmine は `Redmine::Configuration` のクラスメソッドとして、ゲッターメソッド `[]` を用意しています。
 
-例[^1]:
+例<sup>1</sup>:
 
 次の設定があるとします。
 
@@ -48,6 +48,8 @@ email_delivery:
 Redmine::Configuration['email_delivery']['smtp_settings'][:address]
 ```
 
+<sup>1</sup> 出典: message#59809
+
 ## Redmine の設定値を取得する
 
 Redmine は、アプリケーションの設定値をデータベースに保存しています。プラグインの設定もここに含まれます。プラグインからこれらの設定値を取得・設定できるように、Redmine は `Setting` モデルの設定ごとに、`Setting.some_setting_name` と `Setting.some_setting_name = "some value"` という形のゲッターメソッドとセッターメソッドを自動で用意しています。
@@ -59,11 +61,13 @@ Redmine は、アプリケーションの設定値をデータベースに保存
   ```ruby
   Setting.welcome_text
   ```
+
 - [プラグインのチュートリアル](plugin-tutorial.md)で説明している Polls プラグインが「提供する」設定「notification_default」の値は、次のように呼び出して取得します。
 
   ```ruby
   Setting.plugin_polls['notification_default']
   ```
+
 
 プラグインから設定値を手動で変更(設定)することはお勧めしません。代わりに、用意されている画面で設定してください。
 
@@ -73,9 +77,10 @@ Redmine は、アプリケーションの設定値をデータベースに保存
 
 これは `requires_redmine` メソッドで実現できます(source:/trunk/lib/redmine/plugin.rb@19983#L227 を参照)。このメソッドを使うと、特定のバージョンの Redmine を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
 
-注: `requires_redmine` には、*ブランチの接尾辞*(`stable`/`devel`)の付いた Redmine のバージョン番号を渡さないでください。対応していません。これについての議論は \[#35345](https://www.redmine.org/issues/35345) を参照してください。
+注: `requires_redmine` には、*ブランチの接尾辞*(`stable`/`devel`)の付いた Redmine のバージョン番号を渡さないでください。対応していません。これについての議論は [#35345](https://www.redmine.org/issues/35345) を参照してください。
 
-{{collapse(View usage examples for requires_redmine method…)
+<details>
+<summary>requires_redmine メソッドの使用例を表示...</summary>
 
 ```ruby
 # Requires Redmine 0.7.3 or higher
@@ -95,8 +100,7 @@ requires_redmine :version => '0.7.3'..'0.9.1'     # >= 0.7.3 and <= 0.9.1
 requires_redmine :version => '0.7'..'0.9'         # >= 0.7.x and <= 0.9.x
 ```
 
-\
-}}
+</details>
 
 ## 特定のバージョンの Redmine プラグインを必須にする
 
@@ -104,7 +108,8 @@ requires_redmine :version => '0.7'..'0.9'         # >= 0.7.x and <= 0.9.x
 
 これは `requires_redmine_plugin` メソッドで実現できます(source:/trunk/lib/redmine/plugin.rb@19983#L274 を参照)。このメソッドを使うと、特定の Redmine プラグイン(の特定のバージョン)を必要とするプラグインを、簡単かつ確実に作成できます。バージョンの要件を満たさない場合は、対応していないバージョンであることをメッセージで示して Redmine を停止します。
 
-{{collapse(View usage examples for requires_redmine_plugin method…)
+<details>
+<summary>requires_redmine_plugin メソッドの使用例を表示...</summary>
 
 ```ruby
 # Requires a plugin named :foo version 0.7.3 or higher
@@ -116,7 +121,4 @@ requires_redmine_plugin :foo, :version => '0.7.3'              # 0.7.3 only
 requires_redmine_plugin :foo, :version => ['0.7.3', '0.8.0']   # 0.7.3 or 0.8.0
 ```
 
-\
-}}
-
-[^1]: 出典: message#59809
+</details>

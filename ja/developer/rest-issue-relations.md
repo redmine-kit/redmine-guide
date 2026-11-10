@@ -88,27 +88,25 @@ GET /issues/8470/relations.json
 
 <u>例</u>:
 
-```
-POST /issues/83/relations.xml
+    POST /issues/83/relations.xml
 
-<code class="xml">
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <relation>
   <issue_to_id>82</issue_to_id>
   <relation_type>relates</relation_type>
 </relation>
-</code>
+```
 
-POST /issues/83/relations.json
+    POST /issues/83/relations.json
 
-<code class="json">
+```json
 {
   "relation": {
     "issue_to_id": 82,
     "relation_type": "relates"
   }
 }
-</code>
 ```
 
 ## /relations/:id.:format

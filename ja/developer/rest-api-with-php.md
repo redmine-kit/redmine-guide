@@ -70,6 +70,7 @@ curl_setopt ($ch, CURLOPT_HTTPHEADER, array ('Expect:',"Content-Type: text/xml",
     ```php
     function __construct ($data = array ()) {
       $this->_data = $data;
+
       // add this line here - to store the original name of the entity
       $this->sOriginalElementName = ($this->element_name ? $this->element_name : strtolower (get_class ($this)));
       // Allow class-defined element name or use class name if not defined

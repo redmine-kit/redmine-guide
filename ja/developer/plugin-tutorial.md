@@ -16,50 +16,42 @@ Ruby on Rails のフレームワークに慣れていることを前提にして
 
 以下のコマンドを使うには、変数 RAILS_ENV を設定する必要がある場合があります。
 
-```sh
-$ export RAILS_ENV="production"
-```
+    $ export RAILS_ENV="production"
 
 Windows の場合:
 
-```sh
-$ set RAILS_ENV=production
-```
+    $ set RAILS_ENV=production
 
 新しいプラグインは、Redmine のプラグインジェネレーターで作成できます。\
 このジェネレーターの構文は次のとおりです。
 
-```sh
-bundle exec rails generate redmine_plugin <plugin_name>
-```
+    bundle exec rails generate redmine_plugin <plugin_name>
 
 コマンドプロンプトを開いて Redmine のディレクトリに「cd」し、次のコマンドを実行します。
 
-```sh
-$ bundle exec rails generate redmine_plugin Polls
-      create  plugins/polls/app
-      create  plugins/polls/app/controllers
-      create  plugins/polls/app/helpers
-      create  plugins/polls/app/models
-      create  plugins/polls/app/views
-      create  plugins/polls/db/migrate
-      create  plugins/polls/lib/tasks
-      create  plugins/polls/assets/images
-      create  plugins/polls/assets/javascripts
-      create  plugins/polls/assets/stylesheets
-      create  plugins/polls/config/locales
-      create  plugins/polls/test
-      create  plugins/polls/test/fixtures
-      create  plugins/polls/test/unit
-      create  plugins/polls/test/functional
-      create  plugins/polls/test/integration
-      create  plugins/polls/test/system
-      create  plugins/polls/README.rdoc
-      create  plugins/polls/init.rb
-      create  plugins/polls/config/routes.rb
-      create  plugins/polls/config/locales/en.yml
-      create  plugins/polls/test/test_helper.rb
-```
+    $ bundle exec rails generate redmine_plugin Polls
+          create  plugins/polls/app
+          create  plugins/polls/app/controllers
+          create  plugins/polls/app/helpers
+          create  plugins/polls/app/models
+          create  plugins/polls/app/views
+          create  plugins/polls/db/migrate
+          create  plugins/polls/lib/tasks
+          create  plugins/polls/assets/images
+          create  plugins/polls/assets/javascripts
+          create  plugins/polls/assets/stylesheets
+          create  plugins/polls/config/locales
+          create  plugins/polls/test
+          create  plugins/polls/test/fixtures
+          create  plugins/polls/test/unit
+          create  plugins/polls/test/functional
+          create  plugins/polls/test/integration
+          create  plugins/polls/test/system
+          create  plugins/polls/README.rdoc
+          create  plugins/polls/init.rb
+          create  plugins/polls/config/routes.rb
+          create  plugins/polls/config/locales/en.yml
+          create  plugins/polls/test/test_helper.rb
 
 プラグインの構成が `plugins/polls` に作成されます。`plugins/polls/init.rb` を編集して、プラグインの情報(名前、作者、説明、バージョン)を調整します。
 
@@ -85,18 +77,14 @@ end
 
 今のところ、プラグインは何も保存しません。プラグインに簡単な Poll モデルを作成してみます。構文は次のとおりです。
 
-```sh
-bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
-```
+       bundle exec rails generate redmine_plugin_model <plugin_name> <model_name> [field[:type][:index] field[:type][:index] ...]
 
 コマンドプロンプトで次のコマンドを実行します。
 
-```sh
-$ bundle exec rails generate redmine_plugin_model polls poll question:string yes:integer no:integer
-      create  plugins/polls/app/models/poll.rb
-      create  plugins/polls/test/unit/poll_test.rb
-      create  plugins/polls/db/migrate/xxxxxxxxxxxx_create_polls.rb
-```
+    $ bundle exec rails generate redmine_plugin_model polls poll question:string yes:integer no:integer
+          create  plugins/polls/app/models/poll.rb
+          create  plugins/polls/test/unit/poll_test.rb
+          create  plugins/polls/db/migrate/xxxxxxxxxxxx_create_polls.rb
 
 Poll モデルと、対応するマイグレーションのファイル `xxxxxxxxxxxx_create_polls.rb` が `plugins/polls/db/migrate` に作成されます。
 
@@ -116,26 +104,22 @@ end
 
 マイグレーションのファイルを調整(デフォルト値など)したら、次のコマンドでデータベースをマイグレーションします。
 
-```sh
-$ bundle exec rake redmine:plugins:migrate
+    $ bundle exec rake redmine:plugins:migrate
 
-Migrating polls (Polls plugin)...
-==  CreatePolls: migrating ====================================================
--- create_table(:polls)
-   -> 0.0410s
-==  CreatePolls: migrated (0.0420s) ===========================================
-```
+    Migrating polls (Polls plugin)...
+    ==  CreatePolls: migrating ====================================================
+    -- create_table(:polls)
+       -> 0.0410s
+    ==  CreatePolls: migrated (0.0420s) ===========================================
 
 マイグレーションはプラグインごとに別に管理されることに注意してください。
 
 作業の材料として、コンソールで Poll をいくつか追加します。コンソールでは、Redmine の環境を対話的に操作して調べられ、いろいろ試すととても参考になります。ここでは Poll のオブジェクトを 2 つ作成するだけです。
 
-```sh
-bundle exec rails console
->> Poll.create(question: "Can you see this poll")
->> Poll.create(question: "And can you see this other poll")
->> exit
-```
+    bundle exec rails console
+    >> Poll.create(question: "Can you see this poll")
+    >> Poll.create(question: "And can you see this other poll")
+    >> exit
 
 プラグインのディレクトリの `plugins/polls/app/models/poll.rb` を編集し、コントローラーから呼び出す \#vote メソッドを追加します。
 
@@ -152,20 +136,16 @@ end
 今のところ、プラグインは何もしません。プラグインのコントローラーを作成してみます。\
 これにはプラグインのコントローラーのジェネレーターを使えます。構文は次のとおりです。
 
-```sh
-bundle exec rails generate redmine_plugin_controller <plugin_name> <controller_name> [<actions>]
-```
+    bundle exec rails generate redmine_plugin_controller <plugin_name> <controller_name> [<actions>]
 
 コマンドプロンプトに戻り、次のコマンドを実行します。
 
-```sh
-$ bundle exec rails generate redmine_plugin_controller Polls polls index vote
-      create  plugins/polls/app/controllers/polls_controller.rb
-      create  plugins/polls/app/helpers/polls_helper.rb
-      create  plugins/polls/test/functional/polls_controller_test.rb
-      create  plugins/polls/app/views/polls/index.html.erb
-      create  plugins/polls/app/views/polls/vote.html.erb
-```
+    $ bundle exec rails generate redmine_plugin_controller Polls polls index vote
+          create  plugins/polls/app/controllers/polls_controller.rb
+          create  plugins/polls/app/helpers/polls_helper.rb
+          create  plugins/polls/test/functional/polls_controller_test.rb
+          create  plugins/polls/app/views/polls/index.html.erb
+          create  plugins/polls/app/views/polls/vote.html.erb
 
 2 つのアクション(`#index` と `#vote`)を持つコントローラー `PollsController` が作成されます。
 
@@ -243,9 +223,7 @@ end
 
 構文は次のとおりです。
 
-```ruby
 menu(menu_name, item_name, url, options={})
-```
 
 拡張できるメニューは 5 つあります。
 
@@ -303,6 +281,7 @@ def index
   @polls = Poll.all # @project.polls
 end
 
+
 def vote
   poll = Poll.find(params[:id])
   poll.vote(params[:answer])
@@ -321,7 +300,7 @@ post 'projects/:project_id/post/:id/vote', to: 'polls#vote', as: 'vote_poll'
 
 views/polls/index.heml.erb を次のように編集します。
 
-```erb
+```ruby
 <h2>Polls</h2>
 
 <% @polls.each do |poll| %>
@@ -535,7 +514,7 @@ Redmine::Plugin.register :polls do
 end
 ```
 
-これを追加すると、2 つのことが起きます。まず、admin/plugins の一覧のプラグインの説明に「設定」のリンクが追加されます。このリンクを開くと、プラグインの共通の設定のテンプレートのビューが読み込まれ、その中で :partial で指定したパーシャルのビューがレンダリングされます。また、settings メソッドを呼び出すと、Setting モジュールがプラグインに対応します。Setting モデルは、プラグインの名前に基づいて、シリアライズしたハッシュを保存・取得します。このハッシュには、plugin\_<plugin name> という形の Setting のメソッド名でアクセスします。この例では、Setting.plugin_polls を呼び出してハッシュにアクセスできます。
+これを追加すると、2 つのことが起きます。まず、admin/plugins の一覧のプラグインの説明に「設定」のリンクが追加されます。このリンクを開くと、プラグインの共通の設定のテンプレートのビューが読み込まれ、その中で :partial で指定したパーシャルのビューがレンダリングされます。また、settings メソッドを呼び出すと、Setting モジュールがプラグインに対応します。Setting モデルは、プラグインの名前に基づいて、シリアライズしたハッシュを保存・取得します。このハッシュには、plugin\_\<plugin name\> という形の Setting のメソッド名でアクセスします。この例では、Setting.plugin_polls を呼び出してハッシュにアクセスできます。
 
 ![](../../images/Plugin_Tutorial/plugin_with_config.png)
 
@@ -557,7 +536,7 @@ settings メソッドに渡した :partial のキーで指定したビューは�
       <td>
         <input type="text" id="settings_notification_default"
                            value="<%= settings['notification_default'] %>"
-                           name="settings[notification_default]" >
+	                       name="settings[notification_default]" >
       </td>
     </tr>
   </tbody>
@@ -574,9 +553,7 @@ settings メソッドに渡した :partial のキーで指定したビューは�
 
 筆者のテストヘルパーのファイルの内容です。
 
-```ruby
-require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
-```
+    require File.expand_path(File.dirname(__FILE__) + '/../../../test/test_helper')
 
 ### テストの例
 
@@ -618,15 +595,11 @@ end
 
 必要であれば、テスト用のデータベースを初期化します。
 
-```sh
-$ RAILS_ENV=test bundle exec rake db:drop db:create db:migrate redmine:plugins:migrate redmine:load_default_data
-```
+    $ RAILS_ENV=test bundle exec rake db:drop db:create db:migrate redmine:plugins:migrate redmine:load_default_data
 
 polls_controller_test.rb を実行するには、次のコマンドを実行します。
 
-```sh
-$ RAILS_ENV=test bundle exec rake test TEST=plugins/polls/test/functional/polls_controller_test.rb
-```
+    $ RAILS_ENV=test bundle exec rake test TEST=plugins/polls/test/functional/polls_controller_test.rb
 
 ### 権限を使うテスト
 
@@ -661,46 +634,44 @@ end
 
 このチュートリアルと[フック](hooks.md)で触れたファイルとディレクトリの一覧です。標準のパスを使っているか確認するのに役立ち、初めての人がファイルをどこに置けばよいかを知るのにも役立ちます。
 
-```
-plugins/PLUGIN/README.rdoc
-plugins/PLUGIN/init.rb
-plugins/PLUGIN/app/
-plugins/PLUGIN/app/controllers/
-plugins/PLUGIN/app/controllers/CONTROLLER_controller.rb
-plugins/PLUGIN/app/helpers/
-plugins/PLUGIN/app/helpers/CONTROLLER_helper.rb
-plugins/PLUGIN/app/models/
-plugins/PLUGIN/app/models/MODEL.rb
-plugins/PLUGIN/app/views/
-plugins/PLUGIN/app/views/CONTROLLER/
-plugins/PLUGIN/app/views/CONTROLLER/_PARTIAL.html.erb
-plugins/PLUGIN/app/views/CONTROLLER/CONTROLLER-ACTION.html.erb
-plugins/PLUGIN/app/views/hooks/
-plugins/PLUGIN/app/views/hooks/_HOOK.html.erb
-plugins/PLUGIN/app/views/settings/
-plugins/PLUGIN/app/views/settings/_MODEL_settings.html.erb
-plugins/PLUGIN/assets/
-plugins/PLUGIN/assets/images/
-plugins/PLUGIN/assets/javascripts/
-plugins/PLUGIN/assets/stylesheets/
-plugins/PLUGIN/assets/stylesheets/voting.css
-plugins/PLUGIN/config/
-plugins/PLUGIN/config/locales/
-plugins/PLUGIN/config/locales/en.yml
-plugins/PLUGIN/config/routes.rb
-plugins/PLUGIN/db/
-plugins/PLUGIN/db/migrate/
-plugins/PLUGIN/db/migrate/001_create_MODELs.rb
-plugins/PLUGIN/lib/
-plugins/PLUGIN/lib/PLUGIN_hook_listener.rb
-plugins/PLUGIN/lib/PLUGIN/
-plugins/PLUGIN/lib/PLUGIN/hooks.rb
-plugins/PLUGIN/lib/PLUGIN/MODEL_patch.rb
-plugins/PLUGIN/lib/tasks/
-plugins/PLUGIN/test/
-plugins/PLUGIN/test/test_helper.rb
-plugins/PLUGIN/test/functional/
-plugins/PLUGIN/test/functional/CONTROLLER_controller_test.rb
-plugins/PLUGIN/test/unit/
-plugins/PLUGIN/test/unit/MODEL_test.rb
-```
+    plugins/PLUGIN/README.rdoc
+    plugins/PLUGIN/init.rb
+    plugins/PLUGIN/app/
+    plugins/PLUGIN/app/controllers/
+    plugins/PLUGIN/app/controllers/CONTROLLER_controller.rb
+    plugins/PLUGIN/app/helpers/
+    plugins/PLUGIN/app/helpers/CONTROLLER_helper.rb
+    plugins/PLUGIN/app/models/
+    plugins/PLUGIN/app/models/MODEL.rb
+    plugins/PLUGIN/app/views/
+    plugins/PLUGIN/app/views/CONTROLLER/
+    plugins/PLUGIN/app/views/CONTROLLER/_PARTIAL.html.erb
+    plugins/PLUGIN/app/views/CONTROLLER/CONTROLLER-ACTION.html.erb
+    plugins/PLUGIN/app/views/hooks/
+    plugins/PLUGIN/app/views/hooks/_HOOK.html.erb
+    plugins/PLUGIN/app/views/settings/
+    plugins/PLUGIN/app/views/settings/_MODEL_settings.html.erb
+    plugins/PLUGIN/assets/
+    plugins/PLUGIN/assets/images/
+    plugins/PLUGIN/assets/javascripts/
+    plugins/PLUGIN/assets/stylesheets/
+    plugins/PLUGIN/assets/stylesheets/voting.css
+    plugins/PLUGIN/config/
+    plugins/PLUGIN/config/locales/
+    plugins/PLUGIN/config/locales/en.yml
+    plugins/PLUGIN/config/routes.rb
+    plugins/PLUGIN/db/
+    plugins/PLUGIN/db/migrate/
+    plugins/PLUGIN/db/migrate/001_create_MODELs.rb
+    plugins/PLUGIN/lib/
+    plugins/PLUGIN/lib/PLUGIN_hook_listener.rb
+    plugins/PLUGIN/lib/PLUGIN/
+    plugins/PLUGIN/lib/PLUGIN/hooks.rb
+    plugins/PLUGIN/lib/PLUGIN/MODEL_patch.rb
+    plugins/PLUGIN/lib/tasks/
+    plugins/PLUGIN/test/
+    plugins/PLUGIN/test/test_helper.rb
+    plugins/PLUGIN/test/functional/
+    plugins/PLUGIN/test/functional/CONTROLLER_controller_test.rb
+    plugins/PLUGIN/test/unit/
+    plugins/PLUGIN/test/unit/MODEL_test.rb

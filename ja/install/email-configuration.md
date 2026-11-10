@@ -34,18 +34,18 @@ translated_from_version: 58
 - `:async_smtp`
 - `:async_sendmail`
 
-設定できる値(Redmine v4.x 以降。\[#30068](https://www.redmine.org/issues/30068) を参照):
+設定できる値(Redmine v4.x 以降。[#30068](https://www.redmine.org/issues/30068) を参照):
 
 - `:smtp`
 - `:sendmail`
 
 #### 非同期の delivery_method
 
-`:async_smtp` と `:async_sendmail` は非同期で送信します。つまり、Redmine はメールの送信を待たずに次のページを表示します。詳しくは [Asynchronous Email Delivery](http://redmineblog.com/articles/asynchronous-email-delivery/) を参照してください。SMTP サーバーの中には、スパム対策として処理を始める前に待ち時間を設けるものがあり、同期の送信方法ではその間 Redmine が止まります(デフォルトの値は [10 秒](https://community.bitnami.com/t/updating-an-issue-in-redmine-takes-10-seconds/4421)のことがあります。詳しくは \[#11376](https://www.redmine.org/issues/11376) も参照してください)。
+`:async_smtp` と `:async_sendmail` は非同期で送信します。つまり、Redmine はメールの送信を待たずに次のページを表示します。詳しくは [Asynchronous Email Delivery](http://redmineblog.com/articles/asynchronous-email-delivery/) を参照してください。SMTP サーバーの中には、スパム対策として処理を始める前に待ち時間を設けるものがあり、同期の送信方法ではその間 Redmine が止まります(デフォルトの値は [10 秒](https://community.bitnami.com/t/updating-an-issue-in-redmine-takes-10-seconds/4421)のことがあります。詳しくは [#11376](https://www.redmine.org/issues/11376) も参照してください)。
 
 この送信方法では、SMTP の設定を `smtp_settings` ではなく `async_smtp_settings` に書きます。
 
-```yaml
+```yml
 development:
   delivery_method: :async_smtp
   async_smtp_settings:  # Don't use "smtp_settings"
@@ -54,13 +54,17 @@ development:
     ...
 ```
 
-> **注意:** Redmine 4.0 で非同期のメール送信は削除され、メールを非同期で送信する Rails の ActiveJob モジュールに置き換えられました。詳しくは https://www.redmine.org/projects/redmine/repository/entry/tags/4.0.0/lib/redmine/configuration.rb#L53 を参照してください。
+<blockquote>
+
+**注意:** Redmine 4.0 で非同期のメール送信は削除され、メールを非同期で送信する Rails の ActiveJob モジュールに置き換えられました。詳しくは https://www.redmine.org/projects/redmine/repository/entry/tags/4.0.0/lib/redmine/configuration.rb#L53 を参照してください。
+
+</blockquote>
 
 ## configuration.yml の設定例
 
 ### シンプルなログイン認証(デフォルトの設定)
 
-```yaml
+```yml
 # Outgoing email settings
 
 production:
@@ -88,7 +92,7 @@ development:
 
 GMail/Google Apps など、TLS が必要な SMTP サーバーを使う場合は、TLS の設定を追加する必要があります。
 
-```yaml
+```yml
 production:
   delivery_method: :smtp
   smtp_settings:
@@ -116,7 +120,7 @@ SMTP リレーサービスは、たとえば次のように設定します。
 
 設定はとてもシンプルになります。
 
-```yaml
+```yml
 production:
   delivery_method: :smtp
   smtp_settings:
@@ -132,7 +136,7 @@ production:
 
 Office 365(Exchange Online)の利用者向けの例です。送信者にはアカウントが必要です。共有メールボックスから送信する場合は、下のアカウントに、Redmine の「メール通知」の設定で指定した送信者として「送信者として送信」する権限が必要です。
 
-```yaml
+```yml
 production:
   delivery_method: :smtp
   smtp_settings:
@@ -145,13 +149,13 @@ production:
     password: "password"
 ```
 
-注: O365 の SMTP サーバーは、同時接続の数を 3 に制限しています。そのため、送信するスレッドの数も制限する必要があります。詳しくは \[#31957](https://www.redmine.org/issues/31957) を参照してください。
+注: O365 の SMTP サーバーは、同時接続の数を 3 に制限しています。そのため、送信するスレッドの数も制限する必要があります。詳しくは [#31957](https://www.redmine.org/issues/31957) を参照してください。
 
 ### 認証なし
 
 認証のない SMTP サービスプロバイダーの例です。
 
-```yaml
+```yml
 production:
   delivery_method: :smtp
   smtp_settings:
@@ -164,7 +168,7 @@ production:
 
 `/usr/sbin/sendmail` コマンドを使う Unix システムの例です。
 
-```yaml
+```yml
 production:
   delivery_method: :sendmail
 ```
@@ -175,13 +179,13 @@ production:
 
 このエラーが出る場合は、SMTP リレーの SSL 証明書の検証に問題がある可能性があります。一時的な対処として、該当する「smtp_settings」のセクションに次のオプションを設定できます。
 
-```yaml
+```yml
     enable_starttls_auto: false
 ```
 
 STARTTLS は有効にしたまま、証明書の検証だけを省く場合は、該当する「smtp_settings」のセクションに次のオプションを追加します。
 
-```yaml
+```yml
     openssl_verify_mode: "NONE"
 ```
 
@@ -193,7 +197,7 @@ STARTTLS は有効にしたまま、証明書の検証だけを省く場合は�
 
 解決するには、*config/configuration.yml* を編集し、次のように `"-i"` という文字列の `arguments` を指定します。
 
-```yaml
+```yml
 # default configuration options for all environments
 default:
   delivery_method: :sendmail
@@ -205,9 +209,9 @@ default:
 
 ### SSL の SMTP サーバーへの接続による「Timeout:Error」
 
-configuration.yml に ssl のオプションを追加します(\[#17239](https://www.redmine.org/issues/17239))。
+configuration.yml に ssl のオプションを追加します([#17239](https://www.redmine.org/issues/17239))。
 
-```yaml
+```yml
 default:
   # Outgoing emails configuration (see examples above)
   email_delivery:
@@ -225,11 +229,7 @@ default:
 
 ### メールの送信エラー: Net::ReadTimeout with \#\<Socket:(closed)\>
 
-configuration.yml で、次のようにタイムアウトを延ばします。
-
-```yaml
-read_timeout: 300
-```
+configuration.yml で、`<code>read_timeout: 300</code>` のようにタイムアウトを延ばします。
 
 ## 詳しい情報
 

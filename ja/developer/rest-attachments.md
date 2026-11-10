@@ -41,7 +41,7 @@ GET /attachments/13.xml
 
 添付ファイルを更新します。
 
-(まだ説明がありません。詳しくは \[#22356](https://www.redmine.org/issues/22356) を参照してください)
+(まだ説明がありません。詳しくは [#22356](https://www.redmine.org/issues/22356) を参照してください)
 
 ### DELETE
 

@@ -12,19 +12,14 @@ Redmine は、メールでチケットの作成やコメントの追加ができ
 Redmine でメールを受信するには、次のいずれかの方法で設定します。
 
 - メールサーバーからメールを転送する
-
-\* 長所: リモートのメールサーバーで使える。メールがすぐに処理される。速い(環境を読み込み直さない)\
-\* 短所: メール転送エージェント(Postfix、Sendmail など)の設定が必要
-
+  - 長所: リモートのメールサーバーで使える。メールがすぐに処理される。速い(環境を読み込み直さない)
+  - 短所: メール転送エージェント(Postfix、Sendmail など)の設定が必要
 - IMAP か POP3 のサーバーからメールを取得する
-
-\* 長所: 設定が簡単。MTA の設定が不要。リモートのメールサーバーで使える\
-\* 短所: メールがすぐには処理されない(メールを定期的に読み込む cron ジョブの追加が必要)
-
+  - 長所: 設定が簡単。MTA の設定が不要。リモートのメールサーバーで使える
+  - 短所: メールがすぐには処理されない(メールを定期的に読み込む cron ジョブの追加が必要)
 - 標準入力からメールを読み込む
-
-\* 長所: テストに向いている\
-\* 短所: 遅い(メールを読み込むたびに環境を読み込み直す)。MTA の設定が必要
+  - 長所: テストに向いている
+  - 短所: 遅い(メールを読み込むたびに環境を読み込み直す)。MTA の設定が必要
 
 ### メールサーバーからのメールの転送
 
@@ -121,11 +116,11 @@ Postfix のローカルのエイリアスの設定例です。
 
 rake タスク(`redmine:email:receive_imap`)で、IMAP サーバーから受信メールを取得できます。cron ジョブから rake コマンドを実行するときは、rake コマンドに `-f /path/to/redmine/appdir/Rakefile` のスイッチを付けます。付けないと Rakefile が見つかりません。30 分ごとにメールを取得する cron のファイルの行の例です。
 
-    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx 
+    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx
 
 設定は動いているのに cron デーモンからメールが届くときは、—silent のスイッチを付けて rake コマンドの出力を抑えられます。コマンドを実行するたびに cron がメールを送ることがなくなります。
 
-    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile --silent redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx 
+    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile --silent redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx
 
 cron のファイルでは、コマンドを 1 行で書く必要があります。下のほかの例は、`-f` のオプションと cron の部分を除いた rake コマンドだけを示しています。
 
@@ -183,6 +178,7 @@ rake コマンドの例:
 
       rake redmine:email:receive_imap RAILS_ENV="production" \\
         host=imap.foo.bar username=redmine@somenet.foo password=xxx
+
 
       # Fixed project and default tracker specified, but emails can override
       # both tracker and priority attributes:
@@ -267,9 +263,13 @@ rake タスクでメールを受信するときは、未登録のユーザーの
 これで、だれでも非公開のプロジェクト「foo」にメールを送れます。
 
 TODO: これは正しいか、また `no_permission_check` のオプションと関係があるか:\
-\> Redmine 0.9 から、プロジェクトは公開でなくてもよくなりましたが、「管理」 > 「設定」 > 「認証」のタブの「認証が必要」のチェックを外す必要があります。
+<blockquote>
 
-rdm-mailhandler で新しく作成したユーザーのそれぞれに「新しいアカウントの通知のメール」を送らないようにするには、オプション「—no-account-notice」を付ける必要があります。version#60 で、チケット \[#11498](https://www.redmine.org/issues/11498) として実装されました。例:
+Redmine 0.9 から、プロジェクトは公開でなくてもよくなりましたが、「管理」 > 「設定」 > 「認証」のタブの「認証が必要」のチェックを外す必要があります。
+
+</blockquote>
+
+rdm-mailhandler で新しく作成したユーザーのそれぞれに「新しいアカウントの通知のメール」を送らないようにするには、オプション「—no-account-notice」を付ける必要があります。version#60 で、チケット [#11498](https://www.redmine.org/issues/11498) として実装されました。例:
 
     rdm-mailhandler.rb --unknown-user accept --no-permission-check --project=foo --no-account-notice
 
@@ -301,7 +301,7 @@ cron(Windows ではタスク スケジューラ)から Rake タスクを呼び�
     scheduler.interval '10m' do
       task = Rake.application['redmine:email:receive_pop3']
       task.reenable
-      task.invoke 
+      task.invoke
     end
 
 Redmine のインスタンスを再起動すると、受信メールがスケジュールどおりに取得されます。
@@ -312,7 +312,7 @@ Redmine のインスタンスを再起動すると、受信メールがスケジ
 
 Redmine はメールを受信すると、メールの From のアドレスで該当するユーザーを探します。未登録のユーザーやロック中のユーザーからのメールは無視します。
 
-メールの件名に「Re: **\[xxxxxxx ![#123](https://www.redmine.org/issues/123)\]**」や「\[![#123](https://www.redmine.org/issues/123)\]」のような文字列があるときは、メールを返信として処理し、チケット ![#123](https://www.redmine.org/issues/123) にコメントを追加します。それ以外のときは、新しいチケットを作成します。
+メールの件名に「Re: **\[xxxxxxx #123\]**」や「\[#123\]」のような文字列があるときは、メールを返信として処理し、チケット #123 にコメントを追加します。それ以外のときは、新しいチケットを作成します。
 
 チケットを作成するには、必須のカスタムフィールドの値がすべてそろっている必要があります。そろっていないと、チケットの作成は失敗します。代わりに、すべてのカスタムフィールドにデフォルト値を設定しておくと、チケットの作成時にその値が使われます。
 
@@ -416,7 +416,7 @@ RFC 3598、5233 のとおりにサブアドレスに対応しているメール�
 
 メールを送ったユーザーに「ウォッチャーの追加」の権限があるときは、メールの To か Cc の欄にあるユーザーが、作成したチケットのウォッチャーに自動で追加されます。
 
-ウォッチャーが追加されるのは、チケットを作成するときだけです。返信では To と Cc の欄は無視されます。\[#7017](https://www.redmine.org/issues/7017) と \[#8009](https://www.redmine.org/issues/8009) を参照してください。
+ウォッチャーが追加されるのは、チケットを作成するときだけです。返信では To と Cc の欄は無視されます。[#7017](https://www.redmine.org/issues/7017) と [#8009](https://www.redmine.org/issues/8009) を参照してください。
 
 ### メールの形式と添付ファイル
 
