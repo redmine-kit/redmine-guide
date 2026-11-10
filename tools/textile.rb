@@ -223,6 +223,23 @@ module Textile
     Code.new(inner.sub(/\A[ \t]*\r?\n/, '').sub(/\s+\z/, '').split("\n").map(&:rstrip), lang)
   end
 
+  # Pipe tables with held inline code: pandoc pads their columns to the
+  # placeholders' width; written compact, as pandoc writes the others.
+  def compact_tables(markdown)
+    markdown.gsub(/(?:^\|.*\n)+/) do |table|
+      next table unless table.include?('RGHELDx')
+
+      table.lines.map do |row|
+        cells = row.strip.delete_prefix('|').delete_suffix('|').split(/(?<!\\)\|/, -1).map(&:strip)
+        if cells.all? { |cell| cell.match?(/\A:?-+:?\z/) }
+          "|#{cells.map { |cell| cell.sub(/-+/, '----') }.join('|')}|\n"
+        else
+          "| #{cells.join(' | ')} |\n".gsub('|  |', '|  |')
+        end
+      end.join
+    end
+  end
+
   # Tags other than pre, code, kbd and notextile are text in Redmine
   # (RedCloth3#escape_html_tags): <Accesskey> is shown, not dropped.
   ALLOWED_TAGS = %w[pre code kbd notextile].freeze

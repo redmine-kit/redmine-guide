@@ -47,10 +47,10 @@ grep -roh  &#39;call_hook([^)]*)&#39; | sort -u | grep &#39;([^)]*)&#39;  # list
 
 ## Model hooks
 
-| Name       | Description | Context    |
-|------------|-------------|------------|
-| `:model_changeset_scan_commit_for_issue_ids_pre_issue_update` |             | `:changeset, :issue` |
-| `:model_project_copy_before_save` |             | `:source_project, :destination_project` |
+| Name | Description | Context |
+|----|----|----|
+| `:model_changeset_scan_commit_for_issue_ids_pre_issue_update` |  | `:changeset, :issue` |
+| `:model_project_copy_before_save` |  | `:source_project, :destination_project` |
 
 ## View hooks
 

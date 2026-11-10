@@ -240,7 +240,7 @@ topics.each do |page, topic|
   markdown = literals.markdown(Textile.restore_hashes(Textile.footnotes(link_issues(markdown))))
   # The blocks kept out of pandoc come back after the issue links: code is
   # shown as it is.
-  markdown = held.restore(markdown.gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, ''))
+  markdown = held.restore(Textile.compact_tables(markdown.gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, '')))
   unless markdown.lstrip.start_with?('# ')
     markdown = markdown.sub(/\A\s*##\s+/, '# ') if markdown.lstrip.start_with?('## ')
     markdown = "# #{labels[page] || page.tr('_', ' ')}\n\n#{markdown}" unless markdown.lstrip.start_with?('# ')
