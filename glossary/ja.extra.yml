@@ -13,3 +13,141 @@ terms:
   - en: system roles
     ja: 組み込みロール
     note: Non member and Anonymous (Role#builtin in Redmine's code); the term used in Japanese Redmine documentation.
+  - en: locked
+    ja: ロック
+    note: "The forum message's checkbox, label_board_locked (Locked → ロック); ja.yml's lowercase \"locked\" is status_locked (ロック中), a user's or version's status."
+  - en: Application settings
+    ja: アプリケーションの設定
+    note: "Older Redmine's name for Administration → Settings, kept where the guide uses it; Redmine 7.0.3 shows 「管理」→「設定」 (label_administration, label_settings)."
+  - en: billable hours
+    ja: 請求可能な時間
+    note: Microsoft terminology (Dynamics 365 billable → 請求可能).
+  - en: decimal time format
+    ja: 10 進数の時間の形式
+    note: Microsoft terminology (decimal → 10 進数); hours as a decimal fraction (1.5 = 1h30).
+  - en: decimal separator
+    ja: 小数点の記号
+    note: Microsoft terminology (Windows regional settings, Decimal symbol → 小数点の記号).
+  - en: breadcrumb
+    ja: 階層リンク
+    note: Microsoft terminology (SharePoint breadcrumb → 階層リンク).
+  - en: strike through
+    ja: 取り消し線
+    note: Microsoft terminology (Office Strikethrough → 取り消し線).
+  - en: alternate text
+    ja: 代替テキスト
+    note: Microsoft terminology (Office Alt Text → 代替テキスト).
+  - en: drag and drop
+    ja: ドラッグ アンド ドロップ
+    note: Microsoft terminology and Japanese Style Guide.
+  - en: inline image
+    ja: インライン画像
+    note: Microsoft terminology (Outlook inline image → インライン画像).
+  - en: committer
+    ja: コミッター
+    note: Established term in Japanese version control software (Git); Redmine 7.0.3's chart title is 作成者別のコミット (label_commits_per_author).
+  - en: core modules
+    ja: 標準のモジュール
+    note: "The modules Redmine ships with (Redmine::AccessControl.available_project_modules); the guide also calls them a \"standard module\"."
+  - en: search box
+    ja: 検索ボックス
+    note: Microsoft terminology (Windows search box → 検索ボックス); the quick search field at the top right of every page.
+  - en: advanced search
+    ja: 詳細検索
+    note: Microsoft terminology (SharePoint Advanced Search → 詳細検索); the guide's name for the search page (search/index), whose heading is label_search (検索).
+  - en: full text search
+    ja: フルテキスト検索
+    note: Microsoft terminology (SQL Server Full-Text Search → フルテキスト検索).
+  - en: token
+    ja: トークン
+    note: Microsoft terminology (token → トークン); a word of the search query (Redmine::Search::Tokenizer).
+  - en: drill-down
+    ja: ドリルダウン
+    note: Microsoft terminology (Excel, Power BI drill down → ドリルダウン); a link from a count to the filtered issue list.
+  - en: drill-through
+    ja: ドリルスルー
+    note: Microsoft terminology (Power BI drill through → ドリルスルー); the issue report's links to the filtered issue list.
+  - en: repository browser
+    ja: リポジトリブラウザー
+    note: "The repository module's file browser; browser → ブラウザー (Microsoft Japanese Style Guide: a long vowel at the end of the word)."
+  - en: sidebar
+    ja: サイドバー
+    note: Microsoft terminology (sidebar → サイドバー); the contextual panel on the right of a screen.
+  - en: accesskey
+    ja: アクセスキー
+    note: Microsoft terminology (access key → アクセス キー), written without the space as the guide's other compound terms; the HTML accesskey attribute (Redmine::AccessKeys).
+  - en: keyboard shortcut
+    ja: キーボードショートカット
+    note: Microsoft terminology (keyboard shortcut → キーボード ショートカット), written without the space.
+  - en: modifier key
+    ja: 修飾キー
+    note: Microsoft terminology (modifier key → 修飾キー).
+  - en: textarea
+    ja: テキストエリア
+    note: The HTML textarea element; the established term in Japanese web development.
+  - en: formatted text
+    ja: 書式付きテキスト
+    note: Microsoft terminology (formatted text → 書式付きテキスト); text written in the text formatting (setting_text_formatting テキスト書式).
+  - en: acronym
+    ja: 頭字語
+    note: Microsoft terminology (acronym → 頭字語); Textile's acronym syntax (the HTML acronym element).
+  - en: font style
+    ja: フォントスタイル
+    note: Microsoft terminology (font style → フォント スタイル), written without the space.
+  - en: horizontal rule
+    ja: 水平線
+    note: Microsoft terminology (Office horizontal line → 水平線); the HTML hr element.
+  - en: preformatted text
+    ja: 整形済みテキスト
+    note: Redmine 7.0.3's wiki toolbar (app/assets/javascripts/jstoolbar/lang/jstoolbar-ja.js, Preformatted text).
+  - en: blockquote
+    ja: 引用
+    note: Redmine 7.0.3's wiki toolbar (jstoolbar-ja.js, Quote).
+  - en: unordered list
+    ja: 順不同リスト
+    note: Redmine 7.0.3's wiki toolbar (jstoolbar-ja.js, Unordered list).
+  - en: ordered list
+    ja: 番号つきリスト
+    note: Redmine 7.0.3's wiki toolbar (jstoolbar-ja.js, Ordered list).
+  - en: task list
+    ja: タスクリスト
+    note: Redmine 7.0.3's wiki toolbar (jstoolbar-ja.js, Task list).
+  - en: table (text formatting)
+    ja: テーブル
+    note: Redmine 7.0.3's wiki toolbar (jstoolbar-ja.js, Table).
+  - en: code highlighting
+    ja: コードハイライト
+    note: Redmine 7.0.3's wiki toolbar (jstoolbar-ja.js, Highlighted code) and field_toolbar_language_options.
+  - en: footnote
+    ja: 脚注
+    note: Microsoft terminology (Word footnote → 脚注).
+  - en: control sequence
+    ja: 制御シーケンス
+    note: Microsoft terminology (control sequence → 制御シーケンス); Textile's table cell modifiers.
+  - en: align left, center, right, top, bottom
+    ja: 左揃え、中央揃え、右揃え、上揃え、下揃え
+    note: Microsoft terminology (Office Align Left/Center/Right/Top/Bottom).
+  - en: merge cells
+    ja: セルを結合する
+    note: Microsoft terminology (Office Merge Cells → セルの結合).
+  - en: changeset
+    ja: チェンジセット
+    note: "A repository commit (Redmine's Changeset model), as the guide's other pages name it; the locale's label_changeset_plural (更新履歴) is the name of a screen, not of the object."
+  - en: diff
+    ja: diff
+    note: "The Rouge language name for code highlighting (``` diff), kept as written; the screen's label for a diff is label_diff (差分)."
+  - en: hook
+    ja: フック
+    note: Established term in Japanese software development (Redmine::Hook); the developer guide's pages on plugin hooks.
+  - en: user impersonation
+    ja: ユーザーの偽装
+    note: Microsoft terminology (impersonation → 偽装); the REST API's X-Redmine-Switch-User header.
+  - en: pagination
+    ja: ページ分割
+    note: Established term in Japanese API documentation; the REST API's offset, limit and page parameters.
+  - en: vendored
+    ja: 同梱
+    note: Established term (bundled → 同梱); third-party code shipped inside Redmine's source.
+  - en: point release
+    ja: ポイントリリース
+    note: Established term; a x.y.Z release (ReleaseManagement).
