@@ -10,7 +10,7 @@ The [Redmine guide](https://www.redmine.org/guide) as Markdown, with translation
 - **`upstream` branch:** the guide exactly as fetched from redmine.org (the wiki's Textile, the images, `manifest.json`). `bin/fetch` fetches it again, so that a diff shows what changed.
 - **`main` branch:** the Markdown converted from `upstream` (`en/`), the translations (`ja/`), the sections (`index.yml`), the map from Redmine's screens to topics (`map.yml`), and the glossaries of interface terms (`glossary/`).
 
-> **Status:** early development (0.1.0). The English guide is complete; the Japanese translation covers the first pages, and the other pages are shown in English.
+> **Status:** early development (0.1.0). The English guide is complete and updated for Redmine 7.0.3, and every page is translated into Japanese.
 
 ## Documentation
 
