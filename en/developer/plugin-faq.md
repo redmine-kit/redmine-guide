@@ -11,13 +11,13 @@ This page aims at documenting how to achieve simple things in Redmine plugins.
 
 ## Determine if a module is enabled
 
-If your project is in the @`project` variable:
+If your project is in the `@project` variable:
 
 ```ruby
 if @project.module_enabled?("<module_name>")
 ```
 
-First *modules* are a project level concept. So be sure to make this check in an action that operates at project level. Redmine core generally uses a `before_filter` called `find_project` to find the current project in standard actions, which populates the @`project` variable.
+First *modules* are a project level concept. So be sure to make this check in an action that operates at project level. Redmine core generally uses a `before_filter` called `find_project` to find the current project in standard actions, which populates the `@project` variable.
 
 Available modules as of Redmine 2.3.x are: boards, calendar, documents, files, gantt, issue_tracking, news, repository, time_tracking, wiki. Each plugin can add its own module (see [Plugin_Tutorial](plugin-tutorial.md) which adds a “polls” module).
 
@@ -79,7 +79,7 @@ Sometimes plugins require a specific feature implemented in the Redmine core or 
 
 The above can be accomplished by utilizing the `requires_redmine` method (see source:/trunk/lib/redmine/plugin.rb@19983#L227). Utilisation of the method provides an easy, reliable way to create plugins that require a specific version of Redmine and which are setup to stop Redmine with a message about a non-supported version if the version-requirement is not met.
 
-Note: do not pass a Redmine version number with a *branch suffix* (`stable`/@devel`) to `requires_redmine@; that’s not supported. See [#35345](https://www.redmine.org/issues/35345) for a discussion about this.
+Note: do not pass a Redmine version number with a *branch suffix* (`stable`/`devel`) to `requires_redmine`; that’s not supported. See [#35345](https://www.redmine.org/issues/35345) for a discussion about this.
 
 <details>
 <summary>View usage examples for requires_redmine method...</summary>

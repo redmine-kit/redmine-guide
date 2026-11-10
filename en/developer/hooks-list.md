@@ -47,10 +47,10 @@ grep -roh  &#39;call_hook([^)]*)&#39; | sort -u | grep &#39;([^)]*)&#39;  # list
 
 ## Model hooks
 
-| Name | Description | Context |
-|----|----|----|
-| `:model_changeset_scan_commit_for_issue_ids_pre_issue_update` |  | `:changeset, :issue` |
-| `:model_project_copy_before_save` |  | `:source_project, :destination_project` |
+| Name       | Description | Context    |
+|------------|-------------|------------|
+| `:model_changeset_scan_commit_for_issue_ids_pre_issue_update` |             | `:changeset, :issue` |
+| `:model_project_copy_before_save` |             | `:source_project, :destination_project` |
 
 ## View hooks
 
@@ -63,7 +63,7 @@ The current project is accessible using the `:project` key of the context for al
 | `:view_account_login_top` |  | (none) |
 | `:view_account_login_bottom` |  | (none) |
 | `:view_custom_fields_form_upper_box` |  | `:custom_field, :form` |
-| `:"view_custom_fields_form_#{`custom_field.type.to_s.underscore}”@ |  | `:custom_field, :form` |
+| `:"view_custom_fields_form_#{@custom_field.type.to_s.underscore}"` |  | `:custom_field, :form` |
 | `:view_issue_statuses_form` |  | `:issue_status` |
 | `:view_issues_bulk_edit_details_bottom` | Appends content to the bulk edit form before the note | `:issues` |
 | `:view_issues_edit_notes_bottom` | Appends content to the note bottom before files form | `:issue, :notes, :form` |

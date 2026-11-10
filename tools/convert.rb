@@ -189,6 +189,7 @@ topics.each do |page, topic|
   literals = Textile::Literals.new
   text = Textile.extract_pre(text, held)
   text = Textile.notextile(text, literals)
+  text = Textile.inline_code(text, held)
   text = replace_icons(text, page, config['icons'] || {})
   text = text.gsub(/\{\{\s*[<>]?toc\s*\}\}\n?/i, '')
              .gsub(/\{\{child_pages[^}]*\}\}/) { child_pages(page, pages) }

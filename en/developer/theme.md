@@ -47,7 +47,7 @@ This example assume you have an image located at `my_theme/images/logo.png`.
 
 You can download this sample theme as a starting point for your own theme. Extract it in the `/themes` directory.
 
-**NOTE**: From Redmine 6.0, The code @`import url(../../../stylesheets/application.css)` shown in the example above is automatically converted to @`import url(“/assets/application-29b28b2c.css”);` when Redmine starts. The combination of numbers and letters at the end of the filename is a hash value calculated from the file’s contents. Since the filename changes whenever the content is modified, issues like display corruption caused by browsers using outdated cached versions are avoided.
+**NOTE**: From Redmine 6.0, The code `@import url(../../../stylesheets/application.css)` shown in the example above is automatically converted to `@import url(“/assets/application-29b28b2c.css”);` when Redmine starts. The combination of numbers and letters at the end of the filename is a hash value calculated from the file’s contents. Since the filename changes whenever the content is modified, issues like display corruption caused by browsers using outdated cached versions are avoided.
 
 ## Adding custom JavaScript
 

@@ -354,7 +354,7 @@ Redmine settings are defined in a file named `config/configuration.yml`.
 
 If you need to override default application settings, simply copy `config/configuration.yml.example` to `config/configuration.yml` and edit the new file; the file is well commented by itself, so you should have a look at it.
 
-These settings may be defined per Rails environment (`production`/@development@/@test@).
+These settings may be defined per Rails environment (`production`/`development`/`test`).
 
 <u>Important</u> : don’t forget to restart the application after any change.
 

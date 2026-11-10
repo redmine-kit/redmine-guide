@@ -145,6 +145,12 @@ module Textile
     end
   end
 
+  # @code@ (RedCloth3's CODE_RE: not within a word): inline code, also next
+  # to / and other punctuation, which pandoc misses.
+  def inline_code(text, held)
+    text.gsub(/(?<=\A|[^\w@])@(?:\|\w+?\|)?([^\n]+?)@(?=[^\w@]|\z)/) { held.hold(Span.new(Regexp.last_match(1)), inline: true) }
+  end
+
   # <notextile>...</notextile> (outermost, not empty) as literal text.
   def notextile(text, literals)
     out = +''

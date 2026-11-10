@@ -82,7 +82,7 @@ Personal settings for display in Redmine.
 - **Font for text areas:** Here you can force a predefined proportional or non-proportional font instead of the standard font.
 - **Number of recently used projects in the project jump box:** Here you can specify how many of your recently used projects are shown above the standard list. Default is 3.
 - **Standard tab for ticket history:** The detailed contents of the tickets are divided into tabs, here you can specify which tab should be opened when a ticket is called up. The default is notes.
-- **Languages ​​for code highlighting, editor S toolbar**: Specifies which programming languages ​​are to be recognized and parsed accordingly. Default: @ c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml @
+- **Languages ​​for code highlighting, editor S toolbar**: Specifies which programming languages ​​are to be recognized and parsed accordingly. Default: ` c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml `
 
 ![](../../images/RedmineAccounts/myaccount-preferences.png)
 

@@ -106,11 +106,11 @@ Here is an example for a Postfix local alias entry:
 
 This line should go in the aliases file, which is usually specified in `/etc/aliases`. If the location is unknown, use the command `postconf alias_maps` to find out. After updating the aliases file, be sure to run `newaliases` to alert Postfix of the new entry.
 
-If your domain is setup as a virtual mailbox map (so that you use /etc/postfix/virtual_mailbox_maps to do mappings in the form @ user@example.com /path/example.com/user@) you should:
+If your domain is setup as a virtual mailbox map (so that you use /etc/postfix/virtual_mailbox_maps to do mappings in the form ` user@example.com /path/example.com/user`) you should:
 
-- create a mapping in `/etc/virtual` like: @ foo@example.org foo@
+- create a mapping in `/etc/virtual` like: ` foo@example.org foo`
 - modify `/etc/postfix/main.cf` to specify a transport file: `transport_maps = hash:/etc/postfix/transport`
-- within the transport file add a line like: @ foo@example.org local:@
+- within the transport file add a line like: ` foo@example.org local:`
 
 **Explanation:** - When you define virtual_mailbox_maps for a domain the default transport is virtual, which means specifying a local alias in `/etc/postfix/virtual` will fail (with “unknown user”). To fix this, we override the default transport by specifying a local transport for the email address in question, which means the local alias will resolve correctly, and your script will be executed.
 
@@ -346,17 +346,17 @@ Make sure that the target project doesn’t use **required** custom fields with 
 
 This feature was introduced in ver 3.2.0 (SVN rev r14687). It may be preferable to have one mailbox for all incoming emails to a Redmine instance, instead of one per project. When receiving emails at redmine@somenet.foo, an email sent to redmine+foo@somenet.foo will cause the issue to be added to project with identifier foo.
 
-To enable this feature add the `project_from_subaddress=redmine`somenet.foo@ to the command e.g.
+To enable this feature add the `project_from_subaddress=redmine@somenet.foo` to the command e.g.
 
         rake redmine:email:receive_imap [...] project_from_subaddress=redmine@somenet.foo
 
-If a project is included in the command-line then it becomes the default project that will be used for emails sent to `redmine`somenet.foo@. So with the command:
+If a project is included in the command-line then it becomes the default project that will be used for emails sent to `redmine@somenet.foo`. So with the command:
 
         rake redmine:email:receive_imap [...] project=bar project_from_subaddress=redmine@somenet.foo
 
-emails to `redmine`somenet.foo@ or `redmine+bar`somenet.foo@ will raise issues in project bar; emails to `redmine+foo`somenet.foo@ will go into project foo.
+emails to `redmine@somenet.foo` or `redmine+bar@somenet.foo` will raise issues in project bar; emails to `redmine+foo@somenet.foo` will go into project foo.
 
-Some email providers include support for sub-addresses, as per RFCs 3598, 5233. Where this is not supported, forwarding mail addresses to the ‘central’ address, may work (it does in my case), ie set up an email address forwarding all mails to `redmine`somenet.foo@ from `redmine+foo`somenet.foo`, `redmine+bar@somenet.foo@ etc. This is easy to administer and does not require fetching emails from multiple accounts, each with its own account credentials.
+Some email providers include support for sub-addresses, as per RFCs 3598, 5233. Where this is not supported, forwarding mail addresses to the ‘central’ address, may work (it does in my case), ie set up an email address forwarding all mails to `redmine@somenet.foo` from `redmine+foo@somenet.foo`, `redmine+bar@somenet.foo` etc. This is easy to administer and does not require fetching emails from multiple accounts, each with its own account credentials.
 
 ### Issue attributes
 

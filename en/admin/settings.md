@@ -499,7 +499,7 @@ a match. More examples that will produce the same result as the example above:
 
 Allows time logging directly from commit messages. This only makes sense if you activated the “Time tracking” module in said project. In this case, you can add special words in your commit message to indicate the time you spent on an issue.
 
-The basic syntax for doing that is : @`<time>`, where time consists in a number of hours or minutes.
+The basic syntax for doing that is : `@<time>`, where time consists in a number of hours or minutes.
 
 Here’s a list of many valid commit messages that would work if you want to say you spent N hours on issue 1234:
 

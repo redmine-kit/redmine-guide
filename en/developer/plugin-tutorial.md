@@ -273,7 +273,7 @@ The second line adds our Polls tab to the project menu, just after the activity 
 ![](../../images/Plugin_Tutorial/project_menu.png)
 
 If you click the Polls tab (in 3rd position), you should notice that the project menu is no longer displayed.\
-To make the project menu visible, you have to initialize the controller’s instance variable @`project`.
+To make the project menu visible, you have to initialize the controller’s instance variable `@project`.
 
 Edit your PollsController to do so:
 

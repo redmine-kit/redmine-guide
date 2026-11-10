@@ -49,7 +49,7 @@ You can review the list of all the [API changes for each version](https://www.re
 
 ## General topics
 
-### Specify `Content-Type` on `POST`/@PUT@ requests
+### Specify `Content-Type` on `POST`/`PUT` requests
 
 When creating or updating a remote element, the `Content-Type` of the request **MUST** be specified even if the remote URL is suffixed accordingly (e.g. `POST ../issues.json`):
 
