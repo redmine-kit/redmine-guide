@@ -91,3 +91,11 @@ updates:
       - **Languages ​​for code highlighting, editor S toolbar**: Specifies which programming languages ​​are to be recognized and parsed accordingly.
     with: |-
       - **Code highlighting toolbar languages**: Specifies which programming languages are to be recognized and parsed accordingly.
+  - why: "Redmine 7.0.3 has two more preferences, \"Default issue query\" and \"Default project query\": the query a list applies when none is chosen."
+    source: "app/views/users/_preferences.html.erb, app/models/issue_query.rb and app/models/project_query.rb (self.default), config/locales/en.yml (field_default_issue_query, field_default_project_query)"
+    replace: |-
+      sql, swift, xml, yaml `
+    with: |-
+      sql, swift, xml, yaml `
+      - **Default issue query:** The query applied when you open an issue list without choosing a query.
+      - **Default project query:** The query applied when you open the projects list without choosing a query.

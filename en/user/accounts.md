@@ -88,6 +88,8 @@ Personal settings for display in Redmine.
 - **Number of recently used projects in jump box:** Here you can specify how many of your recently used projects are shown above the standard list. Default is 3.
 - **Issue's history default tab:** The detailed contents of the tickets are divided into tabs, here you can specify which tab should be opened when a ticket is called up. The default is notes.
 - **Code highlighting toolbar languages**: Specifies which programming languages are to be recognized and parsed accordingly. Default: ` c, cpp, csharp, css, diff, go, groovy, html, java, javascript, objc, perl, php, python, r, ruby, sass, scala, shell, sql, swift, xml, yaml `
+- **Default issue query:** The query applied when you open an issue list without choosing a query.
+- **Default project query:** The query applied when you open the projects list without choosing a query.
 
 ![](../../images/en/RedmineAccounts/myaccount-preferences@2x.png)
 
