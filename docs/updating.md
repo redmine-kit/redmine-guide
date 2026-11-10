@@ -75,6 +75,8 @@ The images on redmine.org were taken in old versions of Redmine, in English. `bi
 bin/screenshots
 ```
 
+The test data gets the few records that the screens need and the fixtures lack (`prepare_data` in `screenshots/screens.rb`), such as a user waiting for activation and subtasks in a version. The browser runs in the language of the screenshots, so that its own controls (file and date fields) are in that language too.
+
 Each shot in `screenshots/screens.rb` is named after the image it replaces (`RedmineIssueList/sidebar.jpg` becomes `images/<lang>/RedmineIssueList/sidebar@2x.png`), opens the screen and says what to capture. To take some of them again, give a pattern:
 
 ```sh

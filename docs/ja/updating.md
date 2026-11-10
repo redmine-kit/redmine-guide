@@ -83,6 +83,8 @@ redmine.org の画像は、古いバージョンの Redmine で英語の画面�
 bin/screenshots
 ```
 
+テスト用のデータには、画面に必要でフィクスチャにないデータ (承認待ちのユーザー、バージョン内の子チケットなど) を追加します (`screenshots/screens.rb` の `prepare_data`)。ブラウザーもスクリーンショットの言語で動かし、ブラウザー自身のコントロール (ファイルや日付の入力欄) もその言語にします。
+
 `screenshots/screens.rb` の各ショットは、置き換える画像の名前を持ち(`RedmineIssueList/sidebar.jpg` は `images/<言語>/RedmineIssueList/sidebar@2x.png` になります)、画面を開いて撮る範囲を返します。一部だけ撮り直すには、パターンを渡します。
 
 ```sh
