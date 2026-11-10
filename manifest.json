@@ -1,6 +1,6 @@
 {
   "source": "https://www.redmine.org/guide",
-  "fetched_at": "2026-11-09T21:34:08Z",
+  "fetched_at": "2026-11-10T11:39:19Z",
   "pages": {
     "Administrator_Guide": {
       "url": "https://www.redmine.org/projects/redmine/wiki/Administrator_Guide",
@@ -659,8 +659,11 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-
-      ]
+        "Redmine_logo.png"
+      ],
+      "image_sources": {
+        "Redmine_logo.png": "http://www.redmine.org/attachments/7069/Redmine_logo.png"
+      }
     },
     "RedmineTextFormattingRedmineLinks": {
       "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTextFormattingRedmineLinks",
@@ -679,8 +682,11 @@
       "parent": "User_Guide",
       "linked_from": "User_Guide",
       "images": [
-
-      ]
+        "Redmine_logo.png"
+      ],
+      "image_sources": {
+        "Redmine_logo.png": "http://www.redmine.org/attachments/7069/Redmine_logo.png"
+      }
     },
     "RedmineTimeTracking": {
       "url": "https://www.redmine.org/projects/redmine/wiki/RedmineTimeTracking",
