@@ -1,7 +1,9 @@
 # Redmine 7.0.3's screens -> topics (and heading anchors) of this guide, read
 # by redmine_help (https://github.com/redmine-kit/redmine_help, docs/mapping.md).
 # Keys: "controller#action?tab=value", "controller#action", "controller".
-# Anchors are Redmine's heading anchors (spaces become "-").
+# Anchors are Redmine's heading anchors (spaces become "-"). A screen opens at
+# the section that describes it: an action of its own (issues#new) or a tab
+# (?tab=) comes before the controller's topic.
 
 # Start, account and search
 welcome#index: user/getting-started
@@ -20,8 +22,10 @@ search: user/search
 # Projects
 projects#index: user/getting-started
 projects#show: user/project-overview
-projects#new: admin/projects
-projects#copy: admin/projects
+projects#new: admin/projects#Adding-or-editing-a-project
+projects#create: admin/projects#Adding-or-editing-a-project
+projects#copy: admin/projects#Copying-an-existing-project
+projects#destroy: admin/projects#Deleting-a-project
 projects#settings?tab=info: user/project-settings#Information
 projects#settings?tab=members: user/project-settings#Members
 projects#settings?tab=issues: user/project-settings#Trackers
@@ -39,15 +43,26 @@ activities: user/project-activity
 
 # Issues
 issues#index: user/issue-list
+issues#show: user/issues#Listing-of-the-issue
+issues#new: user/issues#Adding-a-new-issue
+issues#create: user/issues#Adding-a-new-issue
+issues#edit: user/issues#Updating-an-existing-issue
+issues#update: user/issues#Updating-an-existing-issue
+issues#bulk_edit: user/issue-list#Bulk-editing-issues
+issues#bulk_update: user/issue-list#Bulk-editing-issues
 issues: user/issues
-journals: user/issues
-issue_relations: user/issues
-watchers: user/issues
+journals: user/issues#Updating-an-existing-issue
+issue_relations: user/issues#Related-issues
+watchers: user/issues#Watchers
 queries: user/issue-list#Custom-queries
 context_menus: user/issue-list#Shortcut-menu
 reports#issue_report: user/issue-summary
 reports#issue_report_details: user/issue-summary
 versions#index: user/roadmap
+versions#new: user/project-settings#Versions
+versions#create: user/project-settings#Versions
+versions#edit: user/project-settings#Versions
+versions#update: user/project-settings#Versions
 versions: user/version
 imports: user/issues
 
@@ -56,18 +71,39 @@ gantts: user/gantt
 calendars: user/calendar
 timelog#index: user/timelog-details
 timelog#report: user/timelog-report
+timelog#new: user/time-tracking#Logging-time-at-project-level
+timelog#create: user/time-tracking#Logging-time-at-project-level
 timelog: user/time-tracking
 
 # Content
 news: user/news
 comments: user/news
+documents#new: user/documents#Adding-Documents
+documents#create: user/documents#Adding-Documents
+documents#show: user/documents#Viewing-Documents
 documents: user/documents
+files#new: user/files#New-file-form
 files: user/files
+boards#new: user/project-settings#Forums
+boards#edit: user/project-settings#Forums
 boards: user/forums
+messages#new: user/forums#Adding-a-topic
 messages: user/forums
+wiki#edit: user/wikis#Edit
+wiki#update: user/wikis#Edit
+wiki#new: user/wikis#Creating-a-new-wiki-page
+wiki#rename: user/wikis#Rename-or-move
+wiki#history: user/wikis#History
+wiki#diff: user/wikis#History
+wiki#annotate: user/wikis#History
+wiki#destroy: user/wikis#Delete
 wiki: user/wikis
 wikis: user/project-settings#Wiki
 repositories#stats: user/repository-statistics
+repositories#new: user/project-settings#Repository
+repositories#create: user/project-settings#Repository
+repositories#edit: user/project-settings#Repository
+repositories#update: user/project-settings#Repository
 repositories: user/repository
 attachments: user/attached-files
 help#show_wiki_syntax: user/text-formatting
@@ -75,13 +111,27 @@ help#show_code_highlighting: user/code-highlighting-languages
 
 # Administration
 admin#index: admin/projects
-admin#projects: admin/projects
+admin#projects: admin/projects#Projects-list
 admin#info: admin/information
 admin#plugins: admin/information
+users#index: admin/users#Users-list
+users#new: admin/users#Adding-or-editing-a-User
+users#create: admin/users#Adding-or-editing-a-User
+users#edit: admin/users#Adding-or-editing-a-User
+users#update: admin/users#Adding-or-editing-a-User
+users#destroy: admin/users#Deleting-a-User
 users: admin/users
 principal_memberships: admin/users
+groups#new: admin/groups#Creating-groups
+groups#create: admin/groups#Creating-groups
+groups#edit?tab=users: admin/groups#Adding-members-and-associating-projects
+groups#edit?tab=memberships: admin/groups#Adding-members-and-associating-projects
 groups: admin/groups
 roles#permissions: admin/roles#Permissions
+roles#new: admin/roles#Roles-properties
+roles#create: admin/roles#Roles-properties
+roles#edit: admin/roles#Roles-properties
+roles#update: admin/roles#Roles-properties
 roles: admin/roles
 trackers: admin/issue-tracking-setup#Trackers
 issue_statuses: admin/issue-tracking-setup#Issue-statuses
@@ -102,4 +152,8 @@ settings#index?tab=notifications: admin/settings#Email-notifications
 settings#index?tab=mail_handler: admin/settings#Incoming-emails
 settings#index?tab=repositories: admin/settings#Repositories
 settings: admin/settings
+auth_sources#new: admin/ldap#Declaring-the-LDAP
+auth_sources#create: admin/ldap#Declaring-the-LDAP
+auth_sources#edit: admin/ldap#Declaring-the-LDAP
+auth_sources#update: admin/ldap#Declaring-the-LDAP
 auth_sources: admin/ldap
