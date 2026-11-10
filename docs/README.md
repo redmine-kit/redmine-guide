@@ -17,6 +17,7 @@ The [Redmine guide](https://www.redmine.org/guide) as Markdown, with translation
 | `topics.yml` | Each topic's source page on redmine.org (made by `bin/convert`) |
 | `glossary/<lang>.yml` | Redmine's interface strings in English and the language (made by `bin/glossary`); `<lang>.extra.yml` for terms the locale has no string for |
 | `guide.yml` | The sections, the topics' names, and the replacements of Redmine's old icons |
+| `updates/<section>/<topic>.yml` | The changes that bring a page up to date with Redmine 7.0.3, applied by `bin/convert` ([Updates](updating.md#updates)) |
 
 The guide has four sections: the user guide, the administrator guide, the installation guide and the developer guide. Redmine Help shows all of them; the map points Redmine's screens at the user and administrator guides.
 

@@ -244,6 +244,24 @@ topics.each do |page, topic|
     markdown = markdown.sub(/\A\s*##\s+/, '# ') if markdown.lstrip.start_with?('## ')
     markdown = "# #{labels[page] || page.tr('_', ' ')}\n\n#{markdown}" unless markdown.lstrip.start_with?('# ')
   end
+  # The updates for the Redmine version the guide follows (updates/<topic>.yml,
+  # docs/updating.md#updates): each text to replace must be on the page once,
+  # so that a change on redmine.org stops the conversion instead of undoing
+  # an update silently.
+  updated_for = nil
+  updates_file = File.join(OUT, 'updates', "#{topic}.yml")
+  if File.exist?(updates_file)
+    updates = YAML.safe_load_file(updates_file)
+    updated_for = updates.fetch('redmine').to_s
+    updates.fetch('updates').each_with_index do |update, index|
+      find = update.fetch('replace').chomp
+      found = markdown.scan(find).size
+      abort "updates/#{topic}.yml: update #{index + 1} (#{update['why']}): the text to replace is on the page #{found} times, not once" unless found == 1
+
+      markdown = markdown.sub(find) { update.fetch('with').to_s.chomp }
+    end
+    markdown = markdown.gsub(/\n{3,}/, "\n\n")
+  end
   info = pages[page]
   front = {
     'source' => page,
@@ -251,6 +269,7 @@ topics.each do |page, topic|
     'source_version' => info['version'],
     'source_updated_on' => info['updated_on'],
   }
+  front['updated_for'] = updated_for if updated_for
   path = File.join(OUT, 'en', "#{topic}.md")
   FileUtils.mkdir_p(File.dirname(path))
   File.write(path, "#{front.to_yaml}---\n\n#{markdown.strip}\n")

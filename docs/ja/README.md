@@ -19,6 +19,7 @@
 | `topics.yml` | トピックごとの redmine.org の出典のページ(`bin/convert` が作る) |
 | `glossary/<言語>.yml` | Redmine の画面の文字列の英語とその言語(`bin/glossary` が作る)。ロケールにない用語は `<言語>.extra.yml` |
 | `guide.yml` | 章、トピックの名前、Redmine の古いアイコンの置き換え |
+| `updates/<章>/<トピック>.yml` | ページを Redmine 7.0.3 に合わせる変更。`bin/convert` が適用する ([更新](updating.md#updates)) |
 
 ガイドは、ユーザーガイド、管理者ガイド、インストールガイド、開発者ガイドの 4 つの章です。Redmine Help はすべてを表示し、対応表は Redmine の画面をユーザーガイドと管理者ガイドに対応付けます。
 

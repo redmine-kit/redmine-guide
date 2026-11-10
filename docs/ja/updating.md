@@ -25,7 +25,7 @@ redmine.org のガイドは、ときどき変わります。`upstream` のブラ
    bin/convert
    ```
 
-   `en/`、`images/`、`index.yml`、`topics.yml` を書きます。`ja/` の翻訳には触れません。
+   `en/`、`images/`、`index.yml`、`topics.yml` を書きます。[Redmine 7.0.3 に合わせた更新](#updates)も適用します。`ja/` の翻訳には触れません。更新が置き換える文がページからなくなって止まったときは、[更新](#updates)を参照してください。
 4. **確認する:** `en/` の差分を読みます。ガイドに新しいページがあれば、`guide.yml` に置き場所(章と名前)を足します。`bin/convert` は、`guide.yml` にないページを、それをリンクするページの章に置きます。
 5. **検査する:** 英語のページが変わった翻訳と、切れたリンクを一覧にします。
 
@@ -50,6 +50,28 @@ redmine.org のガイドは、ときどき変わります。`upstream` のブラ
 - 出典のページ、URL、バージョン、更新日時の front matter を付ける
 
 CI は、`main` の Markdown が、`upstream` から `bin/convert` で作ったものと同じであることを確認します。
+
+<a id="updates"></a>
+
+## 更新
+
+redmine.org のガイドは、このガイドが対象とする Redmine のバージョン (7.0.3) に合っていないことがあります。ページを最新にする変更は、変換とは分けて `updates/<章>/<トピック>.yml` に置き、`bin/convert` が変換したページに適用します。
+
+```yaml
+redmine: 7.0.3
+updates:
+  - why: Redmine 7.0.3 で違うこと
+    source: Redmine 7.0.3 のソースの根拠 (ファイル、en.yml のキー)
+    replace: |-
+      変換したページの文
+    with: |-
+      新しい文
+```
+
+- **1 か所だけ:** 置き換える文は、変換したページにちょうど 1 か所なければなりません。そうでなければ `bin/convert` は止まります。そのため、redmine.org の変更が更新を黙って元に戻すことはありません。新しいページを読み、更新を直すか削除します (redmine.org がページを直したときは削除します)。
+- **印:** 更新のあるページは、front matter に `updated_for: 7.0.3` があります。比べるために、`upstream` ブランチには redmine.org のままのページが残ります。
+- **翻訳:** 翻訳は、更新と同じコミットで直します。もとのページは変わっていないので、`translated_from_version` はそのままです。
+- **ソースの事実:** 更新は Redmine 7.0.3 のソース (`app/`、`lib/`、`config/locales/en.yml`、`Gemfile`) で確認し、画面の文字列をそのまま使います。
 
 <a id="screenshots"></a>
 

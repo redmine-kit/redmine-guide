@@ -9,6 +9,7 @@
 #   string in that language, marked as a name (「適用」 or **適用**);
 # - index.yml lists only existing topics, and map.yml's topics and
 #   anchors exist;
+# - every updates/<topic>.yml has its topic;
 # - a translation's H1 is the page's title in glossary/<lang>.pages.yml, and
 #   its headings match the English page's one for one (same count and
 #   levels): redmine_help finds an English anchor in a translation by the
@@ -42,7 +43,7 @@ end
 
 # The text outside code: fenced and indented blocks and code spans removed.
 def prose(text)
-  text.sub(/\A---\n.*?\n---\n/m, '').gsub(/^(`{3,}|~{3,}).*?^\1\s*$/m, '').gsub(/^(?: {4}|\t).*$/, '').gsub(/(`+).+?\1/, '')
+  text.sub(/\A---\n.*?\n---\n/m, '').gsub(/^[ \t]*(`{3,}|~{3,}).*?^[ \t]*\1\s*$/m, '').gsub(/^(?: {4}|\t).*$/, '').gsub(/(`+).+?\1/, '')
 end
 
 # HTML that Markdown shows (the guide's tables, footnotes, collapsed
@@ -67,7 +68,7 @@ IN_CODE = ['<code class> in a code block', 'an indented code block taken into a 
 
 def conversion_failures(text)
   body = prose(text)
-  unfenced = text.gsub(/^(`{3,}|~{3,}).*?^\1\s*$/m, '')
+  unfenced = text.gsub(/^[ \t]*(`{3,}|~{3,}).*?^[ \t]*\1\s*$/m, '')
   found = CONVERSION_FAILURES.filter_map { |pattern, problem| problem if (IN_CODE.include?(problem) ? unfenced : body).match?(pattern) }
   tags = body.scan(%r{(?<!\\)</?([A-Za-z][A-Za-z0-9]*)[\s>/]}).flatten.map(&:downcase).uniq - HTML_TAGS
   found << "HTML tags that Markdown would hide (#{tags.map { |tag| "<#{tag}>" }.join(', ')})" unless tags.empty?
@@ -148,6 +149,12 @@ YAML.safe_load_file(File.join(ROOT, 'map.yml')).each do |screen, value|
   end
   headings = File.read(file).scan(/^#+\s+(.+)$/).flatten.map { |heading| anchor.call(heading.strip) }
   problems << "map.yml: #{screen}: no heading ##{fragment} in #{topic}" if fragment && !headings.include?(fragment)
+end
+
+# updates/<topic>.yml: the topic exists (bin/convert applies the updates).
+Dir.glob('updates/**/*.yml', base: ROOT).each do |file|
+  topic = file.delete_prefix('updates/').delete_suffix('.yml')
+  problems << "#{file}: no topic #{topic}" unless File.exist?(File.join(ROOT, 'en', "#{topic}.md"))
 end
 
 index = YAML.safe_load_file(File.join(ROOT, 'index.yml'))

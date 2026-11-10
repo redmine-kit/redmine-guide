@@ -23,7 +23,7 @@ The guide on redmine.org changes from time to time. The `upstream` branch keeps 
    bin/convert
    ```
 
-   It writes `en/`, `images/`, `index.yml` and `topics.yml`. The translations in `ja/` are not touched.
+   It writes `en/`, `images/`, `index.yml` and `topics.yml`, with the [updates for Redmine 7.0.3](#updates). The translations in `ja/` are not touched. When it stops because the text an update replaces is no longer on a page, see [Updates](#updates).
 4. **Review.** Read the diff of `en/`. New pages of the guide need a place in `guide.yml` (a section and a name); `bin/convert` puts pages it does not list under the section of the page that links them.
 5. **Check.** List the translations whose English page changed, and broken links:
 
@@ -46,6 +46,26 @@ The guide on redmine.org changes from time to time. The `upstream` branch keeps 
 - adds front matter with the source page, its URL, version and update time.
 
 CI checks that the Markdown on `main` is what `bin/convert` makes from `upstream`.
+
+## Updates
+
+The guide on redmine.org does not always describe the Redmine version that this guide follows (7.0.3). The changes that bring a page up to date are kept apart from the conversion, in `updates/<section>/<topic>.yml`, and `bin/convert` applies them to the converted page:
+
+```yaml
+redmine: 7.0.3
+updates:
+  - why: what is different in Redmine 7.0.3
+    source: where Redmine 7.0.3's source shows it (a file, an en.yml key)
+    replace: |-
+      the text of the converted page
+    with: |-
+      the new text
+```
+
+- **Exactly once.** Each text to replace must be on the converted page exactly once, or `bin/convert` stops. A change on redmine.org therefore never undoes an update silently: read the new page, then change or drop the update (drop it when redmine.org fixed the page itself).
+- **Marked.** A page with updates has `updated_for: 7.0.3` in its front matter. The `upstream` branch keeps the page as redmine.org has it, for comparison.
+- **Translations.** Change the translation in the same commit as the update (its `translated_from_version` stays: the source page did not change).
+- **Facts from the source.** Check each update against Redmine 7.0.3's source (`app/`, `lib/`, `config/locales/en.yml`, `Gemfile`), and use the screen's own strings.
 
 ## Screenshots
 
