@@ -32,29 +32,29 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <news type="array" limit="25" total_count="2" offset="0">
-      <news>
-        <id>54</id>
-        <project name="Redmine" id="1"/>
-        <author name="Jean-Philippe Lang" id="1"/>
-        <title>Redmine 1.1.3 released</title>
-        <summary/>
-        <description>Redmine 1.1.3 has been released</description>
-        <created_on>2011-04-29T14:00:25+02:00</created_on>
-      </news>
-      <news>
-        <id>53</id>
-        <project name="Redmine" id="1"/>
-        <author name="Jean-Philippe Lang" id="1"/>
-        <title>Redmine 1.1.2 bug/security fix released</title>
-        <summary/>
-        <description>Redmine 1.1.2 has been released</description>
-        <created_on>2011-03-07T21:07:03+01:00</created_on>
-      </news>
-    </news>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<news type="array" limit="25" total_count="2" offset="0">
+  <news>
+    <id>54</id>
+    <project name="Redmine" id="1"/>
+    <author name="Jean-Philippe Lang" id="1"/>
+    <title>Redmine 1.1.3 released</title>
+    <summary/>
+    <description>Redmine 1.1.3 has been released</description>
+    <created_on>2011-04-29T14:00:25+02:00</created_on>
+  </news>
+  <news>
+    <id>53</id>
+    <project name="Redmine" id="1"/>
+    <author name="Jean-Philippe Lang" id="1"/>
+    <title>Redmine 1.1.2 bug/security fix released</title>
+    <summary/>
+    <description>Redmine 1.1.2 has been released</description>
+    <created_on>2011-03-07T21:07:03+01:00</created_on>
+  </news>
+</news>
+```
 
 ## Showing a news item
 
@@ -63,10 +63,9 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 <u>Parameters</u>:
 
 - `include`: fetch associated data (optional, use comma to fetch multiple associations). Possible values:
-
-\* `attachments`\
-\* `comments`\
-\* `reactions` - Since 7.1.0, Returns the users who reacted to the news item. Combined with `comments`, the reactions on each comment are returned as well. Only the users that are visible to the requesting user are returned. Nothing is returned if the reactions feature is disabled. See [Showing an issue](rest-issues.md#Showing-an-issue) for the response format.
+  - `attachments`
+  - `comments`
+  - `reactions` - Since 7.1.0, Returns the users who reacted to the news item. Combined with `comments`, the reactions on each comment are returned as well. Only the users that are visible to the requesting user are returned. Nothing is returned if the reactions feature is disabled. See [Showing an issue](rest-issues.md#Showing-an-issue) for the response format.
 
 <u>Examples</u>:
 
@@ -80,18 +79,18 @@ Returns a paginated list of news items. When `project_id` is given, only news fr
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <news>
-      <id>54</id>
-      <project name="Redmine" id="1"/>
-      <author name="Jean-Philippe Lang" id="1"/>
-      <title>Redmine 1.1.3 released</title>
-      <summary/>
-      <description>Redmine 1.1.3 has been released</description>
-      <created_on>2011-04-29T14:00:25+02:00</created_on>
-    </news>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<news>
+  <id>54</id>
+  <project name="Redmine" id="1"/>
+  <author name="Jean-Philippe Lang" id="1"/>
+  <title>Redmine 1.1.3 released</title>
+  <summary/>
+  <description>Redmine 1.1.3 has been released</description>
+  <created_on>2011-04-29T14:00:25+02:00</created_on>
+</news>
+```
 
 ## Creating a news item
 
@@ -100,10 +99,9 @@ POST /projects/\[project_id\]/news.\[format\]
 <u>Parameters</u>:
 
 - `news` - A hash of the news attributes:
-
-\* `title`\
-\* `summary`\
-\* `description`
+  - `title`
+  - `summary`
+  - `description`
 
 Attachments can be added when you create a news item, see [Attaching files](rest-api.md#Attaching-files).
 
@@ -111,26 +109,26 @@ Attachments can be added when you create a news item, see [Attaching files](rest
 
     POST /projects/1/news.xml
 
-    <code class="xml">
-    <?xml version="1.0"?>
-    <news>
-      <title>Example</title>
-      <summary>News summary</summary>
-      <description>News description</description>
-    </news>
-    </code>
+```xml
+<?xml version="1.0"?>
+<news>
+  <title>Example</title>
+  <summary>News summary</summary>
+  <description>News description</description>
+</news>
+```
 
     POST /projects/1/news.json
 
-    <code class="json">
-    {
-      "news": {
-        "title": "Example",
-        "summary": "News summary",
-        "description": "News description"
-      }
-    }
-    </code>
+```json
+{
+  "news": {
+    "title": "Example",
+    "summary": "News summary",
+    "description": "News description"
+  }
+}
+```
 
 ## Updating a news item
 
@@ -139,10 +137,9 @@ PUT /news/\[id\].\[format\]
 <u>Parameters</u>:
 
 - `news` - A hash of the news attributes:
-
-\* `title`\
-\* `summary`\
-\* `description`
+  - `title`
+  - `summary`
+  - `description`
 
 Attachments can be added when you update a news item, see [Attaching files](rest-api.md#Attaching-files).
 
@@ -150,26 +147,26 @@ Attachments can be added when you update a news item, see [Attaching files](rest
 
     PUT /news/[id].xml
 
-    <code class="xml">
-    <?xml version="1.0"?>
-    <news>
-      <title>Title changed</title>
-      <summary>Summary changed</summary>
-      <description>Description changed</description>
-    </news>
-    </code>
+```xml
+<?xml version="1.0"?>
+<news>
+  <title>Title changed</title>
+  <summary>Summary changed</summary>
+  <description>Description changed</description>
+</news>
+```
 
     PUT /news/[id].json
 
-    <code class="json">
-    {
-      "news": {
-        "title": "Title changed",
-        "summary": "Summary changed",
-        "description": "Description changed"
-      }
-    }
-    </code>
+```json
+{
+  "news": {
+    "title": "Title changed",
+    "summary": "Summary changed",
+    "description": "Description changed"
+  }
+}
+```
 
 ## Deleting a news item
 

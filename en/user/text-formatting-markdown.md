@@ -8,7 +8,7 @@ source_updated_on: '2023-09-29T10:49:32Z'
 # Markdown formatting
 
 Below is **Markdown** formatting. For **Textile** formatting see [Textile formatting](text-formatting-textile.md).\
-Currently HTML tags are not allowed by default. See \[#15520](https://www.redmine.org/issues/15520) and \[#20497](https://www.redmine.org/issues/20497) for details. For other limitations of the current **Markdown** formatting see \[#16373](https://www.redmine.org/issues/16373) and \[#21443](https://www.redmine.org/issues/21443).
+Currently HTML tags are not allowed by default. See [#15520](https://www.redmine.org/issues/15520) and [#20497](https://www.redmine.org/issues/20497) for details. For other limitations of the current **Markdown** formatting see [#16373](https://www.redmine.org/issues/16373) and [#21443](https://www.redmine.org/issues/21443).
 
 ## Links
 
@@ -52,7 +52,7 @@ Not supported by Markdown
 
 ### Font style
 
-    <code>* **bold** __bold__
+    * **bold** __bold__
     * *italic* _italic_
     * ***bold italic*** ___bold italic___
     * <ins>underline</ins>
@@ -63,56 +63,44 @@ Not supported by Markdown
     * normal **bold** _italic_ normal;E=mc<sup>2</sup>
     * normal<strong>bold</strong><em>italic</em>normal;E=mc<sup>2</sup>
     * Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
-    * <notextile><pre>**some lines**      some [link](http://www.redmine.org)
-
-</notextile>
-
-\* \<pre\>\\\\some lines\\\\      some \\link\](http\\//www\\redmine\\org)\</pre\>\
-</code>
-
-</pre>
+    * <notextile><pre>**some lines**      some [link](http://www.redmine.org)</pre></notextile>
+    * <notextile><pre>\*\*some lines\*\*      some \[link](http\://www\.redmine\.org)</pre></notextile>
 
 displays:
 
-\* **bold** **bold**\
-\* *italic* *italic*\
-\* ***bold italic*** ***bold italic***\
-\* <u>underline</u>\
-\* ~~strike-through~~\
-\* Plain <sup>superscript</sup>\
-\* Plain <sub>subscript</sub>\
-\* `inline monospace`\
-\* normal **bold** *italic* normal;E=mc<sup>2</sup>\
-\* normal**bold***italic*normal;E=mc<sup>2</sup>\
-\* Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`\
-\*
+- **bold** **bold**
+- *italic* *italic*
+- ***bold italic*** ***bold italic***
+- <u>underline</u>
+- ~~strike-through~~
+- Plain <sup>superscript</sup>
+- Plain <sub>subscript</sub>
+- `inline monospace`
+- normal **bold** *italic* normal;E=mc<sup>2</sup>
+- normal**bold***italic*normal;E=mc<sup>2</sup>
+- Escaping: \*\*bold\*\* \_italic\_ \`inlinemono\`
+- `<notextile></notextile>*some lines*      some "link":http://www.redmine.org`
+- `**some lines**      some [link](http://www.redmine.org)`
 
-    <notextile></notextile>*some lines*      some "link":http://www.redmine.org
-
-\
-\*
-
-    **some lines**      some [link](http://www.redmine.org)
-
-**Note:** HTML tags need to be allowed to use the HTML tags (<strong>, <em>, <ins>, <del>, <sup>, <sub>). See \[#15520](https://www.redmine.org/issues/15520)-16 and \[#15520](https://www.redmine.org/issues/15520)-17 for details.\
+**Note:** HTML tags need to be allowed to use the HTML tags (\<strong\>, \<em\>, \<ins\>, \<del\>, \<sup\>, \<sub\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
 More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
 
 ### Color
 
-    <code><notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
+    <notextile>* <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue'ish</span>
     * <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue'ish</span>
     * <span style="background-color:lightgreen">Lightgreen Background</span> <span style="background-color:yellow">Yellow Background</span>
     * <span style="background-color:lightgreen">Lightgreen Background</span><span style="background-color:yellow">Yellow Background</span>
-    </notextile></code>
+    </notextile>
 
 displays:
 
-\* <span style="color:red;">red</span> <span style="color:green;">green</span> <span style="color:yellow;">yellow</span> <span style="color:#82B6E1;">blue’ish</span>\
-\* %{color:red}red%%{color:green}green%%{color:yellow}yellow%<span style="color:#82B6E1;">blue’ish</span>\
-\* <span style="background:lightgreen;">Lightgreen Background</span> <span style="background:yellow;">Yellow Background</span>\
-\* %{background:lightgreen}Lightgreen Background%<span style="background:yellow;">Yellow Background</span>
+- <span style="color:red">red</span> <span style="color:green">green</span> <span style="color:yellow">yellow</span> <span style="color:#82B6E1">blue’ish</span>
+- <span style="color:red">red</span><span style="color:green">green</span><span style="color:yellow">yellow</span><span style="color:#82B6E1">blue’ish</span>
+- <span style="background:lightgreen">Lightgreen Background</span> <span style="background:yellow">Yellow Background</span>
+- <span style="background:lightgreen">Lightgreen Background</span><span style="background:yellow">Yellow Background</span>
 
-**Note:** HTML tags need to be allowed to use the HTML tag (<span>). See \[#15520](https://www.redmine.org/issues/15520)-16 and \[#15520](https://www.redmine.org/issues/15520)-17 for details.\
+**Note:** HTML tags need to be allowed to use the HTML tag (\<span\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
 More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
 
 ### Inline images
@@ -123,17 +111,17 @@ More explicitly, you need to patch redmine, as explained in [this post](https://
 
 If you have an image attached to your wiki page, it can be displayed inline using its filename: **\*\***.
 
-As of this writing, Markdown has no syntax for specifying the dimensions of an image; if this is important to you, you can use regular HTML <img> tags.
+As of this writing, Markdown has no syntax for specifying the dimensions of an image; if this is important to you, you can use regular HTML \<img\> tags.
 
-- <img style="float:right" src="URL"/>
-- <img style="width:100%" src="attached_image.png"/>
+- \<img style=”float:right” src=”URL”/\>
+- \<img style=”width:100%” src=”attached_image.png”/\>
 
-**Note:** HTML tags need to be allowed to use the HTML tag (<img>). See \[#15520](https://www.redmine.org/issues/15520)-16 and \[#15520](https://www.redmine.org/issues/15520)-17 for details.\
+**Note:** HTML tags need to be allowed to use the HTML tag (\<img\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
 More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
 
 ### Headings
 
-    <code># Heading
+    # Heading
 
     ## Subheading
 
@@ -146,7 +134,6 @@ More explicitly, you need to patch redmine, as explained in [this post](https://
 
     Subheading
     ----------
-    </code>
 
 Redmine assigns an anchor to each of those headings thus you can link to them with “\#Heading”, “\#Subheading” and so forth.
 
@@ -154,7 +141,7 @@ Redmine assigns an anchor to each of those headings thus you can link to them wi
 
 Markdown does not support alignment of a paragraph. Use \<div\> tags if you need it.
 
-    <code>left aligned
+    left aligned
     <div style="padding-left:1em;">
     left ident 1em
     </div>
@@ -174,7 +161,7 @@ Markdown does not support alignment of a paragraph. Use \<div\> tags if you need
 
     <div style="text-align:center;">
     This is centered paragraph.
-    </div></code>
+    </div>
 
 displays;
 
@@ -191,11 +178,7 @@ p)))\>. right ident 3em
 
 This is centered paragraph.
 
-**Note:** HTML tags need to be allowed to use the HTML tags (
-
-<div>
-
-). See \[#15520](https://www.redmine.org/issues/15520)-16 and \[#15520](https://www.redmine.org/issues/15520)-17 for details.\
+**Note:** HTML tags need to be allowed to use the HTML tags (\<div\>). See [#15520](https://www.redmine.org/issues/15520)-16 and [#15520](https://www.redmine.org/issues/15520)-17 for details.\
 More explicitly, you need to patch redmine, as explained in [this post](https://www.redmine.org/boards/2/topics/56096?r=57052#message-57052)
 
 ### Horizontal rule
@@ -208,9 +191,7 @@ displays:
 
 ### Preformatted Text
 
-     <pre>**Your text won't become bold**
-
-</pre>
+     <pre>**Your text won't become bold**</pre>
 
 displays:
 
@@ -272,7 +253,7 @@ Note that the actual numbers you use to mark the list have no effect on the outp
 
 You can add task list items using the common_mark format
 
-     * [ ] Task title 
+     * [ ] Task title
 
 or by clicking the “Task list” icon from the toolbar.
 
@@ -288,38 +269,53 @@ For now, to check the items, you need to use the Edit feature, we will try to al
 
 displays (all multiple spaces are replaced by 1 space):
 
-| UserID (align right) | Name (align left) | Group (align center) |
-|---------------------:|:------------------|:--------------------:|
-|                    2 | John Smith        |                      |
-|                    3 | Dave Lopper       |        A Team        |
-|                    4 | Robert Hill       |        B Team        |
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">UserID (align right)</th>
+<th style="text-align: left;">Name (align left)</th>
+<th style="text-align: center;">Group (align center)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">John Smith</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">Dave Lopper</td>
+<th style="text-align: center;">A Team</th>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Robert Hill</td>
+<th style="text-align: center;">B Team</th>
+</tr>
+</tbody>
+</table>
 
 ### Table of content
 
-    <code> => left aligned toc
-     => right aligned toc
-    </code>
+    {{toc}} => left aligned toc
+    {{>toc}} => right aligned toc
 
 Please keep in mind, that the toc-tag needs an empty line above and underneath it and no other text before and after it.
 
 Example:
 
-    <code>h1. headLineOne
+    h1. headLineOne
 
     h2. something
 
+    {{toc}}
+
     h2. something more
-    </code>
 
 ### Footnotes
 
-A footnote works very much like a reference-style link: it consists of a marker next to the text, e.g.
-
-    This is a sentence.[^1]
-
-and a footnote definition on its own line anywhere within the document, e.g.
-
-    [^1]: This is a footnote.
+A footnote works very much like a reference-style link: it consists of a marker next to the text, e.g. `This is a sentence.[^1]` and a footnote definition on its own line anywhere within the document, e.g. `[^1]: This is a footnote.`
 
 ## Macros
 
@@ -333,24 +329,24 @@ Default code highlightment relies on [Rouge](http://rouge.jneen.net/), a syntax 
 
 You can highlight code in your wiki page using this syntax:
 
-    <code>``` ruby
+    ``` ruby
     Place your code here.
-    ```</code>
+    ```
 
 Example:
 
-    <code class="ruby">
-    # The Greeter class
-    class Greeter
-      def initialize(name)
-        @name = name.capitalize
-      end
+```ruby
+# The Greeter class
+class Greeter
+  def initialize(name)
+    @name = name.capitalize
+  end
 
-      def salute
-        puts "Hello #{@name}!"
-      end
-    end
-    </code>
+  def salute
+    puts "Hello #{@name}!"
+  end
+end
+```
 
 ## Translation
 

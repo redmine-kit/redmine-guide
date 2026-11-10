@@ -80,7 +80,7 @@ bundle update
 
 This step is the one that could change the contents of your database. Go to your new redmine directory, then migrate your database:
 
-    bundle exec rake db:migrate RAILS_ENV=production 
+    bundle exec rake db:migrate RAILS_ENV=production
 
 If you have installed any plugins, you should also run their database migrations:
 
@@ -116,7 +116,7 @@ bundle exec rake generate_secret_token
 
 These resources may help you with your Redmine upgrade:
 
-- Error while browsing the wiki history after upgrading from Redmine 1.x with SQLite: see \[#12501](https://www.redmine.org/issues/12501)
+- Error while browsing the wiki history after upgrading from Redmine 1.x with SQLite: see [#12501](https://www.redmine.org/issues/12501)
 - [mod_fcgid for Apache2](http://httpd.apache.org/mod_fcgid/) helped us get Rails running on Apache 2
 - [Running Redmine on Apache](http://www.redmine.org/wiki/redmine/HowTo_configure_Apache_to_run_Redmine)
 - [Notes about our 0.8.6 to 0.9.3 upgrade issues and how to resolve them](http://web.archive.org/web/20111214022108/http://www.cybersprocket.com/2010/project-management/upgrading-redmine-from-8-6-to-9-3/) —cybersprocket (2010-04-25)

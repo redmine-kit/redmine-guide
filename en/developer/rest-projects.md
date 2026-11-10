@@ -24,24 +24,24 @@ Returns all projects (all public projects and private projects where user have a
 
 <u>Response</u>:
 
-    <code class="xml">
-    <projects type="array">
-      <project>
-        <id>1</id>
-        <name>Redmine</name>
-        <identifier>redmine</identifier>
-        <description>
-          Redmine is a flexible project management web application written using Ruby on Rails framework.
-        </description>
-        <created_on>Sat Sep 29 12:03:04 +0200 2007</created_on>
-        <updated_on>Sun Mar 15 12:35:11 +0100 2009</updated_on>
-        <is_public>true</is_public>
-      </project>
-      <project>
-        <id>2</id>
-        ...
-      </project>
-    </code>
+```xml
+<projects type="array">
+  <project>
+    <id>1</id>
+    <name>Redmine</name>
+    <identifier>redmine</identifier>
+    <description>
+      Redmine is a flexible project management web application written using Ruby on Rails framework.
+    </description>
+    <created_on>Sat Sep 29 12:03:04 +0200 2007</created_on>
+    <updated_on>Sun Mar 15 12:35:11 +0100 2009</updated_on>
+    <is_public>true</is_public>
+  </project>
+  <project>
+    <id>2</id>
+    ...
+  </project>
+```
 
 <u>Notes</u>:
 
@@ -72,24 +72,24 @@ Returns the project of given id or identifier.
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <project id="1">
-      <name>Redmine</name>
-      <identifier>redmine</identifier>
-      <description>
-        Redmine is a flexible project management web application written using Ruby on Rails framework.
-      </description>
-      <homepage></homepage>
-      <status>1</status>
-      <parent id="123" name="foo"/>
-      <default_version id="3" name="2.0"/>
-      <default_assignee id="2" name="John Smith"/>
-      <created_on>Sat Sep 29 12:03:04 +0200 2007</created_on>
-      <updated_on>Sun Mar 15 12:35:11 +0100 2009</updated_on>
-      <is_public>true</is_public>
-    </project>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project id="1">
+  <name>Redmine</name>
+  <identifier>redmine</identifier>
+  <description>
+    Redmine is a flexible project management web application written using Ruby on Rails framework.
+  </description>
+  <homepage></homepage>
+  <status>1</status>
+  <parent id="123" name="foo"/>
+  <default_version id="3" name="2.0"/>
+  <default_assignee id="2" name="John Smith"/>
+  <created_on>Sat Sep 29 12:03:04 +0200 2007</created_on>
+  <updated_on>Sun Mar 15 12:35:11 +0100 2009</updated_on>
+  <is_public>true</is_public>
+</project>
+```
 
 <u>Notes</u>:
 
@@ -104,64 +104,63 @@ Creates a project.
 <u>Parameters</u>:
 
 - `project` (required): a hash of the project attributes, including:
-
-\* `name` (required): the project name\
-\* `identifier` (required): the project identifier\
-\* `description`\
-\* `homepage`\
-\* `is_public`: true or false\
-\* `parent_id`: the parent project number\
-\* `inherit_members`: true or false\
-\* `default_assigned_to_id`: ID of the default user. It works only when the new project is a subproject and it inherits the members.\
-\* `default_version_id`: ID of the default version. It works only with existing shared versions.\
-\* `tracker_ids`: an array of tracker IDs: 1 for Bug, etc.\
-\* `enabled_module_names`: an array of module names: boards, calendar, documents, files, gantt, issue_tracking, news, repository, time_tracking, wiki.\
-\* `issue_custom_field_ids`: an array of issue custom field IDs.\
-\* `custom_field_values`: array with `id => value` pairs
+  - `name` (required): the project name
+  - `identifier` (required): the project identifier
+  - `description`
+  - `homepage`
+  - `is_public`: true or false
+  - `parent_id`: the parent project number
+  - `inherit_members`: true or false
+  - `default_assigned_to_id`: ID of the default user. It works only when the new project is a subproject and it inherits the members.
+  - `default_version_id`: ID of the default version. It works only with existing shared versions.
+  - `tracker_ids`: an array of tracker IDs: 1 for Bug, etc.
+  - `enabled_module_names`: an array of module names: boards, calendar, documents, files, gantt, issue_tracking, news, repository, time_tracking, wiki.
+  - `issue_custom_field_ids`: an array of issue custom field IDs.
+  - `custom_field_values`: array with `id => value` pairs
 
     POST /projects.xml
 
-    <code class="xml">
-    <project>
-      <name>test project</name>
-      <identifier>test</identifier>
-      <enabled_module_names>time_tracking</enabled_module_names>
-      <enabled_module_names>issue_tracking</enabled_module_names>
-    </project>
-    </code>
+```xml
+<project>
+  <name>test project</name>
+  <identifier>test</identifier>
+  <enabled_module_names>time_tracking</enabled_module_names>
+  <enabled_module_names>issue_tracking</enabled_module_names>
+</project>
+```
 
     POST /projects.json
 
-    <code class="json">
-    {
-       "project":{
-          "name":"Example name",
-          "identifier":"example_name",
-          "description":"Description of exapmple project",
-          "is_public":false,
-          "parent_id":1,
-          "inherit_members":false,
-          "tracker_ids":[
-             1,
-             2,
-             3,
-             4,
-             5
-          ],
-          "enabled_module_names":[
-             "issue_tracking"
-          ],
-          "custom_field_values":{
-             "1":"VALUE"
-          }
-       }
-    }
-    </code>
+```json
+{
+   "project":{
+      "name":"Example name",
+      "identifier":"example_name",
+      "description":"Description of exapmple project",
+      "is_public":false,
+      "parent_id":1,
+      "inherit_members":false,
+      "tracker_ids":[
+         1,
+         2,
+         3,
+         4,
+         5
+      ],
+      "enabled_module_names":[
+         "issue_tracking"
+      ],
+      "custom_field_values":{
+         "1":"VALUE"
+      }
+   }
+}
+```
 
 <u>Response</u>:
 
-\* `201 Created`: project was created\
-\* `422 Unprocessable Entity`: project was not created due to validation failures (response body contains the error messages)
+- `201 Created`: project was created
+- `422 Unprocessable Entity`: project was not created due to validation failures (response body contains the error messages)
 
 ## Updating a project
 
@@ -190,4 +189,4 @@ Deletes the project of given id or identifier.
 ## Limitations:
 
 A POST request on Redmine 1.0.1-2 (Debian stable) does not work using the API key, but does work with a login/passwd authentication\
-\[#12104](https://www.redmine.org/issues/12104)
+[#12104](https://www.redmine.org/issues/12104)

@@ -45,9 +45,6 @@ When entering estimated or spent time values in Redmine using [decimal time form
 Consider the following example:
 
 - in a project you have 4 issues with the following spent time values: **1.00**, **0.10**, **0.15** & **0.40**. Now in the Spent Time reports (Project overview -\> Spent time -\> \[Details \| Report\]) you will see the accumulated total of the decimal values of 1.65 hours (1 hour 39 minutes), not a separate accumulation of the hour and minutes after the decimal point (which would yield an incorrect value of 2.05 hours).
-
-<!-- -->
-
 - *Explanation*: this is intended behaviour since the four spent time values are entered in decimal time format. The values are interpreted as follows:
   - 1.00 decimal equals 60 minutes (1 hour)
   - 0.10 decimal equals 6 minutes
@@ -73,6 +70,6 @@ The time specification in the commit message can be any of the above [accepted t
 
 An example using the default issue referencing keyword “refs”:
 
-Fixed something, refs \[#435](https://www.redmine.org/issues/435) @1h30
+Fixed something, refs [#435](https://www.redmine.org/issues/435) @1h30
 
-This commit message will add 1 hour and 30 minutes of spent time on issue ![#435](https://www.redmine.org/issues/435).
+This commit message will add 1 hour and 30 minutes of spent time on issue #435.

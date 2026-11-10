@@ -41,9 +41,8 @@ This endpoint requires admin privileges.
 <u>Parameters</u>:
 
 - `group` (required): a hash of the group attributes, including:
-
-\* `name` (required): the group name\
-\* `user_ids`: ids of the group users (an empty group is created if not provided)
+  - `name` (required): the group name
+  - `user_ids`: ids of the group users (an empty group is created if not provided)
 
 <u>Example</u>:
 
@@ -68,8 +67,8 @@ This endpoint requires admin privileges.
 
 <u>Response</u>:
 
-\* `201 Created`: group was created\
-\* `422 Unprocessable Entity`: group was not created due to validation failures (response body contains the error messages)
+- `201 Created`: group was created
+- `422 Unprocessable Entity`: group was not created due to validation failures (response body contains the error messages)
 
 ## /groups/:id.:format
 
@@ -82,9 +81,8 @@ This endpoint requires admin privileges.
 <u>Parameters</u>:
 
 - `include` (optional): a coma separated list of associations to include in the response:
-
-\* `users`\
-\* `memberships`
+  - `users`
+  - `memberships`
 
 <u>Example</u>:
 

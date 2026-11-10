@@ -71,13 +71,7 @@ Note that LDAP attribute names are **case sensitive**.
 
 ### Dynamic Bind Account
 
-The above setup would need a special account on the directory server which Redmine uses to pre-authenticate. It is possible to use the keyword **\$login** in the account field which then would be replaced by the current login. The password can be left empty in this case, for example:
-
-    Account: $login@COMPANY.DOMAIN.NAME
-
-or
-
-    Account: company\$login
+The above setup would need a special account on the directory server which Redmine uses to pre-authenticate. It is possible to use the keyword **\$login** in the account field which then would be replaced by the current login. The password can be left empty in this case, for example: `Account: $login@COMPANY.DOMAIN.NAME` or `Account: company\$login`
 
 ### Base DN variants
 
@@ -182,7 +176,6 @@ The username for the bind credentials might need to be specified as a DN (i.e. C
       # As described under #bind, most LDAP servers require that you supply a complete DN
       # as a binding-credential, along with an authenticator such as a password.
 
-\
 Therefore user with MyDomain\MyUserName or MyUserName@MyDomain.com username might enter only MyUserName as a Redmine login name.
 
 ### Slow LDAP authentification
@@ -195,8 +188,8 @@ If you are using the OpenDS server, you might have issues with the request contr
 
 Add a global ACI like this
 
-    ./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll 
-    --add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\ 
+    ./dsconfig -h SERVER_IP -p 4444 -D cn="Directory Manager" -w PASSWORD -n set-access-control-handler-prop --trustAll
+    --add global-aci:\(targetcontrol=\"1.2.840.113556.1.4.319\"\)\ \(version\ 3.0\;\ acl\
     \"Anonymous\ control\ access\ to\ 1.2.840.113556.1.4.319\"\;\ allow\ \(read\)\ userdn=\"ldap:///anyone\"\;\)
 
 Note: Enter the command on one line, use the escaping exactly as indicated (the \\ after “acl” is meant to be “\\ ” for a space).
@@ -250,7 +243,7 @@ Use port 389 and sAMAccountName instead of uid
       LDAPS    = no (yes/checked is ok too with Port set to 636)
       Account  = username@domain.tld
       Password = <username_pass>
-      Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)   
+      Base DN  = < Default Users DN > (cn=Users,dc=domain,dc=tld)
 
     On-the-fly user creation = yes
     Attributes
@@ -267,7 +260,7 @@ Use port 389 and sAMAccountName instead of uid
       LDAPS    = no
       Account  = < Admins DN > (cn=admin,dc=domain,dc=tld)
       Password = < Admins Pass >
-      Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)   
+      Base DN  = < Default Users DN > (cn=People,dc=domain,dc=tld)
 
     On-the-fly user creation = yes
     Attributes

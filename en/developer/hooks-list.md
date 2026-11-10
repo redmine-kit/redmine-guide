@@ -12,16 +12,9 @@ To see the current list of plugin hooks, run `rake redmine:plugins:hook_list` in
 <table>
 <tbody>
 <tr>
-<td><p>On Redmine version#43 and up the rake task has been deprecated.<br />
-As an alternative you can use either of the following in the Redmine directory (see message#36062).</p>
-<pre>
-<p><code>grep -r call_hook * # list of source lines with hook calls<br />
-grep -rohT ‘call_hook([^)]*)’ # list of hooks calls and source files<br />
-grep -roh ‘call_hook([^)]*)’</p></td>
-<td>sort -u</td>
-<td><p>grep ‘([^)]*)’ # list of hooks calls only<br />
-</code></p>
-</pre></td>
+<td style="background-color:#f88;">On Redmine version#43 and up the rake task has been deprecated.<br />As an alternative you can use either of the following in the Redmine directory (see message#36062).<br /><pre><code>grep -r call_hook *                                       # list of source lines with hook calls
+grep -rohT &#39;call_hook([^)]*)&#39;                             # list of hooks calls and source files
+grep -roh  &#39;call_hook([^)]*)&#39; | sort -u | grep &#39;([^)]*)&#39;  # list of hooks calls only</code></pre></td>
 </tr>
 </tbody>
 </table>

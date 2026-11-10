@@ -116,7 +116,7 @@ After the preceding steps have been taken it is time to create our bare reposito
 
 Our bare repository is now created successfully! Now go to your Redmine project settings, go to the repositories tab and choose `git` as the SCM, then put in the *Path to repository* (in our example this is `/var/redmine/git_repositories/donebox.git/`) and save the settings. Have a look at your repository tab: you should now be able to browse your repository successfully.
 
-Note: Per Defect \[#8548](https://www.redmine.org/issues/8548), if you set the *Report last commit for files and directories*, four columns are added on repository file an ddirectory lists:
+Note: Per Defect [#8548](https://www.redmine.org/issues/8548), if you set the *Report last commit for files and directories*, four columns are added on repository file an ddirectory lists:
 
 - Revision
 - Age
@@ -140,11 +140,8 @@ If you are using github, you can use the [Github Hook Plugin](https://www.redmin
 
 #### Bare repository on Windows
 
-If your bare repository is install on **Windows**, adding :
-
-    ;%GIT_PATH%\cmd;%GIT_PATH%\bin;
-
-to your %%PATH%% environment variable.\
+If your bare repository is install on **Windows**, adding :\
+`;%GIT_PATH%\cmd;%GIT_PATH%\bin;` to your %%PATH%% environment variable.\
 Where %%GIT_PATH%% is the install directory of Git (eg: *C:/Git*)
 
 #### Setting up a mirror repository (shortcut, tracking branches)

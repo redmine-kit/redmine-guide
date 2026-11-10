@@ -45,4 +45,4 @@ Point releases shouldn’t break backwards compatibility.
 
 ## References
 
-\[#1901](https://www.redmine.org/issues/1901)#note-14
+[#1901](https://www.redmine.org/issues/1901)#note-14

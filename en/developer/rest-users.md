@@ -37,54 +37,52 @@ This endpoint requires admin privileges.
 <u>Parameters</u>:
 
 - `user` (required): a hash of the user attributes, including:
-
-\* `login` (required): the user login\
-\* `password`: the user password\
-\* `firstname` (required)\
-\* `lastname` (required)\
-\* `mail` (required)\
-\* `auth_source_id`: authentication mode id\
-\* `mail_notification`: only_my_events, none, etc.\
-\* `must_change_passwd`: true or false\
-\* `generate_password`: true or false\
-\* `custom_fields` - See [Custom fields](rest-api.md#Working-with-custom-fields)
-
+  - `login` (required): the user login
+  - `password`: the user password
+  - `firstname` (required)
+  - `lastname` (required)
+  - `mail` (required)
+  - `auth_source_id`: authentication mode id
+  - `mail_notification`: only_my_events, none, etc.
+  - `must_change_passwd`: true or false
+  - `generate_password`: true or false
+  - `custom_fields` - See [Custom fields](rest-api.md#Working-with-custom-fields)
 - `send_information`: true or false : Send account information to the user
 
 <u>Example</u>:
 
     POST /users.xml
 
-    <code class="xml">
-    <?xml version="1.0" encoding="ISO-8859-1" ?>
-    <user>
-      <login>jplang</login>
-      <firstname>Jean-Philippe</firstname>
-      <lastname>Lang</lastname>
-      <password>secret</password>
-      <mail>jp_lang@yahoo.fr</mail>
-      <auth_source_id>2</auth_source_id>
-    </user>
-    </code>
+```xml
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<user>
+  <login>jplang</login>
+  <firstname>Jean-Philippe</firstname>
+  <lastname>Lang</lastname>
+  <password>secret</password>
+  <mail>jp_lang@yahoo.fr</mail>
+  <auth_source_id>2</auth_source_id>
+</user>
+```
 
 JSON
 
-    <code class="json">
-    {
-        "user": {
-            "login": "jplang",
-            "firstname": "Jean-Philippe",
-            "lastname": "Lang",
-            "mail": "jp_lang@yahoo.fr",
-            "password": "secret"
-        }
+```json
+{
+    "user": {
+        "login": "jplang",
+        "firstname": "Jean-Philippe",
+        "lastname": "Lang",
+        "mail": "jp_lang@yahoo.fr",
+        "password": "secret"
     }
-    </code>
+}
+```
 
 <u>Response</u>:
 
-\* `201 Created`: user was created\
-\* `422 Unprocessable Entity`: user was not created due to validation failures (response body contains the error messages)
+- `201 Created`: user was created
+- `422 Unprocessable Entity`: user was not created due to validation failures (response body contains the error messages)
 
 ## /users/:id.:format
 
@@ -97,9 +95,8 @@ This endpoint can be used by admin or non admin but the returned fields will dep
 <u>Parameters</u>:
 
 - `include` (optional): a comma separated list of associations to include in the response:
-
-\* `memberships` : adds extra information about user’s memberships and roles on the projects\
-\* `groups` (added in 2.1) : adds extra information about user’s groups
+  - `memberships` : adds extra information about user’s memberships and roles on the projects
+  - `groups` (added in 2.1) : adds extra information about user’s groups
 
 <u>Examples</u>:
 
@@ -113,42 +110,42 @@ Returns the details about user ID 3, and additional detail about the user’s pr
 
 <u>Response</u>:
 
-    <code class="xml">
-    <user>
-      <id>3</id>
-      <login>jplang</login>
-      <firstname>Jean-Philippe</firstname>
-      <lastname>Lang</lastname>
-      <mail>jp_lang@yahoo.fr</mail>
-      <created_on>2007-09-28T00:16:04+02:00</created_on>
-      <updated_on>2010-08-01T18:05:45+02:00</updated_on>
-      <last_login_on>2011-08-01T18:05:45+02:00</last_login_on>
-      <passwd_changed_on>2011-08-01T18:05:45+02:00</passwd_changed_on>
-      <api_key>ebc3f6b781a6fb3f2b0a83ce0ebb80e0d585189d</api_key>
-      <avatar_url></avatar_url>
-      <status>1</status>
-      <custom_fields type="array" />
-      <memberships type="array">
-        <membership>
-          <project name="Redmine" id="1"/>
-          <roles type="array">
-            <role name="Administrator" id="3"/>
-            <role name="Contributor" id="4"/>
-          </roles>
-        </membership>
-      </memberships>
-      <groups type="array">
-        <group id="20" name="Developers"/>
-      </groups>
-    </user>
-    </code>
+```xml
+<user>
+  <id>3</id>
+  <login>jplang</login>
+  <firstname>Jean-Philippe</firstname>
+  <lastname>Lang</lastname>
+  <mail>jp_lang@yahoo.fr</mail>
+  <created_on>2007-09-28T00:16:04+02:00</created_on>
+  <updated_on>2010-08-01T18:05:45+02:00</updated_on>
+  <last_login_on>2011-08-01T18:05:45+02:00</last_login_on>
+  <passwd_changed_on>2011-08-01T18:05:45+02:00</passwd_changed_on>
+  <api_key>ebc3f6b781a6fb3f2b0a83ce0ebb80e0d585189d</api_key>
+  <avatar_url></avatar_url>
+  <status>1</status>
+  <custom_fields type="array" />
+  <memberships type="array">
+    <membership>
+      <project name="Redmine" id="1"/>
+      <roles type="array">
+        <role name="Administrator" id="3"/>
+        <role name="Contributor" id="4"/>
+      </roles>
+    </membership>
+  </memberships>
+  <groups type="array">
+    <group id="20" name="Developers"/>
+  </groups>
+</user>
+```
 
 If the user doing the request is not admin, it depends on the requested user:
 
-\* if the user is not locked and is not admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `mail`, `created_on`\
-\* if the user is not locked and is admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `created_on`, `last_login_on`\
-\* if the user is locked, the endpoint returns 404 status code\
-\* if the user is the requesting user, you will also have the fields `login`, `api_key`
+- if the user is not locked and is not admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `mail`, `created_on`
+- if the user is not locked and is admin, the endpoint returns a user object with the fields `firstname`, `lastname`, `created_on`, `last_login_on`
+- if the user is locked, the endpoint returns 404 status code
+- if the user is the requesting user, you will also have the fields `login`, `api_key`
 
 If the user doing the request is admin, a user object is always returned (blocked or not). It will have some more details:
 
@@ -183,7 +180,7 @@ DELETE /users/20.xml
 
 <u>Response</u>:
 
-\* `204 No Content`: user was deleted
+- `204 No Content`: user was deleted
 
 ## See also
 

@@ -11,7 +11,7 @@ source_updated_on: '2024-09-19T10:33:13Z'
 
 As in every wiki, just add a link to the page you want to create.
 
-    [MyNewWikiPage](https://www.redmine.org/projects/redmine/wiki/MyNewWikiPage)
+    [[MyNewWikiPage]]
 
 Save the page and click on that link: you are now editing the new wiki page with the name “MyNewWikiPage”. Follow the **Edit** instructions below.
 
@@ -51,7 +51,7 @@ Clicking the **Watch** button adds you as a watcher of the page. This means you 
 
 To rename a wiki page or move a wiki page and its children to another project, click on the **Rename** button.
 
-If ‘Redirect existing links’ is checked, existing links to the current page are redirected to the new wiki page when renamed or moved. Links to the children-pages move to other project are not redirected. To stop the redirection see a workaround in \[#6401](https://www.redmine.org/issues/6401)#note-8.
+If ‘Redirect existing links’ is checked, existing links to the current page are redirected to the new wiki page when renamed or moved. Links to the children-pages move to other project are not redirected. To stop the redirection see a workaround in [#6401](https://www.redmine.org/issues/6401)#note-8.
 
 You can specify a parent page in ‘Parent page’.
 

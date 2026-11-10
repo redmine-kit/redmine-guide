@@ -7,9 +7,13 @@ source_updated_on: '2013-02-02T06:17:55Z'
 
 # The Change log
 
-|  |
-|----|
-| ***Note**: The here explained feature has been merged within the Redmine [roadmap](roadmap.md) and has been removed as a seperate view starting from Redmine version#6 (specifically: done in r3162).* |
+<table>
+<tbody>
+<tr>
+<td style="background-color:#f88;"><em><strong>Note</strong>: The here explained feature has been merged within the Redmine <a href="roadmap.md">roadmap</a> and has been removed as a seperate view starting from Redmine version#6 (specifically: done in r3162).</em></td>
+</tr>
+</tbody>
+</table>
 
 ## Overview
 

@@ -23,7 +23,7 @@ The modifier keys used to trigger an accesskey vary between browsers and operati
 
 ### Shortcuts using accesskeys
 
-In the table below, <Accesskey> stands for the modifier keys listed above for your browser and operating system.
+In the table below, \<Accesskey\> stands for the modifier keys listed above for your browser and operating system.
 
 <table>
 <thead>
@@ -35,17 +35,17 @@ In the table below, <Accesskey> stands for the modifier keys listed above for yo
 </thead>
 <tbody>
 <tr>
-<td><Accesskey> + 7</td>
+<td>&lt;Accesskey&gt; + 7</td>
 <td>Creates a new issue.</td>
 <td>Anywhere in a project where you can add issues, unless “Project menu tab for creating new objects” is set to “none”.</td>
 </tr>
 <tr>
-<td><Accesskey> + 4</td>
+<td>&lt;Accesskey&gt; + 4</td>
 <td>Opens the search page.</td>
 <td>Anywhere (project search inside a project, global search elsewhere).</td>
 </tr>
 <tr>
-<td><Accesskey> + n</td>
+<td>&lt;Accesskey&gt; + n</td>
 <td>Moves forward.</td>
 <td><ul>
 <li>issue pages with previous/next issue navigation</li>
@@ -57,7 +57,7 @@ In the table below, <Accesskey> stands for the modifier keys listed above for yo
 </ul></td>
 </tr>
 <tr>
-<td><Accesskey> + p</td>
+<td>&lt;Accesskey&gt; + p</td>
 <td>Moves backward.</td>
 <td><ul>
 <li>issue pages with previous/next issue navigation</li>
@@ -69,12 +69,12 @@ In the table below, <Accesskey> stands for the modifier keys listed above for yo
 </ul></td>
 </tr>
 <tr>
-<td><Accesskey> + f</td>
+<td>&lt;Accesskey&gt; + f</td>
 <td>Moves the cursor into the quick search field.</td>
 <td>Pages with the quick search field in the header bar.</td>
 </tr>
 <tr>
-<td><Accesskey> + e</td>
+<td>&lt;Accesskey&gt; + e</td>
 <td>Switches to edit mode or moves the cursor into the text area.</td>
 <td>Issues, wiki pages, news, documents and forum messages.</td>
 </tr>

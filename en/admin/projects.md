@@ -28,7 +28,7 @@ This sets a project to a read-only state. A closed project is still be accessibl
 
 **The link to close a project is available on a per Project basis in the [Overview](../user/project-overview.md) screen of the project itself. It is not part of the project list shown above.**
 
-See Feature \[#3640](https://www.redmine.org/issues/3640) for details.
+See Feature [#3640](https://www.redmine.org/issues/3640) for details.
 
 ## Archiving a project
 

@@ -53,23 +53,23 @@ As explained above: you rarely want to override a model/controller. Instead you 
 
 A quick example of **adding a new method** can be found on Eric Davis’ [Budget plugin](http://github.com/edavis10/redmine-budget-plugin/blob/5076b1c88b57c2068aa92cdf694769dbd22d061a/lib/issue_patch.rb). Here he added a new method to Issue called `deliverable_subject` and also declared a relationship.
 
-    <code class="ruby">
-    module IssuePatch
-      def self.included(base) # :nodoc:
-        base.send(:include, InstanceMethods)
-      end
+```ruby
+module IssuePatch
+  def self.included(base) # :nodoc:
+    base.send(:include, InstanceMethods)
+  end
 
-      module InstanceMethods
-        # Wraps the association to get the Deliverable subject.  Needed for the 
-        # Query and filtering
-        def deliverable_subject
-          unless self.deliverable.nil?
-            return self.deliverable.subject
-          end
-        end
+  module InstanceMethods
+    # Wraps the association to get the Deliverable subject.  Needed for the
+    # Query and filtering
+    def deliverable_subject
+      unless self.deliverable.nil?
+        return self.deliverable.subject
       end
     end
-    </code>
+  end
+end
+```
 
 ### Wrapping an existing method
 
@@ -84,28 +84,26 @@ A quick example of **wrapping an existing method** can be found on Eric Davis’
 4.  The result then has a new Hash added to it
 5.  `UsersHelper#user_settings_tabs_with_rate_tab` returns the combined result to the Redmine core, which is then rendered
 
-<!-- -->
+```ruby
+module RateUsersHelperPatch
+  def self.included(base) # :nodoc:
+    base.send(:include, InstanceMethods)
 
-    <code class="ruby">
-    module RateUsersHelperPatch
-      def self.included(base) # :nodoc:
-        base.send(:include, InstanceMethods)
-
-        base.class_eval do
-          alias_method_chain :user_settings_tabs, :rate_tab
-        end
-      end
-
-      module InstanceMethods
-        # Adds a rates tab to the user administration page
-        def user_settings_tabs_with_rate_tab
-          tabs = user_settings_tabs_without_rate_tab
-          tabs << { :name => 'rates', :partial => 'users/rates', :label => :rate_label_rate_history}
-          return tabs
-        end
-      end
+    base.class_eval do
+      alias_method_chain :user_settings_tabs, :rate_tab
     end
-    </code>
+  end
+
+  module InstanceMethods
+    # Adds a rates tab to the user administration page
+    def user_settings_tabs_with_rate_tab
+      tabs = user_settings_tabs_without_rate_tab
+      tabs << { :name => 'rates', :partial => 'users/rates', :label => :rate_label_rate_history}
+      return tabs
+    end
+  end
+end
+```
 
 It is important to note that this kind of wrapping can only be done once per method. In the case of multiple plugins using this trick, then only the last evaluation of the `alias_method_chain` would be valid and all the previous ones would be ignored.
 
@@ -127,9 +125,9 @@ If you want to hook into new issues only you can use the `before_create` callbac
 
 ### FAQ
 
-- Why is the drop-down selection for my blocks not localized? The Name of the entry in the drop-dwon box is per convention made of the entry in the locale file of the plugin. This entry must have the same name as the “my site” block filename, e.g. redmine/vendor/plugins/<myplugin_folder>/app/views/my/blocks/<myblocks_view_file_name>.erb. So you need to add a line “<myblocks_view_file_name>: <put here translation for the drop down item in my blocks configuration>” in your locale, e.g redmine/vendor/plugins/<myplugin_folder>/config/locale/en.yml.
+- Why is the drop-down selection for my blocks not localized? The Name of the entry in the drop-dwon box is per convention made of the entry in the locale file of the plugin. This entry must have the same name as the “my site” block filename, e.g. redmine/vendor/plugins/\<myplugin_folder\>/app/views/my/blocks/\<myblocks_view_file_name\>.erb. So you need to add a line “\<myblocks_view_file_name\>: \<put here translation for the drop down item in my blocks configuration\>” in your locale, e.g redmine/vendor/plugins/\<myplugin_folder\>/config/locale/en.yml.
 
-If this string is not defined in locale file, alyways the filename <myblocks_view_file_name> without extension is made for label in drop-down.
+If this string is not defined in locale file, alyways the filename \<myblocks_view_file_name\> without extension is made for label in drop-down.
 
 ## References
 

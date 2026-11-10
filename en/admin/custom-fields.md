@@ -34,9 +34,17 @@ Some validations can be defined for each custom field:
 - **Min - max length**: minimum and maximum length for the field (0 means that there is no restriction)
 - **Regular Expression**: a regular expression can be used to validate the field content. Examples:
   1.  *4 capital letters followed by one or several digits*
-          ^\[A-Z]{4}\d+$
+
+      ```
+      ^\[A-Z]{4}\d+$
+      ```
+
   2.  *characters only, no digits*
-          ^[^0-9]*$
+
+      ```
+      ^[^0-9]*$
+      ```
+
 - A full list of regular expressions can be found in the Ruby Users Guide.
 
 ### Values
@@ -126,7 +134,7 @@ Data in user custom fields can be used and/or will be displayed in the [user pro
 
 ### Fields for Activities (time tracking)
 
-Data in time tracking activity custom fields can be used and/or will be displayed[^1] in the [Timelog report](../user/timelog-report.md) and the [Project settings](../user/project-settings.md#Activities-time-tracking). See also \[#4077](https://www.redmine.org/issues/4077) for some details about this nifty feature.
+Data in time tracking activity custom fields can be used and/or will be displayed<sup>1</sup> in the [Timelog report](../user/timelog-report.md) and the [Project settings](../user/project-settings.md#Activities-time-tracking). See also [#4077](https://www.redmine.org/issues/4077) for some details about this nifty feature.
 
 - **Required**: field which is required in order to create/save an activity
 
@@ -138,4 +146,4 @@ Data in time tracking activity custom fields can be used and/or will be displaye
 
 **Note**: document category custom fields are not (yet) used in the Redmine core, though other plugins or themes *can/may* use them. No setting here has any effect on any other parts of Redmine for the time being.
 
-[^1]: there are some exceptions, see \[#19121](https://www.redmine.org/issues/19121)#note-1.
+<sup>1</sup> there are some exceptions, see [#19121](https://www.redmine.org/issues/19121)#note-1.

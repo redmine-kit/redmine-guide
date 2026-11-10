@@ -57,16 +57,16 @@ So open up a command prompt and “cd” to your redmine directory, then execute
 
 The plugin structure is created in `plugins/polls`. Edit `plugins/polls/init.rb` to adjust plugin information (name, author, description and version):
 
-    <code class="ruby">
-    Redmine::Plugin.register :polls do
-      name 'Polls plugin'
-      author 'Author name'
-      description 'This is a plugin for Redmine'
-      version '0.0.1'
-      url 'http://example.com/path/to/plugin'
-      author_url 'http://example.com/about'
-    end
-    </code>
+```ruby
+Redmine::Plugin.register :polls do
+  name 'Polls plugin'
+  author 'Author name'
+  description 'This is a plugin for Redmine'
+  version '0.0.1'
+  url 'http://example.com/path/to/plugin'
+  author_url 'http://example.com/about'
+end
+```
 
 Then restart the application and point your browser to http://localhost:3000/admin/plugins.\
 After logging in, you should see your new plugin in the plugins list:
@@ -90,17 +90,17 @@ So, go to the command prompt and run:
 
 This creates the Poll model and the corresponding migration file `xxxxxxxxxxxx_create_polls.rb` in `plugins/polls/db/migrate`:
 
-    <code class="ruby">
-    class CreatePolls < ActiveRecord::Migration[5.2]
-      def change
-        create_table :polls do |t|
-          t.string :question
-          t.integer :yes, default: 0
-          t.integer :no, default: 0
-        end
-      end
+```ruby
+class CreatePolls < ActiveRecord::Migration[5.2]
+  def change
+    create_table :polls do |t|
+      t.string :question
+      t.integer :yes, default: 0
+      t.integer :no, default: 0
     end
-    </code>
+  end
+end
+```
 
 NOTE: For Redmine 3.x `class CreatePolls < ActiveRecord::Migration[5.2]` is `class CreatePolls < ActiveRecord::Migration`.
 
@@ -125,13 +125,13 @@ Let’s add some Polls in the console so we have something to work with. The con
 
 Edit `plugins/polls/app/models/poll.rb` in your plugin directory to add a \#vote method that will be invoked from our controller:
 
-    <code class="ruby">
-    class Poll < ActiveRecord::Base
-      def vote(answer)
-        increment(answer == 'yes' ? :yes : :no)
-      end
-    end
-    </code>
+```ruby
+class Poll < ActiveRecord::Base
+  def vote(answer)
+    increment(answer == 'yes' ? :yes : :no)
+  end
+end
+```
 
 ## Generating a controller
 
@@ -153,36 +153,36 @@ A controller `PollsController` with 2 actions (`#index` and `#vote`) is created.
 
 Edit `plugins/polls/app/controllers/polls_controller.rb` to implement these 2 actions.
 
-    <code class="ruby">
-    class PollsController < ApplicationController
-      def index
-        @polls = Poll.all
-      end
+```ruby
+class PollsController < ApplicationController
+  def index
+    @polls = Poll.all
+  end
 
-      def vote
-        poll = Poll.find(params[:id])
-        poll.vote(params[:answer])
-        if poll.save
-          flash[:notice] = 'Vote saved.'
-        end
-        redirect_to polls_path(project_id: params[:project_id])
-      end
+  def vote
+    poll = Poll.find(params[:id])
+    poll.vote(params[:answer])
+    if poll.save
+      flash[:notice] = 'Vote saved.'
     end
-    </code>
+    redirect_to polls_path(project_id: params[:project_id])
+  end
+end
+```
 
 Then edit `plugins/polls/app/views/polls/index.html.erb` that will display existing polls:
 
-    <code class="erb">
-    <h2>Polls</h2>
+```erb
+<h2>Polls</h2>
 
-    <% @polls.each do |poll| %>
-      <p>
-        <%= poll.question %>?
-        <%= link_to 'Yes', { action: 'vote', id: poll[:id], answer: 'yes', project_id: @project }, method: :post %> <%= poll.yes %> /
-        <%= link_to 'No', { action: 'vote', id: poll[:id], answer: 'no', project_id: @project }, method: :post %> <%= poll.no %>
-      </p>
-    <% end %>
-    </code>
+<% @polls.each do |poll| %>
+  <p>
+    <%= poll.question %>?
+    <%= link_to 'Yes', { action: 'vote', id: poll[:id], answer: 'yes', project_id: @project }, method: :post %> <%= poll.yes %> /
+    <%= link_to 'No', { action: 'vote', id: poll[:id], answer: 'no', project_id: @project }, method: :post %> <%= poll.no %>
+  </p>
+<% end %>
+```
 
 You can remove `plugins/polls/app/views/polls/vote.html.erb` since no rendering is done by the `#vote` action.
 
@@ -190,10 +190,10 @@ You can remove `plugins/polls/app/views/polls/vote.html.erb` since no rendering 
 
 Redmine does not provide the default wildcard route (`':controller/:action/:id'`). Plugins have to declare the routes they need in their proper `config/routes.rb` file. So edit `plugins/polls/config/routes.rb` to add the 2 routes for the 2 actions:
 
-    <code class="ruby">
-    get 'polls', to: 'polls#index'
-    post 'post/:id/vote', to: 'polls#vote'
-    </code>
+```ruby
+get 'polls', to: 'polls#index'
+post 'post/:id/vote', to: 'polls#vote'
+```
 
 You can find more information about Rails routes here: http://guides.rubyonrails.org/routing.html.
 
@@ -215,13 +215,13 @@ So let’s add a new item to the application menu.
 
 Edit `plugins/polls/init.rb` at the root of your plugin directory to add the following line at the end of the plugin registration block:
 
-    <code class="ruby">
-    Redmine::Plugin.register :redmine_polls do
-      [...]
+```ruby
+Redmine::Plugin.register :redmine_polls do
+  [...]
 
-      menu :application_menu, :polls, { controller: 'polls', action: 'index' }, caption: 'Polls'
-    end
-    </code>
+  menu :application_menu, :polls, { controller: 'polls', action: 'index' }, caption: 'Polls'
+end
+```
 
 Syntax is:
 
@@ -240,11 +240,9 @@ Available options are:
 - `:param` - the parameter key that is used for the project id (default is `:id`)
 - `:if` - a Proc that is called before rendering the item, the item is displayed only if it returns true
 - `:caption` - the menu caption that can be:
-
-\* a localized string Symbol\
-\* a String\
-\* a Proc that can take the project as argument
-
+  - a localized string Symbol
+  - a String
+  - a Proc that can take the project as argument
 - `:before`, `:after` - specify where the menu item should be inserted (eg. `after: :activity`)
 - `:first`, `:last` - if set to true, the item will stay at the beginning/end of the menu (eg. `last: true`)
 - `:html` - a hash of html options that are passed to `link_to` when rendering the menu item
@@ -261,14 +259,14 @@ Now you can access the polls by clicking the Polls tab that appears when the use
 Now, let’s consider that the polls are defined at project level (even if it’s not the case in our example poll model). So we would like to add the Polls tab to the project menu instead.\
 Open `init.rb` and replace the line that was added just before with these 2 lines:
 
-    <code class="ruby">
-    Redmine::Plugin.register :redmine_polls do
-      [...]
+```ruby
+Redmine::Plugin.register :redmine_polls do
+  [...]
 
-      permission :polls, { polls: [:index, :vote] }, public: true
-      menu :project_menu, :polls, { controller: 'polls', action: 'index' }, caption: 'Polls', after: :activity, param: :project_id
-    end
-    </code>
+  permission :polls, { polls: [:index, :vote] }, public: true
+  menu :project_menu, :polls, { controller: 'polls', action: 'index' }, caption: 'Polls', after: :activity, param: :project_id
+end
+```
 
 The second line adds our Polls tab to the project menu, just after the activity tab. The first line is required and declares that our 2 actions from `PollsController` are public. We’ll come back later to explain this with more details. Restart the application again and go to one of your projects:
 
@@ -279,41 +277,42 @@ To make the project menu visible, you have to initialize the controller’s inst
 
 Edit your PollsController to do so:
 
-    <code class="ruby">
-    def index
-      @project = Project.find(params[:project_id])
-      @polls = Poll.all # @project.polls
-    end
+```ruby
+def index
+  @project = Project.find(params[:project_id])
+  @polls = Poll.all # @project.polls
+end
 
-    def vote
-      poll = Poll.find(params[:id])
-      poll.vote(params[:answer])
-      if poll.save
-        flash[:notice] = 'Vote saved.'
-      end
-      redirect_to :action => 'index', project_id: params[:project_id]
-    end
-    </code>
+
+def vote
+  poll = Poll.find(params[:id])
+  poll.vote(params[:answer])
+  if poll.save
+    flash[:notice] = 'Vote saved.'
+  end
+  redirect_to :action => 'index', project_id: params[:project_id]
+end
+```
 
 Add your routes.rb to do so:
 
-    <code class="ruby">
-    post 'projects/:project_id/post/:id/vote', to: 'polls#vote', as: 'vote_poll'
-    </code>
+```ruby
+post 'projects/:project_id/post/:id/vote', to: 'polls#vote', as: 'vote_poll'
+```
 
 Edit your views/polls/index.heml.erb to do so:
 
-    <code class="ruby">
-    <h2>Polls</h2>
+```ruby
+<h2>Polls</h2>
 
-    <% @polls.each do |poll| %>
-      <p>
-      <%= poll.question %>?
-      <%= link_to 'Yes', { action: 'vote', id: poll.id, answer: 'yes', project_id: @project.id }, method: :post %> (<%= poll.yes %>) /
-      <%= link_to 'No', { action: 'vote', id: poll.id, answer: 'no', project_id: @project.id }, method: :post %> (<%= poll.no %>)
-      </p>
-    <% end %>
-    </code>
+<% @polls.each do |poll| %>
+  <p>
+  <%= poll.question %>?
+  <%= link_to 'Yes', { action: 'vote', id: poll.id, answer: 'yes', project_id: @project.id }, method: :post %> (<%= poll.yes %>) /
+  <%= link_to 'No', { action: 'vote', id: poll.id, answer: 'no', project_id: @project.id }, method: :post %> (<%= poll.no %>)
+  </p>
+<% end %>
+```
 
 The project id is available in the `:project_id` param because of the `param: :project_id` option in the menu item declaration above.
 
@@ -325,17 +324,17 @@ Now, you should see the project menu when viewing the polls:
 
 To remove an item in a menu, you can use `delete_menu_item` like in this example:
 
-    <code class="ruby">
-    Redmine::Plugin.register :redmine_polls do
-      [...]
+```ruby
+Redmine::Plugin.register :redmine_polls do
+  [...]
 
-      delete_menu_item :top_menu, :my_page
-      delete_menu_item :top_menu, :help
-      delete_menu_item :project_menu, :overview
-      delete_menu_item :project_menu, :activity
-      delete_menu_item :project_menu, :news
-    end
-    </code>
+  delete_menu_item :top_menu, :my_page
+  delete_menu_item :top_menu, :help
+  delete_menu_item :project_menu, :overview
+  delete_menu_item :project_menu, :activity
+  delete_menu_item :project_menu, :news
+end
+```
 
 ## Adding new permissions
 
@@ -344,10 +343,10 @@ We’re going to declare 2 project based permissions, one for viewing the polls 
 
 Edit `plugins/polls/init.rb` to replace the previous permission declaration with these 2 lines:
 
-    <code class="ruby">
-      permission :view_polls, polls: :index
-      permission :vote_polls, polls: :vote
-    </code>
+```ruby
+  permission :view_polls, polls: :index
+  permission :vote_polls, polls: :vote
+```
 
 Restart the application and go to http://localhost:3000/roles/permissions:
 
@@ -359,26 +358,26 @@ Of course, some code needs to be added to the PollsController so that actions ar
 
 Here is how it would look like for the `#index` action:
 
-    <code class="ruby">
-    class PollsController < ApplicationController
-      before_action :find_project, :authorize, only: [:index, :vote]
+```ruby
+class PollsController < ApplicationController
+  before_action :find_project, :authorize, only: [:index, :vote]
 
-      [...]
+  [...]
 
-      def index
-        @polls = Poll.all # @project.polls
-      end
+  def index
+    @polls = Poll.all # @project.polls
+  end
 
-      [...]
+  [...]
 
-      private
+  private
 
-      def find_project
-        # @project variable must be set before calling the authorize filter
-        @project = Project.find(params[:project_id])
-      end
-    end
-    </code>
+  def find_project
+    # @project variable must be set before calling the authorize filter
+    @project = Project.find(params[:project_id])
+  end
+end
+```
 
 Retrieving the current project before the `#vote` action could be done using a similar way.\
 After this, viewing and voting polls will be only available to admin users or users that have the appropriate role on the project.
@@ -386,11 +385,11 @@ After this, viewing and voting polls will be only available to admin users or us
 If you want to display the symbols of your permissions in a multilingual way, you need to add the necessary text labels in a language file.\
 Simply create an \*.yml (eg. `en.yml`) file in `plugins/polls/config/locales` and fill it with labels like this:
 
-    <code class="yaml">
-    "en":
-      permission_view_polls: View Polls
-      permission_vote_polls: Vote Polls
-    </code>
+```yaml
+"en":
+  permission_view_polls: View Polls
+  permission_vote_polls: Vote Polls
+```
 
 In this example the created file is known as `en.yml`, but all other supported language files are also possible too.\
 As you can see on the example above, the labels consists of the permission symbols `:view_polls` and `:vote_polls` with an additional `permission_` added at the front.
@@ -404,12 +403,12 @@ So, let’s create a ‘Polls’ project module. This is done by wrapping the pe
 
 Edit `init.rb` and change the permissions declaration:
 
-    <code class="ruby">
-      project_module :polls do
-        permission :view_polls, polls: :index
-        permission :vote_polls, polls: :vote
-      end
-    </code>
+```ruby
+  project_module :polls do
+    permission :view_polls, polls: :index
+    permission :vote_polls, polls: :vote
+  end
+```
 
 Restart the application and go to one of your project settings.\
 Click on the Modules tab. You should see the Polls module at the end of the modules list (disabled by default):
@@ -425,28 +424,28 @@ You can now enable/disable polls at project level.
 Let’s start by adding a stylesheet to our plugin views.\
 Create a file named `voting.css` in the `plugins/polls/assets/stylesheets` directory:
 
-    <code class="css">
-    a.vote { font-size: 120%; }
-    a.vote.yes { color: green; }
-    a.vote.no  { color: red; }
-    </code>
+```css
+a.vote { font-size: 120%; }
+a.vote.yes { color: green; }
+a.vote.no  { color: red; }
+```
 
 When starting the application, plugin assets are automatically copied to `public/plugin_assets/polls/` to make them available through your web server. So any change to your plugin stylesheets or javascripts needs an application restart.
 
 The introduced classes need to be used by the links. So change in file `plugins/polls/app/views/polls/index.html.erb` the link declarations to:
 
-    <code class="erb">
-    <%= link_to 'Yes', {action: 'vote', id: poll[:id], answer: 'yes', project_id: @project }, method: :post, class: 'vote yes' %> (<%= poll.yes %>)
-    <%= link_to 'No', {action: 'vote', id: poll[:id], answer: 'no', project_id: @project }, method: :post, class: 'vote no' %> (<%= poll.no %>)
-    </code>
+```erb
+<%= link_to 'Yes', {action: 'vote', id: poll[:id], answer: 'yes', project_id: @project }, method: :post, class: 'vote yes' %> (<%= poll.yes %>)
+<%= link_to 'No', {action: 'vote', id: poll[:id], answer: 'no', project_id: @project }, method: :post, class: 'vote no' %> (<%= poll.no %>)
+```
 
 Then, append the following lines at the end of `index.html.erb` so that your stylesheet get included in the page header by Redmine:
 
-    <code class="erb">
-    <% content_for :header_tags do %>
-        <%= stylesheet_link_tag 'voting', plugin: 'polls' %>
-    <% end %>
-    </code>
+```erb
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'voting', plugin: 'polls' %>
+<% end %>
+```
 
 Note that the `plugin: 'polls'` option is required when calling the `stylesheet_link_tag` helper.
 
@@ -457,9 +456,9 @@ Javascripts can be included in plugin views using the `javascript_include_tag` h
 You can set the HTML title from inside your views by using the `html_title` helper.\
 Example:
 
-    <code class="erb">
-      <% html_title "Polls" %>
-    </code>
+```erb
+  <% html_title "Polls" %>
+```
 
 ## Using hooks
 
@@ -471,33 +470,33 @@ To use one or more hooks in views, you need to create a class that inherits from
 
 For our plugin create a file `plugins/polls/lib/polls_hook_listener.rb` with this content:
 
-    <code class="ruby">
-    class PollsHookListener < Redmine::Hook::ViewListener
-      def view_projects_show_left(context = {})
-        return content_tag("p", "Custom content added to the left")
-      end
+```ruby
+class PollsHookListener < Redmine::Hook::ViewListener
+  def view_projects_show_left(context = {})
+    return content_tag("p", "Custom content added to the left")
+  end
 
-      def view_projects_show_right(context = {})
-        return content_tag("p", "Custom content added to the right")
-      end
-    end
-    </code>
+  def view_projects_show_right(context = {})
+    return content_tag("p", "Custom content added to the right")
+  end
+end
+```
 
 Prepend this line to `plugins/polls/init.rb`:
 
-    <code class="ruby">
-    require_dependency File.expand_path('../lib/polls_hook_listener', __FILE__)
-    </code>
+```ruby
+require_dependency File.expand_path('../lib/polls_hook_listener', __FILE__)
+```
 
 Restart Redmine and have a look into the overview tab of a project. You should see the strings on the left and the right side in the overview.
 
 You can also use the `render_on` helper to render a partial. In our plugin you have to replace the just created content in `plugins/polls/lib/polls_hook_listener.rb` with:
 
-    <code class="ruby">
-    class PollsHookListener < Redmine::Hook::ViewListener
-      render_on :view_projects_show_left, partial: "polls/project_overview"
-    end
-    </code>
+```ruby
+class PollsHookListener < Redmine::Hook::ViewListener
+  render_on :view_projects_show_left, partial: "polls/project_overview"
+end
+```
 
 Add the partial to your plugin by creating the file `app/views/polls/_project_overview.html.erb`. Its content (use some text like ‘Message from Hook!’) will be appended to the left part of the project overview. Don’t forget to restart Redmine.
 
@@ -509,15 +508,15 @@ TODO
 
 Each plugin registered with Redmine is displayed on the admin/plugins page. Support for a basic configuration mechanism is supplied by the Settings controller. This feature is enabled by adding the “settings” method to the plugin registration block in a plugin’s init.rb file.
 
-    <code class="ruby">
-    Redmine::Plugin.register :polls do
-      [ ... ]
+```ruby
+Redmine::Plugin.register :polls do
+  [ ... ]
 
-      settings default: {'empty' => true}, partial: 'settings/poll_settings'
-    end
-    </code>
+  settings default: {'empty' => true}, partial: 'settings/poll_settings'
+end
+```
 
-Adding this will accomplish two things. First, it will add a “Configure” link to the description block for the plugin in the admin/plugins list. Following this link will cause a common plugin configuration template view to be loaded which will in turn render the partial view referenced by :partial. Calling the settings method will also add support in the Setting module for the plugin. The Setting model will store and retrieve a serialized hash based on the plugin name. This hash is accessed using the Setting method name in the form plugin\_<plugin name>. For this example, the hash can be accessed by calling Setting.plugin_polls.
+Adding this will accomplish two things. First, it will add a “Configure” link to the description block for the plugin in the admin/plugins list. Following this link will cause a common plugin configuration template view to be loaded which will in turn render the partial view referenced by :partial. Calling the settings method will also add support in the Setting module for the plugin. The Setting model will store and retrieve a serialized hash based on the plugin name. This hash is accessed using the Setting method name in the form plugin\_\<plugin name\>. For this example, the hash can be accessed by calling Setting.plugin_polls.
 
 ![](../../images/Plugin_Tutorial/plugin_with_config.png)
 
@@ -531,20 +530,20 @@ When the page is submitted, the settings_controller will take the parameter hash
 
 Create a file named `plugins/polls/app/views/settings/_poll_settings.erb` and fill it with following content:
 
-    <code class="erb">
-    <table>
-      <tbody>
-        <tr>
-          <th>Notification Default Address</th>
-          <td>
-            <input type="text" id="settings_notification_default"
-                               value="<%= settings['notification_default'] %>"
-                               name="settings[notification_default]" >
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </code>
+```erb
+<table>
+  <tbody>
+    <tr>
+      <th>Notification Default Address</th>
+      <td>
+        <input type="text" id="settings_notification_default"
+                           value="<%= settings['notification_default'] %>"
+	                       name="settings[notification_default]" >
+      </td>
+    </tr>
+  </tbody>
+</table>
+```
 
 In the example above, the configuration form was not created using Rails form helpers. This is because there is no `settings model but only the setting hash. Form helpers will attempt to access attributes using model accessor methods which do not exist. For example, a call to `settings.notification_default will fail. The value set by this form is accessed as Setting.plugin_polls\[’notification_default’\].
 
@@ -562,37 +561,37 @@ Here are the contents of my test helper file:
 
 Contents of `plugins/polls/test/functional/polls_controller_test.rb` for Redmine 4.x:
 
-    <code class="ruby">
-    require File.expand_path('../../test_helper', __FILE__)
+```ruby
+require File.expand_path('../../test_helper', __FILE__)
 
-    class PollsControllerTest < ActionController::TestCase
-      fixtures :projects
+class PollsControllerTest < ActionController::TestCase
+  fixtures :projects
 
-      def test_index
-        get :index, params: { project_id: 1 }
+  def test_index
+    get :index, params: { project_id: 1 }
 
-        assert_response :success
-        assert_template 'index'
-      end
-    end
-    </code>
+    assert_response :success
+    assert_template 'index'
+  end
+end
+```
 
 Contents of `plugins/polls/test/functional/polls_controller_test.rb` for Redmine 3.x:
 
-    <code class="ruby">
-    require File.expand_path('../../test_helper', __FILE__)
+```ruby
+require File.expand_path('../../test_helper', __FILE__)
 
-    class PollsControllerTest < ActionController::TestCase
-      fixtures :projects
+class PollsControllerTest < ActionController::TestCase
+  fixtures :projects
 
-      def test_index
-        get :index, project_id: 1
+  def test_index
+    get :index, project_id: 1
 
-        assert_response :success
-        assert_template 'index'
-      end
-    end
-    </code>
+    assert_response :success
+    assert_template 'index'
+  end
+end
+```
 
 ### Running test
 
@@ -608,30 +607,30 @@ To execute the polls_controller_test.rb:
 
 If your plugin requires membership to a project, add the following to the beginning of your functional tests:
 
-    <code class="ruby">
-    def test_index
-      @request.session[:user_id] = 2
-      ...
-    end
-    </code>
+```ruby
+def test_index
+  @request.session[:user_id] = 2
+  ...
+end
+```
 
 If your plugin requires a specific permission, you can add that to a user role like so (lookup which role is appropriate for the user in the fixtures):
 
-    <code class="ruby">
-    def test_index
-      Role.find(1).add_permission! :my_permission
-      ...
-    end
-    </code>
+```ruby
+def test_index
+  Role.find(1).add_permission! :my_permission
+  ...
+end
+```
 
 You may enable/disable a specific module like so:
 
-    <code class="ruby">
-    def test_index
-      Project.find(1).enabled_module_names = [:mymodule]
-      ...
-    end
-    </code>
+```ruby
+def test_index
+  Project.find(1).enabled_module_names = [:mymodule]
+  ...
+end
+```
 
 ### Reference file hierarchy
 

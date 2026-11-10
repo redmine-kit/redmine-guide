@@ -20,25 +20,10 @@ In this screen you can configure the basic (though important) settings for the s
 The following general settings are available:
 
 - **Name**: project display name.
-
-<!-- -->
-
 - **Description**: description that appears on the project overview.
-
-<!-- -->
-
 - **Identifier**: used by the application for various things (eg. in URLs). It must be unique and cannot be composed of only numbers. Once the project is created, this identifier cannot be modified.
-
-<!-- -->
-
 - **Homepage**: homepage-link that appears on the [project overview](project-overview.md).
-
-<!-- -->
-
 - **Public**: if checked, the project can be viewed by all the users, including those who are not members of the project. If unchecked, only the project members have access to it, according to their [role](../admin/roles.md).
-
-<!-- -->
-
 - **Subproject of**: lets you define a parent project to the project being created. Projects can be unlimitedly nested.
 
 If there are any [projects custom fields](../admin/custom-fields.md#Fields-for-Projects) configured by the administrator, they’ll show up behind the “Public”-setting noted above.
@@ -91,33 +76,18 @@ You can also assign a wikipage to a version which will be added to the [roadmap]
 The following properties are configurable for (each of the) versions:
 
 - **Name**: The text you want to be displayed to identify the version. *This field is required.*
-
-<!-- -->
-
 - **Description**: A short description to describe the version. *This field is optional.*
-
-<!-- -->
-
 - **Status**: the status lets you control how issues can be assigned to the version:
-
-\* open: no restriction (default)\
-\* locked: can not assign new issues to the version\
-\* closed: can not assign new issues and can not reopen assigned issues
-
+  - open: no restriction (default)
+  - locked: can not assign new issues to the version
+  - closed: can not assign new issues and can not reopen assigned issues
 - **Wiki Page**: The name of a wikipage assigned to the version. *This field is optional.*
-
-<!-- -->
-
 - **Due date**: The due date for the version to be completed. *This field is optional.*
-
-<!-- -->
-
 - **Sharing**: this option lets you share the version with other projects, so that issues from these other projects can be assigned to the shared versions. Each version can be shared with:
-
-\* subprojects: all the descendant projects\
-\* projects in the project hierarchy: ancestors + descendants (needs versions management permission on the root project)\
-\* projects in the project tree: root project + all its descendants (same as above)\
-\* all projects (can be set by admin users only)
+  - subprojects: all the descendant projects
+  - projects in the project hierarchy: ancestors + descendants (needs versions management permission on the root project)
+  - projects in the project tree: root project + all its descendants (same as above)
+  - all projects (can be set by admin users only)
 
     ---------------------------------------------------------------------------------
     | None          | Subprojects   | Hierarchy     | Tree          | All projects  |
@@ -150,9 +120,6 @@ You are able to configure your own set of issue categories for each individual p
 The following properties are configurable for (each of the) issue categories:
 
 - **Name**: The text you want to be displayed to identify the issue category. *This field is required.*
-
-<!-- -->
-
 - **Assigned to**: The project member to who you want to auto-assign newly created issues in this category. *This field is optional.*
 
 ## Wiki
@@ -171,9 +138,6 @@ See [the following page](../admin/repositories.md) for details about how to conf
 Each project can have one or more discussion forums. Each forum has the following properties:
 
 - **Name**: The text you want to be displayed to identify the discussion forum. *This field is required.*
-
-<!-- -->
-
 - **Description**: A short description to describe the subject of the specific forum. *This field is required.*
 
 ## Activities (time tracking)

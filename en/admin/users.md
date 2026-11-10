@@ -12,29 +12,11 @@ source_updated_on: '2023-12-19T14:22:04Z'
 The users list shows only the activated users by default. To view all users (activated, registered and locked users), change the status filter to ‘all’.
 
 - **Login:** The login of the user.
-
-<!-- -->
-
 - **First name:** The first name of the user.
-
-<!-- -->
-
 - **Last name:** The last name of the user.
-
-<!-- -->
-
 - **Email:** The email address of the user.
-
-<!-- -->
-
 - **Administrator:** If the icon ✓ is present, the user is designated as an administrator who has unrestricted access to the application and to all projects.
-
-<!-- -->
-
 - **Created:** Indicates the date when this user account has been created.
-
-<!-- -->
-
 - **Last connection:** Indicates the date when this user logged into the application the last time.
 
 ![](../../images/RedmineUsers/users-list@2x.png)
@@ -78,15 +60,15 @@ TODO
 
     ## Improve this list to match global descriptions and to prevent duplication ##
      * Login - The User's Login account.
-     * Firstname  - The User's First name. 
+     * Firstname  - The User's First name.
      * Lastname - The User's Last name
      * Email - A user's email address which receives a mail sent by project.
      * Language - Set a User's mother language.
      * Administrator - If checked this property, this account has unrestricted access to the application and to all projects.
-     * Authentication 
+     * Authentication
      ** Password  - New password
      ** Confirmation - Confirm a new password
-     * Send account information to the user - If checked AND password is changed (Defect [#7577](https://www.redmine.org/issues/7577)), send Account information to the user's email address when changed user's information by administrator.
+     * Send account information to the user - If checked AND password is changed (Defect #7577), send Account information to the user's email address when changed user's information by administrator.
 
 ## Deleting a User
 

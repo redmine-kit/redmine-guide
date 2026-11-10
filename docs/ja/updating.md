@@ -42,7 +42,7 @@ redmine.org のガイドは、ときどき変わります。`upstream` のブラ
 
 `bin/convert`(`tools/convert.rb`。Docker の中の pandoc 3.11 で動かす)は、次のことをします。
 
-- Wiki の Textile を、pandoc で GitHub の Markdown にする
+- Wiki の Textile を、pandoc で GitHub の Markdown にする。pandoc が誤る Redmine の Textile は、Redmine の表示に合わせて自前で変換する (`tools/textile.rb`)。`<pre>` のブロックは言語付きのコードブロックに、`<pre>`、`<code>`、`<kbd>`、`<notextile>` 以外の HTML タグは文字に、脚注は Redmine と同じ表示 (上付きの番号と、その場所の注) に、セルの結合や配置のある表は HTML に、字下げしたリストの項目は入れ子のリストに、エスケープした Redmine のリンク (`!#124`) はそのテキストに、`{{collapse}}` は `<details>` のセクションに、`<notextile>` はそのままの文字にする
 - Wiki のリンク(`[[RedmineIssues#Updating|...]]`)を、トピックのあいだの相対のリンクにする。ガイドの外のページは redmine.org へのリンクにする。アンカーは Redmine の見出しのアンカーに合わせる
 - 画像を、Redmine 7.0.3 で撮り直したスクリーンショット(`images/en/<ページ>/`、[スクリーンショット](#screenshots)を参照)に向け、なければ `images/<ページ>/` の古い画像に向ける。翻訳では、その言語のスクリーンショット(`images/<言語>/<ページ>/`)に向ける
 - 文の中の Redmine の古い PNG のアイコンを置き換える。後ろにラベルのあるアイコンは消し、ほかは `guide.yml` のとおりに置き換える(**Apply** のような Redmine のラベル)

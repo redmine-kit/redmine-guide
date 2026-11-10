@@ -11,68 +11,62 @@ The followings are Perl scripts that demonstrate how to use the Redmine REST API
 
 ## GET
 
-    <code class="perl">
-    #!/usr/bin/perl
-    #   restget : GET a representation of a REST resource
-    use strict;
-    use warnings;
-    use Getopt::Std;
-    use LWP::UserAgent;
-    use JSON;
-    use open ':locale'; # probe the locale environment variables like LANG
+```perl
+#!/usr/bin/perl
+#	restget : GET a representation of a REST resource
+use strict;
+use warnings;
+use Getopt::Std;
+use LWP::UserAgent;
+use JSON;
+use open ':locale';	# probe the locale environment variables like LANG
 
-    sub HELP_MESSAGE {
-        print STDERR <<"EOM";
-    usage : $0 [-p] [-k API_KEY] url
-            -p: pretty print
-            -k API_KEY: API Access Key
-    EOM
-        exit 0;
-    }
-    our ($opt_p, $opt_k);
-    getopts('pk:') or HELP_MESSAGE();
-    my $url = shift;
-    HELP_MESSAGE() unless $url;
-    #################################################
-    my $ua = new LWP::UserAgent;
-    $ua->timeout(10);   # default: 180sec
-    $ua->ssl_opts( verify_hostname => 0 );  # skip hostname verification
-    $ua->default_header('X-Redmine-API-Key' => $opt_k) if $opt_k;
-
-    my $res = $ua->get($url);
-    die $res->message if $res->is_error;
-
-    my $content =  $res->content;
-    utf8::decode($content); # convert UTF-8 binary to text
-    if ($opt_p) {       # pretty print
-        my $perl_ref = from_json($content);
-        print to_json($perl_ref, {pretty=>1});
-    } else {
-        print $content, "\n";
-    }
+sub HELP_MESSAGE {
+    print STDERR <<"EOM";
+usage : $0 [-p] [-k API_KEY] url
+        -p: pretty print
+        -k API_KEY: API Access Key
+EOM
     exit 0;
-    </code>
+}
+our ($opt_p, $opt_k);
+getopts('pk:') or HELP_MESSAGE();
+my $url = shift;
+HELP_MESSAGE() unless $url;
+#################################################
+my $ua = new LWP::UserAgent;
+$ua->timeout(10);	# default: 180sec
+$ua->ssl_opts( verify_hostname => 0 );	# skip hostname verification
+$ua->default_header('X-Redmine-API-Key' => $opt_k) if $opt_k;
+
+my $res = $ua->get($url);
+die $res->message if $res->is_error;
+
+my $content =  $res->content;
+utf8::decode($content);	# convert UTF-8 binary to text
+if ($opt_p) {		# pretty print
+    my $perl_ref = from_json($content);
+    print to_json($perl_ref, {pretty=>1});
+} else {
+    print $content, "\n";
+}
+exit 0;
+```
 
 Note:
 
-    <code>
         my $perl_ref = from_json($content);
-    </code>
 
 Here a [Perl reference](http://perldoc.perl.org/perlref.html") `$perl_ref` is a reference to a whole data structure parsed.
 
 Usage examples:
 
-    <code>
     ./restget http://www.redmine.org/issues/22097.json
     ./restget -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/issues/117594.json
-    </code>
 
 The next commands put a textile table into the clipboard.
 
-    <code>
     ./restget http://www.redmine.org/projects/redmine/versions.json | perl -MJSON -nle 'for $v (sort{$a->{name} cmp $b->{name}}@{decode_json($_)->{versions}}){$d=$v->{description};print qq/|version:"$v->{name}"|$d|/ if $d}' > /dev/clipboard
-    </code>
 
 You can paste it on your Wiki page as follows.
 
@@ -96,95 +90,89 @@ You can paste it on your Wiki page as follows.
 
 ## PUT
 
-    <code class="perl">
-    #!/usr/bin/perl
-    #   restput : PUT a representation of a REST resource
-    use strict;
-    use warnings;
-    use Getopt::Std;
-    use LWP::UserAgent;
-    use open ':locale'; # probe the locale environment variables like LANG
+```perl
+#!/usr/bin/perl
+#	restput : PUT a representation of a REST resource
+use strict;
+use warnings;
+use Getopt::Std;
+use LWP::UserAgent;
+use open ':locale';	# probe the locale environment variables like LANG
 
-    sub HELP_MESSAGE {
-        print STDERR <<"EOM";
-    usage : $0 [-p API_KEY] url [files...]
-            -k API_KEY: API Access Key
-    EOM
-        exit 0;
-    }
-    our ($opt_k);
-    getopts('k:') or HELP_MESSAGE();
-    my $url = shift;
-    HELP_MESSAGE() unless $url;
-    #################################################
-    my $ua = new LWP::UserAgent;
-    $ua->timeout(10);   # default: 180sec
-    $ua->ssl_opts( verify_hostname => 0 );  # skip hostname verification
-    $ua->default_header('X-Redmine-API-Key' => $opt_k) if $opt_k;
-
-    my $content;
-    {
-        local $/;
-        $content = <>;  # gets whole input
-    }
-    utf8::encode($content); # convert UTF-8 binary to text
-    my $res = $ua->put($url,
-                       'Content-Type' => 'application/json;charset=utf-8',
-                       'Content' => $content);
-    die $res->message if $res->is_error;
-    print $res->content();
+sub HELP_MESSAGE {
+    print STDERR <<"EOM";
+usage : $0 [-p API_KEY] url [files...]
+        -k API_KEY: API Access Key
+EOM
     exit 0;
-    </code>
+}
+our ($opt_k);
+getopts('k:') or HELP_MESSAGE();
+my $url = shift;
+HELP_MESSAGE() unless $url;
+#################################################
+my $ua = new LWP::UserAgent;
+$ua->timeout(10);	# default: 180sec
+$ua->ssl_opts( verify_hostname => 0 );	# skip hostname verification
+$ua->default_header('X-Redmine-API-Key' => $opt_k) if $opt_k;
+
+my $content;
+{
+    local $/;
+    $content = <>;	# gets whole input
+}
+utf8::encode($content);	# convert UTF-8 binary to text
+my $res = $ua->put($url,
+                   'Content-Type' => 'application/json;charset=utf-8',
+                   'Content' => $content);
+die $res->message if $res->is_error;
+print $res->content();
+exit 0;
+```
 
 Usage examples:
 
-    <code>
     # change my name
     echo '{"user":{"firstname":"James","lastname":"Bond"}}' | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://demo.redmine.org/users/current.json
-    </code>
 
 The following script converts a Wiki content to JSON format.
 
-    <code class="perl">
-    #!/usr/bin/perl
-    #   restwiki : convert a Wiki content to JSON format
-    use strict;
-    use warnings;
-    use Getopt::Std;
-    use JSON;
-    use open ':locale';
+```perl
+#!/usr/bin/perl
+#	restwiki : convert a Wiki content to JSON format
+use strict;
+use warnings;
+use Getopt::Std;
+use JSON;
+use open ':locale';
 
-    sub HELP_MESSAGE {
-        print STDERR <<"EOM";
-    usage :    $0 [-c comment] [files...]
-        -c : comment
-    EOM
-        exit 0;
-    }
-    our ($opt_c);
-    getopts('c:') or HELP_MESSAGE();
-    #################################################
-    my $ref;
-    {
-        local $/;   # enable slurp mode
-        $ref->{wiki_page}->{text} = <>;
-    }
-    $ref->{wiki_page}->{comments} = $opt_c if $opt_c;
-    print to_json($ref);
+sub HELP_MESSAGE {
+    print STDERR <<"EOM";
+usage :    $0 [-c comment] [files...]
+    -c : comment
+EOM
     exit 0;
-    </code>
+}
+our ($opt_c);
+getopts('c:') or HELP_MESSAGE();
+#################################################
+my $ref;
+{
+    local $/;	# enable slurp mode
+    $ref->{wiki_page}->{text} = <>;
+}
+$ref->{wiki_page}->{comments} = $opt_c if $opt_c;
+print to_json($ref);
+exit 0;
+```
 
 The following commands create or update a Wiki page “Test Page”.
 
-    <code>
     ./restwiki foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
-    </code>
 
 You, a one-liner, may want to do as follows;
 
-    <code>
     perl -MJSON -e 'local $/;$ref->{wiki_page}->{text} = <>;print to_json($ref)' foo | ./restput -k 57acc39afc967564aa79a6bd329897d7040a9bc8 http://my.redmine.local/projects/test-project/wiki/Test_Page.json
-    </code>
 
 ## Resources
 

@@ -14,19 +14,14 @@ Redmine can be configured to allow issue creation or comments via email. It is a
 You can configure Redmine to receive emails in one of the following ways:
 
 - Forwarding emails from your email server:
-
-\* Pros: works with a remote mail server, email are processed instantly, fast (no environment reloading)\
-\* Cons: needs some configuration on your mail transfer agent (eg. Postfix, Sendmail…)
-
+  - Pros: works with a remote mail server, email are processed instantly, fast (no environment reloading)
+  - Cons: needs some configuration on your mail transfer agent (eg. Postfix, Sendmail…)
 - Fetching emails from an IMAP or POP3 server:
-
-\* Pros: easy to setup, no need to configure your MTA, works with a remote mail server\
-\* Cons: emails are not processed instantly (a cron job needs to be added to read emails periodically)
-
+  - Pros: easy to setup, no need to configure your MTA, works with a remote mail server
+  - Cons: emails are not processed instantly (a cron job needs to be added to read emails periodically)
 - Reading emails from standard input:
-
-\* Pros: fine for testing purpose\
-\* Cons: slow (the environment is reloaded each time an email is read), needs some configuration on your MTA
+  - Pros: fine for testing purpose
+  - Cons: slow (the environment is reloaded each time an email is read), needs some configuration on your MTA
 
 ### Forwarding emails from your email server
 
@@ -123,11 +118,11 @@ If your domain is setup as a virtual mailbox map (so that you use /etc/postfix/v
 
 A rake task (`redmine:email:receive_imap`) can be used to fetch incoming emails from an IMAP server. When you run the rake command from a cron job you can include the switch `-f /path/to/redmine/appdir/Rakefile` on the rake command, because otherwise the rakefile is not found. This is an example line for a cron file that fetches mails every 30 minutes:
 
-    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx 
+    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx
 
 If your setup is working, but you receive mails from the cron daemon, you can suppress the output from the rake command by adding the —silent switch. That should stop cron sending mails on every execution of the command.
 
-    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile --silent redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx 
+    */30 * * * * redmineuser rake -f /path/to/redmine/appdir/Rakefile --silent redmine:email:receive_imap RAILS_ENV="production" host=imap.foo.bar username=redmine@somenet.foo password=xxx
 
 The command has to go on a single line in your cronfile. Also see the other examples below, which only show the rake commands without the `-f` option and without the cron part.
 
@@ -185,6 +180,7 @@ Examples for the rake command:
 
       rake redmine:email:receive_imap RAILS_ENV="production" \\
         host=imap.foo.bar username=redmine@somenet.foo password=xxx
+
 
       # Fixed project and default tracker specified, but emails can override
       # both tracker and priority attributes:
@@ -271,7 +267,7 @@ will let anyone submit emails to a private project ‘foo’.
 TODO: Is this true and is this related to the `no_permission_check` option?:\
 \> Since Redmine 0.9 the project doesn’t have to be public, but authentication required in the Administration-\> Settings-\>Authentication tab has to be unchecked.
 
-If you do not want an “new account notification email” sent to every newly created user by rdm-mailhandler you must add the option “—no-account-notice”. Is implemneted with version#60 in issue \[#11498](https://www.redmine.org/issues/11498). Now an example:
+If you do not want an “new account notification email” sent to every newly created user by rdm-mailhandler you must add the option “—no-account-notice”. Is implemneted with version#60 in issue [#11498](https://www.redmine.org/issues/11498). Now an example:
 
     rdm-mailhandler.rb --unknown-user accept --no-permission-check --project=foo --no-account-notice
 
@@ -303,7 +299,7 @@ Create a what_you_want.rb file in /config/initializers/ and put the following co
     scheduler.interval '10m' do
       task = Rake.application['redmine:email:receive_pop3']
       task.reenable
-      task.invoke 
+      task.invoke
     end
 
 Restart your Redmine instance and your incoming emails will be retrieved on schedule.
@@ -314,7 +310,7 @@ You can check [Rufus-Scheduler](https://github.com/jmettraux/rufus-scheduler) fo
 
 When receiving an email, Redmine uses the From address of the email to find the corresponding user. Emails received from unknown or locked users are ignored.
 
-If the email subject contains something like “Re: **\[xxxxxxx ![#123](https://www.redmine.org/issues/123)\]**” or “\[![#123](https://www.redmine.org/issues/123)\]”, the email is processed as a reply and a note is added to issue ![#123](https://www.redmine.org/issues/123). Otherwise, a new issue is created.
+If the email subject contains something like “Re: **\[xxxxxxx #123\]**” or “\[#123\]”, the email is processed as a reply and a note is added to issue #123. Otherwise, a new issue is created.
 
 Note that, in order to create an issue, all required custom fields must be provided. Without them, issue creation will fail. As an alternative you can ensure that every custom field has a default value which is then used during issue creation.
 
@@ -418,7 +414,7 @@ Example:
 
 If the user who sends the email has the ‘Add issue watchers’ permission, users that are in To or Cc field of the email are automatically added as watchers of the created issue.
 
-Watchers are added only when the issue is created. To or Cc fields are ignored on replies. See \[#7017](https://www.redmine.org/issues/7017) and \[#8009](https://www.redmine.org/issues/8009).
+Watchers are added only when the issue is created. To or Cc fields are ignored on replies. See [#7017](https://www.redmine.org/issues/7017) and [#8009](https://www.redmine.org/issues/8009).
 
 ### Email format and attachments
 

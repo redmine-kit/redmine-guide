@@ -20,35 +20,35 @@ Returns the versions available for the project of given id or identifier (:proje
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <versions type="array" total_count="34">
-      <version>
-        <id>1</id>
-        <project name="Redmine" id="1"/>
-        <name>0.7</name>
-        <description/>
-        <status>closed</status>
-        <due_date>2008-04-28</due_date>
-        <sharing>none</sharing>
-        <created_on>2008-03-09T12:52:06+01:00</created_on>
-        <updated_on>2009-11-15T12:22:12+01:00</updated_on>
-        <wiki_page_title>FooBarWikiPage</version_wiki_page_title>
-      </version>
-      <version>
-        <id>2</id>
-        <project name="Redmine" id="1"/>
-        <name>0.8</name>
-        <description/>
-        <status>closed</status>
-        <due_date>2008-12-30</due_date>
-        <sharing>none</sharing>
-        <wiki_page_title>FooBarWikiPage</version_wiki_page_title>
-        <created_on>2008-03-09T12:52:12+01:00</created_on>
-        <updated_on>2009-11-15T12:22:12+01:00</updated_on>
-      </version>
-    </versions>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<versions type="array" total_count="34">
+  <version>
+    <id>1</id>
+    <project name="Redmine" id="1"/>
+    <name>0.7</name>
+    <description/>
+    <status>closed</status>
+    <due_date>2008-04-28</due_date>
+    <sharing>none</sharing>
+    <created_on>2008-03-09T12:52:06+01:00</created_on>
+    <updated_on>2009-11-15T12:22:12+01:00</updated_on>
+    <wiki_page_title>FooBarWikiPage</version_wiki_page_title>
+  </version>
+  <version>
+    <id>2</id>
+    <project name="Redmine" id="1"/>
+    <name>0.8</name>
+    <description/>
+    <status>closed</status>
+    <due_date>2008-12-30</due_date>
+    <sharing>none</sharing>
+    <wiki_page_title>FooBarWikiPage</version_wiki_page_title>
+    <created_on>2008-03-09T12:52:12+01:00</created_on>
+    <updated_on>2009-11-15T12:22:12+01:00</updated_on>
+  </version>
+</versions>
+```
 
 ### POST
 
@@ -57,18 +57,17 @@ Creates a version for the project of given id or identifier (:project_id).
 <u>Parameters</u>:
 
 - `version` (required): a hash of the version attributes, including:
-
-\* `name` (required)\
-\* `status`: the status of the version in: `open (default), locked, closed`\
-\* `sharing`: the version sharing in: `none (default), descendants, hierarchy, tree, system`\
-\* `due_date`\
-\* `description`\
-\* `wiki_page_title`
+  - `name` (required)
+  - `status`: the status of the version in: `open (default), locked, closed`
+  - `sharing`: the version sharing in: `none (default), descendants, hierarchy, tree, system`
+  - `due_date`
+  - `description`
+  - `wiki_page_title`
 
 <u>Response</u>:
 
-\* `201 Created`: version was created\
-\* `422 Unprocessable Entity`: version was not created due to validation failures (response body contains the error messages)
+- `201 Created`: version was created
+- `422 Unprocessable Entity`: version was not created due to validation failures (response body contains the error messages)
 
 ## /versions/:id.:format
 
@@ -82,21 +81,21 @@ Returns the version of given id.
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <version>
-      <id>2</id>
-      <project name="Redmine" id="1"/>
-      <name>0.8</name>
-      <description/>
-      <status>closed</status>
-      <due_date>2008-12-30</due_date>
-      <estimated_hours>0.0</estimated_hours>
-      <spent_hours>0.0</spent_hours>
-      <created_on>2008-03-09T12:52:12+01:00</created_on>
-      <updated_on>2009-11-15T12:22:12+01:00</updated_on>
-    </version>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<version>
+  <id>2</id>
+  <project name="Redmine" id="1"/>
+  <name>0.8</name>
+  <description/>
+  <status>closed</status>
+  <due_date>2008-12-30</due_date>
+  <estimated_hours>0.0</estimated_hours>
+  <spent_hours>0.0</spent_hours>
+  <created_on>2008-03-09T12:52:12+01:00</created_on>
+  <updated_on>2009-11-15T12:22:12+01:00</updated_on>
+</version>
+```
 
 ### PUT
 
@@ -108,8 +107,8 @@ Same as version creation
 
 <u>Response</u>:
 
-\* `204 No Content`: version was updated\
-\* `422 Unprocessable Entity`: version was not updated due to validation failures (response body contains the error messages)
+- `204 No Content`: version was updated
+- `422 Unprocessable Entity`: version was not updated due to validation failures (response body contains the error messages)
 
 ### DELETE
 
@@ -117,5 +116,5 @@ Deletes the version of given id.
 
 <u>Response</u>:
 
-\* `204 No Content`: version was deleted\
-\* `422 Unprocessable Entity`: version was not deleted (response body contains the error messages)
+- `204 No Content`: version was deleted
+- `422 Unprocessable Entity`: version was not deleted (response body contains the error messages)

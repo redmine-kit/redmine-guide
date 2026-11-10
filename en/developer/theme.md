@@ -25,22 +25,23 @@ themes/my_theme/stylesheets/application.css
 
 Here is an example of a custom stylesheet that only override a few settings:
 
-    <code class="css">
-    /* load the default Redmine stylesheet */
-    @import url(../../../stylesheets/application.css);
+```css
+/* load the default Redmine stylesheet */
+@import url(../../../stylesheets/application.css);
 
-    /* add a logo in the header */
-    #header {
-        background: #507AAA url(../images/logo.png) no-repeat 2px;
-        padding-left: 86px;
-    }
+/* add a logo in the header */
+#header {
+    background: #507AAA url(../images/logo.png) no-repeat 2px;
+    padding-left: 86px;
+}
 
-    /* move the project menu to the right */
-    #main-menu { 
-        left: auto;
-        right: 0px;
-    }
-    </code>
+
+/* move the project menu to the right */
+#main-menu {
+    left: auto;
+    right: 0px;
+}
+```
 
 This example assume you have an image located at `my_theme/images/logo.png`.
 
@@ -56,23 +57,23 @@ Simply put your JavaScript in `javascripts/theme.js` and it will automatically b
 
 Source:
 
-    <code class="javascript">
-    export default class extends Controller {
-      init() {
-        this.img = RAILS_ASSET_URL("/icons/trash.svg")
-      }
-    }
-    </code>
+```javascript
+export default class extends Controller {
+  init() {
+    this.img = RAILS_ASSET_URL("/icons/trash.svg")
+  }
+}
+```
 
 Transformed:
 
-    <code class="javascript">
-    export default class extends Controller {
-      init() {
-        this.img = "/assets/icons/trash-54g9cbef.svg"
-      }
-    }
-    </code>
+```javascript
+export default class extends Controller {
+  init() {
+    this.img = "/assets/icons/trash-54g9cbef.svg"
+  }
+}
+```
 
 ## Setting a Favicon
 
@@ -90,8 +91,6 @@ A theme consists of the following files:
 - `favicon/<favicon file>` (optional): favicon for the theme
 - `javascripts/theme.js` (optional): custom JavaScript for the theme
 - `stylesheets/application.css` (required): CSS for the theme
-
-<!-- -->
 
     themes/
       +- <theme name>/

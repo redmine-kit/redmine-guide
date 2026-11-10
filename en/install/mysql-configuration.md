@@ -7,7 +7,7 @@ source_updated_on: '2026-08-17T20:53:04Z'
 
 # MySQL configuration
 
-Redmine using MySQL 5.6, 5.7, 8.0, and 8.1 or an equivalent MariaDB version as database backend has known issues in case of concurrent modifications to the issue nested set, i.e. by parallel modification of various issues’ parent_id). More details can be found in issue \[#39437](https://www.redmine.org/issues/39437) and all the related issues to that ticket.
+Redmine using MySQL 5.6, 5.7, 8.0, and 8.1 or an equivalent MariaDB version as database backend has known issues in case of concurrent modifications to the issue nested set, i.e. by parallel modification of various issues’ parent_id). More details can be found in issue [#39437](https://www.redmine.org/issues/39437) and all the related issues to that ticket.
 
 Redmine version:”5.1.1” and newer contains important fixes to mitigate this issue (r22458, r22459, and r22460), but those fixes also require changing the `transaction_isolation` to `READ COMMITTED` in order to properly work. The default MySQL transaction isolation level is `REPEATABLE READ` according to the [official documentation](https://dev.mysql.com/doc/refman/8.0/en/innodb-transaction-isolation-levels.html).
 
@@ -17,22 +17,22 @@ There are at least two ways to change the transaction isolation level to `READ-C
 
 Add to `database.yml` configuration file the key `variables` with `transaction_isolation: "READ-COMMITTED"` under it as below:
 
-    <code class="yml">
-    production:
-      adapter: mysql2
-      database: redmine
-      host: localhost
-      [...]
-      variables:
-        # For MySQL version 5.7.20 or older, use tx_isolation instead of transaction_isolation here.
-        transaction_isolation: "READ-COMMITTED"
-    </code>
+```yml
+production:
+  adapter: mysql2
+  database: redmine
+  host: localhost
+  [...]
+  variables:
+    # For MySQL version 5.7.20 or older, use tx_isolation instead of transaction_isolation here.
+    transaction_isolation: "READ-COMMITTED"
+```
 
 **2. Change `transaction_isolation` in the MySQL configuration file on the server**
 
-    <code class="conf">
-    transaction_isolation="READ-COMMITTED"
-    </code>
+```conf
+transaction_isolation="READ-COMMITTED"
+```
 
 - The path to this file depends on the operating system, for example, in Ubuntu is `/etc/mysql/conf.d/mysql.cnf`.
 - Changing this setting, requires a database server restart. If you don’t want to restart the server, the setting can be applied also at the runtime by running the following query: `SET GLOBAL TRANSACTION ISOLATION LEVEL READ COMMITTED;`, but it is important to make also the change in the configuration file in order to persist the setting after a restart.

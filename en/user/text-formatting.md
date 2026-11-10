@@ -11,7 +11,4 @@ Redmine supports two syntaxes of formatting based on configuration (Administrati
 
 - [Textile](text-formatting-textile.md) (default)
 - [Markdown](text-formatting-markdown.md)
-
-<!-- -->
-
 - [Code highlighting supported languages](code-highlighting-languages.md)

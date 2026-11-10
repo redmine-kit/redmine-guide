@@ -49,20 +49,20 @@ Controller hooks are fewer in number than the view hooks. Often it is sufficient
 
 Assume the following function is registered to the `do_something` hook. See below for how to achieve that.
 
-    <code class="ruby">
-    def do_something(context={ })
-      context[:issue].subject = "Nothing to fix"
-    end
-    </code>
+```ruby
+def do_something(context={ })
+  context[:issue].subject = "Nothing to fix"
+end
+```
 
 Now consider a controller action with the following code:
 
-    <code class="ruby">
-    issue = Issue.find(1)
-    # issue.subject is "Fix me"
-    call_hook(:do_something, :issue => issue)
-    # issue.subject is now "Nothing to fix"
-    </code>
+```ruby
+issue = Issue.find(1)
+# issue.subject is "Fix me"
+call_hook(:do_something, :issue => issue)
+# issue.subject is now "Nothing to fix"
+```
 
 As you can see, the hook function can change the `issue` object in-place. It is however not possible to completely replace an object as this would break the object references.
 
@@ -77,67 +77,72 @@ There are very few model hooks in Redmine. Most extensions in model code can be 
 The following example is going to hook a function into the hook `view_issues_form_details_bottom`. This can be used to add some additional fields to the issue edit form.
 
 1.  In your plugin (assumed to be named `my_plugin`), create the following class in `lib/my_plugin/hooks.rb`. You can register to multiple hooks in the same class.
-        <code class="ruby">
-        module MyPlugin
-          class Hooks < Redmine::Hook::ViewListener
-            # This just renders the partial in
-            # app/views/hooks/my_plugin/_view_issues_form_details_bottom.rhtml
-            # The contents of the context hash is made available as local variables to the partial.
-            #
-            # Additional context fields
-            #   :issue  => the issue this is edited
-            #   :f      => the form object to create additional fields
-            render_on :view_issues_form_details_bottom,
-                      :partial => 'hooks/my_plugin/view_issues_form_details_bottom'
-          end
-        end
-        </code>
+
+    ```ruby
+    module MyPlugin
+      class Hooks < Redmine::Hook::ViewListener
+        # This just renders the partial in
+        # app/views/hooks/my_plugin/_view_issues_form_details_bottom.rhtml
+        # The contents of the context hash is made available as local variables to the partial.
+        #
+        # Additional context fields
+        #   :issue  => the issue this is edited
+        #   :f      => the form object to create additional fields
+        render_on :view_issues_form_details_bottom,
+                  :partial => 'hooks/my_plugin/view_issues_form_details_bottom'
+      end
+    end
+    ```
 
     The following class does exactly the same as the above but uses a method instead of the shorter `render_on` helper. The name of the method decides which callback it registers itself to.
-        <code class="ruby">
-        module MyPlugin
-          class Hooks < Redmine::Hook::ViewListener
-            def view_issues_form_details_bottom(context={ })
-              # the controller parameter is part of the current params object
-              # This will render the partial into a string and return it.
-              context[:controller].send(:render_to_string, {
-                :partial => "hooks/my_plugin/view_issues_form_details_bottom",
-                :locals => context
-              })
 
-              # Instead of the above statement, you could return any string generated
-              # by your code. That string will be included into the view
-            end
-          end
-        end
-        </code>
-2.  In your `init.rb` make sure to require the file with the hooks. It should look like this:
-        <code class="ruby">
-        require 'redmine'
+```ruby
+module MyPlugin
+  class Hooks < Redmine::Hook::ViewListener
+    def view_issues_form_details_bottom(context={ })
+      # the controller parameter is part of the current params object
+      # This will render the partial into a string and return it.
+      context[:controller].send(:render_to_string, {
+        :partial => "hooks/my_plugin/view_issues_form_details_bottom",
+        :locals => context
+      })
 
-        # This is the important line.
-        # It requires the file in lib/my_plugin/hooks.rb
-        require_dependency 'my_plugin/hooks'
+      # Instead of the above statement, you could return any string generated
+      # by your code. That string will be included into the view
+    end
+  end
+end
+```
 
-        Redmine::Plugin.register :my_plugin do
-          [...]
-        end
-        </code>
+1.  In your `init.rb` make sure to require the file with the hooks. It should look like this:
+
+    ```ruby
+    require 'redmine'
+
+    # This is the important line.
+    # It requires the file in lib/my_plugin/hooks.rb
+    require_dependency 'my_plugin/hooks'
+
+    Redmine::Plugin.register :my_plugin do
+      [...]
+    end
+    ```
+
 
 ### Controller and Model hooks
 
 You can register methods to controller and model hooks the same way as the view hooks. Always remember to require the hook class in your `init.rb`. See an example below:
 
-    <code class="ruby">
-    module MyPlugin
-      class Hooks < Redmine::Hook::ViewListener
-        def controller_issues_bulk_edit_before_save(context={ })
-          # set my_attribute on the issue to a default value if not set explictly
-          context[:issue].my_attribute ||= "default"
-        end
-      end
+```ruby
+module MyPlugin
+  class Hooks < Redmine::Hook::ViewListener
+    def controller_issues_bulk_edit_before_save(context={ })
+      # set my_attribute on the issue to a default value if not set explictly
+      context[:issue].my_attribute ||= "default"
     end
-    </code>
+  end
+end
+```
 
 ## Additional examples
 

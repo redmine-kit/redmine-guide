@@ -40,11 +40,11 @@ For this example **Days** is set for the **Details** parameter.
 |----|----|----|----|----|----|----|----|
 | none |  |  | 1.00 |  |  |  | 1.00 |
 |  | Support |  | 1.00 |  |  |  | 1.00 |
-| Bug \[#10](https://www.redmine.org/issues/10): Bug Report from Test user |  |  |  | 1.33 | 1.00 | 0.33 | 2.67 |
+| Bug [#10](https://www.redmine.org/issues/10): Bug Report from Test user |  |  |  | 1.33 | 1.00 | 0.33 | 2.67 |
 |  | Design |  |  | 1.00 |  |  | 1.00 |
 |  | Development |  |  |  | 1.00 |  | 1.00 |
 |  | Research |  |  | 0.33 |  |  | 0.33 |
 |  | Testing |  |  |  |  | 0.33 | 0.33 |
-| Feature \[#11](https://www.redmine.org/issues/11): Build a bridge |  |  |  |  | 2.00 |  | 2.00 |
+| Feature [#11](https://www.redmine.org/issues/11): Build a bridge |  |  |  |  | 2.00 |  | 2.00 |
 |  | Implementation |  |  |  | 2.00 |  | 2.00 |
 | Total |  |  | 1.00 | 1.33 | 3.00 | 0.33 | 5.67 |

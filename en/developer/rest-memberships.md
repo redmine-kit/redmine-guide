@@ -62,9 +62,8 @@ Adds a project member.
 <u>Parameters</u>:
 
 - `membership` (required): a hash of the membership attributes, including:
-
-\* `user_id` (required): the numerical id of the user or group\
-\* `role_ids` (required): an array of roles numerical ids
+  - `user_id` (required): the numerical id of the user or group
+  - `role_ids` (required): an array of roles numerical ids
 
 <u>Example</u>:
 
@@ -89,8 +88,8 @@ JSON
 
 <u>Response</u>:
 
-\* `201 Created`: membership was created\
-\* `422 Unprocessable Entity`: membership was not created due to validation failures (response body contains the error messages)
+- `201 Created`: membership was created
+- `422 Unprocessable Entity`: membership was not created due to validation failures (response body contains the error messages)
 
 ## /memberships/:id.:format
 
@@ -122,8 +121,7 @@ Updates the membership of given :id. Only the roles can be updated, the project 
 <u>Parameters</u>:
 
 - `membership` (required): a hash of the membership attributes, including:
-
-\* `role_ids` (required): an array of roles numerical ids
+  - `role_ids` (required): an array of roles numerical ids
 
 <u>Example</u>:
 
@@ -138,8 +136,8 @@ Updates the membership of given :id. Only the roles can be updated, the project 
 
 <u>Response</u>:
 
-\* `204 No Content`: membership was updated\
-\* `422 Unprocessable Entity`: membership was not updated due to validation failures (response body contains the error messages)
+- `204 No Content`: membership was updated
+- `422 Unprocessable Entity`: membership was not updated due to validation failures (response body contains the error messages)
 
 ### DELETE
 
@@ -157,5 +155,5 @@ Memberships inherited from a group membership can not be deleted. You must delet
 
 <u>Response</u>:
 
-\* `200 OK`: membership was deleted\
-\* `422 Unprocessable Entity`: membership was not deleted
+- `200 OK`: membership was deleted
+- `422 Unprocessable Entity`: membership was not deleted

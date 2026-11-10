@@ -19,22 +19,22 @@ Returns the list of [issue](rest-issues.md) priorities.
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <issue_priorities type="array">
-      <issue_priority>
-        <id>3</id>
-        <name>Low</name>
-        <is_default>false</is_default>
-      </issue_priority>
-      <issue_priority>
-        <id>4</id>
-        <name>Normal</name>
-        <is_default>true</is_default>
-      </issue_priority>
-      ...
-    </issue_priorities>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<issue_priorities type="array">
+  <issue_priority>
+    <id>3</id>
+    <name>Low</name>
+    <is_default>false</is_default>
+  </issue_priority>
+  <issue_priority>
+    <id>4</id>
+    <name>Normal</name>
+    <is_default>true</is_default>
+  </issue_priority>
+  ...
+</issue_priorities>
+```
 
 ## /enumerations/time_entry_activities.:format
 
@@ -48,16 +48,16 @@ Returns the list of [time entry](rest-time-entries.md) activities.
 
 <u>Response</u>:
 
-    <code class="xml">
-    <time_entry_activities type="array">
-      <time_entry_activity>
-        <id>8</id>
-        <name>Design</name>
-        <is_default>false</is_default>
-      </time_entry_activity>
-      ...
-    </time_entry_activities>
-    </code>
+```xml
+<time_entry_activities type="array">
+  <time_entry_activity>
+    <id>8</id>
+    <name>Design</name>
+    <is_default>false</is_default>
+  </time_entry_activity>
+  ...
+</time_entry_activities>
+```
 
 ## /enumerations/document_categories.:format
 
@@ -71,22 +71,22 @@ Returns the list of document categories.
 
 <u>Response</u>:
 
-    <code class="xml">
-    <document_categories type="array">
-      <document_category>
-        <id>1</id>
-        <name>Uncategorized</name>
-        <is_default>false</is_default>
-      </document_category>
-      <document_category>
-        <id>2</id>
-        <name>User documentation</name>
-        <is_default>false</is_default>
-      </document_category>
-      <document_category>
-        <id>3</id>
-        <name>Technical documentation</name>
-        <is_default>false</is_default>
-      </document_category>
-    </document_categories>
-    </code>
+```xml
+<document_categories type="array">
+  <document_category>
+    <id>1</id>
+    <name>Uncategorized</name>
+    <is_default>false</is_default>
+  </document_category>
+  <document_category>
+    <id>2</id>
+    <name>User documentation</name>
+    <is_default>false</is_default>
+  </document_category>
+  <document_category>
+    <id>3</id>
+    <name>Technical documentation</name>
+    <is_default>false</is_default>
+  </document_category>
+</document_categories>
+```

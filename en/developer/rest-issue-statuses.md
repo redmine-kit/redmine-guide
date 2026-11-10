@@ -19,18 +19,18 @@ Returns the list of all issue statuses.
 
 <u>Response</u>:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="UTF-8"?>
-    <issue_statuses type="array">
-      <issue_status>
-        <id>1</id>
-        <name>New</name>
-        <is_closed>false</is_closed>
-      </issue_status>
-      <issue_status>
-        <id>2</id>
-        <name>Closed</name>
-        <is_closed>true</is_closed>
-      </issue_status>
-    </issue_statuses>
-    </code>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<issue_statuses type="array">
+  <issue_status>
+    <id>1</id>
+    <name>New</name>
+    <is_closed>false</is_closed>
+  </issue_status>
+  <issue_status>
+    <id>2</id>
+    <name>Closed</name>
+    <is_closed>true</is_closed>
+  </issue_status>
+</issue_statuses>
+```

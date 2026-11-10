@@ -13,14 +13,14 @@ source_updated_on: '2020-07-30T13:12:27Z'
 
 The Trac importer migrates:
 
-\* Users\
-\* Components\
-\* Milestones\
-\* Tickets\
-\* Ticket comments and changes (status and resolution)\
-\* Trac specific fields (eg. Resolution) are added as custom fields in Redmine\
-\* Ticket files and custom fields\
-\* Wiki pages with history
+- Users
+- Components
+- Milestones
+- Tickets
+- Ticket comments and changes (status and resolution)
+- Trac specific fields (eg. Resolution) are added as custom fields in Redmine
+- Ticket files and custom fields
+- Wiki pages with history
 
 Notes:
 
@@ -30,14 +30,8 @@ Notes:
 
 You need the sqlite-ruby gem to access the Trac database.
 
-\- For sqlite:
-
-    gem install sqlite-ruby
-
-\
-- For sqlite3:
-
-    gem install sqlite3-ruby
+\- For sqlite: `gem install sqlite-ruby`\
+- For sqlite3: `gem install sqlite3-ruby`
 
 Before starting, you need a fresh Redmine database, **with default data loaded (required)**. See [Redmine installation](install.md).
 
@@ -83,13 +77,13 @@ Now, you should see a project called Myproject in Redmine with your Trac data lo
 
 The Mantis importer migrates:
 
-\* Users\
-\* Projects\
-\* Project versions, categories and news\
-\* Project memberships\
-\* Bugs\
-\* Bug notes, files, relations and monitors\
-\* Custom fields
+- Users
+- Projects
+- Project versions, categories and news
+- Project memberships
+- Bugs
+- Bug notes, files, relations and monitors
+- Custom fields
 
 User passwords are all set to “mantis”.
 
@@ -100,7 +94,7 @@ The script was tested with different 1.0.x Mantis databases and should work with
 Before starting, you need a fresh Redmine database, **with default data loaded (required)**. See [Redmine installation](install.md).\
 When migrating into filled Redmine database, you can use [Ulrichs](email://uk@fortrabbit.de) [Non-destructive migration Script](http://blog.foaa.de/2010/04/non-destructive-migration-from-mantis-to-redmine/)
 
-Make sure to apply the patch \[#10504](https://www.redmine.org/issues/10504).
+Make sure to apply the patch [#10504](https://www.redmine.org/issues/10504).
 
 1\. Run the following command, where test is your Redmine target environment:
 
@@ -149,9 +143,9 @@ You can find other importers created by Redmine users:
 
 - [Non-destructive migration from Mantis to Redmine](http://blog.foaa.de/2010/04/non-destructive-migration-from-mantis-to-redmine/)\
   \> \* No support anymore
-- Jira importer: \[#1385](https://www.redmine.org/issues/1385)
-- Bugzilla importer: \[#989](https://www.redmine.org/issues/989) There are currently two bugzilla importers. bz2redmine http://github.com/ralli/bz2redmine and migrate_from_bugzilla http://github.com/ralli/migrate_from_bugzilla. The bz2redmine preserves the original bugzilla bug numbers and the migrate_from_bugzilla rake task uses the ActiveRecord framework and may be used to migrate from and to postgresql databases.
-- Scarab importer: \[#2928](https://www.redmine.org/issues/2928)
+- Jira importer: [#1385](https://www.redmine.org/issues/1385)
+- Bugzilla importer: [#989](https://www.redmine.org/issues/989) There are currently two bugzilla importers. bz2redmine http://github.com/ralli/bz2redmine and migrate_from_bugzilla http://github.com/ralli/migrate_from_bugzilla. The bz2redmine preserves the original bugzilla bug numbers and the migrate_from_bugzilla rake task uses the ActiveRecord framework and may be used to migrate from and to postgresql databases.
+- Scarab importer: [#2928](https://www.redmine.org/issues/2928)
 - Migrate projects from another instance of Redmine: https://github.com/PowerKiKi/redmine-tools\
   -\* [A trick to import data from Mantis](http://dotnetmarche.org/blogs/externalblogs/archive/2009/05/29/redmine-a-trick-to-import-data-from-mantis.aspx-)
 - Migrate phpBugTracker-1.0.5 to Redmine 2.5: https://github.com/ottodude125/migrate_from_phpbt_to_redmine - Though not exact, this shares some similarities to the Mantis import script

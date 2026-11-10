@@ -38,6 +38,7 @@ You can use “git format-patch”.
 
         Process new git revisions all at once rather than per
 
+
     commit 21a480dd6e08f3c3cce54e1d6ee4c05b0dd59daa
     Author: test
     Date:   Fri Mar 16 19:06:14 2012 +0900

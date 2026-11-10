@@ -18,14 +18,14 @@ Here is a simple example of a command that can be used to update an issue:
 
 The file that contains the data sent to Redmine (388.json in the example above) would look like this:
 
-    <code class="json">
-    {
-      "issue": {
-        "subject": "subject123",
-        "notes": "Changing the subject"
-      }
-    }
-    </code>
+```json
+{
+  "issue": {
+    "subject": "subject123",
+    "notes": "Changing the subject"
+  }
+}
+```
 
 Note: it’s required to set the `Content-Type` header according to the format of the data you are sending. It must be set to one the following values:
 
@@ -41,24 +41,24 @@ Here is a simple example of a command that can be used to create an issue with c
 
 Where issue.xml content is:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="ISO-8859-1" ?>
-    <issue>
-      <subject>API custom fields</subject>
-      <project_id>1</project_id>
-      <tracker_id>2</tracker_id>
-      <custom_fields type="array">
-        <custom_field>
-          <id>2</id>
-          <value>Fixed</value>
-        </custom_field>
-        <custom_field>
-          <id>1</id>
-          <value>0.8.2</value>
-        </custom_field>
-      </custom_fields>
-    </issue>
-    </code>
+```xml
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<issue>
+  <subject>API custom fields</subject>
+  <project_id>1</project_id>
+  <tracker_id>2</tracker_id>
+  <custom_fields type="array">
+    <custom_field>
+      <id>2</id>
+      <value>Fixed</value>
+    </custom_field>
+    <custom_field>
+      <id>1</id>
+      <value>0.8.2</value>
+    </custom_field>
+  </custom_fields>
+</issue>
+```
 
 ## Text formatting
 
@@ -68,16 +68,16 @@ If you want to use some text formatting (e.g to update a wiki page on your proje
 
 Where wiki.xml content is:
 
-    <code class="xml">
-    <?xml version="1.0"?>
-    <wiki_page>
-    <text>
-    h1. TITLE
+```xml
+<?xml version="1.0"?>
+<wiki_page>
+<text>
+h1. TITLE
 
-     %{font-size:14pt}SUBTITLE%
-    </text>
-    </wiki_page>
-    </code>
+ %{font-size:14pt}SUBTITLE%
+</text>
+</wiki_page>
+```
 
 ## Attaching files
 
@@ -96,17 +96,17 @@ Then, use the token to create the issue:
 
 Where issue.xml content is:
 
-    <code class="xml">
-    <?xml version="1.0" encoding="ISO-8859-1" ?>
-    <issue>
-      <subject>Issue with attachment</subject>
-      <project_id>1</project_id>
-      <uploads type="array">
-        <upload>
-          <token>7167.ed1ccdb093229ca1bd0b043618d88743</token>
-          <filename>image.png</filename>
-          <content_type>image/png</content_type>
-        </upload>
-      </uploads>
-    </issue>
-    </code>
+```xml
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<issue>
+  <subject>Issue with attachment</subject>
+  <project_id>1</project_id>
+  <uploads type="array">
+    <upload>
+      <token>7167.ed1ccdb093229ca1bd0b043618d88743</token>
+      <filename>image.png</filename>
+      <content_type>image/png</content_type>
+    </upload>
+  </uploads>
+</issue>
+```

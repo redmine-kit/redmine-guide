@@ -43,13 +43,11 @@ When editing a role, you can define its permissions by checking/unchecking the d
 </thead>
 <tbody>
 <tr>
-<td><strong><em>Project permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Project permissions</em></strong></td>
 </tr>
 <tr>
 <td>Create project</td>
-<td>Allow non-admin users to create a root project<br />
-You can specify which role will be automatically given to a non-admin user who creates a project (see [RedmineSettings#Projects](settings.md#Projects))</td>
+<td>Allow non-admin users to create a root project<br />You can specify which role will be automatically given to a non-admin user who creates a project (see <a href="settings.md#Projects">RedmineSettings#Projects</a>)</td>
 </tr>
 <tr>
 <td>Edit project</td>
@@ -84,8 +82,7 @@ You can specify which role will be automatically given to a non-admin user who c
 <td>Allow user to save/edit/delete their private queries</td>
 </tr>
 <tr>
-<td><strong><em>Forums permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Forums permissions</em></strong></td>
 </tr>
 <tr>
 <td>View messages</td>
@@ -116,8 +113,7 @@ You can specify which role will be automatically given to a non-admin user who c
 <td>Allow user to delete its own topics or replies</td>
 </tr>
 <tr>
-<td><strong><em>Documents permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Documents permissions</em></strong></td>
 </tr>
 <tr>
 <td>Add documents</td>
@@ -136,8 +132,7 @@ You can specify which role will be automatically given to a non-admin user who c
 <td>Allow user to view documents</td>
 </tr>
 <tr>
-<td><strong><em>Files permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Files permissions</em></strong></td>
 </tr>
 <tr>
 <td>Manage files</td>
@@ -148,8 +143,7 @@ You can specify which role will be automatically given to a non-admin user who c
 <td>Allow user to view files</td>
 </tr>
 <tr>
-<td><strong><em>Issue tracking</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Issue tracking</em></strong></td>
 </tr>
 <tr>
 <td>Manage issue categories</td>
@@ -224,8 +218,7 @@ You can specify which role will be automatically given to a non-admin user who c
 <td>Allow user to remove watchers of an issue</td>
 </tr>
 <tr>
-<td><strong><em>News permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>News permissions</em></strong></td>
 </tr>
 <tr>
 <td>View news</td>
@@ -240,8 +233,7 @@ You can specify which role will be automatically given to a non-admin user who c
 <td>Allow user to add comments to news</td>
 </tr>
 <tr>
-<td><strong><em>Repository permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Repository permissions</em></strong></td>
 </tr>
 <tr>
 <td>Manage repository</td>
@@ -257,12 +249,10 @@ You can specify which role will be automatically given to a non-admin user who c
 </tr>
 <tr>
 <td>Commit access</td>
-<td>Used by Redmine.pm to give write access to the project repository<br />
-See [Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl](https://www.redmine.org/projects/redmine/wiki/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl)</td>
+<td>Used by Redmine.pm to give write access to the project repository<br />See <a href="https://www.redmine.org/projects/redmine/wiki/Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl">Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl</a></td>
 </tr>
 <tr>
-<td><strong><em>Time tracking permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Time tracking permissions</em></strong></td>
 </tr>
 <tr>
 <td>Log spent time</td>
@@ -285,13 +275,11 @@ See [Repositories_access_control_with_apache_mod_dav_svn_and_mod_perl](https://w
 <td>Allow user add/edit/delete activities</td>
 </tr>
 <tr>
-<td><strong><em>Wiki permissions</em></strong></td>
-<td></td>
+<td colspan="2"><strong><em>Wiki permissions</em></strong></td>
 </tr>
 <tr>
 <td>Manage wiki</td>
-<td>Allow user to create or delete the project wiki<br />
-Deleting a wiki is an <strong>irreversible</strong> operation, it deletes all pages, their history and all attached files!</td>
+<td>Allow user to create or delete the project wiki<br />Deleting a wiki is an <strong>irreversible</strong> operation, it deletes all pages, their history and all attached files!</td>
 </tr>
 <tr>
 <td>Rename wiki pages</td>
@@ -299,8 +287,7 @@ Deleting a wiki is an <strong>irreversible</strong> operation, it deletes all pa
 </tr>
 <tr>
 <td>Delete wiki pages</td>
-<td>Allow user to delete wiki pages<br />
-Deleting a wiki page is an <strong>irreversible</strong> operation, the page and all its history are deleted!</td>
+<td>Allow user to delete wiki pages<br />Deleting a wiki page is an <strong>irreversible</strong> operation, the page and all its history are deleted!</td>
 </tr>
 <tr>
 <td>View wiki</td>

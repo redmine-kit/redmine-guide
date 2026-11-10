@@ -35,7 +35,7 @@ It uses estimated time to weight each issue.\
 Issues with no estimated time are weighted with the average estimated time.\
 If no issue are estimated, they receive the same weight.
 
-Details \[#2182](https://www.redmine.org/issues/2182)#note-6
+Details [#2182](https://www.redmine.org/issues/2182)#note-6
 
 ## Managing the Roadmap
 

@@ -38,7 +38,7 @@ When filtering by project id, you can use either project numeric ID or its strin
 
 When filtering by date, you can require a min / max date with a custom syntax:
 
-    /time_entries.json?project_id=338&from=2019-01-01&to=2019-01-03&limit=100 
+    /time_entries.json?project_id=338&from=2019-01-01&to=2019-01-03&limit=100
 
 ## Showing a time entry
 
@@ -55,18 +55,17 @@ Creates a time entry.
 <u>Parameters</u>:
 
 - `time_entry` (required): a hash of the time entry attributes, including:
-
-\* `issue_id` or `project_id` (only one is required): the issue id or project id to log time on (both are integers); note that project ids can only be found using the API (e.g. at /projects.json)\
-\* `spent_on`: the date the time was spent (default to the current date); format is e.g. `2020-12-24`\
-\* `hours` (required): the number of spent hours\
-\* `activity_id`: the id of the time activity. This parameter is required unless a default activity is defined in Redmine.\
-\* `comments`: short description for the entry (255 characters max)\
-\* `user_id`: user id to be specified in need of posting time on behalf of another user
+  - `issue_id` or `project_id` (only one is required): the issue id or project id to log time on (both are integers); note that project ids can only be found using the API (e.g. at /projects.json)
+  - `spent_on`: the date the time was spent (default to the current date); format is e.g. `2020-12-24`
+  - `hours` (required): the number of spent hours
+  - `activity_id`: the id of the time activity. This parameter is required unless a default activity is defined in Redmine.
+  - `comments`: short description for the entry (255 characters max)
+  - `user_id`: user id to be specified in need of posting time on behalf of another user
 
 <u>Response</u>:
 
-\* `201 Created`: time entry was created\
-\* `422 Unprocessable Entity`: time entry was not created due to validation failures (response body contains the error messages)
+- `201 Created`: time entry was created
+- `422 Unprocessable Entity`: time entry was not created due to validation failures (response body contains the error messages)
 
 ## Updating a time entry
 
@@ -80,8 +79,8 @@ Updates the time entry of given id.
 
 <u>Response</u>:
 
-\* `204 No Content`: time entry was updated\
-\* `422 Unprocessable Entity`: time entry was not updated due to validation failures (response body contains the error messages)
+- `204 No Content`: time entry was updated
+- `422 Unprocessable Entity`: time entry was not updated due to validation failures (response body contains the error messages)
 
 ## Deleting a time entry
 

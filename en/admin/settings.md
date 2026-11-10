@@ -63,14 +63,14 @@ The storage to be used to store cached data depends on the configuration of a ca
 
 You can configure to change the cache store to other one such as [MemoryStore](http://api.rubyonrails.org/classes/ActiveSupport/Cache/MemoryStore.html) and [MemCacheStore](http://api.rubyonrails.org/classes/ActiveSupport/Cache/MemCacheStore.html) by adding a setting like `config.cache_store = :memory_store` to your `config/environments/production.rb`, for example:
 
-    <code class="ruby">
-    Rails.application.configure do
-      # Settings specified here will take precedence over those in config/application.rb
+```ruby
+Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb
 
-      config.cache_store = :memory_store
+  config.cache_store = :memory_store
 
-      ...
-    </code>
+  ...
+```
 
 You can read more about cache stores in the Rails guides:\
 http://guides.rubyonrails.org/caching_with_rails.html#cache-stores
@@ -121,8 +121,8 @@ The default value is “Based on user’s language”. With this setting, the fi
 
 Lets you choose how dates are displayed:
 
-\* **Based on user’s language**: dates will be displayed specifically for each user, according to the format defined for its language\
-\* **Other formats**: dates will always be displayed using the specified format
+- **Based on user’s language**: dates will be displayed specifically for each user, according to the format defined for its language
+- **Other formats**: dates will always be displayed using the specified format
 
 *Default: Based on user’s language*
 
@@ -130,8 +130,8 @@ Lets you choose how dates are displayed:
 
 Lets you choose how times are displayed:
 
-\* **Based on user’s language**: times will be displayed specifically for each user, according to the format defined for its language\
-\* **Other formats**: times will always be displayed using the specified format
+- **Based on user’s language**: times will be displayed specifically for each user, according to the format defined for its language
+- **Other formats**: times will always be displayed using the specified format
 
 *Default: Based on user’s language*
 
@@ -146,11 +146,11 @@ Let you choose the display format of timespans (estimated time, spent time, etc)
 
 Lets you choose how usernames are displayed. The following combinations are provided:
 
-\* *Firstname*\
-\* *Firstname Surname*\
-\* *Surname Firstname*\
-\* *Surname, Firstname*\
-\* *Username*
+- *Firstname*
+- *Firstname Surname*
+- *Surname Firstname*
+- *Surname, Firstname*
+- *Username*
 
 ### Use Gravatar user icons
 
@@ -236,8 +236,8 @@ Note that the setting is immutable as long as the dependency for the feature (an
 
 Session maximum lifetime: Lets the administrator set the maximum lifetime of the session\
 Session inactivity timeout: Lets the administrator specify after how many hours of inactivity the session times out.\
-%{color:red}Warning 1%: Changing these settings may expire the current sessions (including your own).\
-%{color:red}Warning 2%: Redmine uses the rails cookiestore for session management. We strongly advise you to set a maximum session lifetime. If you don’t, it is theoretically possible that an attacker steals the session cookie and re-uses it.
+<span style="color:red">Warning 1</span>: Changing these settings may expire the current sessions (including your own).\
+<span style="color:red">Warning 2</span>: Redmine uses the rails cookiestore for session management. We strongly advise you to set a maximum session lifetime. If you don’t, it is theoretically possible that an attacker steals the session cookie and re-uses it.
 
 ## API
 
@@ -503,29 +503,29 @@ The basic syntax for doing that is : @`<time>`, where time consists in a number 
 
 Here’s a list of many valid commit messages that would work if you want to say you spent N hours on issue 1234:
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @2
+    Implement feature #1234 @2
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @2h
+    Implement feature #1234 @2h
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @2hours
+    Implement feature #1234 @2hours
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @15m
+    Implement feature #1234 @15m
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @15min
+    Implement feature #1234 @15min
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3h15
+    Implement feature #1234 @3h15
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3h15m
+    Implement feature #1234 @3h15m
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3:15
+    Implement feature #1234 @3:15
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3.25
+    Implement feature #1234 @3.25
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3.25h
+    Implement feature #1234 @3.25h
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3,25
+    Implement feature #1234 @3,25
 
-    Implement feature [#1234](https://www.redmine.org/issues/1234) @3,25h
+    Implement feature #1234 @3,25h
 
 ### Activity for logged time
 

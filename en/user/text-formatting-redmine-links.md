@@ -26,81 +26,60 @@ Wiki links are displayed in red if the page doesn’t exist yet, eg: [Nonexisten
 Links to other resources:
 
 - Issues:
-
-\* **![#124](https://www.redmine.org/issues/124)** (link to an issue: displays \[#124](https://www.redmine.org/issues/124), link is striked-through if the issue is closed)\
-\* **![#124](https://www.redmine.org/issues/124)-6**, or **![#124](https://www.redmine.org/issues/124)#note-6** (link to an issue note: displays \[#124](https://www.redmine.org/issues/124)-6, or \[#124](https://www.redmine.org/issues/124)#note-6)\
-\* **!##124** (link to an issue including tracker name and subject: displays \##124)\
-\* **!#note-6** (link to an issue note within the same issue)
-
+  - **#124** (link to an issue: displays [#124](https://www.redmine.org/issues/124), link is striked-through if the issue is closed)
+  - **#124-6**, or **#124#note-6** (link to an issue note: displays [#124](https://www.redmine.org/issues/124)-6, or [#124](https://www.redmine.org/issues/124)#note-6)
+  - **##124** (link to an issue including tracker name and subject: displays \##124)
+  - **#note-6** (link to an issue note within the same issue)
 - Documents:
-
-\* **!document#17** (link to document with id 17)\
-\* **!document:Greetings** (link to the document with title “Greetings”)\
-\* **!document:”Some document”** (double quotes can be used when document title contains spaces)\
-\* **!sandbox:document:”Some document”** (link to a document with title “Some document” in project identifier “sandbox”)
-
+  - **document#17** (link to document with id 17)
+  - **document:Greetings** (link to the document with title “Greetings”)
+  - **document:”Some document”** (double quotes can be used when document title contains spaces)
+  - **sandbox:document:”Some document”** (link to a document with title “Some document” in project identifier “sandbox”)
 - Versions:
-
-\* **!version#3** (link to version with id 3)\
-\* **!version:1.0.0** (link to version named “1.0.0”)\
-\* **!version:”1.0 beta 2”** (double quotes can be used when version name contains spaces)\
-\* **!sandbox:version:1.0.0** (link to version “1.0.0” in the project identifier “sandbox”)
-
+  - **version#3** (link to version with id 3)
+  - **version:1.0.0** (link to version named “1.0.0”)
+  - **version:”1.0 beta 2”** (double quotes can be used when version name contains spaces)
+  - **sandbox:version:1.0.0** (link to version “1.0.0” in the project identifier “sandbox”)
 - Attachments:
-
-\* **!attachment:file.zip** (link to the attachment of the current object named file.zip)\
-\* **!attachment:”file name.zip”** (double quotes can be used when the filename contains non word characters)\
-\* For now, attachments of the current object can be referenced only (if you’re on an issue, it’s possible to reference attachments of this issue only)
-
+  - **attachment:file.zip** (link to the attachment of the current object named file.zip)
+  - **attachment:”file name.zip”** (double quotes can be used when the filename contains non word characters)
+  - For now, attachments of the current object can be referenced only (if you’re on an issue, it’s possible to reference attachments of this issue only)
 - Changesets:
-
-\* **!r758** (link to a changeset, displays r758)\
-\* **!commit:c6f4d0fd** (link to a changeset with a non-numeric hash)\
-\* **!svn1\|r758** (link to a changeset of a specific repository, for projects with multiple repositories)\
-\* **!commit:hg\|c6f4d0fd** (link to a changeset with a non-numeric hash of a specific repository)\
-\* **!sandbox:r758** (link to a changeset of another project)\
-\* **!sandbox:commit:c6f4d0fd** (link to a changeset with a non-numeric hash of another project identifier)
-
+  - **r758** (link to a changeset, displays r758)
+  - **commit:c6f4d0fd** (link to a changeset with a non-numeric hash)
+  - **svn1\|r758** (link to a changeset of a specific repository, for projects with multiple repositories)
+  - **commit:hg\|c6f4d0fd** (link to a changeset with a non-numeric hash of a specific repository)
+  - **sandbox:r758** (link to a changeset of another project)
+  - **sandbox:commit:c6f4d0fd** (link to a changeset with a non-numeric hash of another project identifier)
 - Repository files:
-
-\* **!source:some/file** (link to the file located at /some/file in the project’s repository)\
-\* **!source:”some file”** (link to the file with non word characters in the path)\
-\* **!source:some/file@52** (link to the file’s revision 52)\
-\* **!source:some/file@master** (link to the file in branch *master*)\
-\* **!source:some/file#L120** (link to line 120 of the file)\
-\* **!source:some/file@52#L120** (link to line 120 of the file’s revision 52)\
-\* **!source:repo_identifier\|some/file** (link to a file of a specific repository, for projects with multiple repositories)\
-\* **!sandbox:source:some/file** (link to the file in the project identifier “sandbox”)\
-\* **!sandbox:source:repo_identifier\|some/file** (link to the file, with non word characters in the path, of a specific repository in the project identifier “sandbox”)\
-\* **!export:some/file** (force the download of the file)
-
+  - **source:some/file** (link to the file located at /some/file in the project’s repository)
+  - **source:”some file”** (link to the file with non word characters in the path)
+  - **source:some/file@52** (link to the file’s revision 52)
+  - **source:some/file@master** (link to the file in branch *master*)
+  - **source:some/file#L120** (link to line 120 of the file)
+  - **source:some/file@52#L120** (link to line 120 of the file’s revision 52)
+  - **source:repo_identifier\|some/file** (link to a file of a specific repository, for projects with multiple repositories)
+  - **sandbox:source:some/file** (link to the file in the project identifier “sandbox”)
+  - **sandbox:source:repo_identifier\|some/file** (link to the file, with non word characters in the path, of a specific repository in the project identifier “sandbox”)
+  - **export:some/file** (force the download of the file)
 - Forums:
-
-\* **!forum#2** (link to forum with id 2)\
-\* **!forum:Discussion** (link to forum with name “Discussion”)\
-\* **!forum:”Help and more”** (double quotes can be used when forum name contains spaces)
-
+  - **forum#2** (link to forum with id 2)
+  - **forum:Discussion** (link to forum with name “Discussion”)
+  - **forum:”Help and more”** (double quotes can be used when forum name contains spaces)
 - Forum messages:
-
-\* **!message#1218** (link to message with id 1218)
-
+  - **message#1218** (link to message with id 1218)
 - News items
-
-\* **!news#1** (link to news item with id 1)\
-\* **!news:Greetings** (link to news item with name “Greetings”)\
-\* **!news:”eCookbook first release !”** (double quotes can be used when news item name contains spaces)
-
+  - **news#1** (link to news item with id 1)
+  - **news:Greetings** (link to news item with name “Greetings”)
+  - **news:”eCookbook first release !”** (double quotes can be used when news item name contains spaces)
 - Projects:
-
-\* **!project#3** (link to project with id 3)\
-\* **!project:someproject** (link to project with name “someproject”)\
-\* **!project:”Multiple words project”** (double quotes can be used when project name contains spaces)
-
+  - **project#3** (link to project with id 3)
+  - **project:someproject** (link to project with name “someproject”)
+  - **project:”Multiple words project”** (double quotes can be used when project name contains spaces)
 - Users:
-
-\* **user#2** (link to user with id 2)\
-\* **user:jsmith** (Link to user with login “jsmith”)\
-\* **@jsmith** (Link to user with login “jsmith”)
+  - **user#2** (link to user with id 2)
+  - **user:jsmith** (Link to user with login “jsmith”)
+  - **@jsmith** (Link to user with login “jsmith”)
 
 Escaping:
 

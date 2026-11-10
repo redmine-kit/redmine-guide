@@ -42,14 +42,13 @@ Creates an issue category for the project of given id or identifier (:project_id
 <u>Parameters</u>:
 
 - `issue_category` (required): a hash of the issue category attributes, including:
-
-\* `name` (required)\
-\* `assigned_to_id`: the id of the user assigned to the category (new issues with this category are assigned by default to this user)
+  - `name` (required)
+  - `assigned_to_id`: the id of the user assigned to the category (new issues with this category are assigned by default to this user)
 
 <u>Response</u>:
 
-\* `201 Created`: issue category was created\
-\* `422 Unprocessable Entity`: issue category was not created due to validation failures (response body contains the error messages)
+- `201 Created`: issue category was created
+- `422 Unprocessable Entity`: issue category was not created due to validation failures (response body contains the error messages)
 
 ## /issue_categories/:id.:format
 
@@ -80,8 +79,8 @@ Same as issue category creation
 
 <u>Response</u>:
 
-\* `204 No Content`: issue category was updated\
-\* `422 Unprocessable Entity`: issue category was not updated due to validation failures (response body contains the error messages)
+- `204 No Content`: issue category was updated
+- `422 Unprocessable Entity`: issue category was not updated due to validation failures (response body contains the error messages)
 
 ### DELETE
 
@@ -98,4 +97,4 @@ Deletes the issue category of given id.
 
 <u>Response</u>:
 
-\* `204 No Content`: issue category was deleted
+- `204 No Content`: issue category was deleted

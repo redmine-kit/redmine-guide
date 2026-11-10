@@ -48,7 +48,7 @@ Patches to fix bugs or add new features are always appreciated. If you are going
 2.  Redmine has **tests** (source:trunk/test). Make sure all the existing tests pass. You can check the current build statuses on the [Redmine Continuous Integration server](https://www.redmine.org/projects/redmine/wiki/Continuous_integration). You can run “rake test” for entire tests or “ruby test/unit/issue_test.rb” for an each test. For more details, see source:trunk/doc/RUNNING_TESTS
 3.  Add tests to show the new functionality and check for bugs
 4.  Post the patch to the issue.\
-    **%{color: red}Do not send a pull request on GitHub and Bitbucket%**.\
+    **<span style="text-align:left;">span style=”color: red”\>Do not send a pull request on GitHub and Bitbucket</span></span>**.\
     If you use Mercurial or Git, you can create patch series.\
     See [How to create patch series on Mercurial and Git](how-to-create-patch-series-on-mercurial-and-git.md)
 5.  Ask for feedback from users and developers. Users will want to to apply the patch and try out the new functionality. Developers will want to do a code review and run all of the tests.

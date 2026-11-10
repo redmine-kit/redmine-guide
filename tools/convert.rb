@@ -11,6 +11,7 @@ require 'yaml'
 require 'fileutils'
 require 'open3'
 require 'pathname'
+require_relative 'textile'
 
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
@@ -93,20 +94,29 @@ def relative(from_topic, to_topic)
   Pathname(to_topic).relative_path_from(Pathname(File.dirname(from_topic))).to_s
 end
 
-# Turns a [[wiki link]] into a Markdown link: to the topic, or to redmine.org.
-def wiki_link(from_topic, target, label, topics, by_lower)
+# The target of a [[wiki link]]: the topic, or the page on redmine.org.
+def wiki_href(from_topic, target, topics, by_lower)
   page, hash = target.split('#', 2)
   page = page.strip.tr(' ', '_')
   real = by_lower[page.downcase]
   fragment = hash ? "##{anchor(hash)}" : ''
-  label = (label || target).strip
   if page.empty?
-    "[#{label}](#{fragment})"
+    fragment
   elsif real
-    "[#{label}](#{relative(from_topic, topics[real])}.md#{fragment})"
+    "#{relative(from_topic, topics[real])}.md#{fragment}"
   else
-    "[#{label}](#{WIKI_URL}#{page}#{fragment})"
+    "#{WIKI_URL}#{page}#{fragment}"
   end
+end
+
+# Turns a [[wiki link]] into a Markdown link (or an HTML one, in a table the
+# converter writes as HTML). A link to another project's wiki keeps its text.
+def wiki_link(from_topic, target, label, topics, by_lower, html: false)
+  label = (label || target).strip
+  return label if target.include?(':') && !target.start_with?('#')
+
+  href = wiki_href(from_topic, target, topics, by_lower)
+  html ? %(<a href="#{CGI.escapeHTML(href)}">#{label}</a>) : "[#{label}](#{href})"
 end
 
 def child_pages(title, pages)
@@ -128,16 +138,33 @@ def replace_icons(text, page, icons)
   end
 end
 
-# #123 and issue #123 outside code become links to redmine.org's issues.
+# #123 and issue #123 outside code become links to redmine.org's issues
+# (also when pandoc escaped the # as \#), but not another site's ("bugs.ruby-lang.org #21856").
+ISSUE_REF = /(?<![\w&\/\[(#\\])(?<!\.org )\\?#(\d{2,6})\b/
+
 def link_issues(markdown)
   fence = false
   markdown.lines.map do |line|
     fence = !fence if line.start_with?('```')
     next line if fence
 
-    line.split(/(`[^`]*`)/).map do |part|
-      part.start_with?('`') ? part : part.gsub(/(?<![\w&\/\[(#])#(\d{2,6})\b/) { "[##{Regexp.last_match(1)}](#{ISSUE_URL}#{Regexp.last_match(1)})" }
+    line.split(/(`[^`]*`|<[^<>\n]+>)/).map do |part|
+      part.start_with?('`', '<') ? part : part.gsub(ISSUE_REF) { "[##{Regexp.last_match(1)}](#{ISSUE_URL}#{Regexp.last_match(1)})" }
     end.join
+  end.join
+end
+
+# The same in the HTML of a table, outside tags and <code>.
+def link_issues_html(html)
+  code = false
+  html.split(/(<[^>]+>)/).map do |part|
+    if part.start_with?('<')
+      code = true if part.match?(/\A<code\b/)
+      code = false if part == '</code>'
+      part
+    else
+      code ? part : part.gsub(ISSUE_REF) { %(<a href="#{ISSUE_URL}#{Regexp.last_match(1)}">##{Regexp.last_match(1)}</a>) }
+    end
   end.join
 end
 
@@ -148,6 +175,20 @@ Dir[File.join(OUT, 'images', '*')].each { |dir| FileUtils.rm_rf(dir) unless File
 topics.each do |page, topic|
   text = File.read(File.join(UPSTREAM, 'pages', "#{page}.textile"), encoding: 'UTF-8')
   links = []
+  held = Textile::Held.new
+  images = Array(pages[page]['images'])
+  # The image's path in the guide, or nil when the image was not fetched.
+  image_path = lambda do |src|
+    file = File.basename(src)
+    if File.exist?(File.join(OUT, retake('en', page, file)))
+      relative(topic, "../#{retake('en', page, file)}")
+    elsif images.include?(file)
+      relative(topic, "../images/#{page}/#{file}")
+    end
+  end
+  literals = Textile::Literals.new
+  text = Textile.extract_pre(text, held)
+  text = Textile.notextile(text, literals)
   text = replace_icons(text, page, config['icons'] || {})
   text = text.gsub(/\{\{\s*[<>]?toc\s*\}\}\n?/i, '')
              .gsub(/\{\{child_pages[^}]*\}\}/) { child_pages(page, pages) }
@@ -158,6 +199,23 @@ topics.each do |page, topic|
                links << [Regexp.last_match(1), Regexp.last_match(2)]
                "RGLINKx#{links.size - 1}x"
              end
+  text = Textile.unescape_links(text)
+  text = Textile.styled_spans(Textile.escape_html_tags(text))
+  text = Textile.mark_footnotes(text)
+  text = Textile.tables(text, held) do |html|
+    html = html.gsub(/RGLINKx(\d+)x/) do
+      target, label = links[Regexp.last_match(1).to_i]
+      wiki_link(topic, target, label, topics, by_lower, html: true)
+    end
+    html = html.gsub(/<img src="([^"]+)"([^>]*)>/) do
+      path = image_path.call(Regexp.last_match(1))
+      path ? %(<img src="#{path}"#{Regexp.last_match(2)}>) : ''
+    end
+    html = html.gsub(%r{href="(/(?!/)[^"]*)"}) { %(href="https://www.redmine.org#{Regexp.last_match(1)}") }
+    held.html(literals.html(Textile.restore_hashes(Textile.footnotes(link_issues_html(html)))))
+  end
+  text = Textile.collapse(text, held)
+  text = Textile.normalize_lists(text)
   markdown, status = Open3.capture2('pandoc', '-f', 'textile', '-t', 'gfm', '--wrap=none', stdin_data: text)
   abort "pandoc failed on #{page}" unless status.success?
 
@@ -165,27 +223,23 @@ topics.each do |page, topic|
 
   markdown = markdown.gsub(/RGLINKx(\d+)x/) do
     target, label = links[Regexp.last_match(1).to_i]
-    if target.include?(':') && !target.start_with?('#')
-      label || target
-    else
-      wiki_link(topic, target, label, topics, by_lower)
-    end
+    wiki_link(topic, target, label, topics, by_lower)
   end
-  images = Array(pages[page]['images'])
   markdown = markdown.gsub(/!\[([^\]]*)\]\(([^)\s]+)\)/) do
     alt = Regexp.last_match(1)
-    file = File.basename(Regexp.last_match(2))
-    if File.exist?(File.join(OUT, retake('en', page, file)))
-      "![#{alt}](#{relative(topic, "../#{retake('en', page, file)}")})"
-    elsif images.include?(file)
-      "![#{alt}](#{relative(topic, "../images/#{page}/#{file}")})"
+    path = image_path.call(Regexp.last_match(2))
+    if path
+      "![#{alt}](#{path})"
     else
       alt.empty? ? '' : "*#{alt}*"
     end
   end
   # Links to other parts of redmine.org (/projects/..., /releases/...).
   markdown = markdown.gsub(%r{\]\((/(?!/)[^)\s]*)\)}) { "](https://www.redmine.org#{Regexp.last_match(1)})" }
-  markdown = link_issues(markdown).gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, '')
+  markdown = literals.markdown(Textile.restore_hashes(Textile.footnotes(link_issues(markdown))))
+  # The blocks kept out of pandoc come back after the issue links: code is
+  # shown as it is.
+  markdown = held.restore(markdown.gsub(/\n{3,}/, "\n\n").gsub(/\(\s+\)/, ''))
   unless markdown.lstrip.start_with?('# ')
     markdown = markdown.sub(/\A\s*##\s+/, '# ') if markdown.lstrip.start_with?('## ')
     markdown = "# #{labels[page] || page.tr('_', ' ')}\n\n#{markdown}" unless markdown.lstrip.start_with?('# ')
