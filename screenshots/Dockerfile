@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # Redmine 7.0.3 for the guide's screenshots (bin/screenshots). Built from this
 # directory: docker build -f screenshots/Dockerfile screenshots
-FROM ruby:4.0@sha256:a69f361db050bb2c65ec66ef75411bfc4ce2e1d993ba1179fac4e4ba6ecfe91f
+FROM ruby:4.0@sha256:4de17567bc750e8a509fd2181e5c5eda3137bbb635b046943277c90271e4ec1c
 # Subversion for the repository screens (Redmine's test repository).
 RUN apt-get update && apt-get install -y --no-install-recommends subversion && rm -rf /var/lib/apt/lists/*
 ARG REDMINE_VERSION=7.0.3
